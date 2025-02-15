@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>René García Educa - Libros y Educación</title>
+    <meta name="description" content="René García Educa, autor y educador. Descubre sus libros y promociones en Amazon." />
+    <style>
+      /* Reset y estilos generales */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      a {
+        text-decoration: none;
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+      }
+      
+      /* Header */
+      header {
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+        padding: 1em 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+      }
+      nav ul li {
+        margin: 0 1em;
+      }
+      nav ul li a {
+        color: #333;
+        transition: color 0.3s;
+      }
+      nav ul li a:hover {
+        color: #ff6f61;
+      }
+      
+      /* Secciones */
+      section {
+        padding: 100px 0 60px;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 2em;
+        font-size: 2em;
+        color: #444;
+      }
+      
+      /* Hero */
+      .hero {
+        background: url('banner.jpg') no-repeat center center/cover;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        color: #fff;
+      }
+      .hero::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-content h1 {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+      }
+      .hero-content p {
+        font-size: 1.2em;
+        margin-bottom: 1em;
+      }
+      .btn {
+        background: #ff6f61;
+        color: #fff;
+        padding: 0.8em 1.5em;
+        border-radius: 5px;
+        display: inline-block;
+        transition: background 0.3s;
+      }
+      .btn:hover {
+        background: #e65b50;
+      }
+      
+      /* Libros */
+      .books {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2em;
+        justify-content: center;
+      }
+      .book {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 1em;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .book img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .book h3 {
+        margin: 1em 0 0.5em;
+        font-size: 1.2em;
+      }
+      .book p {
+        font-size: 0.9em;
+        color: #666;
+        margin-bottom: 1em;
+      }
+      
+      /* Biografía, Testimonios, Blog y Contacto */
+      .bio,
+      .testimonials,
+      .blog,
+      .contact {
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+      }
+      .testimonial {
+        background: #f9f9f9;
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 5px;
+      }
+      
+      /* Formulario de Contacto */
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+      }
+      form input,
+      form textarea {
+        padding: 0.8em;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+      }
+      form button {
+        background: #ff6f61;
+        color: #fff;
+        border: none;
+        padding: 0.8em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      form button:hover {
+        background: #e65b50;
+      }
+      
+      /* Footer */
+      footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+      }
+      footer a {
+        color: #fff;
+        margin: 0 5px;
+      }
+      
+      /* Responsividad */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          gap: 0.5em;
+        }
+        .hero-content h1 {
+          font-size: 2.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">René García Educa</div>
+          <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#libros">Libros</a></li>
+            <li><a href="#biografia">Biografía</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+      <div class="hero-content container">
+        <h1>Bienvenido a René García Educa</h1>
+        <p>Descubre nuestros libros y transforma tu forma de aprender.</p>
+        <a href="#libros" class="btn">Descubre mis libros</a>
+      </div>
+    </section>
+
+    <!-- Libros Section -->
+    <section id="libros">
+      <div class="container">
+        <h2 class="section-title">Libros Destacados</h2>
+        <div class="books">
+          <!-- Libro 1 -->
+          <div class="book">
+            <img src="libro1.jpg" alt="Portada del libro 1" />
+            <h3>Libro 1: Título Impactante</h3>
+            <p>Una breve descripción que capta la atención del lector.</p>
+            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
+          </div>
+          <!-- Libro 2 -->
+          <div class="book">
+            <img src="libro2.jpg" alt="Portada del libro 2" />
+            <h3>Libro 2: Conocimiento Profundo</h3>
+            <p>Una breve descripción que capta la atención del lector.</p>
+            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
+          </div>
+          <!-- Libro 3 -->
+          <div class="book">
+            <img src="libro3.jpg" alt="Portada del libro 3" />
+            <h3>Libro 3: Innovación y Aprendizaje</h3>
+            <p>Una breve descripción que capta la atención del lector.</p>
+            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Biografía Section -->
+    <section id="biografia">
+      <div class="container bio">
+        <h2 class="section-title">Biografía</h2>
+        <p>
+          René García Educa es un autor y educador apasionado, con años de experiencia en el ámbito educativo y una visión innovadora sobre el aprendizaje. Su trabajo busca transformar la forma en que se enseña y se aprende, integrando conocimientos prácticos y teóricos para empoderar a sus lectores.
+        </p>
+      </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section id="testimonios">
+      <div class="container testimonials">
+        <h2 class="section-title">Testimonios</h2>
+        <div class="testimonial">
+          <p>"Los libros de René han cambiado mi forma de ver el aprendizaje. ¡Altamente recomendados!"</p>
+          <strong>- Juan Pérez</strong>
+        </div>
+        <div class="testimonial">
+          <p>"Un enfoque innovador y práctico que te inspira a mejorar día a día."</p>
+          <strong>- María López</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+      <div class="container blog">
+        <h2 class="section-title">Blog</h2>
+        <p>Próximamente, artículos y novedades sobre educación y desarrollo personal.</p>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto">
+      <div class="container contact">
+        <h2 class="section-title">Contacto</h2>
+        <form action="#" method="post">
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="Tu correo electrónico" required />
+          <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
+          <button type="submit">Enviar Mensaje</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 René García Educa. Todos los derechos reservados.</p>
+        <p>
+          <a href="#">Política de Privacidad</a> |
+          <a href="#">Términos y Condiciones</a>
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript para navegación suave -->
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth',
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
