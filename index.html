@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>René García Educa - Libros y Educación</title>
-    <meta name="description" content="Descubre los libros y recursos de René García Educa, autor y educador que transforman la forma de aprender." />
-    <!-- Google Fonts (opcional) -->
+    <title>René García Educa - Libros para Colorear con Chispa</title>
+    <meta name="description" content="Descubre los libros para colorear con chispa de René García Educa. Diviértete, aprende y déjate llevar por la creatividad en cada página." />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-      /* Reset y configuración base */
+      /* Reset y estilos base */
       * {
         margin: 0;
         padding: 0;
@@ -160,11 +160,46 @@
         margin-bottom: 1rem;
       }
       
-      /* Biografía, Testimonios, Blog y Contacto */
-      .bio,
-      .testimonials,
-      .blog,
-      .contact {
+      /* Series (Nuevas categorías de libros) */
+      .series {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+      }
+      .serie {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 1.5rem;
+        width: 280px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      .serie h4 {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        color: #ff6f61;
+      }
+      .serie p {
+        font-size: 0.9rem;
+        color: #555;
+      }
+      
+      /* Biografía / Sobre el Autor */
+      .bio {
+        max-width: 900px;
+        margin: auto;
+        text-align: left;
+        line-height: 1.8;
+      }
+      .bio h3 {
+        margin-top: 1rem;
+        color: #ff6f61;
+      }
+      
+      /* Testimonios */
+      .testimonials {
         max-width: 800px;
         margin: auto;
         text-align: center;
@@ -226,7 +261,7 @@
         .hero-content h1 {
           font-size: 2.5rem;
         }
-        .books {
+        .books, .series {
           flex-direction: column;
           align-items: center;
         }
@@ -242,7 +277,8 @@
           <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#libros">Libros</a></li>
-            <li><a href="#biografia">Biografía</a></li>
+            <li><a href="#series">Series</a></li>
+            <li><a href="#biografia">Sobre el Autor</a></li>
             <li><a href="#testimonios">Testimonios</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#contacto">Contacto</a></li>
@@ -255,7 +291,7 @@
     <section id="inicio" class="hero">
       <div class="hero-content container">
         <h1>Bienvenido a René García Educa</h1>
-        <p>Descubre nuestros libros y transforma tu forma de aprender.</p>
+        <p>¡Libros para colorear con chispa y diversión! Explora, aprende y deja volar tu imaginación.</p>
         <a href="#libros" class="btn">Descubre mis libros</a>
       </div>
     </section>
@@ -267,35 +303,80 @@
         <div class="books">
           <!-- Libro 1 -->
           <article class="book">
-            <img src="libro1.jpg" alt="Portada del Libro 1: Título Impactante" />
-            <h3>Libro 1: Título Impactante</h3>
-            <p>Una breve descripción que capta la atención del lector.</p>
-            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
+            <img src="libro1.jpg" alt="Portada de 'Colorea y Aprende: Explorando Profesiones y Aventuras'" />
+            <h3>Colorea y Aprende: Explorando Profesiones y Aventuras</h3>
+            <p>
+              Sumérgete en una aventura creativa y educativa donde los animales chibis se visten de profesiones y descubren el mundo.
+            </p>
+            <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">Comprar en Amazon</a>
           </article>
           <!-- Libro 2 -->
           <article class="book">
-            <img src="libro2.jpg" alt="Portada del Libro 2: Conocimiento Profundo" />
-            <h3>Libro 2: Conocimiento Profundo</h3>
-            <p>Una breve descripción que capta la atención del lector.</p>
-            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
-          </article>
-          <!-- Libro 3 -->
-          <article class="book">
-            <img src="libro3.jpg" alt="Portada del Libro 3: Innovación y Aprendizaje" />
-            <h3>Libro 3: Innovación y Aprendizaje</h3>
-            <p>Una breve descripción que capta la atención del lector.</p>
-            <a href="https://www.amazon.com" target="_blank" class="btn">Comprar en Amazon</a>
+            <img src="libro2.jpg" alt="Portada de 'Libro Mandalas: Colorear Perros Chibis'" />
+            <h3>Libro Mandalas: Colorear Perros Chibis</h3>
+            <p>
+              Un libro lleno de mandalas y adorables perros chibis, ideal para relajarte y dejar volar tu creatividad.
+            </p>
+            <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">Comprar en Amazon</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Biografía Section -->
+    <!-- Series Section -->
+    <section id="series">
+      <div class="container">
+        <h2 class="section-title">Explora las Series</h2>
+        <div class="series">
+          <!-- Navidad -->
+          <div class="serie">
+            <h4>NAVIDAD</h4>
+            <p>
+              Colorea - Aprende - Diviértete: Sumérgete en el fascinante mundo navideño con animales explorando la Navidad. ¡Una aventura festiva para compartir en familia!
+            </p>
+          </div>
+          <!-- Profesiones -->
+          <div class="serie">
+            <h4>PROFESIONES</h4>
+            <p>
+              Colorea - Aprende - Diviértete: Descubre "Colorea y Descubre: Explorando Profesiones", donde animales chibis se transforman en héroes de distintas carreras.
+            </p>
+          </div>
+          <!-- Deportes -->
+          <div class="serie">
+            <h4>DEPORTES</h4>
+            <p>
+              Colorea - Aprende - Diviértete: Vive la experiencia de "Colorea y Aprende Explorando los Deportes", donde cada página te invita a descubrir y aprender sobre el mundo deportivo.
+            </p>
+          </div>
+          <!-- Animales Mágicos -->
+          <div class="serie">
+            <h4>ANIMALES MÁGICOS</h4>
+            <p>
+              Colorea - Aprende - Diviértete: Adéntrate en el cautivador universo de "Colorea y Aprende - Explorando Animales", una experiencia mágica y educativa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre el Autor / Biografía -->
     <section id="biografia">
       <div class="container bio">
-        <h2 class="section-title">Biografía</h2>
+        <h2 class="section-title">Sobre el Autor</h2>
         <p>
-          René García Educa es un autor y educador apasionado con años de experiencia, comprometido con transformar la manera de enseñar y aprender. Su enfoque innovador combina teoría y práctica para empoderar a sus lectores.
+          ¡Saludos, intrépidos exploradores de la diversión! Soy René García, la mente maestra detrás de estos asombrosos libros para colorear que hasta Batman envidiaría. Con cada página, invito a grandes y pequeños a descubrir mundos llenos de creatividad, relajación y aprendizaje.
+        </p>
+        <h3>Mi Filosofía</h3>
+        <p>
+          Cada libro es un pasaporte hacia la imaginación: desde Animales Mágicos hasta Paisajes y Profesiones, mis creaciones son herramientas para mejorar habilidades, concentración y hasta liberar el estrés. ¡Colorea, aprende y diviértete, sin importar si tienes dedos de palillos o un pincel en mano!
+        </p>
+        <h3>Un Poco Sobre Mí</h3>
+        <p>
+          Mi travesía comenzó con la simple curiosidad de usar crayones sin comérmelos, y desde entonces, he convertido el arte en mi forma de vida. Soy escritor, editor y soñador. Mis libros están pensados para enseñar y relajar, combinando fantasía y realidad en una aventura sin límites. Agradezco cada sonrisa y cada momento de concentración que inspiran mis creaciones.
+        </p>
+        <p>
+          ¡Gracias por acompañarme en este circo artístico y por formar parte de este club de fans que colorea el mundo de colores y risas!
         </p>
       </div>
     </section>
@@ -305,11 +386,11 @@
       <div class="container testimonials">
         <h2 class="section-title">Testimonios</h2>
         <div class="testimonial">
-          <p>"Los libros de René han revolucionado mi forma de aprender. ¡Muy recomendados!"</p>
+          <p>"Los libros de René han revolucionado mi forma de aprender y divertirme. ¡Altamente recomendados!"</p>
           <strong>- Juan Pérez</strong>
         </div>
         <div class="testimonial">
-          <p>"Un enfoque innovador y práctico que te impulsa a superarte cada día."</p>
+          <p>"Un enfoque innovador que une creatividad y aprendizaje de una manera única."</p>
           <strong>- María López</strong>
         </div>
       </div>
@@ -319,7 +400,9 @@
     <section id="blog">
       <div class="container blog">
         <h2 class="section-title">Blog</h2>
-        <p>Próximamente encontrarás artículos y novedades sobre educación y desarrollo personal.</p>
+        <p>
+          Pronto encontrarás artículos, novedades y consejos para potenciar tu creatividad y aprender de forma divertida.
+        </p>
       </div>
     </section>
 
