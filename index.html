@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>René García Educa - Libros para Colorear con Chispa</title>
     <meta name="description" content="Descubre los libros para colorear con chispa de René García Educa. Diviértete, aprende y déjate llevar por la creatividad en cada página." />
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-      /* Reset y estilos base */
       * {
         margin: 0;
         padding: 0;
@@ -18,29 +16,16 @@
       }
       body {
         font-family: 'Roboto', sans-serif;
-        line-height: 1.6;
+        background: #a0e4f1;
         color: #333;
-        background: #f4f4f4;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      img {
-        max-width: 100%;
-        display: block;
       }
       .container {
         width: 90%;
         max-width: 1200px;
         margin: auto;
       }
-      
-      /* Header */
       header {
-        /* Cambiamos el fondo para darle un toque de color suave */
-        background: linear-gradient(to right, #ff9a9e, #fecfef);
-        border-bottom: 1px solid #ddd;
+        background: #a0e4f1;
         padding: 1rem 0;
         position: fixed;
         width: 100%;
@@ -53,15 +38,14 @@
         align-items: center;
       }
       .logo {
-        font-size: 2rem; /* Aumentamos un poco para destacar */
+        font-size: 2.5rem;
         font-weight: 700;
         color: #333;
         display: flex;
         align-items: center;
       }
       .logo img {
-        /* Aumentamos la altura de la imagen para que sea más visible */
-        height: 60px;
+        height: 80px;
         margin-right: 0.5rem;
       }
       nav ul {
@@ -72,233 +56,67 @@
         margin: 0 0.5rem;
       }
       nav ul li a {
-        /* Aumentamos el padding y la fuente */
-        font-size: 1.1rem;
-        padding: 0.5rem 1rem;
-        border: 2px solid #ff6f61;
-        border-radius: 4px;
+        font-size: 1.2rem;
+        padding: 0.7rem 1.4rem;
+        border: 2px solid #f8a1d1;
+        border-radius: 25px;
         color: #333;
-        background: #fff; /* Fondo claro para contrastar */
+        background: #f8a1d1;
         transition: all 0.3s ease;
       }
       nav ul li a:hover {
-        background: #ff6f61;
+        background: #ff8eb6;
         color: #fff;
-        border-color: #ff6f61;
       }
-      
-      /* Secciones Generales */
-      section {
-        padding: 100px 0 60px;
-      }
-      .section-title {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.2rem;
-        color: #444;
-      }
-      
-      /* Hero */
       .hero {
-        /* Banner de fondo (ajusta según tu imagen) */
         background: url('images/Banner.png') no-repeat center center/cover;
         height: 80vh;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
-        position: relative;
         color: #fff;
       }
-      .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-      }
       .hero-content {
-        position: relative;
-        z-index: 2;
         max-width: 800px;
-        margin: 0 auto;
       }
       .hero-content h1 {
         font-size: 3rem;
-        margin-bottom: 1rem;
       }
       .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
       }
       .btn {
-        background: #fff;
-        color: #ff6f61;
-        padding: 0.8rem 1.5rem;
-        border: 2px solid #ff6f61;
-        border-radius: 5px;
-        display: inline-block;
-        transition: all 0.3s ease;
+        background: #f8a1d1;
+        color: #333;
+        padding: 0.9rem 1.7rem;
+        border: 2px solid #f8a1d1;
+        border-radius: 30px;
         font-weight: 700;
+        transition: all 0.3s ease;
       }
       .btn:hover {
-        background: #ff6f61;
+        background: #ff8eb6;
         color: #fff;
       }
-      
-      /* Libros */
-      .books {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
-      }
-      .book {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 1rem;
-        width: 300px;
+      .section-title {
         text-align: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        color: #333;
       }
-      .book:hover {
-        transform: translateY(-5px);
-      }
-      .book h3 {
-        margin: 1rem 0 0.5rem;
-        font-size: 1.4rem;
-      }
-      .book p {
-        font-size: 0.9rem;
-        color: #666;
-        margin-bottom: 1rem;
-      }
-      
-      /* Series (Nuevas categorías de libros) */
-      .series {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
-      }
-      .serie {
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 1.5rem;
-        width: 280px;
-        text-align: center;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
-      }
-      .serie:hover {
-        transform: translateY(-5px);
-      }
-      .serie h4 {
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-        color: #ff6f61;
-      }
-      .serie p {
-        font-size: 0.9rem;
-        color: #555;
-      }
-      
-      /* Biografía / Sobre el Autor */
-      .bio {
-        max-width: 900px;
-        margin: auto;
-        text-align: left;
-        line-height: 1.8;
-      }
-      .bio h3 {
-        margin-top: 1rem;
-        color: #ff6f61;
-      }
-      
-      /* Testimonios */
-      .testimonials {
-        max-width: 800px;
-        margin: auto;
-        text-align: center;
-      }
-      .testimonial {
-        background: #fff;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-      
-      /* Formulario de Contacto */
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      form input,
-      form textarea {
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        width: 100%;
-        font-size: 1rem;
-      }
-      form button {
-        background: #ff6f61;
-        color: #fff;
-        border: none;
-        padding: 0.8rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-        font-size: 1rem;
-      }
-      form button:hover {
-        background: #e65b50;
-      }
-      
-      /* Footer */
       footer {
         background: #333;
         color: #fff;
         text-align: center;
         padding: 1rem 0;
       }
-      footer a {
-        color: #fff;
-        margin: 0 5px;
-      }
-      
-      /* Responsividad */
-      @media (max-width: 768px) {
-        nav ul {
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-        .hero-content h1 {
-          font-size: 2.5rem;
-        }
-        .books, .series {
-          flex-direction: column;
-          align-items: center;
-        }
-        nav ul li a {
-          margin-bottom: 0.5rem;
-        }
-      }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <div class="container">
         <nav>
-          <!-- Logo -->
           <div class="logo">
             <img src="images/Logo.png" alt="Logo de René García Educa">
             René García Educa
@@ -310,165 +128,21 @@
             <li><a href="#biografia">Sobre el Autor</a></li>
             <li><a href="#testimonios">Testimonios</a></li>
             <li><a href="#blog">Blog</a></li>
-            <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
       </div>
     </header>
-    
-    <!-- Hero Section -->
     <section id="inicio" class="hero">
       <div class="hero-content container">
         <h1>Bienvenido a René García Educa</h1>
-        <p>Libros para colorear con chispa y diversión. ¡Explora, aprende y deja volar tu imaginación!</p>
+        <p>Libros para colorear que inspiran, enseñan y divierten. ¡Explora, aprende y deja volar tu imaginación!</p>
         <a href="#libros" class="btn">Descubre mis libros</a>
       </div>
     </section>
-    
-    <!-- Libros Section -->
-    <section id="libros">
-      <div class="container">
-        <h2 class="section-title">Libros Destacados</h2>
-        <div class="books">
-          <!-- Libro 1 -->
-          <article class="book">
-            <img src="images/libro1.jpg" alt="Portada de 'Colorea y Aprende: Explorando Profesiones y Aventuras'">
-            <h3>Colorea y Aprende: Explorando Profesiones y Aventuras</h3>
-            <p>
-              Sumérgete en una aventura creativa y educativa donde los animales chibis se visten de profesiones y descubren el mundo.
-            </p>
-            <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">Comprar en Amazon</a>
-          </article>
-          <!-- Libro 2 -->
-          <article class="book">
-            <img src="images/libro2.jpg" alt="Portada de 'Libro Mandalas: Colorear Perros Chibis'">
-            <h3>Libro Mandalas: Colorear Perros Chibis</h3>
-            <p>
-              Un libro lleno de mandalas y adorables perros chibis, ideal para relajarte y dejar volar tu creatividad.
-            </p>
-            <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">Comprar en Amazon</a>
-          </article>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Series Section -->
-    <section id="series">
-      <div class="container">
-        <h2 class="section-title">Explora las Series</h2>
-        <div class="series">
-          <!-- Navidad -->
-          <div class="serie">
-            <h4>NAVIDAD</h4>
-            <p>
-              Colorea - Aprende - Diviértete: Sumérgete en el fascinante mundo navideño con animales explorando la Navidad. ¡Una aventura festiva para compartir en familia!
-            </p>
-          </div>
-          <!-- Profesiones -->
-          <div class="serie">
-            <h4>PROFESIONES</h4>
-            <p>
-              Colorea - Aprende - Diviértete: Descubre "Colorea y Descubre: Explorando Profesiones", donde animales chibis se transforman en héroes de distintas carreras.
-            </p>
-          </div>
-          <!-- Deportes -->
-          <div class="serie">
-            <h4>DEPORTES</h4>
-            <p>
-              Colorea - Aprende - Diviértete: Vive la experiencia de "Colorea y Aprende Explorando los Deportes", donde cada página te invita a descubrir y aprender sobre el mundo deportivo.
-            </p>
-          </div>
-          <!-- Animales Mágicos -->
-          <div class="serie">
-            <h4>ANIMALES MÁGICOS</h4>
-            <p>
-              Colorea - Aprende - Diviértete: Adéntrate en el cautivador universo de "Colorea y Aprende - Explorando Animales", una experiencia mágica y educativa.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Sobre el Autor / Biografía -->
-    <section id="biografia">
-      <div class="container bio">
-        <h2 class="section-title">Sobre el Autor</h2>
-        <p>
-          ¡Saludos, intrépidos exploradores de la diversión! Soy René García, la mente maestra detrás de estos asombrosos libros para colorear que hasta Batman envidiaría. Con cada página, invito a grandes y pequeños a descubrir mundos llenos de creatividad, relajación y aprendizaje.
-        </p>
-        <h3>Mi Filosofía</h3>
-        <p>
-          Cada libro es un pasaporte hacia la imaginación: desde Animales Mágicos hasta Paisajes y Profesiones, mis creaciones son herramientas para mejorar habilidades, concentración y hasta liberar el estrés. ¡Colorea, aprende y diviértete, sin importar si tienes dedos de palillos o un pincel en mano!
-        </p>
-        <h3>Un Poco Sobre Mí</h3>
-        <p>
-          Mi travesía comenzó con la simple curiosidad de usar crayones sin comérmelos, y desde entonces, he convertido el arte en mi forma de vida. Soy escritor, editor y soñador. Mis libros están pensados para enseñar y relajar, combinando fantasía y realidad en una aventura sin límites. Agradezco cada sonrisa y cada momento de concentración que inspiran mis creaciones.
-        </p>
-        <p>
-          ¡Gracias por acompañarme en este circo artístico y por formar parte de este club de fans que colorea el mundo de colores y risas!
-        </p>
-      </div>
-    </section>
-    
-    <!-- Testimonios Section -->
-    <section id="testimonios">
-      <div class="container testimonials">
-        <h2 class="section-title">Testimonios</h2>
-        <div class="testimonial">
-          <p>"Los libros de René han revolucionado mi forma de aprender y divertirme. ¡Altamente recomendados!"</p>
-          <strong>- Juan Pérez</strong>
-        </div>
-        <div class="testimonial">
-          <p>"Un enfoque innovador que une creatividad y aprendizaje de una manera única."</p>
-          <strong>- María López</strong>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Blog Section -->
-    <section id="blog">
-      <div class="container blog">
-        <h2 class="section-title">Blog</h2>
-        <p>
-          Pronto encontrarás artículos, novedades y consejos para potenciar tu creatividad y aprender de forma divertida.
-        </p>
-      </div>
-    </section>
-    
-    <!-- Contacto Section -->
-    <section id="contacto">
-      <div class="container contact">
-        <h2 class="section-title">Contacto</h2>
-        <form action="#" method="post">
-          <input type="text" name="nombre" placeholder="Tu nombre" required>
-          <input type="email" name="email" placeholder="Tu correo electrónico" required>
-          <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
-          <button type="submit">Enviar Mensaje</button>
-        </form>
-      </div>
-    </section>
-    
-    <!-- Footer -->
     <footer>
       <div class="container">
         <p>&copy; 2025 René García Educa. Todos los derechos reservados.</p>
-        <p>
-          <a href="#">Política de Privacidad</a> |
-          <a href="#">Términos y Condiciones</a>
-        </p>
       </div>
     </footer>
-    
-    <!-- JavaScript para navegación suave -->
-    <script>
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      });
-    </script>
   </body>
 </html>
