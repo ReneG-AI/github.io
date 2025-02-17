@@ -38,7 +38,8 @@
       
       /* Header */
       header {
-        background: #fff;
+        /* Cambiamos el fondo para darle un toque de color suave */
+        background: linear-gradient(to right, #ff9a9e, #fecfef);
         border-bottom: 1px solid #ddd;
         padding: 1rem 0;
         position: fixed;
@@ -52,29 +53,38 @@
         align-items: center;
       }
       .logo {
-        font-size: 1.8rem;
+        font-size: 2rem; /* Aumentamos un poco para destacar */
         font-weight: 700;
         color: #333;
+        display: flex;
+        align-items: center;
       }
-      /* Regla para agrandar la imagen del logo */
       .logo img {
-        height: 80px; /* Ajusta el valor según lo necesites */
+        /* Aumentamos la altura de la imagen para que sea más visible */
+        height: 60px;
+        margin-right: 0.5rem;
       }
       nav ul {
         list-style: none;
         display: flex;
       }
       nav ul li {
-        margin: 0 1rem;
+        margin: 0 0.5rem;
       }
       nav ul li a {
+        /* Aumentamos el padding y la fuente */
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        border: 2px solid #ff6f61;
+        border-radius: 4px;
         color: #333;
-        padding: 0.5rem;
-        transition: color 0.3s, border-bottom 0.3s;
+        background: #fff; /* Fondo claro para contrastar */
+        transition: all 0.3s ease;
       }
       nav ul li a:hover {
-        color: #ff6f61;
-        border-bottom: 2px solid #ff6f61;
+        background: #ff6f61;
+        color: #fff;
+        border-color: #ff6f61;
       }
       
       /* Secciones Generales */
@@ -90,6 +100,7 @@
       
       /* Hero */
       .hero {
+        /* Banner de fondo (ajusta según tu imagen) */
         background: url('images/Banner.png') no-repeat center center/cover;
         height: 80vh;
         display: flex;
@@ -106,7 +117,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.4);
       }
       .hero-content {
         position: relative;
@@ -123,15 +134,18 @@
         margin-bottom: 1.5rem;
       }
       .btn {
-        background: #ff6f61;
-        color: #fff;
+        background: #fff;
+        color: #ff6f61;
         padding: 0.8rem 1.5rem;
+        border: 2px solid #ff6f61;
         border-radius: 5px;
         display: inline-block;
-        transition: background 0.3s;
+        transition: all 0.3s ease;
+        font-weight: 700;
       }
       .btn:hover {
-        background: #e65b50;
+        background: #ff6f61;
+        color: #fff;
       }
       
       /* Libros */
@@ -179,6 +193,10 @@
         width: 280px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+      }
+      .serie:hover {
+        transform: translateY(-5px);
       }
       .serie h4 {
         margin-bottom: 1rem;
@@ -269,6 +287,9 @@
           flex-direction: column;
           align-items: center;
         }
+        nav ul li a {
+          margin-bottom: 0.5rem;
+        }
       }
     </style>
   </head>
@@ -279,9 +300,8 @@
         <nav>
           <!-- Logo -->
           <div class="logo">
-            <a href="#inicio">
-              <img src="images/Logo.png" alt="Logo de René García Educa">
-            </a>
+            <img src="images/Logo.png" alt="Logo de René García Educa">
+            René García Educa
           </div>
           <ul>
             <li><a href="#inicio">Inicio</a></li>
@@ -300,7 +320,7 @@
     <section id="inicio" class="hero">
       <div class="hero-content container">
         <h1>Bienvenido a René García Educa</h1>
-        <p>¡Libros para colorear con chispa y diversión! Explora, aprende y deja volar tu imaginación.</p>
+        <p>Libros para colorear con chispa y diversión. ¡Explora, aprende y deja volar tu imaginación!</p>
         <a href="#libros" class="btn">Descubre mis libros</a>
       </div>
     </section>
