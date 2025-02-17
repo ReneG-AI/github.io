@@ -4,17 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>René Garcia Educa - Libros para Colorear con Chispa</title>
-    <meta
-      name="description"
-      content="Descubre los libros para colorear con chispa de René Garcia Educa. Diviértete, aprende y déjate llevar por la creatividad en cada página."
-    />
+    <meta name="description" content="Descubre los libros para colorear con chispa de René Garcia Educa. Diviértete, aprende y déjate llevar por la creatividad en cada página." />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <!-- AOS Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
       /* RESET Y ESTILOS BASE */
       * {
@@ -24,8 +20,9 @@
       }
       body {
         font-family: 'Roboto', sans-serif;
-        background: #a0e4f1; /* Color de fondo */
+        background: #a0e4f1;
         color: #333;
+        scroll-behavior: smooth;
       }
       img {
         max-width: 100%;
@@ -89,7 +86,9 @@
 
       /* HERO */
       .hero {
-        background: url('images/Banner.png') no-repeat center center/cover;
+        background: 
+          linear-gradient(rgba(160,228,241,0.6), rgba(160,228,241,0.6)),
+          url('images/Banner.png') no-repeat center center/cover;
         height: 80vh;
         display: flex;
         justify-content: center;
@@ -98,26 +97,17 @@
         color: #fff;
         position: relative;
       }
-      .hero::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.3);
-      }
       .hero-content {
         max-width: 800px;
-        position: relative; /* Para que el texto quede por encima del overlay */
+        position: relative;
         z-index: 1;
       }
       .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         margin-bottom: 1rem;
       }
       .hero-content p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         margin-bottom: 1.5rem;
       }
       .btn {
@@ -162,7 +152,7 @@
       .book {
         background: #fff;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         padding: 1rem;
         width: 280px;
         text-align: center;
@@ -195,7 +185,7 @@
       .serie {
         background: #fff;
         border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         padding: 1.5rem;
         width: 280px;
         text-align: center;
@@ -224,7 +214,7 @@
         padding: 1rem;
         margin-bottom: 1rem;
         border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
       .testimonial p {
         font-style: italic;
@@ -243,10 +233,15 @@
         max-width: 800px;
         margin: auto;
         line-height: 1.8;
+        text-align: left;
       }
       .about-me-content h3 {
         margin-top: 1rem;
         color: #333;
+      }
+      .about-me-content a {
+        color: #ff8eb6;
+        font-weight: bold;
       }
 
       /* FOOTER */
@@ -280,14 +275,14 @@
   </head>
   <body>
     <!-- HEADER -->
-    <header>
+    <header data-aos="fade-down">
       <div class="container">
         <nav>
-          <div class="logo">
+          <div class="logo" data-aos="fade-right">
             <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
             René García Educa
           </div>
-          <ul>
+          <ul data-aos="fade-left">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#libros">Libros</a></li>
             <li><a href="#series">Series</a></li>
@@ -299,107 +294,88 @@
       </div>
     </header>
 
-    <!-- HERO (INICIO) -->
-    <section id="inicio" class="hero">
+    <!-- HERO -->
+    <section id="inicio" class="hero" data-aos="fade-up">
       <div class="hero-content container">
-        <h1>Libros para colorear que inspiran, enseñan y entretienen</h1>
-        <p>
-          Aprende y relájate mientras das vida a cada página. Bienvenidos al universo de
-          la creatividad y el aprendizaje con René Garcia Educa.
+        <h1 data-aos="fade-up">Libros para colorear que inspiran, enseñan y entretienen</h1>
+        <p data-aos="fade-up" data-aos-delay="200">
+          Aprende y relájate mientras das vida a cada página. Bienvenido al universo de la creatividad y el aprendizaje.
         </p>
-        <a href="#libros" class="btn">Explora mis libros</a>
+        <a href="#libros" class="btn" data-aos="fade-up" data-aos-delay="400">Explora mis libros</a>
       </div>
     </section>
 
     <!-- LIBROS -->
-    <section id="libros" class="section">
+    <section id="libros" class="section" data-aos="fade-up">
       <h2 class="section-title">Libros para Colorear con Chispa</h2>
       <div class="container books">
-        <div class="book">
+        <div class="book" data-aos="fade-up">
           <img src="images/libro1.jpg" alt="Libro de Animales Chibi" />
           <h3>Libros de Animales Chibi</h3>
           <p>
-            Sumérgete en aventuras mágicas con adorables criaturas, mientras
-            aprendes y das color a cada página.
+            Aventuras mágicas con criaturas adorables para aprender y dar color a cada página.
           </p>
-          <a
-            href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7"
-            target="_blank"
-            class="btn"
-            >Ver en Amazon</a
-          >
+          <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">Ver en Amazon</a>
         </div>
-        <div class="book">
-          <img src="images/libro2.jpg" alt="Libro Mandalas" />
+        <div class="book" data-aos="fade-up" data-aos-delay="200">
+          <img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
           <h3>Mandalas y Paisajes</h3>
           <p>
-            Relájate y desconecta con diseños únicos que estimulan la
-            concentración y liberan el estrés.
+            Diseños únicos que estimulan la concentración y ayudan a liberar el estrés.
           </p>
-          <a
-            href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb"
-            target="_blank"
-            class="btn"
-            >Ver en Amazon</a
-          >
+          <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">Ver en Amazon</a>
         </div>
       </div>
     </section>
 
     <!-- SERIES -->
-    <section id="series" class="section">
+    <section id="series" class="section" data-aos="fade-up">
       <h2 class="section-title">Descubre un Mundo de Fantasía y Creatividad</h2>
       <div class="container series-container">
-        <div class="serie">
+        <div class="serie" data-aos="fade-up">
           <h4>NAVIDAD</h4>
           <p>
-            <strong>Colorea, Aprende y Disfruta – Animales celebrando la Navidad</strong><br />
-            Sumérgete en una aventura festiva llena de color, creatividad y alegría.
-            ¡Ideal para compartir momentos inolvidables en familia!
+            <strong>Colorea, Aprende y Disfruta</strong><br />
+            Animales celebrando la magia de la Navidad. ¡Comparte momentos inolvidables en familia!
           </p>
         </div>
-        <div class="serie">
+        <div class="serie" data-aos="fade-up" data-aos-delay="100">
           <h4>PROFESIONES</h4>
           <p>
-            <strong>Colorea, Aprende y Descubre – ¡Las Profesiones como nunca antes!</strong><br />
-            Acompaña a adorables animales chibis mientras se convierten en bomberos,
-            chefs y muchas otras profesiones fascinantes.
+            <strong>Colorea, Aprende y Descubre</strong><br />
+            Animales chibis se transforman en héroes de profesiones fascinantes.
           </p>
         </div>
-        <div class="serie">
+        <div class="serie" data-aos="fade-up" data-aos-delay="200">
           <h4>DEPORTES</h4>
           <p>
-            <strong>Colorea, Aprende y Juega – ¡Explora el mundo de los Deportes!</strong><br />
-            Conoce distintas disciplinas deportivas y deja que la creatividad y la
-            diversión vayan de la mano.
+            <strong>Colorea, Aprende y Juega</strong><br />
+            Explora diversas disciplinas deportivas a través del arte y la diversión.
           </p>
         </div>
-        <div class="serie">
+        <div class="serie" data-aos="fade-up" data-aos-delay="300">
           <h4>ANIMALES MÁGICOS</h4>
           <p>
-            <strong>Colorea, Aprende y Sueña – ¡Descubre Animales Mágicos!</strong><br />
-            Adéntrate en aventuras chibis llenas de imaginación y aprendizaje sobre
-            la diversidad del reino animal.
+            <strong>Colorea, Aprende y Sueña</strong><br />
+            Aventuras chibis que te llevarán a descubrir la diversidad del reino animal.
           </p>
         </div>
       </div>
     </section>
 
     <!-- TESTIMONIOS -->
-    <section id="testimonios" class="section">
+    <section id="testimonios" class="section" data-aos="fade-up">
       <h2 class="section-title">Testimonios</h2>
       <div class="container testimonials-container">
-        <div class="testimonial">
+        <div class="testimonial" data-aos="fade-up">
           <p>
-            “Estos libros de colorear son pura diversión. Mis hijos los adoran y
-            siempre aprenden algo nuevo.”
+            “Estos libros son pura diversión. Mis hijos los adoran y siempre aprenden algo nuevo.”
           </p>
           <strong>- Sofía Martínez</strong>
         </div>
-        <div class="testimonial">
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="150">
           <p>
-            “Una mezcla perfecta de creatividad y enseñanza. Los recomiendo para
-            niños y adultos que busquen relajarse y aprender.”
+            “Una mezcla perfecta de creatividad y enseñanza. Recomendados para niños y adultos.”
           </p>
           <strong>- Carlos Gómez</strong>
         </div>
@@ -407,100 +383,49 @@
     </section>
 
     <!-- BLOG -->
-    <section id="blog" class="section">
+    <section id="blog" class="section" data-aos="fade-up">
       <h2 class="section-title">Blog</h2>
       <div class="container blog-content">
         <p>
-          Próximamente encontrarás artículos, novedades y consejos para potenciar tu
-          creatividad y descubrir nuevas formas de aprender mientras coloreas.
+          Próximamente encontrarás artículos, novedades y consejos para potenciar tu creatividad y aprender de forma divertida.
         </p>
       </div>
     </section>
 
     <!-- SOBRE MÍ -->
-    <section id="sobremi" class="section">
+    <section id="sobremi" class="section" data-aos="fade-up">
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola, soy René García Educa, el cerebro (y el corazón) detrás de este caos
-          artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones
-          sin comérmelos, supe que el arte era mi destino.
+          ¡Hola! Soy René Garcia Educa, el cerebro (y el corazón) detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
         </p>
         <p>
-          Mi vida se ha vuelto un cómic gigante lleno de libros para colorear, cuentos
-          y algo de chispa cómica. Creo en libros que no solo coloreas, sino que te
-          dicen "¡Ey, aprende algo mientras coloreas este unicornio!" ¡Porque,
-          sinceramente, ¿quién no quiere aprender de un unicornio?
+          Mi vida es un cómic gigante lleno de libros para colorear, cuentos y un toque de chispa cómica. Creo en libros que te hacen reír, reflexionar y, sobre todo, colorear fuera de las líneas.
         </p>
         <p>
-          Mis creaciones son como ese amigo raro que todos tienen, pero más colorido y
-          sin pedir prestado tu cepillo de dientes. ¡Quiero que mis obras te hagan
-          sonreír, reflexionar y, por supuesto, colorear fuera de las líneas!
+          Mis creaciones son como ese amigo raro, colorido y único que inspira a transformar el arte en conocimiento y diversión.
         </p>
         <p>
-          Así que bienvenidos a este circo artístico, donde la única regla es
-          divertirse. Si alguna vez te preguntas, "¿quién es ese tipo que dibuja cosas
-          locas?", soy yo, René, y estoy aquí para pintar el mundo de colores y risas.
-          ¡Gracias por ser parte de esta alocada aventura!
-        </p>
-        <h3>Libros para educar, entretener y relajarse</h3>
-        <p>
-          Cada libro, desde "Colorea y Aprende Explorando Profesiones" hasta "Colorea
-          y Aprende Explorando los Deportes", es más que un pasatiempo: es un viaje
-          hacia la creatividad, el aprendizaje y la imaginación.
-        </p>
-        <p>
-          Son ventanas a mundos llenos de posibilidades y sueños, diseñados para
-          inspirar curiosidad y desarrollar habilidades de forma divertida.
-        </p>
-        <p>
-          Porque colorear no es solo dar color a una página, sino dar vida a la
-          imaginación.
-        </p>
-        <h3>Escritor - Editor - Soñador</h3>
-        <p>
-          Lo que comenzó como una simple curiosidad se convirtió en una pasión:
-          diseñar mundos donde la fantasía y la realidad se fusionan para crear
-          experiencias únicas.
-        </p>
-        <p>
-          Mi objetivo es transformar el arte en conocimiento y la diversión en
-          aprendizaje, porque la imaginación es infinita y colorear es solo el
-          comienzo.
-        </p>
-        <h3>Sueños</h3>
-        <p>
-          Para mí, crear y diseñar estos libros no es solo un trabajo, es una pasión y
-          una forma de vida. Aprecio profundamente a cada persona que ha tomado un
-          lápiz de color y ha dado vida a mis creaciones.
-        </p>
-        <p>
-          Juntos, seguimos explorando, aprendiendo y, sobre todo, soñando. ¡Gracias
-          por ser parte de este viaje!
+          Visita mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
         </p>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer>
+    <footer data-aos="fade-up">
       <div class="container">
         <p>&copy; 2025 René Garcia Educa. Todos los derechos reservados.</p>
       </div>
     </footer>
 
-    <!-- SCRIPT PARA NAVEGACIÓN SUAVE -->
+    <!-- AOS Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-            });
-          }
-        });
+      AOS.init({
+        duration: 800,
+        once: true,
       });
+      // Script para navegación suave ya se maneja con scroll-behavior: smooth en CSS.
     </script>
   </body>
 </html>
