@@ -56,6 +56,10 @@
         font-weight: 700;
         color: #333;
       }
+      /* Regla para agrandar la imagen del logo */
+      .logo img {
+        height: 80px; /* Ajusta el valor según lo necesites */
+      }
       nav ul {
         list-style: none;
         display: flex;
@@ -276,7 +280,7 @@
           <!-- Logo -->
           <div class="logo">
             <a href="#inicio">
-              <img src="images/Logo.png" alt="Logo de René García Educa" style="height:40px;">
+              <img src="images/Logo.png" alt="Logo de René García Educa">
             </a>
           </div>
           <ul>
@@ -308,7 +312,7 @@
         <div class="books">
           <!-- Libro 1 -->
           <article class="book">
-            <img src="images/libro1.jpg" alt="Portada de 'Colorea y Aprende: Explorando Profesiones y Aventuras'" />
+            <img src="images/libro1.jpg" alt="Portada de 'Colorea y Aprende: Explorando Profesiones y Aventuras'">
             <h3>Colorea y Aprende: Explorando Profesiones y Aventuras</h3>
             <p>
               Sumérgete en una aventura creativa y educativa donde los animales chibis se visten de profesiones y descubren el mundo.
@@ -317,7 +321,7 @@
           </article>
           <!-- Libro 2 -->
           <article class="book">
-            <img src="images/libro2.jpg" alt="Portada de 'Libro Mandalas: Colorear Perros Chibis'" />
+            <img src="images/libro2.jpg" alt="Portada de 'Libro Mandalas: Colorear Perros Chibis'">
             <h3>Libro Mandalas: Colorear Perros Chibis</h3>
             <p>
               Un libro lleno de mandalas y adorables perros chibis, ideal para relajarte y dejar volar tu creatividad.
@@ -416,8 +420,8 @@
       <div class="container contact">
         <h2 class="section-title">Contacto</h2>
         <form action="#" method="post">
-          <input type="text" name="nombre" placeholder="Tu nombre" required />
-          <input type="email" name="email" placeholder="Tu correo electrónico" required />
+          <input type="text" name="nombre" placeholder="Tu nombre" required>
+          <input type="email" name="email" placeholder="Tu correo electrónico" required>
           <textarea name="mensaje" rows="5" placeholder="Tu mensaje" required></textarea>
           <button type="submit">Enviar Mensaje</button>
         </form>
