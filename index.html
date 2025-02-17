@@ -42,6 +42,7 @@
         width: 90%;
         max-width: 1200px;
         margin: auto;
+        position: relative;
       }
 
       /* HEADER */
@@ -52,6 +53,7 @@
         width: 100%;
         top: 0;
         z-index: 1000;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
       }
       nav {
         display: flex;
@@ -99,8 +101,9 @@
 
       /* HERO */
       .hero {
+        position: relative;
         background: 
-          linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+          linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
           url('images/Banner.png') no-repeat center center/cover;
         height: 80vh;
         display: flex;
@@ -108,7 +111,6 @@
         align-items: center;
         text-align: center;
         color: #000;
-        position: relative;
       }
       .hero::after {
         content: '';
@@ -117,7 +119,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 255, 255, 0.2);
+        /* Overlay sutil para integración sin oscurecer demasiado */
+        background: rgba(255, 255, 255, 0.1);
       }
       .hero-content {
         max-width: 800px;
@@ -132,9 +135,20 @@
         font-size: 1.3rem;
         margin-bottom: 1.5rem;
       }
+
+      /* Separador decorativo (línea) */
+      .separator {
+        height: 3px;
+        width: 100px;
+        background: #ff8eb6;
+        margin: 2rem auto;
+        border-radius: 2px;
+      }
+
       /* SECCIONES GENERALES */
       section {
         padding: 80px 0;
+        position: relative;
       }
       .section-title {
         font-size: 2.2rem;
@@ -147,6 +161,15 @@
         margin: auto;
         line-height: 1.8;
         text-align: center;
+      }
+      /* Agregamos un sutil separador en la parte inferior de cada sección */
+      section::after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 60%;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 3rem auto 0;
       }
 
       /* LIBROS */
@@ -180,23 +203,6 @@
         font-size: 0.95rem;
         color: #444;
         margin-bottom: 1rem;
-      }
-
-      /* Botón para explorar libros en la sección de Libros */
-      .explore-btn {
-        margin: 1rem auto 2rem;
-        display: block;
-        background: #f8a1d1;
-        color: #333;
-        padding: 0.9rem 1.7rem;
-        border: 2px solid #f8a1d1;
-        border-radius: 30px;
-        font-weight: 700;
-        transition: all 0.3s ease;
-      }
-      .explore-btn:hover {
-        background: #ff8eb6;
-        color: #fff;
       }
 
       /* SERIES */
@@ -347,8 +353,6 @@
     <!-- LIBROS -->
     <section id="libros" class="section" data-aos="fade-up">
       <h2 class="section-title">Libros para colorear, aprender y relajarte</h2>
-      <!-- Botón añadido debajo del título -->
-      <a href="#libros" class="explore-btn" data-aos="fade-up" data-aos-delay="400">Explora mis libros</a>
       <div class="container books">
         <div class="book" data-aos="fade-up">
           <img src="images/libro1.jpg" alt="Libro de Animales Chibi" />
@@ -438,13 +442,13 @@
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola! Soy René Garcia Educa, el cerebro (y el corazón) detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
+          ¡Hola! Soy René Garcia Educa, el cerebro y corazón detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
         </p>
         <p>
           Mi vida es un cómic lleno de libros para colorear, cuentos y un toque de chispa cómica. Creo en creaciones que te hagan reír, reflexionar y colorear fuera de las líneas.
         </p>
         <p>
-          Descubre mi mundo y conoce más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
+          Descubre mi mundo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
         </p>
       </div>
     </section>
@@ -467,7 +471,6 @@
       // Script para el menú móvil
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
-
       menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show');
       });
