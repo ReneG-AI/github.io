@@ -26,7 +26,7 @@
       }
       body {
         font-family: 'Roboto', sans-serif;
-        background: #f2f2f7; /* Fondo muy claro */
+        background: #f2f2f7;
         color: #333;
         scroll-behavior: smooth;
       }
@@ -59,6 +59,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: relative;
       }
       .logo {
         font-size: 2.5rem;
@@ -71,19 +72,32 @@
         height: 80px;
         margin-right: 0.5rem;
       }
-      /* Botón de menú para móvil */
+      /* Menú: se envuelve en un contenedor para el efecto hover en escritorio */
+      .menu-container {
+        position: relative;
+      }
       .menu-toggle {
-        display: none;
         font-size: 2rem;
         cursor: pointer;
         color: #333;
+        display: block;
       }
       nav ul {
         list-style: none;
-        display: flex;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 110%;
+        right: 0;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        padding: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
       }
       nav ul li {
-        margin: 0 0.5rem;
+        margin: 0.5rem 0;
       }
       nav ul li a {
         font-size: 1.1rem;
@@ -98,24 +112,22 @@
         background: #b39ddb;
         color: #fff;
       }
-      /* Menú móvil */
-      @media (max-width: 768px) {
-        nav {
-          flex-wrap: wrap;
-        }
+      /* Mostrar el menú al hacer hover en escritorio */
+      @media (min-width: 769px) {
         .menu-toggle {
-          display: block;
+          display: none;
         }
         nav ul {
           display: none;
-          flex-direction: column;
-          width: 100%;
         }
-        nav ul.show {
+        .menu-container:hover nav ul {
           display: flex;
         }
-        nav ul li {
-          margin: 0.5rem 0;
+      }
+      /* Móvil: mostrar menú al togglear */
+      @media (max-width: 768px) {
+        nav ul {
+          width: 100%;
         }
         nav ul li a {
           font-size: 1rem;
@@ -137,7 +149,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        color: #000; /* Texto en negro para legibilidad */
+        color: #000;
       }
       .hero::after {
         content: '';
@@ -146,7 +158,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* Overlay sutil para integrar sin oscurecer */
         background: rgba(255, 255, 255, 0.05);
       }
       .hero-content {
@@ -157,13 +168,15 @@
       .hero-content h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
       }
       .hero-content p {
         font-size: 1.3rem;
         margin-bottom: 1.5rem;
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
       }
 
-      /* SEPARADORES DECORATIVOS */
+      /* SEPARADORES */
       .separator {
         height: 3px;
         width: 100px;
@@ -232,10 +245,10 @@
       }
 
       /* SUBSECCIONES DE LIBROS */
-      .libros-subseccion {
+      .libros-subseccion, .idiomas-subseccion {
         margin-bottom: 3rem;
       }
-      .libros-subseccion h3 {
+      .libros-subseccion h3, .idiomas-subseccion h3 {
         font-size: 2rem;
         margin-bottom: 1rem;
         text-align: center;
@@ -247,16 +260,7 @@
         gap: 2rem;
         justify-content: center;
       }
-      /* Nueva subsección para idiomas */
-      .idiomas-subseccion {
-        margin-bottom: 3rem;
-      }
-      .idiomas-subseccion h3 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        text-align: center;
-        color: #333;
-      }
+      /* Libros de idiomas */
       .idioma-list {
         display: flex;
         flex-wrap: wrap;
@@ -400,8 +404,7 @@
         .hero-content p {
           font-size: 1.1rem;
         }
-        .libros-subseccion,
-        .idiomas-subseccion {
+        .sub-books, .idioma-list {
           flex-direction: column;
           align-items: center;
         }
@@ -417,15 +420,17 @@
             <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
             René García Educa
           </div>
-          <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-          <ul id="nav-menu" data-aos="fade-left">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#libros">Libros</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#sobremi">Sobre mí</a></li>
-          </ul>
+          <div class="menu-container">
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <ul id="nav-menu" data-aos="fade-left">
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#libros">Libros</a></li>
+              <li><a href="#testimonios">Testimonios</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#portafolio">Portafolio</a></li>
+              <li><a href="#sobremi">Sobre mí</a></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
@@ -452,7 +457,7 @@
               <img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
               <h3>Libros de Animales Chibi</h3>
               <p>
-                Aventuras educativas con criaturas adorables que despiertan la curiosidad.
+                Aventuras educativas con criaturas adorables que despiertan la curiosidad y enseñan de forma divertida.
               </p>
               <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
                 Ver en Amazon
@@ -476,7 +481,7 @@
             </div>
           </div>
         </div>
-        <!-- Sub-sección: Libros de Idiomas -->
+        <!-- Sub-sección: Libros para aprender idiomas -->
         <div class="idiomas-subseccion" data-aos="fade-up" data-aos-delay="300">
           <h3>Libros para aprender idiomas</h3>
           <div class="idioma-list">
@@ -528,19 +533,25 @@
         <div class="faq-item" data-aos="fade-up">
           <h4>¿Para qué edades son recomendados los libros?</h4>
           <p>
-            Nuestros libros están diseñados para niños de 3 a 10 años y también son ideales para adultos que buscan relajarse y estimular su creatividad.
+            Mis libros están diseñados para niños de 0 a 14 años y también son ideales para adultos que buscan relajarse y estimular su creatividad.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
           <h4>¿Puedo usar estos libros en el aula?</h4>
           <p>
-            ¡Por supuesto! Son excelentes herramientas educativas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
+            ¡Claro que sí! Son herramientas educativas perfectas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
           <h4>¿Están disponibles en varios idiomas?</h4>
           <p>
-            Sí, actualmente publicamos libros en español, catalán e inglés, y nuestros libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
+            Sí. Publico libros en español, catalán e inglés, y mis libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
+          </p>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <h4>¿Realizas libros personalizados?</h4>
+          <p>
+            ¡Sí! Si buscas un libro hecho a medida, ponte en contacto conmigo en <strong>Renegarciaeduca@gmail.com</strong> y juntos daremos vida a tu idea.
           </p>
         </div>
       </div>
@@ -550,14 +561,12 @@
     <section id="portafolio" class="section" data-aos="fade-up">
       <h2 class="section-title">Portafolio</h2>
       <div class="container portfolio-container">
-        <!-- Galería de imágenes -->
         <div class="portfolio-item" data-aos="fade-up">
           <img src="images/portfolio1.jpg" alt="Detalle de página 1" />
         </div>
         <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
           <img src="images/portfolio2.jpg" alt="Detalle de página 2" />
         </div>
-        <!-- Video de presentación (Embed de YouTube; sustituye "ID_DEL_VIDEO" con el tuyo) -->
         <div class="portfolio-video" data-aos="fade-up" data-aos-delay="200">
           <iframe width="100%" height="315" src="https://www.youtube.com/embed/ID_DEL_VIDEO" title="Video de presentación" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -569,13 +578,13 @@
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión comenzó cuando descubrí que podía usar crayones sin comérmelos, y desde entonces he transformado esa chispa en un universo creativo.
+          ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión nació al descubrir que podía usar crayones sin comérmelos, y desde entonces, he transformado esa chispa en un universo creativo.
         </p>
         <p>
-          Diseño libros que no solo son un pasatiempo, sino herramientas para aprender, relajarse y explorar la imaginación. Con cada trazo, busco que niños y adultos se sientan motivados a descubrir un mundo sin límites.
+          Diseño libros que son mucho más que un pasatiempo: son herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
         </p>
         <p>
-          Conoce más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
+          Descubre más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
         </p>
       </div>
     </section>
@@ -594,8 +603,7 @@
         duration: 800,
         once: true,
       });
-
-      // Menú móvil
+      // Menú móvil y despliegue en escritorio
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       menuToggle.addEventListener('click', () => {
