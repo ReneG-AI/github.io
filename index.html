@@ -3,18 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>René Garcia Educa - Libros para Colorear con Chispa</title>
-    <meta
-      name="description"
-      content="Descubre los libros para colorear con chispa de René Garcia Educa. Diviértete, aprende y déjate llevar por la creatividad en cada página."
-    />
+    <title>René Garcia Educa - Libros para Colorear, Aprender y Relajarte</title>
+    <meta name="description" content="Descubre los libros para colorear con chispa de René Garcia Educa. Inspírate, aprende y relájate en cada página." />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <!-- AOS Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
@@ -26,7 +20,7 @@
       }
       body {
         font-family: 'Roboto', sans-serif;
-        background: #a0e4f1;
+        background: #f2f2f7; /* Fondo muy claro, similar a Apple */
         color: #333;
         scroll-behavior: smooth;
       }
@@ -47,7 +41,7 @@
 
       /* HEADER */
       header {
-        background: #a0e4f1;
+        background: #f2f2f7;
         padding: 1rem 0;
         position: fixed;
         width: 100%;
@@ -88,18 +82,18 @@
       nav ul li a {
         font-size: 1.1rem;
         padding: 0.7rem 1.2rem;
-        border: 2px solid #f8a1d1;
+        border: 2px solid #d1c4e9;
         border-radius: 25px;
         color: #333;
-        background: #f8a1d1;
+        background: #d1c4e9;
         transition: all 0.3s ease;
       }
       nav ul li a:hover {
-        background: #ff8eb6;
+        background: #b39ddb;
         color: #fff;
       }
 
-      /* HERO */
+      /* HERO (INICIO) */
       .hero {
         position: relative;
         background: 
@@ -119,8 +113,8 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* Overlay sutil para integración sin oscurecer demasiado */
-        background: rgba(255, 255, 255, 0.1);
+        /* Overlay sutil para integrar el banner sin oscurecer */
+        background: rgba(255, 255, 255, 0.05);
       }
       .hero-content {
         max-width: 800px;
@@ -136,11 +130,11 @@
         margin-bottom: 1.5rem;
       }
 
-      /* Separador decorativo (línea) */
+      /* SEPARADOR DECORATIVO */
       .separator {
         height: 3px;
         width: 100px;
-        background: #ff8eb6;
+        background: #b39ddb;
         margin: 2rem auto;
         border-radius: 2px;
       }
@@ -162,7 +156,6 @@
         line-height: 1.8;
         text-align: center;
       }
-      /* Agregamos un sutil separador en la parte inferior de cada sección */
       section::after {
         content: "";
         display: block;
@@ -205,33 +198,21 @@
         margin-bottom: 1rem;
       }
 
-      /* SERIES */
-      .series-container {
+      /* SUBSECCIONES DE LIBROS */
+      .libros-subseccion {
+        margin-bottom: 3rem;
+      }
+      .libros-subseccion h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #333;
+      }
+      .sub-books {
         display: flex;
         flex-wrap: wrap;
         gap: 2rem;
         justify-content: center;
-      }
-      .serie {
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        padding: 1.5rem;
-        width: 280px;
-        text-align: center;
-        transition: transform 0.3s;
-      }
-      .serie:hover {
-        transform: translateY(-5px);
-      }
-      .serie h4 {
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-        color: #333;
-      }
-      .serie p {
-        font-size: 0.95rem;
-        color: #444;
       }
 
       /* TESTIMONIOS */
@@ -250,12 +231,56 @@
         font-style: italic;
       }
 
-      /* BLOG */
-      .blog-content {
+      /* FAQ */
+      .faq-container {
         max-width: 800px;
         margin: auto;
-        line-height: 1.8;
-        text-align: center;
+        text-align: left;
+      }
+      .faq-item {
+        margin-bottom: 1.5rem;
+      }
+      .faq-item h4 {
+        font-size: 1.3rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      .faq-item p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+      }
+
+      /* PORTAFOLIO */
+      .portfolio-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      .portfolio-item {
+        position: relative;
+        width: 280px;
+        height: 180px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .portfolio-item:hover img {
+        transform: scale(1.05);
+      }
+      /* Video embed estilo */
+      .portfolio-video {
+        width: 100%;
+        max-width: 600px;
+        margin: 1rem auto;
+        border: 5px solid #d1c4e9;
+        border-radius: 10px;
       }
 
       /* SOBRE MÍ */
@@ -270,7 +295,7 @@
         color: #333;
       }
       .about-me-content a {
-        color: #ff8eb6;
+        color: #b39ddb;
         font-weight: bold;
       }
 
@@ -309,7 +334,7 @@
           height: 60px;
         }
         .hero-content h1 {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
         .hero-content p {
           font-size: 1.1rem;
@@ -326,26 +351,25 @@
             <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
             René García Educa
           </div>
-          <!-- Botón de menú para móvil -->
           <div class="menu-toggle" id="menu-toggle">&#9776;</div>
           <ul id="nav-menu" data-aos="fade-left">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#libros">Libros</a></li>
-            <li><a href="#series">Series</a></li>
             <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#blog">Blog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#portafolio">Portafolio</a></li>
             <li><a href="#sobremi">Sobre mí</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO (INICIO) -->
     <section id="inicio" class="hero" data-aos="fade-up">
       <div class="hero-content container">
         <h1 data-aos="fade-up">Libros para colorear que inspiran, enseñan y entretienen</h1>
         <p data-aos="fade-up" data-aos-delay="200">
-          Aprende y relájate mientras das vida a cada página. Bienvenido al universo de la creatividad y el aprendizaje.
+          Aprende y relájate mientras das vida a cada página. Sumérgete en un universo donde la creatividad y el aprendizaje se fusionan.
         </p>
       </div>
     </section>
@@ -353,57 +377,36 @@
     <!-- LIBROS -->
     <section id="libros" class="section" data-aos="fade-up">
       <h2 class="section-title">Libros para colorear, aprender y relajarte</h2>
-      <div class="container books">
-        <div class="book" data-aos="fade-up">
-          <img src="images/libro1.jpg" alt="Libro de Animales Chibi" />
-          <h3>Libros de Animales Chibi</h3>
-          <p>
-            Aventuras mágicas con criaturas adorables para aprender y dar color a cada página.
-          </p>
-          <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">Ver en Amazon</a>
-        </div>
-        <div class="book" data-aos="fade-up" data-aos-delay="200">
-          <img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
-          <h3>Mandalas y Paisajes</h3>
-          <p>
-            Diseños únicos que estimulan la concentración y ayudan a liberar el estrés.
-          </p>
-          <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">Ver en Amazon</a>
+      <!-- SUBSECCIÓN: Libros para aprender -->
+      <div class="libros-subseccion" data-aos="fade-up">
+        <h3>Libros para aprender</h3>
+        <div class="sub-books">
+          <div class="book" data-aos="fade-up">
+            <img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
+            <h3>Libros de Animales Chibi</h3>
+            <p>
+              Descubre aventuras educativas con criaturas adorables que despiertan la curiosidad y enseñan de forma divertida.
+            </p>
+            <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
+              Ver en Amazon
+            </a>
+          </div>
         </div>
       </div>
-    </section>
-
-    <!-- SERIES -->
-    <section id="series" class="section" data-aos="fade-up">
-      <h2 class="section-title">Descubre un Mundo de Fantasía y Creatividad</h2>
-      <div class="container series-container">
-        <div class="serie" data-aos="fade-up">
-          <h4>NAVIDAD</h4>
-          <p>
-            <strong>Colorea, Aprende y Disfruta</strong><br />
-            Animales celebrando la magia de la Navidad. ¡Comparte momentos inolvidables en familia!
-          </p>
-        </div>
-        <div class="serie" data-aos="fade-up" data-aos-delay="100">
-          <h4>PROFESIONES</h4>
-          <p>
-            <strong>Colorea, Aprende y Descubre</strong><br />
-            Animales chibis se transforman en héroes de profesiones fascinantes.
-          </p>
-        </div>
-        <div class="serie" data-aos="fade-up" data-aos-delay="200">
-          <h4>DEPORTES</h4>
-          <p>
-            <strong>Colorea, Aprende y Juega</strong><br />
-            Explora diversas disciplinas deportivas con arte y diversión.
-          </p>
-        </div>
-        <div class="serie" data-aos="fade-up" data-aos-delay="300">
-          <h4>ANIMALES MÁGICOS</h4>
-          <p>
-            <strong>Colorea, Aprende y Sueña</strong><br />
-            Aventuras chibis que te llevarán a descubrir la diversidad del reino animal.
-          </p>
+      <!-- SUBSECCIÓN: Libros para relajarte -->
+      <div class="libros-subseccion" data-aos="fade-up" data-aos-delay="150">
+        <h3>Libros para relajarte</h3>
+        <div class="sub-books">
+          <div class="book" data-aos="fade-up">
+            <img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
+            <h3>Mandalas y Paisajes</h3>
+            <p>
+              Sumérgete en diseños únicos que calman la mente y permiten desconectar del estrés diario.
+            </p>
+            <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">
+              Ver en Amazon
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -414,26 +417,71 @@
       <div class="container testimonials-container">
         <div class="testimonial" data-aos="fade-up">
           <p>
-            “Estos libros son pura diversión. Mis hijos los adoran y siempre aprenden algo nuevo.”
+            “Libro para pintar muy original. ¡Un recurso estupendo para trabajar vocabulario y entretener a los peques!”
           </p>
-          <strong>- Sofía Martínez</strong>
+          <strong>- Cliente Amazon</strong>
         </div>
-        <div class="testimonial" data-aos="fade-up" data-aos-delay="150">
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
           <p>
-            “Una mezcla perfecta de creatividad y enseñanza. Recomendados para niños y adultos.”
+            “Mi hija está encantada con el libro; un producto de calidad. ¡Super recomendado!”
           </p>
-          <strong>- Carlos Gómez</strong>
+          <strong>- Gerard Vázquez</strong>
+        </div>
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+          <p>
+            “Libro ideal para los más pequeños. Además de entretener, enseña sobre profesiones de forma divertida.”
+          </p>
+          <strong>- Jose Luis</strong>
+        </div>
+        <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
+          <p>
+            “Bastante completo para mantener a los niños entretenidos un buen rato. Dibujos amigables e ideales para niños de 4 o 5 años.”
+          </p>
+          <strong>- Alberto</strong>
         </div>
       </div>
     </section>
 
-    <!-- BLOG -->
-    <section id="blog" class="section" data-aos="fade-up">
-      <h2 class="section-title">Blog</h2>
-      <div class="container blog-content">
-        <p>
-          Próximamente encontrarás artículos, novedades y consejos para potenciar tu creatividad y aprender de forma divertida.
-        </p>
+    <!-- FAQ -->
+    <section id="faq" class="section" data-aos="fade-up">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="container faq-container">
+        <div class="faq-item" data-aos="fade-up">
+          <h4>¿Para qué edades son recomendados los libros?</h4>
+          <p>
+            Nuestros libros están diseñados para niños de 3 a 10 años, aunque también son ideales para adultos que buscan relajarse y explorar su creatividad.
+          </p>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <h4>¿Puedo utilizar estos libros en el aula?</h4>
+          <p>
+            ¡Por supuesto! Son excelentes herramientas para el aprendizaje, el desarrollo de habilidades motoras y para fomentar la creatividad.
+          </p>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <h4>¿Están disponibles en otros idiomas?</h4>
+          <p>
+            Actualmente, nuestros libros están en español, pero estamos explorando opciones para ampliar el catálogo en otros idiomas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" class="section" data-aos="fade-up">
+      <h2 class="section-title">Portafolio</h2>
+      <div class="container portfolio-container">
+        <!-- Galería de imágenes -->
+        <div class="portfolio-item" data-aos="fade-up">
+          <img src="images/portfolio1.jpg" alt="Detalle de página 1" />
+        </div>
+        <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+          <img src="images/portfolio2.jpg" alt="Detalle de página 2" />
+        </div>
+        <!-- Video de presentación (embed de YouTube; reemplaza el ID con el correcto) -->
+        <div class="portfolio-video" data-aos="fade-up" data-aos-delay="200">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/ID_DEL_VIDEO" title="Video de presentación" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
     </section>
 
@@ -442,13 +490,13 @@
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola! Soy René Garcia Educa, el cerebro y corazón detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
+          ¡Hola! Soy René Garcia Educa, el cerebro y el corazón detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
         </p>
         <p>
           Mi vida es un cómic lleno de libros para colorear, cuentos y un toque de chispa cómica. Creo en creaciones que te hagan reír, reflexionar y colorear fuera de las líneas.
         </p>
         <p>
-          Descubre mi mundo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
+          Convierto cada página en un viaje único donde el aprendizaje se fusiona con la diversión. Descubre más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
         </p>
       </div>
     </section>
