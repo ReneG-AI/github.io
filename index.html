@@ -72,9 +72,11 @@
         height: 80px;
         margin-right: 0.5rem;
       }
-      /* Menú: se envuelve en un contenedor para el efecto hover en escritorio */
+      /* Contenedor del menú en la esquina superior derecha */
       .menu-container {
-        position: relative;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
       }
       .menu-toggle {
         font-size: 2rem;
@@ -112,19 +114,16 @@
         background: #b39ddb;
         color: #fff;
       }
-      /* Mostrar el menú al hacer hover en escritorio */
+      /* En escritorio, se muestra el menú al pasar el ratón sobre el contenedor */
       @media (min-width: 769px) {
         .menu-toggle {
-          display: none;
-        }
-        nav ul {
-          display: none;
+          display: block;
         }
         .menu-container:hover nav ul {
           display: flex;
         }
       }
-      /* Móvil: mostrar menú al togglear */
+      /* Móvil: el menú se muestra al pulsar el botón */
       @media (max-width: 768px) {
         nav ul {
           width: 100%;
@@ -449,7 +448,7 @@
     <section id="libros" class="section" data-aos="fade-up">
       <h2 class="section-title">Libros para colorear, aprender y relajarte</h2>
       <div class="container">
-        <!-- Sub-sección: Libros para aprender -->
+        <!-- Libros para aprender -->
         <div class="libros-subseccion" data-aos="fade-up">
           <h3>Libros para aprender</h3>
           <div class="sub-books">
@@ -457,7 +456,7 @@
               <img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
               <h3>Libros de Animales Chibi</h3>
               <p>
-                Aventuras educativas con criaturas adorables que despiertan la curiosidad y enseñan de forma divertida.
+                Aventuras educativas con criaturas adorables que despiertan la curiosidad.
               </p>
               <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
                 Ver en Amazon
@@ -465,7 +464,7 @@
             </div>
           </div>
         </div>
-        <!-- Sub-sección: Libros para relajarte -->
+        <!-- Libros para relajarte -->
         <div class="libros-subseccion" data-aos="fade-up" data-aos-delay="150">
           <h3>Libros para relajarte</h3>
           <div class="sub-books">
@@ -481,7 +480,7 @@
             </div>
           </div>
         </div>
-        <!-- Sub-sección: Libros para aprender idiomas -->
+        <!-- Libros para aprender idiomas -->
         <div class="idiomas-subseccion" data-aos="fade-up" data-aos-delay="300">
           <h3>Libros para aprender idiomas</h3>
           <div class="idioma-list">
@@ -531,21 +530,21 @@
       <h2 class="section-title">Preguntas Frecuentes</h2>
       <div class="container faq-container">
         <div class="faq-item" data-aos="fade-up">
-          <h4>¿Para qué edades son recomendados los libros?</h4>
+          <h4>¿Para qué edades son recomendados tus libros?</h4>
           <p>
-            Mis libros están diseñados para niños de 0 a 14 años y también son ideales para adultos que buscan relajarse y estimular su creatividad.
+            Mis libros están diseñados para niños desde 0 hasta 14 años, y también son ideales para adultos que buscan relajarse, inspirarse y estimular su creatividad.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-          <h4>¿Puedo usar estos libros en el aula?</h4>
+          <h4>¿Puedo usar tus libros en el aula?</h4>
           <p>
             ¡Claro que sí! Son herramientas educativas perfectas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-          <h4>¿Están disponibles en varios idiomas?</h4>
+          <h4>¿Estás disponible en varios idiomas?</h4>
           <p>
-            Sí. Publico libros en español, catalán e inglés, y mis libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
+            Publico libros en español, catalán e inglés, y mis libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
@@ -578,7 +577,7 @@
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión nació al descubrir que podía usar crayones sin comérmelos, y desde entonces, he transformado esa chispa en un universo creativo.
+          ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión nació al descubrir que podía usar crayones sin comérmelos, y desde entonces he transformado esa chispa en un universo creativo.
         </p>
         <p>
           Diseño libros que son mucho más que un pasatiempo: son herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
@@ -603,7 +602,8 @@
         duration: 800,
         once: true,
       });
-      // Menú móvil y despliegue en escritorio
+
+      // Menú móvil: muestra/oculta el menú al hacer clic en el ícono
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       menuToggle.addEventListener('click', () => {
