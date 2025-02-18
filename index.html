@@ -3,12 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>René Garcia Educa - Libros para Colorear, Aprender y Relajarte</title>
-    <meta name="description" content="Descubre los libros para colorear con chispa de René Garcia Educa. Inspírate, aprende y relájate en cada página." />
+    <title>René Garcia Educa – Libros para Colorear, Aprender y Relajarte</title>
+    <meta
+      name="description"
+      content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
+    />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- AOS Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <style>
@@ -20,7 +26,7 @@
       }
       body {
         font-family: 'Roboto', sans-serif;
-        background: #f2f2f7; /* Fondo muy claro, similar a Apple */
+        background: #f2f2f7; /* Fondo muy claro */
         color: #333;
         scroll-behavior: smooth;
       }
@@ -47,7 +53,7 @@
         width: 100%;
         top: 0;
         z-index: 1000;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
       nav {
         display: flex;
@@ -92,8 +98,35 @@
         background: #b39ddb;
         color: #fff;
       }
+      /* Menú móvil */
+      @media (max-width: 768px) {
+        nav {
+          flex-wrap: wrap;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        nav ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+        }
+        nav ul.show {
+          display: flex;
+        }
+        nav ul li {
+          margin: 0.5rem 0;
+        }
+        nav ul li a {
+          font-size: 1rem;
+          padding: 0.7rem;
+        }
+        .logo img {
+          height: 60px;
+        }
+      }
 
-      /* HERO (INICIO) */
+      /* HERO */
       .hero {
         position: relative;
         background: 
@@ -104,7 +137,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        color: #000;
+        color: #000; /* Texto en negro para legibilidad */
       }
       .hero::after {
         content: '';
@@ -113,7 +146,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* Overlay sutil para integrar el banner sin oscurecer */
+        /* Overlay sutil para integrar sin oscurecer */
         background: rgba(255, 255, 255, 0.05);
       }
       .hero-content {
@@ -130,7 +163,7 @@
         margin-bottom: 1.5rem;
       }
 
-      /* SEPARADOR DECORATIVO */
+      /* SEPARADORES DECORATIVOS */
       .separator {
         height: 3px;
         width: 100px;
@@ -214,6 +247,35 @@
         gap: 2rem;
         justify-content: center;
       }
+      /* Nueva subsección para idiomas */
+      .idiomas-subseccion {
+        margin-bottom: 3rem;
+      }
+      .idiomas-subseccion h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: #333;
+      }
+      .idioma-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+      .idioma-item {
+        padding: 0.7rem 1.2rem;
+        border: 2px solid #d1c4e9;
+        border-radius: 25px;
+        background: #d1c4e9;
+        color: #333;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+      .idioma-item:hover {
+        background: #b39ddb;
+        color: #fff;
+      }
 
       /* TESTIMONIOS */
       .testimonials-container {
@@ -274,7 +336,6 @@
       .portfolio-item:hover img {
         transform: scale(1.05);
       }
-      /* Video embed estilo */
       .portfolio-video {
         width: 100%;
         max-width: 600px;
@@ -339,6 +400,11 @@
         .hero-content p {
           font-size: 1.1rem;
         }
+        .libros-subseccion,
+        .idiomas-subseccion {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     </style>
   </head>
@@ -364,7 +430,7 @@
       </div>
     </header>
 
-    <!-- HERO (INICIO) -->
+    <!-- HERO -->
     <section id="inicio" class="hero" data-aos="fade-up">
       <div class="hero-content container">
         <h1 data-aos="fade-up">Libros para colorear que inspiran, enseñan y entretienen</h1>
@@ -377,35 +443,48 @@
     <!-- LIBROS -->
     <section id="libros" class="section" data-aos="fade-up">
       <h2 class="section-title">Libros para colorear, aprender y relajarte</h2>
-      <!-- SUBSECCIÓN: Libros para aprender -->
-      <div class="libros-subseccion" data-aos="fade-up">
-        <h3>Libros para aprender</h3>
-        <div class="sub-books">
-          <div class="book" data-aos="fade-up">
-            <img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
-            <h3>Libros de Animales Chibi</h3>
-            <p>
-              Descubre aventuras educativas con criaturas adorables que despiertan la curiosidad y enseñan de forma divertida.
-            </p>
-            <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
-              Ver en Amazon
-            </a>
+      <div class="container">
+        <!-- Sub-sección: Libros para aprender -->
+        <div class="libros-subseccion" data-aos="fade-up">
+          <h3>Libros para aprender</h3>
+          <div class="sub-books">
+            <div class="book" data-aos="fade-up">
+              <img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
+              <h3>Libros de Animales Chibi</h3>
+              <p>
+                Aventuras educativas con criaturas adorables que despiertan la curiosidad.
+              </p>
+              <a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
+                Ver en Amazon
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- SUBSECCIÓN: Libros para relajarte -->
-      <div class="libros-subseccion" data-aos="fade-up" data-aos-delay="150">
-        <h3>Libros para relajarte</h3>
-        <div class="sub-books">
-          <div class="book" data-aos="fade-up">
-            <img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
-            <h3>Mandalas y Paisajes</h3>
-            <p>
-              Sumérgete en diseños únicos que calman la mente y permiten desconectar del estrés diario.
-            </p>
-            <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">
-              Ver en Amazon
-            </a>
+        <!-- Sub-sección: Libros para relajarte -->
+        <div class="libros-subseccion" data-aos="fade-up" data-aos-delay="150">
+          <h3>Libros para relajarte</h3>
+          <div class="sub-books">
+            <div class="book" data-aos="fade-up">
+              <img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
+              <h3>Mandalas y Paisajes</h3>
+              <p>
+                Diseños únicos que calman la mente y ayudan a desconectar del estrés.
+              </p>
+              <a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">
+                Ver en Amazon
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Sub-sección: Libros de Idiomas -->
+        <div class="idiomas-subseccion" data-aos="fade-up" data-aos-delay="300">
+          <h3>Libros para aprender idiomas</h3>
+          <div class="idioma-list">
+            <div class="idioma-item">English</div>
+            <div class="idioma-item">Español</div>
+            <div class="idioma-item">Deutsch</div>
+            <div class="idioma-item">Français</div>
+            <div class="idioma-item">中文</div>
           </div>
         </div>
       </div>
@@ -417,7 +496,7 @@
       <div class="container testimonials-container">
         <div class="testimonial" data-aos="fade-up">
           <p>
-            “Libro para pintar muy original. ¡Un recurso estupendo para trabajar vocabulario y entretener a los peques!”
+            “Libro para pintar muy original. Un recurso estupendo para trabajar vocabulario y entretener a los peques.”
           </p>
           <strong>- Cliente Amazon</strong>
         </div>
@@ -435,7 +514,7 @@
         </div>
         <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
           <p>
-            “Bastante completo para mantener a los niños entretenidos un buen rato. Dibujos amigables e ideales para niños de 4 o 5 años.”
+            “Bastante completo para mantener a los niños entretenidos. Dibujos amigables e ideales para niños de 4 o 5 años.”
           </p>
           <strong>- Alberto</strong>
         </div>
@@ -449,19 +528,19 @@
         <div class="faq-item" data-aos="fade-up">
           <h4>¿Para qué edades son recomendados los libros?</h4>
           <p>
-            Nuestros libros están diseñados para niños de 3 a 10 años, aunque también son ideales para adultos que buscan relajarse y explorar su creatividad.
+            Nuestros libros están diseñados para niños de 3 a 10 años y también son ideales para adultos que buscan relajarse y estimular su creatividad.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-          <h4>¿Puedo utilizar estos libros en el aula?</h4>
+          <h4>¿Puedo usar estos libros en el aula?</h4>
           <p>
-            ¡Por supuesto! Son excelentes herramientas para el aprendizaje, el desarrollo de habilidades motoras y para fomentar la creatividad.
+            ¡Por supuesto! Son excelentes herramientas educativas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-          <h4>¿Están disponibles en otros idiomas?</h4>
+          <h4>¿Están disponibles en varios idiomas?</h4>
           <p>
-            Actualmente, nuestros libros están en español, pero estamos explorando opciones para ampliar el catálogo en otros idiomas.
+            Sí, actualmente publicamos libros en español, catalán e inglés, y nuestros libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
           </p>
         </div>
       </div>
@@ -478,7 +557,7 @@
         <div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
           <img src="images/portfolio2.jpg" alt="Detalle de página 2" />
         </div>
-        <!-- Video de presentación (embed de YouTube; reemplaza el ID con el correcto) -->
+        <!-- Video de presentación (Embed de YouTube; sustituye "ID_DEL_VIDEO" con el tuyo) -->
         <div class="portfolio-video" data-aos="fade-up" data-aos-delay="200">
           <iframe width="100%" height="315" src="https://www.youtube.com/embed/ID_DEL_VIDEO" title="Video de presentación" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -490,13 +569,13 @@
       <h2 class="section-title">Sobre mí</h2>
       <div class="container about-me-content">
         <p>
-          ¡Hola! Soy René Garcia Educa, el cerebro y el corazón detrás de este caos artístico llamado "Yo mismo". Desde que descubrí que podía usar crayones sin comérmelos, supe que el arte era mi destino.
+          ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión comenzó cuando descubrí que podía usar crayones sin comérmelos, y desde entonces he transformado esa chispa en un universo creativo.
         </p>
         <p>
-          Mi vida es un cómic lleno de libros para colorear, cuentos y un toque de chispa cómica. Creo en creaciones que te hagan reír, reflexionar y colorear fuera de las líneas.
+          Diseño libros que no solo son un pasatiempo, sino herramientas para aprender, relajarse y explorar la imaginación. Con cada trazo, busco que niños y adultos se sientan motivados a descubrir un mundo sin límites.
         </p>
         <p>
-          Convierto cada página en un viaje único donde el aprendizaje se fusiona con la diversión. Descubre más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
+          Conoce más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
         </p>
       </div>
     </section>
@@ -516,7 +595,7 @@
         once: true,
       });
 
-      // Script para el menú móvil
+      // Menú móvil
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       menuToggle.addEventListener('click', () => {
