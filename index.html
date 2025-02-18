@@ -114,16 +114,16 @@
         background: #b39ddb;
         color: #fff;
       }
-      /* En escritorio, se muestra el menú al pasar el ratón sobre el contenedor */
+      /* Mostrar menú al hacer clic en móvil o al pasar el ratón (en escritorio) */
+      nav ul.show {
+        display: flex;
+      }
       @media (min-width: 769px) {
-        .menu-toggle {
-          display: block;
-        }
+        /* En escritorio, opcionalmente se puede mostrar el menú al pasar el ratón */
         .menu-container:hover nav ul {
           display: flex;
         }
       }
-      /* Móvil: el menú se muestra al pulsar el botón */
       @media (max-width: 768px) {
         nav ul {
           width: 100%;
@@ -167,12 +167,12 @@
       .hero-content h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
       }
       .hero-content p {
         font-size: 1.3rem;
         margin-bottom: 1.5rem;
-        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
       }
 
       /* SEPARADORES */
@@ -532,11 +532,11 @@
         <div class="faq-item" data-aos="fade-up">
           <h4>¿Para qué edades son recomendados tus libros?</h4>
           <p>
-            Mis libros están diseñados para niños desde 0 hasta 14 años, y también son ideales para adultos que buscan relajarse, inspirarse y estimular su creatividad.
+            Mis libros están diseñados para niños desde 0 hasta 14 años y también son ideales para adultos que buscan relajarse, inspirarse y estimular su creatividad.
           </p>
         </div>
         <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-          <h4>¿Puedo usar tus libros en el aula?</h4>
+          <h4>¿Puedo utilizar tus libros en el aula?</h4>
           <p>
             ¡Claro que sí! Son herramientas educativas perfectas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
           </p>
@@ -580,7 +580,7 @@
           ¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión nació al descubrir que podía usar crayones sin comérmelos, y desde entonces he transformado esa chispa en un universo creativo.
         </p>
         <p>
-          Diseño libros que son mucho más que un pasatiempo: son herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
+          Diseño libros que son mucho más que un pasatiempo: herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
         </p>
         <p>
           Descubre más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
@@ -603,7 +603,7 @@
         once: true,
       });
 
-      // Menú móvil: muestra/oculta el menú al hacer clic en el ícono
+      // Menú móvil: despliega/oculta el menú al hacer clic en el ícono
       const menuToggle = document.getElementById('menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       menuToggle.addEventListener('click', () => {
