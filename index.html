@@ -336,6 +336,131 @@
         right: -150px;
       }
 
+      /* Elementos decorativos para el fondo */
+      .bg-shape-1, .bg-shape-2, .bg-shape-3, .bg-shape-4 {
+        position: absolute;
+        z-index: -1;
+        opacity: 0.05;
+      }
+
+      .bg-shape-1 {
+        top: 10%;
+        right: 5%;
+        width: 300px;
+        height: 300px;
+        border-radius: 53% 47% 52% 48% / 36% 41% 59% 64%;
+        background: var(--primary-color);
+        animation: morphing 15s linear infinite alternate;
+      }
+
+      .bg-shape-2 {
+        bottom: 15%;
+        left: 5%;
+        width: 250px;
+        height: 250px;
+        border-radius: 73% 27% 59% 41% / 57% 43% 57% 43%;
+        background: var(--accent-color);
+        animation: morphing 12s linear infinite alternate-reverse;
+      }
+
+      .bg-shape-3 {
+        top: 40%;
+        left: 10%;
+        width: 180px;
+        height: 180px;
+        border-radius: 42% 58% 40% 60% / 55% 45% 55% 45%;
+        background: var(--secondary-color);
+        animation: morphing 20s linear infinite alternate;
+      }
+
+      .bg-shape-4 {
+        bottom: 30%;
+        right: 10%;
+        width: 220px;
+        height: 220px;
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        background: var(--primary-color);
+        animation: morphing 18s linear infinite alternate-reverse;
+      }
+
+      @keyframes morphing {
+        0% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        25% {
+          border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        }
+        50% {
+          border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        }
+        75% {
+          border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        }
+        100% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+      }
+
+      /* Efecto lupa para imágenes de libros */
+      .book-image-container {
+        position: relative;
+        overflow: hidden;
+        border-bottom: 3px solid var(--primary-color);
+      }
+
+      .book-image-container img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .book:hover .book-image-container img {
+        transform: scale(1.2);
+      }
+
+      .book-image-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.3s ease;
+        z-index: 1;
+      }
+
+      .book:hover .book-image-container::after {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .magnifier {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 2;
+      }
+
+      .book:hover .magnifier {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+
       .section-title {
         font-size: 2.5rem;
         text-align: center;
@@ -771,15 +896,18 @@
       </div>
     </div>
     <section id="libros">
-      <h2 class="section-title" data-aos="fade-down">Nuestros Libros</h2>
-      <p class="section-subtitle" data-aos="fade-up">Descubre nuestra colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
+      <h2 class="section-title" data-aos="fade-down">Mis Libros</h2>
+      <p class="section-subtitle" data-aos="fade-up">Descubre mi colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
       <div class="container">
         <div class="books-carousel" data-aos="fade-up">
           <div class="carousel-container">
             <div class="carousel-item">
               <div class="book">
                 <div class="book-badge">Multilingüe</div>
-                <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Learn English, Spanish, German, French, and Chinese" />
+                <div class="book-image-container">
+                  <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Learn English, Spanish, German, French, and Chinese" />
+                  <div class="magnifier">🔍</div>
+                </div>
                 <div class="book-content">
                   <h3>Aprende 5 Idiomas Coloreando</h3>
                   <p>Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos.</p>
@@ -791,21 +919,11 @@
             
             <div class="carousel-item">
               <div class="book">
-                <div class="book-badge">Educativo</div>
-                <img src="https://m.media-amazon.com/images/I/61Tn1yUr9nL._SY466_.jpg" alt="Colorea y Aprende Explorando Profesiones" />
-                <div class="book-content">
-                  <h3>Explorando Profesiones</h3>
-                  <p>Embárcate en una aventura educativa descubriendo profesiones a través de adorables animales chibis.</p>
-                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-                  <a href="https://www.amazon.com/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="carousel-item">
-              <div class="book">
                 <div class="book-badge">English</div>
-                <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Coloring book of chibi animals and learning" />
+                <div class="book-image-container">
+                  <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Coloring book of chibi animals and learning" />
+                  <div class="magnifier">🔍</div>
+                </div>
                 <div class="book-content">
                   <h3>Chibi Animals Coloring</h3>
                   <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
@@ -818,7 +936,10 @@
             <div class="carousel-item">
               <div class="book">
                 <div class="book-badge">Relajación</div>
-                <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
+                <div class="book-image-container">
+                  <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
+                  <div class="magnifier">🔍</div>
+                </div>
                 <div class="book-content">
                   <h3>Mandalas con Mascotas Chibis</h3>
                   <p>Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas.</p>
@@ -838,18 +959,19 @@
             <span class="carousel-dot active" data-index="0"></span>
             <span class="carousel-dot" data-index="1"></span>
             <span class="carousel-dot" data-index="2"></span>
-            <span class="carousel-dot" data-index="3"></span>
           </div>
         </div>
         
         <div style="text-align: center; margin-top: 3rem;">
-          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos los libros en Amazon</a>
+          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos mis libros en Amazon</a>
         </div>
       </div>
+      <div class="bg-shape-1"></div>
+      <div class="bg-shape-2"></div>
     </section>
     <section id="testimonios">
       <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
-      <p class="section-subtitle" data-aos="fade-up">Lo que nuestros lectores opinan sobre nuestros libros.</p>
+      <p class="section-subtitle" data-aos="fade-up">Lo que mis lectores opinan sobre mis libros.</p>
       <div class="container">
         <div class="testimonial" data-aos="fade-right">
           <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente. Mi hijo de 7 años ha mejorado notablemente su vocabulario en inglés gracias al libro multilingüe."</p>
@@ -881,6 +1003,7 @@
           </div>
         </div>
       </div>
+      <div class="bg-shape-3"></div>
     </section>
     <section id="contacto">
       <h2 class="section-title" data-aos="fade-down">Contacto</h2>
@@ -927,7 +1050,7 @@
           
           <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
             <div style="background: var(--white); padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%;">
-              <h3 style="color: var(--primary-color); margin-bottom: 25px; font-size: 1.6rem; position: relative; display: inline-block;">Sobre el Autor</h3>
+              <h3 style="color: var(--primary-color); margin-bottom: 25px; font-size: 1.6rem; position: relative; display: inline-block;">Sobre Mí</h3>
               <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creído que el arte y el aprendizaje van de la mano. De niño, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
               <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creé René Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
               <p style="margin-bottom: 20px; line-height: 1.8;">Está comprobado que aprendemos hasta un 60% más rápido cuando nos divertimos, y mis libros están diseñados para lograrlo.</p>
@@ -940,6 +1063,7 @@
           </div>
         </div>
       </div>
+      <div class="bg-shape-4"></div>
     </section>
     
     <footer style="background: var(--primary-color); color: var(--white); padding: 70px 0 20px 0; margin-top: 70px; position: relative; overflow: hidden;">
@@ -1204,6 +1328,27 @@
         dot.addEventListener('click', () => {
           currentIndex = index;
           updateCarousel();
+        });
+      });
+
+      // Efecto lupa para imágenes de libros
+      document.querySelectorAll('.book-image-container').forEach(container => {
+        container.addEventListener('mousemove', function(e) {
+          const magnifier = this.querySelector('.magnifier');
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          // Calcular posición relativa (0-1)
+          const relX = x / rect.width;
+          const relY = y / rect.height;
+          
+          // Aplicar transformación a la imagen
+          const img = this.querySelector('img');
+          const moveX = (relX - 0.5) * 20;
+          const moveY = (relY - 0.5) * 20;
+          
+          img.style.transformOrigin = `${relX * 100}% ${relY * 100}%`;
         });
       });
 
