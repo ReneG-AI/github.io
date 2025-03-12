@@ -65,7 +65,7 @@
 
       /* HEADER */
       header {
-        background: rgba(255,255,255,0.95);
+        background: rgba(255,255,255,0.85);
         padding: 1rem 0;
         position: fixed;
         width: 100%;
@@ -125,13 +125,14 @@
       .hero {
         min-height: 100vh;
         background: linear-gradient(
-          rgba(107, 76, 230, 0.1),
-          rgba(155, 122, 255, 0.1)
+          rgba(107, 76, 230, 0.05),
+          rgba(155, 122, 255, 0.05)
         ),
         url('images/Banner.png') no-repeat center center/cover;
         display: flex;
         align-items: center;
-        padding-top: 80px;
+        padding-top: 0;
+        margin-top: 0;
         position: relative;
         overflow: hidden;
       }
@@ -143,29 +144,34 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, rgba(107, 76, 230, 0.2), rgba(155, 122, 255, 0.2));
+        background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
         z-index: 1;
       }
 
       .hero-content {
         max-width: 800px;
-        padding: 3rem;
-        background: rgba(255,255,255,0.95);
+        padding: 3.5rem;
+        background: rgba(255,255,255,0.92);
         border-radius: 20px;
-        box-shadow: var(--shadow);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         position: relative;
         z-index: 2;
         backdrop-filter: blur(5px);
+        margin-top: 80px;
+        margin-left: 5%;
+        transform: translateY(0);
+        transition: transform 0.5s ease;
       }
 
       .hero-content h1 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         line-height: 1.2;
         margin-bottom: 1.5rem;
         background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: gradientText 3s ease infinite;
+        background-size: 200% 200%;
       }
 
       .hero-content p {
@@ -178,15 +184,17 @@
       /* BOTONES MEJORADOS */
       .btn {
         display: inline-block;
-        padding: 1rem 2rem;
+        padding: 1rem 2.5rem;
         background: var(--primary-color);
         color: var(--white);
         border-radius: 30px;
         font-weight: 600;
         transition: var(--transition);
-        box-shadow: var(--shadow);
+        box-shadow: 0 4px 15px rgba(107, 76, 230, 0.4);
         position: relative;
         overflow: hidden;
+        letter-spacing: 0.5px;
+        z-index: 1;
       }
 
       .btn::before {
@@ -199,9 +207,22 @@
         background: linear-gradient(
           120deg,
           transparent,
-          rgba(255, 255, 255, 0.3),
+          rgba(255, 255, 255, 0.4),
           transparent
         );
+        transition: 0.5s;
+        z-index: -1;
+      }
+
+      .btn::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color);
+        z-index: -2;
         transition: 0.5s;
       }
 
@@ -209,10 +230,13 @@
         left: 100%;
       }
 
+      .btn:hover::after {
+        background: var(--secondary-color);
+      }
+
       .btn:hover {
         transform: translateY(-3px);
-        background: var(--secondary-color);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 8px 20px rgba(107, 76, 230, 0.5);
       }
 
       /* SECCIONES MEJORADAS */
@@ -250,58 +274,125 @@
         box-shadow: var(--shadow);
         transition: var(--transition);
         position: relative;
+        border: 1px solid rgba(0,0,0,0.05);
       }
 
       .book:hover {
         transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 15px 30px rgba(107, 76, 230, 0.15);
       }
 
       .book img {
         width: 100%;
-        height: 250px;
+        height: 320px;
         object-fit: cover;
         transition: var(--transition);
+        border-bottom: 3px solid var(--primary-color);
       }
 
       .book:hover img {
-        transform: scale(1.1);
+        transform: scale(1.08);
       }
 
       .book-content {
-        padding: 1.5rem;
+        padding: 1.8rem;
       }
 
       .book h3 {
         font-size: 1.5rem;
         margin-bottom: 1rem;
         color: var(--primary-color);
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .book h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--accent-color);
+        border-radius: 2px;
+      }
+
+      .book-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--accent-color);
+        color: var(--text-color);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 10;
       }
 
       /* TESTIMONIOS MEJORADOS */
       .testimonial {
         background: var(--white);
-        padding: 2rem;
+        padding: 2.5rem;
         border-radius: 15px;
         box-shadow: var(--shadow);
         margin-bottom: 2rem;
         position: relative;
         transition: var(--transition);
+        border-left: 4px solid var(--primary-color);
       }
 
       .testimonial:hover {
         transform: translateX(10px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        box-shadow: 0 10px 20px rgba(107, 76, 230, 0.1);
       }
 
       .testimonial::before {
         content: '"';
         position: absolute;
-        top: -20px;
+        top: -30px;
         left: 20px;
-        font-size: 4rem;
+        font-size: 5rem;
         color: var(--primary-color);
-        opacity: 0.2;
+        opacity: 0.15;
+        font-family: 'Georgia', serif;
+      }
+
+      .testimonial p {
+        font-style: italic;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .testimonial-author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid var(--primary-color);
+      }
+
+      .testimonial-author-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .testimonial-author-name {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      .testimonial-author-title {
+        font-size: 0.9rem;
+        opacity: 0.7;
       }
 
       /* ANIMACIONES */
@@ -316,8 +407,18 @@
         to { opacity: 1; transform: translateY(0); }
       }
 
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+
       .animate {
         animation: fadeIn 0.6s ease forwards;
+      }
+
+      .float {
+        animation: float 4s ease-in-out infinite;
       }
 
       /* RESPONSIVE MEJORADO */
@@ -362,8 +463,8 @@
     <header>
       <nav>
         <div class="logo">
-          <img src="images/Logo.png" alt="Logo de René García Educa" />
-          <span>René García Educa</span>
+          <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
+          <span>René Garcia Educa</span>
         </div>
         <div class="menu-toggle" id="menu-toggle">☰</div>
         <div class="nav-links">
@@ -375,7 +476,7 @@
     </header>
     <div class="hero">
       <div class="hero-content" data-aos="fade-up">
-        <h1>Bienvenido a René García Educa</h1>
+        <h1>Bienvenido al mundo de:<br><span style="display: block; margin-top: 10px; font-size: 1.2em; animation: float 4s ease-in-out infinite;">René Garcia Educa</span></h1>
         <p>Libros para colorear, aprender y relajarte.</p>
         <a href="#libros" class="btn">Explorar Libros</a>
       </div>
@@ -386,32 +487,35 @@
         <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
           
           <div class="book" data-aos="fade-up" style="width: 300px;">
+            <div class="book-badge">Bestseller</div>
             <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Libro de Mandalas para Colorear" />
             <div class="book-content">
               <h3>Mandalas para Colorear</h3>
               <p>100 diseños relajantes para adultos. Perfectos para reducir el estrés y la ansiedad.</p>
               <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNHVHZS" target="_blank" class="btn" style="margin-top: 15px; display: inline-block;">Ver en Amazon</a>
+              <a href="https://www.amazon.es/dp/B0CQNHVHZS" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
             </div>
           </div>
           
           <div class="book" data-aos="fade-up" data-aos-delay="100" style="width: 300px;">
+            <div class="book-badge">Niños</div>
             <img src="https://m.media-amazon.com/images/I/61Tn1yUr9nL._SY466_.jpg" alt="Libro de Animales para Colorear" />
             <div class="book-content">
               <h3>Animales para Colorear</h3>
               <p>50 diseños de animales salvajes y domésticos para niños y adultos.</p>
               <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNJ6QQZ" target="_blank" class="btn" style="margin-top: 15px; display: inline-block;">Ver en Amazon</a>
+              <a href="https://www.amazon.es/dp/B0CQNJ6QQZ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
             </div>
           </div>
           
           <div class="book" data-aos="fade-up" data-aos-delay="200" style="width: 300px;">
+            <div class="book-badge">Nuevo</div>
             <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Flores para Colorear" />
             <div class="book-content">
               <h3>Flores para Colorear</h3>
               <p>75 diseños florales detallados para relajación y creatividad.</p>
               <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNHVHZR" target="_blank" class="btn" style="margin-top: 15px; display: inline-block;">Ver en Amazon</a>
+              <a href="https://www.amazon.es/dp/B0CQNHVHZR" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
             </div>
           </div>
           
@@ -422,23 +526,32 @@
       <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
       <div class="container">
         <div class="testimonial" data-aos="fade-right">
-          <p>"Los libros de René García son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente."</p>
-          <div style="margin-top: 20px; font-weight: 600;">
-            <span>María Rodríguez</span>
+          <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-author-info">
+              <span class="testimonial-author-name">María Rodríguez</span>
+              <span class="testimonial-author-title">Profesora de Arte</span>
+            </div>
           </div>
         </div>
         
         <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
           <p>"Mi hija de 8 años está encantada con el libro de animales. Es educativo y divertido a la vez. Totalmente recomendable para niños."</p>
-          <div style="margin-top: 20px; font-weight: 600;">
-            <span>Carlos Martínez</span>
+          <div class="testimonial-author">
+            <div class="testimonial-author-info">
+              <span class="testimonial-author-name">Carlos Martínez</span>
+              <span class="testimonial-author-title">Padre y Educador</span>
+            </div>
           </div>
         </div>
         
         <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
           <p>"Compré el libro de mandalas como regalo para mi madre y está fascinada. Dice que le ayuda a relajarse y a mejorar su concentración."</p>
-          <div style="margin-top: 20px; font-weight: 600;">
-            <span>Laura Sánchez</span>
+          <div class="testimonial-author">
+            <div class="testimonial-author-info">
+              <span class="testimonial-author-name">Laura Sánchez</span>
+              <span class="testimonial-author-title">Terapeuta Ocupacional</span>
+            </div>
           </div>
         </div>
       </div>
@@ -464,43 +577,44 @@
           </div>
           
           <div style="margin-top: 40px;">
-            <p>© 2023 René García Educa. Todos los derechos reservados.</p>
+            <p>© 2023 René Garcia Educa. Todos los derechos reservados.</p>
           </div>
         </div>
       </div>
     </section>
     
-    <footer style="background: var(--primary-color); color: var(--white); padding: 50px 0 20px 0; margin-top: 50px;">
+    <footer style="background: var(--primary-color); color: var(--white); padding: 70px 0 20px 0; margin-top: 70px; position: relative; overflow: hidden;">
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color), var(--secondary-color), var(--accent-color)); background-size: 500% 100%; animation: gradientText 10s linear infinite;"></div>
       <div class="container">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; margin-bottom: 40px;">
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-right">
-            <h3 style="margin-bottom: 20px; font-size: 1.5rem;">René García Educa</h3>
-            <p style="margin-bottom: 15px;">Libros educativos y de entretenimiento para todas las edades. Diseñados para inspirar la creatividad y fomentar el aprendizaje.</p>
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem; position: relative; display: inline-block;">René Garcia Educa</h3>
+            <p style="margin-bottom: 15px; line-height: 1.8; opacity: 0.9;">Libros educativos y de entretenimiento para todas las edades. Diseñados para inspirar la creatividad y fomentar el aprendizaje.</p>
           </div>
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-up">
-            <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Enlaces Rápidos</h3>
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem; position: relative; display: inline-block;">Enlaces Rápidos</h3>
             <ul style="list-style: none;">
-              <li style="margin-bottom: 10px;"><a href="#libros" style="color: var(--white); opacity: 0.9; transition: var(--transition);">Nuestros Libros</a></li>
-              <li style="margin-bottom: 10px;"><a href="#testimonios" style="color: var(--white); opacity: 0.9; transition: var(--transition);">Testimonios</a></li>
-              <li style="margin-bottom: 10px;"><a href="#contacto" style="color: var(--white); opacity: 0.9; transition: var(--transition);">Contacto</a></li>
+              <li style="margin-bottom: 12px;"><a href="#libros" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0;">Nuestros Libros</a></li>
+              <li style="margin-bottom: 12px;"><a href="#testimonios" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0;">Testimonios</a></li>
+              <li style="margin-bottom: 12px;"><a href="#contacto" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0;">Contacto</a></li>
             </ul>
           </div>
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-left">
-            <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Síguenos</h3>
-            <div style="display: flex; gap: 15px;">
-              <a href="https://instagram.com/renegarcia_educa" target="_blank" style="color: var(--white); font-size: 1.2rem; opacity: 0.9; transition: var(--transition);">Instagram</a>
-              <a href="https://facebook.com/renegarcia.educa" target="_blank" style="color: var(--white); font-size: 1.2rem; opacity: 0.9; transition: var(--transition);">Facebook</a>
-              <a href="https://twitter.com/renegarcia_edu" target="_blank" style="color: var(--white); font-size: 1.2rem; opacity: 0.9; transition: var(--transition);">Twitter</a>
+            <h3 style="margin-bottom: 20px; font-size: 1.5rem; position: relative; display: inline-block;">Síguenos</h3>
+            <div style="display: flex; gap: 20px;">
+              <a href="https://instagram.com/renegarcia_educa" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
+              <a href="https://facebook.com/renegarcia.educa" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">FB</a>
+              <a href="https://twitter.com/renegarcia_edu" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">TW</a>
             </div>
           </div>
           
         </div>
         
-        <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
-          <p>© 2023 René García Educa. Todos los derechos reservados.</p>
+        <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
+          <p style="opacity: 0.8;">© 2023 René Garcia Educa. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
