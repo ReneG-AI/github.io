@@ -1,450 +1,625 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>René Garcia Educa – Libros para Colorear, Aprender y Relajarte</title>
-    <meta
-      name="description"
-      content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
-    />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- AOS Library CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <style>
-      /* RESET Y ESTILOS BASE */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      
-      :root {
-        --primary-color: #6B4CE6;
-        --secondary-color: #9B7AFF;
-        --accent-color: #FFD700;
-        --text-color: #2C3E50;
-        --bg-color: #F8F9FA;
-        --white: #FFFFFF;
-        --shadow: 0 4px 6px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
-      }
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>René Garcia Educa – Libros para Colorear, Aprender y Relajarte</title>
+<meta
+name="description"
+content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
+/>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+rel="stylesheet"
+/>
+<!-- AOS Library CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<style>
+/* RESET Y ESTILOS BASE */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: 'Roboto', sans-serif;
+background: #f2f2f7;
+color: #333;
+scroll-behavior: smooth;
+}
+img {
+max-width: 100%;
+display: block;
+}
+a {
+text-decoration: none;
+color: inherit;
+}
+.container {
+width: 90%;
+max-width: 1200px;
+margin: auto;
+position: relative;
+}
 
-      body {
-        font-family: 'Poppins', sans-serif;
-        background: var(--bg-color);
-        color: var(--text-color);
-        scroll-behavior: smooth;
-        line-height: 1.6;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-        height: auto;
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-        transition: var(--transition);
-      }
-
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: auto;
-        position: relative;
-      }
-
-      /* HEADER */
-      header {
-        background: rgba(255,255,255,0.95);
-        padding: 1rem 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
-        transition: var(--transition);
-      }
-
-      nav {
+/* HEADER */
+header {
+background: #f2f2f7;
+padding: 1rem 0;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: relative;
+}
+.logo {
+font-size: 2.5rem;
+font-weight: 700;
+color: #333;
+display: flex;
+align-items: center;
+}
+.logo img {
+height: 80px;
+margin-right: 0.5rem;
+}
+/* Contenedor del menú en la esquina superior derecha */
+.menu-container {
+position: absolute;
+top: 1rem;
+right: 1rem;
+}
+.menu-toggle {
+font-size: 2rem;
+cursor: pointer;
+color: #333;
+display: block;
+}
+nav ul {
+list-style: none;
+display: none;
+flex-direction: column;
+position: absolute;
+top: 110%;
+right: 0;
+background: #fff;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+padding: 0.5rem;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+}
+nav ul li {
+margin: 0.5rem 0;
+}
+nav ul li a {
+font-size: 1.1rem;
+padding: 0.7rem 1.2rem;
+border: 2px solid #d1c4e9;
+border-radius: 25px;
+color: #333;
+background: #d1c4e9;
+transition: all 0.3s ease;
+}
+nav ul li a:hover {
+background: #b39ddb;
+color: #fff;
+}
+      /* En escritorio, se muestra el menú al pasar el ratón sobre el contenedor */
+      /* Mostrar menú al hacer clic en móvil o al pasar el ratón (en escritorio) */
+      nav ul.show {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
       }
-
-      .logo {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo img {
-        height: 60px;
-        transition: var(--transition);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-
-      .nav-links a {
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        transition: var(--transition);
-      }
-
-      .nav-links a:hover {
-        background: var(--primary-color);
-        color: var(--white);
-        transform: translateY(-2px);
-      }
-
-      .menu-toggle {
-        display: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      /* HERO MEJORADO */
-      .hero {
-        min-height: 100vh;
-        background: linear-gradient(
-          rgba(107, 76, 230, 0.1),
-          rgba(155, 122, 255, 0.1)
-        ),
-        url('images/Banner.png') no-repeat center center/cover;
-        display: flex;
-        align-items: center;
-        padding-top: 80px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(45deg, rgba(107, 76, 230, 0.2), rgba(155, 122, 255, 0.2));
-        z-index: 1;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        padding: 3rem;
-        background: rgba(255,255,255,0.95);
-        border-radius: 20px;
-        box-shadow: var(--shadow);
-        position: relative;
-        z-index: 2;
-        backdrop-filter: blur(5px);
-      }
-
-      .hero-content h1 {
-        font-size: 3.5rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientText 3s ease infinite;
-      }
-
-      .hero-content p {
-        font-size: 1.25rem;
-        color: var(--text-color);
-        margin-bottom: 2rem;
-        opacity: 0.9;
-      }
-
-      /* BOTONES MEJORADOS */
-      .btn {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background: var(--primary-color);
-        color: var(--white);
-        border-radius: 30px;
-        font-weight: 600;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          120deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .btn:hover::before {
-        left: 100%;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-        background: var(--secondary-color);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      }
-
-      /* SECCIONES MEJORADAS */
-      section {
-        padding: 100px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        color: var(--primary-color);
-        position: relative;
-      }
-
-      .section-title::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
-        background: var(--accent-color);
-        border-radius: 2px;
-      }
-
-      /* CARDS MEJORADAS */
-      .book {
-        background: var(--white);
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        transition: var(--transition);
-        position: relative;
-      }
-
-      .book:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      }
-
-      .book img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .book:hover img {
-        transform: scale(1.1);
-      }
-
-      .book-content {
-        padding: 1.5rem;
-      }
-
-      .book h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-      }
-
-      /* TESTIMONIOS MEJORADOS */
-      .testimonial {
-        background: var(--white);
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: var(--shadow);
-        margin-bottom: 2rem;
-        position: relative;
-        transition: var(--transition);
-      }
-
-      .testimonial:hover {
-        transform: translateX(10px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-      }
-
-      .testimonial::before {
-        content: '"';
-        position: absolute;
-        top: -20px;
-        left: 20px;
-        font-size: 4rem;
-        color: var(--primary-color);
-        opacity: 0.2;
-      }
-
-      /* ANIMACIONES */
-      @keyframes gradientText {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .animate {
-        animation: fadeIn 0.6s ease forwards;
-      }
-
-      /* RESPONSIVE MEJORADO */
-      @media (max-width: 768px) {
+@media (min-width: 769px) {
         .menu-toggle {
           display: block;
         }
+        /* En escritorio, opcionalmente se puede mostrar el menú al pasar el ratón */
+.menu-container:hover nav ul {
+display: flex;
+}
+}
+      /* Móvil: el menú se muestra al pulsar el botón */
+@media (max-width: 768px) {
+nav ul {
+width: 100%;
+}
+nav ul li a {
+font-size: 1rem;
+padding: 0.7rem;
+}
+.logo img {
+height: 60px;
+}
+}
 
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background: var(--white);
-          padding: 1rem;
-          box-shadow: var(--shadow);
-        }
+/* HERO */
+.hero {
+position: relative;
+background: 
+linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),
+url('images/Banner.png') no-repeat center center/cover;
+height: 80vh;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: #000;
+}
+.hero::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.05);
+}
+.hero-content {
+max-width: 800px;
+position: relative;
+z-index: 1;
+}
+.hero-content h1 {
+font-size: 3rem;
+margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+}
+.hero-content p {
+font-size: 1.3rem;
+margin-bottom: 1.5rem;
+        text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+        text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+}
 
-        .nav-links.active {
-          display: flex;
-          flex-direction: column;
-          animation: fadeIn 0.3s ease forwards;
-        }
+/* SEPARADORES */
+.separator {
+height: 3px;
+width: 100px;
+background: #b39ddb;
+margin: 2rem auto;
+border-radius: 2px;
+}
 
-        .hero-content h1 {
-          font-size: 2.5rem;
-        }
+/* SECCIONES GENERALES */
+section {
+padding: 80px 0;
+position: relative;
+}
+.section-title {
+font-size: 2.2rem;
+color: #333;
+margin-bottom: 2rem;
+text-align: center;
+}
+.content {
+max-width: 900px;
+margin: auto;
+line-height: 1.8;
+text-align: center;
+}
+section::after {
+content: "";
+display: block;
+height: 2px;
+width: 60%;
+background: rgba(0, 0, 0, 0.1);
+margin: 3rem auto 0;
+}
 
-        .section-title {
-          font-size: 2rem;
-        }
+/* LIBROS */
+.books {
+display: flex;
+flex-wrap: wrap;
+gap: 2rem;
+justify-content: center;
+}
+.book {
+background: #fff;
+border-radius: 10px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+padding: 1rem;
+width: 280px;
+text-align: center;
+transition: transform 0.3s;
+}
+.book:hover {
+transform: translateY(-5px);
+}
+.book img {
+border-radius: 10px;
+margin-bottom: 1rem;
+}
+.book h3 {
+margin-bottom: 0.5rem;
+font-size: 1.2rem;
+}
+.book p {
+font-size: 0.95rem;
+color: #444;
+margin-bottom: 1rem;
+}
 
-        .book {
-          margin: 1rem;
-        }
-      }
+/* SUBSECCIONES DE LIBROS */
+.libros-subseccion, .idiomas-subseccion {
+margin-bottom: 3rem;
+}
+.libros-subseccion h3, .idiomas-subseccion h3 {
+font-size: 2rem;
+margin-bottom: 1rem;
+text-align: center;
+color: #333;
+}
+.sub-books {
+display: flex;
+flex-wrap: wrap;
+gap: 2rem;
+justify-content: center;
+}
+/* Libros de idiomas */
+.idioma-list {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+justify-content: center;
+}
+.idioma-item {
+padding: 0.7rem 1.2rem;
+border: 2px solid #d1c4e9;
+border-radius: 25px;
+background: #d1c4e9;
+color: #333;
+font-size: 1.1rem;
+transition: all 0.3s ease;
+}
+.idioma-item:hover {
+background: #b39ddb;
+color: #fff;
+}
 
-    </style>
-  </head>
-  <body>
-    <!-- El resto del HTML se mantiene igual pero con las clases actualizadas -->
-    <!-- ... -->
-    
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      // Inicialización mejorada de AOS
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-        easing: 'ease-out-cubic'
-      });
+/* TESTIMONIOS */
+.testimonials-container {
+max-width: 800px;
+margin: auto;
+}
+.testimonial {
+background: #fff;
+padding: 1rem;
+margin-bottom: 1rem;
+border-radius: 10px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.testimonial p {
+font-style: italic;
+}
 
-      // Menú móvil mejorado
-      const menuToggle = document.getElementById('menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-      });
+/* FAQ */
+.faq-container {
+max-width: 800px;
+margin: auto;
+text-align: left;
+}
+.faq-item {
+margin-bottom: 1.5rem;
+}
+.faq-item h4 {
+font-size: 1.3rem;
+color: #333;
+margin-bottom: 0.5rem;
+}
+.faq-item p {
+font-size: 1rem;
+color: #444;
+line-height: 1.6;
+}
 
-      // Cerrar menú al hacer click en un enlace
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-        });
-      });
+/* PORTAFOLIO */
+.portfolio-container {
+display: flex;
+flex-wrap: wrap;
+gap: 1rem;
+justify-content: center;
+}
+.portfolio-item {
+position: relative;
+width: 280px;
+height: 180px;
+overflow: hidden;
+border-radius: 10px;
+}
+.portfolio-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.3s;
+}
+.portfolio-item:hover img {
+transform: scale(1.05);
+}
+.portfolio-video {
+width: 100%;
+max-width: 600px;
+margin: 1rem auto;
+border: 5px solid #d1c4e9;
+border-radius: 10px;
+}
 
-      // Scroll suave
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
-        });
-      });
+/* SOBRE MÍ */
+.about-me-content {
+max-width: 800px;
+margin: auto;
+line-height: 1.8;
+text-align: left;
+}
+.about-me-content h3 {
+margin-top: 1rem;
+color: #333;
+}
+.about-me-content a {
+color: #b39ddb;
+font-weight: bold;
+}
 
-      // Header scroll effect
-      let lastScroll = 0;
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > lastScroll) {
-          header.style.transform = 'translateY(-100%)';
-        } else {
-          header.style.transform = 'translateY(0)';
-        }
-        lastScroll = currentScroll;
-      });
+/* FOOTER */
+footer {
+background: #333;
+color: #fff;
+text-align: center;
+padding: 1rem 0;
+}
 
-      // Lazy loading para imágenes
-      document.addEventListener("DOMContentLoaded", function() {
-        const images = document.querySelectorAll('img[data-src]');
-        
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const img = entry.target;
-              img.src = img.dataset.src;
-              img.removeAttribute('data-src');
-              observer.unobserve(img);
-            }
-          });
-        });
+/* RESPONSIVIDAD */
+@media (max-width: 768px) {
+nav {
+flex-wrap: wrap;
+}
+.menu-toggle {
+display: block;
+}
+nav ul {
+display: none;
+flex-direction: column;
+width: 100%;
+}
+nav ul.show {
+display: flex;
+}
+nav ul li {
+margin: 0.5rem 0;
+}
+nav ul li a {
+font-size: 1rem;
+padding: 0.7rem;
+}
+.logo img {
+height: 60px;
+}
+.hero-content h1 {
+font-size: 2.2rem;
+}
+.hero-content p {
+font-size: 1.1rem;
+}
+.sub-books, .idioma-list {
+flex-direction: column;
+align-items: center;
+}
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header data-aos="fade-down">
+<div class="container">
+<nav>
+<div class="logo" data-aos="fade-right">
+<img src="images/Logo.png" alt="Logo de René Garcia Educa" />
+René García Educa
+</div>
+<div class="menu-container">
+<div class="menu-toggle" id="menu-toggle">&#9776;</div>
+<ul id="nav-menu" data-aos="fade-left">
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#libros">Libros</a></li>
+<li><a href="#testimonios">Testimonios</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#portafolio">Portafolio</a></li>
+<li><a href="#sobremi">Sobre mí</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</header>
 
-        images.forEach(img => imageObserver.observe(img));
-      });
+<!-- HERO -->
+<section id="inicio" class="hero" data-aos="fade-up">
+<div class="hero-content container">
+<h1 data-aos="fade-up">Libros para colorear que inspiran, enseñan y entretienen</h1>
+<p data-aos="fade-up" data-aos-delay="200">
+Aprende y relájate mientras das vida a cada página. Sumérgete en un universo donde la creatividad y el aprendizaje se fusionan.
+</p>
+</div>
+</section>
 
-      // Animaciones al scroll
-      const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.animate-on-scroll');
-        
-        elements.forEach(element => {
-          const elementTop = element.getBoundingClientRect().top;
-          const elementBottom = element.getBoundingClientRect().bottom;
-          
-          if (elementTop < window.innerHeight && elementBottom > 0) {
-            element.classList.add('animate');
-          }
-        });
-      };
+<!-- LIBROS -->
+<section id="libros" class="section" data-aos="fade-up">
+<h2 class="section-title">Libros para colorear, aprender y relajarte</h2>
+<div class="container">
+<!-- Libros para aprender -->
+<div class="libros-subseccion" data-aos="fade-up">
+<h3>Libros para aprender</h3>
+<div class="sub-books">
+<div class="book" data-aos="fade-up">
+<img src="images/libro1.jpg" alt="Libros de Animales Chibi" />
+<h3>Libros de Animales Chibi</h3>
+<p>
+Aventuras educativas con criaturas adorables que despiertan la curiosidad.
+</p>
+<a href="https://www.amazon.es/Colorea-Aprende-Explorando-Profesiones-Aventuras/dp/B0CP5L27Y7" target="_blank" class="btn">
+Ver en Amazon
+</a>
+</div>
+</div>
+</div>
+<!-- Libros para relajarte -->
+<div class="libros-subseccion" data-aos="fade-up" data-aos-delay="150">
+<h3>Libros para relajarte</h3>
+<div class="sub-books">
+<div class="book" data-aos="fade-up">
+<img src="images/libro2.jpg" alt="Mandalas y Paisajes" />
+<h3>Mandalas y Paisajes</h3>
+<p>
+Diseños únicos que calman la mente y ayudan a desconectar del estrés.
+</p>
+<a href="https://www.amazon.es/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF?ref_=ast_author_mpb" target="_blank" class="btn">
+Ver en Amazon
+</a>
+</div>
+</div>
+</div>
+<!-- Libros para aprender idiomas -->
+<div class="idiomas-subseccion" data-aos="fade-up" data-aos-delay="300">
+<h3>Libros para aprender idiomas</h3>
+<div class="idioma-list">
+<div class="idioma-item">English</div>
+<div class="idioma-item">Español</div>
+<div class="idioma-item">Deutsch</div>
+<div class="idioma-item">Français</div>
+<div class="idioma-item">中文</div>
+</div>
+</div>
+</div>
+</section>
 
-      window.addEventListener('scroll', animateOnScroll);
-    </script>
-  </body>
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="section" data-aos="fade-up">
+<h2 class="section-title">Testimonios</h2>
+<div class="container testimonials-container">
+<div class="testimonial" data-aos="fade-up">
+<p>
+“Libro para pintar muy original. Un recurso estupendo para trabajar vocabulario y entretener a los peques.”
+</p>
+<strong>- Cliente Amazon</strong>
+</div>
+<div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+<p>
+“Mi hija está encantada con el libro; un producto de calidad. ¡Super recomendado!”
+</p>
+<strong>- Gerard Vázquez</strong>
+</div>
+<div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+<p>
+“Libro ideal para los más pequeños. Además de entretener, enseña sobre profesiones de forma divertida.”
+</p>
+<strong>- Jose Luis</strong>
+</div>
+<div class="testimonial" data-aos="fade-up" data-aos-delay="300">
+<p>
+“Bastante completo para mantener a los niños entretenidos. Dibujos amigables e ideales para niños de 4 o 5 años.”
+</p>
+<strong>- Alberto</strong>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" data-aos="fade-up">
+<h2 class="section-title">Preguntas Frecuentes</h2>
+<div class="container faq-container">
+<div class="faq-item" data-aos="fade-up">
+<h4>¿Para qué edades son recomendados tus libros?</h4>
+<p>
+            Mis libros están diseñados para niños desde 0 hasta 14 años, y también son ideales para adultos que buscan relajarse, inspirarse y estimular su creatividad.
+            Mis libros están diseñados para niños desde 0 hasta 14 años y también son ideales para adultos que buscan relajarse, inspirarse y estimular su creatividad.
+</p>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <h4>¿Puedo usar tus libros en el aula?</h4>
+          <h4>¿Puedo utilizar tus libros en el aula?</h4>
+<p>
+¡Claro que sí! Son herramientas educativas perfectas para fomentar la concentración, mejorar la motricidad y estimular el aprendizaje creativo.
+</p>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+<h4>¿Estás disponible en varios idiomas?</h4>
+<p>
+Publico libros en español, catalán e inglés, y mis libros de idiomas están disponibles en 5 lenguas: English, Español, Deutsch, Français y 中文.
+</p>
+</div>
+<div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+<h4>¿Realizas libros personalizados?</h4>
+<p>
+¡Sí! Si buscas un libro hecho a medida, ponte en contacto conmigo en <strong>Renegarciaeduca@gmail.com</strong> y juntos daremos vida a tu idea.
+</p>
+</div>
+</div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" class="section" data-aos="fade-up">
+<h2 class="section-title">Portafolio</h2>
+<div class="container portfolio-container">
+<div class="portfolio-item" data-aos="fade-up">
+<img src="images/portfolio1.jpg" alt="Detalle de página 1" />
+</div>
+<div class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+<img src="images/portfolio2.jpg" alt="Detalle de página 2" />
+</div>
+<div class="portfolio-video" data-aos="fade-up" data-aos-delay="200">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/ID_DEL_VIDEO" title="Video de presentación" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobremi" class="section" data-aos="fade-up">
+<h2 class="section-title">Sobre mí</h2>
+<div class="container about-me-content">
+<p>
+¡Hola! Soy René Garcia Educa, creador de libros que inspiran, enseñan y entretienen. Mi pasión nació al descubrir que podía usar crayones sin comérmelos, y desde entonces he transformado esa chispa en un universo creativo.
+</p>
+<p>
+          Diseño libros que son mucho más que un pasatiempo: son herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
+          Diseño libros que son mucho más que un pasatiempo: herramientas para aprender, relajarse y explorar la imaginación, tanto para niños como para adultos.
+</p>
+<p>
+Descubre más sobre mi trabajo visitando mi página de autor en Amazon: <a href="https://amazon.com/author/renegarciaeduca" target="_blank">amazon.com/author/renegarciaeduca</a>
+</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer data-aos="fade-up">
+<div class="container">
+<p>&copy; 2025 René Garcia Educa. Todos los derechos reservados.</p>
+</div>
+</footer>
+
+<!-- AOS Library JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({
+duration: 800,
+once: true,
+});
+
+      // Menú móvil: muestra/oculta el menú al hacer clic en el ícono
+      // Menú móvil: despliega/oculta el menú al hacer clic en el ícono
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+menuToggle.addEventListener('click', () => {
+navMenu.classList.toggle('show');
+});
+</script>
+</body>
 </html>
