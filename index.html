@@ -76,6 +76,11 @@
         transition: var(--transition);
       }
 
+      header.scrolled {
+        padding: 0.7rem 0;
+        background: rgba(255,255,255,0.95);
+      }
+
       nav {
         display: flex;
         justify-content: space-between;
@@ -92,7 +97,7 @@
       }
 
       .logo img {
-        height: 60px;
+        height: 180px;
         transition: var(--transition);
       }
 
@@ -107,12 +112,34 @@
         padding: 0.5rem 1rem;
         border-radius: 25px;
         transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: var(--primary-color);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 70%;
       }
 
       .nav-links a:hover {
         background: var(--primary-color);
         color: var(--white);
         transform: translateY(-2px);
+      }
+
+      .nav-links a.active {
+        color: var(--primary-color);
+        font-weight: 600;
       }
 
       .menu-toggle {
@@ -167,6 +194,13 @@
         font-size: 3.2rem;
         line-height: 1.2;
         margin-bottom: 1.5rem;
+        color: var(--text-color);
+      }
+
+      .hero-content h1 span {
+        display: block;
+        margin-top: 15px;
+        font-size: 1.3em;
         background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -195,6 +229,7 @@
         overflow: hidden;
         letter-spacing: 0.5px;
         z-index: 1;
+        cursor: pointer;
       }
 
       .btn::before {
@@ -457,10 +492,174 @@
         }
       }
 
+      /* Preloader */
+      .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .preloader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(107, 76, 230, 0.2);
+        border-radius: 50%;
+        border-top-color: var(--primary-color);
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Formulario de contacto */
+      .contact-form {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(107, 76, 230, 0.1);
+      }
+
+      textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(107, 76, 230, 0.3);
+      }
+
+      .submit-btn:hover {
+        background: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(107, 76, 230, 0.4);
+      }
+
+      /* Carrusel de libros */
+      .books-carousel {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem 0;
+      }
+
+      .carousel-container {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .carousel-item {
+        flex: 0 0 300px;
+        margin: 0 15px;
+      }
+
+      .carousel-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 1rem;
+      }
+
+      .carousel-control {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--white);
+        border: 1px solid var(--primary-color);
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .carousel-control:hover {
+        background: var(--primary-color);
+        color: var(--white);
+      }
+
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+        gap: 0.5rem;
+      }
+
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #ddd;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .carousel-dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
     </style>
   </head>
   <body>
-    <header>
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+
+    <header id="header">
       <nav>
         <div class="logo">
           <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
@@ -468,15 +667,15 @@
         </div>
         <div class="menu-toggle" id="menu-toggle">☰</div>
         <div class="nav-links">
-          <a href="#libros">Libros</a>
-          <a href="#testimonios">Testimonios</a>
-          <a href="#contacto">Contacto</a>
+          <a href="#libros" class="nav-link">Libros</a>
+          <a href="#testimonios" class="nav-link">Testimonios</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
         </div>
       </nav>
     </header>
     <div class="hero">
       <div class="hero-content" data-aos="fade-up">
-        <h1>Bienvenido al mundo de:<br><span style="display: block; margin-top: 10px; font-size: 1.2em; animation: float 4s ease-in-out infinite;">René Garcia Educa</span></h1>
+        <h1>Bienvenido al mundo de<br><span style="animation: float 4s ease-in-out infinite;">René Garcia Educa</span></h1>
         <p>Libros para colorear, aprender y relajarte.</p>
         <a href="#libros" class="btn">Explorar Libros</a>
       </div>
@@ -484,41 +683,58 @@
     <section id="libros">
       <h2 class="section-title" data-aos="fade-down">Nuestros Libros</h2>
       <div class="container">
-        <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-          
-          <div class="book" data-aos="fade-up" style="width: 300px;">
-            <div class="book-badge">Bestseller</div>
-            <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Libro de Mandalas para Colorear" />
-            <div class="book-content">
-              <h3>Mandalas para Colorear</h3>
-              <p>100 diseños relajantes para adultos. Perfectos para reducir el estrés y la ansiedad.</p>
-              <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNHVHZS" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+        <div class="books-carousel" data-aos="fade-up">
+          <div class="carousel-container">
+            <div class="carousel-item">
+              <div class="book">
+                <div class="book-badge">Bestseller</div>
+                <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Libro de Mandalas para Colorear" />
+                <div class="book-content">
+                  <h3>Mandalas para Colorear</h3>
+                  <p>100 diseños relajantes para adultos. Perfectos para reducir el estrés y la ansiedad.</p>
+                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
+                  <a href="https://www.amazon.es/dp/B0CQNHVHZS" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-item">
+              <div class="book">
+                <div class="book-badge">Niños</div>
+                <img src="https://m.media-amazon.com/images/I/61Tn1yUr9nL._SY466_.jpg" alt="Libro de Animales para Colorear" />
+                <div class="book-content">
+                  <h3>Animales para Colorear</h3>
+                  <p>50 diseños de animales salvajes y domésticos para niños y adultos.</p>
+                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
+                  <a href="https://www.amazon.es/dp/B0CQNJ6QQZ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-item">
+              <div class="book">
+                <div class="book-badge">Nuevo</div>
+                <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Flores para Colorear" />
+                <div class="book-content">
+                  <h3>Flores para Colorear</h3>
+                  <p>75 diseños florales detallados para relajación y creatividad.</p>
+                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
+                  <a href="https://www.amazon.es/dp/B0CQNHVHZR" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                </div>
+              </div>
             </div>
           </div>
           
-          <div class="book" data-aos="fade-up" data-aos-delay="100" style="width: 300px;">
-            <div class="book-badge">Niños</div>
-            <img src="https://m.media-amazon.com/images/I/61Tn1yUr9nL._SY466_.jpg" alt="Libro de Animales para Colorear" />
-            <div class="book-content">
-              <h3>Animales para Colorear</h3>
-              <p>50 diseños de animales salvajes y domésticos para niños y adultos.</p>
-              <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNJ6QQZ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-            </div>
+          <div class="carousel-controls">
+            <button class="carousel-control prev-btn">&lt;</button>
+            <button class="carousel-control next-btn">&gt;</button>
           </div>
           
-          <div class="book" data-aos="fade-up" data-aos-delay="200" style="width: 300px;">
-            <div class="book-badge">Nuevo</div>
-            <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Flores para Colorear" />
-            <div class="book-content">
-              <h3>Flores para Colorear</h3>
-              <p>75 diseños florales detallados para relajación y creatividad.</p>
-              <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-              <a href="https://www.amazon.es/dp/B0CQNHVHZR" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-            </div>
+          <div class="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
           </div>
-          
         </div>
       </div>
     </section>
@@ -559,25 +775,63 @@
     <section id="contacto">
       <h2 class="section-title" data-aos="fade-down">Contacto</h2>
       <div class="container">
-        <div style="max-width: 600px; margin: 0 auto; text-align: center;" data-aos="fade-up">
-          <p style="font-size: 1.2rem; margin-bottom: 30px;">¿Tienes alguna pregunta o sugerencia? ¡Nos encantaría saber de ti!</p>
-          
-          <div style="margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 10px;">Correo Electrónico</h3>
-            <a href="mailto:contacto@renegarcia.com" style="color: var(--text-color); font-size: 1.1rem;">contacto@renegarcia.com</a>
-          </div>
-          
-          <div style="margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 10px;">Redes Sociales</h3>
-            <div style="display: flex; justify-content: center; gap: 20px;">
-              <a href="https://instagram.com/renegarcia_educa" target="_blank" style="font-size: 1.1rem;">Instagram</a>
-              <a href="https://facebook.com/renegarcia.educa" target="_blank" style="font-size: 1.1rem;">Facebook</a>
-              <a href="https://twitter.com/renegarcia_edu" target="_blank" style="font-size: 1.1rem;">Twitter</a>
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px;">
+          <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+            <div style="background: var(--white); padding: 2rem; border-radius: 15px; box-shadow: var(--shadow);">
+              <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.5rem;">Información de Contacto</h3>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--primary-color); margin-bottom: 10px; font-size: 1.1rem;">Correo Electrónico</h4>
+                <a href="mailto:renegarciaeduca@gmail.com" style="color: var(--text-color); font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                  <span style="display: inline-block; width: 24px; height: 24px; background: var(--primary-color); border-radius: 50%; color: var(--white); text-align: center; line-height: 24px; font-size: 12px;">✉</span>
+                  renegarciaeduca@gmail.com
+                </a>
+              </div>
+              
+              <div style="margin-bottom: 20px;">
+                <h4 style="color: var(--primary-color); margin-bottom: 10px; font-size: 1.1rem;">Redes Sociales</h4>
+                <div style="display: flex; gap: 15px;">
+                  <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="display: flex; align-items: center; gap: 10px; color: var(--text-color);">
+                    <span style="display: inline-block; width: 24px; height: 24px; background: var(--primary-color); border-radius: 50%; color: var(--white); text-align: center; line-height: 24px; font-size: 12px;">IG</span>
+                    Instagram
+                  </a>
+                  <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="display: flex; align-items: center; gap: 10px; color: var(--text-color);">
+                    <span style="display: inline-block; width: 24px; height: 24px; background: var(--primary-color); border-radius: 50%; color: var(--white); text-align: center; line-height: 24px; font-size: 12px;">IN</span>
+                    LinkedIn
+                  </a>
+                </div>
+              </div>
+              
+              <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">Estaré encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
             </div>
           </div>
           
-          <div style="margin-top: 40px;">
-            <p>© 2023 René Garcia Educa. Todos los derechos reservados.</p>
+          <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+            <form class="contact-form" id="contactForm">
+              <h3 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.5rem;">Envíame un mensaje</h3>
+              
+              <div class="form-group">
+                <label for="name" class="form-label">Nombre</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="subject" class="form-label">Asunto</label>
+                <input type="text" id="subject" name="subject" class="form-control" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea id="message" name="message" class="form-control" required></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
           </div>
         </div>
       </div>
@@ -605,9 +859,8 @@
           <div style="flex: 1; min-width: 250px;" data-aos="fade-left">
             <h3 style="margin-bottom: 20px; font-size: 1.5rem; position: relative; display: inline-block;">Síguenos</h3>
             <div style="display: flex; gap: 20px;">
-              <a href="https://instagram.com/renegarcia_educa" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
-              <a href="https://facebook.com/renegarcia.educa" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">FB</a>
-              <a href="https://twitter.com/renegarcia_edu" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">TW</a>
+              <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
+              <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IN</a>
             </div>
           </div>
           
@@ -618,6 +871,27 @@
         </div>
       </div>
     </footer>
+    
+    <!-- Política de Privacidad y Aviso Legal -->
+    <div style="background: #f8f9fa; padding: 40px 0; font-size: 0.9rem; color: #666;">
+      <div class="container">
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <h3 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--primary-color);">Política de Privacidad y Aviso Legal</h3>
+          
+          <p style="margin-bottom: 15px;">En René Garcia Educa, respetamos su privacidad y nos comprometemos a proteger sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web y le informará sobre sus derechos de privacidad y cómo la ley lo protege.</p>
+          
+          <p style="margin-bottom: 15px;">Nuestro sitio web utiliza cookies para mejorar su experiencia mientras navega por él. Las cookies son pequeños archivos de texto almacenados en su dispositivo que nos ayudan a analizar cómo los usuarios utilizan nuestro sitio.</p>
+          
+          <p style="margin-bottom: 15px;">La información personal que podemos recopilar a través de formularios de contacto se utiliza únicamente para responder a sus consultas y no se comparte con terceros sin su consentimiento explícito, excepto cuando sea requerido por ley.</p>
+          
+          <p style="margin-bottom: 15px;">Todos los contenidos de este sitio web, incluyendo textos, gráficos, logotipos, iconos, imágenes, clips de audio y software, son propiedad de René Garcia Educa y están protegidos por las leyes de propiedad intelectual nacionales e internacionales.</p>
+          
+          <p style="margin-bottom: 15px;">Al utilizar este sitio web, usted acepta esta política de privacidad y aviso legal. Nos reservamos el derecho de modificar esta política en cualquier momento, por lo que le recomendamos revisarla periódicamente.</p>
+          
+          <p style="margin-top: 30px; text-align: center; font-size: 0.8rem;">© 2025 René Garcia Educa. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </div>
     
     <!-- Botón Volver Arriba -->
     <a href="#" id="back-to-top" style="
@@ -643,6 +917,16 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+      // Preloader
+      window.addEventListener('load', function() {
+        const preloader = document.querySelector('.preloader');
+        preloader.classList.add('fade-out');
+        
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 500);
+      });
+
       // Inicialización mejorada de AOS
       AOS.init({
         duration: 1000,
@@ -682,12 +966,44 @@
         const header = document.querySelector('header');
         const currentScroll = window.pageYOffset;
         
-        if (currentScroll > lastScroll) {
+        // Añadir clase scrolled al header cuando se hace scroll
+        if (currentScroll > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        
+        // Ocultar/mostrar header al hacer scroll
+        if (currentScroll > lastScroll && currentScroll > 200) {
           header.style.transform = 'translateY(-100%)';
         } else {
           header.style.transform = 'translateY(0)';
         }
         lastScroll = currentScroll;
+      });
+
+      // Activar link de navegación según la sección visible
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        let current = '';
+        
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          
+          if (pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+          }
+        });
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
+          }
+        });
       });
 
       // Lazy loading para imágenes
@@ -743,6 +1059,70 @@
           top: 0,
           behavior: 'smooth'
         });
+      });
+
+      // Carrusel de libros
+      const carousel = document.querySelector('.carousel-container');
+      const carouselItems = document.querySelectorAll('.carousel-item');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      const dots = document.querySelectorAll('.carousel-dot');
+      
+      let currentIndex = 0;
+      const itemWidth = 330; // Ancho del item + margen
+      
+      function updateCarousel() {
+        carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+        
+        // Actualizar dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        currentIndex = Math.max(currentIndex - 1, 0);
+        updateCarousel();
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        currentIndex = Math.min(currentIndex + 1, carouselItems.length - 1);
+        updateCarousel();
+      });
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+      });
+
+      // Formulario de contacto
+      const contactForm = document.getElementById('contactForm');
+      
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Aquí normalmente enviarías los datos a un servidor
+        // Por ahora, solo mostraremos un mensaje de éxito
+        
+        const formData = new FormData(contactForm);
+        let formValues = {};
+        
+        for (let [key, value] of formData.entries()) {
+          formValues[key] = value;
+        }
+        
+        console.log('Formulario enviado:', formValues);
+        
+        // Mostrar mensaje de éxito
+        contactForm.innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">✓</div>
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¡Mensaje Enviado!</h3>
+            <p>Gracias por contactarme. Te responderé lo antes posible.</p>
+          </div>
+        `;
       });
     </script>
   </body>
