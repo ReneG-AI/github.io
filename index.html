@@ -461,6 +461,7 @@
         opacity: 1;
       }
 
+      /* Mejora de la línea bajo los títulos */
       .section-title {
         font-size: 2.5rem;
         text-align: center;
@@ -474,20 +475,91 @@
         position: absolute;
         bottom: -10px;
         left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--accent-color);
-        border-radius: 2px;
+        transition: width 0.5s ease;
+        border-radius: 3px;
+        background-size: 200% 100%;
+        animation: gradientMove 3s ease infinite;
       }
 
-      .section-subtitle {
-        text-align: center;
-        max-width: 700px;
-        margin: -2rem auto 3rem;
-        color: var(--text-color);
-        opacity: 0.8;
-        font-size: 1.1rem;
+      section:hover .section-title::after {
+        width: 120px;
+      }
+
+      @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Elementos decorativos elegantes para el fondo */
+      .decoration {
+        position: absolute;
+        z-index: -1;
+        opacity: 0.03;
+        pointer-events: none;
+      }
+
+      .decoration-dots {
+        background-image: radial-gradient(var(--primary-color) 2px, transparent 2px);
+        background-size: 30px 30px;
+        width: 300px;
+        height: 300px;
+      }
+
+      .decoration-lines {
+        width: 400px;
+        height: 400px;
+        background: repeating-linear-gradient(
+          45deg,
+          var(--primary-color),
+          var(--primary-color) 1px,
+          transparent 1px,
+          transparent 10px
+        );
+      }
+
+      .decoration-circles {
+        width: 500px;
+        height: 500px;
+      }
+
+      .decoration-circles::before,
+      .decoration-circles::after {
+        content: '';
+        position: absolute;
+        border: 2px solid var(--primary-color);
+        border-radius: 50%;
+      }
+
+      .decoration-circles::before {
+        width: 100%;
+        height: 100%;
+        animation: pulse 4s ease-out infinite;
+      }
+
+      .decoration-circles::after {
+        width: 70%;
+        height: 70%;
+        top: 15%;
+        left: 15%;
+        animation: pulse 4s ease-out infinite 1s;
+      }
+
+      .decoration-wave {
+        width: 600px;
+        height: 200px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%233F51B5' opacity='0.2'%3E%3C/path%3E%3C/svg%3E");
+        background-size: cover;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.8; }
+        100% { transform: scale(1); opacity: 1; }
       }
 
       /* CARDS MEJORADAS */
@@ -862,6 +934,35 @@
         box-shadow: 0 6px 20px rgba(107, 76, 230, 0.4);
       }
 
+      /* Mejorar los enlaces del footer */
+      footer ul li a {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+        transition: var(--transition);
+      }
+
+      footer ul li a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, var(--accent-color), var(--white));
+        transition: width 0.3s ease;
+        border-radius: 2px;
+      }
+
+      footer ul li a:hover::after {
+        width: 100%;
+      }
+
+      footer ul li a:hover {
+        opacity: 1;
+        transform: translateX(5px);
+      }
+
     </style>
   </head>
   <body>
@@ -966,8 +1067,8 @@
           <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos mis libros en Amazon</a>
         </div>
       </div>
-      <div class="bg-shape-1"></div>
-      <div class="bg-shape-2"></div>
+      <div class="decoration decoration-dots" style="top: 10%; right: 5%;"></div>
+      <div class="decoration decoration-circles" style="bottom: 15%; left: 5%;"></div>
     </section>
     <section id="testimonios">
       <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
@@ -1003,7 +1104,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-shape-3"></div>
+      <div class="decoration decoration-lines" style="top: 20%; left: 5%;"></div>
     </section>
     <section id="contacto">
       <h2 class="section-title" data-aos="fade-down">Contacto</h2>
@@ -1063,11 +1164,11 @@
           </div>
         </div>
       </div>
-      <div class="bg-shape-4"></div>
+      <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
     </section>
     
     <footer style="background: var(--primary-color); color: var(--white); padding: 70px 0 20px 0; margin-top: 70px; position: relative; overflow: hidden;">
-      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color), var(--secondary-color), var(--accent-color)); background-size: 500% 100%; animation: gradientText 10s linear infinite;"></div>
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color)); background-size: 500% 100%; animation: gradientText 10s linear infinite;"></div>
       <div class="container">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 50px;">
           
@@ -1087,7 +1188,7 @@
           <div style="flex: 1; min-width: 250px;" data-aos="fade-up">
             <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Enlaces Rápidos</h3>
             <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 15px;"><a href="#libros" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Nuestros Libros</a></li>
+              <li style="margin-bottom: 15px;"><a href="#libros" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Mis Libros</a></li>
               <li style="margin-bottom: 15px;"><a href="#testimonios" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Testimonios</a></li>
               <li style="margin-bottom: 15px;"><a href="#contacto" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Contacto</a></li>
               <li style="margin-bottom: 15px;"><a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Amazon Store</a></li>
