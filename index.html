@@ -8,23 +8,31 @@
       name="description"
       content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
     />
-    <!-- Google Fonts -->
+    <!-- Preconexiones -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    
     <!-- AOS Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- Font Awesome - con carga optimizada -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- CSS Propio -->
     <link rel="stylesheet" href="assets/css/styles.css" />
 
+    <!-- Favicon -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <meta name="theme-color" content="#6B4CE6">
     
     <!-- Open Graph para compartir en redes sociales -->
     <meta property="og:title" content="René Garcia Educa – Libros para Colorear, Aprender y Relajarte" />
@@ -32,6 +40,10 @@
     <meta property="og:image" content="assets/images/og-image.jpg" />
     <meta property="og:url" content="https://renegarciaeduca.com/" />
     <meta property="og:type" content="website" />
+    
+    <!-- Optimización de SEO -->
+    <meta name="author" content="René García">
+    <meta name="keywords" content="libros para colorear, educación, arte, creatividad, aprendizaje, idiomas, español, inglés, catalán, libros educativos">
   </head>
   <body class="dark-mode">
     <!-- Preloader -->
@@ -48,7 +60,7 @@
     <header id="header">
       <nav class="container">
         <div class="logo">
-          <img src="assets/images/Logo.png" alt="Logo de René Garcia Educa" />
+          <img src="assets/images/Logo.png" alt="Logo de René Garcia Educa" width="60" height="60" />
           <span>René Garcia Educa</span>
         </div>
         <div class="menu-toggle" id="menu-toggle">☰</div>
@@ -80,8 +92,8 @@
               <div class="book">
                 <div class="book-badge">Multilingüe</div>
                 <div class="book-image-container">
-                  <img src="assets/images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" />
-                  <div class="magnifier">ðŸ"</div>
+                  <img src="assets/images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" loading="lazy" width="350" height="480" />
+                  <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
                   <h3>Aprende 5 Idiomas Coloreando</h3>
@@ -96,8 +108,8 @@
               <div class="book">
                 <div class="book-badge">Bilingüe</div>
                 <div class="book-image-container">
-                  <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" />
-                  <div class="magnifier">ðŸ"</div>
+                  <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" loading="lazy" width="350" height="480" />
+                  <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
                   <h3>Aprende más de 40 animales para colorear</h3>
@@ -113,7 +125,7 @@
                 <div class="book-badge">Relajación</div>
                 <div class="book-image-container">
                   <img src="assets/images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
-                  <div class="magnifier">ðŸ"</div>
+                  <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
                   <h3>Mandalas con Mascotas Chibis</h3>

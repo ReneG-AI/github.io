@@ -6,7 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
-    initAOS();
+    
+    // Inicializar AOS con un retraso para mejor rendimiento
+    if (typeof AOS !== 'undefined') {
+        // Retrasar la inicialización de AOS para mejorar el rendimiento en carga inicial
+        setTimeout(function() {
+            initAOS();
+        }, 100);
+    }
+    
     initBackToTop();
 });
 
@@ -29,7 +37,7 @@ function initDarkModeToggle() {
     if (!darkModeToggle) return;
     
     // Añadimos transición al body para una animación suave al cambiar de modo
-    document.body.style.transition = "background-color 0.5s ease, color 0.5s ease";
+    document.body.style.transition = "background-color 0.3s ease, color 0.3s ease";
     
     // Verificar preferencia guardada en localStorage
     // Si no hay preferencia guardada, usamos modo oscuro por defecto
@@ -115,6 +123,12 @@ function initMobileMenu() {
         // Si se redimensiona a escritorio, cerrar el menú móvil
         if (window.innerWidth > 1024 && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
+        }
+        
+        // Asegurar que el menú siempre esté visible en escritorio, sin importar el estado anterior
+        if (window.innerWidth > 1024) {
+            navLinks.classList.remove('active');
+            navLinks.style.right = '';  // Resetear cualquier estilo inline
         }
     });
 }
