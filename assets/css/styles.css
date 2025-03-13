@@ -535,6 +535,7 @@ footer {
 .footer-logo img {
   height: 60px;
   width: auto;
+  transition: filter 0.3s ease;
 }
 
 .footer-logo h3 {
@@ -825,4 +826,8 @@ body.light-mode .amazon-btn {
 
 body.light-mode .amazon-btn:hover {
   background-color: rgba(255, 153, 0, 0.3);
+}
+
+body.dark-mode .footer-logo img {
+  filter: brightness(0) invert(1);
 } 
