@@ -163,18 +163,27 @@ header.scrolled .logo img {
 
 /* HERO SECTION */
 .hero {
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(
     rgba(107, 76, 230, 0.05),
     rgba(155, 122, 255, 0.05)
   ),
-  url('../images/Banner.png') no-repeat center center/cover;
+  url('../images/Banner.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   padding-top: 70px;
   margin-top: 0;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  box-sizing: border-box;
 }
 
 .hero::before {
@@ -484,23 +493,106 @@ footer {
   overflow: hidden;
 }
 
-footer h3 {
+.footer-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color));
+  background-size: 500% 100%;
+  animation: gradientText 10s linear infinite;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-heading {
   margin-bottom: 25px;
   font-size: 1.4rem;
   position: relative;
   display: inline-block;
 }
 
-footer ul {
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-logo img {
+  height: 60px;
+  width: auto;
+}
+
+.footer-logo h3 {
+  font-size: 1.6rem;
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  font-weight: 600;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 5s ease infinite;
+  background-size: 200% 200%;
+}
+
+.footer-description {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.social-icon {
+  color: var(--footer-text);
+  font-size: 1.1rem;
+  opacity: 0.9;
+  transition: var(--transition);
+  background: rgba(255,255,255,0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  background: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.footer-links {
   list-style: none;
   padding: 0;
 }
 
-footer ul li {
+.footer-links li {
   margin-bottom: 15px;
 }
 
-footer ul li a {
+.footer-links li a {
   color: var(--footer-text);
   opacity: 0.9;
   transition: var(--transition);
@@ -510,25 +602,59 @@ footer ul li a {
   overflow: hidden;
 }
 
-footer ul li a::after {
+.footer-links li a::after {
   content: '';
   position: absolute;
-  width: 0;
-  height: 2px;
   bottom: 0;
   left: 0;
-  background: linear-gradient(90deg, var(--accent-color), var(--white));
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-footer ul li a:hover::after {
   width: 100%;
+  height: 1px;
+  background: var(--accent-color);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
-footer ul li a:hover {
-  opacity: 1;
-  transform: translateX(5px);
+.footer-links li a:hover::after {
+  transform: translateX(0);
+}
+
+.footer-links li a:hover {
+  color: var(--accent-color);
+}
+
+.footer-contact-link {
+  color: var(--footer-text);
+  opacity: 0.9;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.footer-contact-link:hover {
+  color: var(--accent-color);
+}
+
+.contact-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom p {
+  opacity: 0.8;
 }
 
 /* AJUSTES PARA MODO OSCURO/CLARO */
