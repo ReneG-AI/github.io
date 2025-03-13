@@ -161,6 +161,11 @@ header.scrolled .logo img {
   background: var(--accent-color);
 }
 
+/* Ocultar el menú hamburguesa en pantallas grandes */
+.menu-toggle {
+  display: none;
+}
+
 /* HERO SECTION */
 .hero {
   width: 100vw;
