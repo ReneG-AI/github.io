@@ -141,8 +141,6 @@ function initHeaderScroll() {
     const header = document.querySelector('header');
     if (!header) return;
     
-    let lastScrollTop = 0;
-    
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
@@ -153,22 +151,8 @@ function initHeaderScroll() {
             header.classList.remove('scrolled');
         }
         
-        // En móviles, mantener el encabezado visible
-        if (window.innerWidth <= 768) {
-            header.style.transform = 'translateY(0)';
-            return;
-        }
-        
-        // Ocultar/mostrar encabezado al desplazarse hacia arriba/abajo
-        if (scrollTop > lastScrollTop && scrollTop > 200) {
-            // Desplazamiento hacia abajo
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Desplazamiento hacia arriba
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
+        // Siempre mantener el header visible
+        header.style.transform = 'translateY(0)';
     });
 }
 
