@@ -88,16 +88,16 @@
       }
 
       .logo {
-        font-size: 1.8rem;
+        font-size: 2.5rem;
         font-weight: 700;
         color: var(--primary-color);
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .logo img {
-        height: 80px;
+        height: 160px;
         transition: var(--transition);
       }
 
@@ -487,6 +487,15 @@
 
       section:hover .section-title::after {
         width: 120px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        max-width: 700px;
+        margin: -2rem auto 3rem;
+        color: var(--text-color);
+        opacity: 0.8;
+        font-size: 1.1rem;
       }
 
       @keyframes gradientMove {
@@ -963,12 +972,112 @@
         transform: translateX(5px);
       }
 
+      /* Modo oscuro */
+      :root {
+        --primary-color: #3F51B5;
+        --secondary-color: #7986CB;
+        --accent-color: #FF9800;
+        --text-color: #263238;
+        --bg-color: #F5F7FA;
+        --white: #FFFFFF;
+        --card-bg: #FFFFFF;
+        --footer-bg: #3F51B5;
+        --footer-text: #FFFFFF;
+        --legal-bg: #f8f9fa;
+        --legal-text: #666;
+        --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body.dark-mode {
+        --primary-color: #5C6BC0;
+        --secondary-color: #9FA8DA;
+        --accent-color: #FFB74D;
+        --text-color: #E0E0E0;
+        --bg-color: #121212;
+        --white: #1E1E1E;
+        --card-bg: #2D2D2D;
+        --footer-bg: #1A1A2E;
+        --footer-text: #E0E0E0;
+        --legal-bg: #1E1E1E;
+        --legal-text: #BBBBBB;
+        --shadow: 0 4px 6px rgba(0,0,0,0.3);
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        scroll-behavior: smooth;
+        line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .book, 
+      .testimonial,
+      .hero-content,
+      .contact-card {
+        background: var(--card-bg);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* Botón de modo oscuro */
+      .dark-mode-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1001;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .dark-mode-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      .dark-mode-toggle i {
+        font-size: 1.5rem;
+      }
+
+      .dark-mode-toggle .sun {
+        display: none;
+      }
+
+      .dark-mode-toggle .moon {
+        display: block;
+      }
+
+      body.dark-mode .dark-mode-toggle .sun {
+        display: block;
+      }
+
+      body.dark-mode .dark-mode-toggle .moon {
+        display: none;
+      }
+
     </style>
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   </head>
   <body>
     <!-- Preloader -->
     <div class="preloader">
       <div class="loader"></div>
+    </div>
+
+    <!-- Botón de modo oscuro -->
+    <div class="dark-mode-toggle" id="darkModeToggle">
+      <i class="fas fa-moon moon"></i>
+      <i class="fas fa-sun sun"></i>
     </div>
 
     <header id="header">
@@ -1006,7 +1115,7 @@
               <div class="book">
                 <div class="book-badge">Multilingüe</div>
                 <div class="book-image-container">
-                  <img src="https://m.media-amazon.com/images/I/61DjCZ0YfIL._SY466_.jpg" alt="Learn English, Spanish, German, French, and Chinese" />
+                  <img src="images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" />
                   <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
@@ -1020,15 +1129,15 @@
             
             <div class="carousel-item">
               <div class="book">
-                <div class="book-badge">English</div>
+                <div class="book-badge">Bilingüe</div>
                 <div class="book-image-container">
-                  <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Coloring book of chibi animals and learning" />
+                  <img src="images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" />
                   <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
-                  <h3>Chibi Animals Coloring</h3>
+                  <h3>Aprende más de 40 animales para colorear</h3>
                   <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
-                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Inglés</p>
+                  <p style="margin-top: 15px;"><strong>Idiomas:</strong> Español, Inglés</p>
                   <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
                 </div>
               </div>
@@ -1038,7 +1147,7 @@
               <div class="book">
                 <div class="book-badge">Relajación</div>
                 <div class="book-image-container">
-                  <img src="https://m.media-amazon.com/images/I/61oHCZUaSQL._SY466_.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
+                  <img src="images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
                   <div class="magnifier">🔍</div>
                 </div>
                 <div class="book-content">
@@ -1167,7 +1276,7 @@
       <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
     </section>
     
-    <footer style="background: var(--primary-color); color: var(--white); padding: 70px 0 20px 0; margin-top: 70px; position: relative; overflow: hidden;">
+    <footer style="background: var(--footer-bg); color: var(--footer-text); padding: 70px 0 20px 0; margin-top: 70px; position: relative; overflow: hidden;">
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color)); background-size: 500% 100%; animation: gradientText 10s linear infinite;"></div>
       <div class="container">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; margin-bottom: 50px;">
@@ -1179,26 +1288,26 @@
             </div>
             <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">Libros educativos y de entretenimiento para todas las edades. Diseñados para inspirar la creatividad y fomentar el aprendizaje.</p>
             <div style="display: flex; gap: 15px; margin-top: 25px;">
-              <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
-              <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IN</a>
-              <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="color: var(--white); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">A</a>
+              <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="color: var(--footer-text); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
+              <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="color: var(--footer-text); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IN</a>
+              <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="color: var(--footer-text); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">A</a>
             </div>
           </div>
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-up">
             <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Enlaces Rápidos</h3>
             <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 15px;"><a href="#libros" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Mis Libros</a></li>
-              <li style="margin-bottom: 15px;"><a href="#testimonios" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Testimonios</a></li>
-              <li style="margin-bottom: 15px;"><a href="#contacto" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Contacto</a></li>
-              <li style="margin-bottom: 15px;"><a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Amazon Store</a></li>
+              <li style="margin-bottom: 15px;"><a href="#libros" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Mis Libros</a></li>
+              <li style="margin-bottom: 15px;"><a href="#testimonios" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Testimonios</a></li>
+              <li style="margin-bottom: 15px;"><a href="#contacto" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Contacto</a></li>
+              <li style="margin-bottom: 15px;"><a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Amazon Store</a></li>
             </ul>
           </div>
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-left">
             <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Contacto</h3>
             <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">¿Tienes alguna pregunta o sugerencia? No dudes en contactarme.</p>
-            <a href="mailto:renegarciaeduca@gmail.com" style="color: var(--white); opacity: 0.9; transition: var(--transition); display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <a href="mailto:renegarciaeduca@gmail.com" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
               <span style="display: inline-block; width: 24px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 50%; text-align: center; line-height: 24px; font-size: 12px;">✉</span>
               renegarciaeduca@gmail.com
             </a>
@@ -1214,13 +1323,13 @@
     </footer>
     
     <!-- Política de Privacidad y Aviso Legal -->
-    <div style="background: #f8f9fa; padding: 30px 0; font-size: 0.9rem; color: #666;">
+    <div style="background: var(--legal-bg); padding: 30px 0; font-size: 0.9rem; color: var(--legal-text);">
       <div class="container">
         <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-          <a href="#" style="color: var(--text-color); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Condiciones de uso</a>
-          <a href="#" style="color: var(--text-color); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de privacidad</a>
-          <a href="#" style="color: var(--text-color); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de Privacidad de Datos del Consumidor</a>
-          <a href="#" style="color: var(--text-color); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Opciones de privacidad de anuncios</a>
+          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Condiciones de uso</a>
+          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de privacidad</a>
+          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de Privacidad de Datos del Consumidor</a>
+          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Opciones de privacidad de anuncios</a>
         </div>
         <div style="text-align: center; margin-top: 20px;">
           <p style="opacity: 0.6; font-size: 0.8rem;">© 2020-2025 René Garcia Educa. Todos los derechos reservados.</p>
@@ -1260,6 +1369,25 @@
         setTimeout(() => {
           preloader.style.display = 'none';
         }, 500);
+      });
+
+      // Modo oscuro
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      
+      // Verificar si hay una preferencia guardada
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+      
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Guardar preferencia
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
       });
 
       // Inicialización mejorada de AOS
