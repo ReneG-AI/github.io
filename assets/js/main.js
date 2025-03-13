@@ -28,10 +28,15 @@ function initDarkModeToggle() {
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     if (!darkModeToggle) return;
     
-    // Verificar preferencia guardada en localStorage
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    // Añadimos transición al body para una animación suave al cambiar de modo
+    document.body.style.transition = "background-color 0.5s ease, color 0.5s ease";
     
-    // Aplicar modo oscuro si está guardado
+    // Verificar preferencia guardada en localStorage
+    // Si no hay preferencia guardada, usamos modo oscuro por defecto
+    const hasStoredPreference = localStorage.getItem('darkMode') !== null;
+    const isDarkMode = hasStoredPreference ? localStorage.getItem('darkMode') === 'true' : true;
+    
+    // Aplicar modo según preferencia o predeterminado (oscuro)
     if (isDarkMode) {
         document.body.classList.add('dark-mode');
         document.body.classList.remove('light-mode');
@@ -42,8 +47,16 @@ function initDarkModeToggle() {
         darkModeToggle.classList.remove('active');
     }
     
+    // Si no hay preferencia guardada, guardamos el modo oscuro como predeterminado
+    if (!hasStoredPreference) {
+        localStorage.setItem('darkMode', 'true');
+    }
+    
     // Alternar modo oscuro al hacer clic en el botón
     darkModeToggle.addEventListener('click', function() {
+        // Añadir clase de animación
+        document.body.classList.add('theme-transition');
+        
         if (document.body.classList.contains('dark-mode')) {
             // Cambiar a modo claro
             document.body.classList.remove('dark-mode');
@@ -57,6 +70,11 @@ function initDarkModeToggle() {
             darkModeToggle.classList.add('active');
             localStorage.setItem('darkMode', 'true');
         }
+        
+        // Eliminar clase de animación después de la transición
+        setTimeout(function() {
+            document.body.classList.remove('theme-transition');
+        }, 500);
     });
 }
 
@@ -167,7 +185,7 @@ function initAOS() {
 
 // Botón volver arriba
 function initBackToTop() {
-    const backToTopBtn = document.querySelector('.back-to-top');
+    const backToTopBtn = document.querySelector('#back-to-top');
     if (!backToTopBtn) return;
     
     window.addEventListener('scroll', function() {

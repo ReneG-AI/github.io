@@ -89,7 +89,9 @@ header.scrolled .logo img {
 
 .logo span {
   background: var(--logo-text-color);
+  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 200%;
   animation: gradientText 5s ease infinite;
@@ -185,7 +187,7 @@ header.scrolled .logo img {
   margin-top: 30px;
   margin-left: 5%;
   transform: translateY(0);
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, background 0.3s ease;
 }
 
 .hero-content h1 {
@@ -193,6 +195,7 @@ header.scrolled .logo img {
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: var(--text-color);
+  transition: color 0.3s ease;
 }
 
 .hero-content h1 span {
@@ -200,7 +203,9 @@ header.scrolled .logo img {
   margin-top: 15px;
   font-size: 1.3em;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientText 3s ease infinite;
   background-size: 200% 200%;
@@ -211,6 +216,19 @@ header.scrolled .logo img {
   color: var(--text-color);
   margin-bottom: 2rem;
   opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+/* Estilos específicos para el hero en modo oscuro */
+body.dark-mode .hero-content {
+  background: linear-gradient(145deg, rgba(30,30,46,0.85), rgba(40,40,60,0.85));
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 1px solid rgba(80,80,160,0.1);
+}
+
+body.dark-mode .hero-content h1,
+body.dark-mode .hero-content p {
+  color: #e0e0e0;
 }
 
 /* SECCIONES */
@@ -248,7 +266,9 @@ section:nth-child(even)::before {
   color: var(--primary-color);
   position: relative;
   background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
+  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   animation: gradientMove 3s ease infinite;
@@ -350,10 +370,41 @@ section:hover .section-title::after {
   animation: pulse 4s ease-out infinite 1s;
 }
 
+/* ANIMACIONES */
 @keyframes pulse {
   0% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.1); opacity: 0.8; }
   100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes morphing {
+  0% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  25% {
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+  50% {
+    border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+  }
+  75% {
+    border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+  }
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
 }
 
 /* EFECTOS PARA IMÁGENES */
@@ -468,6 +519,14 @@ footer ul li a:hover {
 }
 
 /* AJUSTES PARA MODO OSCURO/CLARO */
+body.dark-mode {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body.dark-mode .logo img {
   filter: brightness(0) invert(1);
 }
@@ -484,6 +543,31 @@ body.dark-mode .contact-section-title {
   color: #e0e0e0;
 }
 
+/* Botones en modo oscuro */
+body.dark-mode .btn {
+  box-shadow: 0 4px 15px rgba(107, 99, 255, 0.4);
+}
+
+body.dark-mode .btn:hover {
+  box-shadow: 0 8px 20px rgba(107, 99, 255, 0.5);
+}
+
+body.dark-mode .btn-accent {
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+body.dark-mode .btn-accent:hover {
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+}
+
+/* Ajustes para textos en el pie de página en modo oscuro */
+body.dark-mode footer p,
+body.dark-mode footer li,
+body.dark-mode footer a {
+  color: #e0e0e0;
+}
+
+/* Ajustes para modo claro */
 body.light-mode header {
   background: linear-gradient(to right, rgba(245, 245, 250, 0.85), rgba(250, 250, 255, 0.85), rgba(245, 245, 250, 0.85));
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -521,7 +605,9 @@ body.light-mode .nav-links a:hover {
   margin-bottom: 15px;
   font-size: 1.2rem;
   background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
+  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   animation: gradientMove 3s ease infinite;
@@ -534,8 +620,31 @@ body.light-mode .nav-links a:hover {
   position: relative;
   display: inline-block;
   background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
+  background-clip: text;
   -webkit-background-clip: text;
+  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
   animation: gradientMove 3s ease infinite;
+}
+
+/* Estilos específicos para las tarjetas de contacto en modo oscuro */
+body.dark-mode .contact-card {
+  background: linear-gradient(135deg, #1e1e2e, #2a2a3a);
+  border: 1px solid rgba(80,80,160,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .contact-card:hover {
+  background: linear-gradient(135deg, #2a2a3a, #1e1e2e);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .contact-card a {
+  color: #e0e0e0;
+}
+
+/* Ajuste para íconos en modo oscuro */
+body.dark-mode .contact-card a span {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 } 
