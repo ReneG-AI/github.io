@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RenÃ© Garcia Educa â€“ Libros para Colorear, Aprender y Relajarte</title>
+    <title>René Garcia Educa – Libros para Colorear, Aprender y Relajarte</title>
     <meta
       name="description"
-      content="Descubre los libros para colorear que inspiran, enseÃ±an y entretienen a niÃ±os y adultos. Aprende y relÃ¡jate mientras das vida a cada pÃ¡gina, en espaÃ±ol, catalÃ¡n e inglÃ©s. Â¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
+      content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
     />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -76,7 +76,7 @@
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         transition: all 0.3s ease;
-        height: 80px; /* Altura inicial mÃ¡s grande */
+        height: 80px; /* Altura inicial más grande */
         display: flex;
         align-items: center;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -105,12 +105,12 @@
       }
 
       .logo img {
-        height: 60px; /* Logo mÃ¡s grande */
+        height: 60px; /* Logo más grande */
         transition: var(--transition);
       }
 
       header.scrolled .logo img {
-        height: 40px; /* Logo mÃ¡s pequeÃ±o al hacer scroll */
+        height: 40px; /* Logo más pequeño al hacer scroll */
       }
 
       .logo span {
@@ -123,18 +123,19 @@
 
       .nav-links {
         display: flex;
-        gap: 1.2rem; /* MÃ¡s espacio entre enlaces */
+        gap: 1.2rem; /* Más espacio entre enlaces */
         align-items: center;
       }
 
       .nav-links a {
         font-weight: 600;
         font-size: 1rem;
-        padding: 0.4rem 0; /* Quitar padding horizontal para eliminar el cuadro */
         transition: var(--transition);
         position: relative;
         color: #e0e0e0; /* Color claro para mejor visibilidad en modo oscuro */
         letter-spacing: 0.5px;
+        background: transparent;
+        margin: 0 5px;
       }
 
       .nav-links a::after {
@@ -157,7 +158,7 @@
       }
 
       .nav-links a:hover::after {
-        width: 100%; /* LÃ­nea completa */
+        width: 100%; /* Línea completa */
       }
 
       .nav-links a.active {
@@ -171,12 +172,12 @@
         background: var(--accent-color);
       }
 
-      /* Estilo especial para el botÃ³n de Amazon */
+      /* Estilo especial para el botón de Amazon */
       .nav-links a.amazon-btn {
         background: var(--accent-color);
         color: #000;
         border-radius: 4px;
-        padding: 0.4rem 1rem; /* Mantener padding para el botÃ³n de Amazon */
+        padding: 0.4rem 1rem; /* Mantener padding para el botón de Amazon */
         font-weight: 700;
         transition: all 0.2s ease;
       }
@@ -188,10 +189,10 @@
       }
 
       .nav-links a.amazon-btn::after {
-        display: none; /* Eliminar lÃ­nea inferior para el botÃ³n de Amazon */
+        display: none; /* Eliminar línea inferior para el botón de Amazon */
       }
 
-      /* Ajustar el hero para compensar la barra mÃ¡s grande */
+      /* Ajustar el hero para compensar la barra más grande */
       .hero {
         padding-top: 80px; /* Igual a la altura del header */
       }
@@ -220,9 +221,9 @@
         filter: brightness(0) invert(1); /* Hace que el logo sea blanco en modo oscuro */
       }
 
-      /* Ajustes para los tÃ­tulos en modo oscuro */
+      /* Ajustes para los títulos en modo oscuro */
       body.dark-mode h3 {
-        color: #e0e0e0; /* Color claro para los tÃ­tulos en modo oscuro */
+        color: #e0e0e0; /* Color claro para los títulos en modo oscuro */
       }
 
       body.dark-mode .book h3,
@@ -230,12 +231,12 @@
       body.dark-mode .section-title,
       body.dark-mode .contact-title,
       body.dark-mode .contact-section-title {
-        color: #e0e0e0; /* Asegurar que los tÃ­tulos sean visibles en modo oscuro */
+        color: #e0e0e0; /* Asegurar que los títulos sean visibles en modo oscuro */
       }
 
       
 
-      /* Estilo especial para el botÃ³n de Amazon */
+      /* Estilo especial para el botón de Amazon */
       .nav-links a.amazon-btn {
         background: var(--accent-color);
         color: #000;
@@ -252,10 +253,10 @@
       }
 
       .nav-links a.amazon-btn::after {
-        display: none; /* Eliminar lÃ­nea inferior para el botÃ³n de Amazon */
+        display: none; /* Eliminar línea inferior para el botón de Amazon */
       }
 
-      /* Ajustar el hero para compensar la barra mÃ¡s pequeÃ±a */
+      /* Ajustar el hero para compensar la barra más pequeña */
       .hero {
         min-height: 100vh;
         background: linear-gradient(
@@ -491,7 +492,7 @@
         }
       }
 
-      /* Efecto lupa para imÃ¡genes de libros */
+      /* Efecto lupa para imágenes de libros */
       .book-image-container {
         position: relative;
         overflow: hidden;
@@ -530,7 +531,7 @@
         display: none; /* Ocultar el icono de la lupa */
       }
 
-      /* Mejora de la lÃ­nea bajo los tÃ­tulos */
+      /* Mejora de la línea bajo los títulos */
       .section-title {
         font-size: 2.5rem;
         text-align: center;
@@ -747,7 +748,7 @@
       }
 
       .carousel-item {
-        flex: 0 0 350px; /* Aumentado el ancho para acomodar portadas mÃ¡s grandes */
+        flex: 0 0 350px; /* Aumentado el ancho para acomodar portadas más grandes */
         margin: 0;
         height: 100%;
       }
@@ -910,10 +911,10 @@
           margin: 1rem;
         }
 
-        /* Ajustar el botÃ³n de modo oscuro en mÃ³vil */
+        /* Ajustar el botón de modo oscuro en móvil */
         .dark-mode-toggle {
           top: 20px;
-          right: 70px; /* Posicionado a la izquierda del menÃº toggle */
+          right: 70px; /* Posicionado a la izquierda del menú toggle */
         }
       }
 
@@ -1091,10 +1092,10 @@
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
       }
 
-      /* BotÃ³n de modo oscuro */
+      /* Botón de modo oscuro */
       .dark-mode-toggle {
         position: fixed;
-        top: 80px; /* Ajustado para estar debajo de la barra de navegaciÃ³n */
+        top: 80px; /* Ajustado para estar debajo de la barra de navegación */
         right: 20px;
         width: 35px;
         height: 35px;
@@ -1135,7 +1136,7 @@
         display: block;
       }
 
-      /* BotÃ³n Volver Arriba */
+      /* Botón Volver Arriba */
       #back-to-top {
         position: fixed;
         bottom: 30px;
@@ -1154,6 +1155,7 @@
         visibility: hidden;
         transition: var(--transition);
         z-index: 999;
+        text-decoration: none;
       }
 
       #back-to-top:hover {
@@ -1161,7 +1163,7 @@
         transform: translateY(-3px);
       }
 
-      /* AÃ±adir efecto de gradiente a los titulares de contacto */
+      /* Añadir efecto de gradiente a los titulares de contacto */
       .contact-title {
         margin-bottom: 15px;
         font-size: 1.2rem;
@@ -1182,7 +1184,7 @@
         color: var(--white);
       }
 
-      /* AÃ±adir efecto de lÃ­nea a todos los titulares h3 */
+      /* Añadir efecto de línea a todos los titulares h3 */
       h3 {
         position: relative;
         padding-bottom: 10px;
@@ -1206,7 +1208,7 @@
         width: 100%;
       }
 
-      /* AÃ±adir efecto de gradiente a los titulares h3 */
+      /* Añadir efecto de gradiente a los titulares h3 */
       h3 {
         background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
@@ -1274,7 +1276,7 @@
         background: #ffb74d;
       }
 
-      /* AÃ±adir efecto de gradiente a los titulares h3 de contacto */
+      /* Añadir efecto de gradiente a los titulares h3 de contacto */
       .contact-section-title {
         margin-bottom: 25px;
         font-size: 1.6rem;
@@ -1287,7 +1289,7 @@
         animation: gradientMove 3s ease infinite;
       }
 
-      /* AnimaciÃ³n para el menÃº mÃ³vil */
+      /* Animación para el menú móvil */
       @keyframes slideDown {
         from {
           opacity: 0;
@@ -1314,7 +1316,7 @@
       <div class="loader"></div>
     </div>
 
-    <!-- BotÃ³n de modo oscuro -->
+    <!-- Botón de modo oscuro -->
     <div class="dark-mode-toggle" id="darkModeToggle">
       <i class="fas fa-moon moon"></i>
       <i class="fas fa-sun sun"></i>
@@ -1323,10 +1325,10 @@
     <header id="header">
       <nav class="container">
         <div class="logo">
-          <img src="images/Logo.png" alt="Logo de RenÃ© Garcia Educa" />
-          <span>RenÃ© Garcia Educa</span>
+          <img src="images/Logo.png" alt="Logo de René Garcia Educa" />
+          <span>René Garcia Educa</span>
         </div>
-        <div class="menu-toggle" id="menu-toggle">â˜°</div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
         <div class="nav-links">
           <a href="#libros" class="nav-link">Libros</a>
           <a href="#testimonios" class="nav-link">Testimonios</a>
@@ -1337,8 +1339,8 @@
     </header>
     <div class="hero">
       <div class="hero-content" data-aos="fade-up">
-        <h1>Bienvenido al mundo de<br><span style="animation: float 4s ease-in-out infinite;">RenÃ© Garcia Educa</span></h1>
-        <p>Libros para colorear, aprender y relajarte en mÃºltiples idiomas.</p>
+        <h1>Bienvenido al mundo de<br><span style="animation: float 4s ease-in-out infinite;">René Garcia Educa</span></h1>
+        <p>Libros para colorear, aprender y relajarte en múltiples idiomas.</p>
         <div style="display: flex; gap: 15px; flex-wrap: wrap;">
           <a href="#libros" class="btn">Explorar Libros</a>
           <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Visitar Amazon</a>
@@ -1347,20 +1349,20 @@
     </div>
     <section id="libros">
       <h2 class="section-title" data-aos="fade-down">Mis Libros</h2>
-      <p class="section-subtitle" data-aos="fade-up">Descubre mi colecciÃ³n de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
+      <p class="section-subtitle" data-aos="fade-up">Descubre mi colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
       <div class="container">
         <div class="books-carousel" data-aos="fade-up">
           <div class="carousel-container">
             <div class="carousel-item">
               <div class="book">
-                <div class="book-badge">MultilingÃ¼e</div>
+                <div class="book-badge">Multilingüe</div>
                 <div class="book-image-container">
                   <img src="images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" />
-                  <div class="magnifier">ðŸ”</div>
+                  <div class="magnifier">ðŸ"</div>
                 </div>
                 <div class="book-content">
                   <h3>Aprende 5 Idiomas Coloreando</h3>
-                  <p>Descubre vocabulario en inglÃ©s, espaÃ±ol, alemÃ¡n, francÃ©s y chino mientras coloreas fascinantes insectos y arÃ¡cnidos.</p>
+                  <p>Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos.</p>
                   <p style="margin-top: 15px;"><strong>Idiomas:</strong> EN, ES, DE, FR, CN</p>
                   <a href="https://www.amazon.com/Ren%C3%A9-Garcia-Educa/dp/B0DLFFXPSG" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
                 </div>
@@ -1369,15 +1371,15 @@
             
             <div class="carousel-item">
               <div class="book">
-                <div class="book-badge">BilingÃ¼e</div>
+                <div class="book-badge">Bilingüe</div>
                 <div class="book-image-container">
-                  <img src="images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende mÃ¡s de 40 animales para colorear" />
-                  <div class="magnifier">ðŸ”</div>
+                  <img src="images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" />
+                  <div class="magnifier">ðŸ"</div>
                 </div>
                 <div class="book-content">
-                  <h3>Aprende mÃ¡s de 40 animales para colorear</h3>
-                  <p>Un viaje mÃ¡gico y educativo que despierta la creatividad y curiosidad en los niÃ±os con adorables animales chibi.</p>
-                  <p style="margin-top: 15px;"><strong>Disponible en:</strong> EspaÃ±ol e InglÃ©s (versiones separadas)</p>
+                  <h3>Aprende más de 40 animales para colorear</h3>
+                  <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
+                  <p style="margin-top: 15px;"><strong>Disponible en:</strong> Español e Inglés (versiones separadas)</p>
                   <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
                 </div>
               </div>
@@ -1385,15 +1387,15 @@
             
             <div class="carousel-item">
               <div class="book">
-                <div class="book-badge">RelajaciÃ³n</div>
+                <div class="book-badge">Relajación</div>
                 <div class="book-image-container">
                   <img src="images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
-                  <div class="magnifier">ðŸ”</div>
+                  <div class="magnifier">ðŸ"</div>
                 </div>
                 <div class="book-content">
                   <h3>Mandalas con Mascotas Chibis</h3>
                   <p>Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas.</p>
-                  <p style="margin-top: 15px;"><strong>Idioma:</strong> EspaÃ±ol</p>
+                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
                   <a href="https://www.amazon.com/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
                 </div>
               </div>
@@ -1424,30 +1426,30 @@
       <p class="section-subtitle" data-aos="fade-up">Lo que mis lectores opinan sobre mis libros.</p>
       <div class="container">
         <div class="testimonial" data-aos="fade-right">
-          <p>"Los libros de RenÃ© Garcia son perfectos para desconectar despuÃ©s de un largo dÃ­a. Los diseÃ±os son preciosos y la calidad del papel es excelente. Mi hijo de 7 aÃ±os ha mejorado notablemente su vocabulario en inglÃ©s gracias al libro multilingÃ¼e."</p>
+          <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente. Mi hijo de 7 años ha mejorado notablemente su vocabulario en inglés gracias al libro multilingüe."</p>
           <div class="testimonial-author">
             <div class="testimonial-author-info">
-              <span class="testimonial-author-name">MarÃ­a RodrÃ­guez</span>
+              <span class="testimonial-author-name">María Rodríguez</span>
               <span class="testimonial-author-title">Profesora de Arte</span>
             </div>
           </div>
         </div>
         
         <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-          <p>"Mi hija de 8 aÃ±os estÃ¡ encantada con el libro de animales. Es educativo y divertido a la vez. Ha aprendido sobre diferentes profesiones mientras colorea, y ahora dice que quiere ser veterinaria. Totalmente recomendable para niÃ±os."</p>
+          <p>"Mi hija de 8 años está encantada con el libro de animales. Es educativo y divertido a la vez. Ha aprendido sobre diferentes profesiones mientras colorea, y ahora dice que quiere ser veterinaria. Totalmente recomendable para niños."</p>
           <div class="testimonial-author">
             <div class="testimonial-author-info">
-              <span class="testimonial-author-name">Carlos MartÃ­nez</span>
+              <span class="testimonial-author-name">Carlos Martínez</span>
               <span class="testimonial-author-title">Padre y Educador</span>
             </div>
           </div>
         </div>
         
         <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
-          <p>"ComprÃ© el libro de mandalas con mascotas chibis como regalo para mi madre y estÃ¡ fascinada. Dice que le ayuda a relajarse y a mejorar su concentraciÃ³n. Los diseÃ±os son adorables y el nivel de detalle es perfecto para adultos que buscan un momento de calma."</p>
+          <p>"Compré el libro de mandalas con mascotas chibis como regalo para mi madre y está fascinada. Dice que le ayuda a relajarse y a mejorar su concentración. Los diseños son adorables y el nivel de detalle es perfecto para adultos que buscan un momento de calma."</p>
           <div class="testimonial-author">
             <div class="testimonial-author-info">
-              <span class="testimonial-author-name">Laura SÃ¡nchez</span>
+              <span class="testimonial-author-name">Laura Sánchez</span>
               <span class="testimonial-author-title">Terapeuta Ocupacional</span>
             </div>
           </div>
@@ -1457,15 +1459,15 @@
     </section>
     <section id="contacto">
       <h2 class="section-title" data-aos="fade-down">Contacto</h2>
-      <p class="section-subtitle" data-aos="fade-up">Â¿Tienes alguna pregunta o sugerencia? Estoy aquÃ­ para ayudarte.</p>
+      <p class="section-subtitle" data-aos="fade-up">¿Tienes alguna pregunta o sugerencia? Estoy aquí para ayudarte.</p>
       <div class="container">
         <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px;">
           <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
             <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-              <h3 class="contact-section-title">InformaciÃ³n de Contacto</h3>
+              <h3 class="contact-section-title">Información de Contacto</h3>
               
               <div style="margin-bottom: 25px;">
-                <h4 class="contact-title">Correo ElectrÃ³nico</h4>
+                <h4 class="contact-title">Correo Electrónico</h4>
                 <a href="mailto:renegarciaeduca@gmail.com" style="color: var(--text-color); font-size: 1.1rem; display: flex; align-items: center; gap: 12px; transition: var(--transition);">
                   <span style="display: inline-block; width: 32px; height: 32px; background: var(--primary-color); border-radius: 50%; color: var(--white); text-align: center; line-height: 32px; font-size: 14px; box-shadow: 0 4px 8px rgba(63, 81, 181, 0.3);">âœ‰</span>
                   renegarciaeduca@gmail.com
@@ -1494,19 +1496,19 @@
                 </a>
               </div>
               
-              <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8; line-height: 1.7;">EstarÃ© encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
+              <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8; line-height: 1.7;">Estaré encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
             </div>
           </div>
           
           <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
             <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-              <h3 class="contact-section-title">Sobre MÃ­</h3>
-              <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creÃ­do que el arte y el aprendizaje van de la mano. De niÃ±o, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
-              <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creÃ© RenÃ© Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
-              <p style="margin-bottom: 20px; line-height: 1.8;">EstÃ¡ comprobado que aprendemos hasta un 60% mÃ¡s rÃ¡pido cuando nos divertimos, y mis libros estÃ¡n diseÃ±ados para lograrlo.</p>
+              <h3 class="contact-section-title">Sobre Mí</h3>
+              <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creído que el arte y el aprendizaje van de la mano. De niño, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
+              <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creí René Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
+              <p style="margin-bottom: 20px; line-height: 1.8;">Está comprobado que aprendemos hasta un 60% más rápido cuando nos divertimos, y mis libros están diseñados para lograrlo.</p>
               
               <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn" style="flex: 1; min-width: 150px; text-align: center;">Conoce mÃ¡s en Amazon</a>
+                <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn" style="flex: 1; min-width: 150px; text-align: center;">Conoce más en Amazon</a>
                 <a href="mailto:renegarciaeduca@gmail.com" class="btn btn-accent" style="flex: 1; min-width: 150px; text-align: center;">Contactar</a>
               </div>
             </div>
@@ -1523,10 +1525,10 @@
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-right">
             <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-              <img src="images/Logo.png" alt="Logo de RenÃ© Garcia Educa" style="height: 60px; width: auto;" />
-              <h3 style="font-size: 1.6rem; position: relative; display: inline-block; margin: 0;">RenÃ© Garcia Educa</h3>
+              <img src="images/Logo.png" alt="Logo de René Garcia Educa" style="height: 60px; width: auto;" />
+              <h3 style="font-size: 1.6rem; position: relative; display: inline-block; margin: 0;">René Garcia Educa</h3>
             </div>
-            <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">Libros educativos y de entretenimiento para todas las edades. DiseÃ±ados para inspirar la creatividad y fomentar el aprendizaje.</p>
+            <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">Libros educativos y de entretenimiento para todas las edades. Diseñados para inspirar la creatividad y fomentar el aprendizaje.</p>
             <div style="display: flex; gap: 15px; margin-top: 25px;">
               <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="color: var(--footer-text); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IG</a>
               <a href="https://www.linkedin.com/in/renÃ©-garcia-cobo" target="_blank" style="color: var(--footer-text); font-size: 1.1rem; opacity: 0.9; transition: var(--transition); background: rgba(255,255,255,0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">IN</a>
@@ -1535,7 +1537,7 @@
           </div>
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-up">
-            <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Enlaces RÃ¡pidos</h3>
+            <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Enlaces Rápidos</h3>
             <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 15px;"><a href="#libros" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Mis Libros</a></li>
               <li style="margin-bottom: 15px;"><a href="#testimonios" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: inline-block; padding: 2px 0; position: relative; overflow: hidden;">Testimonios</a></li>
@@ -1546,7 +1548,7 @@
           
           <div style="flex: 1; min-width: 250px;" data-aos="fade-left">
             <h3 style="margin-bottom: 25px; font-size: 1.4rem; position: relative; display: inline-block;">Contacto</h3>
-            <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">Â¿Tienes alguna pregunta o sugerencia? No dudes en contactarme.</p>
+            <p style="margin-bottom: 20px; line-height: 1.8; opacity: 0.9;">¿Tienes alguna pregunta o sugerencia? No dudes en contactarme.</p>
             <a href="mailto:renegarciaeduca@gmail.com" style="color: var(--footer-text); opacity: 0.9; transition: var(--transition); display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
               <span style="display: inline-block; width: 24px; height: 24px; background: rgba(255,255,255,0.1); border-radius: 50%; text-align: center; line-height: 24px; font-size: 12px;">âœ‰</span>
               renegarciaeduca@gmail.com
@@ -1557,12 +1559,12 @@
         </div>
         
         <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);">
-          <p style="opacity: 0.8;">Â© 2020-2025 RenÃ© Garcia Educa. Todos los derechos reservados.</p>
+          <p style="opacity: 0.8;">© 2020-2025 René Garcia Educa. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
     
-    <!-- PolÃ­tica de Privacidad y Aviso Legal -->
+    <!-- Política de Privacidad y Aviso Legal -->
     <div style="background: var(--legal-bg); padding: 30px 0; font-size: 0.9rem; color: var(--legal-text);">
       <div class="container">
         <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
@@ -1572,13 +1574,13 @@
           <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Opciones de privacidad de anuncios</a>
         </div>
         <div style="text-align: center; margin-top: 20px;">
-          <p style="opacity: 0.6; font-size: 0.8rem;">Â© 2020-2025 RenÃ© Garcia Educa. Todos los derechos reservados.</p>
+          <p style="opacity: 0.6; font-size: 0.8rem;">© 2020-2025 René Garcia Educa. Todos los derechos reservados.</p>
         </div>
       </div>
     </div>
     
-    <!-- BotÃ³n Volver Arriba -->
-    <a href="#" id="back-to-top">â†‘</a>
+    <!-- Botón Volver Arriba -->
+    <a href="#" id="back-to-top">↑</a>
     
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1614,7 +1616,7 @@
         }
       });
 
-      // InicializaciÃ³n mejorada de AOS
+      // Inicialización mejorada de AOS
       AOS.init({
         duration: 1000,
         once: true,
@@ -1622,7 +1624,7 @@
         easing: 'ease-out-cubic'
       });
 
-      // MenÃº mÃ³vil mejorado
+      // Menú móvil mejorado
       const menuToggle = document.getElementById('menu-toggle');
       const navLinks = document.querySelector('.nav-links');
       
@@ -1630,14 +1632,14 @@
         navLinks.classList.toggle('active');
       });
 
-      // Cerrar menÃº al hacer click en un enlace o fuera del menÃº
+      // Cerrar menú al hacer click en un enlace o fuera del menú
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
         });
       });
 
-      // Cerrar menÃº al hacer click fuera
+      // Cerrar menú al hacer click fuera
       document.addEventListener('click', (e) => {
         if (!navLinks.contains(e.target) && e.target !== menuToggle) {
           navLinks.classList.remove('active');
@@ -1660,7 +1662,7 @@
         const header = document.querySelector('header');
         const currentScroll = window.pageYOffset;
         
-        // AÃ±adir clase scrolled al header cuando se hace scroll
+        // Añadir clase scrolled al header cuando se hace scroll
         if (currentScroll > 50) {
           header.classList.add('scrolled');
         } else {
@@ -1675,12 +1677,12 @@
             header.style.transform = 'translateY(0)';
           }
         } else {
-          header.style.transform = 'translateY(0)'; // Siempre visible en mÃ³vil
+          header.style.transform = 'translateY(0)'; // Siempre visible en móvil
         }
         lastScroll = currentScroll;
       });
 
-      // Activar link de navegaciÃ³n segÃºn la secciÃ³n visible
+      // Activar link de navegación según la sección visible
       window.addEventListener('scroll', () => {
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -1704,7 +1706,7 @@
         });
       });
 
-      // Lazy loading para imÃ¡genes
+      // Lazy loading para imágenes
       document.addEventListener("DOMContentLoaded", function() {
         const images = document.querySelectorAll('img[data-src]');
         
@@ -1738,7 +1740,7 @@
 
       window.addEventListener('scroll', animateOnScroll);
       
-      // BotÃ³n Volver Arriba
+      // Botón Volver Arriba
       const backToTopButton = document.getElementById('back-to-top');
       
       window.addEventListener('scroll', () => {
@@ -1763,21 +1765,21 @@
       const carousel = document.querySelector('.carousel-container');
       const carouselItems = document.querySelectorAll('.carousel-item');
       
-      // Eliminar la funcionalidad de carrusel ya que ahora los libros estÃ¡n centrados
-      // y no hay controles de navegaciÃ³n
+      // Eliminar la funcionalidad de carrusel ya que ahora los libros están centrados
+      // y no hay controles de navegación
       
-      // Efecto lupa para imÃ¡genes de libros
+      // Efecto lupa para imágenes de libros
       document.querySelectorAll('.book-image-container').forEach(container => {
         container.addEventListener('mousemove', function(e) {
           const rect = this.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
           
-          // Calcular posiciÃ³n relativa (0-1)
+          // Calcular posición relativa (0-1)
           const relX = x / rect.width;
           const relY = y / rect.height;
           
-          // Aplicar transformaciÃ³n a la imagen
+          // Aplicar transformación a la imagen
           const img = this.querySelector('img');
           img.style.transformOrigin = `${relX * 100}% ${relY * 100}%`;
         });
@@ -1789,8 +1791,8 @@
       contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // AquÃ­ normalmente enviarÃ­as los datos a un servidor
-        // Por ahora, solo mostraremos un mensaje de Ã©xito
+        // Aquí normalmente enviarías los datos a un servidor
+        // Por ahora, solo mostraremos un mensaje de éxito
         
         const formData = new FormData(contactForm);
         let formValues = {};
@@ -1801,12 +1803,12 @@
         
         console.log('Formulario enviado:', formValues);
         
-        // Mostrar mensaje de Ã©xito
+        // Mostrar mensaje de éxito
         contactForm.innerHTML = `
           <div style="text-align: center; padding: 2rem;">
-            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">âœ“</div>
-            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Â¡Mensaje Enviado!</h3>
-            <p>Gracias por contactarme. Te responderÃ© lo antes posible.</p>
+            <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem;">âœ" </div>
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">¡Mensaje Enviado!</h3>
+            <p>Gracias por contactarme. Te responderé lo antes posible.</p>
           </div>
         `;
       });
