@@ -1,5 +1,12 @@
 /* REGLAS PARA TABLETS */
 @media (max-width: 992px) {
+  .hero {
+    height: 100vh;
+    width: 100%;
+    background-attachment: scroll;
+    overflow-x: hidden;
+  }
+  
   .hero-content {
     max-width: 600px;
     padding: 2.5rem;
@@ -91,8 +98,16 @@
   
   /* Hero */
   .hero {
+    height: 100vh;
+    width: 100%;
     text-align: center;
     padding-top: 80px;
+    background-attachment: scroll;
+    overflow-x: hidden;
+    left: 0;
+    right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
   
   .hero-content {
@@ -153,6 +168,11 @@
     gap: 40px;
   }
   
+  .footer-logo {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
   .dark-mode-toggle {
     right: 10px;
     top: 80px;
@@ -161,6 +181,12 @@
 
 /* REGLAS PARA MÓVILES PEQUEÑOS */
 @media (max-width: 480px) {
+  .hero {
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+  }
+  
   .hero-content h1 {
     font-size: 2rem;
   }
@@ -187,6 +213,15 @@
   
   header.scrolled .logo img {
     height: 35px;
+  }
+  
+  .footer-logo {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-logo img {
+    margin-bottom: 10px;
   }
 }
 
