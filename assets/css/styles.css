@@ -637,14 +637,15 @@ footer {
 }
 
 .contact-icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background: rgba(255,255,255,0.1);
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  text-align: center;
-  line-height: 24px;
-  font-size: 12px;
+  background-color: #4b4b4b;
+  color: #ffffff;
+  font-size: 18px;
 }
 
 .footer-bottom {
@@ -788,4 +789,40 @@ body.dark-mode .contact-card a {
 /* Ajuste para íconos en modo oscuro */
 body.dark-mode .contact-card a span {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo específico para el icono de Amazon */
+.amazon-icon {
+  background-color: #ff9900;
+  color: #fff;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+/* Amazon button in navigation */
+.amazon-btn {
+  background-color: rgba(255, 153, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px 12px !important;
+  border: 1px solid rgba(255, 153, 0, 0.3);
+  transition: var(--transition);
+}
+
+.amazon-btn:hover {
+  background-color: rgba(255, 153, 0, 0.4);
+  border-color: rgba(255, 153, 0, 0.6);
+}
+
+body.light-mode .amazon-btn {
+  background-color: rgba(255, 153, 0, 0.2);
+  border: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+body.light-mode .amazon-btn:hover {
+  background-color: rgba(255, 153, 0, 0.3);
 } 
