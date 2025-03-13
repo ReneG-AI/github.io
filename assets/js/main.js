@@ -94,7 +94,7 @@ function initMobileMenu() {
     // Cerrar menú al hacer clic en un enlace
     navLinksAnchors.forEach(function(link) {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) { // Ahora incluye tablets (hasta 1024px)
                 navLinks.classList.remove('active');
             }
         });
@@ -106,6 +106,14 @@ function initMobileMenu() {
         const isClickMenuToggle = menuToggle.contains(event.target);
         
         if (!isClickInsideMenu && !isClickMenuToggle && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
+    });
+    
+    // Manejar cambios de tamaño de ventana
+    window.addEventListener('resize', function() {
+        // Si se redimensiona a escritorio, cerrar el menú móvil
+        if (window.innerWidth > 1024 && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
         }
     });
