@@ -34,6 +34,7 @@
         --white: #FFFFFF;
         --shadow: 0 4px 6px rgba(0,0,0,0.1);
         --transition: all 0.3s ease;
+        --logo-text-color: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
       }
 
       body {
@@ -102,7 +103,7 @@
       }
 
       .logo span {
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        background: var(--logo-text-color);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-size: 200% 200%;
@@ -436,29 +437,7 @@
       }
 
       .magnifier {
-        position: absolute;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        border: 2px solid white;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(2px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 24px;
-        opacity: 0;
-        transition: all 0.3s ease;
-        z-index: 2;
-      }
-
-      .book:hover .magnifier {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
+        display: none; /* Ocultar el icono de la lupa */
       }
 
       /* Mejora de la línea bajo los títulos */
@@ -660,64 +639,24 @@
 
       .carousel-container {
         display: flex;
-        transition: transform 0.5s ease;
+        justify-content: center; /* Centrar los libros */
+        gap: 30px; /* Espacio entre libros */
       }
 
       .carousel-item {
         flex: 0 0 300px;
-        margin: 0 15px;
+        margin: 0;
         height: 100%;
       }
 
+      /* Ocultar controles de carrusel */
       .carousel-controls {
-        display: flex;
-        justify-content: center;
-        margin-top: 2rem;
-        gap: 1rem;
+        display: none;
       }
-
-      .carousel-control {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--white);
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: var(--transition);
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-
-      .carousel-control:hover {
-        background: var(--primary-color);
-        color: var(--white);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(63, 81, 181, 0.3);
-      }
-
+      
+      /* Ocultar dots de carrusel */
       .carousel-dots {
-        display: flex;
-        justify-content: center;
-        margin-top: 1.5rem;
-        gap: 0.8rem;
-      }
-
-      .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: #ddd;
-        cursor: pointer;
-        transition: var(--transition);
-      }
-
-      .carousel-dot.active {
-        background: var(--primary-color);
-        transform: scale(1.2);
+        display: none;
       }
 
       /* TESTIMONIOS MEJORADOS */
@@ -973,25 +912,9 @@
       }
 
       /* Modo oscuro */
-      :root {
-        --primary-color: #3F51B5;
-        --secondary-color: #7986CB;
-        --accent-color: #FF9800;
-        --text-color: #263238;
-        --bg-color: #F5F7FA;
-        --white: #FFFFFF;
-        --card-bg: #FFFFFF;
-        --footer-bg: #3F51B5;
-        --footer-text: #FFFFFF;
-        --legal-bg: #f8f9fa;
-        --legal-text: #666;
-        --shadow: 0 4px 6px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
-      }
-
       body.dark-mode {
-        --primary-color: #5C6BC0;
-        --secondary-color: #9FA8DA;
+        --primary-color: #7E57C2;
+        --secondary-color: #B39DDB;
         --accent-color: #FFB74D;
         --text-color: #E0E0E0;
         --bg-color: #121212;
@@ -1002,6 +925,7 @@
         --legal-bg: #1E1E1E;
         --legal-text: #BBBBBB;
         --shadow: 0 4px 6px rgba(0,0,0,0.3);
+        --logo-text-color: linear-gradient(45deg, #E57373, #FFB74D);
       }
 
       body {
@@ -1137,7 +1061,7 @@
                 <div class="book-content">
                   <h3>Aprende más de 40 animales para colorear</h3>
                   <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
-                  <p style="margin-top: 15px;"><strong>Idiomas:</strong> Español, Inglés</p>
+                  <p style="margin-top: 15px;"><strong>Disponible en:</strong> Español e Inglés (versiones separadas)</p>
                   <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
                 </div>
               </div>
@@ -1527,43 +1451,13 @@
       // Carrusel de libros
       const carousel = document.querySelector('.carousel-container');
       const carouselItems = document.querySelectorAll('.carousel-item');
-      const prevBtn = document.querySelector('.prev-btn');
-      const nextBtn = document.querySelector('.next-btn');
-      const dots = document.querySelectorAll('.carousel-dot');
       
-      let currentIndex = 0;
-      const itemWidth = 330; // Ancho del item + margen
+      // Eliminar la funcionalidad de carrusel ya que ahora los libros están centrados
+      // y no hay controles de navegación
       
-      function updateCarousel() {
-        carousel.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
-        
-        // Actualizar dots
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentIndex);
-        });
-      }
-      
-      prevBtn.addEventListener('click', () => {
-        currentIndex = Math.max(currentIndex - 1, 0);
-        updateCarousel();
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        currentIndex = Math.min(currentIndex + 1, carouselItems.length - 1);
-        updateCarousel();
-      });
-      
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-        });
-      });
-
       // Efecto lupa para imágenes de libros
       document.querySelectorAll('.book-image-container').forEach(container => {
         container.addEventListener('mousemove', function(e) {
-          const magnifier = this.querySelector('.magnifier');
           const rect = this.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
@@ -1574,9 +1468,6 @@
           
           // Aplicar transformación a la imagen
           const img = this.querySelector('img');
-          const moveX = (relX - 0.5) * 20;
-          const moveY = (relY - 0.5) * 20;
-          
           img.style.transformOrigin = `${relX * 100}% ${relY * 100}%`;
         });
       });
