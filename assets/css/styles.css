@@ -73,7 +73,7 @@ header.scrolled .logo {
 }
 
 header.scrolled .logo img {
-  height: 40px;
+  height: 80px;
 }
 
 header.scrolled .nav-links a {
@@ -97,12 +97,14 @@ nav {
 }
 
 .logo img {
-  height: 60px;
+  height: 120px;
+  width: auto;
   transition: var(--transition);
+  filter: brightness(0) invert(1); /* Siempre en blanco */
 }
 
 header.scrolled .logo img {
-  height: 40px;
+  height: 80px;
 }
 
 .logo span {
@@ -551,9 +553,10 @@ footer {
 }
 
 .footer-logo img {
-  height: 60px;
+  height: 120px; /* Doble de tamaño */
   width: auto;
   transition: filter 0.3s ease;
+  filter: brightness(0) invert(1); /* Siempre en blanco */
 }
 
 .footer-logo h3 {
@@ -662,9 +665,15 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: #4b4b4b;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: #ffffff;
   font-size: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(107, 76, 230, 0.3);
 }
 
 .footer-bottom {
@@ -686,8 +695,10 @@ body.light-mode {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark-mode .logo img {
-  filter: brightness(0) invert(1);
+body.dark-mode .logo img,
+body.light-mode .logo img,
+footer .footer-logo img {
+  filter: brightness(0) invert(1); /* Siempre en blanco */
 }
 
 body.dark-mode h3 {
@@ -844,8 +855,4 @@ body.light-mode .amazon-btn {
 
 body.light-mode .amazon-btn:hover {
   background-color: rgba(255, 153, 0, 0.3);
-}
-
-body.dark-mode .footer-logo img {
-  filter: brightness(0) invert(1);
 } 
