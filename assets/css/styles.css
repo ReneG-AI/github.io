@@ -1478,20 +1478,14 @@ body.dark-mode .nav-links a:hover {
   
   .book-badge-corner {
     top: 20px;
-    left: -5px;
+    width: 150px;
+    height: 150px;
   }
   
   .book-badge-corner span {
-    top: 25px;
-    left: -40px;
-    width: 170px;
-    font-size: 0.75rem;
-    padding: 5px 0;
-  }
-  
-  .book-header {
-    margin-bottom: 1.8rem;
-    margin-top: 0.8rem;
+    width: 180px;
+    font-size: 0.9rem;
+    padding: 8px 0;
   }
 }
 
@@ -1516,10 +1510,16 @@ body.dark-mode .nav-links a:hover {
     bottom: 30px;
   }
   
+  .book-badge-corner {
+    top: 22px;
+    width: 160px;
+    height: 160px;
+  }
+  
   .book-badge-corner span {
-    left: -38px;
-    top: 28px;
-    width: 170px;
+    width: 200px;
+    font-size: 1rem;
+    padding: 9px 0;
   }
 }
 
@@ -1694,40 +1694,62 @@ body.dark-mode .nav-links a:hover {
   box-shadow: 0 8px 15px rgba(107, 76, 230, 0.4);
 }
 
-/* Mejorar las etiquetas de esquina - ahora posicionadas en el lado izquierdo y con efecto 3D */
+/* Mejorar las etiquetas de esquina - ahora con posiciones diferenciadas y más grandes */
 .book-badge-corner {
   position: absolute;
-  top: 25px; /* Bajado 35px aproximadamente desde la posición anterior */
-  left: -10px; /* Cambiado a la izquierda en lugar de la derecha */
-  right: auto; /* Resetear el right que estaba configurado anteriormente */
+  top: 25px;
   z-index: 10;
   overflow: visible;
-  width: 140px;
-  height: 140px;
+  width: 180px; /* 30% más grande */
+  height: 180px; /* 30% más grande */
   pointer-events: none;
+}
+
+/* Etiqueta para la esquina izquierda (Destacado, Bestseller) */
+.book-badge-corner.left {
+  left: -15px;
+  right: auto;
+}
+
+/* Etiqueta para la esquina derecha (Nuevo) */
+.book-badge-corner.right {
+  right: -15px;
+  left: auto;
 }
 
 .book-badge-corner span {
   position: absolute;
-  top: 30px;
-  left: -35px; /* Cambiado a la izquierda */
-  right: auto; /* Resetear el right */
   display: block;
-  width: 170px;
-  padding: 7px 0;
+  width: 220px; /* 30% más grande que el tamaño anterior */
+  padding: 10px 0; /* Aumentado para mejor visibilidad */
   background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
   color: white;
-  font-size: 0.85rem;
+  font-size: 1.1rem; /* 30% más grande */
   font-weight: 700;
   text-align: center;
-  transform: rotate(-45deg); /* Cambiado el ángulo para coincidir con el lado izquierdo */
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   /* Efecto 3D mejorado */
   transition: all 0.3s ease;
   transform-style: preserve-3d;
-  perspective: 500px;
+  perspective: 600px;
+}
+
+/* Posicionamiento específico para la izquierda */
+.book-badge-corner.left span {
+  top: 35px;
+  left: -55px;
+  right: auto;
+  transform: rotate(-45deg);
+}
+
+/* Posicionamiento específico para la derecha */
+.book-badge-corner.right span {
+  top: 35px;
+  right: -55px;
+  left: auto;
+  transform: rotate(45deg);
 }
 
 /* Añadir efecto 3D a las etiquetas de esquina */
@@ -1738,7 +1760,7 @@ body.dark-mode .nav-links a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   transform: translateZ(-1px);
 }
 
@@ -1750,43 +1772,84 @@ body.dark-mode .nav-links a:hover {
   width: 100%;
   left: 0;
   top: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%);
+  background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.15) 100%);
   transform: translateZ(-2px);
 }
 
 /* Efecto hover para reforzar el 3D */
-.book-item:hover .book-badge-corner span {
-  transform: rotate(-45deg) translateZ(5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+.book-item:hover .book-badge-corner.left span {
+  transform: rotate(-45deg) translateZ(8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.book-item:hover .book-badge-corner.right span {
+  transform: rotate(45deg) translateZ(8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Adaptación para móviles */
 @media (max-width: 768px) {
   .book-badge-corner {
-    top: 20px; /* Ajustado para móviles */
-    left: -5px;
+    top: 20px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .book-badge-corner.left {
+    left: -10px;
+  }
+  
+  .book-badge-corner.right {
+    right: -10px;
   }
   
   .book-badge-corner span {
-    top: 25px;
-    left: -40px;
-    width: 170px;
-    font-size: 0.75rem;
-    padding: 5px 0;
+    width: 180px;
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+  
+  .book-badge-corner.left span {
+    top: 30px;
+    left: -45px;
+  }
+  
+  .book-badge-corner.right span {
+    top: 30px;
+    right: -45px;
   }
 }
 
 /* Adaptación para tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
   .book-badge-corner {
-    top: 22px; /* Ajustado para tablets */
-    left: -5px;
+    top: 22px;
+    width: 160px;
+    height: 160px;
+  }
+  
+  .book-badge-corner.left {
+    left: -12px;
+  }
+  
+  .book-badge-corner.right {
+    right: -12px;
   }
   
   .book-badge-corner span {
-    left: -38px;
-    top: 28px;
-    width: 170px;
+    width: 200px;
+    font-size: 1rem;
+    padding: 9px 0;
+  }
+  
+  .book-badge-corner.left span {
+    top: 32px;
+    left: -50px;
+  }
+  
+  .book-badge-corner.right span {
+    top: 32px;
+    right: -50px;
   }
 }
 
