@@ -669,6 +669,7 @@ footer {
   color: #ffffff;
   font-size: 18px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .contact-icon:hover {
