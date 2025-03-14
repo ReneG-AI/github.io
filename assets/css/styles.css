@@ -994,7 +994,7 @@ body.dark-mode .nav-links a:hover {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   position: relative;
-  min-height: 400px;
+  min-height: 640px;
 }
 
 .book-item:hover {
@@ -1010,7 +1010,7 @@ body.dark-mode .nav-links a:hover {
   flex: 0 0 48%;
   position: relative;
   overflow: visible;
-  min-height: 450px;
+  min-height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1020,9 +1020,9 @@ body.dark-mode .nav-links a:hover {
 
 .book-flipper {
   position: relative;
-  width: 65%;
-  max-width: 300px;
-  height: 400px;
+  width: 85%;
+  max-width: 480px;
+  height: 640px;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
