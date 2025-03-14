@@ -5,9 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navLinks) {
         navLinks.classList.remove('active');
         // También forzar estilos inline para asegurarse
-        navLinks.style.right = '-100%';
-        navLinks.style.visibility = 'hidden';
-        navLinks.style.opacity = '0';
+        navLinks.style.display = 'flex';
     }
     
     // Inicializar funcionalidades
@@ -43,9 +41,13 @@ function initPreloader() {
 // Alternador de modo oscuro
 function initDarkModeToggle() {
     const darkModeToggle = document.getElementById('darkModeToggle');
+    if (!darkModeToggle) return;
+    
     const body = document.body;
     const sunIcon = darkModeToggle.querySelector('.sun');
     const moonIcon = darkModeToggle.querySelector('.moon');
+    
+    if (!sunIcon || !moonIcon) return;
     
     // Verificar preferencia guardada
     const darkMode = localStorage.getItem('darkMode');
@@ -86,11 +88,12 @@ function initDarkModeToggle() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const navLinksAnchors = document.querySelectorAll('.nav-links a');
-    
     if (!menuToggle || !navLinks) return;
     
-    // Asegurarse de que el menú esté cerrado al cargar la página
+    const navLinksAnchors = document.querySelectorAll('.nav-links a');
+    
+    // Asegurarse de que el menú esté visible pero colapsado al inicio
+    navLinks.style.display = 'flex';
     navLinks.classList.remove('active');
     
     // Cerrar menú al hacer clic en un enlace
@@ -98,6 +101,7 @@ function initMobileMenu() {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 1024) { // Incluye tablets (hasta 1024px)
                 navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
                 // Restaurar scroll del body cuando se cierra el menú
                 document.body.style.overflow = '';
             }
@@ -109,11 +113,10 @@ function initMobileMenu() {
         e.stopPropagation(); // Evitar que el clic se propague al document
         e.preventDefault(); // Prevenir comportamiento por defecto
         navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('active');
         
         // Controlar el scroll del body cuando el menú está abierto
         if (navLinks.classList.contains('active')) {
-            // Opcional: evitar scroll del body cuando el menú está abierto
-            // document.body.style.overflow = 'hidden';
             console.log('Menú abierto'); // Depuración
         } else {
             document.body.style.overflow = '';
@@ -127,6 +130,7 @@ function initMobileMenu() {
             !navLinks.contains(e.target) && 
             !menuToggle.contains(e.target)) {
             navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
             // Restaurar scroll del body cuando se cierra el menú
             document.body.style.overflow = '';
         }
@@ -136,6 +140,7 @@ function initMobileMenu() {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
             // Restaurar scroll del body cuando se cierra el menú
             document.body.style.overflow = '';
         }
@@ -148,6 +153,7 @@ function initMobileMenu() {
         resizeTimer = setTimeout(() => {
             if (window.innerWidth > 1024) {
                 navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
                 // Restaurar scroll del body cuando se oculta el menú
                 document.body.style.overflow = '';
             }
@@ -166,8 +172,13 @@ function initSmoothScroll() {
             // Prevenir el comportamiento predeterminado
             e.preventDefault();
             
+            const href = this.getAttribute('href');
+            
+            // Verificar si el href es válido
+            if (href === "#") return;
+            
             // Obtener el destino del enlace
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             
             // Si el destino existe, desplazar suavemente
             if (target) {
@@ -189,6 +200,12 @@ function initHeaderScroll() {
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
         
         if (currentScroll <= 0) {
             header.classList.remove('scroll-up');
@@ -222,23 +239,28 @@ function initAOS() {
 
 // Botón volver arriba
 function initBackToTop() {
-    const backToTop = document.getElementById('back-to-top');
-    if (!backToTop) return;
+    // Verificar si ya existe el botón
+    let backToTop = document.getElementById('back-to-top');
     
+    // Si no existe, crearlo
+    if (!backToTop) {
+        backToTop = document.createElement('button');
+        backToTop.id = 'back-to-top';
+        backToTop.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        backToTop.className = 'back-to-top-btn';
+        document.body.appendChild(backToTop);
+    }
+    
+    // Mostrar/ocultar botón según el scroll
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
-            backToTop.style.display = 'flex';
-            setTimeout(() => {
-                backToTop.style.opacity = '1';
-            }, 50);
+            backToTop.classList.add('active');
         } else {
-            backToTop.style.opacity = '0';
-            setTimeout(() => {
-                backToTop.style.display = 'none';
-            }, 300);
+            backToTop.classList.remove('active');
         }
     });
     
+    // Acción al hacer clic en el botón
     backToTop.addEventListener('click', function(e) {
         e.preventDefault();
         window.scrollTo({
@@ -253,13 +275,21 @@ function initBookFlip() {
     const bookContainers = document.querySelectorAll('.book-images');
     
     bookContainers.forEach(container => {
+        // Eliminar cualquier botón anterior para evitar duplicados
+        const existingButton = container.querySelector('.flip-button');
+        if (existingButton) {
+            existingButton.remove();
+        }
+        
         const flipper = container.querySelector('.book-flipper');
         const bookItem = container.closest('.book-item');
+        
+        if (!flipper) return;
         
         // Crear el botón de volteo
         const flipButton = document.createElement('button');
         flipButton.className = 'flip-button';
-        flipButton.innerHTML = '<i class="fas fa-sync-alt"></i> Voltear portada';
+        flipButton.innerHTML = '<i class="fas fa-sync-alt"></i> Girar';
         
         // Añadir el botón después del contenedor de la imagen
         container.appendChild(flipButton);
@@ -270,88 +300,17 @@ function initBookFlip() {
             e.stopPropagation();
             
             flipper.classList.toggle('flipped');
-            
-            // Efecto de sonido
-            try {
-                const flipSound = new Audio('assets/sounds/page-flip.mp3');
-                flipSound.volume = 0.3;
-                flipSound.play().catch(() => {});
-            } catch (error) {
-                console.log('Sound not supported');
-            }
         });
         
         // Botón "Ver interior"
-        const verInteriorBtn = bookItem.querySelector('.book-btn-secondary');
-        if (verInteriorBtn) {
-            verInteriorBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Las imágenes del interior estarán disponibles próximamente');
-            });
+        if (bookItem) {
+            const verInteriorBtn = bookItem.querySelector('.book-btn-secondary');
+            if (verInteriorBtn) {
+                verInteriorBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('Las imágenes del interior estarán disponibles próximamente');
+                });
+            }
         }
     });
-}
-
-// Manejar el menú móvil
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
-
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-});
-
-// Cerrar menú al hacer clic en un enlace
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
-    });
-});
-
-// Manejar el scroll del header
-const header = document.getElementById('header');
-let lastScroll = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Botón volver arriba
-const backToTop = document.getElementById('back-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTop.style.display = 'flex';
-        setTimeout(() => {
-            backToTop.style.opacity = '1';
-        }, 50);
-    } else {
-        backToTop.style.opacity = '0';
-        setTimeout(() => {
-            backToTop.style.display = 'none';
-        }, 300);
-    }
-});
-
-backToTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Preloader
-window.addEventListener('load', () => {
-    const preloader = document.querySelector('.preloader');
-    preloader.style.opacity = '0';
-    setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 500);
-}); 
+} 
