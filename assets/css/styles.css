@@ -61,11 +61,21 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Asegurar que el header mantenga el mismo color en modo oscuro */
+body.dark-mode header, body:not(.dark-mode) header {
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
+}
+
 header.scrolled {
   padding: 0.3rem 0;
   background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(33, 33, 52, 0.95), rgba(26, 26, 46, 0.95));
   height: 60px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Asegurar que el header en scroll mantiene el mismo color en modo oscuro */
+body.dark-mode header.scrolled, body:not(.dark-mode) header.scrolled {
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(33, 33, 52, 0.95), rgba(26, 26, 46, 0.95));
 }
 
 header.scrolled .logo {
@@ -942,10 +952,13 @@ body:not(.dark-mode) .dark-mode-toggle .moon {
 /* Ajuste para dispositivos móviles - modo oscuro */
 @media (max-width: 768px) {
   .dark-mode-toggle {
-    top: 16px;
-    right: 70px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    transform: scale(1.2);
     width: 36px;
     height: 36px;
+    z-index: 1005;
   }
 
   .dark-mode-toggle .sun,
