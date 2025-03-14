@@ -1007,163 +1007,93 @@ body.dark-mode .nav-links a:hover {
 }
 
 .book-images {
-  flex: 0 0 48%;
   position: relative;
-  overflow: visible;
-  min-height: 720px;
+  min-height: 580px; /* Reducido en 10% aprox. de 650px */
+  margin-bottom: 70px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  perspective: 1500px;
-  cursor: pointer;
-  z-index: 1;
 }
 
 .book-flipper {
   position: relative;
-  width: 85%;
-  max-width: 480px;
-  height: 640px;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+  width: 75%; /* Reducido del 85% original */
+  max-width: 430px; /* Reducido en 10% aprox. de 480px */
+  height: 580px; /* Reducido en 10% aprox. de 640px */
+  perspective: 1500px;
+  margin: 0 auto;
 }
 
-.book-flipper.flipped {
-  transform: rotateY(180deg);
-}
-
-.book-cover,
-.book-back {
+.book-cover, .book-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 8px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
-  object-fit: cover;
+  transition: transform 0.8s ease;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.book-cover {
-  transform: rotateY(0deg);
-  z-index: 2;
+.book-cover img, .book-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .book-back {
   transform: rotateY(180deg);
-  z-index: 1;
 }
 
-/* Efecto hover */
-.book-images:hover .book-flipper:not(.flipped) {
-  transform: scale(1.02) rotateY(15deg);
+.book-flipper.flipped .book-cover {
+  transform: rotateY(-180deg);
 }
 
-.book-images:hover .book-flipper.flipped {
-  transform: scale(1.02) rotateY(195deg);
+.book-flipper.flipped .book-back {
+  transform: rotateY(0);
 }
 
-/* Indicador de flip */
-.flip-indicator {
+.flip-button {
   position: absolute;
-  bottom: -30px;
+  bottom: -50px; /* Posicionado 50px abajo del contenedor de la imagen */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  white-space: nowrap;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  backdrop-filter: blur(5px);
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(107, 76, 230, 0.4);
   z-index: 10;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  visibility: visible;
 }
 
-.flip-indicator i {
-  animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Ajustes para modo oscuro */
-body.dark-mode .flip-indicator {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Ajustes responsivos */
-@media (max-width: 1024px) {
-    .book-images {
-        min-height: 288px; /* Reducido un 60% de 720px */
-    }
-    
-    .book-flipper {
-        height: 256px; /* Reducido un 60% de 640px */
-        width: 60%;
-    }
-
-    .book-item {
-        min-height: 320px; /* Ajustado proporcionalmente */
-        flex-direction: column !important;
-        padding: 2rem;
-    }
-
-    .book-content {
-        padding: 2rem 1rem;
-    }
-}
-
+/* Ajustes responsivos para móvil */
 @media (max-width: 768px) {
-    .book-images {
-        min-height: 288px; /* Mantenemos el mismo tamaño que en tablet */
-    }
-    
-    .book-flipper {
-        height: 256px; /* Mantenemos el mismo tamaño que en tablet */
-        width: 60%;
-    }
-    
-    .flip-indicator {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-        bottom: -25px;
-    }
-
-    /* Centrar el menú hamburguesa */
-    .menu-toggle {
-        position: fixed;
-        top: 20px; /* Ajustado para centrar verticalmente */
-        right: 20px;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        z-index: 1000;
-    }
-
-    .menu-toggle i {
-        font-size: 1.5rem;
-        color: #fff;
-    }
-
-    /* Ajustar el botón de modo oscuro para que no se superponga */
-    .dark-mode-toggle {
-        top: 20px;
-        right: 70px;
-    }
+  .book-images {
+    min-height: 450px;
+  }
+  
+  .book-flipper {
+    width: 85%;
+    height: 450px;
+  }
+  
+  .flip-button {
+    bottom: -45px;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
 }
 
 /* Animación de entrada */
@@ -1367,100 +1297,57 @@ body.dark-mode .flip-indicator {
   opacity: 0.3;
 }
 
-.flip-indicator {
+.flip-button {
   position: absolute;
-  bottom: -30px;
+  bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  white-space: nowrap;
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  backdrop-filter: blur(5px);
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(107, 76, 230, 0.4);
   z-index: 10;
-}
-
-.flip-indicator i {
-  animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Ajustes para modo oscuro */
-body.dark-mode .flip-indicator {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-  .flip-indicator {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-    bottom: -25px;
-  }
-}
-
-.flip-button {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(107, 76, 230, 0.4);
-    z-index: 10;
-    letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .flip-button i {
-    transition: transform 0.5s ease;
-    font-size: 0.9em;
+  transition: transform 0.5s ease;
+  font-size: 0.9em;
 }
 
 .flip-button:hover {
-    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-    transform: translateX(-50%) translateY(-5px);
-    box-shadow: 0 8px 25px rgba(107, 76, 230, 0.6);
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  transform: translateX(-50%) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(107, 76, 230, 0.6);
 }
 
 .flip-button:hover i {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .flip-button:active {
-    transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 4px 10px rgba(107, 76, 230, 0.3);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 4px 10px rgba(107, 76, 230, 0.3);
 }
 
-/* Ajustes responsivos para el botón de volteo */
-@media (max-width: 768px) {
-    .flip-button {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-        bottom: -45px;
-    }
+/* Estilos y animaciones para desktop */
+@media (min-width: 1025px) {
+  .book-images:hover .flip-button {
+    transform: translateX(-50%) translateY(-5px);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  }
 }
 
 /* Botón volver arriba */
@@ -1522,8 +1409,8 @@ body.dark-mode .flip-indicator {
         position: fixed;
         top: 20px;
         right: 20px;
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1531,63 +1418,16 @@ body.dark-mode .flip-indicator {
         border-radius: 50%;
         border: 1px solid rgba(255, 255, 255, 0.1);
         z-index: 1000;
-        cursor: pointer;
-        transition: all 0.3s ease;
     }
 
     .menu-toggle i {
         font-size: 1.5rem;
         color: #fff;
-        transition: transform 0.3s ease;
     }
 
-    .menu-toggle.active {
-        background: var(--primary-color);
-    }
-
-    .menu-toggle.active i {
-        transform: rotate(90deg);
-    }
-
-    .menu-toggle:hover {
-        background: rgba(107, 76, 230, 0.3);
-        transform: translateY(-2px);
-    }
-
-    .nav-links {
-        display: none;
-        position: fixed;
-        top: 80px;
-        right: 20px;
-        flex-direction: column;
-        width: 220px;
-        background: rgba(15, 15, 30, 0.95);
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
-        padding: 20px;
-        text-align: right;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        transform: translateY(-20px);
-        opacity: 0;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-        z-index: 999;
-    }
-
-    .nav-links.active {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .nav-links a {
-        padding: 12px 0;
-        margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
-        font-size: 1rem;
-    }
-
-    .nav-links a:last-child {
-        border-bottom: none;
+    /* Ajustar el botón de modo oscuro para que no se superponga */
+    .dark-mode-toggle {
+        top: 20px;
+        right: 70px;
     }
 } 

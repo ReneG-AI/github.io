@@ -270,47 +270,61 @@ function initBackToTop() {
     });
 }
 
-// Manejar el flip de los libros
+// Función para inicializar el flip de los libros
 function initBookFlip() {
+    // Encontrar todos los contenedores de imágenes de libros
     const bookContainers = document.querySelectorAll('.book-images');
     
+    // Para cada contenedor, agregar la funcionalidad de flip
     bookContainers.forEach(container => {
-        // Eliminar cualquier botón anterior para evitar duplicados
+        const bookFlipper = container.querySelector('.book-flipper');
+        
+        // Eliminar cualquier botón de flip existente para evitar duplicados
         const existingButton = container.querySelector('.flip-button');
         if (existingButton) {
             existingButton.remove();
         }
         
-        const flipper = container.querySelector('.book-flipper');
-        const bookItem = container.closest('.book-item');
-        
-        if (!flipper) return;
-        
-        // Crear el botón de volteo
+        // Crear el botón de flip
         const flipButton = document.createElement('button');
         flipButton.className = 'flip-button';
-        flipButton.innerHTML = '<i class="fas fa-sync-alt"></i> Girar';
+        flipButton.innerHTML = 'Girar <i class="fas fa-sync-alt"></i>';
         
-        // Añadir el botón después del contenedor de la imagen
+        // Agregar el botón al contenedor
         container.appendChild(flipButton);
         
-        // Manejar el click en el botón de volteo
-        flipButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            flipper.classList.toggle('flipped');
-        });
-        
-        // Botón "Ver interior"
-        if (bookItem) {
-            const verInteriorBtn = bookItem.querySelector('.book-btn-secondary');
-            if (verInteriorBtn) {
-                verInteriorBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    alert('Las imágenes del interior estarán disponibles próximamente');
-                });
+        // Función para manejar el flip del libro
+        function flipBook() {
+            if (bookFlipper) {
+                bookFlipper.classList.toggle('flipped');
+                
+                // Añadir efecto de sonido si está soportado
+                const flipSound = new Audio('assets/audio/page-flip.mp3');
+                try {
+                    flipSound.play().catch(error => {
+                        console.log('Reproducción de audio no soportada o bloqueada por el navegador:', error);
+                    });
+                } catch (error) {
+                    console.log('Error al reproducir el audio:', error);
+                }
             }
+        }
+        
+        // Agregar evento de clic al botón de flip
+        flipButton.addEventListener('click', flipBook);
+        
+        // Agregar evento de clic a la imagen del libro también
+        if (bookFlipper) {
+            bookFlipper.addEventListener('click', flipBook);
+        }
+        
+        // Manejar el botón "Ver interior" si existe
+        const verInteriorBtn = container.querySelector('.ver-interior-btn');
+        if (verInteriorBtn) {
+            verInteriorBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('¡Próximamente! Las imágenes del interior estarán disponibles pronto.');
+            });
         }
     });
 } 
