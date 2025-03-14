@@ -894,9 +894,9 @@ body.light-mode .amazon-btn:hover {
 /* Botón de modo oscuro */
 .dark-mode-toggle {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1002;
+  top: 10px; /* Ajustar margen superior */
+  right: 15px; /* Mantenerlo en la esquina derecha */
+  z-index: 1001; /* Asegurar que esté sobre otros elementos */
   width: 40px;
   height: 40px;
   display: flex;
@@ -959,17 +959,18 @@ body:not(.dark-mode) .dark-mode-toggle .moon {
 /* Ajuste para dispositivos móviles - modo oscuro */
 @media (max-width: 768px) {
   .dark-mode-toggle {
-    position: absolute;
+    position: fixed; /* Mantener siempre visible */
     right: 15px;
     top: 10px;
-    transform: scale(1.2);
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     z-index: 1005;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   }
 
   .dark-mode-toggle .sun,
@@ -978,28 +979,50 @@ body:not(.dark-mode) .dark-mode-toggle .moon {
     position: absolute;
     transition: transform 0.3s ease;
     color: #f1c40f; /* Amarillo dorado para mayor contraste */
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5); /* Resplandor sutil */
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3); /* Resplandor sutil */
   }
   
-  /* Asegurar que el sol también tenga buen contraste */
-  .dark-mode-toggle .sun {
-    color: #f1c40f;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  /* Asegurar que ambos iconos sean visibles según el modo */
+  body.dark-mode .dark-mode-toggle .sun {
+    display: block;
+    opacity: 1;
   }
-}
-
-/* Clase para texto con gradiente */
-.gradient-text {
-  display: block;
-  margin-top: 15px;
-  font-size: 1.3em;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 3s ease infinite;
-  background-size: 200% 200%;
+  
+  body.dark-mode .dark-mode-toggle .moon {
+    display: none;
+    opacity: 0;
+  }
+  
+  body:not(.dark-mode) .dark-mode-toggle .sun {
+    display: none;
+    opacity: 0;
+  }
+  
+  body:not(.dark-mode) .dark-mode-toggle .moon {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* Menú hamburguesa */
+  .menu-toggle {
+    position: fixed; /* Mantener fijo junto al de día/noche */
+    top: 50px; /* Justo debajo del icono de día/noche */
+    right: 15px; /* Alinear con el icono de día/noche */
+    z-index: 1000;
+  }
+  
+  /* Menú de navegación */
+  .nav-links {
+    position: absolute;
+    top: 70px; /* Alinear con la parte superior del banner */
+    right: 10px;
+    width: 220px; /* Tamaño adecuado */
+    background: rgba(30, 30, 30, 0.95); /* Fondo más elegante */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: right;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* Estilos para el menú en modo oscuro */
@@ -1014,4 +1037,18 @@ body.dark-mode .nav-links a {
 
 body.dark-mode .nav-links a:hover {
   color: #f1c40f; /* Amarillo dorado en hover para mejor interacción */
+}
+
+/* Clase para texto con gradiente */
+.gradient-text {
+  display: block;
+  margin-top: 15px;
+  font-size: 1.3em;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s ease infinite;
+  background-size: 200% 200%;
 } 

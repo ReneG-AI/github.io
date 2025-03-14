@@ -33,8 +33,8 @@
     justify-content: center;
     transition: var(--transition);
     z-index: 1000;
-    position: absolute;
-    right: 20px;
+    position: fixed;
+    right: 15px;
     top: 65px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
@@ -42,7 +42,7 @@
   .dark-mode-toggle {
     display: block !important;
     position: fixed;
-    right: 20px;
+    right: 15px;
     top: 15px;
     z-index: 1001;
     background: rgba(0, 0, 0, 0.2);
@@ -71,15 +71,18 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 220px;
     max-width: 300px;
     height: 100vh;
-    background: var(--bg-color);
+    background: rgba(30, 30, 30, 0.95);
     padding: 80px 20px;
     flex-direction: column;
     transition: 0.3s ease;
     z-index: 999;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    margin-top: 70px;
+    border-radius: 10px 0 0 10px;
+    text-align: right;
   }
 
   .nav-links.active {
@@ -90,7 +93,13 @@
     font-size: 1.1rem;
     padding: 12px 0;
     width: 100%;
-    text-align: left;
+    text-align: right;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  .nav-link:hover {
+    color: #f1c40f;
   }
 
   /* Hero section simplificado para tablets */
@@ -106,7 +115,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
-    background: none; /* Remover el fondo para usar la alternativa */
+    background: none;
   }
 
   /* Alternativa para imagen de fondo fija en tablets */
@@ -292,7 +301,7 @@
   .menu-toggle {
     display: block !important;
     font-size: 1.4rem;
-    top: 45px;
+    top: 50px;
     right: 15px;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -303,6 +312,8 @@
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 1000;
   }
 
   .dark-mode-toggle {
@@ -313,7 +324,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    position: absolute;
+    position: fixed;
     z-index: 1001;
   }
 
@@ -322,17 +333,17 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 200px; /* Ajuste del tamaño del menú */
+    width: 220px;
     max-width: 300px;
     height: 100vh;
-    background: rgba(30, 30, 30, 0.95); /* Fondo más elegante */
+    background: rgba(30, 30, 30, 0.95);
     padding: 80px 20px;
     flex-direction: column;
     transition: 0.3s ease;
     z-index: 999;
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
-    margin-top: 50px; /* Espacio debajo del icono de modo día/noche */
-    border-radius: 0 0 0 10px;
+    margin-top: 70px;
+    border-radius: 10px 0 0 10px;
     text-align: right;
   }
 
@@ -345,12 +356,12 @@
     padding: 12px 0;
     width: 100%;
     text-align: right;
-    color: #ffffff; /* Texto blanco para mejor visibilidad */
+    color: #ffffff;
     font-weight: 600;
   }
   
   .nav-link:hover {
-    color: #f1c40f; /* Amarillo dorado en hover para mejor interacción */
+    color: #f1c40f;
   }
 
   /* Hero section simplificado para móviles */
@@ -361,14 +372,14 @@
     padding: 0 15px;
     touch-action: none;
     pointer-events: none;
-    background-attachment: scroll; /* Cambiar a scroll en móviles */
+    background-attachment: scroll;
     overflow: visible;
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
     z-index: 1;
-    background: none; /* Remover el fondo para usar la alternativa */
+    background: none;
   }
 
   /* Alternativa para imagen de fondo fija en móviles */
