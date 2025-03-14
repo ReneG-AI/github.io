@@ -201,7 +201,8 @@ header.scrolled .logo img {
   ),
   url('../images/Banner.png') no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Mantiene la imagen estática */
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,6 +217,7 @@ header.scrolled .logo img {
   box-sizing: border-box;
   touch-action: pan-y; /* Permitir deslizamiento vertical en táctiles */
   pointer-events: auto; /* Asegurar que los eventos táctiles funcionen correctamente */
+  will-change: transform; /* Optimiza el rendimiento del efecto parallax */
 }
 
 .hero::before {

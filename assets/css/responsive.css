@@ -104,6 +104,37 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    background: none; /* Remover el fondo para usar la alternativa */
+  }
+
+  /* Alternativa para imagen de fondo fija en tablets */
+  .hero::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/Banner.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 1;
+  }
+
+  /* Capa de degradado sobre la imagen */
+  .hero::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
+    z-index: -1;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -117,6 +148,8 @@
     text-align: center;
     transform: none;
     margin-top: 5vh;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-content h1 {
@@ -328,11 +361,42 @@
     padding: 0 15px;
     touch-action: none;
     pointer-events: none;
-    background-attachment: scroll;
+    background-attachment: scroll; /* Cambiar a scroll en móviles */
     overflow: visible;
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    background: none; /* Remover el fondo para usar la alternativa */
+  }
+
+  /* Alternativa para imagen de fondo fija en móviles */
+  .hero::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/Banner.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 1;
+  }
+
+  /* Capa de degradado sobre la imagen */
+  .hero::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
+    z-index: -1;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -343,6 +407,8 @@
     text-align: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     pointer-events: auto;
+    position: relative;
+    z-index: 2;
   }
 
   .hero-content h1 {
