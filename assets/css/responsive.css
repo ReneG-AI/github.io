@@ -287,6 +287,9 @@
     background: url('../images/Banner.png') no-repeat center center fixed;
     background-size: cover;
     position: relative;
+    overflow-y: scroll; /* Asegurar que el contenido se desplace correctamente */
+    height: 100%; /* Asegurar que el body ocupe toda la altura de la ventana */
+    width: 100%; /* Asegurar que el body ocupe todo el ancho */
   }
   
   /* Overlay para mejorar la legibilidad del contenido */
@@ -302,12 +305,23 @@
     pointer-events: none; /* Permitir que los eventos táctiles pasen a través */
   }
 
+  /* Contenedor principal para todo el contenido scrollable */
+  #page-content {
+    position: relative;
+    z-index: 1;
+  }
+
   /* Header y navegación */
   header {
     padding: 10px 15px;
     min-height: 60px;
     background: rgba(26, 26, 46, 0.8); /* Fondo semitransparente */
     backdrop-filter: blur(5px);
+    position: fixed; /* Asegurar que el header permanezca fijo */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
 
   .logo {
@@ -335,7 +349,8 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     position: fixed;
-    z-index: 1000;
+    z-index: 1002; /* Aumentado para asegurar que esté por encima del menú */
+    cursor: pointer;
   }
 
   .dark-mode-toggle {
@@ -347,31 +362,43 @@
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.2);
     position: fixed;
-    z-index: 1001;
+    z-index: 1003; /* Aumentado para asegurar que esté por encima de todo */
   }
 
-  /* Menú de navegación */
+  /* Menú de navegación - Oculto por defecto */
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -100%; /* Oculto fuera de la pantalla por defecto */
     width: 220px;
     max-width: 300px;
     height: 100vh;
     background: rgba(20, 20, 30, 0.9); /* Fondo oscuro translúcido */
-    padding: 80px 20px;
+    padding: 80px 20px 20px 20px;
     flex-direction: column;
     transition: 0.3s ease;
-    z-index: 999;
+    z-index: 1001;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    margin-top: 70px;
-    border-radius: 10px 0 0 10px;
+    margin-top: 0; /* Eliminado el margen superior */
+    border-radius: 0; /* Eliminado el border-radius para cubrir toda la altura */
     text-align: right;
     backdrop-filter: blur(10px);
+    overflow-y: auto; /* Permitir scroll si el menú es muy largo */
   }
 
+  /* Mostrar el menú cuando está activo */
   .nav-links.active {
     right: 0;
+    animation: slideInMenu 0.3s forwards;
+  }
+
+  @keyframes slideInMenu {
+    from {
+      right: -100%;
+    }
+    to {
+      right: 0;
+    }
   }
 
   .nav-link {
@@ -386,22 +413,27 @@
   .nav-link:hover {
     color: #f1c40f;
   }
+  
+  /* Añadir padding superior para evitar que los elementos queden bajo el header */
+  main {
+    padding-top: 70px;
+  }
 
   /* Hero section simplificado para móviles - sin fondo propio */
   .hero {
     min-height: auto;
     max-height: none;
-    margin-top: 65px;
+    margin-top: 65px; /* Espacio para el header fijo */
     padding: 0 15px;
-    touch-action: none;
-    pointer-events: none;
+    touch-action: auto; /* Permitir interacciones táctiles normales */
+    pointer-events: auto; /* Permitir eventos de puntero */
     background: none; /* Eliminado el fondo del hero */
     overflow: visible;
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   /* Eliminados ::before y ::after del hero ya que ahora el fondo está en el body */
@@ -480,6 +512,8 @@
     backdrop-filter: blur(5px);
     position: relative;
     z-index: 2;
+    padding: 30px 15px;
+    overflow: hidden; /* Contener los elementos internos */
   }
 
   /* En modo oscuro, usar un fondo más oscuro para las secciones */
@@ -513,10 +547,6 @@
   }
 
   /* Ajustes de secciones */
-  section {
-    padding: 30px 15px;
-  }
-
   .section-title {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
