@@ -856,4 +856,56 @@ body.light-mode .amazon-btn {
 
 body.light-mode .amazon-btn:hover {
   background-color: rgba(255, 153, 0, 0.3);
+}
+
+/* Botón de modo oscuro */
+.dark-mode-toggle {
+  position: fixed;
+  top: 22px;
+  right: 70px;
+  z-index: 1001;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  color: var(--text-color);
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.dark-mode-toggle .sun,
+.dark-mode-toggle .moon {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  font-size: 1.2rem;
+}
+
+body.dark-mode .dark-mode-toggle .sun {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+body.dark-mode .dark-mode-toggle .moon {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+body.light-mode .dark-mode-toggle .sun {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+body.light-mode .dark-mode-toggle .moon {
+  opacity: 1;
+  transform: rotate(0deg);
 } 
