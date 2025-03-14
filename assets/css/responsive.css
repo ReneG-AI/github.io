@@ -280,6 +280,8 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.15);
+    position: absolute;
+    z-index: 1001;
   }
 
   /* Menú de navegación */
@@ -287,16 +289,18 @@
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
+    width: 200px; /* Ajuste del tamaño del menú */
     max-width: 300px;
     height: 100vh;
-    background: var(--bg-color);
+    background: rgba(30, 30, 30, 0.95); /* Fondo más elegante */
     padding: 80px 20px;
     flex-direction: column;
     transition: 0.3s ease;
     z-index: 999;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
     margin-top: 50px; /* Espacio debajo del icono de modo día/noche */
+    border-radius: 0 0 0 10px;
+    text-align: right;
   }
 
   .nav-links.active {
@@ -307,7 +311,13 @@
     font-size: 1.1rem;
     padding: 12px 0;
     width: 100%;
-    text-align: left;
+    text-align: right;
+    color: #ffffff; /* Texto blanco para mejor visibilidad */
+    font-weight: 600;
+  }
+  
+  .nav-link:hover {
+    color: #f1c40f; /* Amarillo dorado en hover para mejor interacción */
   }
 
   /* Hero section simplificado para móviles */
