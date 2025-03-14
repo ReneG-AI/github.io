@@ -3,6 +3,7 @@
   /* Header y navegación */
   header {
     padding: 10px 20px;
+    height: auto;
   }
 
   .logo {
@@ -16,7 +17,7 @@
 
   /* Menú hamburguesa y modo oscuro */
   .menu-toggle {
-    display: block;
+    display: block !important;
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
@@ -25,6 +26,9 @@
     padding: 5px;
     transition: var(--transition);
     z-index: 1000;
+    position: absolute;
+    right: 20px;
+    top: 22px;
   }
 
   .dark-mode-toggle {
@@ -190,9 +194,9 @@
 
 /* REGLAS PARA MÓVILES */
 @media (max-width: 768px) {
-  /* Ajustes de header */
+  /* Header y navegación */
   header {
-    padding: 8px 15px;
+    padding: 10px 15px;
   }
 
   .logo {
@@ -204,9 +208,12 @@
     height: 35px;
   }
 
-  /* Menú hamburguesa y modo oscuro */
+  /* Menú hamburguesa visible */
   .menu-toggle {
-    font-size: 1.3rem;
+    display: block !important;
+    font-size: 1.4rem;
+    top: 18px;
+    right: 15px;
   }
 
   .dark-mode-toggle {
@@ -217,7 +224,8 @@
 
   /* Hero section más compacto */
   .hero {
-    min-height: 100vh;
+    min-height: 50vh;
+    max-height: 50vh;
     padding: 0 20px;
     display: flex;
     align-items: center;
@@ -232,17 +240,18 @@
     padding: 0;
     margin: 0;
     z-index: 2;
+    transform: scale(0.8);
   }
 
   .hero-content h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     line-height: 1.3;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
   }
 
   .hero-content p {
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
     opacity: 0.9;
   }
 
@@ -255,13 +264,13 @@
   .hero-content .btn-container {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.6rem;
     align-items: center;
   }
 
   .hero-content .btn-container .btn {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     margin: 0;
   }
 
@@ -342,26 +351,30 @@
 /* REGLAS PARA MÓVILES PEQUEÑOS */
 @media (max-width: 480px) {
   .hero-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     line-height: 1.2;
   }
 
   .hero-content p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero-content .btn {
     padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .hero-content .btn-container {
-    gap: 0.6rem;
+    gap: 0.5rem;
   }
 
   .hero-content .btn-container .btn {
-    max-width: 180px;
+    max-width: 160px;
+  }
+  
+  .hero {
+    max-height: 45vh;
   }
 
   .section-title {
