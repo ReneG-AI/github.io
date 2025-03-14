@@ -204,6 +204,8 @@ header.scrolled .logo img {
   margin-left: -50vw;
   margin-right: -50vw;
   box-sizing: border-box;
+  touch-action: pan-y; /* Permitir deslizamiento vertical en táctiles */
+  pointer-events: auto; /* Asegurar que los eventos táctiles funcionen correctamente */
 }
 
 .hero::before {
@@ -215,6 +217,7 @@ header.scrolled .logo img {
   bottom: 0;
   background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
   z-index: 1;
+  pointer-events: none; /* Permitir que los eventos táctiles pasen a través */
 }
 
 .hero-content {
@@ -891,6 +894,7 @@ body.light-mode .amazon-btn:hover {
   font-size: 1.2rem;
 }
 
+/* Visibilidad de iconos en modo oscuro */
 body.dark-mode .dark-mode-toggle .sun {
   opacity: 1;
   transform: rotate(0deg);
@@ -901,14 +905,13 @@ body.dark-mode .dark-mode-toggle .moon {
   transform: rotate(90deg);
 }
 
-body.light-mode .dark-mode-toggle .sun,
-.dark-mode-toggle .sun {
+/* Visibilidad de iconos en modo claro */
+body:not(.dark-mode) .dark-mode-toggle .sun {
   opacity: 0;
   transform: rotate(-90deg);
 }
 
-body.light-mode .dark-mode-toggle .moon,
-.dark-mode-toggle .moon {
+body:not(.dark-mode) .dark-mode-toggle .moon {
   opacity: 1;
   transform: rotate(0deg);
 }
@@ -926,4 +929,18 @@ body.light-mode .dark-mode-toggle .moon,
   .dark-mode-toggle .moon {
     font-size: 1.1rem;
   }
+}
+
+/* Clase para texto con gradiente */
+.gradient-text {
+  display: block;
+  margin-top: 15px;
+  font-size: 1.3em;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s ease infinite;
+  background-size: 200% 200%;
 } 

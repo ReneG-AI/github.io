@@ -253,6 +253,9 @@
     max-height: none;
     margin-top: 65px;
     padding: 0 15px;
+    touch-action: auto;
+    background-attachment: scroll;
+    overflow: visible;
   }
 
   .hero-content {
