@@ -217,6 +217,29 @@ body.light-mode #page-content {
   z-index: -1;
 }
 
+/* Hero text - aumentado en 30% para web */
+.hero-text h1 {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 2.5rem; /* Mantener tamaño original para tablet y móvil */
+  }
+  
+  .hero-text p {
+    font-size: 1rem; /* Mantener tamaño original para tablet y móvil */
+  }
+}
+
 /* Garantizar que todas las secciones estén por encima del fondo */
 section {
   padding: 100px 0;
@@ -1008,17 +1031,21 @@ body.dark-mode .nav-links a:hover {
 
 .book-images {
   position: relative;
-  min-height: 580px; /* Reducido en 10% aprox. de 650px */
+  width: 100%;
+  min-width: 350px;
+  min-height: 580px;
   margin-bottom: 70px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  overflow: visible; /* Importante para que el botón no se corte */
 }
 
 .book-flipper {
   position: relative;
-  width: 75%; /* Reducido del 85% original */
-  max-width: 430px; /* Reducido en 10% aprox. de 480px */
-  height: 580px; /* Reducido en 10% aprox. de 640px */
+  width: 75%;
+  max-width: 430px;
+  height: 580px;
   perspective: 1500px;
   margin: 0 auto;
 }
@@ -1032,6 +1059,7 @@ body.dark-mode .nav-links a:hover {
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  display: block; /* Asegurarse de que sea bloque */
 }
 
 .book-cover img, .book-back img {
@@ -1039,6 +1067,7 @@ body.dark-mode .nav-links a:hover {
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  display: block; /* Asegurarse de que sea bloque */
 }
 
 .book-back {
@@ -1055,7 +1084,7 @@ body.dark-mode .nav-links a:hover {
 
 .flip-button {
   position: absolute;
-  bottom: -50px; /* Posicionado 50px abajo del contenedor de la imagen */
+  bottom: -60px; /* Bajarlo más para que no se corte */
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -1076,12 +1105,15 @@ body.dark-mode .nav-links a:hover {
   letter-spacing: 0.5px;
   opacity: 1;
   visibility: visible;
+  white-space: nowrap; /* Evitar que se rompa en líneas */
 }
 
 /* Ajustes responsivos para móvil */
 @media (max-width: 768px) {
   .book-images {
     min-height: 450px;
+    width: 100%;
+    overflow: visible;
   }
   
   .book-flipper {
@@ -1090,7 +1122,7 @@ body.dark-mode .nav-links a:hover {
   }
   
   .flip-button {
-    bottom: -45px;
+    bottom: -55px;
     padding: 10px 20px;
     font-size: 1rem;
   }
@@ -1430,4 +1462,9 @@ body.dark-mode .nav-links a:hover {
         top: 20px;
         right: 70px;
     }
+}
+
+/* Cambiar el título de "Testimonios" a "Comentarios" */
+#testimonials .section-title {
+  content: 'Comentarios';
 } 
