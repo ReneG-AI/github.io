@@ -1,6 +1,6 @@
-# René Garcia Educa - Sitio Web
+# René García Educa - Sitio Web Oficial
 
-Este repositorio contiene el código fuente del sitio web de René Garcia Educa, una plataforma dedicada a libros educativos y de entretenimiento para todas las edades.
+Este repositorio contiene el código fuente del sitio web oficial de René García Educa, dedicado a libros educativos y de entretenimiento para todas las edades.
 
 ## Estructura del Proyecto
 
@@ -24,28 +24,24 @@ Este repositorio contiene el código fuente del sitio web de René Garcia Educa,
 
 ## Características
 
-- Diseño responsivo para todos los dispositivos
-- Modo oscuro/claro con persistencia de preferencia
-- Carrusel interactivo para mostrar libros
-- Animaciones suaves y efectos visuales
-- Optimizado para SEO
+- Diseño responsive para móviles, tablets y escritorio
+- Modo oscuro/claro
+- Carrusel de libros con diseño moderno
+- Sección de testimonios
+- Información de contacto
 
-## Tecnologías Utilizadas
+## Tecnologías utilizadas
 
 - HTML5
-- CSS3 (con variables CSS)
-- JavaScript (vanilla)
-- AOS (Animate On Scroll)
-- Font Awesome
+- CSS3 (con variables CSS para tematización)
+- JavaScript (Vanilla)
+- AOS para animaciones al scroll
+- Font Awesome para iconos
 
-## Cómo Contribuir
+## Última actualización
 
-1. Haz un fork del repositorio
-2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
-3. Haz commit de tus cambios (`git commit -m 'Añadir nueva característica'`)
-4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre un Pull Request
+Sitio actualizado el 13 de marzo de 2025.
 
-## Licencia
+---
 
-Todos los derechos reservados © 2020-2025 René Garcia Educa.
+© 2020-2025 René Garcia Educa. Todos los derechos reservados.
