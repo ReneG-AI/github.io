@@ -256,25 +256,36 @@
     touch-action: auto;
     background-attachment: scroll;
     overflow: visible;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-content {
     max-width: 95%;
-    padding: 1.5rem;
+    padding: 1.8rem;
     margin: 0 auto;
     background: rgba(30, 30, 46, 0.75);
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
 
   .hero-content h1 {
     display: block;
-    font-size: 1.5rem;
-    margin-bottom: 0.6rem;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    line-height: 1.4;
   }
 
   .hero-content p {
     font-size: 1rem;
     margin-bottom: 1.2rem;
     font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   }
 
   .hero-content .btn-container {
@@ -356,23 +367,24 @@
   }
   
   .hero-content {
-    padding: 1.2rem;
+    padding: 1.5rem;
+    max-width: 100%;
   }
 
   .hero-content h1 {
-    font-size: 1.3rem;
-    line-height: 1.2;
+    font-size: 1.4rem;
+    line-height: 1.3;
   }
 
   .hero-content p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
     padding: 0;
   }
 
   .hero-content .btn {
-    padding: 0.6rem 1.3rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
   }
 
   .section-title {
