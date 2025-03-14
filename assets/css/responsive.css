@@ -369,7 +369,7 @@
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%; /* Oculto fuera de la pantalla por defecto */
+    right: -100% !important; /* Forzar que esté fuera de la pantalla por defecto */
     width: 220px;
     max-width: 300px;
     height: 100vh;
@@ -384,12 +384,17 @@
     text-align: right;
     backdrop-filter: blur(10px);
     overflow-y: auto; /* Permitir scroll si el menú es muy largo */
+    display: flex !important; /* Asegurar que el display no cambie */
+    visibility: hidden; /* Ocultar completamente */
+    opacity: 0; /* Transparente por defecto */
   }
 
   /* Mostrar el menú cuando está activo */
   .nav-links.active {
-    right: 0;
+    right: 0 !important; /* Forzar que esté visible cuando está activo */
     animation: slideInMenu 0.3s forwards;
+    visibility: visible !important; /* Mostrar cuando está activo */
+    opacity: 1 !important; /* Hacer visible cuando está activo */
   }
 
   @keyframes slideInMenu {
