@@ -169,8 +169,14 @@ header.scrolled .logo img {
 /* Ocultar el menú hamburguesa en pantallas grandes */
 .menu-toggle {
   display: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  z-index: 1002;
+  color: var(--text-color);
+  background: transparent;
+  border: none;
+  padding: 5px;
+  transition: var(--transition);
+  z-index: 1000;
 }
 
 /* HERO SECTION */
