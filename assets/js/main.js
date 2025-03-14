@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     initBackToTop();
+    initBookFlip();
 });
 
 // Preloader
@@ -64,19 +65,17 @@ function initDarkModeToggle() {
     
     darkModeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode');
         
         // Guardar preferencia
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('darkMode', 'enabled');
-        } else {
-            localStorage.setItem('darkMode', null);
-        }
-        
-        // Cambiar visibilidad de iconos
-        if (body.classList.contains('dark-mode')) {
+            // Mostrar el icono del sol en modo oscuro
             sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
         } else {
+            localStorage.setItem('darkMode', null);
+            // Mostrar el icono de la luna en modo claro
             sunIcon.style.display = 'none';
             moonIcon.style.display = 'block';
         }
@@ -250,28 +249,41 @@ function initBackToTop() {
 }
 
 // Manejar el flip de los libros
-document.addEventListener('DOMContentLoaded', function() {
+function initBookFlip() {
     const bookImages = document.querySelectorAll('.book-images');
     
     bookImages.forEach(container => {
         const flipper = container.querySelector('.book-flipper');
+        const verInteriorBtn = container.closest('.book-item').querySelector('.book-btn-secondary');
         
-        container.addEventListener('click', () => {
-            flipper.classList.toggle('flipped');
-            
-            // Añadir efecto de sonido sutil (opcional)
-            const flipSound = new Audio('assets/sounds/page-flip.mp3');
-            flipSound.volume = 0.3;
-            flipSound.play().catch(() => {}); // Silenciar error si el navegador bloquea el audio
-        });
+        if (verInteriorBtn) {
+            verInteriorBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Las imágenes del interior estarán disponibles próximamente');
+            });
+        }
         
-        // Añadir indicador visual
+        // Crear y añadir el indicador de flip
         const indicator = document.createElement('div');
         indicator.className = 'flip-indicator';
         indicator.innerHTML = '<i class="fas fa-sync-alt"></i> Click para girar';
         container.appendChild(indicator);
         
-        // Mostrar/ocultar indicador
+        // Manejar el click para voltear
+        container.addEventListener('click', () => {
+            flipper.classList.toggle('flipped');
+            
+            // Efecto de sonido (opcional)
+            try {
+                const flipSound = new Audio('assets/sounds/page-flip.mp3');
+                flipSound.volume = 0.3;
+                flipSound.play().catch(() => {});
+            } catch (error) {
+                console.log('Sound not supported');
+            }
+        });
+        
+        // Mostrar/ocultar indicador al hover
         container.addEventListener('mouseenter', () => {
             indicator.style.opacity = '1';
         });
@@ -280,28 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
             indicator.style.opacity = '0';
         });
     });
-});
-
-// Manejar el modo oscuro
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-// Verificar preferencia guardada
-const darkMode = localStorage.getItem('darkMode');
-if (darkMode === 'enabled') {
-    body.classList.add('dark-mode');
 }
-
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    
-    // Guardar preferencia
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-    } else {
-        localStorage.setItem('darkMode', null);
-    }
-});
 
 // Manejar el menú móvil
 const menuToggle = document.getElementById('menu-toggle');

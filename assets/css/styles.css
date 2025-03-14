@@ -1016,6 +1016,7 @@ body.dark-mode .nav-links a:hover {
   justify-content: center;
   perspective: 1500px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .book-flipper {
@@ -1025,6 +1026,7 @@ body.dark-mode .nav-links a:hover {
   height: 640px;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .book-flipper.flipped {
@@ -1053,6 +1055,7 @@ body.dark-mode .nav-links a:hover {
   z-index: 1;
 }
 
+/* Efecto hover */
 .book-images:hover .book-flipper:not(.flipped) {
   transform: scale(1.02) rotateY(15deg);
 }
@@ -1061,36 +1064,57 @@ body.dark-mode .nav-links a:hover {
   transform: scale(1.02) rotateY(195deg);
 }
 
-/* Efecto de brillo al pasar el mouse */
-.book-cover::after,
-.book-back::after {
-  content: '';
+/* Indicador de flip */
+.flip-indicator {
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 200%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transform: skewX(-15deg);
-  transition: 0.5s;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
   opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(5px);
+  z-index: 10;
 }
 
-.book-images:hover .book-cover::after,
-.book-images:hover .book-back::after {
-  left: 100%;
-  opacity: 1;
+.flip-indicator i {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Ajustes para modo oscuro */
-body.dark-mode .book-cover,
-body.dark-mode .book-back {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+body.dark-mode .flip-indicator {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .book-images {
+    min-height: 480px;
+  }
+  
+  .book-flipper {
+    height: 400px;
+  }
+  
+  .flip-indicator {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    bottom: -25px;
+  }
 }
 
 /* Animación de entrada */
@@ -1301,16 +1325,16 @@ body.dark-mode .book-back {
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  padding: 5px 15px;
+  padding: 8px 15px;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
   backdrop-filter: blur(5px);
   z-index: 10;
 }
@@ -1320,12 +1344,8 @@ body.dark-mode .book-back {
 }
 
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Ajustes para modo oscuro */
@@ -1336,8 +1356,8 @@ body.dark-mode .flip-indicator {
 /* Ajustes responsivos */
 @media (max-width: 768px) {
   .flip-indicator {
-    font-size: 0.7rem;
-    padding: 4px 12px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
     bottom: -25px;
   }
 } 
