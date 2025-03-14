@@ -90,76 +90,126 @@
       <section id="libros">
         <h2 class="section-title" data-aos="fade-down">Mis Libros</h2>
         <p class="section-subtitle" data-aos="fade-up">Descubre mi colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
-        <div class="container">
-          <div class="books-carousel" data-aos="fade-up">
-            <div class="carousel-container">
-              <div class="carousel-item">
-                <div class="book">
-                  <div class="book-badge">Multilingüe</div>
-                  <div class="book-image-container">
-                    <img src="assets/images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" loading="lazy" width="350" height="480" />
-                    <div class="magnifier">🔍</div>
-                  </div>
-                  <div class="book-content">
-                    <h3>Aprende 5 Idiomas Coloreando</h3>
-                    <p>Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos.</p>
-                    <p style="margin-top: 15px;"><strong>Idiomas:</strong> EN, ES, DE, FR, CN</p>
-                    <a href="https://www.amazon.com/Ren%C3%A9-Garcia-Educa/dp/B0DLFFXPSG" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                  </div>
+        
+        <div class="container book-showcase">
+          <!-- Libro 1 -->
+          <div class="book-item" data-aos="fade-up">
+            <div class="book-images">
+              <img src="assets/images/libro-multilingue.svg" alt="Portada: Aprende 5 Idiomas Coloreando" class="book-cover floating" />
+              <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Contraportada: Aprende 5 Idiomas Coloreando" class="book-back floating-delay" />
+            </div>
+            
+            <div class="book-content">
+              <span class="book-badge">Multilingüe</span>
+              <h3>Aprende 5 Idiomas Coloreando</h3>
+              <p class="book-description">Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos. Una manera divertida y efectiva de aprender nuevos idiomas mientras ejercitas tu creatividad.</p>
+              
+              <div class="book-details">
+                <span class="book-detail"><i class="fas fa-globe"></i> EN, ES, DE, FR, CN</span>
+                <span class="book-detail"><i class="fas fa-users"></i> Para todas las edades</span>
+                <span class="book-detail"><i class="fas fa-paint-brush"></i> 40+ ilustraciones</span>
+              </div>
+              
+              <div class="book-features">
+                <h4 class="feature-title">¿Qué encontrarás?</h4>
+                <div class="features-list">
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Vocabulario multilingüe</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Ilustraciones detalladas</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Actividades educativas</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseño profesional</div>
                 </div>
               </div>
               
-              <div class="carousel-item">
-                <div class="book">
-                  <div class="book-badge">Bilingüe</div>
-                  <div class="book-image-container">
-                    <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" loading="lazy" width="350" height="480" />
-                    <div class="magnifier">🔍</div>
-                  </div>
-                  <div class="book-content">
-                    <h3>Aprende más de 40 animales para colorear</h3>
-                    <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
-                    <p style="margin-top: 15px;"><strong>Disponible en:</strong> Español e Inglés (versiones separadas)</p>
-                    <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="carousel-item">
-                <div class="book">
-                  <div class="book-badge">Relajación</div>
-                  <div class="book-image-container">
-                    <img src="assets/images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
-                    <div class="magnifier">🔍</div>
-                  </div>
-                  <div class="book-content">
-                    <h3>Mandalas con Mascotas Chibis</h3>
-                    <p>Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas.</p>
-                    <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-                    <a href="https://www.amazon.com/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                  </div>
-                </div>
+              <div class="book-actions">
+                <a href="https://www.amazon.com/Ren%C3%A9-Garcia-Educa/dp/B0DLFFXPSG" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
+                <a href="#" class="book-btn book-btn-secondary"><i class="fas fa-eye"></i> Ver interior</a>
               </div>
             </div>
             
-            <div class="carousel-controls">
-              <button class="carousel-control prev-btn">&lt;</button>
-              <button class="carousel-control next-btn">&gt;</button>
-            </div>
-            
-            <div class="carousel-dots">
-              <span class="carousel-dot active" data-index="0"></span>
-              <span class="carousel-dot" data-index="1"></span>
-              <span class="carousel-dot" data-index="2"></span>
-            </div>
+            <div class="book-decoration decoration-dots-small"></div>
           </div>
           
-          <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos mis libros en Amazon</a>
+          <!-- Libro 2 -->
+          <div class="book-item" data-aos="fade-up">
+            <div class="book-images">
+              <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Portada: Animales Chibis para Colorear" class="book-cover floating" />
+              <img src="assets/images/libro-multilingue.svg" alt="Contraportada: Animales Chibis para Colorear" class="book-back floating-delay" />
+            </div>
+            
+            <div class="book-content">
+              <span class="book-badge">Bilingüe</span>
+              <h3>Aprende más de 40 animales para colorear</h3>
+              <p class="book-description">Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi. Perfecto para aprender mientras te diviertes dando vida a cada página con tus colores favoritos.</p>
+              
+              <div class="book-details">
+                <span class="book-detail"><i class="fas fa-language"></i> Español / Inglés</span>
+                <span class="book-detail"><i class="fas fa-child"></i> Ideal para niños</span>
+                <span class="book-detail"><i class="fas fa-paw"></i> 40+ animales</span>
+              </div>
+              
+              <div class="book-features">
+                <h4 class="feature-title">¿Qué encontrarás?</h4>
+                <div class="features-list">
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseños kawaii</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Datos educativos</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diferentes niveles</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Versiones bilingües</div>
+                </div>
+              </div>
+              
+              <div class="book-actions">
+                <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
+                <a href="#" class="book-btn book-btn-secondary"><i class="fas fa-eye"></i> Ver interior</a>
+              </div>
+            </div>
+            
+            <div class="book-decoration decoration-circle"></div>
+          </div>
+          
+          <!-- Libro 3 -->
+          <div class="book-item" data-aos="fade-up">
+            <div class="book-images">
+              <img src="assets/images/Logo.png" alt="Portada: Mandalas con Mascotas Chibis" class="book-cover floating" />
+              <img src="assets/images/Logo.png" alt="Contraportada: Mandalas con Mascotas Chibis" class="book-back floating-delay" />
+            </div>
+            
+            <div class="book-content">
+              <span class="book-badge">Relajación</span>
+              <h3>Mandalas con Mascotas Chibis</h3>
+              <p class="book-description">Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas. Una perfecta combinación de arte zen y adorables mascotas que te ayudará a relajarte y mejorar tu concentración.</p>
+              
+              <div class="book-details">
+                <span class="book-detail"><i class="fas fa-language"></i> Español</span>
+                <span class="book-detail"><i class="fas fa-users"></i> Jóvenes y adultos</span>
+                <span class="book-detail"><i class="fas fa-cat"></i> Gatos & perros</span>
+              </div>
+              
+              <div class="book-features">
+                <h4 class="feature-title">¿Qué encontrarás?</h4>
+                <div class="features-list">
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Mandalas exclusivos</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseños anti-estrés</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Mascotas adorables</div>
+                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Papel de alta calidad</div>
+                </div>
+              </div>
+              
+              <div class="book-actions">
+                <a href="https://www.amazon.com/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
+                <a href="#" class="book-btn book-btn-secondary"><i class="fas fa-eye"></i> Ver interior</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="decoration decoration-dots" style="top: 10%; right: 5%;"></div>
-        <div class="decoration decoration-circles" style="bottom: 15%; left: 5%;"></div>
+        
+        <div class="container" style="text-align: center; margin-top: 4rem;" data-aos="fade-up">
+          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">
+            <i class="fab fa-amazon"></i> Ver todos mis libros en Amazon
+          </a>
+          <p style="margin-top: 1.5rem; opacity: 0.8; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Descubre toda mi colección de libros para colorear. Nuevos títulos añadidos regularmente.
+          </p>
+        </div>
       </section>
       <section id="testimonios">
         <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
@@ -321,6 +371,5 @@
     
     <!-- JS Propio -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/carousel.js"></script>
   </body>
 </html>
