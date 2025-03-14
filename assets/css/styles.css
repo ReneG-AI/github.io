@@ -1101,20 +1101,69 @@ body.dark-mode .flip-indicator {
 }
 
 /* Ajustes responsivos */
+@media (max-width: 1024px) {
+    .book-images {
+        min-height: 288px; /* Reducido un 60% de 720px */
+    }
+    
+    .book-flipper {
+        height: 256px; /* Reducido un 60% de 640px */
+        width: 60%;
+    }
+
+    .book-item {
+        min-height: 320px; /* Ajustado proporcionalmente */
+        flex-direction: column !important;
+        padding: 2rem;
+    }
+
+    .book-content {
+        padding: 2rem 1rem;
+    }
+}
+
 @media (max-width: 768px) {
-  .book-images {
-    min-height: 480px;
-  }
-  
-  .book-flipper {
-    height: 400px;
-  }
-  
-  .flip-indicator {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-    bottom: -25px;
-  }
+    .book-images {
+        min-height: 288px; /* Mantenemos el mismo tamaño que en tablet */
+    }
+    
+    .book-flipper {
+        height: 256px; /* Mantenemos el mismo tamaño que en tablet */
+        width: 60%;
+    }
+    
+    .flip-indicator {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        bottom: -25px;
+    }
+
+    /* Centrar el menú hamburguesa */
+    .menu-toggle {
+        position: fixed;
+        top: 20px; /* Ajustado para centrar verticalmente */
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+    }
+
+    .menu-toggle i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    /* Ajustar el botón de modo oscuro para que no se superponga */
+    .dark-mode-toggle {
+        top: 20px;
+        right: 70px;
+    }
 }
 
 /* Animación de entrada */
