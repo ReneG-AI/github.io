@@ -33,16 +33,40 @@ function initPreloader() {
 function initDarkModeToggle() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
+    const sunIcon = darkModeToggle.querySelector('.sun');
+    const moonIcon = darkModeToggle.querySelector('.moon');
     
     // Verificar preferencia guardada
     const darkMode = localStorage.getItem('darkMode') === 'true';
     if (darkMode) {
         body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+        // Mostrar el icono del sol en modo oscuro
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+    } else {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        // Mostrar el icono de la luna en modo claro
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
     }
     
     darkModeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        body.classList.toggle('light-mode');
+        
+        const isDarkMode = body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode);
+        
+        // Cambiar visibilidad de iconos
+        if (isDarkMode) {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        } else {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
     });
 }
 
