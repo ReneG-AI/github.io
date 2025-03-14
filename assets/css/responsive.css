@@ -288,7 +288,8 @@
     max-height: none;
     margin-top: 65px;
     padding: 0 15px;
-    touch-action: auto;
+    touch-action: none;
+    pointer-events: none;
     background-attachment: scroll;
     overflow: visible;
     justify-content: center;
@@ -303,6 +304,7 @@
     background: rgba(30, 30, 46, 0.75);
     text-align: center;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    pointer-events: auto;
   }
 
   .hero-content h1 {
@@ -332,7 +334,7 @@
   }
 
   .hero-content .btn-container .btn:first-child {
-    display: none; /* Ocultar el botón "Explorar Libros" */
+    display: none;
   }
 
   .hero-content .btn-container .btn {
