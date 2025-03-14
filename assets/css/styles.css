@@ -1009,76 +1009,104 @@ body.dark-mode .nav-links a:hover {
 .book-images {
   flex: 0 0 48%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, rgba(240, 240, 250, 0.05), rgba(230, 230, 240, 0.03));
-  border-radius: 16px;
+  perspective: 1500px;
+  cursor: pointer;
 }
 
-/* Ajustes específicos para modo oscuro */
-body.dark-mode .book-images {
-  background: linear-gradient(145deg, rgba(30, 30, 50, 0.3), rgba(20, 20, 40, 0.2));
+.book-flipper {
+  position: relative;
+  width: 65%;
+  max-width: 300px;
+  height: 400px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-flipper.flipped {
+  transform: rotateY(180deg);
 }
 
 .book-cover,
 .book-back {
   position: absolute;
-  width: 65%;
-  max-width: 300px;
-  height: auto;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
   border-radius: 8px;
-  transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.6s ease;
-  object-fit: contain;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+  object-fit: cover;
 }
 
 .book-cover {
+  transform: rotateY(0deg);
   z-index: 2;
-  transform: rotate(-5deg) translateX(-8%) translateY(0);
-  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
 }
 
 .book-back {
+  transform: rotateY(180deg);
   z-index: 1;
-  transform: rotate(5deg) translateX(8%) translateY(0);
-  opacity: 0.9;
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
 }
 
-.book-item:hover .book-cover {
-  transform: rotate(-8deg) translateX(-25%) translateY(-5px);
+.book-images:hover .book-flipper:not(.flipped) {
+  transform: scale(1.02) rotateY(15deg);
 }
 
-.book-item:hover .book-back {
-  transform: rotate(8deg) translateX(25%) translateY(-5px);
+.book-images:hover .book-flipper.flipped {
+  transform: scale(1.02) rotateY(195deg);
+}
+
+/* Efecto de brillo al pasar el mouse */
+.book-cover::after,
+.book-back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-15deg);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.book-images:hover .book-cover::after,
+.book-images:hover .book-back::after {
+  left: 100%;
   opacity: 1;
 }
 
-.book-item:nth-child(even) .book-cover {
-  transform: rotate(5deg) translateX(10%) translateY(0);
+/* Ajustes para modo oscuro */
+body.dark-mode .book-cover,
+body.dark-mode .book-back {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.book-item:nth-child(even) .book-back {
-  transform: rotate(-5deg) translateX(-10%) translateY(0);
+/* Animación de entrada */
+@keyframes bookAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateY(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(0);
+  }
 }
 
-.book-item:nth-child(even):hover .book-cover {
-  transform: rotate(8deg) translateX(25%) translateY(-5px);
-}
-
-.book-item:nth-child(even):hover .book-back {
-  transform: rotate(-8deg) translateX(-25%) translateY(-5px);
-}
-
-.book-content {
-  flex: 1;
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.book-flipper {
+  animation: bookAppear 0.8s ease-out forwards;
 }
 
 .book-badge {
@@ -1091,6 +1119,14 @@ body.dark-mode .book-images {
   font-weight: 600;
   margin-bottom: 1.5rem;
   box-shadow: 0 5px 15px rgba(107, 76, 230, 0.3);
+}
+
+.book-content {
+  flex: 1;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .book-content h3 {
@@ -1256,4 +1292,52 @@ body.dark-mode .book-images {
   border-radius: 50%;
   border: 2px dashed var(--primary-color);
   opacity: 0.3;
+}
+
+.flip-indicator {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.flip-indicator i {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ajustes para modo oscuro */
+body.dark-mode .flip-indicator {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .flip-indicator {
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    bottom: -25px;
+  }
 } 
