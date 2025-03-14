@@ -21,115 +21,69 @@ document.addEventListener('DOMContentLoaded', function() {
 // Preloader
 function initPreloader() {
     const preloader = document.querySelector('.preloader');
-    if (!preloader) return;
-    
-    window.addEventListener('load', function() {
-        preloader.classList.add('fade-out');
-        setTimeout(function() {
+    if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
             preloader.style.display = 'none';
         }, 500);
-    });
+    }
 }
 
 // Alternador de modo oscuro
 function initDarkModeToggle() {
-    const darkModeToggle = document.querySelector('.dark-mode-toggle');
-    if (!darkModeToggle) return;
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
     
-    // Añadimos transición al body para una animación suave al cambiar de modo
-    document.body.style.transition = "background-color 0.3s ease, color 0.3s ease";
-    
-    // Verificar preferencia guardada en localStorage
-    // Si no hay preferencia guardada, usamos modo oscuro por defecto
-    const hasStoredPreference = localStorage.getItem('darkMode') !== null;
-    const isDarkMode = hasStoredPreference ? localStorage.getItem('darkMode') === 'true' : true;
-    
-    // Aplicar modo según preferencia o predeterminado (oscuro)
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-        document.body.classList.remove('light-mode');
-        darkModeToggle.classList.add('active');
-    } else {
-        document.body.classList.add('light-mode');
-        document.body.classList.remove('dark-mode');
-        darkModeToggle.classList.remove('active');
+    // Verificar preferencia guardada
+    const darkMode = localStorage.getItem('darkMode') === 'true';
+    if (darkMode) {
+        body.classList.add('dark-mode');
     }
     
-    // Si no hay preferencia guardada, guardamos el modo oscuro como predeterminado
-    if (!hasStoredPreference) {
-        localStorage.setItem('darkMode', 'true');
-    }
-    
-    // Alternar modo oscuro al hacer clic en el botón
-    darkModeToggle.addEventListener('click', function() {
-        // Añadir clase de animación
-        document.body.classList.add('theme-transition');
-        
-        if (document.body.classList.contains('dark-mode')) {
-            // Cambiar a modo claro
-            document.body.classList.remove('dark-mode');
-            document.body.classList.add('light-mode');
-            darkModeToggle.classList.remove('active');
-            localStorage.setItem('darkMode', 'false');
-        } else {
-            // Cambiar a modo oscuro
-            document.body.classList.add('dark-mode');
-            document.body.classList.remove('light-mode');
-            darkModeToggle.classList.add('active');
-            localStorage.setItem('darkMode', 'true');
-        }
-        
-        // Eliminar clase de animación después de la transición
-        setTimeout(function() {
-            document.body.classList.remove('theme-transition');
-        }, 500);
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
     });
 }
 
 // Menú móvil
 function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
+    const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navLinksAnchors = document.querySelectorAll('.nav-links a');
     
     if (!menuToggle || !navLinks) return;
     
-    // Mostrar/ocultar menú al hacer clic en el botón
-    menuToggle.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
-    });
-    
     // Cerrar menú al hacer clic en un enlace
     navLinksAnchors.forEach(function(link) {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 1024) { // Ahora incluye tablets (hasta 1024px)
+            if (window.innerWidth <= 1024) { // Incluye tablets (hasta 1024px)
                 navLinks.classList.remove('active');
             }
         });
     });
     
-    // Cerrar menú al hacer clic fuera del menú
-    document.addEventListener('click', function(event) {
-        const isClickInsideMenu = navLinks.contains(event.target);
-        const isClickMenuToggle = menuToggle.contains(event.target);
-        
-        if (!isClickInsideMenu && !isClickMenuToggle && navLinks.classList.contains('active')) {
+    // Toggle menú
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
             navLinks.classList.remove('active');
         }
     });
     
-    // Manejar cambios de tamaño de ventana
-    window.addEventListener('resize', function() {
-        // Si se redimensiona a escritorio, cerrar el menú móvil
-        if (window.innerWidth > 1024 && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-        }
-        
-        // Asegurar que el menú siempre esté visible en escritorio, sin importar el estado anterior
-        if (window.innerWidth > 1024) {
-            navLinks.classList.remove('active');
-            navLinks.style.right = '';  // Resetear cualquier estilo inline
-        }
+    // Función para manejar el redimensionamiento de la ventana
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 1024) {
+                navLinks.classList.remove('active');
+            }
+        }, 250);
     });
 }
 
@@ -149,9 +103,9 @@ function initSmoothScroll() {
             
             // Si el destino existe, desplazar suavemente
             if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 70, // Ajustar por la altura del encabezado
-                    behavior: 'smooth'
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
@@ -160,21 +114,29 @@ function initSmoothScroll() {
 
 // Efecto de scroll en el encabezado
 function initHeaderScroll() {
-    const header = document.querySelector('header');
+    const header = document.getElementById('header');
     if (!header) return;
     
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
         
-        // Agregar clase scrolled si el desplazamiento es mayor a 50px
-        if (scrollTop > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+        if (currentScroll <= 0) {
+            header.classList.remove('scroll-up');
+            return;
         }
         
-        // Siempre mantener el header visible
-        header.style.transform = 'translateY(0)';
+        if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
+            // Scroll Down
+            header.classList.remove('scroll-up');
+            header.classList.add('scroll-down');
+        } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
+            // Scroll Up
+            header.classList.remove('scroll-down');
+            header.classList.add('scroll-up');
+        }
+        lastScroll = currentScroll;
     });
 }
 
@@ -183,26 +145,26 @@ function initAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
-            once: true
+            once: true,
+            offset: 100
         });
     }
 }
 
 // Botón volver arriba
 function initBackToTop() {
-    const backToTopBtn = document.querySelector('#back-to-top');
-    if (!backToTopBtn) return;
+    const backToTop = document.getElementById('back-to-top');
+    if (!backToTop) return;
     
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('show');
+            backToTop.classList.add('show');
         } else {
-            backToTopBtn.classList.remove('show');
+            backToTop.classList.remove('show');
         }
     });
     
-    backToTopBtn.addEventListener('click', function(e) {
+    backToTop.addEventListener('click', function(e) {
         e.preventDefault();
         window.scrollTo({
             top: 0,
