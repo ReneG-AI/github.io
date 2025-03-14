@@ -293,20 +293,11 @@ function initBookFlip() {
         // Agregar el botón al contenedor
         container.appendChild(flipButton);
         
-        // Función para manejar el flip del libro
+        // Función para manejar el flip del libro - simplificada sin audio
         function flipBook() {
             if (bookFlipper) {
                 bookFlipper.classList.toggle('flipped');
-                
-                // Añadir efecto de sonido si está soportado
-                const flipSound = new Audio('assets/audio/page-flip.mp3');
-                try {
-                    flipSound.play().catch(error => {
-                        console.log('Reproducción de audio no soportada o bloqueada por el navegador:', error);
-                    });
-                } catch (error) {
-                    console.log('Error al reproducir el audio:', error);
-                }
+                // Se ha eliminado la funcionalidad de audio para mejorar la compatibilidad con móviles
             }
         }
         

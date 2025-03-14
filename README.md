@@ -1,6 +1,6 @@
 # René Garcia Educa - Sitio Web Oficial
 
-Este repositorio contiene el código fuente del sitio web oficial de René García Educa, dedicado a libros educativos y de entretenimiento para todas las edades.
+Este repositorio contiene el código fuente del sitio web oficial de René Garcia Educa, dedicado a libros educativos y de entretenimiento para todas las edades.
 
 ## Estructura del Proyecto
 
