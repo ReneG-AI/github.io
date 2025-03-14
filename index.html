@@ -72,178 +72,182 @@
         </div>
       </nav>
     </header>
-    <div class="hero">
-      <div class="hero-content" data-aos="fade-up">
-        <h1>Colorea, aprende y relájate</h1>
-        <p>Libros para dar vida a tu imaginación.</p>
-        <div class="btn-container">
-          <a href="#libros" class="btn">Explorar Libros</a>
-          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Visitar Amazon</a>
+    
+    <!-- Contenedor principal para todo el contenido scrollable -->
+    <div id="page-content">
+      <div class="hero">
+        <div class="hero-content" data-aos="fade-up">
+          <h1>Colorea, aprende y relájate</h1>
+          <p>Libros para dar vida a tu imaginación.</p>
+          <div class="btn-container">
+            <a href="#libros" class="btn">Explorar Libros</a>
+            <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Visitar Amazon</a>
+          </div>
         </div>
       </div>
+      <section id="libros">
+        <h2 class="section-title" data-aos="fade-down">Mis Libros</h2>
+        <p class="section-subtitle" data-aos="fade-up">Descubre mi colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
+        <div class="container">
+          <div class="books-carousel" data-aos="fade-up">
+            <div class="carousel-container">
+              <div class="carousel-item">
+                <div class="book">
+                  <div class="book-badge">Multilingüe</div>
+                  <div class="book-image-container">
+                    <img src="assets/images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" loading="lazy" width="350" height="480" />
+                    <div class="magnifier">🔍</div>
+                  </div>
+                  <div class="book-content">
+                    <h3>Aprende 5 Idiomas Coloreando</h3>
+                    <p>Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos.</p>
+                    <p style="margin-top: 15px;"><strong>Idiomas:</strong> EN, ES, DE, FR, CN</p>
+                    <a href="https://www.amazon.com/Ren%C3%A9-Garcia-Educa/dp/B0DLFFXPSG" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="carousel-item">
+                <div class="book">
+                  <div class="book-badge">Bilingüe</div>
+                  <div class="book-image-container">
+                    <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" loading="lazy" width="350" height="480" />
+                    <div class="magnifier">🔍</div>
+                  </div>
+                  <div class="book-content">
+                    <h3>Aprende más de 40 animales para colorear</h3>
+                    <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
+                    <p style="margin-top: 15px;"><strong>Disponible en:</strong> Español e Inglés (versiones separadas)</p>
+                    <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="carousel-item">
+                <div class="book">
+                  <div class="book-badge">Relajación</div>
+                  <div class="book-image-container">
+                    <img src="assets/images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
+                    <div class="magnifier">🔍</div>
+                  </div>
+                  <div class="book-content">
+                    <h3>Mandalas con Mascotas Chibis</h3>
+                    <p>Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas.</p>
+                    <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
+                    <a href="https://www.amazon.com/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="carousel-controls">
+              <button class="carousel-control prev-btn">&lt;</button>
+              <button class="carousel-control next-btn">&gt;</button>
+            </div>
+            
+            <div class="carousel-dots">
+              <span class="carousel-dot active" data-index="0"></span>
+              <span class="carousel-dot" data-index="1"></span>
+              <span class="carousel-dot" data-index="2"></span>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos mis libros en Amazon</a>
+          </div>
+        </div>
+        <div class="decoration decoration-dots" style="top: 10%; right: 5%;"></div>
+        <div class="decoration decoration-circles" style="bottom: 15%; left: 5%;"></div>
+      </section>
+      <section id="testimonios">
+        <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
+        <p class="section-subtitle" data-aos="fade-up">Lo que mis lectores opinan sobre mis libros.</p>
+        <div class="container">
+          <div class="testimonial" data-aos="fade-right">
+            <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente. Mi hijo de 7 años ha mejorado notablemente su vocabulario en inglés gracias al libro multilingüe."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <span class="testimonial-author-name">María Rodríguez</span>
+                <span class="testimonial-author-title">Profesora de Arte</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
+            <p>"Mi hija de 8 años está encantada con el libro de animales. Es educativo y divertido a la vez. Ha aprendido sobre diferentes profesiones mientras colorea, y ahora dice que quiere ser veterinaria. Totalmente recomendable para niños."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <span class="testimonial-author-name">Carlos Martínez</span>
+                <span class="testimonial-author-title">Padre y Educador</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
+            <p>"Compré el libro de mandalas con mascotas chibis como regalo para mi madre y está fascinada. Dice que le ayuda a relajarse y a mejorar su concentración. Los diseños son adorables y el nivel de detalle es perfecto para adultos que buscan un momento de calma."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-info">
+                <span class="testimonial-author-name">Laura Sánchez</span>
+                <span class="testimonial-author-title">Terapeuta Ocupacional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="decoration decoration-lines" style="top: 20%; left: 5%;"></div>
+      </section>
+      <section id="contacto">
+        <h2 class="section-title" data-aos="fade-down">Contacto</h2>
+        <p class="section-subtitle" data-aos="fade-up">¿Tienes alguna pregunta o sugerencia? Estoy aquí para ayudarte.</p>
+        <div class="container">
+          <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px;">
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+              <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
+                <h3 class="contact-section-title">Información de Contacto</h3>
+                
+                <div style="margin-bottom: 25px;">
+                  <h4 class="contact-title">Redes Sociales</h4>
+                  <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
+                      <span class="contact-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"><i class="fab fa-instagram"></i></span>
+                      Instagram
+                    </a>
+                    <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
+                      <span class="contact-icon" style="background: #0077B5;"><i class="fab fa-linkedin-in"></i></span>
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                  <h4 class="contact-title">Tienda Amazon</h4>
+                  <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
+                    <span class="amazon-icon"><i class="fab fa-amazon"></i></span>
+                    Visita mi perfil de autor en Amazon
+                  </a>
+                </div>
+                
+                <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8; line-height: 1.7;">Estaré encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
+              </div>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+              <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
+                <h3 class="contact-section-title">Sobre Mí</h3>
+                <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creído que el arte y el aprendizaje van de la mano. De niño, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
+                <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creé René Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
+                <p style="margin-bottom: 20px; line-height: 1.8;">Está comprobado que aprendemos hasta un 60% más rápido cuando nos divertimos, y mis libros están diseñados para lograrlo.</p>
+                
+                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                  <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn" style="flex: 1; min-width: 150px; text-align: center;">Conoce más en Amazon</a>
+                  <a href="mailto:renegarciaeduca@gmail.com" class="btn btn-accent" style="flex: 1; min-width: 150px; text-align: center;">Contactar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
+      </section>
     </div>
-    <section id="libros">
-      <h2 class="section-title" data-aos="fade-down">Mis Libros</h2>
-      <p class="section-subtitle" data-aos="fade-up">Descubre mi colección de libros educativos y divertidos para todas las edades y en varios idiomas.</p>
-      <div class="container">
-        <div class="books-carousel" data-aos="fade-up">
-          <div class="carousel-container">
-            <div class="carousel-item">
-              <div class="book">
-                <div class="book-badge">Multilingüe</div>
-                <div class="book-image-container">
-                  <img src="assets/images/libro-multilingue.svg" alt="Learn English, Spanish, German, French, and Chinese" loading="lazy" width="350" height="480" />
-                  <div class="magnifier">🔍</div>
-                </div>
-                <div class="book-content">
-                  <h3>Aprende 5 Idiomas Coloreando</h3>
-                  <p>Descubre vocabulario en inglés, español, alemán, francés y chino mientras coloreas fascinantes insectos y arácnidos.</p>
-                  <p style="margin-top: 15px;"><strong>Idiomas:</strong> EN, ES, DE, FR, CN</p>
-                  <a href="https://www.amazon.com/Ren%C3%A9-Garcia-Educa/dp/B0DLFFXPSG" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="carousel-item">
-              <div class="book">
-                <div class="book-badge">Bilingüe</div>
-                <div class="book-image-container">
-                  <img src="assets/images/CUB ANIMALES CHIBIS VOL.1 ESP 2.0.svg" alt="Aprende más de 40 animales para colorear" loading="lazy" width="350" height="480" />
-                  <div class="magnifier">🔍</div>
-                </div>
-                <div class="book-content">
-                  <h3>Aprende más de 40 animales para colorear</h3>
-                  <p>Un viaje mágico y educativo que despierta la creatividad y curiosidad en los niños con adorables animales chibi.</p>
-                  <p style="margin-top: 15px;"><strong>Disponible en:</strong> Español e Inglés (versiones separadas)</p>
-                  <a href="https://www.amazon.com/Coloring-book-chibi-animals-learning/dp/B0CQVYW7ZJ" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="carousel-item">
-              <div class="book">
-                <div class="book-badge">Relajación</div>
-                <div class="book-image-container">
-                  <img src="assets/images/libro-mandalas-mascotas.jpg" alt="Libro de Mandalas para Colorear con Perros y Gatos Chibis" />
-                  <div class="magnifier">🔍</div>
-                </div>
-                <div class="book-content">
-                  <h3>Mandalas con Mascotas Chibis</h3>
-                  <p>Entra en un mundo de tranquilidad mientras das vida a adorables perros y gatos chibis en hermosos mandalas.</p>
-                  <p style="margin-top: 15px;"><strong>Idioma:</strong> Español</p>
-                  <a href="https://www.amazon.com/Libro-Mandalas-Colorear-Perros-Chibis/dp/B0CPQ3NBWF" target="_blank" class="btn" style="margin-top: 20px; display: inline-block; width: 100%; text-align: center;">Ver en Amazon</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="carousel-controls">
-            <button class="carousel-control prev-btn">&lt;</button>
-            <button class="carousel-control next-btn">&gt;</button>
-          </div>
-          
-          <div class="carousel-dots">
-            <span class="carousel-dot active" data-index="0"></span>
-            <span class="carousel-dot" data-index="1"></span>
-            <span class="carousel-dot" data-index="2"></span>
-          </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 3rem;">
-          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Ver todos mis libros en Amazon</a>
-        </div>
-      </div>
-      <div class="decoration decoration-dots" style="top: 10%; right: 5%;"></div>
-      <div class="decoration decoration-circles" style="bottom: 15%; left: 5%;"></div>
-    </section>
-    <section id="testimonios">
-      <h2 class="section-title" data-aos="fade-down">Testimonios</h2>
-      <p class="section-subtitle" data-aos="fade-up">Lo que mis lectores opinan sobre mis libros.</p>
-      <div class="container">
-        <div class="testimonial" data-aos="fade-right">
-          <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente. Mi hijo de 7 años ha mejorado notablemente su vocabulario en inglés gracias al libro multilingüe."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-author-info">
-              <span class="testimonial-author-name">María Rodríguez</span>
-              <span class="testimonial-author-title">Profesora de Arte</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-          <p>"Mi hija de 8 años está encantada con el libro de animales. Es educativo y divertido a la vez. Ha aprendido sobre diferentes profesiones mientras colorea, y ahora dice que quiere ser veterinaria. Totalmente recomendable para niños."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-author-info">
-              <span class="testimonial-author-name">Carlos Martínez</span>
-              <span class="testimonial-author-title">Padre y Educador</span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
-          <p>"Compré el libro de mandalas con mascotas chibis como regalo para mi madre y está fascinada. Dice que le ayuda a relajarse y a mejorar su concentración. Los diseños son adorables y el nivel de detalle es perfecto para adultos que buscan un momento de calma."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-author-info">
-              <span class="testimonial-author-name">Laura Sánchez</span>
-              <span class="testimonial-author-title">Terapeuta Ocupacional</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="decoration decoration-lines" style="top: 20%; left: 5%;"></div>
-    </section>
-    <section id="contacto">
-      <h2 class="section-title" data-aos="fade-down">Contacto</h2>
-      <p class="section-subtitle" data-aos="fade-up">¿Tienes alguna pregunta o sugerencia? Estoy aquí para ayudarte.</p>
-      <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px;">
-          <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
-            <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-              <h3 class="contact-section-title">Información de Contacto</h3>
-              
-              <div style="margin-bottom: 25px;">
-                <h4 class="contact-title">Redes Sociales</h4>
-                <div style="display: flex; flex-direction: column; gap: 15px;">
-                  <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                    <span class="contact-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"><i class="fab fa-instagram"></i></span>
-                    Instagram
-                  </a>
-                  <a href="https://www.linkedin.com/in/rené-garcia-cobo" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                    <span class="contact-icon" style="background: #0077B5;"><i class="fab fa-linkedin-in"></i></span>
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-              
-              <div style="margin-top: 30px;">
-                <h4 class="contact-title">Tienda Amazon</h4>
-                <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                  <span class="amazon-icon"><i class="fab fa-amazon"></i></span>
-                  Visita mi perfil de autor en Amazon
-                </a>
-              </div>
-              
-              <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8; line-height: 1.7;">Estaré encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
-            </div>
-          </div>
-          
-          <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
-            <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-              <h3 class="contact-section-title">Sobre Mí</h3>
-              <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creído que el arte y el aprendizaje van de la mano. De niño, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
-              <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creé René Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
-              <p style="margin-bottom: 20px; line-height: 1.8;">Está comprobado que aprendemos hasta un 60% más rápido cuando nos divertimos, y mis libros están diseñados para lograrlo.</p>
-              
-              <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn" style="flex: 1; min-width: 150px; text-align: center;">Conoce más en Amazon</a>
-                <a href="mailto:renegarciaeduca@gmail.com" class="btn btn-accent" style="flex: 1; min-width: 150px; text-align: center;">Contactar</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
-    </section>
     
     <footer>
       <div class="footer-gradient"></div>
@@ -305,6 +309,7 @@
         </div>
       </div>
     </div>
+    </div> <!-- Fin del contenedor page-content -->
     
     <!-- Botón Volver Arriba -->
     <a href="#" id="back-to-top">↑</a>

@@ -83,19 +83,43 @@ function initMobileMenu() {
         link.addEventListener('click', function() {
             if (window.innerWidth <= 1024) { // Incluye tablets (hasta 1024px)
                 navLinks.classList.remove('active');
+                // Restaurar scroll del body cuando se cierra el menú
+                document.body.style.overflow = '';
             }
         });
     });
     
     // Toggle menú
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evitar que el clic se propague al document
         navLinks.classList.toggle('active');
+        
+        // Controlar el scroll del body cuando el menú está abierto
+        if (navLinks.classList.contains('active')) {
+            // Opcional: evitar scroll del body cuando el menú está abierto
+            // document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     });
     
     // Cerrar menú al hacer clic fuera
     document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            !menuToggle.contains(e.target)) {
             navLinks.classList.remove('active');
+            // Restaurar scroll del body cuando se cierra el menú
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Cerrar menú con la tecla Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            // Restaurar scroll del body cuando se cierra el menú
+            document.body.style.overflow = '';
         }
     });
     
@@ -106,6 +130,8 @@ function initMobileMenu() {
         resizeTimer = setTimeout(() => {
             if (window.innerWidth > 1024) {
                 navLinks.classList.remove('active');
+                // Restaurar scroll del body cuando se oculta el menú
+                document.body.style.overflow = '';
             }
         }, 250);
     });
