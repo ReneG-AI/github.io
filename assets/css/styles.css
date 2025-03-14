@@ -846,20 +846,33 @@ body.dark-mode .contact-card a span {
   padding: 5px 12px !important;
   border: 1px solid rgba(255, 153, 0, 0.3);
   transition: var(--transition);
+  outline: none; /* Eliminar posible outline */
+  box-shadow: none; /* Eliminar posibles sombras que formen un borde visual */
 }
 
 .amazon-btn:hover {
   background-color: rgba(255, 153, 0, 0.4);
   border-color: rgba(255, 153, 0, 0.6);
+  outline: none; /* Mantener sin outline en hover */
 }
 
-body.light-mode .amazon-btn {
+body.dark-mode .amazon-btn {
   background-color: rgba(255, 153, 0, 0.2);
   border: 1px solid rgba(255, 153, 0, 0.3);
+  outline: none; /* Eliminar outline en modo oscuro */
+  box-shadow: none; /* Eliminar sombras en modo oscuro */
 }
 
-body.light-mode .amazon-btn:hover {
+body.dark-mode .amazon-btn:hover {
   background-color: rgba(255, 153, 0, 0.3);
+  outline: none; /* Mantener sin outline en hover en modo oscuro */
+}
+
+body.dark-mode .nav-links a:focus,
+body.light-mode .nav-links a:focus {
+  outline: none; /* Eliminar el outline en los enlaces cuando tienen foco */
+  box-shadow: none; /* Eliminar cualquier sombra en foco */
+  border-color: transparent; /* Hacer transparente cualquier borde en foco */
 }
 
 /* Botón de modo oscuro */
