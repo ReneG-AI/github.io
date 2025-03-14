@@ -1089,32 +1089,42 @@ body.dark-mode .nav-links a:hover {
   flex: 0 0 48%;
   position: relative;
   overflow: hidden;
-  min-height: 400px;
+  min-height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(145deg, rgba(240, 240, 250, 0.05), rgba(230, 230, 240, 0.03));
+  border-radius: 16px;
+}
+
+/* Ajustes específicos para modo oscuro */
+body.dark-mode .book-images {
+  background: linear-gradient(145deg, rgba(30, 30, 50, 0.3), rgba(20, 20, 40, 0.2));
 }
 
 .book-cover,
 .book-back {
   position: absolute;
-  width: 75%;
+  width: 65%;
   max-width: 300px;
   height: auto;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
   transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.6s ease;
+  object-fit: contain;
 }
 
 .book-cover {
   z-index: 2;
-  transform: rotate(-5deg) translateX(-10%) translateY(0);
+  transform: rotate(-5deg) translateX(-8%) translateY(0);
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
 }
 
 .book-back {
   z-index: 1;
-  transform: rotate(5deg) translateX(10%) translateY(0);
-  opacity: 0.85;
+  transform: rotate(5deg) translateX(8%) translateY(0);
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
 }
 
 .book-item:hover .book-cover {
