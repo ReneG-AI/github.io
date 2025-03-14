@@ -1409,4 +1409,48 @@ body.dark-mode .flip-indicator {
     padding: 6px 12px;
     bottom: -25px;
   }
+}
+
+.flip-button {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(107, 76, 230, 0.3);
+    z-index: 10;
+}
+
+.flip-button i {
+    transition: transform 0.3s ease;
+}
+
+.flip-button:hover {
+    background: var(--accent-color);
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 6px 20px rgba(107, 76, 230, 0.4);
+}
+
+.flip-button:hover i {
+    transform: rotate(180deg);
+}
+
+/* Ajustes responsivos para el botón de volteo */
+@media (max-width: 768px) {
+    .flip-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        bottom: -45px;
+    }
 } 

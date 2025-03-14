@@ -250,30 +250,28 @@ function initBackToTop() {
 
 // Manejar el flip de los libros
 function initBookFlip() {
-    const bookImages = document.querySelectorAll('.book-images');
+    const bookContainers = document.querySelectorAll('.book-images');
     
-    bookImages.forEach(container => {
+    bookContainers.forEach(container => {
         const flipper = container.querySelector('.book-flipper');
-        const verInteriorBtn = container.closest('.book-item').querySelector('.book-btn-secondary');
+        const bookItem = container.closest('.book-item');
         
-        if (verInteriorBtn) {
-            verInteriorBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('Las imágenes del interior estarán disponibles próximamente');
-            });
-        }
+        // Crear el botón de volteo
+        const flipButton = document.createElement('button');
+        flipButton.className = 'flip-button';
+        flipButton.innerHTML = '<i class="fas fa-sync-alt"></i> Voltear portada';
         
-        // Crear y añadir el indicador de flip
-        const indicator = document.createElement('div');
-        indicator.className = 'flip-indicator';
-        indicator.innerHTML = '<i class="fas fa-sync-alt"></i> Click para girar';
-        container.appendChild(indicator);
+        // Añadir el botón después del contenedor de la imagen
+        container.appendChild(flipButton);
         
-        // Manejar el click para voltear
-        container.addEventListener('click', () => {
+        // Manejar el click en el botón de volteo
+        flipButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             flipper.classList.toggle('flipped');
             
-            // Efecto de sonido (opcional)
+            // Efecto de sonido
             try {
                 const flipSound = new Audio('assets/sounds/page-flip.mp3');
                 flipSound.volume = 0.3;
@@ -283,14 +281,14 @@ function initBookFlip() {
             }
         });
         
-        // Mostrar/ocultar indicador al hover
-        container.addEventListener('mouseenter', () => {
-            indicator.style.opacity = '1';
-        });
-        
-        container.addEventListener('mouseleave', () => {
-            indicator.style.opacity = '0';
-        });
+        // Botón "Ver interior"
+        const verInteriorBtn = bookItem.querySelector('.book-btn-secondary');
+        if (verInteriorBtn) {
+            verInteriorBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Las imágenes del interior estarán disponibles próximamente');
+            });
+        }
     });
 }
 
