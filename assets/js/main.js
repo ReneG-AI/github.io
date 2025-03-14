@@ -1,5 +1,15 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Asegurarse de que el menú está cerrado al inicio
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+        navLinks.classList.remove('active');
+        // También forzar estilos inline para asegurarse
+        navLinks.style.right = '-100%';
+        navLinks.style.visibility = 'hidden';
+        navLinks.style.opacity = '0';
+    }
+    
     // Inicializar funcionalidades
     initPreloader();
     initDarkModeToggle();
@@ -78,6 +88,9 @@ function initMobileMenu() {
     
     if (!menuToggle || !navLinks) return;
     
+    // Asegurarse de que el menú esté cerrado al cargar la página
+    navLinks.classList.remove('active');
+    
     // Cerrar menú al hacer clic en un enlace
     navLinksAnchors.forEach(function(link) {
         link.addEventListener('click', function() {
@@ -92,14 +105,17 @@ function initMobileMenu() {
     // Toggle menú
     menuToggle.addEventListener('click', (e) => {
         e.stopPropagation(); // Evitar que el clic se propague al document
+        e.preventDefault(); // Prevenir comportamiento por defecto
         navLinks.classList.toggle('active');
         
         // Controlar el scroll del body cuando el menú está abierto
         if (navLinks.classList.contains('active')) {
             // Opcional: evitar scroll del body cuando el menú está abierto
             // document.body.style.overflow = 'hidden';
+            console.log('Menú abierto'); // Depuración
         } else {
             document.body.style.overflow = '';
+            console.log('Menú cerrado'); // Depuración
         }
     });
     
