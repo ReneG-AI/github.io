@@ -193,34 +193,30 @@ header.scrolled .logo img {
 
 /* HERO SECTION */
 .hero {
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    rgba(107, 76, 230, 0.05),
-    rgba(155, 122, 255, 0.05)
-  ),
-  url('../images/Banner.png') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed; /* Mantiene la imagen estática */
-  background-position: center center;
+  position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-top: 70px;
-  margin-top: 0;
-  position: relative;
-  overflow-x: hidden;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  box-sizing: border-box;
-  touch-action: pan-y; /* Permitir deslizamiento vertical en táctiles */
-  pointer-events: auto; /* Asegurar que los eventos táctiles funcionen correctamente */
-  will-change: transform; /* Optimiza el rendimiento del efecto parallax */
+  padding: 0 5rem;
+  color: #fff;
+  background: url('../images/Banner.png') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed; /* Asegurar que el fondo permanece fijo */
+  z-index: 1;
 }
 
-.hero::before {
+/* Asegurar que el fondo del banner no interfiera con el contenido */
+body.dark-mode #page-content, 
+body.light-mode #page-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mejorar el contraste del contenido sobre el banner */
+.hero::after {
   content: '';
   position: absolute;
   top: 0;
@@ -228,8 +224,13 @@ header.scrolled .logo img {
   right: 0;
   bottom: 0;
   background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
-  z-index: 1;
-  pointer-events: none; /* Permitir que los eventos táctiles pasen a través */
+  z-index: -1;
+}
+
+/* Garantizar que todas las secciones estén por encima del fondo */
+section {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content {
