@@ -1477,13 +1477,13 @@ body.dark-mode .nav-links a:hover {
   }
   
   .book-badge-corner {
-    top: -10px;
-    right: -10px;
+    top: 20px;
+    left: -5px;
   }
   
   .book-badge-corner span {
     top: 25px;
-    right: -40px;
+    left: -40px;
     width: 170px;
     font-size: 0.75rem;
     padding: 5px 0;
@@ -1517,7 +1517,7 @@ body.dark-mode .nav-links a:hover {
   }
   
   .book-badge-corner span {
-    right: -38px;
+    left: -38px;
     top: 28px;
     width: 170px;
   }
@@ -1694,11 +1694,12 @@ body.dark-mode .nav-links a:hover {
   box-shadow: 0 8px 15px rgba(107, 76, 230, 0.4);
 }
 
-/* Nuevos estilos para los elementos añadidos */
+/* Mejorar las etiquetas de esquina - ahora posicionadas en el lado izquierdo y con efecto 3D */
 .book-badge-corner {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: 25px; /* Bajado 35px aproximadamente desde la posición anterior */
+  left: -10px; /* Cambiado a la izquierda en lugar de la derecha */
+  right: auto; /* Resetear el right que estaba configurado anteriormente */
   z-index: 10;
   overflow: visible;
   width: 140px;
@@ -1709,7 +1710,8 @@ body.dark-mode .nav-links a:hover {
 .book-badge-corner span {
   position: absolute;
   top: 30px;
-  right: -35px;
+  left: -35px; /* Cambiado a la izquierda */
+  right: auto; /* Resetear el right */
   display: block;
   width: 170px;
   padding: 7px 0;
@@ -1719,9 +1721,73 @@ body.dark-mode .nav-links a:hover {
   font-size: 0.85rem;
   font-weight: 700;
   text-align: center;
-  transform: rotate(45deg);
+  transform: rotate(-45deg); /* Cambiado el ángulo para coincidir con el lado izquierdo */
   letter-spacing: 0.8px;
   text-transform: uppercase;
+  /* Efecto 3D mejorado */
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+/* Añadir efecto 3D a las etiquetas de esquina */
+.book-badge-corner span::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transform: translateZ(-1px);
+}
+
+/* Sombra para efecto 3D */
+.book-badge-corner span::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 100%);
+  transform: translateZ(-2px);
+}
+
+/* Efecto hover para reforzar el 3D */
+.book-item:hover .book-badge-corner span {
+  transform: rotate(-45deg) translateZ(5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .book-badge-corner {
+    top: 20px; /* Ajustado para móviles */
+    left: -5px;
+  }
+  
+  .book-badge-corner span {
+    top: 25px;
+    left: -40px;
+    width: 170px;
+    font-size: 0.75rem;
+    padding: 5px 0;
+  }
+}
+
+/* Adaptación para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .book-badge-corner {
+    top: 22px; /* Ajustado para tablets */
+    left: -5px;
+  }
+  
+  .book-badge-corner span {
+    left: -38px;
+    top: 28px;
+    width: 170px;
+  }
 }
 
 .book-header {
@@ -1760,14 +1826,6 @@ body.dark-mode .nav-links a:hover {
   .book-badge-corner {
     width: 80px;
     height: 80px;
-  }
-  
-  .book-badge-corner span {
-    top: 15px;
-    right: -30px;
-    width: 130px;
-    font-size: 0.7rem;
-    padding: 4px 0;
   }
   
   .book-header {
@@ -1871,34 +1929,11 @@ body.dark-mode .nav-links a:hover {
   transform: rotate(90deg);
 }
 
-/* Mejora del efecto hover */
+/* Mejora del efecto hover para el botón de flip */
 .flip-button:hover {
   background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
   transform: translateX(-50%) translateY(-3px);
   box-shadow: 0 8px 20px rgba(107, 76, 230, 0.6);
-}
-
-/* Mejor contraste para etiquetas de esquina */
-.book-badge-corner span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-/* Centrar y mejorar las etiquetas dentro del header del libro */
-.book-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 0 8px;
 }
 
 /* Mejorar visualmente la etiqueta de categoría */
@@ -1918,25 +1953,12 @@ body.dark-mode .nav-links a:hover {
   letter-spacing: 0.6px;
 }
 
-/* Adaptar para móviles */
+/* Ajustes adicionales para móviles */
 @media (max-width: 768px) {
   .flip-button {
     bottom: 25px;
     padding: 7px 14px;
     font-size: 0.85rem;
-  }
-  
-  .book-badge-corner {
-    top: -10px;
-    right: -10px;
-  }
-  
-  .book-badge-corner span {
-    top: 25px;
-    right: -40px;
-    width: 170px;
-    font-size: 0.75rem;
-    padding: 5px 0;
   }
   
   .book-header {
@@ -1945,15 +1967,9 @@ body.dark-mode .nav-links a:hover {
   }
 }
 
-/* Mejorado para tablets */
+/* Ajustes adicionales para tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
   .flip-button {
     bottom: 30px;
-  }
-  
-  .book-badge-corner span {
-    right: -38px;
-    top: 28px;
-    width: 170px;
   }
 } 
