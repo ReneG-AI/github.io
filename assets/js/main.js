@@ -47,8 +47,8 @@ function initDarkModeToggle() {
     const moonIcon = darkModeToggle.querySelector('.moon');
     
     // Verificar preferencia guardada
-    const darkMode = localStorage.getItem('darkMode') === 'true';
-    if (darkMode) {
+    const darkMode = localStorage.getItem('darkMode');
+    if (darkMode === 'enabled') {
         body.classList.add('dark-mode');
         body.classList.remove('light-mode');
         // Mostrar el icono del sol en modo oscuro
@@ -64,13 +64,16 @@ function initDarkModeToggle() {
     
     darkModeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
-        body.classList.toggle('light-mode');
         
-        const isDarkMode = body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode);
+        // Guardar preferencia
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            localStorage.setItem('darkMode', null);
+        }
         
         // Cambiar visibilidad de iconos
-        if (isDarkMode) {
+        if (body.classList.contains('dark-mode')) {
             sunIcon.style.display = 'block';
             moonIcon.style.display = 'none';
         } else {
@@ -211,8 +214,9 @@ function initAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
-            easing: 'ease-out',
-            once: true
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
         });
     }
 }
@@ -224,9 +228,15 @@ function initBackToTop() {
     
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
-            backToTop.classList.add('show');
+            backToTop.style.display = 'flex';
+            setTimeout(() => {
+                backToTop.style.opacity = '1';
+            }, 50);
         } else {
-            backToTop.classList.remove('show');
+            backToTop.style.opacity = '0';
+            setTimeout(() => {
+                backToTop.style.display = 'none';
+            }, 300);
         }
     });
     
@@ -276,29 +286,36 @@ document.addEventListener('DOMContentLoaded', function() {
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-});
-
 // Verificar preferencia guardada
-if (localStorage.getItem('darkMode') === 'true') {
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode === 'enabled') {
     body.classList.add('dark-mode');
 }
+
+darkModeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    // Guardar preferencia
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        localStorage.setItem('darkMode', null);
+    }
+});
 
 // Manejar el menú móvil
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 
 menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
+    navLinks.classList.toggle('active');
     menuToggle.classList.toggle('active');
 });
 
 // Cerrar menú al hacer clic en un enlace
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-        navLinks.classList.remove('show');
+        navLinks.classList.remove('active');
         menuToggle.classList.remove('active');
     });
 });
@@ -310,9 +327,9 @@ let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
-    if (currentScroll > lastScroll && currentScroll > 100) {
+    if (currentScroll > 100) {
         header.classList.add('scrolled');
-    } else if (currentScroll < lastScroll) {
+    } else {
         header.classList.remove('scrolled');
     }
     
@@ -324,9 +341,15 @@ const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
     if (window.pageYOffset > 300) {
-        backToTop.classList.add('show');
+        backToTop.style.display = 'flex';
+        setTimeout(() => {
+            backToTop.style.opacity = '1';
+        }, 50);
     } else {
-        backToTop.classList.remove('show');
+        backToTop.style.opacity = '0';
+        setTimeout(() => {
+            backToTop.style.display = 'none';
+        }, 300);
     }
 });
 
@@ -338,8 +361,7 @@ backToTop.addEventListener('click', (e) => {
 // Preloader
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.preloader');
-    preloader.classList.add('fade-out');
-    
+    preloader.style.opacity = '0';
     setTimeout(() => {
         preloader.style.display = 'none';
     }, 500);
