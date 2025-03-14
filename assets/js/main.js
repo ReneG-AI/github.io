@@ -211,8 +211,8 @@ function initAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
-            once: true,
-            offset: 100
+            easing: 'ease-out',
+            once: true
         });
     }
 }
@@ -237,4 +237,110 @@ function initBackToTop() {
             behavior: 'smooth'
         });
     });
-} 
+}
+
+// Manejar el flip de los libros
+document.addEventListener('DOMContentLoaded', function() {
+    const bookImages = document.querySelectorAll('.book-images');
+    
+    bookImages.forEach(container => {
+        const flipper = container.querySelector('.book-flipper');
+        
+        container.addEventListener('click', () => {
+            flipper.classList.toggle('flipped');
+            
+            // Añadir efecto de sonido sutil (opcional)
+            const flipSound = new Audio('assets/sounds/page-flip.mp3');
+            flipSound.volume = 0.3;
+            flipSound.play().catch(() => {}); // Silenciar error si el navegador bloquea el audio
+        });
+        
+        // Añadir indicador visual
+        const indicator = document.createElement('div');
+        indicator.className = 'flip-indicator';
+        indicator.innerHTML = '<i class="fas fa-sync-alt"></i> Click para girar';
+        container.appendChild(indicator);
+        
+        // Mostrar/ocultar indicador
+        container.addEventListener('mouseenter', () => {
+            indicator.style.opacity = '1';
+        });
+        
+        container.addEventListener('mouseleave', () => {
+            indicator.style.opacity = '0';
+        });
+    });
+});
+
+// Manejar el modo oscuro
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+darkModeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+});
+
+// Verificar preferencia guardada
+if (localStorage.getItem('darkMode') === 'true') {
+    body.classList.add('dark-mode');
+}
+
+// Manejar el menú móvil
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    menuToggle.classList.toggle('active');
+});
+
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('show');
+        menuToggle.classList.remove('active');
+    });
+});
+
+// Manejar el scroll del header
+const header = document.getElementById('header');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        header.classList.add('scrolled');
+    } else if (currentScroll < lastScroll) {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// Botón volver arriba
+const backToTop = document.getElementById('back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
+});
+
+backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    preloader.classList.add('fade-out');
+    
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 500);
+}); 
