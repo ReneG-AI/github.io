@@ -1110,7 +1110,7 @@ body.dark-mode .nav-links a:hover {
 
 .flip-button {
   position: absolute;
-  bottom: -25px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -1181,7 +1181,7 @@ body.dark-mode .nav-links a:hover {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0;
   box-shadow: 0 4px 12px rgba(107, 76, 230, 0.3);
   position: relative;
   overflow: hidden;
@@ -1422,7 +1422,7 @@ body.dark-mode .nav-links a:hover {
     flex-direction: column !important;
     min-height: auto;
     padding-bottom: 15px;
-    max-width: 85%;
+    max-width: 90%;
   }
   
   .book-item:nth-child(even) {
@@ -1431,17 +1431,17 @@ body.dark-mode .nav-links a:hover {
   
   .book-images {
     width: 100%;
-    min-height: 350px;
+    min-height: 320px;
     margin-bottom: 30px;
   }
   
   .book-flipper {
-    width: 75%;
-    height: 350px;
+    width: 80%;
+    height: 320px;
   }
   
   .flip-button {
-    bottom: -30px;
+    bottom: -20px;
     padding: 7px 14px;
     font-size: 0.85rem;
   }
@@ -1473,13 +1473,36 @@ body.dark-mode .nav-links a:hover {
     padding: 0.6rem 1rem;
     font-size: 0.85rem;
   }
+  
+  .book-badge-corner span {
+    top: 15px;
+    right: -40px;
+    width: 170px;
+    font-size: 0.7rem;
+    padding: 4px 0;
+  }
+  
+  .book-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  
+  .book-rating {
+    font-size: 0.7rem;
+  }
+  
+  .book-rating span {
+    font-size: 0.65rem;
+  }
 }
 
 /* Media query para tablets */
 @media (min-width: 769px) and (max-width: 1024px) {
   .book-item {
     min-height: 420px;
-    max-width: 90%;
+    max-width: 95%;
   }
   
   .book-images {
@@ -1492,8 +1515,13 @@ body.dark-mode .nav-links a:hover {
     height: 380px;
   }
   
-  .book-content {
-    padding: 1.5rem 1.2rem;
+  .flip-button {
+    bottom: -15px;
+  }
+  
+  .book-badge-corner span {
+    right: -40px;
+    width: 170px;
   }
 }
 
@@ -1674,7 +1702,7 @@ body.dark-mode .nav-links a:hover {
   top: 0;
   right: 0;
   z-index: 10;
-  overflow: hidden;
+  overflow: visible;
   width: 100px;
   height: 100px;
   pointer-events: none;
@@ -1683,10 +1711,10 @@ body.dark-mode .nav-links a:hover {
 .book-badge-corner span {
   position: absolute;
   top: 20px;
-  right: -25px;
+  right: -35px;
   display: block;
-  width: 150px;
-  padding: 5px 0;
+  width: 170px;
+  padding: 6px 0;
   background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   color: white;
@@ -1701,7 +1729,7 @@ body.dark-mode .nav-links a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -1756,4 +1784,88 @@ body.dark-mode .nav-links a:hover {
 
 .book-rating:hover i {
   transform: scale(1.1);
+}
+
+/* Arreglar el modal para "Ver interior" */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  margin: 15% auto;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.modal-message {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.modal-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(107, 76, 230, 0.4);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+  color: var(--accent-color);
+  transform: rotate(90deg);
 } 

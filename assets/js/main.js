@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     initBackToTop();
     initBookFlip();
+    initInteriorModal();
 });
 
 // Preloader
@@ -294,10 +295,13 @@ function initBookFlip() {
         container.appendChild(flipButton);
         
         // Función para manejar el flip del libro - simplificada sin audio
-        function flipBook() {
+        function flipBook(e) {
+            // Evitar que el evento se propague (importante para dispositivos móviles)
+            e.preventDefault();
+            e.stopPropagation();
+            
             if (bookFlipper) {
                 bookFlipper.classList.toggle('flipped');
-                // Se ha eliminado la funcionalidad de audio para mejorar la compatibilidad con móviles
             }
         }
         
@@ -305,17 +309,73 @@ function initBookFlip() {
         flipButton.addEventListener('click', flipBook);
         
         // Agregar evento de clic a la imagen del libro también
+        // Mejorado para móviles con touchstart
         if (bookFlipper) {
             bookFlipper.addEventListener('click', flipBook);
+            bookFlipper.addEventListener('touchstart', function(e) {
+                // Solo para navegación, no para volteo (el botón se encarga de eso)
+                e.stopPropagation();
+            }, {passive: true});
         }
-        
-        // Manejar el botón "Ver interior" si existe
-        const verInteriorBtn = container.querySelector('.ver-interior-btn');
-        if (verInteriorBtn) {
-            verInteriorBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                alert('¡Próximamente! Las imágenes del interior estarán disponibles pronto.');
-            });
+    });
+}
+
+// Modal para "Ver interior"
+function initInteriorModal() {
+    const modal = document.getElementById('interiorModal');
+    if (!modal) return;
+    
+    const closeModalBtn = modal.querySelector('.close-modal');
+    const confirmBtn = modal.querySelector('.modal-btn');
+    const verInteriorBtns = document.querySelectorAll('.ver-interior-btn');
+    
+    // Función para abrir el modal
+    function openModal(e) {
+        e.preventDefault();
+        modal.classList.add('show');
+        setTimeout(() => {
+            modal.querySelector('.modal-content').style.opacity = '1';
+            modal.querySelector('.modal-content').style.transform = 'translateY(0)';
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Evitar scroll del body
+    }
+    
+    // Función para cerrar el modal
+    function closeModal() {
+        modal.querySelector('.modal-content').style.opacity = '0';
+        modal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+        setTimeout(() => {
+            modal.classList.remove('show');
+            document.body.style.overflow = ''; // Restaurar scroll
+        }, 300);
+    }
+    
+    // Asignar eventos a los botones "Ver interior"
+    verInteriorBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+    
+    // Cerrar modal con botón de cierre
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    // Cerrar modal con botón de confirmación
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', closeModal);
+    }
+    
+    // Cerrar modal al hacer clic fuera
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            closeModal();
         }
     });
 } 
