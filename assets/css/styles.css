@@ -1108,24 +1108,24 @@ body.dark-mode .nav-links a:hover {
   white-space: nowrap; /* Evitar que se rompa en líneas */
 }
 
-/* Ajustes responsivos para móvil */
-@media (max-width: 768px) {
-  .book-images {
-    min-height: 450px;
-    width: 100%;
-    overflow: visible;
-  }
-  
-  .book-flipper {
-    width: 85%;
-    height: 450px;
-  }
-  
-  .flip-button {
-    bottom: -55px;
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
+.flip-button i {
+  transition: transform 0.5s ease;
+  font-size: 0.9em;
+}
+
+.flip-button:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  transform: translateX(-50%) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(107, 76, 230, 0.6);
+}
+
+.flip-button:hover i {
+  transform: rotate(360deg);
+}
+
+.flip-button:active {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 4px 10px rgba(107, 76, 230, 0.3);
 }
 
 /* Animación de entrada */
@@ -1329,56 +1329,31 @@ body.dark-mode .nav-links a:hover {
   opacity: 0.3;
 }
 
-.flip-button {
-  position: absolute;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  color: white;
-  padding: 12px 25px;
-  border-radius: 30px;
-  border: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(107, 76, 230, 0.4);
-  z-index: 10;
-  letter-spacing: 0.5px;
-  opacity: 1;
-  visibility: visible;
-}
-
-.flip-button i {
-  transition: transform 0.5s ease;
-  font-size: 0.9em;
-}
-
-.flip-button:hover {
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  transform: translateX(-50%) translateY(-5px);
-  box-shadow: 0 8px 25px rgba(107, 76, 230, 0.6);
-}
-
-.flip-button:hover i {
-  transform: rotate(360deg);
-}
-
-.flip-button:active {
-  transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 4px 10px rgba(107, 76, 230, 0.3);
-}
-
 /* Estilos y animaciones para desktop */
 @media (min-width: 1025px) {
   .book-images:hover .flip-button {
     transform: translateX(-50%) translateY(-5px);
     background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  }
+}
+
+/* Añadir nuevamente los ajustes responsivos para móvil */
+@media (max-width: 768px) {
+  .book-images {
+    min-height: 450px;
+    width: 100%;
+    overflow: visible;
+  }
+  
+  .book-flipper {
+    width: 85%;
+    height: 450px;
+  }
+  
+  .flip-button {
+    bottom: -55px;
+    padding: 10px 20px;
+    font-size: 1rem;
   }
 }
 
