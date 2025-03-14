@@ -1012,15 +1012,43 @@ body:not(.dark-mode) .dark-mode-toggle .moon {
 /* Estilos para el menú en modo oscuro */
 body.dark-mode .nav-links {
   background: rgba(15, 15, 15, 0.95); /* Fondo más oscuro y elegante */
+  border: none !important; /* Eliminar bordes */
+  outline: none !important; /* Eliminar contornos */
+  box-shadow: none !important; /* Eliminar sombras */
 }
 
 body.dark-mode .nav-links a {
   color: #ffffff; /* Texto blanco para mejor visibilidad */
   font-weight: 600;
+  border: none !important; /* Eliminar bordes */
+  outline: none !important; /* Eliminar contornos */
+  box-shadow: none !important; /* Eliminar sombras */
+  background: transparent !important; /* Asegurar fondo transparente */
 }
 
-body.dark-mode .nav-links a:hover {
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a:active,
+body.dark-mode .nav-links a:visited,
+body.dark-mode .nav-links a:focus {
   color: #f1c40f; /* Amarillo dorado en hover para mejor interacción */
+  border: none !important; /* Eliminar bordes */
+  outline: none !important; /* Eliminar contornos */
+  box-shadow: none !important; /* Eliminar sombras */
+  background: transparent !important; /* Asegurar fondo transparente */
+  -webkit-tap-highlight-color: transparent; /* Eliminar resaltado al tocar en móviles */
+}
+
+/* Eliminar cualquier resaltado de navegación */
+.nav-links a, 
+.nav-links a:focus,
+.nav-links a:visited,
+.nav-links a:active,
+.nav-links a:hover {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-decoration: none !important;
 }
 
 /* Clase para texto con gradiente */
