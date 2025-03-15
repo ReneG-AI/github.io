@@ -172,9 +172,8 @@ function initAOS() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
+            easing: 'ease-out',
+            once: true
         });
     }
 }
@@ -345,4 +344,102 @@ function createParticles() {
 // Si hay cambio de tamaño de ventana, actualizar partículas
 window.addEventListener('resize', function() {
     setTimeout(createParticles, 500);
-}); 
+});
+
+// Inicialización de AOS para animaciones al hacer scroll
+document.addEventListener('DOMContentLoaded', function() {
+  // Inicializar AOS
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out',
+    once: true
+  });
+  
+  // Scroll suave para enlaces ancla
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Efecto de giro para las portadas/contraportadas de libros
+  setupBookFlip();
+  
+  // Botón volver arriba
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  
+  // Manejar modales
+  document.querySelectorAll('.interior-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('interiorModal').style.display = 'flex';
+    });
+  });
+  
+  document.querySelectorAll('.close-modal, .modal-btn').forEach(elem => {
+    elem.addEventListener('click', function() {
+      document.getElementById('interiorModal').style.display = 'none';
+    });
+  });
+  
+  // Cerrar modal al hacer clic fuera
+  window.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal')) {
+      e.target.style.display = 'none';
+    }
+  });
+  
+  // Preloader
+  const preloader = document.querySelector('.preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 500);
+    });
+  }
+});
+
+// Configurar el efecto de giro para los libros
+function setupBookFlip() {
+  // Añadir efecto de giro al hacer clic en la portada/contraportada
+  const flippers = document.querySelectorAll('.book-flipper');
+  
+  flippers.forEach(flipper => {
+    // Al hacer clic en la portada o contraportada, girar
+    flipper.addEventListener('click', () => {
+      flipper.classList.toggle('flipped');
+    });
+    
+    // Añadir efecto visual al pasar el ratón
+    flipper.addEventListener('mouseenter', () => {
+      flipper.style.transform = 'translateY(-10px) rotateY(5deg)';
+    });
+    
+    flipper.addEventListener('mouseleave', () => {
+      flipper.style.transform = '';
+    });
+  });
+} 
