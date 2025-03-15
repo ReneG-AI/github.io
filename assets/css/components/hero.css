@@ -25,7 +25,9 @@
 .hero-initial.scrolled {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-50px);
+  transform: translateY(-100px);
+  pointer-events: none; /* Evitamos interacción con el contenido oculto */
+  transition: all 0.6s ease;
 }
 
 /* Contenido del hero centrado para vista inicial */
@@ -115,7 +117,7 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url('../../images/Banner.png'); /* Aseguramos la ruta correcta */
+  background-image: url('../../../images/Banner.png'); /* Corregimos la ruta con la dirección absoluta */
   top: 0;
   left: 0;
   z-index: -1;
@@ -129,10 +131,10 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, 
-    rgba(0, 0, 0, 0.15) 0%, 
-    rgba(18, 18, 18, 0.1) 50%, 
-    rgba(0, 0, 0, 0.15) 100%
-  ); /* Reducimos aún más la opacidad del degradado para ver mejor el fondo */
+    rgba(0, 0, 0, 0.08) 0%, 
+    rgba(18, 18, 18, 0.05) 50%, 
+    rgba(0, 0, 0, 0.08) 100%
+  ); /* Reducimos significativamente la opacidad del degradado para maximizar visibilidad */
   z-index: 1;
 }
 
@@ -592,5 +594,34 @@ section {
   border-radius: 1.5rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+}
+
+/* Fondo de hero */
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../../images/Banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.03) 0%,
+        rgba(18, 18, 18, 0.02) 50%,
+        rgba(0, 0, 0, 0.03) 100%
+    );
 }
 

@@ -194,96 +194,89 @@ function initBackToTop() {
     });
 }
 
-// Función para manejar los efectos de scroll
+// Función para manejar efectos de scroll
 function initScrollEffects() {
+    const header = document.querySelector('.header');
     const heroInitial = document.querySelector('.hero-initial');
     const leftFixed = document.querySelector('.left-fixed');
     const rightScrollable = document.querySelector('.right-scrollable');
-    const scrollButton = document.querySelector('.scroll-trigger');
     const scrollableSections = document.querySelectorAll('.scrollable-section');
-    const booksSection = document.getElementById('libros');
-    const testimoniosSection = document.getElementById('testimonios');
-    const contactoSection = document.getElementById('contacto');
+    const backToTop = document.getElementById('back-to-top');
     
-    if (heroInitial && leftFixed && rightScrollable) {
-        // Estado inicial: título centrado
-        heroInitial.classList.add('active');
+    if (!header || !heroInitial || !leftFixed || !rightScrollable) return;
+    
+    // Para controlar si ya se ha hecho scroll hacia abajo
+    let hasScrolledDown = false;
+    
+    // Función principal de scroll
+    function handleScroll() {
+        const scrollPos = window.scrollY;
         
-        // Botón para bajar al contenido scrollable
-        if (scrollButton) {
-            scrollButton.addEventListener('click', function() {
-                const targetPosition = window.innerHeight * 0.85;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            });
+        // Efectos de header
+        if (scrollPos > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
         
-        // Control de efectos de scroll
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const windowHeight = window.innerHeight;
+        // Efecto para el hero inicial
+        if (scrollPos > 100) {
+            heroInitial.classList.add('scrolled');
+            leftFixed.classList.add('scrolled');
+            rightScrollable.classList.add('scrolled');
             
-            // Transición de título centrado a layout dividido
-            if (scrollPosition > windowHeight * 0.15) {
-                heroInitial.classList.add('scrolled');
-                leftFixed.classList.add('scrolled');
-                rightScrollable.classList.add('scrolled');
-            } else {
-                heroInitial.classList.remove('scrolled');
-                leftFixed.classList.remove('scrolled');
-                rightScrollable.classList.remove('scrolled');
-            }
-            
-            // Detectar cuando termina la sección de libros y comienzan testimonios
-            if (testimoniosSection) {
-                const testimoniosPosition = testimoniosSection.getBoundingClientRect().top;
-                
-                // Cuando los testimonios están a punto de ser visibles
-                if (testimoniosPosition < windowHeight * 0.8) {
-                    leftFixed.classList.add('testimonials-visible');
-                    rightScrollable.classList.add('full-width');
-                    
-                    // Marcar las secciones como de ancho completo
-                    if (testimoniosSection) {
-                        testimoniosSection.classList.add('full-width-section');
-                    }
-                    
-                    if (contactoSection) {
-                        contactoSection.classList.add('full-width-section');
-                    }
-                } else {
-                    leftFixed.classList.remove('testimonials-visible');
-                    rightScrollable.classList.remove('full-width');
-                    
-                    // Quitar la clase de ancho completo
-                    if (testimoniosSection) {
-                        testimoniosSection.classList.remove('full-width-section');
-                    }
-                    
-                    if (contactoSection) {
-                        contactoSection.classList.remove('full-width-section');
-                    }
-                }
-            }
-            
-            // Animar las secciones scrollables cuando son visibles
+            // Marcamos que ya se ha hecho scroll hacia abajo
+            hasScrolledDown = true;
+        } else if (!hasScrolledDown) {
+            // Solo restauramos si nunca se ha hecho scroll completo hacia abajo
+            heroInitial.classList.remove('scrolled');
+            leftFixed.classList.remove('scrolled');
+            rightScrollable.classList.remove('scrolled');
+        }
+        
+        // Mostrar/ocultar botón de volver arriba
+        if (scrollPos > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+        
+        // Manejar secciones de ancho completo
+        if (scrollPos > window.innerHeight * 1.5) {
             scrollableSections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const sectionBottom = section.getBoundingClientRect().bottom;
+                const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                const sectionBottom = sectionTop + section.offsetHeight;
                 
-                if (sectionTop < windowHeight * 0.85 && sectionBottom > 0) {
+                if (scrollPos + window.innerHeight * 0.8 >= sectionTop && scrollPos <= sectionBottom) {
                     section.classList.add('visible');
+                    
+                    // Si es la sección de testimonios o contacto, hacerla de ancho completo
+                    if (section.id === 'testimonios' || section.id === 'contacto') {
+                        rightScrollable.classList.add('full-width');
+                        leftFixed.classList.add('testimonials-visible');
+                    }
                 } else {
                     section.classList.remove('visible');
                 }
             });
+        }
+    }
+    
+    // Inicializar scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Llamar una vez para establecer el estado inicial
+    handleScroll();
+    
+    // Botón de volver arriba
+    if (backToTop) {
+        backToTop.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-        
-        // Trigger scroll event on load to set initial state
-        window.dispatchEvent(new Event('scroll'));
     }
 }
 
