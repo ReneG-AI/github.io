@@ -48,26 +48,30 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
 }
 
-/* Contenedor de imágenes - Aumentado 250% */
+/* Contenedor de imágenes - Ajustado para mejor visualización de imágenes al 250% */
 .book-images {
   position: relative;
   width: 100%;
-  height: 100rem; /* Aumentado a 250% del tamaño original de 40rem */
-  perspective: 2000px; /* Aumentando para mejor efecto 3D */
+  height: 100rem; 
+  perspective: 2000px;
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: visible; /* Permitiendo que el contenido escalado sea visible fuera del contenedor */
 }
 
-/* Efecto flip */
+/* Efecto flip - Contenedor ajustado */
 .book-flipper {
-  width: 100%; /* Ampliado al 100% para utilizar todo el espacio */
+  width: 100%;
   height: 100%;
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-flipper.flipped {
@@ -80,18 +84,20 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2.5); /* Centrado correcto + escala 250% */
   backface-visibility: hidden;
-  object-fit: contain; /* Mantiene la proporción y llena el contenedor */
+  object-fit: contain;
   object-position: center;
   border-radius: 1rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); /* Sombra mejorada */
-  transform: scale(2.5); /* Aumentando directamente a 250% */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .book-back {
-  transform: rotateY(180deg) scale(2.5); /* Necesita escala y rotación */
+  transform: translate(-50%, -50%) scale(2.5) rotateY(180deg); /* Centrado + escala + rotación */
 }
 
 /* Botón para voltear el libro */
@@ -172,25 +178,26 @@
   font-weight: 600;
 }
 
-/* Título del libro - Con degradado exactamente igual al título principal René Garcia Educa */
+/* Título del libro - Con degradado exactamente igual al título principal */
 .book-content h3 {
   font-size: 2.6rem;
   margin-bottom: 1.5rem;
-  text-align: left;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  text-align: left !important; /* Forzando alineación izquierda */
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
   color: transparent !important;
-  animation: shimmer 8s linear infinite;
+  animation: shimmer 8s linear infinite !important;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
   text-shadow: none;
-  display: block; /* Asegurando que el bloque tome todo el ancho */
+  display: block;
   max-width: 100%;
   position: relative;
-  padding-left: 0; /* Sin padding para asegurar alineación a la izquierda */
+  padding-left: 0;
+  margin-top: 0.5rem;
 }
 
 /* Descripción del libro */
@@ -415,6 +422,13 @@
   }
 }
 
+/* Definición de la animación shimmer si no existe en otra parte */
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Contenedor para CTA mejorado */
 .centered-container {
   display: flex;
@@ -426,7 +440,7 @@
   position: relative;
 }
 
-/* Responsive - Ajustados para mejor visualización */
+/* Media queries ajustados para las nuevas proporciones */
 @media (max-width: 992px) {
   .book-showcase {
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
@@ -452,11 +466,11 @@
   
   .book-cover,
   .book-back {
-    transform: scale(2.1); /* Escala reducida para tablets pero manteniendo proporción */
+    transform: translate(-50%, -50%) scale(2.1);
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(2.1);
+    transform: translate(-50%, -50%) scale(2.1) rotateY(180deg);
   }
 }
 
@@ -485,11 +499,11 @@
   
   .book-cover,
   .book-back {
-    transform: scale(1.8); /* Escala reducida para dispositivos medianos */
+    transform: translate(-50%, -50%) scale(1.8);
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(1.8);
+    transform: translate(-50%, -50%) scale(1.8) rotateY(180deg);
   }
 }
 
@@ -518,11 +532,11 @@
   
   .book-cover,
   .book-back {
-    transform: scale(1.5); /* Escala reducida para móviles pero manteniendo presencia */
+    transform: translate(-50%, -50%) scale(1.5);
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(1.5);
+    transform: translate(-50%, -50%) scale(1.5) rotateY(180deg);
   }
 }
 
