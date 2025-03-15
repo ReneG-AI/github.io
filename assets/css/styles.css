@@ -2226,34 +2226,38 @@ body.dark-mode .nav-links a:focus {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1050;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   transition: opacity 0.3s ease;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal.show {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 1;
 }
 
 .modal-content {
-  background: var(--bg-card);
-  margin: 15% auto;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 500px;
-  text-align: center;
   position: relative;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  transform: translateY(-50px);
+  background-color: var(--card-background);
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
   opacity: 0;
-  transition: all 0.4s ease;
+  transform: translateY(-50px);
+  transition: all 0.3s ease;
 }
 
 .modal.show .modal-content {
@@ -2415,9 +2419,28 @@ body.light-mode {
 body.light-mode header {
   background: linear-gradient(to right, rgba(230, 240, 250, 0.9), rgba(220, 230, 245, 0.9));
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 body.light-mode header.scrolled {
   background: linear-gradient(to right, rgba(240, 245, 252, 0.95), rgba(230, 240, 250, 0.95));
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilo para header en modo noche - mismo que en modo día */
+body.dark-mode header {
+  background: linear-gradient(to right, rgba(230, 240, 250, 0.9), rgba(220, 230, 245, 0.9));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode header.scrolled {
+  background: linear-gradient(to right, rgba(240, 245, 252, 0.95), rgba(230, 240, 250, 0.95));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Asegurar que el texto en el menú sea legible en ambos modos */
+body.dark-mode .logo span,
+body.dark-mode .nav-links a {
+  color: var(--text-color-light); /* Usar el color del texto del modo día */
 }
