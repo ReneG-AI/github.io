@@ -47,6 +47,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 1.5rem;
   color: var(--text-color);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -297,5 +305,72 @@ img {
   
   h3 {
     font-size: var(--font-size-xl);
+  }
+}
+
+/* Animación para el gradiente de títulos */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para brillos y subrayados */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
+  50% {
+    background-position: 100% 50%;
+    width: 10rem;
+  }
+  100% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
+}
+
+/* Ajustar el espaciado del contenido principal */
+main {
+  padding-top: 18rem; /* Espacio para el header más alto */
+}
+
+/* Agregar efectos de brillo a elementos específicos */
+.glow-effect {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0) 70%);
+  z-index: -1;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
   }
 } 

@@ -22,24 +22,89 @@
 }
 
 .section-title {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  color: var(--white);
-  background: var(--gradient-rainbow);
+  font-size: 4.2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  background-size: 300% 100%;
   animation: shimmer 8s linear infinite;
   display: inline-block;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  padding-bottom: 1rem;
 }
 
 .section-subtitle {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--text-color-light);
-  max-width: 70rem;
-  margin: 0 auto;
+  max-width: 80rem;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Agregar efecto de subrayado animado */
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
+  height: 0.3rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 0.15rem;
+  animation: gradientMove 3s infinite;
+}
+
+/* Estilos para los títulos de libros */
+.book-title, h3 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Animación para el movimiento del gradiente */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para el subrayado */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
+  50% {
+    background-position: 100% 50%;
+    width: 10rem;
+  }
+  100% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
 }
 
 .featured-decoration {
@@ -271,14 +336,6 @@
   letter-spacing: 1px;
   margin-bottom: 1.5rem;
   display: inline-block;
-}
-
-.book-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
 }
 
 .book-author {
