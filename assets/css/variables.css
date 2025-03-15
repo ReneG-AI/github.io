@@ -16,6 +16,8 @@
   --card-hover-shadow: 0 15px 35px rgba(63, 81, 181, 0.15);
   --footer-bg: linear-gradient(to right, #2A293E, #393952);
   --footer-text: #e0e0e0;
+  --legal-bg: rgba(30, 30, 46, 0.97);
+  --legal-text: #d0d0d0;
   
   /* EFECTOS Y TRANSICIONES */
   --transition: all 0.3s ease;
@@ -51,6 +53,8 @@ body.dark-mode {
   --card-hover-shadow: 0 15px 35px rgba(107, 99, 255, 0.2);
   --footer-bg: linear-gradient(to right, #1A1A2E, #1A1A2E);
   --footer-text: #e0e0e0;
+  --legal-bg: rgba(20, 20, 30, 0.97);
+  --legal-text: #d0d0d0;
 }
 
 /* Variables específicas para modo claro */
@@ -66,4 +70,6 @@ body.light-mode {
   --card-hover-shadow: 0 15px 35px rgba(63, 81, 181, 0.15);
   --footer-bg: linear-gradient(to right, #2A293E, #393952);
   --footer-text: #e0e0e0;
+  --legal-bg: rgba(42, 41, 62, 0.97);
+  --legal-text: #e0e0e0;
 } 
