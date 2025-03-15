@@ -21,6 +21,9 @@
 @import url('components/buttons.css');
 @import url('components/navigation.css');
 @import url('components/book-cards.css');
+@import url('components/books.css');
+@import url('components/contact.css');
+@import url('components/footer.css');
 
 /* Importar estilos específicos de página */
 @import url('pages/home.css');
