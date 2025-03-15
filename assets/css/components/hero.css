@@ -4,8 +4,8 @@
  */
 
 .hero {
-  position: relative;
-  height: 55rem; /* Banner más compacto */
+  position: fixed; /* Cambiado de relative a fixed para mantenerlo como fondo */
+  height: 100vh; /* Altura completa de la ventana */
   width: 100%;
   overflow: hidden;
   background-attachment: fixed;
@@ -14,8 +14,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../../assets/images/Banner.png'); /* Corregido a Banner.png */
-  margin-top: 6.5rem; /* Ajuste para el nuevo tamaño del header */
+  background-image: url('../../../assets/images/Banner.png');
+  top: 0; /* Asegura que comience desde la parte superior */
+  left: 0;
+  z-index: -1; /* Colocado detrás del contenido */
 }
 
 .hero::before {
@@ -56,30 +58,32 @@
 }
 
 .hero-title {
-  font-size: 4.5rem; /* Reducido para compactar */
+  font-size: 6rem; /* Aumentado para mayor impacto */
   font-weight: 800;
   margin-bottom: 1.5rem;
   color: var(--white);
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 40px rgba(138, 43, 226, 0.4);
-  background: var(--gradient-rainbow);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: shimmer 10s linear infinite;
+  text-align: center; /* Centrado de títulos */
 }
 
 .hero-subtitle {
-  font-size: 1.8rem; /* Reducido para compactar */
+  font-size: 2rem;
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 2.5rem;
-  max-width: 65rem;
+  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-align: center; /* Centrado de subtítulos */
 }
 
 .hero-buttons {
@@ -329,5 +333,22 @@
   .hero-content {
     padding: 0 1.5rem;
   }
+}
+
+/* Ajustar el contenido principal para que tenga un fondo semi-transparente y se vea sobre el banner */
+#page-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 18rem; /* Ajustado para el nuevo tamaño del header */
+}
+
+/* Asegurar que las secciones tengan fondo semi-transparente para legibilidad */
+section {
+  background-color: rgba(18, 18, 18, 0.8);
+  margin: 2rem 0;
+  padding: 4rem 2rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
