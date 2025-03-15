@@ -17,10 +17,11 @@
   left: 0;
   width: 35%;
   height: 100vh;
-  padding-top: 9rem; /* Ajustado para el header más pequeño */
+  padding-top: 0; /* Quitamos el padding top para centrarlo completamente */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Centrado vertical */
+  align-items: center; /* Centrado horizontal */
   z-index: 1;
 }
 
@@ -53,9 +54,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, 
-    rgba(0, 0, 0, 0.8) 0%, 
-    rgba(30, 58, 138, 0.6) 50%, 
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(30, 58, 138, 0.5) 50%, 
+    rgba(0, 0, 0, 0.7) 100%
   );
   z-index: 1;
 }
@@ -63,9 +64,9 @@
 /* Contenido del hero ahora en el lado izquierdo fijo */
 .hero-content {
   position: relative;
-  max-width: 100%;
-  text-align: left;
-  padding: 0 4rem 0 2rem;
+  max-width: 90%;
+  text-align: center; /* Centrado horizontal */
+  padding: 0;
   z-index: 3;
 }
 
@@ -83,7 +84,7 @@
   background-clip: text;
   color: transparent;
   animation: shimmer 10s linear infinite;
-  text-align: left;
+  text-align: center; /* Centrado */
 }
 
 .hero-subtitle {
@@ -93,14 +94,27 @@
   margin-bottom: 2.5rem;
   max-width: 100%;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  text-align: left;
+  text-align: center; /* Centrado */
 }
 
 .hero-buttons {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* Centrado */
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+/* Botón en turquesa para "Explorar Libros" */
+.btn-turquesa {
+  background: linear-gradient(135deg, #00D4FF, #00A8F3);
+  color: white;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 212, 255, 0.3);
+}
+
+.btn-turquesa:hover {
+  background: linear-gradient(135deg, #00C0E6, #0098E0);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(0, 212, 255, 0.4);
 }
 
 .hero-buttons .btn {
