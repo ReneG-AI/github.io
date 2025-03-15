@@ -250,74 +250,73 @@
 .book-flipper {
   position: relative;
   width: 100%;
-  height: 100%;
-  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  max-width: 350px;
+  margin: 0 auto;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
-  cursor: pointer;
+  cursor: pointer; /* Añadimos cursor pointer para indicar que es clicable */
 }
 
-/* Clase para activar el giro */
 .book-flipper.flipped {
   transform: rotateY(180deg);
 }
 
-/* Estilos compartidos para portada y contraportada */
+/* Estilos para la portada y contraportada */
 .book-cover, .book-back {
-  position: absolute;
-  width: 100%;
+  position: relative;
+  width: 60%; /* Reducimos el tamaño un 40% */
   height: auto;
+  max-height: 60vh;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+  object-fit: contain;
   backface-visibility: hidden;
-  border-radius: 1.5rem;
-  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.2);
-  transition: all 0.4s ease;
+  margin: 0 auto; /* Centramos las imágenes */
+  display: block; /* Aseguramos que se comporte como bloque */
 }
 
-/* Portada al frente */
 .book-cover {
-  transform: rotateY(0deg);
   z-index: 2;
+  transform: rotateY(0deg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Contraportada detrás */
 .book-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto; /* Centramos la contraportada */
   transform: rotateY(180deg);
-  filter: blur(0); /* Eliminamos el blur para mejor visualización */
-  opacity: 1;
-  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Botón para girar el libro */
 .flip-button {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #00D4FF, #8C52FF);
-  color: white;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
   border: none;
-  border-radius: 0.8rem;
-  padding: 0.9rem 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: 5rem;
   font-size: 1.4rem;
-  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
   z-index: 3;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.25);
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  opacity: 0;
+  pointer-events: none; /* Inicialmente el botón no responde a eventos */
 }
 
-.flip-button:hover {
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 1.2rem 2rem rgba(0, 0, 0, 0.35);
-  filter: brightness(110%);
-}
-
-.flip-button i {
-  font-size: 1.6rem;
+.book-images:hover .flip-button {
+  opacity: 1;
+  pointer-events: auto; /* Activamos el botón cuando se pasa el ratón sobre la imagen */
 }
 
 /* Etiquetas y badges */
