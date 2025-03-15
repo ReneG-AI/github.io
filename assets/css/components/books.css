@@ -48,12 +48,12 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
 }
 
-/* Contenedor de imágenes - Manteniendo el 200% pero mejorando el centrado */
+/* Contenedor de imágenes - Aumentado 250% */
 .book-images {
   position: relative;
   width: 100%;
-  height: 80rem; /* Ya estaba aumentado 200% (antes era 40rem) */
-  perspective: 1500px;
+  height: 100rem; /* Aumentado a 250% del tamaño original de 40rem */
+  perspective: 2000px; /* Aumentando para mejor efecto 3D */
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
@@ -62,19 +62,19 @@
 
 /* Efecto flip */
 .book-flipper {
-  width: 90%; /* Reducido ligeramente del 100% para mejor centrado */
-  height: 90%;
+  width: 100%; /* Ampliado al 100% para utilizar todo el espacio */
+  height: 100%;
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-  margin: 0 auto; /* Centrado adicional */
+  margin: 0 auto;
 }
 
 .book-flipper.flipped {
   transform: rotateY(180deg);
 }
 
-/* Imágenes de portada y contraportada - Centradas */
+/* Imágenes de portada y contraportada - Mejoradas para 250% */
 .book-cover,
 .book-back {
   width: 100%;
@@ -83,10 +83,11 @@
   top: 0;
   left: 0;
   backface-visibility: hidden;
-  object-fit: contain;
+  object-fit: contain; /* Mantiene la proporción y llena el contenedor */
   object-position: center;
   border-radius: 1rem;
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); /* Sombra mejorada */
+  transform: scale(1); /* Asegurando escala correcta */
 }
 
 .book-back {
@@ -381,7 +382,7 @@
   }
   
   .book-images {
-    height: 45rem;
+    height: 60rem; /* Ajustado proporcionalmente para tablets */
   }
   
   .book-badge {
@@ -416,11 +417,15 @@
   .book-badge {
     font-size: 2.6rem;
   }
+  
+  .book-images {
+    height: 50rem; /* Ajustado para dispositivos más pequeños */
+  }
 }
 
 @media (max-width: 576px) {
   .book-images {
-    height: 35rem;
+    height: 40rem; /* Ajustado para móviles */
   }
   
   .book-content {
