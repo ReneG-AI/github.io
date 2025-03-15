@@ -77,33 +77,22 @@ function initPreloader() {
 // Menú móvil
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.overlay');
+    const mainNav = document.querySelector('.main-nav');
     const body = document.body;
 
-    if (menuToggle && mobileMenu) {
+    if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', function() {
             this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
+            mainNav.classList.toggle('active');
             body.classList.toggle('no-scroll');
         });
 
-        // Cerrar menú al hacer clic en el overlay
-        overlay.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            this.classList.remove('active');
-            body.classList.remove('no-scroll');
-        });
-
-        // Cerrar menú al hacer clic en enlaces
-        const mobileLinks = document.querySelectorAll('.mobile-menu .nav-link');
-        mobileLinks.forEach(link => {
+        // Cerrar menú al hacer clic en los enlaces de navegación
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
+                mainNav.classList.remove('active');
                 body.classList.remove('no-scroll');
             });
         });
