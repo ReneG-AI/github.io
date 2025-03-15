@@ -1,0 +1,377 @@
+/* 
+ * BOOKS
+ * Estilos para la sección de libros y tarjetas de libros
+ */
+
+/* Contenedor de sección de libros */
+.book-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 5rem;
+  margin: 5rem 0;
+}
+
+/* Tarjeta de libro */
+.book-item {
+  background-color: rgba(26, 26, 26, 0.7);
+  border-radius: 2rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.book-item:hover {
+  transform: translateY(-1rem);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de imágenes */
+.book-images {
+  position: relative;
+  width: 100%;
+  height: 40rem;
+  perspective: 1500px;
+  margin-bottom: 2rem;
+}
+
+/* Efecto flip */
+.book-flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.book-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Imágenes de portada y contraportada */
+.book-cover,
+.book-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.book-back {
+  transform: rotateY(180deg);
+}
+
+/* Botón para voltear el libro */
+.flip-button {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.flip-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* Contenido de información del libro */
+.book-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Encabezado con badge y rating */
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Badge del libro */
+.book-badge {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Rating */
+.book-rating {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+}
+
+.book-rating i {
+  color: var(--accent-color);
+  margin-right: 0.2rem;
+}
+
+.book-rating span {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Título del libro */
+.book-content h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  text-align: left;
+  background: linear-gradient(90deg, var(--primary-color-light), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Descripción del libro */
+.book-description {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Detalles del libro */
+.book-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.book-detail {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--white);
+}
+
+.book-detail i {
+  margin-right: 1rem;
+  color: var(--primary-color-light);
+}
+
+/* Características del libro */
+.book-features {
+  margin-bottom: 2rem;
+}
+
+.feature-title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  text-align: left;
+}
+
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--white);
+}
+
+.feature-icon {
+  margin-right: 0.8rem;
+  color: var(--accent-color);
+}
+
+/* Acciones del libro */
+.book-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto;
+}
+
+.amazon-btn,
+.interior-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.amazon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 1.5rem rgba(255, 153, 0, 0.3);
+}
+
+.interior-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.interior-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.amazon-btn i,
+.interior-btn i {
+  margin-right: 0.8rem;
+}
+
+/* Badge de esquina */
+.book-badge-corner {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.8rem 3rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+  transform-origin: top right;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.book-badge-corner.left {
+  left: -6rem;
+  top: 3rem;
+  transform: rotate(-45deg);
+  transform-origin: top left;
+}
+
+.book-badge-corner.right {
+  right: -6rem;
+  top: 3rem;
+  transform: rotate(45deg);
+  transform-origin: top right;
+}
+
+/* Contenedor para botón centrado */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .book-showcase {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 4rem;
+  }
+  
+  .book-images {
+    height: 35rem;
+  }
+  
+  .book-content h3 {
+    font-size: 2rem;
+  }
+  
+  .book-description {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-showcase {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .book-item {
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .book-actions {
+    flex-direction: column;
+  }
+  
+  .amazon-btn,
+  .interior-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .book-images {
+    height: 30rem;
+  }
+  
+  .book-content {
+    padding: 1.5rem;
+  }
+  
+  .book-content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .book-description {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .book-details,
+  .book-features {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Libro sección header title */
+.section-subtitle {
+  color: white !important;
+  opacity: 0.9;
+  font-weight: var(--font-weight-normal);
+} 

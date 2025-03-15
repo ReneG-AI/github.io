@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBookFlip();
     initInteriorModal();
     initBackToTop();
+    initCharacterCounter();
     
     // Inicializar AOS con un retraso para mejor rendimiento
     setTimeout(function() {
@@ -207,5 +208,34 @@ function initInteriorModal() {
                 }, 300);
             }
         });
+    }
+}
+
+// Contador de caracteres para el formulario
+function initCharacterCounter() {
+    const messageTextarea = document.getElementById('mensaje');
+    const characterCount = document.querySelector('.character-count');
+    
+    if (messageTextarea && characterCount) {
+        // Actualizar contador al cargar
+        updateCharacterCount();
+        
+        // Actualizar contador cuando se escriba en el área de texto
+        messageTextarea.addEventListener('input', updateCharacterCount);
+        
+        function updateCharacterCount() {
+            const currentLength = messageTextarea.value.length;
+            const maxLength = messageTextarea.getAttribute('maxlength');
+            characterCount.textContent = `${currentLength}/${maxLength} caracteres`;
+            
+            // Cambiar color cuando se acerca al límite
+            if (currentLength >= maxLength * 0.9) {
+                characterCount.style.color = 'var(--warning-color)';
+            } else if (currentLength >= maxLength * 0.8) {
+                characterCount.style.color = 'var(--accent-color)';
+            } else {
+                characterCount.style.color = 'var(--gray)';
+            }
+        }
     }
 } 

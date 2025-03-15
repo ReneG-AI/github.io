@@ -1,0 +1,187 @@
+/* 
+ * CONTACT
+ * Estilos para la sección de contacto y formulario
+ */
+
+/* Contenedor de la sección de contacto */
+.contact-section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.contact-section-title {
+  color: var(--white);
+}
+
+.contact-section-subtitle {
+  color: var(--white);
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contenedor del formulario */
+.contacto-form-container {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  background-color: rgba(26, 26, 26, 0.6);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Formulario */
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Grupo de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Label del formulario */
+.form-group label {
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--white);
+}
+
+/* Inputs de texto */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--white);
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+/* Área de texto para mensaje con límite de tamaño y carácteres */
+.form-group textarea {
+  resize: none;
+  height: 150px; /* Altura fija */
+  max-height: 150px; /* Evitar que se pueda redimensionar */
+  min-height: 150px; /* Evitar que se pueda redimensionar */
+  max-width: 100%; /* Evitar que se pueda redimensionar */
+  min-width: 100%; /* Evitar que se pueda redimensionar */
+}
+
+/* Estilos para el contador de caracteres */
+.character-count {
+  font-size: 1.2rem;
+  color: var(--gray);
+  text-align: right;
+}
+
+/* Focus de los inputs */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.3);
+}
+
+/* Botón de enviar */
+.btn-enviar {
+  width: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-enviar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de links sociales */
+.social-links-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* Links sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-link {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
+  color: var(--white);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-form-container {
+    padding: 2rem;
+  }
+  
+  .social-link {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contacto-form-container {
+    padding: 1.5rem;
+  }
+  
+  .form-group label {
+    font-size: 1.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .social-links {
+    gap: 1.5rem;
+  }
+  
+  .social-link {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+} 
