@@ -631,7 +631,7 @@ a:hover {
 }
 
 .btn-accent:hover {
-  background: linear-gradient(135deg, #FF8800, #FFB000);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
   transform: translateY(-3px);
   box-shadow: 0 0.8rem 2rem rgba(255, 153, 0, 0.4);
 }

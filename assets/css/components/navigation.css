@@ -333,10 +333,12 @@
   padding: 0.5rem 1.2rem !important;
   font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .amazon-link:hover {
-  background: linear-gradient(135deg, #FF8800, #FFB000);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
 } 
