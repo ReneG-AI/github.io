@@ -78,7 +78,7 @@
   transform: rotateY(180deg);
 }
 
-/* Imágenes de portada y contraportada - Tamaño estándar */
+/* Imágenes de portada y contraportada - Tamaño mejorado y centrado */
 .book-cover,
 .book-back {
   width: 100%;
@@ -86,7 +86,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.1); /* Escala estándar con ligero aumento */
+  transform: translate(-50%, -50%) scale(1.75); /* Aumentado a 175% */
   backface-visibility: hidden;
   object-fit: contain;
   object-position: center;
@@ -94,10 +94,20 @@
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
   max-height: 100%;
   max-width: 100%;
+  transition: transform 0.5s ease;
 }
 
 .book-back {
-  transform: translate(-50%, -50%) scale(1.1) rotateY(180deg);
+  transform: translate(-50%, -50%) scale(1.75) rotateY(180deg);
+  filter: blur(0.5px); /* Sutil difuminado para la contraportada */
+}
+
+.book-flipper:hover .book-cover {
+  transform: translate(-50%, -50%) scale(1.8); /* Efecto hover ligeramente más grande */
+}
+
+.book-flipper:hover .book-back {
+  transform: translate(-50%, -50%) scale(1.8) rotateY(180deg); /* Efecto hover en contraportada */
 }
 
 /* Botón para voltear el libro */
@@ -313,21 +323,59 @@
   font-size: 1.8rem;
 }
 
-/* Badge de esquina - Todos al lado izquierdo */
+/* Badge de esquina - Convertido en cinta diagonal (ribbon) */
 .book-badge-corner {
   position: absolute;
   top: 0;
-  left: -6rem; /* Forzando todos a la izquierda */
-  top: 3rem;
+  left: 0;
   z-index: 3;
+  width: 15rem; /* Ancho de la cinta */
+  height: 3.5rem; /* Alto de la cinta */
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
-  padding: 0.8rem 3rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  transform: rotate(-45deg);
+  text-align: center;
+  line-height: 3.2rem; /* Alineación vertical del texto */
+  transform: rotate(-45deg) translateX(-4.3rem) translateY(-1rem); /* Posicionamiento diagonal */
   transform-origin: top left;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: ribbon-shine 3s infinite;
+}
+
+.book-badge-corner::before,
+.book-badge-corner::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -0.8rem;
+  border-style: solid;
+}
+
+.book-badge-corner::before {
+  left: 0;
+  border-width: 0.8rem 0 0 0.8rem;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.3);
+}
+
+.book-badge-corner::after {
+  right: 0;
+  border-width: 0.8rem 0.8rem 0 0;
+  border-color: transparent rgba(0, 0, 0, 0.3) transparent transparent;
+}
+
+/* Animación para el brillo del ribbon */
+@keyframes ribbon-shine {
+  0%, 100% {
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0.3rem 1.5rem rgba(255, 255, 255, 0.3);
+  }
 }
 
 /* CTA Button actualizado */
