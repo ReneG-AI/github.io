@@ -23,18 +23,131 @@ body {
   position: relative;
 }
 
-/* Contenedor para el fondo dinámico */
-#dynamic-background {
+/* Estilos para el fondo en modo día con formas geométricas profesionales */
+body.light-mode {
+  --primary-color: #444;
+  --secondary-color: #666;
+  --accent-color: #4a86e8;
+  --background-color: #f0f2f5;
+  --card-background: #fff;
+  --text-color: #333;
+  --text-color-light: #444;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  --legal-bg: #e8e9eb;
+  --legal-text: #555;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Contenedor para el fondo dinámico - Modo día profesional con formas geométricas */
+body.light-mode #dynamic-background {
+  background: linear-gradient(135deg, #f0f2f5, #e1e3e6);
+  opacity: 1;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Fondo elegante y profesional */
-  z-index: -100; 
+  z-index: -100;
+}
+
+/* Formas geométricas profesionales para el fondo en modo día */
+body.light-mode::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(45deg, rgba(0, 0, 128, 0.02) 25%, transparent 25%, transparent 75%, rgba(0, 0, 128, 0.02) 75%, rgba(0, 0, 128, 0.02)),
+    linear-gradient(45deg, rgba(0, 0, 128, 0.02) 25%, transparent 25%, transparent 75%, rgba(0, 0, 128, 0.02) 75%, rgba(0, 0, 128, 0.02));
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px;
+  z-index: -99;
+}
+
+body.light-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(66, 133, 244, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 80%, rgba(219, 68, 55, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(15, 157, 88, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 20% 80%, rgba(244, 180, 0, 0.05) 0%, transparent 20%);
+  z-index: -98;
+}
+
+/* Formas geométricas con degradados adicionales para efecto 3D */
+body.light-mode section::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, rgba(0, 120, 212, 0.03), rgba(0, 120, 212, 0.08));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.5;
+  filter: blur(20px);
+  z-index: -1;
+  transform: rotate(25deg);
+}
+
+/* Asegura que las formas geométricas no afecten la legibilidad de contenido */
+body.light-mode section {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  padding: 2rem 1rem;
+}
+
+/* Estilos para el modal para que se muestre correctamente */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1050;
+  overflow: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
-  transition: opacity 1s ease;
-  pointer-events: none;
+}
+
+.modal-content {
+  position: relative;
+  background-color: var(--card-background);
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: all 0.3s ease;
+}
+
+.modal.show .modal-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Asegurar que el fondo no interfiera con el contenido */
@@ -79,505 +192,6 @@ section::after {
   box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.05);
   z-index: 1;
   border-radius: 0 0 5px 0;
-  pointer-events: none;
-}
-
-/* Ajustes para modo oscuro/claro con el nuevo fondo */
-body.dark-mode section::before {
-  background-color: rgba(18, 18, 18, 0.6); /* Color de fondo más transparente */
-  backdrop-filter: blur(10px);
-}
-
-body.light-mode section::before {
-  background-color: rgba(249, 249, 249, 0.7);
-  backdrop-filter: blur(5px);
-}
-
-/* Ajuste de transiciones para el contenido */
-.container {
-  position: relative;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-section:hover .container {
-  transform: translateY(-5px);
-}
-
-/* Asegurar que elementos importantes sean legibles */
-.hero-text h1, .section-title, .section-subtitle, .book-content h3 {
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Ajuste para dispositivos móviles */
-@media (max-width: 768px) {
-  #dynamic-background {
-    opacity: 0.5; /* Reducir opacidad en móviles para mejor rendimiento */
-  }
-  
-  section {
-    border-left: none;
-    padding: 70px 0;
-  }
-  
-  section::after {
-    border-width: 0 0 20px 20px; /* Esquina doblada más pequeña */
-  }
-}
-
-img {
-  max-width: 100%;
-  display: block;
-  height: auto;
-  font-style: italic; /* Fallback para lectores de pantalla */
-  color: var(--text-light); /* Texto descriptivo para imágenes rotas */
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: var(--transition);
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  position: relative;
-}
-
-/* HEADER */
-header {
-  background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
-  padding: 0.5rem 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s ease-in-out;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Asegurar que el header mantenga el mismo color en modo oscuro y claro */
-body.dark-mode header, 
-body.light-mode header,
-body.dark-mode header.scrolled, 
-body.light-mode header.scrolled {
-  background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
-}
-
-header.scrolled {
-  padding: 0.3rem 0;
-  height: 60px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-
-header.scrolled .logo {
-  font-size: 1.5rem;
-}
-
-header.scrolled .logo img {
-  height: 80px;
-}
-
-header.scrolled .nav-links a {
-  font-size: 0.95rem;
-}
-
-/* NAVEGACIÓN */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo img {
-  height: 120px;
-  width: auto;
-  transition: var(--transition);
-  filter: brightness(0) invert(1); /* Siempre en blanco */
-}
-
-.logo span {
-  background: var(--logo-text-color);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradientText 5s ease infinite;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  position: relative;
-}
-
-.nav-links a {
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-  color: #e0e0e0;
-  letter-spacing: 0.5px;
-  background: transparent;
-  margin: 0 5px;
-  padding: 6px 12px;
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 1;
-  -webkit-tap-highlight-color: transparent;
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  text-decoration: none !important;
-}
-
-/* Fondo brillante que aparece en hover */
-.nav-links a:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(107, 76, 230, 0.15), rgba(255, 255, 255, 0.05));
-  opacity: 0;
-  z-index: -1;
-  transform: translateY(100%);
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-
-.nav-links a:hover:before {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Efecto brillo que se mueve */
-.nav-links a:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-color), var(--primary-color), var(--secondary-color));
-  background-size: 200% 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-  animation: gradientMove 3s linear infinite;
-  border-radius: 3px;
-}
-
-.nav-links a:hover:after {
-  transform: scaleX(1);
-}
-
-.nav-links a:hover {
-  color: #ffffff;
-  transform: translateY(-2px);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-}
-
-/* Botón de Amazon con diseño especial */
-.amazon-btn {
-  background: linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 153, 0, 0.3));
-  border-radius: 8px;
-  padding: 6px 12px !important;
-  position: relative;
-  overflow: hidden;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  text-decoration: none !important;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.amazon-btn:before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 153, 0, 0.3) 0%, rgba(255, 153, 0, 0) 70%);
-  transform: rotate(30deg);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.amazon-btn:hover:before {
-  opacity: 1;
-  animation: rotateSlow 8s linear infinite;
-}
-
-.amazon-btn:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 153, 0, 0.5);
-  transform: translateY(-2px);
-}
-
-.amazon-btn:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #ff9900, #ffbb33, #ff9900);
-  background-size: 200% 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-  animation: gradientMove 3s linear infinite;
-}
-
-.amazon-btn:hover:after {
-  transform: scaleX(1);
-}
-
-@keyframes rotateSlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Asegurar compatibilidad con modo oscuro */
-body.dark-mode .nav-links {
-  background: transparent !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-body.dark-mode .nav-links a {
-  color: #ffffff;
-  font-weight: 600;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body.dark-mode .nav-links a:hover,
-body.dark-mode .nav-links a:active,
-body.dark-mode .nav-links a:visited,
-body.dark-mode .nav-links a:focus {
-  color: #ffffff;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  -webkit-tap-highlight-color: transparent;
-}
-
-body.dark-mode .amazon-btn {
-  background: linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 153, 0, 0.3));
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-body.dark-mode .amazon-btn:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 153, 0, 0.5);
-}
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    right: 10px;
-    width: 220px;
-    background: rgba(25, 25, 35, 0.95) !important;
-    border-radius: 12px !important;
-    padding: 15px;
-    text-align: right;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
-  }
-  
-  .nav-links a {
-    text-align: center;
-    padding: 10px;
-    border-radius: 8px;
-    display: block;
-    width: 100%;
-  }
-  
-  .nav-links a:hover {
-    transform: translateY(0);
-    background: linear-gradient(135deg, rgba(107, 76, 230, 0.15), rgba(255, 255, 255, 0.05)) !important;
-  }
-  
-  .amazon-btn {
-    background: linear-gradient(135deg, rgba(255, 153, 0, 0.15), rgba(255, 153, 0, 0.3)) !important;
-  }
-}
-
-/* Ocultar el menú hamburguesa en pantallas grandes */
-.menu-toggle {
-  display: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-color);
-  background: transparent;
-  border: none;
-  padding: 5px;
-  transition: var(--transition);
-  z-index: 1000;
-}
-
-/* HERO SECTION */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  max-height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  padding: 0 5rem;
-  color: #fff;
-  background: url('../images/Banner.png') no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed; /* Asegurar que el fondo permanece fijo */
-  z-index: 2;
-}
-
-/* Asegurar que el fondo del banner no interfiera con el contenido */
-body.dark-mode #page-content, 
-body.light-mode #page-content {
-  position: relative;
-  z-index: 2;
-}
-
-/* Mejorar el contraste del contenido sobre el banner */
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, rgba(107, 76, 230, 0.15), rgba(155, 122, 255, 0.15));
-  z-index: -1;
-}
-
-/* Hero text - aumentado en 30% para web */
-.hero-text h1 {
-  font-size: 3.25rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hero-text p {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-.btn-container {
-  display: flex;
-  gap: 15px;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 1024px) {
-  .hero-text h1 {
-    font-size: 2.5rem; /* Mantener tamaño original para tablet y móvil */
-  }
-  
-  .hero-text p {
-    font-size: 1rem; /* Mantener tamaño original para tablet y móvil */
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 0 2rem;
-  }
-  
-  .hero-text h1 {
-    font-size: 2.2rem;
-  }
-  
-  .hero-text p {
-    font-size: 1rem;
-  }
-  
-  .btn-container {
-    gap: 10px;
-    margin-top: 1.5rem;
-  }
-}
-
-/* Garantizar que todas las secciones estén por encima del fondo */
-section {
-  position: relative;
-  z-index: 5;
-  padding: 100px 0;
-  overflow: hidden;
-}
-
-/* Añadir un sutil desenfoque detrás de las secciones para mejorar la legibilidad */
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-color);
-  opacity: 0.7;
-  z-index: -1;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-/* Efecto de brillo sutil en los bordes de secciones */
-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(107, 76, 230, 0.15);
   pointer-events: none;
 }
 
@@ -2393,4 +2007,40 @@ section, .hero, header, .preloader, #back-to-top, .modal {
 .nav-links a:focus {
   outline: 2px dashed var(--accent-color);
   outline-offset: 4px;
+}
+
+/* Contenedor para el fondo dinámico en modo oscuro */
+#dynamic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #121212, #262626);
+  z-index: -100;
+  opacity: 1;
+  transition: opacity 1s ease;
+  pointer-events: none;
+}
+
+/* Override para el header en modo día para que no sea transparente */
+body.light-mode header {
+  background-color: rgba(240, 242, 245, 0.85);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Asegurar que los enlaces de navegación tengan el mismo color en ambos modos */
+body.light-mode .nav-links a,
+body.dark-mode .nav-links a {
+  color: var(--text-color-light);
+}
+
+body.light-mode .nav-links a:hover,
+body.dark-mode .nav-links a:hover {
+  color: var(--accent-color);
 }
