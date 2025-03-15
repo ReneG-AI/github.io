@@ -62,7 +62,7 @@
 /* Elemento decorativo para efecto futurista */
 .hero-decoration {
   position: relative;
-  margin: 2.5rem 0;
+  margin: 2.5rem 0 2rem;
   height: 3px;
   width: 40%;
 }
@@ -213,6 +213,10 @@
   .hero-subtitle {
     font-size: 2.6rem;
   }
+  
+  .endorsement-text {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -231,6 +235,14 @@
   
   .hero-decoration {
     width: 60%;
+  }
+  
+  .hero-endorsement {
+    margin-bottom: 2.5rem;
+  }
+  
+  .endorsement-text {
+    font-size: 1.5rem;
   }
 }
 
@@ -266,6 +278,24 @@
   .hero-decoration {
     width: 80%;
   }
+  
+  .hero-endorsement {
+    margin-bottom: 2rem;
+  }
+  
+  .endorsement-badge {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+  
+  .endorsement-badge i {
+    font-size: 1.5rem;
+  }
+  
+  .endorsement-text {
+    font-size: 1.4rem;
+  }
 }
 
 /* Secciones */
@@ -284,6 +314,90 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* Endorsement section - recomendación */
+.hero-endorsement {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  position: relative;
+  transform: translateX(-5px);
+  opacity: 0;
+  animation: fadeSlideIn 0.8s ease-out 0.5s forwards;
+}
+
+.endorsement-badge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 1.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(107, 76, 230, 0.5));
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.endorsement-badge i {
+  font-size: 1.8rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: pulse 2s infinite;
+}
+
+.endorsement-text {
+  position: relative;
+  font-size: 1.7rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #FFF, #d9bbff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.02em;
+  padding-bottom: 2px;
+}
+
+.endorsement-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
