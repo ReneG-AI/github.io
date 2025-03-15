@@ -303,66 +303,80 @@ function initBookFlip() {
     });
 }
 
-// Modal para "Ver interior"
+// Modal para "Ver interior" - Versión optimizada
 function initInteriorModal() {
+    // Elementos del DOM
     const modal = document.getElementById('interiorModal');
+    const verInteriorBtns = document.querySelectorAll('.ver-interior-btn');
+    
+    // Validación para evitar errores
     if (!modal) {
-        console.error('Modal no encontrado');
+        console.error('Error: Modal no encontrado en el DOM (#interiorModal)');
         return;
     }
     
     const closeModalBtn = modal.querySelector('.close-modal');
     const confirmBtn = modal.querySelector('.modal-btn');
-    const verInteriorBtns = document.querySelectorAll('.ver-interior-btn');
+    const modalContent = modal.querySelector('.modal-content');
     
-    console.log('Botones Ver Interior encontrados:', verInteriorBtns.length);
-    
-    // Función para abrir el modal
-    function openModal(e) {
-        e.preventDefault();
-        console.log('Abriendo modal...');
-        
-        // Establecer display flex primero
-        modal.style.display = 'flex';
-        
-        // Forzar un reflow para permitir que la transición funcione
-        void modal.offsetWidth;
-        
-        // Luego añadir la clase y cambiar las propiedades
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-        
-        const modalContent = modal.querySelector('.modal-content');
-        if (modalContent) {
-            modalContent.style.opacity = '1';
-            modalContent.style.transform = 'translateY(0)';
-        } else {
-            console.error('No se encontró .modal-content');
-        }
+    if (!modalContent) {
+        console.error('Error: Contenido del modal no encontrado (.modal-content)');
+        return;
     }
     
-    // Función para cerrar el modal
+    console.log('Modal inicializado correctamente');
+    console.log('Botones Ver Interior encontrados:', verInteriorBtns.length);
+    
+    // Función para abrir el modal con animación
+    function openModal(e) {
+        if (e) e.preventDefault();
+        
+        console.log('Abriendo modal...');
+        
+        // 1. Configurar el modal para su visualización inicial
+        document.body.style.overflow = 'hidden'; // Bloquear scroll
+        modal.style.display = 'flex';
+        modal.style.opacity = '0';
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'translateY(-50px)';
+        
+        // 2. Forzar un reflow para asegurar que las transiciones funcionen
+        void modal.offsetWidth;
+        
+        // 3. Iniciar animación del fondo
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+            
+            // 4. Iniciar animación del contenido
+            requestAnimationFrame(() => {
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'translateY(0)';
+            });
+        });
+    }
+    
+    // Función para cerrar el modal con animación
     function closeModal() {
         console.log('Cerrando modal...');
-        const modalContent = modal.querySelector('.modal-content');
         
-        if (modalContent) {
-            modalContent.style.opacity = '0';
-            modalContent.style.transform = 'translateY(-50px)';
-        }
+        // 1. Animar salida del contenido
+        modalContent.style.opacity = '0';
+        modalContent.style.transform = 'translateY(-50px)';
         
-        modal.classList.remove('show');
-        
-        // Esperar a que termine la transición antes de ocultar
+        // 2. Animar salida del fondo después de un breve retraso
         setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }, 300);
+            modal.style.opacity = '0';
+            
+            // 3. Ocultar el modal y restaurar scroll después de completar la animación
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }, 100);
     }
     
     // Asignar eventos a los botones "Ver interior"
     verInteriorBtns.forEach(btn => {
-        console.log('Configurando botón:', btn);
         btn.addEventListener('click', function(e) {
             console.log('Botón Ver Interior clickeado');
             openModal(e);
@@ -373,17 +387,17 @@ function initInteriorModal() {
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
     } else {
-        console.error('No se encontró el botón de cierre del modal');
+        console.warn('Advertencia: Botón de cierre no encontrado en el modal');
     }
     
     // Cerrar modal con botón de confirmación
     if (confirmBtn) {
         confirmBtn.addEventListener('click', closeModal);
     } else {
-        console.error('No se encontró el botón de confirmación del modal');
+        console.warn('Advertencia: Botón de confirmación no encontrado en el modal');
     }
     
-    // Cerrar modal al hacer clic fuera
+    // Cerrar modal al hacer clic fuera del contenido
     modal.addEventListener('click', function(e) {
         if (e.target === modal) {
             closeModal();
@@ -392,10 +406,15 @@ function initInteriorModal() {
     
     // Cerrar modal con tecla Escape
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') {
             closeModal();
         }
     });
+    
+    // Abrir modal programáticamente si se incluye el hash en la URL
+    if (window.location.hash === '#ver-interior') {
+        openModal();
+    }
 }
 
 /* Header scroll shrink effect */
