@@ -20,9 +20,25 @@
 @import url('components/modals.css');
 @import url('components/buttons.css');
 @import url('components/navigation.css');
+@import url('components/preloader.css');
+@import url('components/cards.css');
+@import url('components/modal.css');
 
 /* Importar estilos específicos de página */
 @import url('pages/home.css');
+@import url('pages/libro.css');
+@import url('pages/about.css');
+
+/* Secciones */
+@import url('sections/testimonios.css');
+@import url('sections/contacto.css');
+@import url('sections/footer.css');
+
+/* Utilidades */
+@import url('utilities.css');
+
+/* Animaciones */
+@import url('animations.css');
 
 /* Estilos base generales */
 html {

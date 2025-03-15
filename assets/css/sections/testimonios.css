@@ -1,0 +1,328 @@
+/*
+ * TESTIMONIOS SECTION
+ * Estilos para la sección de testimonios y opiniones
+ */
+
+#testimonios {
+  padding: 10rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonios-header {
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.section-title {
+  font-size: 4.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, var(--primary-color-light), var(--accent-color-light), var(--secondary-color-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 15px var(--primary-color-shadow);
+  animation: shimmer 8s linear infinite;
+}
+
+.section-subtitle {
+  font-size: 2rem;
+  max-width: 80rem;
+  margin: 0 auto 2rem;
+  color: var(--text-color-light);
+  line-height: 1.6;
+}
+
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 3rem;
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+.testimonio-card {
+  background: rgba(25, 25, 25, 0.5);
+  border-radius: 2rem;
+  padding: 3rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: translateY(0);
+}
+
+.testimonio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+  border-color: var(--primary-color-light);
+}
+
+.testimonio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(var(--primary-color-rgb), 0.05) 0%,
+    rgba(var(--secondary-color-rgb), 0.05) 50%,
+    rgba(var(--accent-color-rgb), 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.testimonio-card:hover::before {
+  opacity: 1;
+}
+
+.testimonio-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.testimonio-avatar {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 2rem;
+  border: 3px solid var(--accent-color);
+  position: relative;
+}
+
+.testimonio-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonio-avatar::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    var(--primary-color-light), 
+    var(--secondary-color-light), 
+    var(--accent-color-light), 
+    var(--secondary-color-light), 
+    var(--primary-color-light)
+  );
+  background-size: 300% 300%;
+  animation: rotate-border 8s linear infinite;
+  z-index: -1;
+}
+
+.testimonio-info {
+  text-align: left;
+}
+
+.testimonio-nombre {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--accent-color-light), var(--white));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.testimonio-ubicacion {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--text-color-light);
+  opacity: 0.7;
+}
+
+.testimonio-rating {
+  display: flex;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--star-color);
+}
+
+.testimonio-texto {
+  font-size: 1.7rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.testimonio-texto::before {
+  content: '"';
+  font-size: 8rem;
+  color: var(--primary-color-light);
+  opacity: 0.2;
+  position: absolute;
+  top: -4rem;
+  left: -1rem;
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonio-fecha {
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--text-color-light);
+  opacity: 0.6;
+  text-align: right;
+  margin-top: 1.5rem;
+}
+
+/* Animaciones */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotate-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Estilos para la paginación de testimonios */
+.testimonios-paginacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  gap: 1rem;
+}
+
+.testimonios-paginacion-btn {
+  width: 4rem;
+  height: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.testimonios-paginacion-btn.active,
+.testimonios-paginacion-btn:hover {
+  background-color: var(--primary-color-light);
+  width: 6rem;
+}
+
+/* Efectos decorativos */
+.dots-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.dot {
+  position: absolute;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--primary-color-light);
+  opacity: 0.15;
+}
+
+.dot-1 { top: 10%; left: 10%; }
+.dot-2 { top: 20%; right: 20%; }
+.dot-3 { bottom: 30%; left: 30%; }
+.dot-4 { bottom: 15%; right: 15%; }
+.dot-5 { top: 40%; left: 50%; }
+.dot-6 { bottom: 50%; right: 40%; }
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .testimonios-grid {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 4.2rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #testimonios {
+    padding: 8rem 2rem;
+  }
+  
+  .testimonios-grid {
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+  }
+  
+  .section-title {
+    font-size: 3.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #testimonios {
+    padding: 6rem 2rem;
+  }
+  
+  .section-title {
+    font-size: 3.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.8rem;
+  }
+  
+  .testimonio-card {
+    padding: 2.5rem;
+  }
+  
+  .testimonio-nombre {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+    max-width: 45rem;
+  }
+  
+  .section-title {
+    font-size: 2.8rem;
+  }
+  
+  .testimonio-avatar {
+    width: 6rem;
+    height: 6rem;
+  }
+  
+  .testimonio-texto {
+    font-size: 1.6rem;
+  }
+} 
