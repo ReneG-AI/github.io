@@ -75,6 +75,14 @@
   transform: translateX(0);
 }
 
+/* Estado oculto cuando se llega a las opiniones */
+.left-fixed.testimonials-visible {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50px);
+  transition: all 0.5s ease;
+}
+
 .right-scrollable {
   width: 65%;
   margin-left: 35%;
@@ -88,6 +96,13 @@
 .right-scrollable.scrolled {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Estado de ancho completo para testimonios y contacto */
+.right-scrollable.full-width {
+  width: 100%;
+  margin-left: 0;
+  transition: all 0.8s ease;
 }
 
 /* Hero ahora es un fondo fijo para toda la página */
@@ -208,9 +223,21 @@
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Estilos para las secciones de ancho completo */
+.scrollable-section.full-width-section {
+  margin: 3rem auto;
+  max-width: 1200px;
+  transition: all 0.8s ease;
+}
+
 .scrollable-section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Testimonios y sección de contacto con estilo moderno y futurista */
+#testimonios, #contacto {
+  transition: all 0.8s ease;
 }
 
 /* Media queries */
@@ -226,6 +253,10 @@
   .hero-content-centered,
   .hero-content {
     max-width: 85%;
+  }
+  
+  .scrollable-section.full-width-section {
+    max-width: 90%;
   }
 }
 
@@ -256,6 +287,10 @@
     min-width: auto;
     padding: 1rem 2rem;
     font-size: 1.4rem;
+  }
+  
+  .scrollable-section.full-width-section {
+    padding: 3rem 2rem;
   }
 }
 
@@ -312,6 +347,10 @@
   .scrollable-section {
     margin: 2rem 1.5rem;
   }
+  
+  .scrollable-section.full-width-section {
+    margin: 2rem 1.5rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -332,6 +371,10 @@
   .scrollable-section {
     margin: 1.5rem;
     padding: 3rem 1.5rem;
+  }
+  
+  .scrollable-section.full-width-section {
+    padding: 2.5rem 1.5rem;
   }
 }
 

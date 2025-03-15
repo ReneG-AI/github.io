@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initHeaderScroll();
     initScrollEffects();
+    initAnimations();
     
     // Inicializar AOS con un retraso para mejor rendimiento
     if (typeof AOS !== 'undefined') {
@@ -56,120 +57,77 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         });
     }
+
+    // Mostrar la página después de cargar
+    setTimeout(function() {
+        document.body.classList.add('loaded');
+    }, 100);
 });
 
 // Preloader
 function initPreloader() {
     const preloader = document.querySelector('.preloader');
     if (preloader) {
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
+        window.addEventListener('load', function() {
+            preloader.classList.add('preloader-hide');
+        });
     }
 }
 
 // Menú móvil
 function initMobileMenu() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    if (!menuToggle || !navLinks) return;
-    
-    const navLinksAnchors = document.querySelectorAll('.nav-links a');
-    
-    // Asegurarse de que el menú esté visible pero colapsado al inicio
-    navLinks.style.display = 'flex';
-    navLinks.classList.remove('active');
-    
-    // Cerrar menú al hacer clic en un enlace
-    navLinksAnchors.forEach(function(link) {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 1024) { // Incluye tablets (hasta 1024px)
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-                // Restaurar scroll del body cuando se cierra el menú
-                document.body.style.overflow = '';
-            }
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.classList.toggle('no-scroll');
         });
-    });
-    
-    // Toggle menú
-    menuToggle.addEventListener('click', (e) => {
-        e.stopPropagation(); // Evitar que el clic se propague al document
-        e.preventDefault(); // Prevenir comportamiento por defecto
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('active');
-        
-        // Controlar el scroll del body cuando el menú está abierto
-        if (navLinks.classList.contains('active')) {
-            console.log('Menú abierto'); // Depuración
-        } else {
-            document.body.style.overflow = '';
-            console.log('Menú cerrado'); // Depuración
-        }
-    });
-    
-    // Cerrar menú al hacer clic fuera
-    document.addEventListener('click', (e) => {
-        if (navLinks.classList.contains('active') && 
-            !navLinks.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-            navLinks.classList.remove('active');
+
+        // Cerrar menú al hacer clic en el overlay
+        overlay.addEventListener('click', function() {
             menuToggle.classList.remove('active');
-            // Restaurar scroll del body cuando se cierra el menú
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Cerrar menú con la tecla Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            // Restaurar scroll del body cuando se cierra el menú
-            document.body.style.overflow = '';
-        }
-    });
-    
-    // Función para manejar el redimensionamiento de la ventana
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            if (window.innerWidth > 1024) {
-                navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            this.classList.remove('active');
+            body.classList.remove('no-scroll');
+        });
+
+        // Cerrar menú al hacer clic en enlaces
+        const mobileLinks = document.querySelectorAll('.mobile-menu .nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 menuToggle.classList.remove('active');
-                // Restaurar scroll del body cuando se oculta el menú
-                document.body.style.overflow = '';
-            }
-        }, 250);
-    });
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+        });
+    }
 }
 
 // Desplazamiento suave
 function initSmoothScroll() {
-    // Obtener todos los enlaces con hash
-    const allLinks = document.querySelectorAll('a[href^="#"]');
+    const scrollLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
     
-    // Agregar evento de clic a cada enlace
-    allLinks.forEach(function(link) {
+    scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // Prevenir el comportamiento predeterminado
             e.preventDefault();
             
-            const href = this.getAttribute('href');
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
             
-            // Verificar si el href es válido
-            if (href === "#") return;
-            
-            // Obtener el destino del enlace
-            const target = document.querySelector(href);
-            
-            // Si el destino existe, desplazar suavemente
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+            if (targetElement) {
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -178,16 +136,18 @@ function initSmoothScroll() {
 
 // Efecto de scroll en el encabezado
 function initHeaderScroll() {
-    const header = document.getElementById('header');
-    if (!header) return;
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    const header = document.querySelector('header');
+    const scrollThreshold = 50;
+
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > scrollThreshold) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 }
 
 // Inicializar AOS para animaciones
@@ -236,59 +196,95 @@ function initBackToTop() {
 
 // Función para manejar los efectos de scroll
 function initScrollEffects() {
-    const heroInitial = document.getElementById('hero-initial');
-    const leftFixed = document.getElementById('left-fixed');
-    const rightScrollable = document.getElementById('right-scrollable');
+    const heroInitial = document.querySelector('.hero-initial');
+    const leftFixed = document.querySelector('.left-fixed');
+    const rightScrollable = document.querySelector('.right-scrollable');
+    const scrollButton = document.querySelector('.scroll-trigger');
     const scrollableSections = document.querySelectorAll('.scrollable-section');
+    const booksSection = document.getElementById('libros');
+    const testimoniosSection = document.getElementById('testimonios');
+    const contactoSection = document.getElementById('contacto');
     
-    if (!heroInitial || !leftFixed || !rightScrollable) return;
-    
-    // Mostrar vista inicial y ocultar la vista de scroll al cargar
-    heroInitial.classList.remove('scrolled');
-    leftFixed.classList.remove('scrolled');
-    rightScrollable.classList.remove('scrolled');
-    
-    // Definir un punto de activación para la transición (25% del viewport)
-    const scrollTrigger = window.innerHeight * 0.25;
-    
-    // Función para manejar el evento de scroll
-    window.addEventListener('scroll', function() {
-        // Verificar si el scroll ha pasado el punto de activación
-        if (window.scrollY > scrollTrigger) {
-            // Transición a vista de scroll
-            heroInitial.classList.add('scrolled');
-            leftFixed.classList.add('scrolled');
-            rightScrollable.classList.add('scrolled');
-            
-            // Agregar clase visible a las secciones con retraso para crear efecto cascada
-            let delay = 0;
-            scrollableSections.forEach(section => {
-                setTimeout(() => {
-                    section.classList.add('visible');
-                }, delay);
-                delay += 150; // Incrementar el retraso para cada sección
+    if (heroInitial && leftFixed && rightScrollable) {
+        // Estado inicial: título centrado
+        heroInitial.classList.add('active');
+        
+        // Botón para bajar al contenido scrollable
+        if (scrollButton) {
+            scrollButton.addEventListener('click', function() {
+                const targetPosition = window.innerHeight * 0.85;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             });
-        } else {
-            // Volver a vista inicial
-            heroInitial.classList.remove('scrolled');
-            leftFixed.classList.remove('scrolled');
-            rightScrollable.classList.remove('scrolled');
         }
-    });
-    
-    // Activar secciones cuando entran en el viewport
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+        
+        // Control de efectos de scroll
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Transición de título centrado a layout dividido
+            if (scrollPosition > windowHeight * 0.15) {
+                heroInitial.classList.add('scrolled');
+                leftFixed.classList.add('scrolled');
+                rightScrollable.classList.add('scrolled');
+            } else {
+                heroInitial.classList.remove('scrolled');
+                leftFixed.classList.remove('scrolled');
+                rightScrollable.classList.remove('scrolled');
             }
+            
+            // Detectar cuando termina la sección de libros y comienzan testimonios
+            if (testimoniosSection) {
+                const testimoniosPosition = testimoniosSection.getBoundingClientRect().top;
+                
+                // Cuando los testimonios están a punto de ser visibles
+                if (testimoniosPosition < windowHeight * 0.8) {
+                    leftFixed.classList.add('testimonials-visible');
+                    rightScrollable.classList.add('full-width');
+                    
+                    // Marcar las secciones como de ancho completo
+                    if (testimoniosSection) {
+                        testimoniosSection.classList.add('full-width-section');
+                    }
+                    
+                    if (contactoSection) {
+                        contactoSection.classList.add('full-width-section');
+                    }
+                } else {
+                    leftFixed.classList.remove('testimonials-visible');
+                    rightScrollable.classList.remove('full-width');
+                    
+                    // Quitar la clase de ancho completo
+                    if (testimoniosSection) {
+                        testimoniosSection.classList.remove('full-width-section');
+                    }
+                    
+                    if (contactoSection) {
+                        contactoSection.classList.remove('full-width-section');
+                    }
+                }
+            }
+            
+            // Animar las secciones scrollables cuando son visibles
+            scrollableSections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                
+                if (sectionTop < windowHeight * 0.85 && sectionBottom > 0) {
+                    section.classList.add('visible');
+                } else {
+                    section.classList.remove('visible');
+                }
+            });
         });
-    }, { threshold: 0.15 });
-    
-    // Observar todas las secciones scrollables
-    scrollableSections.forEach(section => {
-        observer.observe(section);
-    });
+        
+        // Trigger scroll event on load to set initial state
+        window.dispatchEvent(new Event('scroll'));
+    }
 }
 
 // Función para inicializar el flip de los libros
@@ -439,100 +435,59 @@ window.addEventListener('resize', function() {
     setTimeout(createParticles, 500);
 });
 
-// Inicialización de AOS para animaciones al hacer scroll
-document.addEventListener('DOMContentLoaded', function() {
-  // Inicializar AOS
-  AOS.init({
-    duration: 800,
-    easing: 'ease-out',
-    once: true
-  });
-  
-  // Scroll suave para enlaces ancla
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 100,
-          behavior: 'smooth'
+// Animaciones
+function initAnimations() {
+    // Elementos para animar
+    const animatedElements = document.querySelectorAll('.animate');
+    
+    // Opciones para el Intersection Observer
+    const options = {
+        root: null, // viewport
+        threshold: 0.1, // 10% del elemento visible
+        rootMargin: '-50px'
+    };
+    
+    // Callback para el observer
+    const animateCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = el.dataset.delay || 0;
+                
+                // Aplicar la animación después del delay
+                setTimeout(() => {
+                    el.classList.add('animated');
+                }, delay);
+                
+                // Dejar de observar si la animación no es repetible
+                if (!el.dataset.repeat) {
+                    observer.unobserve(el);
+                }
+            } else if (el.dataset.repeat) {
+                // Si es repetible, quitar clase cuando sale de la vista
+                el.classList.remove('animated');
+            }
         });
-      }
-    });
-  });
-  
-  // Efecto de giro para las portadas/contraportadas de libros
-  setupBookFlip();
-  
-  // Botón volver arriba
-  const backToTop = document.getElementById('back-to-top');
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
+    };
     
-    backToTop.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Crear el observer
+    const observer = new IntersectionObserver(animateCallback, options);
+    
+    // Observar todos los elementos animados
+    animatedElements.forEach(el => {
+        observer.observe(el);
     });
-  }
-  
-  // Manejar modales
-  document.querySelectorAll('.interior-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('interiorModal').style.display = 'flex';
-    });
-  });
-  
-  document.querySelectorAll('.close-modal, .modal-btn').forEach(elem => {
-    elem.addEventListener('click', function() {
-      document.getElementById('interiorModal').style.display = 'none';
-    });
-  });
-  
-  // Cerrar modal al hacer clic fuera
-  window.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal')) {
-      e.target.style.display = 'none';
-    }
-  });
-  
-  // Preloader
-  const preloader = document.querySelector('.preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.classList.add('fade-out');
-      setTimeout(() => {
-        preloader.style.display = 'none';
-      }, 500);
-    });
-  }
-});
+}
 
-// Configurar el efecto de giro para los libros
-function setupBookFlip() {
-  // Añadir efecto de giro al hacer clic en la portada/contraportada
-  const flippers = document.querySelectorAll('.book-flipper');
-  
-  flippers.forEach(flipper => {
-    // Al hacer clic en la portada o contraportada, girar
-    flipper.addEventListener('click', () => {
-      flipper.classList.toggle('flipped');
-    });
+// Parallax effect para el fondo
+document.addEventListener('mousemove', function(e) {
+    const parallaxElements = document.querySelectorAll('.parallax');
     
-    // Añadir efecto visual al pasar el ratón
-    flipper.addEventListener('mouseenter', () => {
-      flipper.style.transform = 'translateY(-10px) rotateY(5deg)';
+    parallaxElements.forEach(el => {
+        const speed = el.dataset.speed || 5;
+        const x = (window.innerWidth - e.pageX * speed) / 100;
+        const y = (window.innerHeight - e.pageY * speed) / 100;
+        
+        el.style.transform = `translateX(${x}px) translateY(${y}px)`;
     });
-    
-    flipper.addEventListener('mouseleave', () => {
-      flipper.style.transform = '';
-    });
-  });
-} 
+}); 
