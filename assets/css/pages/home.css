@@ -206,7 +206,7 @@
 }
 
 /* Contenedor principal de libros */
-.books-container {
+.books-container, .book-showcase {
   max-width: 120rem;
   margin: 0 auto;
 }
@@ -221,6 +221,7 @@
   transition: all 0.4s ease;
   margin-bottom: 4rem;
   position: relative;
+  min-height: 50rem; /* Altura mínima para todos los libros */
 }
 
 .book-item:hover {
@@ -357,6 +358,7 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
 }
 
 .book-header {
@@ -461,6 +463,52 @@
   display: flex;
   gap: 1.5rem;
   margin-top: auto;
+}
+
+/* Estilos para los botones de acción */
+.amazon-btn, .interior-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900, #FFC13B);
+  color: #000;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.3);
+}
+
+.amazon-btn:hover {
+  background: linear-gradient(135deg, #FFA31A, #FFD35F);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(255, 153, 0, 0.4);
+}
+
+.interior-btn {
+  background: linear-gradient(135deg, #6B4CE6, #8C52FF);
+  color: white;
+  box-shadow: 0 0.5rem 1.5rem rgba(107, 76, 230, 0.3);
+}
+
+.interior-btn:hover {
+  background: linear-gradient(135deg, #7C5DF7, #9D63FF);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(107, 76, 230, 0.4);
+}
+
+/* Contenedor centrado para botones */
+.centered-container {
+  text-align: center;
+  margin: 4rem auto;
 }
 
 /* Media queries */

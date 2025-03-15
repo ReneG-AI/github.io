@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
+    initScrollEffects();
     
     // Inicializar AOS con un retraso para mejor rendimiento
     if (typeof AOS !== 'undefined') {
@@ -33,6 +34,28 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('dark-mode');
     document.body.classList.remove('light-mode');
     localStorage.setItem('darkMode', 'enabled');
+    
+    // Manejar el boton de explorar libros desde la vista inicial
+    const scrollTriggerBtn = document.querySelector('.scroll-trigger');
+    if (scrollTriggerBtn) {
+        scrollTriggerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Activar transición a vista scroll
+            window.scrollTo({
+                top: window.innerHeight * 0.5, // Scrollear lo suficiente para activar la transición
+                behavior: 'smooth'
+            });
+            
+            // Mostrar contenido de libros de forma inmediata
+            setTimeout(function() {
+                const scrollableSections = document.querySelectorAll('.scrollable-section');
+                scrollableSections.forEach(section => {
+                    section.classList.add('visible');
+                });
+            }, 500);
+        });
+    }
 });
 
 // Preloader
@@ -211,6 +234,63 @@ function initBackToTop() {
     });
 }
 
+// Función para manejar los efectos de scroll
+function initScrollEffects() {
+    const heroInitial = document.getElementById('hero-initial');
+    const leftFixed = document.getElementById('left-fixed');
+    const rightScrollable = document.getElementById('right-scrollable');
+    const scrollableSections = document.querySelectorAll('.scrollable-section');
+    
+    if (!heroInitial || !leftFixed || !rightScrollable) return;
+    
+    // Mostrar vista inicial y ocultar la vista de scroll al cargar
+    heroInitial.classList.remove('scrolled');
+    leftFixed.classList.remove('scrolled');
+    rightScrollable.classList.remove('scrolled');
+    
+    // Definir un punto de activación para la transición (25% del viewport)
+    const scrollTrigger = window.innerHeight * 0.25;
+    
+    // Función para manejar el evento de scroll
+    window.addEventListener('scroll', function() {
+        // Verificar si el scroll ha pasado el punto de activación
+        if (window.scrollY > scrollTrigger) {
+            // Transición a vista de scroll
+            heroInitial.classList.add('scrolled');
+            leftFixed.classList.add('scrolled');
+            rightScrollable.classList.add('scrolled');
+            
+            // Agregar clase visible a las secciones con retraso para crear efecto cascada
+            let delay = 0;
+            scrollableSections.forEach(section => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, delay);
+                delay += 150; // Incrementar el retraso para cada sección
+            });
+        } else {
+            // Volver a vista inicial
+            heroInitial.classList.remove('scrolled');
+            leftFixed.classList.remove('scrolled');
+            rightScrollable.classList.remove('scrolled');
+        }
+    });
+    
+    // Activar secciones cuando entran en el viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.15 });
+    
+    // Observar todas las secciones scrollables
+    scrollableSections.forEach(section => {
+        observer.observe(section);
+    });
+}
+
 // Función para inicializar el flip de los libros
 function initBookFlip() {
     const bookFlippers = document.querySelectorAll('.book-flipper');
@@ -221,10 +301,23 @@ function initBookFlip() {
         flipper.addEventListener('click', function() {
             this.classList.toggle('flipped');
         });
+        
+        // Añadimos efectos de hover para mejorar la experiencia
+        flipper.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('flipped')) {
+                this.style.transform = 'translateY(-10px) rotateY(5deg)';
+            }
+        });
+        
+        flipper.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('flipped')) {
+                this.style.transform = '';
+            }
+        });
     });
     
     // Botones "Ver interior"
-    const interiorBtns = document.querySelectorAll('.ver-interior-btn');
+    const interiorBtns = document.querySelectorAll('.interior-btn');
     interiorBtns.forEach(btn => {
         btn.addEventListener('click', openModal);
     });
