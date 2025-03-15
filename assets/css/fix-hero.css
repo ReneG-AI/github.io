@@ -1,0 +1,83 @@
+/* 
+ * FIX HERO IMAGE
+ * Estilos de corrección específicos para la imagen del hero
+ */
+
+/* Forzar hero background */
+.hero-background {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  background-image: url('../images/Banner.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: -1 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Asegurar que no haya elemento after */
+.hero-background::after,
+.hero-background::before {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Forzar contenido del hero */
+.hero-section {
+  position: relative !important;
+  width: 100% !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 10% !important;
+  z-index: 10 !important; /* Mayor z-index para asegurar visibilidad */
+}
+
+/* Ajuste para contenido del hero */
+.hero-content {
+  max-width: 600px !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  padding: 3rem !important;
+  border-radius: 1.5rem !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  margin-bottom: 2rem !important;
+  z-index: 20 !important; /* Mayor z-index para asegurar visibilidad */
+}
+
+/* Forzar que no haya overlays o elementos que cubran el hero */
+body::before,
+body::after,
+html::before,
+html::after,
+.preloader::after,
+.preloader::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Forzar visualización de la imagen de fondo en caso de flash inicial */
+body.loaded .hero-background {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Estilos específicos para asegurar que la imagen se cargue */
+.hero-background {
+  background-attachment: fixed !important;
+}
+
+/* Ajuste para body y html en relación al hero */
+body, html {
+  min-height: 100vh !important;
+  height: auto !important;
+  background-color: transparent !important;
+} 
