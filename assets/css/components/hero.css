@@ -12,10 +12,9 @@
   align-items: center;
   padding-left: 10%;
   z-index: 1;
-  overflow: hidden;
 }
 
-/* Fondo del hero */
+/* Fondo del hero - simplificado al máximo */
 .hero-background {
   position: fixed;
   top: 0;
@@ -29,10 +28,9 @@
   z-index: -1;
 }
 
-/* Elimino la capa de degradado oscuro que tapaba la imagen */
-/* Capa de degradado sobre el fondo */
+/* Eliminamos completamente este elemento */
 .hero-background::after {
-  display: none; /* Oculto completamente el elemento */
+  display: none;
 }
 
 /* Contenido del hero */
