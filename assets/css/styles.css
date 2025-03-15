@@ -37,11 +37,89 @@ body {
 
 /* Asegurar que el fondo no interfiera con el contenido */
 body.dark-mode #dynamic-background {
-  opacity: 0.5; /* Más transparente en modo oscuro */
+  opacity: 0.7; /* Más visible en modo oscuro */
 }
 
 body.light-mode #dynamic-background {
-  opacity: 0.3; /* Más transparente en modo claro para mejor lectura */
+  opacity: 0.8; /* Más visible en modo claro para apreciar el efecto */
+}
+
+/* Mejora del contraste para secciones en modo claro */
+body.light-mode section::before {
+  background-color: rgba(249, 249, 249, 0.7); /* Color de fondo más transparente */
+  backdrop-filter: blur(5px); /* Menos desenfoque para ver el fondo */
+}
+
+/* Añadir un efecto de "página de libro" a las secciones */
+section {
+  position: relative;
+  z-index: 5;
+  padding: 100px 0;
+  overflow: hidden;
+  border-radius: 5px;
+  border-left: 1px solid rgba(107, 76, 230, 0.1); /* Simular el borde de una página */
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.05),
+    -1px 0 3px rgba(0, 0, 0, 0.02); /* Sombra sutil de página */
+}
+
+/* Añadir un efecto de "página doblada" a las secciones */
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 30px 30px; /* Crear una esquina doblada */
+  border-color: transparent transparent rgba(107, 76, 230, 0.1) transparent;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+  border-radius: 0 0 5px 0;
+  pointer-events: none;
+}
+
+/* Ajustes para modo oscuro/claro con el nuevo fondo */
+body.dark-mode section::before {
+  background-color: rgba(18, 18, 18, 0.6); /* Color de fondo más transparente */
+  backdrop-filter: blur(10px);
+}
+
+body.light-mode section::before {
+  background-color: rgba(249, 249, 249, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+/* Ajuste de transiciones para el contenido */
+.container {
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+section:hover .container {
+  transform: translateY(-5px);
+}
+
+/* Asegurar que elementos importantes sean legibles */
+.hero-text h1, .section-title, .section-subtitle, .book-content h3 {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para dispositivos móviles */
+@media (max-width: 768px) {
+  #dynamic-background {
+    opacity: 0.5; /* Reducir opacidad en móviles para mejor rendimiento */
+  }
+  
+  section {
+    border-left: none;
+    padding: 70px 0;
+  }
+  
+  section::after {
+    border-width: 0 0 20px 20px; /* Esquina doblada más pequeña */
+  }
 }
 
 img {
