@@ -9,8 +9,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
-  background: rgba(18, 18, 18, 0.85);
+  height: 6.5rem;
+  background: rgba(18, 18, 18, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
@@ -20,8 +20,8 @@
 }
 
 .header.scrolled {
-  height: 7rem;
-  background: rgba(18, 18, 18, 0.95);
+  height: 5.5rem;
+  background: rgba(18, 18, 18, 0.98);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
 }
 
@@ -31,7 +31,7 @@
   justify-content: space-between;
   height: 100%;
   padding: 0 2rem;
-  max-width: var(--container-width);
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -39,38 +39,38 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   text-decoration: none;
 }
 
 .logo-img {
-  height: 4.5rem;
+  height: 3.8rem;
   width: auto;
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   transition: all 0.3s ease;
   filter: brightness(0) invert(1) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
 }
 
 .header.scrolled .logo-img {
-  height: 4rem;
+  height: 3.5rem;
 }
 
 .logo-text {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--white, #FFFFFF);
   line-height: 1;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   font-family: var(--font-heading);
   transition: all 0.3s ease;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .header.scrolled .logo-text {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
-/* Navegación principal */
+/* Navegación principal - botones atractivos */
 .nav {
   height: 100%;
   display: flex;
@@ -80,7 +80,7 @@
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 4rem;
+  gap: 1.2rem;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -93,53 +93,64 @@
   position: relative;
 }
 
+/* Convertir los enlaces en botones */
 .nav-link {
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white);
   text-decoration: none;
-  padding: 1rem 0;
+  padding: 0.7rem 1.5rem;
   transition: all 0.3s ease;
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  border-radius: 0.7rem;
+  box-shadow: 0 0.3rem 0.7rem rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .nav-link:hover {
-  color: var(--accent-color);
-  text-shadow: 0 0 10px var(--accent-color-20);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 38, 255, 0.3);
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
 }
 
 .nav-link.active {
-  color: var(--primary-color-light);
+  color: var(--white);
+  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  box-shadow: 0 0.5rem 1rem rgba(0, 38, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: -0.5rem;
-  left: 0;
-  width: 100%;
-  height: 0.3rem;
-  background: var(--gradient-primary);
-  border-radius: 0.2rem;
-  animation: slideIn 0.3s ease forwards;
-  box-shadow: 0 0 10px var(--primary-color);
+/* Botón especial para Amazon */
+.nav-link.amazon {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000;
+  box-shadow: 0 0.3rem 0.7rem rgba(255, 153, 0, 0.3);
+  font-weight: 700;
+}
+
+.nav-link.amazon:hover {
+  background: linear-gradient(135deg, #FF9900, #FFCA28);
+  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Botones de navegación */
 .nav-buttons {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .nav-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 0.8rem;
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.85);
@@ -154,8 +165,8 @@
 
 /* Toggle del tema */
 .theme-toggle {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 3.8rem;
+  height: 3.8rem;
   border-radius: 50%;
   display: flex;
   align-items: center;

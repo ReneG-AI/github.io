@@ -1,11 +1,11 @@
 /* 
  * HERO
- * Estilos para la sección hero de la página
+ * Estilos para el banner principal
  */
 
 .hero {
   position: relative;
-  height: 75rem;
+  height: 55rem; /* Banner más compacto */
   width: 100%;
   overflow: hidden;
   background-attachment: fixed;
@@ -14,6 +14,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('../../../assets/images/Banner.png'); /* Corregido a Banner.png */
+  margin-top: 6.5rem; /* Ajuste para el nuevo tamaño del header */
 }
 
 .hero::before {
@@ -24,9 +26,9 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg, 
-    rgba(0, 0, 0, 0.8) 0%, 
-    rgba(80, 0, 149, 0.7) 50%, 
-    rgba(0, 0, 0, 0.9) 100%
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(30, 58, 138, 0.5) 50%, 
+    rgba(0, 0, 0, 0.8) 100%
   );
   z-index: 1;
 }
@@ -47,58 +49,47 @@
 
 .hero-content {
   position: relative;
-  max-width: 120rem;
+  max-width: 90rem;
   text-align: center;
-  padding: 0 var(--spacing-xl);
+  padding: 0 2rem;
   z-index: 3;
 }
 
 .hero-title {
-  font-size: var(--text-6xl);
-  font-weight: var(--weight-black);
-  margin-bottom: var(--spacing-lg);
+  font-size: 4.5rem; /* Reducido para compactar */
+  font-weight: 800;
+  margin-bottom: 1.5rem;
   color: var(--white);
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-shadow: 0 0 20px rgba(138, 43, 226, 0.7), 0 0 40px rgba(138, 43, 226, 0.4);
-  animation: fadeInUp 1s ease forwards;
   background: var(--gradient-rainbow);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 10s linear infinite, fadeInUp 1s ease forwards;
+  animation: shimmer 10s linear infinite;
 }
 
 .hero-subtitle {
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-medium);
+  font-size: 1.8rem; /* Reducido para compactar */
+  font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: var(--spacing-xl);
-  max-width: 70rem;
+  margin-bottom: 2.5rem;
+  max-width: 65rem;
   margin-left: auto;
   margin-right: auto;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  animation: fadeInUp 1s 0.2s ease forwards;
-  opacity: 0;
 }
 
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-  animation: fadeInUp 1s 0.4s ease forwards;
-  opacity: 0;
+  gap: 1.5rem;
 }
 
 .hero-buttons .btn {
-  min-width: 20rem;
-  animation: pulse 2s infinite;
-}
-
-.hero-buttons .btn:nth-child(2) {
-  animation-delay: 0.5s;
+  min-width: 18rem;
 }
 
 /* Animaciones */
@@ -282,36 +273,37 @@
 /* Media queries */
 @media screen and (max-width: 1200px) {
   .hero-title {
-    font-size: var(--text-5xl);
+    font-size: 4rem;
   }
   
   .hero-subtitle {
-    font-size: var(--text-xl);
+    font-size: 1.7rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   .hero {
-    height: 65rem;
+    height: 50rem;
+    margin-top: 5.5rem; /* Ajuste para el header en móvil */
   }
   
   .hero-title {
-    font-size: var(--text-4xl);
+    font-size: 3.5rem;
   }
   
   .hero-subtitle {
-    font-size: var(--text-lg);
+    font-size: 1.6rem;
   }
   
   .hero-buttons {
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: 1rem;
   }
   
   .hero-buttons .btn {
     width: 100%;
-    max-width: 30rem;
+    max-width: 25rem;
   }
   
   .hero-shape-1,
@@ -323,19 +315,19 @@
 
 @media screen and (max-width: 576px) {
   .hero {
-    height: 55rem;
+    height: 45rem;
   }
   
   .hero-title {
-    font-size: var(--text-3xl);
+    font-size: 3rem;
   }
   
   .hero-subtitle {
-    font-size: var(--text-base);
+    font-size: 1.5rem;
   }
   
   .hero-content {
-    padding: 0 var(--spacing-lg);
+    padding: 0 1.5rem;
   }
 }
 
