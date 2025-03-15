@@ -317,34 +317,49 @@ function initInteriorModal() {
     // Función para abrir el modal
     function openModal(e) {
         e.preventDefault();
-        document.body.style.overflow = 'hidden'; // Evitar scroll del body
+        console.log('Abriendo modal...');
+        
+        // Establecer display flex primero
         modal.style.display = 'flex';
         
-        // Permitir que el navegador renderice el cambio antes de agregar la clase
-        setTimeout(() => {
-            modal.classList.add('show');
-            modal.querySelector('.modal-content').style.opacity = '1';
-            modal.querySelector('.modal-content').style.transform = 'translateY(0)';
-        }, 10);
+        // Forzar un reflow para permitir que la transición funcione
+        void modal.offsetWidth;
+        
+        // Luego añadir la clase y cambiar las propiedades
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        const modalContent = modal.querySelector('.modal-content');
+        if (modalContent) {
+            modalContent.style.opacity = '1';
+            modalContent.style.transform = 'translateY(0)';
+        } else {
+            console.error('No se encontró .modal-content');
+        }
     }
     
     // Función para cerrar el modal
     function closeModal() {
-        modal.querySelector('.modal-content').style.opacity = '0';
-        modal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+        console.log('Cerrando modal...');
+        const modalContent = modal.querySelector('.modal-content');
         
+        if (modalContent) {
+            modalContent.style.opacity = '0';
+            modalContent.style.transform = 'translateY(-50px)';
+        }
+        
+        modal.classList.remove('show');
+        
+        // Esperar a que termine la transición antes de ocultar
         setTimeout(() => {
-            modal.classList.remove('show');
-            // Dejar un poco de tiempo antes de ocultarlo completamente
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.body.style.overflow = ''; // Restaurar scroll
-            }, 100);
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
         }, 300);
     }
     
     // Asignar eventos a los botones "Ver interior"
     verInteriorBtns.forEach(btn => {
+        console.log('Configurando botón:', btn);
         btn.addEventListener('click', function(e) {
             console.log('Botón Ver Interior clickeado');
             openModal(e);
@@ -354,11 +369,15 @@ function initInteriorModal() {
     // Cerrar modal con botón de cierre
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
+    } else {
+        console.error('No se encontró el botón de cierre del modal');
     }
     
     // Cerrar modal con botón de confirmación
     if (confirmBtn) {
         confirmBtn.addEventListener('click', closeModal);
+    } else {
+        console.error('No se encontró el botón de confirmación del modal');
     }
     
     // Cerrar modal al hacer clic fuera
