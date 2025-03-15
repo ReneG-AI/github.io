@@ -34,6 +34,120 @@
   display: none;
 }
 
+/* Overlay con degradado animado */
+.hero-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    45deg, 
+    rgba(10, 10, 30, 0.4), 
+    rgba(90, 20, 120, 0.3), 
+    rgba(20, 20, 50, 0.4)
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
+  opacity: 0.7;
+  mix-blend-mode: color-dodge;
+}
+
+/* Contenedor de partículas */
+#particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Destellos alrededor del perrito */
+.puppy-highlights {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.highlight {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(10px);
+  opacity: 0;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.highlight-1 {
+  top: 25%;
+  right: 32%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.highlight-2 {
+  top: 40%;
+  right: 37%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 1s;
+}
+
+.highlight-3 {
+  top: 35%;
+  right: 28%;
+  width: 40px;
+  height: 40px;
+  animation-delay: 2s;
+}
+
+.highlight-4 {
+  top: 50%;
+  right: 33%;
+  width: 50px;
+  height: 50px;
+  animation-delay: 3s;
+}
+
+/* Flecha animada hacia abajo */
+.scroll-arrow-container {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.scroll-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: pulsateArrow 2s ease-in-out infinite, floatArrow 3s ease-in-out infinite;
+}
+
+.scroll-arrow i {
+  font-size: 2.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: bounceArrow 2s ease-in-out infinite;
+}
+
 /* Contenido del hero */
 .hero-content {
   max-width: 65%;
@@ -398,6 +512,70 @@
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* Nuevas animaciones */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes pulsateArrow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(107, 76, 230, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0);
+  }
+}
+
+@keyframes floatArrow {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(8px);
+  }
+  60% {
+    transform: translateY(4px);
   }
 }
 

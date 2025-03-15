@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initInteriorModal();
     initBackToTop();
     initCharacterCounter();
+    initParticles();
     
     // Inicializar AOS con un retraso para mejor rendimiento
     setTimeout(function() {
@@ -238,4 +239,111 @@ function initCharacterCounter() {
             }
         }
     }
-} 
+}
+
+// Inicializar sistema de partículas
+function initParticles() {
+    const particlesContainer = document.getElementById('particles-container');
+    if (!particlesContainer) return;
+    
+    const particleCount = 50;
+    
+    // Crear partículas
+    for (let i = 0; i < particleCount; i++) {
+        createParticle(particlesContainer);
+    }
+}
+
+// Crear una partícula individual
+function createParticle(container) {
+    const particle = document.createElement('div');
+    
+    // Estilos base
+    particle.style.position = 'absolute';
+    particle.style.width = Math.random() * 4 + 1 + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.backgroundColor = 'rgba(255, 255, 255, ' + (Math.random() * 0.3 + 0.2) + ')';
+    particle.style.borderRadius = '50%';
+    particle.style.pointerEvents = 'none';
+    
+    // Posición inicial
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+    
+    // Añadir al contenedor
+    container.appendChild(particle);
+    
+    // Animación
+    animateParticle(particle);
+}
+
+// Animar una partícula
+function animateParticle(particle) {
+    // Valores iniciales
+    const duration = Math.random() * 15 + 10; // 10-25 segundos
+    const startPositionX = parseFloat(particle.style.left);
+    const startPositionY = parseFloat(particle.style.top);
+    const endPositionX = startPositionX + (Math.random() * 20 - 10);
+    const endPositionY = startPositionY - Math.random() * 30;
+    
+    // Preparar animación
+    particle.animate([
+        { 
+            left: startPositionX + 'vw', 
+            top: startPositionY + 'vh',
+            opacity: 0,
+            transform: 'scale(0)'
+        },
+        { 
+            opacity: Math.random() * 0.5 + 0.3,
+            transform: 'scale(1)',
+            offset: 0.2
+        },
+        { 
+            left: endPositionX + 'vw', 
+            top: endPositionY + 'vh',
+            opacity: 0,
+            transform: 'scale(0)'
+        }
+    ], {
+        duration: duration * 1000,
+        easing: 'ease-in-out',
+        iterations: Infinity
+    });
+}
+
+// Mejorar la interactividad de la flecha
+function setupScrollArrow() {
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    if (!scrollArrow) return;
+    
+    scrollArrow.addEventListener('click', function() {
+        const librosSection = document.getElementById('libros');
+        if (librosSection) {
+            librosSection.scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+    });
+}
+
+// Ejecutar después del DOM
+window.addEventListener('load', function() {
+    setupScrollArrow();
+    
+    // Lógica de Preloader (debe ya existir)
+    setTimeout(function() {
+        document.querySelector('.preloader')?.classList.add('fade-out');
+    }, 500);
+    
+    // Inicializar AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    }
+    
+    // ... existing code ...
+}); 
