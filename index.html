@@ -35,8 +35,7 @@
     <meta name="theme-color" content="#6B4CE6">
     
     <!-- Biblioteca para efectos visuales avanzados -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     
     <!-- Open Graph para compartir en redes sociales -->
     <meta property="og:title" content="René Garcia Educa – Libros para Colorear, Aprender y Relajarte" />
@@ -48,10 +47,27 @@
     <!-- Optimización de SEO -->
     <meta name="author" content="René Garcia">
     <meta name="keywords" content="libros para colorear, educación, arte, creatividad, aprendizaje, idiomas, español, inglés, catalán, libros educativos">
+    
+    <!-- Dentro del <head>, justo después de la meta theme-color, agrego el JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Store",
+        "name": "René Garcia Educa",
+        "url": "https://renegarciaeduca.com/",
+        "logo": "assets/images/Logo.png",
+        "sameAs": [
+          "https://www.instagram.com/rene_g_27/",
+          "https://www.linkedin.com/in/rene-garcia-cobo",
+          "https://www.amazon.com/-/es/stores/author/B0CRF7937N"
+        ]
+      }
+    </script>
   </head>
   <body class="dark-mode">
+    <a href="#page-content" class="skip-link">Saltar a contenido</a>
     <!-- Preloader -->
-    <div class="preloader">
+    <div class="preloader" aria-hidden="true">
       <div class="loader"></div>
     </div>
 
@@ -65,7 +81,7 @@
     </div>
 
     <header id="header">
-      <nav class="container">
+      <nav class="container" role="navigation">
         <div class="logo">
           <img src="assets/images/Logo.png" alt="Logo de René Garcia Educa" width="120" height="120" loading="lazy" />
           <span>René Garcia Educa</span>
@@ -83,7 +99,7 @@
     </header>
     
     <!-- Contenedor principal para todo el contenido scrollable -->
-    <div id="page-content">
+    <main id="page-content" role="main">
       <div class="hero">
         <div class="hero-content" data-aos="fade-up">
           <div class="hero-text">
@@ -253,7 +269,7 @@
           </div>
         </div>
         
-        <div class="container" style="text-align: center; margin-top: 4rem;" data-aos="fade-up">
+        <div class="container centered-container" data-aos="fade-up">
           <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">
             <i class="fab fa-amazon"></i> Ver todos mis libros en Amazon
           </a>
@@ -350,7 +366,7 @@
         </div>
         <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
       </section>
-    </div>
+    </main>
     
     <footer>
       <div class="footer-gradient"></div>
@@ -412,7 +428,6 @@
         </div>
       </div>
     </div>
-    </div> <!-- Fin del contenedor page-content -->
     
     <!-- Botón Volver Arriba -->
     <a href="#" id="back-to-top">↑</a>
@@ -428,12 +443,12 @@
     </div>
     
     <!-- AOS Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     
     <!-- JS Propio -->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
     
     <!-- Script para el fondo dinámico -->
-    <script src="assets/js/background.js"></script>
+    <script src="assets/js/background.js" defer></script>
   </body>
 </html>
