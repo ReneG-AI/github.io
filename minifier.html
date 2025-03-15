@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minificador CSS/JS</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4a6cf7;
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+            background-color: #f9f9f9;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #fff;
+            border-color: #ddd;
+            border-bottom-color: #fff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3a5cd7;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minificador CSS/JS</h1>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="css">CSS</div>
+            <div class="tab" data-tab="js">JavaScript</div>
+        </div>
+        
+        <div class="tab-content active" id="css-content">
+            <textarea id="css-input" placeholder="Pega tu código CSS aquí..."></textarea>
+            <button id="minify-css">Minificar CSS</button>
+            
+            <div class="result-container">
+                <h3>Resultado:</h3>
+                <textarea id="css-output" readonly></textarea>
+                <div class="stats" id="css-stats">
+                    <div>Tamaño original: <span id="css-original-size">0</span> bytes</div>
+                    <div>Tamaño minificado: <span id="css-minified-size">0</span> bytes</div>
+                    <div>Ahorro: <span id="css-savings">0</span>%</div>
+                </div>
+                <div class="actions">
+                    <button id="copy-css">Copiar al portapapeles</button>
+                    <button id="download-css">Descargar minificado</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="js-content">
+            <textarea id="js-input" placeholder="Pega tu código JavaScript aquí..."></textarea>
+            <button id="minify-js">Minificar JavaScript</button>
+            
+            <div class="result-container">
+                <h3>Resultado:</h3>
+                <textarea id="js-output" readonly></textarea>
+                <div class="stats" id="js-stats">
+                    <div>Tamaño original: <span id="js-original-size">0</span> bytes</div>
+                    <div>Tamaño minificado: <span id="js-minified-size">0</span> bytes</div>
+                    <div>Ahorro: <span id="js-savings">0</span>%</div>
+                </div>
+                <div class="actions">
+                    <button id="copy-js">Copiar al portapapeles</button>
+                    <button id="download-js">Descargar minificado</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clean-css/4.2.3/clean-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/terser/5.20.0/bundle.min.js"></script>
+    <script>
+        // Cambio de pestañas
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover clase active de todas las pestañas y contenidos
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Añadir clase active a la pestaña seleccionada y su contenido
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-tab') + '-content').classList.add('active');
+            });
+        });
+
+        // Minificar CSS
+        document.getElementById('minify-css').addEventListener('click', async () => {
+            const input = document.getElementById('css-input').value;
+            if (!input) return;
+
+            try {
+                // Usar clean-css para minificar
+                const cleanCSS = new CleanCSS();
+                const output = cleanCSS.minify(input);
+                
+                // Mostrar resultado
+                document.getElementById('css-output').value = output.styles;
+                
+                // Actualizar estadísticas
+                const originalSize = input.length;
+                const minifiedSize = output.styles.length;
+                const savings = ((originalSize - minifiedSize) / originalSize * 100).toFixed(2);
+                
+                document.getElementById('css-original-size').textContent = originalSize;
+                document.getElementById('css-minified-size').textContent = minifiedSize;
+                document.getElementById('css-savings').textContent = savings;
+            } catch (error) {
+                alert('Error al minificar CSS: ' + error.message);
+            }
+        });
+
+        // Minificar JavaScript
+        document.getElementById('minify-js').addEventListener('click', async () => {
+            const input = document.getElementById('js-input').value;
+            if (!input) return;
+
+            try {
+                // Usar Terser para minificar
+                const result = await Terser.minify(input);
+                
+                // Mostrar resultado
+                document.getElementById('js-output').value = result.code;
+                
+                // Actualizar estadísticas
+                const originalSize = input.length;
+                const minifiedSize = result.code.length;
+                const savings = ((originalSize - minifiedSize) / originalSize * 100).toFixed(2);
+                
+                document.getElementById('js-original-size').textContent = originalSize;
+                document.getElementById('js-minified-size').textContent = minifiedSize;
+                document.getElementById('js-savings').textContent = savings;
+            } catch (error) {
+                alert('Error al minificar JavaScript: ' + error.message);
+            }
+        });
+
+        // Copiar al portapapeles
+        document.getElementById('copy-css').addEventListener('click', () => {
+            const output = document.getElementById('css-output');
+            output.select();
+            document.execCommand('copy');
+            alert('CSS minificado copiado al portapapeles');
+        });
+
+        document.getElementById('copy-js').addEventListener('click', () => {
+            const output = document.getElementById('js-output');
+            output.select();
+            document.execCommand('copy');
+            alert('JavaScript minificado copiado al portapapeles');
+        });
+
+        // Descargar archivos
+        document.getElementById('download-css').addEventListener('click', () => {
+            const content = document.getElementById('css-output').value;
+            if (!content) return;
+            
+            const blob = new Blob([content], { type: 'text/css' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'styles.min.css';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        });
+
+        document.getElementById('download-js').addEventListener('click', () => {
+            const content = document.getElementById('js-output').value;
+            if (!content) return;
+            
+            const blob = new Blob([content], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'script.min.js';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html> 
