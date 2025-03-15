@@ -697,8 +697,10 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
+/* Eliminamos completamente el pseudo-elemento after */
 .hero-background::after {
-  display: none; /* Ocultar completamente el gradiente para que se vea la imagen de fondo */
+  content: none;
+  display: none;
 }
 
 .hero-content {
