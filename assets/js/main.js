@@ -132,34 +132,33 @@ function initBackToTop() {
 function initBookFlip() {
     // Seleccionar todos los flippers de libros
     const bookFlippers = document.querySelectorAll('.book-flipper');
-    const flipButtons = document.querySelectorAll('.flip-button');
     
     // Para cada flipper
     bookFlippers.forEach((flipper, index) => {
-        // Añadir ID si no lo tiene
+        // Asegurarse de que tenga un ID
         if (!flipper.id) {
             flipper.id = `flipper${index + 1}`;
         }
         
-        // Manejar clic en la portada/contraportada para girar
+        // Asegurar correcto funcionamiento del volteo
         flipper.addEventListener('click', function(e) {
-            // Solo girar cuando se hace clic en la imagen, no en el botón
-            if (e.target.tagName === 'IMG') {
-                this.classList.toggle('flipped');
-            }
+            e.preventDefault();
+            this.classList.toggle('flipped');
+            console.log('Flip toggled for:', this.id); // Debug
         });
     });
     
-    // Botones de girar también activan el efecto
-    flipButtons.forEach((button, index) => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation(); // Evitar que el clic se propague al flipper
-            const flipper = this.closest('.book-images').querySelector('.book-flipper');
-            if (flipper) {
-                flipper.classList.toggle('flipped');
-            }
-        });
+    // También asegurar que cuando se hace clic fuera, se vuelva a la portada
+    document.addEventListener('click', function(e) {
+        // Si el clic no fue dentro de un flipper
+        if (!e.target.closest('.book-flipper')) {
+            // Restaurar todos los flippers a su estado original
+            bookFlippers.forEach(flipper => {
+                if (flipper.classList.contains('flipped')) {
+                    flipper.classList.remove('flipped');
+                }
+            });
+        }
     });
 }
 

@@ -2429,6 +2429,10 @@ body.light-mode .nav-links a {
   --gradient-light-2: #e9ecef;
   --gradient-dark-1: #1a1a1a;
   --gradient-dark-2: #2d2d2d;
+  --primary-color: #6852e2;
+  --primary-color-rgb: 104, 82, 226;
+  --secondary-color: #ba43fc;
+  --secondary-color-rgb: 186, 67, 252;
 }
 
 /* Remove geometric shapes */
