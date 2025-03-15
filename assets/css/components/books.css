@@ -48,23 +48,23 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
 }
 
-/* Contenedor de imágenes - Ajustado para mejor visualización de imágenes al 250% */
+/* Contenedor de imágenes - Tamaño estándar */
 .book-images {
   position: relative;
   width: 100%;
-  height: 100rem; 
-  perspective: 2000px;
+  height: 45rem; /* Tamaño estándar para el contenedor */
+  perspective: 1200px;
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible; /* Permitiendo que el contenido escalado sea visible fuera del contenedor */
+  overflow: visible;
 }
 
 /* Efecto flip - Contenedor ajustado */
 .book-flipper {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 90%;
   position: relative;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -78,7 +78,7 @@
   transform: rotateY(180deg);
 }
 
-/* Imágenes de portada y contraportada - Mejoradas para 250% */
+/* Imágenes de portada y contraportada - Tamaño estándar */
 .book-cover,
 .book-back {
   width: 100%;
@@ -86,7 +86,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(2.5); /* Centrado correcto + escala 250% */
+  transform: translate(-50%, -50%) scale(1.1); /* Escala estándar con ligero aumento */
   backface-visibility: hidden;
   object-fit: contain;
   object-position: center;
@@ -97,7 +97,7 @@
 }
 
 .book-back {
-  transform: translate(-50%, -50%) scale(2.5) rotateY(180deg); /* Centrado + escala + rotación */
+  transform: translate(-50%, -50%) scale(1.1) rotateY(180deg);
 }
 
 /* Botón para voltear el libro */
@@ -448,7 +448,7 @@
   }
   
   .book-images {
-    height: 60rem; /* Ajustado proporcionalmente para tablets */
+    height: 40rem;
   }
   
   .book-badge {
@@ -466,11 +466,11 @@
   
   .book-cover,
   .book-back {
-    transform: translate(-50%, -50%) scale(2.1);
+    transform: translate(-50%, -50%) scale(1);
   }
   
   .book-back {
-    transform: translate(-50%, -50%) scale(2.1) rotateY(180deg);
+    transform: translate(-50%, -50%) scale(1) rotateY(180deg);
   }
 }
 
@@ -494,22 +494,22 @@
   }
   
   .book-images {
-    height: 50rem; /* Ajustado para dispositivos más pequeños */
+    height: 35rem;
   }
   
   .book-cover,
   .book-back {
-    transform: translate(-50%, -50%) scale(1.8);
+    transform: translate(-50%, -50%) scale(1);
   }
   
   .book-back {
-    transform: translate(-50%, -50%) scale(1.8) rotateY(180deg);
+    transform: translate(-50%, -50%) scale(1) rotateY(180deg);
   }
 }
 
 @media (max-width: 576px) {
   .book-images {
-    height: 40rem; /* Ajustado para móviles */
+    height: 30rem;
   }
   
   .book-content {
@@ -532,11 +532,11 @@
   
   .book-cover,
   .book-back {
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%) scale(1);
   }
   
   .book-back {
-    transform: translate(-50%, -50%) scale(1.5) rotateY(180deg);
+    transform: translate(-50%, -50%) scale(1) rotateY(180deg);
   }
 }
 
