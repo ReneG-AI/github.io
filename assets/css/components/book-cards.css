@@ -59,9 +59,9 @@
 .book-images {
   position: relative;
   width: 100%;
-  height: 25rem;
+  height: 37.5rem;
   perspective: 100rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 /* Flipper para la portada y contraportada */
@@ -86,9 +86,9 @@
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   object-fit: contain;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .book-back {
@@ -100,8 +100,8 @@
   position: absolute;
   z-index: 2;
   overflow: hidden;
-  width: 10rem;
-  height: 10rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .book-badge-corner.left {
@@ -117,27 +117,43 @@
 .book-badge-corner span {
   position: absolute;
   display: block;
-  width: 15rem;
-  padding: 0.5rem 0;
-  background: var(--gradient-primary);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  width: 30rem;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 400% 400%;
+  animation: gradient-animation 3s ease infinite;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 2.4rem;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .book-badge-corner.left span {
-  top: 3rem;
-  left: -3.5rem;
+  top: 5rem;
+  left: -7rem;
   transform: rotate(-45deg);
 }
 
 .book-badge-corner.right span {
-  top: 3rem;
-  right: -3.5rem;
+  top: 5rem;
+  right: -7rem;
   transform: rotate(45deg);
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Contenido de la tarjeta */
@@ -182,9 +198,29 @@
 
 /* Título y descripción */
 .book-content h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
   line-height: 1.3;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: title-shimmer 8s linear infinite;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
+
+@keyframes title-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .book-description {
