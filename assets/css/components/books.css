@@ -395,21 +395,21 @@
   content: "\f091" !important; /* Trofeo */
 }
 
-/* AJUSTE DEFINITIVO para imágenes con tamaño SIEMPRE constante */
+/* AJUSTE DEFINITIVO para imágenes con tamaño SIEMPRE constante - 30% MÁS PEQUEÑAS */
 .book-cover,
 .book-back,
 #libros .book-cover,
 #libros .book-back {
-  transform: scale(1.3) !important;
-  -webkit-transform: scale(1.3) !important;
+  transform: scale(0.91) !important;
+  -webkit-transform: scale(0.91) !important;
   transform-origin: center center !important;
   transition: none !important;
 }
 
 .book-back,
 #libros .book-back {
-  transform: rotateY(180deg) scale(1.3) !important;
-  -webkit-transform: rotateY(180deg) scale(1.3) !important;
+  transform: rotateY(180deg) scale(0.91) !important;
+  -webkit-transform: rotateY(180deg) scale(0.91) !important;
 }
 
 /* ELIMINAR todas las reglas de hover que afecten a la escala */
@@ -417,18 +417,18 @@
 .book-flipper:hover .book-back,
 #libros .book-flipper:hover .book-cover,
 #libros .book-flipper:hover .book-back {
-  transform: scale(1.3) !important;
-  -webkit-transform: scale(1.3) !important;
+  transform: scale(0.91) !important;
+  -webkit-transform: scale(0.91) !important;
 }
 
 #libros .book-flipper:hover .book-back {
-  transform: rotateY(180deg) scale(1.3) !important;
-  -webkit-transform: rotateY(180deg) scale(1.3) !important;
+  transform: rotateY(180deg) scale(0.91) !important;
+  -webkit-transform: rotateY(180deg) scale(0.91) !important;
 }
 
 /* Ajustar altura del contenedor de imágenes */
 #libros .book-images {
-  height: 36rem !important; /* Altura reducida para mejor proporción */
+  height: 32rem !important; /* Altura reducida para mejor proporción */
 }
 
 /* Eliminar cualquier estilo residual de ribbon con span */
@@ -558,11 +558,11 @@
   }
   
   .book-cover {
-    transform: scale(2.7); /* 90% del tamaño desktop para tablets */
+    transform: scale(0.91) !important; /* 30% más pequeño */
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(2.7);
+    transform: rotateY(180deg) scale(0.91) !important;
   }
   
   .book-ribbon {
@@ -594,11 +594,11 @@
   }
   
   .book-cover {
-    transform: scale(2.4); /* 80% del tamaño desktop para dispositivos medianos */
+    transform: scale(0.91) !important; /* 30% más pequeño */
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(2.4);
+    transform: rotateY(180deg) scale(0.91) !important;
   }
   
   .book-ribbon {
@@ -620,11 +620,11 @@
   }
   
   .book-cover {
-    transform: scale(2.1); /* 70% del tamaño desktop para móviles */
+    transform: scale(0.91) !important; /* 30% más pequeño */
   }
   
   .book-back {
-    transform: rotateY(180deg) scale(2.1);
+    transform: rotateY(180deg) scale(0.91) !important;
   }
   
   .book-ribbon {
@@ -659,8 +659,8 @@
 /* Asegurar que las imágenes de contraportada mantengan su escala */
 .book-flipper.flipped .book-back,
 #libros .book-flipper.flipped .book-back {
-  transform: rotateY(180deg) scale(1.3) !important;
-  -webkit-transform: rotateY(180deg) scale(1.3) !important;
+  transform: rotateY(180deg) scale(0.91) !important;
+  -webkit-transform: rotateY(180deg) scale(0.91) !important;
 }
 
 /* Asegurar visibilidad correcta */
