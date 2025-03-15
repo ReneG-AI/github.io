@@ -1,0 +1,407 @@
+/* 
+ * FORMS
+ * Estilos para formularios de contacto y suscripción
+ */
+
+/* Contenedor de formulario */
+.form-container {
+  background: var(--form-bg);
+  border-radius: 1.5rem;
+  padding: 4rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+/* Decoración del formulario */
+.form-decoration {
+  position: absolute;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary-color-50), var(--accent-color-50));
+  z-index: 0;
+  opacity: 0.8;
+  filter: blur(50px);
+}
+
+.form-decoration-1 {
+  top: -5rem;
+  right: -5rem;
+}
+
+.form-decoration-2 {
+  bottom: -5rem;
+  left: -5rem;
+}
+
+/* Título del formulario */
+.form-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.form-subtitle {
+  font-size: 1.6rem;
+  color: var(--text-color-light);
+  margin-bottom: 3rem;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* Grupo de formulario */
+.form-group {
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Etiquetas de formulario */
+.form-label {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Campo de texto */
+.form-control {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  font-size: 1.6rem;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color-20);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: var(--text-color-light);
+  opacity: 0.6;
+}
+
+/* Estilo de campo texto con error */
+.form-control.is-invalid {
+  border-color: var(--error-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc3545'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 2rem;
+  padding-right: 4rem;
+}
+
+.form-control.is-valid {
+  border-color: var(--success-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2328a745'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 2rem;
+  padding-right: 4rem;
+}
+
+/* Mensaje de error */
+.invalid-feedback {
+  display: block;
+  width: 100%;
+  font-size: 1.3rem;
+  color: var(--error-color);
+  margin-top: 0.8rem;
+}
+
+/* Campo textarea */
+textarea.form-control {
+  min-height: 15rem;
+  resize: vertical;
+}
+
+/* Select personalizado */
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.5rem center;
+  background-size: 2rem;
+  padding-right: 4rem;
+}
+
+/* Checkbox personalizado */
+.form-check {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.form-check-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-check-label {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  padding-left: 3rem;
+  cursor: pointer;
+  line-height: 1.4;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.form-check-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.4rem;
+  background-color: var(--input-bg);
+  transition: var(--transition);
+}
+
+.form-check-label::after {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.6rem;
+  width: 1rem;
+  height: 0.6rem;
+  border-left: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(-45deg) scale(0);
+  transition: var(--transition);
+}
+
+.form-check-input:checked ~ .form-check-label::before {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.form-check-input:checked ~ .form-check-label::after {
+  transform: rotate(-45deg) scale(1);
+}
+
+.form-check-label a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.form-check-label a:hover {
+  text-decoration: underline;
+}
+
+/* Botón de formulario */
+.form-btn {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 0.5rem 1.5rem var(--primary-color-30);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.form-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-hover);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.form-btn:hover::before {
+  opacity: 1;
+}
+
+.form-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem var(--primary-color-30);
+}
+
+.form-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem var(--primary-color-30);
+}
+
+/* Formulario compacto para suscripción */
+.subscription-form {
+  position: relative;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.subscription-form .form-control {
+  border-radius: 1rem 0 0 1rem;
+  border-right: none;
+}
+
+.subscription-form .form-btn {
+  border-radius: 0 1rem 1rem 0;
+  padding: 1.5rem 2.5rem;
+}
+
+/* Formulario flotante */
+.float-form {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  z-index: var(--z-float-form);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 2.4rem;
+  cursor: pointer;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transition: var(--transition);
+}
+
+.float-form:hover {
+  background: var(--secondary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.25);
+}
+
+.float-form.active {
+  border-radius: 2rem;
+  width: 35rem;
+  height: auto;
+  padding: 3rem;
+}
+
+.float-form-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: var(--text-color-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.float-form-close:hover {
+  color: var(--error-color);
+  transform: rotate(90deg);
+}
+
+.float-form-content {
+  display: none;
+}
+
+.float-form.active .float-form-content {
+  display: block;
+}
+
+.float-form.active .float-form-icon {
+  display: none;
+}
+
+/* Media queries */
+@media screen and (max-width: 992px) {
+  .form-container {
+    padding: 3rem;
+  }
+  
+  .form-title {
+    font-size: 2.5rem;
+  }
+  
+  .subscription-form {
+    flex-direction: column;
+  }
+  
+  .subscription-form .form-control {
+    border-radius: 1rem;
+    border-right: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+  }
+  
+  .subscription-form .form-btn {
+    border-radius: 1rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    padding: 2.5rem;
+  }
+  
+  .form-btn {
+    width: 100%;
+  }
+  
+  .float-form.active {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 2rem 2rem 0 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .form-container {
+    padding: 2rem;
+  }
+  
+  .form-title {
+    font-size: 2.2rem;
+  }
+  
+  .form-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .form-control {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .float-form {
+    bottom: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}

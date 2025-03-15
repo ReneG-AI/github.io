@@ -1,0 +1,319 @@
+/* 
+ * FOOTER
+ * Estilos para el pie de página y secciones finales
+ */
+
+/* Componente principal del footer */
+footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 8rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradiente decorativo superior */
+.footer-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8rem;
+  background: linear-gradient(to bottom, rgba(107, 76, 230, 0.2), transparent);
+  pointer-events: none;
+}
+
+/* Layout del footer */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* Columna principal del footer */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo del footer */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+}
+
+.footer-logo img {
+  width: 8rem;
+  height: auto;
+  border-radius: 1rem;
+}
+
+.footer-logo h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
+}
+
+/* Descripción en el footer */
+.footer-description {
+  font-size: 1.4rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+}
+
+/* Iconos sociales */
+.social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-size: 1.8rem;
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Encabezados de columnas */
+.footer-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  width: 4rem;
+  height: 0.3rem;
+  background: var(--accent-color);
+  border-radius: 0.2rem;
+}
+
+/* Enlaces de footer */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 1.2rem;
+}
+
+.footer-links a {
+  color: var(--footer-text);
+  font-size: 1.5rem;
+  transition: var(--transition);
+  display: block;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+/* Enlaces de contacto en footer */
+.footer-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--footer-text);
+  font-size: 1.5rem;
+  transition: var(--transition);
+  opacity: 0.8;
+}
+
+.footer-contact-link:hover {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+}
+
+/* Parte inferior del footer */
+.footer-bottom {
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  font-size: 1.4rem;
+  opacity: 0.7;
+}
+
+/* Sección legal final */
+.legal-footer {
+  background: var(--legal-bg);
+  padding: 2rem 0;
+  color: var(--legal-text);
+  text-align: center;
+}
+
+.legal-footer a {
+  color: var(--legal-text);
+  transition: var(--transition);
+  position: relative;
+}
+
+.legal-footer a:hover {
+  color: var(--white);
+}
+
+.legal-footer a:not(:last-child)::after {
+  content: '•';
+  margin: 0 1rem;
+  opacity: 0.5;
+}
+
+/* Botón volver arriba */
+#back-to-top {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  opacity: 0;
+  visibility: hidden;
+  z-index: var(--z-back-to-top);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  background: var(--secondary-color);
+  transform: translateY(-5px);
+}
+
+/* Media queries para footer */
+@media screen and (max-width: 1200px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  footer {
+    padding: 6rem 0 3rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  
+  .footer-logo h3 {
+    font-size: 2rem;
+  }
+  
+  .footer-heading {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    padding: 5rem 0 2rem;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+  
+  .social-icons {
+    gap: 1.2rem;
+  }
+  
+  .social-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.6rem;
+  }
+  
+  #back-to-top {
+    bottom: 2rem;
+    right: 2rem;
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .footer-bottom {
+    padding-top: 2rem;
+  }
+  
+  .footer-bottom p {
+    font-size: 1.3rem;
+  }
+  
+  .legal-footer {
+    padding: 1.5rem 0;
+  }
+  
+  .legal-footer a {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .legal-footer a:not(:last-child)::after {
+    display: none;
+  }
+  
+  #back-to-top {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+}

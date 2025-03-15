@@ -1,244 +1,428 @@
 /* 
- * BOTONES
- * Estilos para los diferentes tipos de botones
+ * BUTTONS
+ * Estilos para diferentes tipos de botones y acciones
  */
 
-/* Estilos base para botones */
-.btn,
-button.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+/* Estilos generales de botón */
+.btn {
+  display: inline-block;
   padding: 1.2rem 2.4rem;
   font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 1.5;
+  font-weight: var(--font-weight-semibold);
   text-align: center;
   text-decoration: none;
-  vertical-align: middle;
+  border-radius: 1rem;
   cursor: pointer;
-  user-select: none;
-  border: none;
-  border-radius: var(--btn-border-radius);
   transition: var(--transition);
-  height: var(--btn-height);
-  color: var(--white);
-  background: var(--gradient-primary);
-  box-shadow: var(--btn-shadow);
+  border: none;
+  outline: none;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  line-height: 1.4;
 }
 
-/* Efecto hover para botones */
-.btn:hover,
-button.btn:hover {
-  box-shadow: var(--btn-shadow-hover);
+/* Botón primario */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--white);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-hover);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.btn-primary:hover {
   transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  color: var(--white);
 }
 
-.btn:active,
-button.btn:active {
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:active {
   transform: translateY(-1px);
-  box-shadow: var(--btn-shadow);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-/* Botón con color de acento */
-.btn-accent,
-button.btn-accent {
-  background: var(--gradient-accent);
-  box-shadow: var(--btn-accent-shadow);
-}
-
-.btn-accent:hover,
-button.btn-accent:hover {
-  box-shadow: var(--btn-accent-shadow-hover);
-}
-
-/* Botón transparente/outline */
-.btn-outline,
-button.btn-outline {
-  background: transparent;
+/* Botón secundario */
+.btn-secondary {
+  background: var(--white);
   color: var(--primary-color);
+  border: 1px solid var(--primary-color-30);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color-10);
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  color: var(--primary-color);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Botón acento */
+.btn-accent {
+  background: var(--accent-color);
+  color: var(--white);
+  box-shadow: var(--shadow-accent);
+}
+
+.btn-accent:hover {
+  background: #ff6a38;
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(255, 125, 80, 0.3);
+  color: var(--white);
+}
+
+.btn-accent:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(255, 125, 80, 0.3);
+}
+
+/* Botón de Amazon */
+.amazon-btn {
+  background: #FF9900;
+  color: var(--white);
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.amazon-btn i {
+  font-size: 2rem;
+}
+
+.amazon-btn:hover {
+  background: #e68a00;
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(255, 153, 0, 0.3);
+  color: var(--white);
+}
+
+.amazon-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.3);
+}
+
+/* Botón con borde */
+.btn-outline {
+  background: transparent;
   border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background: var(--primary-color-10);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:active {
+  transform: translateY(-1px);
   box-shadow: none;
 }
 
-.btn-outline:hover,
-button.btn-outline:hover {
-  background: var(--primary-color);
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid var(--white);
   color: var(--white);
-  box-shadow: var(--btn-shadow);
 }
 
-/* Botón pequeño */
-.btn-sm,
-button.btn-sm {
-  padding: 0.8rem 1.6rem;
-  font-size: 1.4rem;
-  height: var(--btn-height-sm);
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
-/* Botón grande */
-.btn-lg,
-button.btn-lg {
-  padding: 1.6rem 3.2rem;
-  font-size: 1.8rem;
-  height: var(--btn-height-lg);
-}
-
-/* Botón de icono */
-.btn-icon,
-button.btn-icon {
-  width: var(--btn-height);
-  padding: 0;
-  border-radius: 50%;
-}
-
-.btn-icon.btn-sm,
-button.btn-icon.btn-sm {
-  width: var(--btn-height-sm);
-}
-
-.btn-icon.btn-lg,
-button.btn-icon.btn-lg {
-  width: var(--btn-height-lg);
-}
-
-/* Botón con icono y texto */
-.btn i,
-button.btn i {
-  margin-right: 0.8rem;
-}
-
-.btn i:only-child,
-button.btn i:only-child {
-  margin: 0;
-}
-
-/* Botón disabled */
-.btn:disabled,
-button.btn:disabled,
-.btn.disabled,
-button.btn.disabled {
-  opacity: 0.65;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
-/* Botón para Amazon - Mantener efectos específicos */
-.amazon-btn,
-a.amazon-btn {
-  background: var(--gradient-accent);
+/* Botón con efecto de ondas al hacer clic */
+.btn-ripple {
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  padding: 0.8rem 1.6rem;
-  border-radius: var(--btn-border-radius);
-  font-weight: 600;
-  box-shadow: var(--btn-accent-shadow);
-  transition: var(--transition);
 }
 
-.amazon-btn:hover,
-a.amazon-btn:hover {
-  box-shadow: var(--btn-accent-shadow-hover);
-  transform: translateY(-3px);
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+  z-index: -1;
 }
 
-/* Estilos específicos para botones en cards de libros */
-.book-btn {
+.btn-ripple:active::after {
+  width: 300%;
+  height: 300%;
+}
+
+/* Botón con icono */
+.btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+.btn-icon-start i {
+  margin-right: 1rem;
+}
+
+.btn-icon-end i {
+  margin-left: 1rem;
+}
+
+/* Botón redondo */
+.btn-round {
+  border-radius: 5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+/* Botón círculo solo icono */
+.btn-circle {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.btn-circle-sm {
+  width: 3.5rem;
+  height: 3.5rem;
   font-size: 1.5rem;
-  font-weight: 600;
-  border-radius: var(--btn-border-radius);
-  transition: var(--transition);
-  text-align: center;
-  cursor: pointer;
 }
 
-.book-btn-primary {
-  background: var(--gradient-primary);
+.btn-circle-lg {
+  width: 5.5rem;
+  height: 5.5rem;
+  font-size: 2.2rem;
+}
+
+/* Tamaños de botón */
+.btn-sm {
+  padding: 0.8rem 1.8rem;
+  font-size: 1.4rem;
+  border-radius: 0.8rem;
+}
+
+.btn-lg {
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+  border-radius: 1.2rem;
+}
+
+.btn-xl {
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  border-radius: 1.5rem;
+}
+
+/* Botón de bloque (ancho completo) */
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Botón deshabilitado */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Botón de carga */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin: -0.9rem 0 0 -0.9rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--white);
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Grupo de botones */
+.btn-group {
+  display: inline-flex;
+  position: relative;
+}
+
+.btn-group .btn {
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.btn-group .btn:not(:first-child) {
+  margin-left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group .btn:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Botón con contador de badge */
+.btn-badge {
+  position: relative;
+}
+
+.btn-badge .badge {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border-radius: 2rem;
+  background: var(--accent-color);
   color: var(--white);
-  box-shadow: var(--btn-shadow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
-.book-btn-secondary {
-  background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+/* Botón flotante */
+.btn-float {
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+  padding: 0;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  font-size: 2.4rem;
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-back-to-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.book-btn-primary:hover {
-  box-shadow: var(--btn-shadow-hover);
-  transform: translateY(-3px);
+/* Efecto de brillo en hover */
+.btn-glow:hover {
+  box-shadow: 0 0 2rem var(--primary-color-50);
 }
 
-.book-btn-secondary:hover {
-  background: var(--primary-color);
-  color: var(--white);
-  transform: translateY(-3px);
+.btn-glow-accent:hover {
+  box-shadow: 0 0 2rem var(--accent-color-50);
 }
 
-/* Media queries para responsividad */
+/* Animación de pulso */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0.5);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 1rem rgba(107, 76, 230, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0);
+  }
+}
+
+/* Media queries */
 @media screen and (max-width: 768px) {
-  .btn,
-  button.btn {
+  .btn {
     padding: 1rem 2rem;
     font-size: 1.5rem;
-    height: 4.4rem;
   }
   
-  .btn-lg,
-  button.btn-lg {
-    padding: 1.2rem 2.4rem;
-    font-size: 1.6rem;
-    height: 5rem;
+  .btn-lg {
+    padding: 1.4rem 2.8rem;
+    font-size: 1.7rem;
   }
   
-  .btn-sm,
-  button.btn-sm {
-    padding: 0.6rem 1.2rem;
+  .btn-sm {
+    padding: 0.7rem 1.5rem;
     font-size: 1.3rem;
-    height: 3.2rem;
   }
   
-  .book-btn {
-    padding: 0.8rem 1.6rem;
-    font-size: 1.4rem;
+  .btn-circle {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+  
+  .btn-float {
+    right: 2rem;
+    bottom: 2rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .btn,
-  button.btn {
-    padding: 0.8rem 1.6rem;
-    font-size: 1.4rem;
-    height: 4rem;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .btn-icon,
-  button.btn-icon {
-    width: 4rem;
-    padding: 0;
-  }
-  
-  .amazon-btn,
-  a.amazon-btn {
-    padding: 0.7rem 1.4rem;
+@media screen and (max-width: 576px) {
+  .btn {
+    padding: 1rem 1.8rem;
     font-size: 1.4rem;
   }
   
-  .book-btn {
-    padding: 0.8rem 1.4rem;
-    font-size: 1.3rem;
-    display: block;
-    width: 100%;
-    margin-bottom: 1rem;
+  .btn-lg {
+    padding: 1.3rem 2.6rem;
+    font-size: 1.6rem;
+  }
+  
+  .btn-xl {
+    padding: 1.7rem 3.4rem;
+    font-size: 1.8rem;
   }
 } 
