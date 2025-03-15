@@ -8,97 +8,89 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2.5rem;
-  font-size: 1.4rem;
-  font-weight: 700;
+  padding: 1.2rem 2.4rem;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  border-radius: 0.8rem;
+  color: var(--white);
+  background-color: var(--primary-color);
   border: none;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  gap: 1rem;
+  letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;
-  outline: none;
-  white-space: nowrap;
-  user-select: none;
   z-index: 1;
-  gap: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+
+.btn:hover, 
+.btn:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.25);
+  color: var(--white);
+  filter: brightness(110%);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+/* Añadir efecto de brillante al hacer hover */
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 70%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(30deg);
+  transition: all 0.6s cubic-bezier(.19, 1, .22, 1);
+  z-index: -1;
+}
+
+.btn:hover::after {
+  left: 120%;
 }
 
 /* Botón primario */
 .btn-primary {
-  background: var(--gradient-primary);
-  color: var(--white);
-  box-shadow: 0 0.8rem 2.5rem rgba(138, 43, 226, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--gradient-hover);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  z-index: -1;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(107, 76, 230, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1.2rem 3.5rem rgba(138, 43, 226, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(138, 43, 226, 0.8);
-}
-
-.btn-primary:hover::before {
-  opacity: 1;
-}
-
-.btn-primary:active {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.4);
+  background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color));
+  box-shadow: 0 0.8rem 2rem rgba(107, 76, 230, 0.4);
 }
 
 /* Botón secundario */
 .btn-secondary {
-  background: var(--gradient-secondary);
-  color: var(--white);
-  box-shadow: 0 0.8rem 2rem rgba(0, 191, 255, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(91, 33, 182, 0.3);
 }
 
 .btn-secondary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1.2rem 3rem rgba(0, 191, 255, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(0, 191, 255, 0.8);
-}
-
-.btn-secondary:active {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 191, 255, 0.4);
+  background: linear-gradient(135deg, var(--secondary-color-dark), var(--secondary-color));
+  box-shadow: 0 0.8rem 2rem rgba(91, 33, 182, 0.4);
 }
 
 /* Botón acento */
 .btn-accent {
-  background: var(--gradient-accent);
-  color: var(--white);
-  box-shadow: 0 0.8rem 2rem rgba(255, 62, 157, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(236, 72, 153, 0.3);
 }
 
 .btn-accent:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1.2rem 3rem rgba(255, 62, 157, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 62, 157, 0.8);
-}
-
-.btn-accent:active {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1.5rem rgba(255, 62, 157, 0.4);
+  background: linear-gradient(135deg, var(--accent-color-dark), var(--accent-color));
+  box-shadow: 0 0.8rem 2rem rgba(236, 72, 153, 0.4);
 }
 
 /* Botón de Amazon mejorado */
@@ -106,66 +98,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2.5rem;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #000;
-  background: linear-gradient(135deg, #FFD700, #FF9900, #FF5E3A);
-  background-size: 200% 100%;
-  animation: shimmer 5s linear infinite;
+  padding: 1.2rem 2.4rem;
   border-radius: 0.8rem;
-  border: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 0.6rem 1.5rem rgba(255, 94, 58, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  gap: 1rem;
+  flex: 1;
+  text-decoration: none;
+  letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;
-  gap: 0.8rem;
-  z-index: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.amazon-btn i {
-  font-size: 1.8rem;
-  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #FF9900, #FFC13B);
+  color: #000 !important;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.3);
 }
 
 .amazon-btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1.5rem 3.5rem rgba(255, 94, 58, 0.45), inset 0 2px 5px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 94, 58, 0.8);
-}
-
-.amazon-btn:hover i {
-  transform: translateX(3px);
-}
-
-.amazon-btn:active {
-  transform: translateY(-2px);
-  box-shadow: 0 0.8rem 1.5rem rgba(255, 94, 58, 0.35);
-}
-
-.amazon-btn::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  transition: all 0.5s ease;
-  opacity: 0;
-}
-
-.amazon-btn:hover::after {
-  transform: rotate(30deg) translate(10%, 10%);
-  opacity: 1;
+  background: linear-gradient(135deg, #FFA31A, #FFD35F);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(255, 153, 0, 0.4);
+  color: #000 !important;
 }
 
 /* Botón de Ver Interior */
@@ -173,59 +128,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2.5rem;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--white);
-  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  padding: 1.2rem 2.4rem;
   border-radius: 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 0.6rem 1.5rem rgba(21, 94, 239, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
-  gap: 0.8rem;
+  transition: all 0.3s ease;
+  gap: 1rem;
+  flex: 1;
+  text-decoration: none;
+  letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.interior-btn i {
-  font-size: 1.8rem;
-  transition: transform 0.4s ease;
-}
-
-.interior-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #8A2BE2, #B37EFC);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
+  background: linear-gradient(135deg, #6B4CE6, #8C52FF);
+  color: white !important;
+  box-shadow: 0 0.5rem 1.5rem rgba(107, 76, 230, 0.3);
 }
 
 .interior-btn:hover {
+  background: linear-gradient(135deg, #7C5DF7, #9D63FF);
   transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(21, 94, 239, 0.5), inset 0 1px 3px rgba(255, 255, 255, 0.25), 0 0 10px rgba(21, 94, 239, 0.8);
-  background: linear-gradient(135deg, #1E40AF, #3B82F6);
+  box-shadow: 0 0.8rem 2rem rgba(107, 76, 230, 0.4);
+  color: white !important;
 }
 
-.interior-btn:hover::before {
-  opacity: 1;
+/* Añadir efecto de brillo al hacer hover */
+.amazon-btn::after, 
+.interior-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 70%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(30deg);
+  transition: all 0.6s cubic-bezier(.19, 1, .22, 1);
+  z-index: -1;
 }
 
-.interior-btn:hover i {
-  transform: scale(1.2) rotate(15deg);
-}
-
-.interior-btn:active {
-  transform: translateY(-2px);
-  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.3);
+.amazon-btn:hover::after,
+.interior-btn:hover::after {
+  left: 120%;
 }
 
 /* Botón outline */
@@ -356,21 +301,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
-}
-
-.btn-icon-start i {
-  margin-right: 0.8rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white);
   transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.15);
 }
 
-.btn-icon-end i {
-  margin-left: 0.8rem;
-  transition: all 0.3s ease;
+.btn-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  background: var(--primary-color-dark);
 }
 
-.btn-icon:hover i {
-  transform: translateX(3px);
+.btn-icon i {
+  font-size: 1.8rem;
 }
 
 /* Botón redondeado */
@@ -382,14 +329,34 @@
 
 /* Botón circular */
 .btn-circle {
-  width: 5.5rem;
-  height: 5.5rem;
+  position: relative;
+  overflow: hidden;
   border-radius: 50%;
-  padding: 0;
-  display: inline-flex;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+}
+
+.btn-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.btn-circle:active::after {
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.5s;
 }
 
 /* Tamaños de botón circular */
@@ -408,13 +375,13 @@
 /* Tamaños de botón */
 .btn-sm {
   padding: 0.8rem 1.6rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   border-radius: 0.6rem;
 }
 
 .btn-lg {
-  padding: 1.5rem 3rem;
-  font-size: 1.6rem;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
   border-radius: 1rem;
 }
 
@@ -427,9 +394,8 @@
 
 /* Botón de ancho completo */
 .btn-block {
-  display: flex;
+  display: block;
   width: 100%;
-  justify-content: center;
 }
 
 /* Botón deshabilitado */
@@ -573,17 +539,17 @@
 @media screen and (max-width: 768px) {
   .btn {
     padding: 1rem 2rem;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
   
   .btn-lg {
-    padding: 1.3rem 2.6rem;
-    font-size: 1.5rem;
+    padding: 1.4rem 2.8rem;
+    font-size: 1.6rem;
   }
   
   .btn-sm {
     padding: 0.7rem 1.4rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
   
   .btn-circle {
@@ -602,20 +568,20 @@
   
   .amazon-btn, 
   .interior-btn {
-    padding: 1rem 2rem;
-    font-size: 1.3rem;
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
   }
 }
 
 @media screen and (max-width: 576px) {
   .btn {
     padding: 0.9rem 1.8rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .btn-lg {
     padding: 1.2rem 2.4rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
   
   .btn-xl {
@@ -625,7 +591,12 @@
   
   .amazon-btn, 
   .interior-btn {
-    padding: 0.9rem 1.8rem;
-    font-size: 1.2rem;
+    padding: 0.9rem 1.6rem;
+    font-size: 1.3rem;
+  }
+  
+  .book-actions {
+    flex-direction: column;
+    gap: 1rem;
   }
 } 
