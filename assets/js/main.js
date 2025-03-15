@@ -287,35 +287,51 @@ function initScrollEffects() {
     }
 }
 
-// Función para inicializar el flip de los libros
+// Inicializar funciones para el efecto de flip de libros
 function initBookFlip() {
+    // Seleccionar todos los flippers de libros
     const bookFlippers = document.querySelectorAll('.book-flipper');
-    if (!bookFlippers.length) return;
     
-    // Agregamos click a cada libro para voltear
-    bookFlippers.forEach(flipper => {
-        flipper.addEventListener('click', function() {
-            this.classList.toggle('flipped');
+    // Para cada flipper
+    bookFlippers.forEach((flipper, index) => {
+        // Añadir ID si no lo tiene
+        if (!flipper.id) {
+            flipper.id = `flipper${index + 1}`;
+        }
+        
+        // Manejar clic en la portada/contraportada para girar
+        flipper.addEventListener('click', function(e) {
+            // Solo girar cuando se hace clic en la imagen, no en el botón
+            if (e.target.tagName === 'IMG') {
+                this.classList.toggle('flipped');
+            }
         });
         
-        // Añadimos efectos de hover para mejorar la experiencia
+        // Prevenir movimiento extraño al pasar el ratón sobre el libro girado
         flipper.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('flipped')) {
-                this.style.transform = 'translateY(-10px) rotateY(5deg)';
+            if (this.classList.contains('flipped')) {
+                this.style.transform = 'rotateY(180deg)';
             }
         });
         
         flipper.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('flipped')) {
+            if (this.classList.contains('flipped')) {
+                this.style.transform = 'rotateY(180deg)';
+            } else {
                 this.style.transform = '';
             }
         });
     });
     
-    // Botones "Ver interior"
-    const interiorBtns = document.querySelectorAll('.interior-btn');
-    interiorBtns.forEach(btn => {
-        btn.addEventListener('click', openModal);
+    // Botones de girar también activan el efecto
+    const flipButtons = document.querySelectorAll('.flip-button');
+    flipButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // Evitar que el clic se propague al flipper
+            const flipperId = this.closest('.book-images').querySelector('.book-flipper').id;
+            document.getElementById(flipperId).classList.toggle('flipped');
+        });
     });
 }
 
