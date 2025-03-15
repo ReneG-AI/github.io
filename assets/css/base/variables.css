@@ -1,0 +1,145 @@
+/* 
+ * VARIABLES CSS GLOBALES
+ * Sistema de diseño y variables para toda la aplicación
+ */
+
+:root {
+  /* =================== COLORES =================== */
+  
+  /* Colores principales */
+  --primary-color: #5B5AEA;
+  --secondary-color: #6B4CE6;
+  --accent-color: #FF8F00;
+  
+  /* Colores de texto */
+  --text-color: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  
+  /* Colores de fondo */
+  --bg-color: #f9f9f9;
+  --bg-light: #f2f2f7;
+  --bg-dark: #1a1a2e;
+  
+  /* Colores específicos */
+  --white: #ffffff;
+  --black: #000000;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  
+  /* =================== COMPONENTES =================== */
+  
+  /* Cards y contenedores */
+  --card-bg: #f2f2f7;
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --card-hover-shadow: 0 15px 35px rgba(63, 81, 181, 0.15);
+  
+  /* Footer y elementos legales */
+  --footer-bg: linear-gradient(to right, #2A293E, #393952);
+  --footer-text: #e0e0e0;
+  --legal-bg: rgba(30, 30, 46, 0.97);
+  --legal-text: #d0d0d0;
+  
+  /* =================== EFECTOS =================== */
+  
+  /* Transiciones */
+  --transition-fast: all 0.2s ease;
+  --transition: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  --gradient-accent: linear-gradient(to right, var(--accent-color), #FF6B00);
+  --gradient-reverse: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  --logo-gradient: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+  
+  /* =================== HEADER =================== */
+  --header-height: 8rem;
+  --header-height-scrolled: 6rem;
+  --header-bg: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
+  --header-bg-scrolled: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(33, 33, 52, 0.95), rgba(26, 26, 46, 0.95));
+  --header-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --header-shadow-scrolled: 0 4px 15px rgba(0, 0, 0, 0.4);
+  
+  /* =================== BOTONES =================== */
+  --btn-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+  --btn-shadow-hover: 0 8px 20px rgba(63, 81, 181, 0.5);
+  --btn-accent-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+  --btn-accent-shadow-hover: 0 8px 20px rgba(255, 152, 0, 0.5);
+  --btn-height: 4.8rem;
+  --btn-height-sm: 3.6rem;
+  --btn-height-lg: 5.6rem;
+  --btn-border-radius: 0.8rem;
+  
+  /* =================== LAYOUT =================== */
+  --container-width: 120rem;
+  --container-padding: 2rem;
+  --section-spacing: 10rem;
+  --section-spacing-sm: 6rem;
+  --grid-gap: 3rem;
+  --grid-gap-sm: 2rem;
+  --grid-gap-lg: 4rem;
+  
+  /* =================== Z-INDEX =================== */
+  --z-back: -1;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-header: 1000;
+  --z-modal: 9999;
+  --z-back-to-top: 999;
+  --z-menu-toggle: 1000;
+  --z-nav-links: 1001;
+  
+  /* =================== BREAKPOINTS =================== */
+  /* Usados para media queries a través de variables personalizadas.
+     Ejemplo: @media screen and (max-width: var(--breakpoint-md)) {} */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+}
+
+/* =================== TEMA OSCURO =================== */
+body.dark-mode {
+  --text-color: #e0e0e0;
+  --text-light: #b0b0b0;
+  --text-muted: #888888;
+  
+  --bg-color: #1a1a2e;
+  --bg-light: #2a2a3e;
+  --card-bg: #2a2a3e;
+  
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  
+  --legal-bg: rgba(20, 20, 30, 0.97);
+  --legal-text: #b0b0b0;
+  
+  /* Colores específicos para dark mode */
+  --dark-header-bg: rgba(18, 18, 18, 0.95);
+  --dark-card-bg: #1a1a1a;
+  --dark-btn-bg: #2a2a2a;
+  --dark-btn-text: #ffffff;
+}
+
+/* =================== TEMA CLARO =================== */
+body.light-mode {
+  --text-color: #1f2433;
+  --text-light: #546478;
+  --text-muted: #7a869a;
+  
+  --bg-color: #f4f7fa;
+  --bg-light: #ffffff;
+  --card-bg: #ffffff;
+  
+  --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 15px 35px rgba(63, 81, 181, 0.1);
+  
+  --legal-bg: #eef2f7;
+  --legal-text: #6e7a8c;
+} 

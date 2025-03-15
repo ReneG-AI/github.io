@@ -1,0 +1,43 @@
+/* 
+ * MAIN.CSS
+ * Archivo principal que importa todos los estilos de manera organizada
+ * Utilizando un enfoque modular y mobile-first para mejor mantenibilidad
+ */
+
+/* =================== BASE =================== */
+/* Estilos de fundación y reset */
+@import 'base/variables.css';
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* =================== UTILS =================== */
+/* Clases utilitarias y helpers */
+@import 'utils/helpers.css';
+
+/* =================== LAYOUT =================== */
+/* Componentes estructurales de la página */
+@import 'layout/header.css';
+@import 'layout/footer.css';
+@import 'layout/sections.css';
+@import 'layout/grid.css';
+
+/* =================== COMPONENTS =================== */
+/* Componentes reutilizables */
+@import 'components/buttons.css';
+@import 'components/book-cards.css';
+@import 'components/hero.css';
+@import 'components/testimonials.css';
+@import 'components/forms.css';
+@import 'components/modals.css';
+
+/* =================== PAGES =================== */
+/* Estilos específicos para páginas */
+@import 'pages/home.css';
+
+/* =================== THEME =================== */
+/* Temas y variaciones de color */
+@import 'themes/dark-theme.css';
+
+/* =================== VENDOR =================== */
+/* Modificaciones a librerías externas */
+@import 'vendor/aos-custom.css'; 
