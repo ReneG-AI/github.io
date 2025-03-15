@@ -1,7 +1,7 @@
 /* Importar otros archivos CSS */
-@import 'variables.css';
-@import 'components.css';
-@import 'responsive.css';
+@import url('variables.css');
+@import url('components.css');
+@import url('responsive.css');
 
 /* RESET Y ESTILOS BASE */
 * {
@@ -32,14 +32,18 @@ body {
 header,
 body.light-mode header,
 body.dark-mode header {
-  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(33, 33, 52, 0.95));
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
+  z-index: var(--z-header);
+  transition: all 0.3s ease-in-out;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Estilos para header cuando se hace scroll */
@@ -104,7 +108,7 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 1000;
+  z-index: var(--z-header);
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -115,6 +119,13 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+header.scrolled {
+  padding: 0.3rem 0;
+  height: 60px;
+  background: linear-gradient(to right, rgba(26, 26, 46, 0.98), rgba(33, 33, 52, 0.98));
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
 /* Asegurar que el header mantenga el mismo color en modo oscuro y claro */
 body.dark-mode header, 
 body.light-mode header,
@@ -123,12 +134,6 @@ body.light-mode header.scrolled {
   background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85));
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-header.scrolled {
-  padding: 0.3rem 0;
-  height: 60px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 header.scrolled .logo {
@@ -182,6 +187,7 @@ nav {
   gap: 1.5rem;
   align-items: center;
   position: relative;
+  z-index: var(--z-nav-links);
 }
 
 .nav-links a {
@@ -410,7 +416,7 @@ body.dark-mode .amazon-btn:hover {
   border: none;
   padding: 5px;
   transition: var(--transition);
-  z-index: 1000;
+  z-index: var(--z-menu-toggle);
 }
 
 /* HERO SECTION */
@@ -1791,7 +1797,7 @@ body.dark-mode .nav-links a:focus {
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border: none;
-    z-index: 999;
+    z-index: var(--z-back-to-top);
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     opacity: 0;
 }
@@ -2186,7 +2192,7 @@ body.dark-mode .nav-links a:focus {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999; /* Valor más alto para asegurar que esté por encima de todo */
+  z-index: var(--z-modal);
   justify-content: center;
   align-items: center;
   opacity: 0;
@@ -2418,4 +2424,93 @@ body.light-mode header {
 
 body.light-mode header.scrolled {
   /* Ya definido arriba en los estilos comunes */
+}
+
+:root {
+  /* Z-index variables */
+  --z-header: 100;
+  --z-nav-links: 110;
+  --z-menu-toggle: 120;
+  --z-back-to-top: 90;
+  --z-modal: 1000;
+  
+  /* Colors */
+  --gradient-light-1: #f6f8fa;
+  --gradient-light-2: #e9ecef;
+  --gradient-dark-1: #1a1a1a;
+  --gradient-dark-2: #2d2d2d;
+}
+
+/* Remove geometric shapes */
+.geometric-shapes {
+  display: none;
+}
+
+/* Animated background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, var(--gradient-light-1), var(--gradient-light-2));
+  animation: gradientMove 15s ease infinite;
+}
+
+body.dark-mode::before {
+  background: linear-gradient(120deg, var(--gradient-dark-1), var(--gradient-dark-2));
+}
+
+/* Particles effect */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float 20s infinite;
+}
+
+body.dark-mode .particle {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100vw);
+    opacity: 0;
+  }
 }
