@@ -303,36 +303,52 @@ function initBookFlip() {
 // Modal para "Ver interior"
 function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
-    if (!modal) return;
+    if (!modal) {
+        console.error('Modal no encontrado');
+        return;
+    }
     
     const closeModalBtn = modal.querySelector('.close-modal');
     const confirmBtn = modal.querySelector('.modal-btn');
     const verInteriorBtns = document.querySelectorAll('.ver-interior-btn');
     
+    console.log('Botones Ver Interior encontrados:', verInteriorBtns.length);
+    
     // Función para abrir el modal
     function openModal(e) {
         e.preventDefault();
-        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Evitar scroll del body
+        modal.style.display = 'flex';
+        
+        // Permitir que el navegador renderice el cambio antes de agregar la clase
         setTimeout(() => {
+            modal.classList.add('show');
             modal.querySelector('.modal-content').style.opacity = '1';
             modal.querySelector('.modal-content').style.transform = 'translateY(0)';
         }, 10);
-        document.body.style.overflow = 'hidden'; // Evitar scroll del body
     }
     
     // Función para cerrar el modal
     function closeModal() {
         modal.querySelector('.modal-content').style.opacity = '0';
         modal.querySelector('.modal-content').style.transform = 'translateY(-50px)';
+        
         setTimeout(() => {
             modal.classList.remove('show');
-            document.body.style.overflow = ''; // Restaurar scroll
+            // Dejar un poco de tiempo antes de ocultarlo completamente
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restaurar scroll
+            }, 100);
         }, 300);
     }
     
     // Asignar eventos a los botones "Ver interior"
     verInteriorBtns.forEach(btn => {
-        btn.addEventListener('click', openModal);
+        btn.addEventListener('click', function(e) {
+            console.log('Botón Ver Interior clickeado');
+            openModal(e);
+        });
     });
     
     // Cerrar modal con botón de cierre
