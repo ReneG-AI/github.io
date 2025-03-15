@@ -652,21 +652,20 @@
 }
 
 .book-languages span {
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
 }
 
-/* Estilo para las banderas */
+/* Eliminar estilos innecesarios para banderas */
 .book-languages span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: inline-block;
 }
 
 /* Asegurar que las imágenes de contraportada mantengan su escala */
