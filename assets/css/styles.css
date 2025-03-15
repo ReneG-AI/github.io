@@ -270,22 +270,9 @@ nav {
   -webkit-tap-highlight-color: transparent;
 }
 
-.amazon-btn:before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 153, 0, 0.3) 0%, rgba(255, 153, 0, 0) 70%);
-  transform: rotate(30deg);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.amazon-btn:hover:before {
-  opacity: 1;
-  animation: rotateSlow 8s linear infinite;
+/* Eliminar efectos de animación */
+.amazon-btn:before, .amazon-btn:after {
+  display: none;
 }
 
 .amazon-btn:hover {
@@ -294,32 +281,32 @@ nav {
   transform: translateY(-2px);
 }
 
-.amazon-btn:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #ff9900, #ffbb33, #ff9900);
-  background-size: 200% 100%;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-  animation: gradientMove 3s linear infinite;
+/* Unificar los botones en modo claro para que sean iguales al modo oscuro */
+.btn, 
+body.light-mode .btn,
+body.dark-mode .btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  box-shadow: 0 4px 15px rgba(107, 76, 230, 0.4);
 }
 
-.amazon-btn:hover:after {
-  transform: scaleX(1);
+.btn:hover, 
+body.light-mode .btn:hover,
+body.dark-mode .btn:hover {
+  box-shadow: 0 8px 20px rgba(107, 76, 230, 0.5);
 }
 
-@keyframes rotateSlow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-accent, 
+body.light-mode .btn-accent,
+body.dark-mode .btn-accent {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+}
+
+.btn-accent:hover, 
+body.light-mode .btn-accent:hover,
+body.dark-mode .btn-accent:hover {
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
 }
 
 /* Asegurar compatibilidad con modo oscuro */
@@ -962,12 +949,11 @@ body.light-mode header.scrolled {
 }
 
 body.light-mode .nav-links a {
-  color: #e0e0e0; /* Mantener el mismo color de texto que en modo oscuro */
+  color: #e0e0e0 !important; /* Blanco con important para asegurar que se aplique */
 }
 
 body.light-mode .nav-links a:hover {
-  background: transparent;
-  color: #ffffff; /* Mantener el mismo color de texto en hover que en modo oscuro */
+  color: #f1c40f !important; /* Amarillo dorado con important para asegurar que se aplique */
 }
 
 /* Estilo del botón de modo oscuro en modo claro */
