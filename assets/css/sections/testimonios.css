@@ -29,14 +29,25 @@
   letter-spacing: 0.05em;
   text-shadow: 0 0 15px var(--primary-color-shadow);
   animation: shimmer 8s linear infinite;
+  text-align: center;
+  width: 100%;
 }
 
 .section-subtitle {
-  font-size: 2rem;
+  font-size: 2.2rem;
   max-width: 80rem;
   margin: 0 auto 2rem;
   color: var(--text-color-light);
   line-height: 1.6;
+  text-align: center;
+  font-weight: 600;
+  font-style: italic;
+  background: linear-gradient(90deg, var(--text-color-light), var(--white), var(--text-color-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 .testimonios-grid {
