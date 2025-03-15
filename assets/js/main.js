@@ -1,67 +1,26 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
-    // Asegurarse de que el menú está cerrado al inicio
-    const navLinks = document.querySelector('.nav-links');
-    if (navLinks) {
-        navLinks.classList.remove('active');
-        // También forzar estilos inline para asegurarse
-        navLinks.style.display = 'flex';
-    }
-    
     // Inicializar funcionalidades
     initPreloader();
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
-    initScrollEffects();
-    initAnimations();
+    initBookFlip();
+    initInteriorModal();
+    initBackToTop();
     
     // Inicializar AOS con un retraso para mejor rendimiento
-    if (typeof AOS !== 'undefined') {
-        setTimeout(function() {
+    setTimeout(function() {
+        if (typeof AOS !== 'undefined') {
             AOS.init({
                 duration: 800,
                 easing: 'ease-in-out',
                 once: true,
                 mirror: false
             });
-        }, 100);
-    }
+        }
+    }, 100);
     
-    initBackToTop();
-    initBookFlip();
-    initInteriorModal();
-    
-    // Create particles container
-    createParticles();
-
-    // Asegurar modo oscuro permanente
-    document.body.classList.add('dark-mode');
-    document.body.classList.remove('light-mode');
-    localStorage.setItem('darkMode', 'enabled');
-    
-    // Manejar el boton de explorar libros desde la vista inicial
-    const scrollTriggerBtn = document.querySelector('.scroll-trigger');
-    if (scrollTriggerBtn) {
-        scrollTriggerBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Activar transición a vista scroll
-            window.scrollTo({
-                top: window.innerHeight * 0.5, // Scrollear lo suficiente para activar la transición
-                behavior: 'smooth'
-            });
-            
-            // Mostrar contenido de libros de forma inmediata
-            setTimeout(function() {
-                const scrollableSections = document.querySelectorAll('.scrollable-section');
-                scrollableSections.forEach(section => {
-                    section.classList.add('visible');
-                });
-            }, 500);
-        });
-    }
-
     // Mostrar la página después de cargar
     setTimeout(function() {
         document.body.classList.add('loaded');
@@ -145,17 +104,6 @@ function initHeaderScroll() {
     }
 }
 
-// Inicializar AOS para animaciones
-function initAOS() {
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out',
-            once: true
-        });
-    }
-}
-
 // Botón volver arriba
 function initBackToTop() {
     const backToTop = document.getElementById('back-to-top');
@@ -179,34 +127,11 @@ function initBackToTop() {
     }
 }
 
-// Función para manejar efectos de scroll
-function initScrollEffects() {
-    const heroInitial = document.getElementById('hero-initial');
-    const leftFixed = document.getElementById('left-fixed');
-    const rightScrollable = document.getElementById('right-scrollable');
-    
-    if (heroInitial && leftFixed && rightScrollable) {
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            
-            // Cuando se hace scroll más allá del 25% de la altura de la ventana
-            if (scrollPosition > window.innerHeight * 0.25) {
-                heroInitial.classList.add('scrolled');
-                leftFixed.classList.add('scrolled');
-                rightScrollable.classList.add('scrolled');
-            } else {
-                heroInitial.classList.remove('scrolled');
-                leftFixed.classList.remove('scrolled');
-                rightScrollable.classList.remove('scrolled');
-            }
-        });
-    }
-}
-
 // Inicializar funciones para el efecto de flip de libros
 function initBookFlip() {
     // Seleccionar todos los flippers de libros
     const bookFlippers = document.querySelectorAll('.book-flipper');
+    const flipButtons = document.querySelectorAll('.flip-button');
     
     // Para cada flipper
     bookFlippers.forEach((flipper, index) => {
@@ -222,36 +147,22 @@ function initBookFlip() {
                 this.classList.toggle('flipped');
             }
         });
-        
-        // Prevenir movimiento extraño al pasar el ratón sobre el libro girado
-        flipper.addEventListener('mouseenter', function() {
-            if (this.classList.contains('flipped')) {
-                this.style.transform = 'rotateY(180deg)';
-            }
-        });
-        
-        flipper.addEventListener('mouseleave', function() {
-            if (this.classList.contains('flipped')) {
-                this.style.transform = 'rotateY(180deg)';
-            } else {
-                this.style.transform = '';
-            }
-        });
     });
     
     // Botones de girar también activan el efecto
-    const flipButtons = document.querySelectorAll('.flip-button');
-    flipButtons.forEach(button => {
+    flipButtons.forEach((button, index) => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation(); // Evitar que el clic se propague al flipper
-            const flipperId = this.closest('.book-images').querySelector('.book-flipper').id;
-            document.getElementById(flipperId).classList.toggle('flipped');
+            const flipper = this.closest('.book-images').querySelector('.book-flipper');
+            if (flipper) {
+                flipper.classList.toggle('flipped');
+            }
         });
     });
 }
 
-// Modal para "Ver interior" - Versión optimizada
+// Modal para "Ver interior"
 function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
     const interiorBtns = document.querySelectorAll('.interior-btn');
@@ -297,110 +208,4 @@ function initInteriorModal() {
             }
         });
     }
-}
-
-function createParticles() {
-    const particlesContainer = document.querySelector('.particles');
-    if (!particlesContainer) return;
-    
-    // Limpiar partículas existentes
-    particlesContainer.innerHTML = '';
-    
-    // Número de partículas basado en el ancho de la pantalla
-    const numParticles = window.innerWidth < 768 ? 15 : 30;
-    
-    // Crear partículas
-    for (let i = 0; i < numParticles; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Posición aleatoria
-        const randomX = Math.floor(Math.random() * window.innerWidth);
-        const randomY = Math.floor(Math.random() * window.innerHeight);
-        
-        // Establecer posición y tamaño
-        particle.style.left = `${randomX}px`;
-        particle.style.top = `${randomY}px`;
-        
-        // Tamaño aleatorio
-        const size = Math.random() * 2.5 + 1;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        
-        // Opacidad aleatoria
-        particle.style.opacity = Math.random() * 0.5 + 0.2;
-        
-        // Duración aleatoria para la animación
-        const duration = Math.random() * 15 + 10;
-        particle.style.animation = `float ${duration}s infinite`;
-        
-        // Retraso aleatorio para la animación
-        const delay = Math.random() * 10;
-        particle.style.animationDelay = `${delay}s`;
-        
-        // Añadir al contenedor
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// Si hay cambio de tamaño de ventana, actualizar partículas
-window.addEventListener('resize', function() {
-    setTimeout(createParticles, 500);
-});
-
-// Animaciones
-function initAnimations() {
-    // Elementos para animar
-    const animatedElements = document.querySelectorAll('.animate');
-    
-    // Opciones para el Intersection Observer
-    const options = {
-        root: null, // viewport
-        threshold: 0.1, // 10% del elemento visible
-        rootMargin: '-50px'
-    };
-    
-    // Callback para el observer
-    const animateCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const delay = el.dataset.delay || 0;
-                
-                // Aplicar la animación después del delay
-                setTimeout(() => {
-                    el.classList.add('animated');
-                }, delay);
-                
-                // Dejar de observar si la animación no es repetible
-                if (!el.dataset.repeat) {
-                    observer.unobserve(el);
-                }
-            } else if (el.dataset.repeat) {
-                // Si es repetible, quitar clase cuando sale de la vista
-                el.classList.remove('animated');
-            }
-        });
-    };
-    
-    // Crear el observer
-    const observer = new IntersectionObserver(animateCallback, options);
-    
-    // Observar todos los elementos animados
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// Parallax effect para el fondo
-document.addEventListener('mousemove', function(e) {
-    const parallaxElements = document.querySelectorAll('.parallax');
-    
-    parallaxElements.forEach(el => {
-        const speed = el.dataset.speed || 5;
-        const x = (window.innerWidth - e.pageX * speed) / 100;
-        const y = (window.innerHeight - e.pageY * speed) / 100;
-        
-        el.style.transform = `translateX(${x}px) translateY(${y}px)`;
-    });
-}); 
+} 
