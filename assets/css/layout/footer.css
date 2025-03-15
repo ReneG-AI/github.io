@@ -46,9 +46,9 @@ footer {
 }
 
 .footer-logo img {
-  width: 8rem;
+  width: 24rem;
   height: auto;
-  border-radius: 1rem;
+  filter: invert(1);
 }
 
 .footer-logo h3 {
