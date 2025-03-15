@@ -7,6 +7,8 @@
 /* Importar variables y estilos base */
 @import url('variables.css');
 @import url('base.css');
+@import url('darkmode-only.css');
+@import url('fix-hero.css');
 
 /* Importar archivos de layout */
 @import url('layout/grid.css');
@@ -15,15 +17,14 @@
 
 /* Importar archivos de componentes */
 @import url('components/hero.css');
+@import url('components/navigation.css');
+@import url('components/books.css');
 @import url('components/testimonials.css');
+@import url('components/contact.css');
+@import url('components/footer.css');
 @import url('components/forms.css');
 @import url('components/modals.css');
 @import url('components/buttons.css');
-@import url('components/navigation.css');
-@import url('components/book-cards.css');
-@import url('components/books.css');
-@import url('components/contact.css');
-@import url('components/footer.css');
 
 /* Importar estilos específicos de página */
 @import url('pages/home.css');
@@ -917,16 +918,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.4rem;
   }
 }
-
-/* Importación de componentes */
-@import url('components/header.css');
-@import url('components/hero.css');
-@import url('components/books.css');
-@import url('components/testimonials.css');
-@import url('components/contact.css');
-@import url('components/footer.css');
-@import url('components/modal.css');
-@import url('components/animations.css');
 
 /* Mantenlo para AOS */
 [data-aos] {
