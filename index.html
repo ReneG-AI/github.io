@@ -3,448 +3,255 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>René Garcia Educa – Libros para Colorear, Aprender y Relajarte</title>
-    <meta
-      name="description"
-      content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos. Aprende y relájate mientras das vida a cada página, en español, catalán e inglés. ¡Explora un universo donde la creatividad y el aprendizaje se fusionan!"
-    />
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://rgnova.es/favicon.ico">
-    
-    <!-- Preconexiones -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://unpkg.com" crossorigin />
-    
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    
-    <!-- AOS Library CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    
-    <!-- Font Awesome - con carga optimizada -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- CSS Propio -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
-
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <meta name="theme-color" content="#6B4CE6">
-    
-    <!-- Biblioteca para efectos visuales avanzados -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-    
-    <!-- Open Graph para compartir en redes sociales -->
-    <meta property="og:title" content="René Garcia Educa – Libros para Colorear, Aprender y Relajarte" />
-    <meta property="og:description" content="Descubre los libros para colorear que inspiran, enseñan y entretienen a niños y adultos." />
-    <meta property="og:image" content="assets/images/og-image.jpg" />
-    <meta property="og:url" content="https://renegarciaeduca.com/" />
-    <meta property="og:type" content="website" />
-    
-    <!-- Optimización de SEO -->
-    <meta name="author" content="René Garcia">
-    <meta name="keywords" content="libros para colorear, educación, arte, creatividad, aprendizaje, idiomas, español, inglés, catalán, libros educativos">
-    
-    <!-- Dentro del <head>, justo después de la meta theme-color, agrego el JSON-LD -->
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "Store",
-        "name": "René Garcia Educa",
-        "url": "https://renegarciaeduca.com/",
-        "logo": "assets/images/Logo.png",
-        "sameAs": [
-          "https://www.instagram.com/rene_g_27/",
-          "https://www.linkedin.com/in/rene-garcia-cobo",
-          "https://www.amazon.com/-/es/stores/author/B0CRF7937N"
-        ]
+    <title>Minificador CSS/JS</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f5f5f5;
+        color: #333;
       }
-    </script>
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #4a6cf7;
+        margin-bottom: 20px;
+      }
+      .tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-bottom: none;
+        border-radius: 4px 4px 0 0;
+        background-color: #f9f9f9;
+        margin-right: 5px;
+      }
+      .tab.active {
+        background-color: #fff;
+        border-color: #ddd;
+        border-bottom-color: #fff;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      textarea {
+        width: 100%;
+        height: 300px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: monospace;
+        margin-bottom: 10px;
+        resize: vertical;
+      }
+      button {
+        background-color: #4a6cf7;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #3a5cd7;
+      }
+      .result-container {
+        margin-top: 20px;
+      }
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        font-size: 14px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+    </style>
   </head>
-  <body class="dark-mode">
-    <!-- Preloader -->
-    <div class="preloader" aria-hidden="true">
-      <div class="loader"></div>
+  <body>
+    <div class="container">
+      <h1>Minificador CSS/JS</h1>
+      
+      <div class="tabs">
+        <div class="tab active" data-tab="css">CSS</div>
+        <div class="tab" data-tab="js">JavaScript</div>
+      </div>
+      
+      <div class="tab-content active" id="css-content">
+        <textarea id="css-input" placeholder="Pega tu código CSS aquí..."></textarea>
+        <button id="minify-css">Minificar CSS</button>
+        
+        <div class="result-container">
+          <h3>Resultado:</h3>
+          <textarea id="css-output" readonly></textarea>
+          <div class="stats" id="css-stats">
+            <div>Tamaño original: <span id="css-original-size">0</span> bytes</div>
+            <div>Tamaño minificado: <span id="css-minified-size">0</span> bytes</div>
+            <div>Ahorro: <span id="css-savings">0</span>%</div>
+          </div>
+          <div class="actions">
+            <button id="copy-css">Copiar al portapapeles</button>
+            <button id="download-css">Descargar minificado</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="js-content">
+        <textarea id="js-input" placeholder="Pega tu código JavaScript aquí..."></textarea>
+        <button id="minify-js">Minificar JavaScript</button>
+        
+        <div class="result-container">
+          <h3>Resultado:</h3>
+          <textarea id="js-output" readonly></textarea>
+          <div class="stats" id="js-stats">
+            <div>Tamaño original: <span id="js-original-size">0</span> bytes</div>
+            <div>Tamaño minificado: <span id="js-minified-size">0</span> bytes</div>
+            <div>Ahorro: <span id="js-savings">0</span>%</div>
+          </div>
+          <div class="actions">
+            <button id="copy-js">Copiar al portapapeles</button>
+            <button id="download-js">Descargar minificado</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Botón de modo oscuro -->
-    <div class="dark-mode-toggle" id="darkModeToggle">
-      <i class="fas fa-moon moon"></i>
-      <i class="fas fa-sun sun"></i>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clean-css/4.2.3/clean-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/terser/5.20.0/bundle.min.js"></script>
+    <script>
+      // Cambio de pestañas
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remover clase active de todas las pestañas y contenidos
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          
+          // Añadir clase active a la pestaña seleccionada y su contenido
+          tab.classList.add('active');
+          document.getElementById(tab.getAttribute('data-tab') + '-content').classList.add('active');
+        });
+      });
 
-    <header id="header">
-      <nav class="container" role="navigation">
-        <div class="logo">
-          <img src="assets/images/Logo.png" alt="Logo de René Garcia Educa" width="120" height="120" loading="lazy" />
-          <span>René Garcia Educa</span>
-        </div>
-        <!-- Botón hamburguesa para abrir el menú -->
-        <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">☰</div>
-        <!-- Menú de navegación que se mostrará/ocultará -->
-        <div class="nav-links" id="nav-links">
-          <a href="#libros" class="nav-link">Libros</a>
-          <a href="#testimonios" class="nav-link">Comentarios</a>
-          <a href="#contacto" class="nav-link">Contacto</a>
-          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="nav-link amazon-btn">Amazon</a>
-        </div>
-      </nav>
-    </header>
-    
-    <!-- Contenedor principal para todo el contenido scrollable -->
-    <main id="page-content" role="main">
-      <div class="hero">
-        <div class="hero-content" data-aos="fade-up">
-          <div class="hero-text">
-            <h1>Colorea, aprende<br>y relájate</h1>
-            <p>Libros para dar vida a tu imaginación.</p>
-          </div>
-          <div class="btn-container">
-            <a href="#libros" class="btn">Explorar Libros</a>
-            <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">Visitar Amazon</a>
-          </div>
-        </div>
-      </div>
-      <section id="libros">
-        <h2 class="section-title" data-aos="fade-down">Libros</h2>
-        <p class="section-subtitle" data-aos="fade-up">Descubre la colección de libros educativos, divertidos, y creativos, diseñados para todas las edades.</p>
+      // Minificar CSS
+      document.getElementById('minify-css').addEventListener('click', async () => {
+        const input = document.getElementById('css-input').value;
+        if (!input) return;
+
+        try {
+          // Usar clean-css para minificar
+          const cleanCSS = new CleanCSS();
+          const output = cleanCSS.minify(input);
+          
+          // Mostrar resultado
+          document.getElementById('css-output').value = output.styles;
+          
+          // Actualizar estadísticas
+          const originalSize = input.length;
+          const minifiedSize = output.styles.length;
+          const savings = ((originalSize - minifiedSize) / originalSize * 100).toFixed(2);
+          
+          document.getElementById('css-original-size').textContent = originalSize;
+          document.getElementById('css-minified-size').textContent = minifiedSize;
+          document.getElementById('css-savings').textContent = savings;
+        } catch (error) {
+          alert('Error al minificar CSS: ' + error.message);
+        }
+      });
+
+      // Minificar JavaScript
+      document.getElementById('minify-js').addEventListener('click', async () => {
+        const input = document.getElementById('js-input').value;
+        if (!input) return;
+
+        try {
+          // Usar Terser para minificar
+          const result = await Terser.minify(input);
+          
+          // Mostrar resultado
+          document.getElementById('js-output').value = result.code;
+          
+          // Actualizar estadísticas
+          const originalSize = input.length;
+          const minifiedSize = result.code.length;
+          const savings = ((originalSize - minifiedSize) / originalSize * 100).toFixed(2);
+          
+          document.getElementById('js-original-size').textContent = originalSize;
+          document.getElementById('js-minified-size').textContent = minifiedSize;
+          document.getElementById('js-savings').textContent = savings;
+        } catch (error) {
+          alert('Error al minificar JavaScript: ' + error.message);
+        }
+      });
+
+      // Copiar al portapapeles
+      document.getElementById('copy-css').addEventListener('click', () => {
+        const output = document.getElementById('css-output');
+        output.select();
+        document.execCommand('copy');
+        alert('CSS minificado copiado al portapapeles');
+      });
+
+      document.getElementById('copy-js').addEventListener('click', () => {
+        const output = document.getElementById('js-output');
+        output.select();
+        document.execCommand('copy');
+        alert('JavaScript minificado copiado al portapapeles');
+      });
+
+      // Descargar archivos
+      document.getElementById('download-css').addEventListener('click', () => {
+        const content = document.getElementById('css-output').value;
+        if (!content) return;
         
-        <div class="container book-showcase">
-          <!-- Libro 1 -->
-          <div class="book-item" data-aos="fade-up">
-            <div class="book-images">
-              <div class="book-badge-corner left"><span>Destacado</span></div>
-              <div class="book-flipper">
-                <img src="assets/images/Portada Dragones Multi.png" alt="Portada: Aprende 5 Idiomas Coloreando" class="book-cover" loading="lazy" />
-                <img src="assets/images/Contraportada Dragones Multi.png" alt="Contraportada: Aprende 5 Idiomas Coloreando" class="book-back" loading="lazy" />
-              </div>
-            </div>
-            
-            <div class="book-content">
-              <div class="book-header">
-                <span class="book-badge">Multilingüe</span>
-                <div class="book-rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <span>5/5</span>
-                </div>
-              </div>
-              
-              <h3>Aprende 5 Idiomas Coloreando</h3>
-              <p class="book-description">Aprende idiomas como inglés, alemán, francés y chino mientras te diviertes y te relajas.</p>
-              
-              <div class="book-details">
-                <span class="book-detail"><i class="fas fa-globe"></i> EN, ES, DE, FR, CN</span>
-                <span class="book-detail"><i class="fas fa-users"></i> Para todas las edades</span>
-                <span class="book-detail"><i class="fas fa-paint-brush"></i> 40+ ilustraciones</span>
-              </div>
-              
-              <div class="book-features">
-                <h4 class="feature-title">¿Qué encontrarás?</h4>
-                <div class="features-list">
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Vocabulario multilingüe</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Ilustraciones detalladas</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Actividades educativas</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseño profesional</div>
-                </div>
-              </div>
-              
-              <div class="book-actions">
-                <a href="https://www.amazon.es/dp/B0DLW8ZH86" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
-                <a href="#" class="book-btn book-btn-secondary ver-interior-btn"><i class="fas fa-eye"></i> Ver interior</a>
-              </div>
-            </div>
-            
-            <div class="book-decoration decoration-dots-small"></div>
-          </div>
-          
-          <!-- Libro 2 -->
-          <div class="book-item" data-aos="fade-up">
-            <div class="book-images">
-              <div class="book-badge-corner right"><span>Nuevo</span></div>
-              <div class="book-flipper">
-                <img src="assets/images/Portada Animales.png" alt="Portada: Animales Chibis para Colorear" class="book-cover" loading="lazy" />
-                <img src="assets/images/Contraportada Animales.png" alt="Contraportada: Animales Chibis para Colorear" class="book-back" loading="lazy" />
-              </div>
-            </div>
-            
-            <div class="book-content">
-              <div class="book-header">
-                <span class="book-badge">Bilingüe</span>
-                <div class="book-rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <span>5/5</span>
-                </div>
-              </div>
-              
-              <h3>Disfruta de más de 40 páginas en cada libro</h3>
-              <p class="book-description">Un viaje mágico, educativo y relajante que sacará lo mejor de ti.</p>
-              
-              <div class="book-details">
-                <span class="book-detail"><i class="fas fa-language"></i> Español / Inglés</span>
-                <span class="book-detail"><i class="fas fa-child"></i> Ideal para niños</span>
-                <span class="book-detail"><i class="fas fa-paw"></i> 40+ animales</span>
-              </div>
-              
-              <div class="book-features">
-                <h4 class="feature-title">¿Qué encontrarás?</h4>
-                <div class="features-list">
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseños kawaii</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Datos educativos</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diferentes niveles</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Versiones bilingües</div>
-                </div>
-              </div>
-              
-              <div class="book-actions">
-                <a href="https://www.amazon.es/dp/B0CQJ8K5DD" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
-                <a href="#" class="book-btn book-btn-secondary ver-interior-btn"><i class="fas fa-eye"></i> Ver interior</a>
-              </div>
-            </div>
-            
-            <div class="book-decoration decoration-circle"></div>
-          </div>
-          
-          <!-- Libro 3 -->
-          <div class="book-item" data-aos="fade-up">
-            <div class="book-images">
-              <div class="book-badge-corner left"><span>Bestseller</span></div>
-              <div class="book-flipper">
-                <img src="assets/images/Portada Mandalas Animales.png" alt="Portada: Mandalas con Mascotas Chibis" class="book-cover" loading="lazy" />
-                <img src="assets/images/Contraportada Mandalas Animales.png" alt="Contraportada: Mandalas con Mascotas Chibis" class="book-back" loading="lazy" />
-              </div>
-            </div>
-            
-            <div class="book-content">
-              <div class="book-header">
-                <span class="book-badge">Relajación</span>
-                <div class="book-rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <span>5/5</span>
-                </div>
-              </div>
-              
-              <h3>Mandalas como nunca los habías visto antes</h3>
-              <p class="book-description">¿Estresado del día a día? Relájate pintando estos mandalas adorables y disfruta de una tarde de tranquilidad.</p>
-              
-              <div class="book-details">
-                <span class="book-detail"><i class="fas fa-language"></i> Español</span>
-                <span class="book-detail"><i class="fas fa-users"></i> Jóvenes y adultos</span>
-                <span class="book-detail"><i class="fas fa-cat"></i> Gatos & perros</span>
-              </div>
-              
-              <div class="book-features">
-                <h4 class="feature-title">¿Qué encontrarás?</h4>
-                <div class="features-list">
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Mandalas exclusivos</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Diseños anti-estrés</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Mascotas adorables</div>
-                  <div class="feature-item"><i class="fas fa-check feature-icon"></i> Papel de alta calidad</div>
-                </div>
-              </div>
-              
-              <div class="book-actions">
-                <a href="https://www.amazon.es/dp/B0CPQ3NBWF" target="_blank" class="book-btn book-btn-primary"><i class="fab fa-amazon"></i> Ver en Amazon</a>
-                <a href="#" class="book-btn book-btn-secondary ver-interior-btn"><i class="fas fa-eye"></i> Ver interior</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        const blob = new Blob([content], { type: 'text/css' });
+        const url = URL.createObjectURL(blob);
         
-        <div class="container centered-container" data-aos="fade-up">
-          <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn btn-accent">
-            <i class="fab fa-amazon"></i> Ver todos mis libros en Amazon
-          </a>
-          <p style="margin-top: 1.5rem; opacity: 0.8; max-width: 700px; margin-left: auto; margin-right: auto;">
-            Descubre toda mi colección de libros para colorear. Nuevos títulos añadidos regularmente.
-          </p>
-        </div>
-      </section>
-      <section id="testimonios">
-        <h2 class="section-title" data-aos="fade-down">Comentarios</h2>
-        <p class="section-subtitle" data-aos="fade-up">Lo que nuestros lectores opinan sobre los libros.</p>
-        <div class="container">
-          <div class="testimonial" data-aos="fade-right">
-            <p>"Los libros de René Garcia son perfectos para desconectar después de un largo día. Los diseños son preciosos y la calidad del papel es excelente. Mi hijo de 7 años ha mejorado notablemente su vocabulario en inglés gracias al libro multilingüe."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">María Rodríguez</span>
-                <span class="testimonial-author-title">Profesora de Arte</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="100">
-            <p>"Mi hija de 8 años está encantada con el libro de animales. Es educativo y divertido a la vez. Ha aprendido sobre diferentes profesiones mientras colorea, y ahora dice que quiere ser veterinaria. Totalmente recomendable para niños."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">Carlos Martínez</span>
-                <span class="testimonial-author-title">Padre y Educador</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="testimonial" data-aos="fade-right" data-aos-delay="200">
-            <p>"Compré el libro de mandalas con mascotas chibis como regalo para mi madre y está fascinada. Dice que le ayuda a relajarse y a mejorar su concentración. Los diseños son adorables y el nivel de detalle es perfecto para adultos que buscan un momento de calma."</p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-info">
-                <span class="testimonial-author-name">Laura Sánchez</span>
-                <span class="testimonial-author-title">Terapeuta Ocupacional</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="decoration decoration-lines" style="top: 20%; left: 5%;"></div>
-      </section>
-      <section id="contacto">
-        <h2 class="section-title" data-aos="fade-down">Contacto</h2>
-        <p class="section-subtitle" data-aos="fade-up">¿Tienes alguna pregunta o sugerencia? Estoy aquí para ayudarte.</p>
-        <div class="container">
-          <div style="max-width: 800px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px;">
-            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
-              <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-                <h3 class="contact-section-title">Información de Contacto</h3>
-                
-                <div style="margin-bottom: 25px;">
-                  <h4 class="contact-title">Redes Sociales</h4>
-                  <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <a href="https://www.instagram.com/rene_g_27/" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                      <span class="contact-icon" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"><i class="fab fa-instagram"></i></span>
-                      Instagram
-                    </a>
-                    <a href="https://www.linkedin.com/in/rene-garcia-cobo" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                      <span class="contact-icon" style="background: #0077B5;"><i class="fab fa-linkedin-in"></i></span>
-                      LinkedIn
-                    </a>
-                  </div>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                  <h4 class="contact-title">Tienda Amazon</h4>
-                  <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" style="display: flex; align-items: center; gap: 12px; color: var(--text-color); transition: var(--transition);">
-                    <span class="amazon-icon"><i class="fab fa-amazon"></i></span>
-                    Visita mi perfil de autor en Amazon
-                  </a>
-                </div>
-                
-                <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.8; line-height: 1.7;">Estaré encantado de responder a tus preguntas y escuchar tus comentarios sobre mis libros.</p>
-              </div>
-            </div>
-            
-            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
-              <div class="contact-card" style="padding: 2.5rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); height: 100%; transition: var(--transition);">
-                <h3 class="contact-section-title">Sobre Mí</h3>
-                <p style="margin-bottom: 20px; line-height: 1.8;">Siempre he creído que el arte y el aprendizaje van de la mano. De niño, pasaba horas coloreando, pero me frustraba cuando los libros eran repetitivos o aburridos.</p>
-                <p style="margin-bottom: 20px; line-height: 1.8;">Por eso creé René Garcia Educa: para convertir cada libro en una experiencia donde colorear, aprender y descubrir van de la mano.</p>
-                <p style="margin-bottom: 20px; line-height: 1.8;">Está comprobado que aprendemos hasta un 60% más rápido cuando nos divertimos, y mis libros están diseñados para lograrlo.</p>
-                
-                <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                  <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn" style="flex: 1; min-width: 150px; text-align: center;">Conoce más en Amazon</a>
-                  <a href="mailto:renegarciaeduca@gmail.com" class="btn btn-accent" style="flex: 1; min-width: 150px; text-align: center;">Contactar</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="decoration decoration-wave" style="bottom: 0; left: 0;"></div>
-      </section>
-    </main>
-    
-    <footer>
-      <div class="footer-gradient"></div>
-      <div class="container">
-        <div class="footer-grid">
-          
-          <div class="footer-column" data-aos="fade-right">
-            <div class="footer-logo">
-              <img src="assets/images/Logo.png" alt="Logo de René Garcia Educa" />
-              <h3>René Garcia Educa</h3>
-            </div>
-            <p class="footer-description">Libros educativos y de entretenimiento para todas las edades. Diseñados para inspirar la creatividad y fomentar el aprendizaje.</p>
-            <div class="social-icons">
-              <a href="https://www.instagram.com/rene_g_27/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-              <a href="https://www.linkedin.com/in/rene-garcia-cobo" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="social-icon"><i class="fab fa-amazon"></i></a>
-            </div>
-          </div>
-          
-          <div class="footer-column" data-aos="fade-up">
-            <h3 class="footer-heading">Enlaces Rápidos</h3>
-            <ul class="footer-links">
-              <li><a href="#libros">Libros</a></li>
-              <li><a href="#testimonios">Comentarios</a></li>
-              <li><a href="#contacto">Contacto</a></li>
-              <li><a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank">Amazon Store</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-column" data-aos="fade-left">
-            <h3 class="footer-heading">Contacto</h3>
-            <p class="footer-description">¿Tienes alguna pregunta o sugerencia? No dudes en contactarme.</p>
-            <a href="mailto:renegarciaeduca@gmail.com" class="footer-contact-link">
-              <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-              renegarciaeduca@gmail.com
-            </a>
-            <a href="https://www.amazon.com/-/es/stores/author/B0CRF7937N" target="_blank" class="btn">Visitar Amazon</a>
-          </div>
-          
-        </div>
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'styles.min.css';
+        a.click();
         
-        <div class="footer-bottom">
-          <p>© 2020-2025 René Garcia Educa. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </footer>
-    
-    <!-- Política de Privacidad y Aviso Legal -->
-    <div class="legal-footer">
-      <div class="container">
-        <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Condiciones de uso</a>
-          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de privacidad</a>
-          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Aviso de Privacidad de Datos del Consumidor</a>
-          <a href="#" style="color: var(--legal-text); opacity: 0.7; transition: var(--transition); position: relative; padding: 0 10px;">Opciones de privacidad de anuncios</a>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-          <p style="opacity: 0.6; font-size: 0.8rem;">© 2020-2025 René Garcia Educa. Todos los derechos reservados.</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Botón Volver Arriba -->
-    <a href="#" id="back-to-top">↑</a>
-    
-    <!-- Modal para "Ver interior" -->
-    <div id="interiorModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h3 class="modal-title">Contenido en desarrollo</h3>
-        <p class="modal-message">¡Próximamente! Estamos preparando una vista previa del interior de nuestros libros para que puedas apreciar toda su calidad y detalles.</p>
-        <button class="modal-btn">Entendido</button>
-      </div>
-    </div>
-    
-    <!-- AOS Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    
-    <!-- JS Propio -->
-    <script src="assets/js/main.js" defer></script>
+        URL.revokeObjectURL(url);
+      });
+
+      document.getElementById('download-js').addEventListener('click', () => {
+        const content = document.getElementById('js-output').value;
+        if (!content) return;
+        
+        const blob = new Blob([content], { type: 'text/javascript' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'script.min.js';
+        a.click();
+        
+        URL.revokeObjectURL(url);
+      });
+    </script>
   </body>
 </html>
