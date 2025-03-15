@@ -189,7 +189,7 @@ Archivos como `footer.css`, `how d23147a1 -- index.html`, `how --name-only HEAD~
 
 ### Responsive
 - Diseño totalmente adaptable a móvil, tablet y escritorio
-- Menú hamburguesa en versiones móviles
+- Menú hamburguesa en versions móviles
 
 ### Accesibilidad
 - Etiquetas semánticas HTML5
@@ -198,3 +198,16 @@ Archivos como `footer.css`, `how d23147a1 -- index.html`, `how --name-only HEAD~
 
 ## Contacto
 Para más información sobre este proyecto, contactar a René García a través del formulario de contacto en el sitio web o a través de las redes sociales vinculadas.
+
+## Actualizaciones Recientes
+
+### Mejoras en la Sección de Libros
+- **Nuevos Ribbons Diagonales**: Implementados ribbons estilo cinta en la esquina superior izquierda de las portadas con los textos "DESTACADO", "NUEVO" y "BESTSELLER".
+- **Tamaño Optimizado de Imágenes**: Portadas y contraportadas ahora tienen un tamaño del 150% del original, manteniendo buena visibilidad sin ser excesivamente grandes.
+- **Reducción de Textos de Categoría**: Los textos "Multilingüe", "Mágico" y "Relajación" ahora son un 50% más pequeños para mejor equilibrio visual.
+- **Mejora en el Efecto Flip**: Las contraportadas ahora se muestran perfectamente centradas y con el mismo tamaño que las portadas al hacer clic.
+
+### Unificación de Estilos de Botones
+- **Consistencia Visual**: Todos los botones del sitio (Ver en Amazon, Ver Interior, etc.) ahora tienen el mismo estilo visual basado en el botón de Amazon en el header.
+- **Estilo Actualizado**: Botones con gradiente amarillo-dorado, texto negro, esquinas ligeramente redondeadas y efecto hover mejorado.
+- **Mejor Interacción**: Animaciones suaves al pasar el cursor, manteniendo una experiencia de usuario coherente.
