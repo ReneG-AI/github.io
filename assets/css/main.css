@@ -1,43 +1,301 @@
 /* 
- * MAIN.CSS
- * Archivo principal que importa todos los estilos de manera organizada
- * Utilizando un enfoque modular y mobile-first para mejor mantenibilidad
+ * MAIN CSS
+ * Archivo principal que importa todos los componentes 
+ * y establece estilos base
  */
 
-/* =================== BASE =================== */
-/* Estilos de fundación y reset */
-@import 'base/variables.css';
-@import 'base/reset.css';
-@import 'base/typography.css';
+/* Importar variables y estilos base */
+@import url('variables.css');
+@import url('base.css');
 
-/* =================== UTILS =================== */
-/* Clases utilitarias y helpers */
-@import 'utils/helpers.css';
+/* Importar archivos de layout */
+@import url('layout/grid.css');
+@import url('layout/sections.css');
+@import url('layout/footer.css');
 
-/* =================== LAYOUT =================== */
-/* Componentes estructurales de la página */
-@import 'layout/header.css';
-@import 'layout/footer.css';
-@import 'layout/sections.css';
-@import 'layout/grid.css';
+/* Importar archivos de componentes */
+@import url('components/hero.css');
+@import url('components/testimonials.css');
+@import url('components/forms.css');
+@import url('components/modals.css');
+@import url('components/buttons.css');
+@import url('components/navigation.css');
 
-/* =================== COMPONENTS =================== */
-/* Componentes reutilizables */
-@import 'components/buttons.css';
-@import 'components/book-cards.css';
-@import 'components/hero.css';
-@import 'components/testimonials.css';
-@import 'components/forms.css';
-@import 'components/modals.css';
+/* Importar estilos específicos de página */
+@import url('pages/home.css');
 
-/* =================== PAGES =================== */
-/* Estilos específicos para páginas */
-@import 'pages/home.css';
+/* Estilos base generales */
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+}
 
-/* =================== THEME =================== */
-/* Temas y variaciones de color */
-@import 'themes/dark-theme.css';
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--body-bg);
+  overflow-x: hidden;
+}
 
-/* =================== VENDOR =================== */
-/* Modificaciones a librerías externas */
-@import 'vendor/aos-custom.css'; 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: var(--font-size-6xl);
+}
+
+h2 {
+  font-size: var(--font-size-5xl);
+}
+
+h3 {
+  font-size: var(--font-size-4xl);
+}
+
+h4 {
+  font-size: var(--font-size-3xl);
+}
+
+h5 {
+  font-size: var(--font-size-2xl);
+}
+
+h6 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color-dark);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilitarios */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 2rem; }
+.mt-4 { margin-top: 3rem; }
+.mt-5 { margin-top: 5rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 2rem; }
+.mb-4 { margin-bottom: 3rem; }
+.mb-5 { margin-bottom: 5rem; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: 0.5rem; }
+.ml-2 { margin-left: 1rem; }
+.ml-3 { margin-left: 2rem; }
+.ml-4 { margin-left: 3rem; }
+.ml-5 { margin-left: 5rem; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: 0.5rem; }
+.mr-2 { margin-right: 1rem; }
+.mr-3 { margin-right: 2rem; }
+.mr-4 { margin-right: 3rem; }
+.mr-5 { margin-right: 5rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 2rem; }
+.p-4 { padding: 3rem; }
+.p-5 { padding: 5rem; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-3 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-4 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-5 { padding-top: 5rem; padding-bottom: 5rem; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2 { padding-left: 1rem; padding-right: 1rem; }
+.px-3 { padding-left: 2rem; padding-right: 2rem; }
+.px-4 { padding-left: 3rem; padding-right: 3rem; }
+.px-5 { padding-left: 5rem; padding-right: 5rem; }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-extrabold { font-weight: var(--font-weight-extrabold); }
+
+.text-primary { color: var(--primary-color); }
+.text-accent { color: var(--accent-color); }
+.text-light { color: var(--text-color-light); }
+.text-muted { color: var(--text-color-muted); }
+.text-white { color: var(--white); }
+.text-success { color: var(--success-color); }
+.text-error { color: var(--error-color); }
+.text-warning { color: var(--warning-color); }
+.text-info { color: var(--info-color); }
+
+.bg-primary { background-color: var(--primary-color); }
+.bg-accent { background-color: var(--accent-color); }
+.bg-light { background-color: var(--bg-featured); }
+.bg-white { background-color: var(--white); }
+.bg-success { background-color: var(--success-color); }
+.bg-error { background-color: var(--error-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-info { background-color: var(--info-color); }
+
+.rounded { border-radius: 0.8rem; }
+.rounded-lg { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+.overflow-hidden { overflow: hidden; }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: var(--font-size-5xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 58%;
+  }
+  
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 55%;
+  }
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+} 
