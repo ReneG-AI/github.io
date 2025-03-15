@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackToTop();
     initBookFlip();
     initInteriorModal();
+    
+    // Create particles container
+    createParticles();
 });
 
 // Preloader
@@ -403,4 +406,27 @@ window.addEventListener('scroll', function() {
   } else {
     header.classList.remove('scrolled');
   }
-}); 
+});
+
+// Create particles container
+function createParticles() {
+  const container = document.createElement('div');
+  container.className = 'particles';
+  document.body.appendChild(container);
+
+  // Create particles
+  const numberOfParticles = 50;
+  for (let i = 0; i < numberOfParticles; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Random initial position
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.top = `${Math.random() * 100}vh`;
+    
+    // Random animation delay
+    particle.style.animationDelay = `${Math.random() * 20}s`;
+    
+    container.appendChild(particle);
+  }
+} 
