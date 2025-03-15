@@ -30,20 +30,19 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Fondo elegante y profesional */
-  z-index: -100; 
-  opacity: 1;
-  transition: opacity 1s ease;
-  pointer-events: none;
+  z-index: -100;
 }
 
-/* Asegurar que el fondo no interfiera con el contenido */
+/* Fondo elegante para modo oscuro */
 body.dark-mode #dynamic-background {
-  opacity: 0.7; /* Más visible en modo oscuro */
+  background: linear-gradient(135deg, #121212, #1e1e2a);
+  opacity: 0.95;
 }
 
-body.light-mode #dynamic-background {
-  opacity: 0.8; /* Más visible en modo claro para apreciar el efecto */
+/* Fondo elegante para modo día */
+body:not(.dark-mode) #dynamic-background {
+  background: linear-gradient(135deg, #ecf0f3, #dfe6ed, #e9f0f7);
+  opacity: 0.92;
 }
 
 /* Mejora del contraste para secciones en modo claro */
@@ -993,14 +992,14 @@ body.dark-mode footer a {
 
 /* Ajustes para modo claro */
 body.light-mode header {
-  background: linear-gradient(to right, rgba(26, 26, 46, 0.85), rgba(33, 33, 52, 0.85), rgba(26, 26, 46, 0.85)); /* Mantener el mismo color que en modo oscuro */
+  background: linear-gradient(to right, rgba(230, 240, 250, 0.9), rgba(220, 230, 245, 0.9));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 body.light-mode header.scrolled {
-  background: linear-gradient(to right, rgba(26, 26, 46, 0.95), rgba(33, 33, 52, 0.95), rgba(26, 26, 46, 0.95)); /* Mantener el mismo color que en modo oscuro */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  background: linear-gradient(to right, rgba(240, 245, 252, 0.95), rgba(230, 240, 250, 0.95));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 body.light-mode .nav-links a {
@@ -2393,4 +2392,32 @@ section, .hero, header, .preloader, #back-to-top, .modal {
 .nav-links a:focus {
   outline: 2px dashed var(--accent-color);
   outline-offset: 4px;
+}
+
+/* Variables en modo día */
+body.light-mode {
+  --bg-color: #f4f7fa; /* Color base con tono más frío profesional */
+  --primary-color: #333333;
+  --secondary-color: #666666;
+  --accent-color: #4a6cf7; /* Azul que denota profesionalismo */
+  --text-color: #1f2433; /* Gris azulado oscuro para mejor legibilidad */
+  --text-color-light: #546478; /* Gris azulado para textos secundarios */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  --logo-text-color: linear-gradient(45deg, #4a6cf7, #6a48e6);
+  --transition: all 0.3s ease;
+  --font-size-base: 16px;
+  --legal-bg: #eef2f7;
+  --legal-text: #6e7a8c;
+}
+
+/* Ajustes para header en modo día */
+body.light-mode header {
+  background: linear-gradient(to right, rgba(230, 240, 250, 0.9), rgba(220, 230, 245, 0.9));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode header.scrolled {
+  background: linear-gradient(to right, rgba(240, 245, 252, 0.95), rgba(230, 240, 250, 0.95));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
