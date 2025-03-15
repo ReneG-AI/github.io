@@ -30,10 +30,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -100; /* Valor muy bajo para asegurar que esté siempre por detrás de todo */
-  opacity: 0.7; /* Control de opacidad para no interferir con el contenido */
+  background: linear-gradient(135deg, #2c3e50, #4ca1af); /* Fondo elegante y profesional */
+  z-index: -100; 
+  opacity: 1;
   transition: opacity 1s ease;
-  pointer-events: none; /* Asegurar que no interfiera con clicks */
+  pointer-events: none;
 }
 
 /* Asegurar que el fondo no interfiera con el contenido */
@@ -2371,4 +2372,25 @@ section, .hero, header, .preloader, #back-to-top, .modal {
 #page-content {
   position: relative;
   z-index: 5;
+}
+
+/* Mejoras de Accesibilidad y Rendimiento */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.centered-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.nav-links a:focus {
+  outline: 2px dashed var(--accent-color);
+  outline-offset: 4px;
 }
