@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar funcionalidades
     initPreloader();
-    initDarkModeToggle();
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
@@ -29,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create particles container
     createParticles();
+
+    // Asegurar modo oscuro permanente
+    document.body.classList.add('dark-mode');
+    document.body.classList.remove('light-mode');
+    localStorage.setItem('darkMode', 'enabled');
 });
 
 // Preloader
@@ -40,52 +44,6 @@ function initPreloader() {
             preloader.style.display = 'none';
         }, 500);
     }
-}
-
-// Alternador de modo oscuro
-function initDarkModeToggle() {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    if (!darkModeToggle) return;
-    
-    const body = document.body;
-    const sunIcon = darkModeToggle.querySelector('.sun');
-    const moonIcon = darkModeToggle.querySelector('.moon');
-    
-    if (!sunIcon || !moonIcon) return;
-    
-    // Verificar preferencia guardada
-    const darkMode = localStorage.getItem('darkMode');
-    if (darkMode === 'enabled') {
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode');
-        // Mostrar el icono del sol en modo oscuro
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
-    } else {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-        // Mostrar el icono de la luna en modo claro
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-    }
-    
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        body.classList.toggle('light-mode');
-        
-        // Guardar preferencia
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('darkMode', 'enabled');
-            // Mostrar el icono del sol en modo oscuro
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        } else {
-            localStorage.setItem('darkMode', null);
-            // Mostrar el icono de la luna en modo claro
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        }
-    });
 }
 
 // Menú móvil
@@ -256,196 +214,135 @@ function initBackToTop() {
 
 // Función para inicializar el flip de los libros
 function initBookFlip() {
-    // Encontrar todos los contenedores de imágenes de libros
-    const bookContainers = document.querySelectorAll('.book-images');
+    const bookFlippers = document.querySelectorAll('.book-flipper');
+    if (!bookFlippers.length) return;
     
-    // Para cada contenedor, agregar la funcionalidad de flip
-    bookContainers.forEach(container => {
-        const bookFlipper = container.querySelector('.book-flipper');
-        
-        // Eliminar cualquier botón de flip existente para evitar duplicados
-        const existingButton = container.querySelector('.flip-button');
-        if (existingButton) {
-            existingButton.remove();
-        }
-        
-        // Crear el botón de flip
-        const flipButton = document.createElement('button');
-        flipButton.className = 'flip-button';
-        flipButton.innerHTML = 'Girar <i class="fas fa-sync-alt"></i>';
-        
-        // Agregar el botón al contenedor
-        container.appendChild(flipButton);
-        
-        // Función para manejar el flip del libro - simplificada sin audio
-        function flipBook(e) {
-            // Evitar que el evento se propague (importante para dispositivos móviles)
-            e.preventDefault();
-            e.stopPropagation();
-            
-            if (bookFlipper) {
-                bookFlipper.classList.toggle('flipped');
-            }
-        }
-        
-        // Agregar evento de clic al botón de flip
-        flipButton.addEventListener('click', flipBook);
-        
-        // Agregar evento de clic a la imagen del libro también
-        // Mejorado para móviles con touchstart
-        if (bookFlipper) {
-            bookFlipper.addEventListener('click', flipBook);
-            bookFlipper.addEventListener('touchstart', function(e) {
-                // Solo para navegación, no para volteo (el botón se encarga de eso)
-                e.stopPropagation();
-            }, {passive: true});
-        }
+    // Agregamos click a cada libro para voltear
+    bookFlippers.forEach(flipper => {
+        flipper.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+    });
+    
+    // Botones "Ver interior"
+    const interiorBtns = document.querySelectorAll('.ver-interior-btn');
+    interiorBtns.forEach(btn => {
+        btn.addEventListener('click', openModal);
     });
 }
 
 // Modal para "Ver interior" - Versión optimizada
 function initInteriorModal() {
-    // Elementos del DOM
     const modal = document.getElementById('interiorModal');
-    const verInteriorBtns = document.querySelectorAll('.ver-interior-btn');
+    if (!modal) return;
     
-    // Validación para evitar errores
-    if (!modal) {
-        console.error('Error: Modal no encontrado en el DOM (#interiorModal)');
-        return;
+    const closeBtn = modal.querySelector('.close-modal');
+    const modalBtn = modal.querySelector('.modal-btn');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
     }
     
-    const closeModalBtn = modal.querySelector('.close-modal');
-    const confirmBtn = modal.querySelector('.modal-btn');
-    const modalContent = modal.querySelector('.modal-content');
-    
-    if (!modalContent) {
-        console.error('Error: Contenido del modal no encontrado (.modal-content)');
-        return;
+    if (modalBtn) {
+        modalBtn.addEventListener('click', closeModal);
     }
     
-    console.log('Modal inicializado correctamente');
-    console.log('Botones Ver Interior encontrados:', verInteriorBtns.length);
-    
-    // Función para abrir el modal con animación
-    function openModal(e) {
-        if (e) e.preventDefault();
-        
-        console.log('Abriendo modal...');
-        
-        // 1. Configurar el modal para su visualización inicial
-        document.body.style.overflow = 'hidden'; // Bloquear scroll
-        modal.style.display = 'flex';
-        modal.style.opacity = '0';
-        modalContent.style.opacity = '0';
-        modalContent.style.transform = 'translateY(-50px)';
-        
-        // 2. Forzar un reflow para asegurar que las transiciones funcionen
-        void modal.offsetWidth;
-        
-        // 3. Iniciar animación del fondo
-        requestAnimationFrame(() => {
-            modal.style.opacity = '1';
-            
-            // 4. Iniciar animación del contenido
-            requestAnimationFrame(() => {
-                modalContent.style.opacity = '1';
-                modalContent.style.transform = 'translateY(0)';
-            });
-        });
-    }
-    
-    // Función para cerrar el modal con animación
-    function closeModal() {
-        console.log('Cerrando modal...');
-        
-        // 1. Animar salida del contenido
-        modalContent.style.opacity = '0';
-        modalContent.style.transform = 'translateY(-50px)';
-        
-        // 2. Animar salida del fondo después de un breve retraso
-        setTimeout(() => {
-            modal.style.opacity = '0';
-            
-            // 3. Ocultar el modal y restaurar scroll después de completar la animación
-            setTimeout(() => {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 300);
-        }, 100);
-    }
-    
-    // Asignar eventos a los botones "Ver interior"
-    verInteriorBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            console.log('Botón Ver Interior clickeado');
-            openModal(e);
-        });
-    });
-    
-    // Cerrar modal con botón de cierre
-    if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
-    } else {
-        console.warn('Advertencia: Botón de cierre no encontrado en el modal');
-    }
-    
-    // Cerrar modal con botón de confirmación
-    if (confirmBtn) {
-        confirmBtn.addEventListener('click', closeModal);
-    } else {
-        console.warn('Advertencia: Botón de confirmación no encontrado en el modal');
-    }
-    
-    // Cerrar modal al hacer clic fuera del contenido
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    
-    // Cerrar modal con tecla Escape
-    document.addEventListener('keydown', function(e) {
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal.style.display === 'flex') {
             closeModal();
         }
     });
     
-    // Abrir modal programáticamente si se incluye el hash en la URL
-    if (window.location.hash === '#ver-interior') {
-        openModal();
+    // También cerrar haciendo clic fuera del contenido
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    function openModal(e) {
+        e.preventDefault();
+        
+        // Obtener URL de Amazon según el libro
+        const bookItem = this.closest('.book-item');
+        if (bookItem) {
+            const amazonBtn = bookItem.querySelector('a.book-btn-primary');
+            if (amazonBtn) {
+                const amazonUrl = amazonBtn.getAttribute('href');
+                const modalAmazonBtn = document.getElementById('modal-amazon-btn');
+                if (modalAmazonBtn && amazonUrl) {
+                    modalAmazonBtn.setAttribute('data-url', amazonUrl);
+                }
+            }
+        }
+        
+        // Mostrar modal
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
+        
+        // Prevenir scroll del body
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+        
+        // Restaurar scroll del body
+        document.body.style.overflow = '';
     }
 }
 
-/* Header scroll shrink effect */
-window.addEventListener('scroll', function() {
-  const header = document.getElementById('header');
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
-
-// Create particles container
 function createParticles() {
-  const container = document.createElement('div');
-  container.className = 'particles';
-  document.body.appendChild(container);
+    const particlesContainer = document.querySelector('.particles');
+    if (!particlesContainer) return;
+    
+    // Limpiar partículas existentes
+    particlesContainer.innerHTML = '';
+    
+    // Número de partículas basado en el ancho de la pantalla
+    const numParticles = window.innerWidth < 768 ? 15 : 30;
+    
+    // Crear partículas
+    for (let i = 0; i < numParticles; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Posición aleatoria
+        const randomX = Math.floor(Math.random() * window.innerWidth);
+        const randomY = Math.floor(Math.random() * window.innerHeight);
+        
+        // Establecer posición y tamaño
+        particle.style.left = `${randomX}px`;
+        particle.style.top = `${randomY}px`;
+        
+        // Tamaño aleatorio
+        const size = Math.random() * 2.5 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Opacidad aleatoria
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+        
+        // Duración aleatoria para la animación
+        const duration = Math.random() * 15 + 10;
+        particle.style.animation = `float ${duration}s infinite`;
+        
+        // Retraso aleatorio para la animación
+        const delay = Math.random() * 10;
+        particle.style.animationDelay = `${delay}s`;
+        
+        // Añadir al contenedor
+        particlesContainer.appendChild(particle);
+    }
+}
 
-  // Create particles
-  const numberOfParticles = 50;
-  for (let i = 0; i < numberOfParticles; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Random initial position
-    particle.style.left = `${Math.random() * 100}vw`;
-    particle.style.top = `${Math.random() * 100}vh`;
-    
-    // Random animation delay
-    particle.style.animationDelay = `${Math.random() * 20}s`;
-    
-    container.appendChild(particle);
-  }
-} 
+// Si hay cambio de tamaño de ventana, actualizar partículas
+window.addEventListener('resize', function() {
+    setTimeout(createParticles, 500);
+}); 
