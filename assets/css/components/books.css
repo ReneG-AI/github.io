@@ -87,11 +87,11 @@
   object-position: center;
   border-radius: 1rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); /* Sombra mejorada */
-  transform: scale(1); /* Asegurando escala correcta */
+  transform: scale(1.4); /* Aumentando directamente la escala de la imagen en un 140% */
 }
 
 .book-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.4); /* Necesita escala y rotación */
 }
 
 /* Botón para voltear el libro */
@@ -181,12 +181,16 @@
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important; /* Forzando transparencia para asegurar que el degradado sea visible */
   animation: shimmer 8s linear infinite;
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
   text-shadow: none;
+  display: block; /* Asegurando que el bloque tome todo el ancho */
+  max-width: 100%;
+  position: relative;
+  padding-left: 0; /* Sin padding para asegurar alineación a la izquierda */
 }
 
 /* Descripción del libro */
@@ -397,6 +401,15 @@
     font-size: 1.8rem;
     padding: 1.6rem 3rem;
   }
+  
+  .book-cover,
+  .book-back {
+    transform: scale(1.2); /* Escala reducida para tablets */
+  }
+  
+  .book-back {
+    transform: rotateY(180deg) scale(1.2);
+  }
 }
 
 @media (max-width: 768px) {
@@ -444,6 +457,15 @@
   .amazon-cta-btn {
     font-size: 1.6rem;
     padding: 1.4rem 2.5rem;
+  }
+  
+  .book-cover,
+  .book-back {
+    transform: scale(1.1); /* Escala reducida para móviles */
+  }
+  
+  .book-back {
+    transform: rotateY(180deg) scale(1.1);
   }
 }
 
