@@ -337,9 +337,19 @@ img {
   }
 }
 
-/* Ajustar el espaciado del contenido principal */
+/* Ajustar el espaciado del contenido principal para nuevo layout */
 main {
-  padding-top: 18rem; /* Espacio para el header más alto */
+  padding-top: 0; /* Eliminamos el padding top general ya que ahora se gestiona con .split-layout */
+}
+
+/* Eliminamos los backgrounds de secciones ya que ahora se manejan con .scrollable-section */
+section {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 /* Agregar efectos de brillo a elementos específicos */
