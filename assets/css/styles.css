@@ -30,9 +30,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -100; /* Valor muy bajo para asegurar que esté siempre por detrás de todo */
   opacity: 0.7; /* Control de opacidad para no interferir con el contenido */
   transition: opacity 1s ease;
+  pointer-events: none; /* Asegurar que no interfiera con clicks */
 }
 
 /* Asegurar que el fondo no interfiera con el contenido */
@@ -766,6 +767,7 @@ footer {
   margin-top: 70px;
   position: relative;
   overflow: hidden;
+  z-index: 10; /* Asegurar que esté por encima del fondo dinámico */
 }
 
 .footer-gradient {
@@ -777,6 +779,7 @@ footer {
   background: linear-gradient(90deg, var(--accent-color), var(--secondary-color), var(--primary-color));
   background-size: 500% 100%;
   animation: gradientText 10s linear infinite;
+  z-index: 11; /* Asegurar que esté por encima del footer */
 }
 
 .footer-grid {
@@ -2346,4 +2349,26 @@ body.dark-mode .nav-links a:focus {
   .flip-button {
     bottom: 30px;
   }
-} 
+}
+
+/* Política de Privacidad y Aviso Legal - asegurar que esté sobre el fondo dinámico */
+.legal-footer {
+  background: var(--legal-bg);
+  padding: 30px 0;
+  font-size: 0.9rem;
+  color: var(--legal-text);
+  position: relative;
+  z-index: 10; /* Asegurar que esté por encima del fondo dinámico */
+}
+
+/* Garantizar que todas las secciones estén por encima del fondo */
+section, .hero, header, .preloader, #back-to-top, .modal {
+  position: relative;
+  z-index: 5; /* Mayor que el fondo dinámico pero menor que elementos superpuestos */
+}
+
+/* Ajustes generales para contenedores principales */
+#page-content {
+  position: relative;
+  z-index: 5;
+}
