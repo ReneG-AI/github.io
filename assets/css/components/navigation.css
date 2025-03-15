@@ -25,14 +25,11 @@
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.25);
 }
 
-.header-container {
+.header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 4rem;
-  max-width: 140rem;
-  margin: 0 auto;
 }
 
 /* Logo */
@@ -43,19 +40,21 @@
   color: var(--white);
   gap: 1rem;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 5;
 }
 
 .logo:hover {
   transform: translateY(-2px);
 }
 
-.logo-img {
+.logo img {
   height: 4rem;
   transition: all 0.3s ease;
   filter: brightness(1.05) drop-shadow(0 0.3rem 0.5rem rgba(0, 0, 0, 0.3));
 }
 
-.header.scrolled .logo-img {
+.header.scrolled .logo img {
   height: 3.5rem;
 }
 
@@ -73,7 +72,7 @@
 }
 
 /* Navegación */
-.nav {
+.main-nav {
   height: 100%;
   display: flex;
   align-items: center;
@@ -170,41 +169,42 @@
 }
 
 /* Menú móvil */
-.mobile-toggle {
+.menu-toggle {
   display: none;
+  background: none;
   border: none;
-  background: transparent;
   cursor: pointer;
-  padding: 0.5rem;
-  z-index: 102;
+  width: 3rem;
+  height: 2.5rem;
+  position: relative;
+  z-index: 1000;
 }
 
-.mobile-toggle span {
+.menu-toggle .bar {
   display: block;
-  width: 2.6rem;
-  height: 0.2rem;
+  width: 100%;
+  height: 0.3rem;
   background-color: var(--white);
-  margin: 0.6rem 0;
-  border-radius: 1rem;
+  margin: 0.5rem 0;
   transition: all 0.3s ease;
+  border-radius: 3px;
 }
 
-/* Menú activo */
-.mobile-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(0.8rem, 0.6rem);
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-0.5rem, 0.6rem);
 }
 
-.mobile-toggle.active span:nth-child(2) {
+.menu-toggle.active .bar:nth-child(2) {
   opacity: 0;
 }
 
-.mobile-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-0.5rem, -0.6rem);
 }
 
 /* Media queries */
 @media screen and (max-width: 1024px) {
-  .header-container {
+  .header .container {
     padding: 0 2rem;
   }
   
@@ -219,48 +219,44 @@
 }
 
 @media screen and (max-width: 992px) {
-  .mobile-toggle {
+  .menu-toggle {
     display: block;
   }
   
-  .nav {
+  .main-nav {
     position: fixed;
     top: 0;
-    right: -30rem;
-    width: 30rem;
+    right: -100%;
+    width: 70%;
     height: 100vh;
-    background: rgba(18, 18, 18, 0.98);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 101;
-    padding: 8rem 2rem 2rem;
-    box-shadow: -0.5rem 0 2rem rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 99;
+    transition: all 0.4s ease;
+    padding: 8rem 3rem 3rem;
+    box-shadow: -0.5rem 0 3rem rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  .nav.active {
+  .main-nav.active {
     right: 0;
   }
   
   .nav-list {
     flex-direction: column;
+    gap: 2rem;
     align-items: flex-start;
-    gap: 0.8rem;
     width: 100%;
-    height: auto;
   }
   
   .nav-item {
     width: 100%;
-    height: auto;
   }
   
   .nav-link {
     width: 100%;
-    padding: 1.2rem 1.5rem;
-    height: auto;
-    border-radius: 0.8rem;
+    font-size: 1.8rem;
   }
   
   .nav-link:hover {
@@ -288,15 +284,15 @@
     height: 5rem;
   }
   
-  .header-container {
+  .header .container {
     padding: 0 1.5rem;
   }
   
-  .logo-img {
+  .logo img {
     height: 3.5rem;
   }
   
-  .header.scrolled .logo-img {
+  .header.scrolled .logo img {
     height: 3rem;
   }
   
@@ -304,7 +300,7 @@
     font-size: 1.6rem;
   }
   
-  .nav {
+  .main-nav {
     width: 100%;
     right: -100%;
   }
