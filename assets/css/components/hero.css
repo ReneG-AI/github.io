@@ -37,21 +37,59 @@
 /* Contenido del hero */
 .hero-content {
   max-width: 65%;
-  background-color: rgba(0, 0, 0, 0.65);
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 4rem;
-  border-radius: 1.5rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3), 
+              0 0 0 2px rgba(255, 255, 255, 0.05),
+              0 0 60px rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 2rem;
   z-index: 2;
   text-align: left;
+  overflow: hidden;
 }
 
+/* Contenedor moderno y futurista */
+.hero-content-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Elemento decorativo para efecto futurista */
+.hero-decoration {
+  position: relative;
+  margin: 2.5rem 0;
+  height: 3px;
+  width: 40%;
+}
+
+.hero-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0), #9E77ED, rgba(255,255,255,0));
+}
+
+.hero-glow {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  height: 12px;
+  width: 100%;
+  background: radial-gradient(ellipse at center, rgba(107, 76, 230, 0.6) 0%, rgba(107, 76, 230, 0) 70%);
+  filter: blur(3px);
+}
+
+/* Título principal futurista */
 .hero-title {
-  font-size: 4.5rem;
-  margin-bottom: 2rem;
+  font-size: 5.5rem;
+  margin-bottom: 1.5rem;
   text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   line-height: 1.2;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
@@ -60,17 +98,49 @@
   background-clip: text;
   color: transparent;
   animation: shimmer 8s linear infinite;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.05em;
   text-align: left;
+  position: relative;
 }
 
+/* Subtítulo con estilo h2 */
 .hero-subtitle {
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
+  font-size: 3rem;
+  margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.95);
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.4;
   text-align: left;
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+/* Efecto decorativo en el contenedor */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(107, 76, 230, 0.3), rgba(0, 212, 255, 0.2));
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.hero-content::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 20%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(255, 94, 219, 0.3), rgba(140, 82, 255, 0.2));
+  filter: blur(40px);
+  z-index: -1;
 }
 
 /* Botones del hero */
@@ -79,37 +149,69 @@
   gap: 2rem;
   flex-wrap: wrap;
   justify-content: flex-start;
+  position: relative;
+  z-index: 3;
 }
 
 .hero-buttons .btn {
   padding: 1.5rem 3rem;
   font-size: 1.8rem;
   font-weight: 600;
-  border-radius: 0.8rem;
+  border-radius: 1rem;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-buttons .btn-primary {
   background: linear-gradient(135deg, #6B4CE6, #9E77ED);
   color: white;
   box-shadow: 0 0.4rem 1.5rem rgba(107, 76, 230, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .hero-buttons .btn-accent {
   background: linear-gradient(135deg, #FF9900, #FFC107);
   color: #000;
   box-shadow: 0 0.4rem 1.5rem rgba(255, 153, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-buttons .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0), 
+    rgba(255, 255, 255, 0.2), 
+    rgba(255, 255, 255, 0));
+  transition: left 0.8s ease;
 }
 
 .hero-buttons .btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .btn:hover::before {
+  left: 100%;
 }
 
 /* Media queries para responsive */
 @media (max-width: 1200px) {
   .hero-content {
     max-width: 80%;
+  }
+  
+  .hero-title {
+    font-size: 4.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 2.6rem;
   }
 }
 
@@ -120,11 +222,15 @@
   }
   
   .hero-title {
-    font-size: 3.5rem;
+    font-size: 3.8rem;
   }
   
   .hero-subtitle {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+  }
+  
+  .hero-decoration {
+    width: 60%;
   }
 }
 
@@ -140,7 +246,11 @@
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 2rem;
   }
   
   .hero-buttons {
@@ -151,6 +261,10 @@
     padding: 1.2rem 2.5rem;
     font-size: 1.6rem;
     width: 100%;
+  }
+  
+  .hero-decoration {
+    width: 80%;
   }
 }
 
