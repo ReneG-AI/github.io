@@ -20,15 +20,28 @@
   margin: 0 auto;
 }
 
-/* Contenedor del formulario */
+/* Nuevo layout para la sección de contacto */
+.contact-section .container {
+  display: flex;
+  justify-content: flex-end; /* Alinea el contenido a la derecha */
+  position: relative;
+}
+
+/* Espacio reservado a la izquierda para contenido futuro */
+.contact-left-space {
+  width: 40%;
+  min-height: 200px;
+}
+
+/* Contenedor del formulario - Reposicionado a la derecha */
 .contacto-form-container {
-  max-width: 700px;
-  margin: 0 auto 4rem;
-  background-color: rgba(26, 26, 26, 0.6);
+  max-width: 55%; /* Antes era 700px, ahora es un porcentaje */
+  margin: 0 0 4rem auto; /* Alineado a la derecha con margin-left: auto */
+  background-color: rgba(26, 26, 26, 0.85); /* Aumentado de 0.6 a 0.85 para mejor legibilidad */
   padding: 3rem;
   border-radius: 1.5rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Formulario */
