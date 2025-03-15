@@ -2416,15 +2416,8 @@ body.light-mode .nav-links a {
   color: #e0e0e0;
 }
 
-/* Eliminar los estilos específicos para light-mode que ya no son necesarios */
-/* Ajustes para header en modo día */
-body.light-mode header {
-  /* Ya definido arriba en los estilos comunes */
-}
+/* Nota: Los estilos para header en ambos modos ya est�n definidos arriba */
 
-body.light-mode header.scrolled {
-  /* Ya definido arriba en los estilos comunes */
-}
 
 :root {
   /* Z-index variables */
@@ -2514,3 +2507,4 @@ body.dark-mode .particle {
     opacity: 0;
   }
 }
+
