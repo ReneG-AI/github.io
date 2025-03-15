@@ -35,11 +35,12 @@
   padding: 2rem;
   z-index: 3;
   transition: all 0.5s ease;
-  background-color: rgba(0, 0, 0, 0.35); /* Fondo semi-transparente para mejor legibilidad */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejor legibilidad */
   border-radius: 2rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Configuración para layout de dos columnas con contenido fijo a la izquierda */
@@ -114,7 +115,7 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-image: url('../../images/Banner.png'); /* Corregimos la ruta */
+  background-image: url('../../images/Banner.png'); /* Aseguramos la ruta correcta */
   top: 0;
   left: 0;
   z-index: -1;
@@ -128,10 +129,10 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, 
-    rgba(0, 0, 0, 0.8) 0%, 
-    rgba(18, 18, 18, 0.6) 50%, 
-    rgba(0, 0, 0, 0.8) 100%
-  );
+    rgba(0, 0, 0, 0.6) 0%, 
+    rgba(18, 18, 18, 0.4) 50%, 
+    rgba(0, 0, 0, 0.6) 100%
+  ); /* Bajamos la opacidad del degradado para ver mejor el fondo */
   z-index: 1;
 }
 
@@ -142,11 +143,12 @@
   text-align: center; /* Centrado horizontal */
   padding: 2rem;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.35); /* Fondo semi-transparente para mejor legibilidad */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejor legibilidad */
   border-radius: 2rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 0.8rem 3rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hero-title {
@@ -169,10 +171,10 @@
 .hero-subtitle {
   font-size: 2rem;
   font-weight: 500;
-  color: var(--text-color-light);
+  color: var(--white);
   margin-bottom: 3rem;
   max-width: 100%;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
   text-align: center; /* Centrado */
   line-height: 1.5;
 }
@@ -194,12 +196,31 @@
   font-size: 1.6rem;
   font-weight: 600;
   border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-turquesa:hover {
   background: linear-gradient(135deg, #00C0E6, #0098E0);
   transform: translateY(-3px);
   box-shadow: 0 0.8rem 2rem rgba(0, 212, 255, 0.4);
+}
+
+/* Ajustes para el botón de acento (Visitar Amazon) */
+.btn-accent {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.3);
+  padding: 1.2rem 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #FF8800, #FFB000);
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 2rem rgba(255, 153, 0, 0.4);
 }
 
 .hero-buttons .btn {
