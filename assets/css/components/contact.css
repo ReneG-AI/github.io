@@ -14,8 +14,8 @@
 }
 
 .contact-section-subtitle {
-  color: var(--white);
-  opacity: 0.9;
+  color: white !important;
+  opacity: 0.9 !important;
   max-width: 600px;
   margin: 0 auto;
 }

@@ -29,11 +29,11 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
 }
 
-/* Contenedor de imágenes */
+/* Contenedor de imágenes - Aumentado 200% */
 .book-images {
   position: relative;
   width: 100%;
-  height: 40rem;
+  height: 80rem; /* Aumentado 200% (antes era 40rem) */
   perspective: 1500px;
   margin-bottom: 2rem;
 }
@@ -51,7 +51,7 @@
   transform: rotateY(180deg);
 }
 
-/* Imágenes de portada y contraportada */
+/* Imágenes de portada y contraportada - Mejoradas */
 .book-cover,
 .book-back {
   width: 100%;
@@ -372,6 +372,7 @@
 /* Libro sección header title */
 .section-subtitle {
   color: white !important;
-  opacity: 0.9;
+  opacity: 0.9 !important;
   font-weight: var(--font-weight-normal);
+  font-size: 2rem !important; /* Tamaño aumentado para mejor legibilidad */
 } 
