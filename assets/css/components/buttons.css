@@ -8,13 +8,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 3rem;
+  padding: 1.6rem 3.2rem;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   border: none;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -25,13 +25,17 @@
   user-select: none;
   z-index: 1;
   gap: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.2);
 }
 
 /* Botón primario */
 .btn-primary {
   background: var(--gradient-primary);
   color: var(--white);
-  box-shadow: 0 0.8rem 2rem var(--primary-color-30);
+  box-shadow: 0 0.8rem 2.5rem rgba(138, 43, 226, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-primary::before {
@@ -48,8 +52,8 @@
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1.2rem 3rem var(--primary-color-30);
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3.5rem rgba(138, 43, 226, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(138, 43, 226, 0.8);
 }
 
 .btn-primary:hover::before {
@@ -57,44 +61,44 @@
 }
 
 .btn-primary:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1.5rem var(--primary-color-30);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.4);
 }
 
 /* Botón secundario */
 .btn-secondary {
-  background: var(--secondary-color);
+  background: var(--gradient-secondary);
   color: var(--white);
-  box-shadow: 0 0.8rem 1.5rem rgba(58, 58, 100, 0.25);
+  box-shadow: 0 0.8rem 2rem rgba(0, 191, 255, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-secondary:hover {
-  background: #32325b;
-  transform: translateY(-3px);
-  box-shadow: 0 1.2rem 2.5rem rgba(58, 58, 100, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(0, 191, 255, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(0, 191, 255, 0.8);
 }
 
 .btn-secondary:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(58, 58, 100, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 191, 255, 0.4);
 }
 
 /* Botón acento */
 .btn-accent {
-  background: var(--accent-color);
+  background: var(--gradient-accent);
   color: var(--white);
-  box-shadow: 0 0.8rem 2rem rgba(255, 125, 80, 0.3);
+  box-shadow: 0 0.8rem 2rem rgba(255, 62, 157, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .btn-accent:hover {
-  background: #ff6c3a;
-  transform: translateY(-3px);
-  box-shadow: 0 1.2rem 3rem rgba(255, 125, 80, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(255, 62, 157, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.3), 0 0 15px rgba(255, 62, 157, 0.8);
 }
 
 .btn-accent:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1.5rem rgba(255, 125, 80, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 62, 157, 0.4);
 }
 
 /* Botón de Amazon mejorado */
@@ -102,34 +106,67 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 3rem;
+  padding: 1.6rem 3.2rem;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
-  background: linear-gradient(135deg, #FF9900, #FF5E3A);
-  border-radius: 1rem;
+  background: linear-gradient(135deg, #FFD700, #FF9900, #FF5E3A);
+  background-size: 200% 100%;
+  animation: shimmer 5s linear infinite;
+  border-radius: 1.2rem;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 1rem 2rem rgba(255, 94, 58, 0.25);
+  box-shadow: 0 1rem 2.5rem rgba(255, 94, 58, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
   gap: 1rem;
   z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .amazon-btn i {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  transition: transform 0.3s ease;
 }
 
 .amazon-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 1.5rem 3rem rgba(255, 94, 58, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 1.5rem 3.5rem rgba(255, 94, 58, 0.45), inset 0 2px 5px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 94, 58, 0.8);
+}
+
+.amazon-btn:hover i {
+  transform: translateX(3px);
 }
 
 .amazon-btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.8rem 1.5rem rgba(255, 94, 58, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 0.8rem 1.5rem rgba(255, 94, 58, 0.35);
+}
+
+.amazon-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.amazon-btn:hover::after {
+  transform: rotate(30deg) translate(10%, 10%);
+  opacity: 1;
 }
 
 /* Botón de Ver Interior */
@@ -137,60 +174,114 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 3rem;
+  padding: 1.6rem 3.2rem;
   font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--primary-color);
-  background: rgba(107, 76, 230, 0.1);
-  border-radius: 1rem;
-  border: none;
+  font-weight: 700;
+  color: var(--white);
+  background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+  border-radius: 1.2rem;
+  border: 2px solid rgba(179, 126, 252, 0.5);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0.5rem 1.5rem rgba(107, 76, 230, 0.1);
+  transition: all 0.4s ease;
+  box-shadow: 0 0.8rem 2rem rgba(138, 43, 226, 0.3), inset 0 2px 3px rgba(255, 255, 255, 0.15);
   gap: 1rem;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .interior-btn i {
-  font-size: 2rem;
-  transition: transform 0.3s ease;
+  font-size: 2.2rem;
+  transition: transform 0.4s ease;
+}
+
+.interior-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8A2BE2, #B37EFC);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
 .interior-btn:hover {
-  background: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(138, 43, 226, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.25), 0 0 15px rgba(138, 43, 226, 0.8);
+  border-color: var(--primary-color-light);
   color: var(--white);
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(107, 76, 230, 0.2);
+}
+
+.interior-btn:hover::before {
+  opacity: 1;
 }
 
 .interior-btn:hover i {
-  transform: scale(1.2);
+  transform: scale(1.2) rotate(15deg);
 }
 
 .interior-btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(107, 76, 230, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.3);
 }
 
 /* Botón outline */
 .btn-outline {
   background: transparent;
-  color: var(--primary-color);
+  color: var(--primary-color-light);
   border: 2px solid var(--primary-color);
+  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.2), 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.3rem;
+  background: var(--gradient-rainbow);
+  background-size: 400% 100%;
+  animation: shimmer 8s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.1rem;
+  background: rgba(18, 18, 18, 0.95);
+  z-index: -1;
+  transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-  background: var(--primary-color);
   color: var(--white);
-  transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem var(--primary-color-20);
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2.5rem rgba(138, 43, 226, 0.3), 0 0 15px rgba(138, 43, 226, 0.5);
+  border-color: transparent;
+}
+
+.btn-outline:hover::after {
+  opacity: 0.5;
+  background: var(--gradient-primary);
 }
 
 .btn-outline:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem var(--primary-color-20);
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(138, 43, 226, 0.2);
 }
 
 /* Botón outline blanco */
@@ -205,6 +296,35 @@
   color: var(--primary-color);
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Botón con efecto resplandor */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  transform: scale(0.5);
+  z-index: -1;
+}
+
+.btn-glow:hover::before {
+  opacity: 0.15;
+  transform: scale(1);
 }
 
 /* Botón con efecto ripple */
@@ -239,15 +359,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .btn-icon-start i {
   margin-right: 0.8rem;
+  transition: all 0.3s ease;
 }
 
 .btn-icon-end i {
   margin-left: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover i {
+  transform: translateX(3px);
 }
 
 /* Botón redondeado */
@@ -286,20 +412,20 @@
 .btn-sm {
   padding: 1rem 2rem;
   font-size: 1.4rem;
-  border-radius: 0.8rem;
+  border-radius: 1rem;
 }
 
 .btn-lg {
-  padding: 1.8rem 3.5rem;
+  padding: 1.8rem 3.8rem;
   font-size: 1.8rem;
-  border-radius: 1.2rem;
+  border-radius: 1.4rem;
 }
 
 .btn-xl {
-  padding: 2rem 4rem;
+  padding: 2.2rem 4.5rem;
   font-size: 2rem;
   font-weight: 700;
-  border-radius: 1.5rem;
+  border-radius: 1.6rem;
 }
 
 /* Botón de ancho completo */
@@ -315,6 +441,7 @@
   opacity: 0.65;
   pointer-events: none;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* Botón con carga */
@@ -346,22 +473,24 @@
 /* Grupo de botones */
 .btn-group {
   display: inline-flex;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .btn-group .btn {
   border-radius: 0;
   margin: 0;
+  box-shadow: none;
 }
 
 .btn-group .btn:not(:first-child) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.btn-group .btn:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.btn-group .btn:hover {
+  transform: none;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Botón con badge */
@@ -376,15 +505,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2rem;
-  height: 2rem;
-  padding: 0 0.6rem;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.8rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--white);
-  background: var(--error-color);
-  border-radius: 1rem;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+  background: var(--gradient-accent);
+  border-radius: 1.1rem;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.25);
+  animation: pulse 2s infinite;
 }
 
 /* Botón flotante */
@@ -392,27 +522,32 @@
   position: fixed;
   bottom: 3rem;
   right: 3rem;
-  width: 6rem;
-  height: 6rem;
+  width: 6.5rem;
+  height: 6.5rem;
   border-radius: 50%;
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   color: var(--white);
   font-size: 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0.5rem 2.5rem var(--primary-color-30);
+  box-shadow: 0 0.5rem 2.5rem rgba(138, 43, 226, 0.4), 0 0 20px rgba(138, 43, 226, 0.4);
   z-index: 90;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-float:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 1rem 3rem rgba(138, 43, 226, 0.6), 0 0 30px rgba(138, 43, 226, 0.6);
 }
 
 /* Efectos de brillo */
 .btn-glow:hover {
-  box-shadow: 0 0 2rem var(--primary-color);
+  box-shadow: 0 0.8rem 2.5rem var(--primary-color-30), 0 0 20px var(--primary-color), inset 0 2px 5px rgba(255, 255, 255, 0.3);
 }
 
 .btn-glow-accent:hover {
-  box-shadow: 0 0 2rem var(--accent-color);
+  box-shadow: 0 0.8rem 2.5rem rgba(255, 62, 157, 0.3), 0 0 20px var(--accent-color), inset 0 2px 5px rgba(255, 255, 255, 0.3);
 }
 
 /* Efecto de pulso */
@@ -423,34 +558,34 @@
 @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0.7);
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.6);
   }
   
   70% {
     transform: scale(1.05);
-    box-shadow: 0 0 0 1rem rgba(107, 76, 230, 0);
+    box-shadow: 0 0 0 15px rgba(138, 43, 226, 0);
   }
   
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(107, 76, 230, 0);
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
   }
 }
 
 /* Media queries */
 @media screen and (max-width: 768px) {
   .btn {
-    padding: 1.2rem 2.5rem;
+    padding: 1.4rem 2.8rem;
     font-size: 1.5rem;
   }
   
   .btn-lg {
-    padding: 1.5rem 3rem;
+    padding: 1.6rem 3.2rem;
     font-size: 1.7rem;
   }
   
   .btn-sm {
-    padding: 0.8rem 1.8rem;
+    padding: 0.9rem 1.8rem;
     font-size: 1.3rem;
   }
   
@@ -467,21 +602,33 @@
     bottom: 2.5rem;
     right: 2.5rem;
   }
+  
+  .amazon-btn, 
+  .interior-btn {
+    padding: 1.4rem 2.8rem;
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
   .btn {
-    padding: 1rem 2rem;
+    padding: 1.2rem 2.4rem;
     font-size: 1.4rem;
   }
   
   .btn-lg {
-    padding: 1.3rem 2.6rem;
+    padding: 1.4rem 2.8rem;
     font-size: 1.6rem;
   }
   
   .btn-xl {
-    padding: a1.5rem 3rem;
+    padding: 1.6rem 3.2rem;
     font-size: 1.8rem;
+  }
+  
+  .amazon-btn, 
+  .interior-btn {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.4rem;
   }
 } 
