@@ -18,9 +18,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar AOS con un retraso para mejor rendimiento
     if (typeof AOS !== 'undefined') {
-        // Retrasar la inicialización de AOS para mejorar el rendimiento en carga inicial
         setTimeout(function() {
-            initAOS();
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
         }, 100);
     }
     
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar la página después de cargar
     setTimeout(function() {
         document.body.classList.add('loaded');
-    }, 100);
+    }, 300);
 });
 
 // Preloader
@@ -70,6 +74,9 @@ function initPreloader() {
     if (preloader) {
         window.addEventListener('load', function() {
             preloader.classList.add('preloader-hide');
+            setTimeout(function() {
+                preloader.style.display = 'none';
+            }, 800);
         });
     }
 }
@@ -111,11 +118,10 @@ function initSmoothScroll() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-
+                const offsetTop = targetElement.offsetTop - 80;
+                
                 window.scrollTo({
-                    top: targetPosition,
+                    top: offsetTop,
                     behavior: 'smooth'
                 });
             }
@@ -152,119 +158,47 @@ function initAOS() {
 
 // Botón volver arriba
 function initBackToTop() {
-    // Verificar si ya existe el botón
-    let backToTop = document.getElementById('back-to-top');
-    
-    // Si no existe, crearlo
-    if (!backToTop) {
-        backToTop = document.createElement('button');
-        backToTop.id = 'back-to-top';
-        backToTop.innerHTML = '<i class="fas fa-chevron-up"></i>';
-        backToTop.className = 'back-to-top-btn';
-        document.body.appendChild(backToTop);
-    }
-    
-    // Mostrar/ocultar botón según el scroll
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
-        }
-    });
-    
-    // Acción al hacer clic en el botón
-    backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Función para manejar efectos de scroll
-function initScrollEffects() {
-    const header = document.querySelector('.header');
-    const heroInitial = document.querySelector('.hero-initial');
-    const leftFixed = document.querySelector('.left-fixed');
-    const rightScrollable = document.querySelector('.right-scrollable');
-    const scrollableSections = document.querySelectorAll('.scrollable-section');
     const backToTop = document.getElementById('back-to-top');
     
-    if (!header || !heroInitial || !leftFixed || !rightScrollable) return;
-    
-    // Para controlar si ya se ha hecho scroll hacia abajo
-    let hasScrolledDown = false;
-    
-    // Función principal de scroll
-    function handleScroll() {
-        const scrollPos = window.scrollY;
-        
-        // Efectos de header
-        if (scrollPos > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-        
-        // Efecto para el hero inicial
-        if (scrollPos > 100) {
-            heroInitial.classList.add('scrolled');
-            leftFixed.classList.add('scrolled');
-            rightScrollable.classList.add('scrolled');
-            
-            // Marcamos que ya se ha hecho scroll hacia abajo
-            hasScrolledDown = true;
-        } else if (!hasScrolledDown) {
-            // Solo restauramos si nunca se ha hecho scroll completo hacia abajo
-            heroInitial.classList.remove('scrolled');
-            leftFixed.classList.remove('scrolled');
-            rightScrollable.classList.remove('scrolled');
-        }
-        
-        // Mostrar/ocultar botón de volver arriba
-        if (scrollPos > 300) {
-            backToTop.classList.add('active');
-        } else {
-            backToTop.classList.remove('active');
-        }
-        
-        // Manejar secciones de ancho completo
-        if (scrollPos > window.innerHeight * 1.5) {
-            scrollableSections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-                const sectionBottom = sectionTop + section.offsetHeight;
-                
-                if (scrollPos + window.innerHeight * 0.8 >= sectionTop && scrollPos <= sectionBottom) {
-                    section.classList.add('visible');
-                    
-                    // Si es la sección de testimonios o contacto, hacerla de ancho completo
-                    if (section.id === 'testimonios' || section.id === 'contacto') {
-                        rightScrollable.classList.add('full-width');
-                        leftFixed.classList.add('testimonials-visible');
-                    }
-                } else {
-                    section.classList.remove('visible');
-                }
-            });
-        }
-    }
-    
-    // Inicializar scroll
-    window.addEventListener('scroll', handleScroll);
-    
-    // Llamar una vez para establecer el estado inicial
-    handleScroll();
-    
-    // Botón de volver arriba
     if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
         backToTop.addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+    }
+}
+
+// Función para manejar efectos de scroll
+function initScrollEffects() {
+    const heroInitial = document.getElementById('hero-initial');
+    const leftFixed = document.getElementById('left-fixed');
+    const rightScrollable = document.getElementById('right-scrollable');
+    
+    if (heroInitial && leftFixed && rightScrollable) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            
+            // Cuando se hace scroll más allá del 25% de la altura de la ventana
+            if (scrollPosition > window.innerHeight * 0.25) {
+                heroInitial.classList.add('scrolled');
+                leftFixed.classList.add('scrolled');
+                rightScrollable.classList.add('scrolled');
+            } else {
+                heroInitial.classList.remove('scrolled');
+                leftFixed.classList.remove('scrolled');
+                rightScrollable.classList.remove('scrolled');
+            }
         });
     }
 }
@@ -320,67 +254,48 @@ function initBookFlip() {
 // Modal para "Ver interior" - Versión optimizada
 function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
-    if (!modal) return;
+    const interiorBtns = document.querySelectorAll('.interior-btn');
+    const closeModal = document.querySelector('.close-modal');
+    const modalBtn = document.querySelector('.modal-btn');
     
-    const closeBtn = modal.querySelector('.close-modal');
-    const modalBtn = modal.querySelector('.modal-btn');
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
-    }
-    
-    if (modalBtn) {
-        modalBtn.addEventListener('click', closeModal);
-    }
-    
-    // Cerrar modal con Escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.style.display === 'flex') {
-            closeModal();
-        }
-    });
-    
-    // También cerrar haciendo clic fuera del contenido
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-    
-    function openModal(e) {
-        e.preventDefault();
+    if (modal && interiorBtns.length) {
+        interiorBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            });
+        });
         
-        // Obtener URL de Amazon según el libro
-        const bookItem = this.closest('.book-item');
-        if (bookItem) {
-            const amazonBtn = bookItem.querySelector('a.book-btn-primary');
-            if (amazonBtn) {
-                const amazonUrl = amazonBtn.getAttribute('href');
-                const modalAmazonBtn = document.getElementById('modal-amazon-btn');
-                if (modalAmazonBtn && amazonUrl) {
-                    modalAmazonBtn.setAttribute('data-url', amazonUrl);
-                }
+        if (closeModal) {
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            });
+        }
+        
+        if (modalBtn) {
+            modalBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
+            });
+        }
+        
+        // Cerrar modal haciendo clic fuera
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
             }
-        }
-        
-        // Mostrar modal
-        modal.style.display = 'flex';
-        setTimeout(() => {
-            modal.classList.add('active');
-        }, 10);
-        
-        // Prevenir scroll del body
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal() {
-        modal.classList.remove('active');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 300);
-        
-        // Restaurar scroll del body
-        document.body.style.overflow = '';
+        });
     }
 }
 
