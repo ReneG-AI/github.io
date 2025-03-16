@@ -927,4 +927,18 @@ h1, h2, h3, h4, h5, h6 {
 
 [data-aos].aos-animate {
   opacity: 1;
+}
+
+/* Estilo para imágenes de portadas de libros */
+.book-cover,
+.book-back {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 150px;
 } 

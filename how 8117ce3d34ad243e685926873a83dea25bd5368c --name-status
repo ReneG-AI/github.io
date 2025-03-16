@@ -1,0 +1,32 @@
+[33mcommit a0a87e709f002169866c757e7d0186ba701995f5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ReneG-AI <sasukekin@hotmail.com>
+Date:   Sun Mar 16 18:21:26 2025 +0100
+
+    Eliminadas todas las animaciones del fondo, simplificada la interfaz y corregidos problemas de codificación
+
+M	assets/css/components/hero.css
+M	assets/css/components/navigation.css
+M	assets/css/fix-hero.css
+M	index.html
+
+[33mcommit 83beea7802b6f092dea1f8ffd7af1c8ae6b774f7[m
+Author: ReneG-AI <sasukekin@hotmail.com>
+Date:   Sun Mar 16 18:15:04 2025 +0100
+
+    Actualizada imagen de fondo a Hero_Background.svg
+
+M	assets/css/components/hero.css
+M	assets/css/fix-hero.css
+M	assets/css/main.css
+A	assets/images/Hero_Background.svg
+M	index.html
+
+[33mcommit c820c5f3e61677471bd6c71e223b03c350fd77c5[m
+Author: ReneG-AI <sasukekin@hotmail.com>
+Date:   Sun Mar 16 17:56:04 2025 +0100
+
+    Corregidas referencias a Banner.png que ya no existe
+
+M	assets/css/components/hero.css
+M	assets/css/fix-hero.css
+M	index.html
