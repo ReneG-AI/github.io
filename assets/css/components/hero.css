@@ -22,7 +22,8 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: #121212;
+  background-color: #121212; /* Mantener color de fondo como fallback */
+  background-image: url('../../images/Hero_Background.svg'); /* Actualizado a la nueva imagen SVG */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
