@@ -125,7 +125,8 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .scroll-arrow {
