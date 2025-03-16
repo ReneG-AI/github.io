@@ -10,10 +10,7 @@
   left: 0 !important;
   width: 100% !important;
   height: 100vh !important;
-  background-image: url('../images/Banner.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+  background-color: #121212 !important;
   z-index: -1 !important;
   opacity: 1 !important;
   visibility: visible !important;
