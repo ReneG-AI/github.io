@@ -1,6 +1,6 @@
 /* 
  * FIX HERO IMAGE
- * Estilos de corrección específicos para la imagen del hero
+ * Estilos de correccion especificos para la imagen del hero
  */
 
 /* Forzar hero background */
@@ -65,18 +65,18 @@ html::after,
   display: none !important;
 }
 
-/* Forzar visualización de la imagen de fondo en caso de flash inicial */
+/* Forzar visualizacion de la imagen de fondo en caso de flash inicial */
 body.loaded .hero-background {
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-/* Estilos específicos para asegurar que la imagen se cargue */
+/* Estilos especificos para asegurar que la imagen se cargue */
 .hero-background {
   background-attachment: fixed !important;
 }
 
-/* Ajuste para body y html en relación al hero */
+/* Ajuste para body y html en relacion al hero */
 body, html {
   min-height: 100vh !important;
   height: auto !important;
