@@ -54,6 +54,14 @@
   z-index: 20 !important; /* Mayor z-index para asegurar visibilidad */
 }
 
+/* Reglas específicas para las imágenes */
+img {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  max-width: 100% !important;
+}
+
 /* Forzar que no haya overlays o elementos que cubran el hero */
 body::before,
 body::after,
