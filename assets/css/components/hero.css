@@ -464,6 +464,7 @@
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
   animation: pulse 2s infinite;
+  transform: translateY(0);
 }
 
 .endorsement-text {
@@ -478,6 +479,9 @@
   color: transparent;
   letter-spacing: 0.02em;
   padding-bottom: 2px;
+  display: flex;
+  align-items: center;
+  height: 3.5rem;
 }
 
 .endorsement-text::after {
