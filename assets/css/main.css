@@ -761,6 +761,11 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 2rem;
   z-index: 2;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 5rem;
 }
 
 .hero-title {
@@ -775,6 +780,7 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
   color: transparent;
   animation: shimmer 8s linear infinite;
+  text-align: left;
 }
 
 .hero-subtitle {
@@ -782,6 +788,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2.5rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 400;
+  text-align: left;
 }
 
 .hero-buttons {
@@ -1023,6 +1030,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  align-self: flex-start;
 }
 
 .testimonial-icon {
@@ -1041,27 +1049,45 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Gradient button */
 .btn-gradient {
-  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
-  background-size: 200% 100%;
-  color: var(--white) !important;
-  border: none;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  padding: 1.4rem 3rem;
-  border-radius: 0.8rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #ff9900, #ffcc00, #ff9900);
+  background-size: 200% auto;
+  color: #000 !important;
   font-size: 1.8rem;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  padding: 1.2rem 2.8rem;
+  border-radius: 50px;
+  box-shadow: 0px 4px 15px rgba(255, 153, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   min-width: 200px;
-  animation: gradientMove 8s infinite;
+  border: none;
+}
+
+.btn-gradient::after {
+  content: "";
+  font-family: "Font Awesome 5 Brands";
+  content: "\f270"; /* Código icono Amazon */
+  margin-left: 15px;
+  font-size: 2rem;
+  animation: bounce 1s infinite;
 }
 
 .btn-gradient:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  transform: scale(1.05) translateY(-3px);
   background-position: right center;
+  box-shadow: 0px 8px 25px rgba(255, 153, 0, 0.6);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
 /* Animated scroll indicator */
@@ -1106,15 +1132,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Elegant animated borders for containers */
-.container, .section, .hero-content, .book-item, .testimonial-item, 
-.contact-form, .footer-section, .footer-logo {
+/* Elegant animated borders for containers - Solo para los libros individuales */
+.book-item {
   position: relative;
 }
 
-.container::before, .section::before, .hero-content::before, .book-item::before, 
-.testimonial-item::before, .contact-form::before, .footer-section::before, 
-.footer-logo::before {
+.book-item::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1134,31 +1157,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-@keyframes gradientBorder {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+/* Removiendo bordes animados de otros elementos */
+.container::before, .section::before, .hero-content::before, 
+.testimonial-item::before, .contact-form::before, .footer-section::before, 
+.footer-logo::before {
+  display: none;
 }
 
 /* Media queries for responsive design */
