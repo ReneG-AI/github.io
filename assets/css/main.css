@@ -1327,9 +1327,33 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2rem auto;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  
+  /* Efecto de libro abierto */
+  display: flex;
+  flex-direction: column;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-/* Borde degradado compartido para ambos contenedores */
+/* Pliegue central del libro para ambos contenedores */
+.testimonios-container::after,
+.book-showcase::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: linear-gradient(to right, 
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(0, 0, 0, 0.2) 100%);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Efecto de páginas del libro en los laterales */
 .testimonios-container::before,
 .book-showcase::before {
   content: '';
@@ -1343,6 +1367,65 @@ h1, h2, h3, h4, h5, h6 {
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
+}
+
+/* Efecto de páginas laterales a la izquierda */
+.testimonios-container > *:first-child::before,
+.book-showcase > *:first-child::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+  border-radius: 2rem 0 0 2rem;
+  z-index: 3;
+}
+
+/* Efecto de páginas laterales a la derecha */
+.testimonios-container > *:first-child::after,
+.book-showcase > *:first-child::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 1px,
+    rgba(0, 0, 0, 0.1) 1px,
+    rgba(0, 0, 0, 0.1) 2px
+  );
+  border-radius: 0 2rem 2rem 0;
+  z-index: 3;
+}
+
+/* Efecto de hover para los contenedores */
+.testimonios-container:hover,
+.book-showcase:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Animación de resplandor en el pliegue central al hacer hover */
+.testimonios-container:hover::after,
+.book-showcase:hover::after {
+  background: linear-gradient(to right, 
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 153, 204, 0.3) 50%,
+    rgba(0, 0, 0, 0.2) 100%);
+  box-shadow: 0 0 12px rgba(0, 153, 204, 0.5);
+  transition: all 0.3s ease;
 }
 
 /* Media queries para responsividad */
