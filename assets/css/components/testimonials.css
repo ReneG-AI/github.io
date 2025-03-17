@@ -3,15 +3,13 @@
  * Estilos para la sección de testimonios
  */
 
-/* Contenedor principal de reseñas - Glassmorphism effect */
+/* Contenedor principal de reseñas - Igualado al estilo de Libros Increíbles */
 .testimonios-container {
-  background: rgba(18, 18, 18, 0.4);
+  background-color: rgba(18, 18, 18, 0.8);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
   margin: 2rem auto;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
   z-index: 1;
@@ -32,7 +30,7 @@
   z-index: -1;
 }
 
-/* Mejoras para el título de las reseñas */
+/* Mejoras para el título de las reseñas - Igualado al de Libros Increíbles */
 .testimonios-title-container {
   text-align: center;
   position: relative;
@@ -41,28 +39,41 @@
 
 .testimonios-title-container .section-title {
   font-size: 4.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   display: inline-block;
+  color: #fff;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+/* Línea decorativa igual a la de Libros Increíbles */
+.testimonios-title-container .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
 }
 
 .testimonios-title-container .section-subtitle {
   font-size: 1.8rem;
   opacity: 0.9;
   max-width: 600px;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 2.5rem;
+  text-align: center;
 }
 
-/* Grid de testimonios */
+/* Grid de testimonios - Ajustado para ser coherente con Libros */
 .testimonios-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 3rem;
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
 
 /* Tarjeta de testimonio mejorada con efecto flotante y glassmorphism */

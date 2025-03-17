@@ -1282,13 +1282,46 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
 }
 
-/* Centrar título "Reseñas" */
+/* Centrar título "Reseñas" - Igualado al de "Libros Increíbles" */
 #testimonios .section-title {
   text-align: center;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Línea decorativa para "Reseñas" - Igualada a la de "Libros Increíbles" */
+#testimonios .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
+}
+
+/* Estilos compartidos para ambas secciones principales */
+#libros .section,
+#testimonios .section {
+  padding: 8rem 0;
+}
+
+/* Estilos para el contenedor de testimonios - Igualando con el de libros */
+.testimonios-container {
+  background-color: rgba(18, 18, 18, 0.8);
+  border-radius: 2rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
 }
 
 /* Media queries para responsividad */
