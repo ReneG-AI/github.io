@@ -67,7 +67,7 @@ a img,
   opacity: 1 !important;
   max-width: 100% !important;
   object-fit: contain !important;
-  transform: translateZ(0) !important; /* Hack para forzar aceleración hardware */
+  transform: none !important; /* Eliminamos transformaciones que puedan ocultar imágenes */
   backface-visibility: visible !important;
   -webkit-backface-visibility: visible !important;
   pointer-events: auto !important;
