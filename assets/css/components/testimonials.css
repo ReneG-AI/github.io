@@ -3,9 +3,9 @@
  * Estilos para la sección de testimonios
  */
 
-/* Contenedor principal de reseñas */
+/* Contenedor principal de reseñas - Fondo mejorado con degradado */
 .testimonios-container {
-  background-color: rgba(26, 26, 26, 0.6);
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.6) 0%, rgba(40, 40, 40, 0.4) 100%);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
@@ -43,6 +43,11 @@
   font-size: 4.2rem;
   margin-bottom: 1rem;
   display: inline-block;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
 }
 
 .testimonios-title-container .section-subtitle {
@@ -60,10 +65,10 @@
   margin-top: 3rem;
 }
 
-/* Tarjeta de testimonio mejorada */
+/* Tarjeta de testimonio mejorada con efecto flotante */
 .testimonial {
   position: relative;
-  background-color: rgba(26, 26, 26, 0.8);
+  background-color: rgba(20, 20, 20, 0.9);
   border-radius: 1.5rem;
   padding: 3rem;
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
@@ -76,8 +81,8 @@
 }
 
 .testimonial:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.35);
+  transform: translateY(-0.8rem);
+  box-shadow: 0 1.5rem 3.5rem rgba(255, 94, 219, 0.3);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -120,16 +125,37 @@
   line-height: 1;
 }
 
-/* Estrellas de valoración */
+/* Estrellas de valoración mejoradas */
 .testimonial-stars {
   display: flex;
   margin-bottom: 1.5rem;
   gap: 0.3rem;
+  align-items: center;
 }
 
 .testimonial-stars i {
   color: #FFD700;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.3));
+}
+
+/* Etiqueta de Amazon */
+.amazon-badge {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  background-color: rgba(255, 164, 28, 0.15);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #FFA41C;
+}
+
+.amazon-badge i {
+  margin-right: 0.5rem;
+  color: #FFA41C;
+  font-size: 1.4rem;
 }
 
 /* Autor del testimonio */
@@ -238,5 +264,10 @@
   
   .testimonios-title-container .section-title {
     font-size: 3.2rem;
+  }
+  
+  .amazon-badge {
+    font-size: 1.1rem;
+    padding: 0.3rem 0.6rem;
   }
 }
