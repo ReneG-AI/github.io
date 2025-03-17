@@ -790,6 +790,21 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+/* Añadimos el borde degradado al hero-content */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.7rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
 /* Título hero con mejor tipografía */
 .hero-title {
   font-size: 4.2rem;
@@ -1153,10 +1168,10 @@ h1, h2, h3, h4, h5, h6 {
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  50% { transform: translateY(-5px); }
 }
 
-/* Animated scroll indicator */
+/* Scroll indicator con círculo estático y flecha animada */
 .scroll-indicator {
   position: absolute;
   bottom: 3rem;
@@ -1177,7 +1192,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white);
   font-size: 1.8rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  animation: gradientMove 8s linear infinite;
+  /* Eliminamos la animación del círculo */
+  /* animation: gradientMove 8s linear infinite; */
   transition: all 0.3s ease;
 }
 
@@ -1188,11 +1204,6 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-circle:hover {
   transform: translateY(-5px);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
 }
 
 /* Elegant animated borders for containers - Solo para los libros individuales */
