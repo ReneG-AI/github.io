@@ -1,0 +1,114 @@
+/* Estilos para la sección de testimonios */
+.testimonios-section {
+    background-color: var(--bg-light);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.testimonio-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.testimonio-content {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.testimonio-content::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    line-height: 1;
+}
+
+.testimonio-autor {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+}
+
+.testimonio-autor-info {
+    margin-left: 15px;
+}
+
+.testimonio-autor-nombre {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+.testimonio-autor-rol {
+    font-size: 1.4rem;
+    color: var(--text-color-muted);
+}
+
+.testimonio-rating {
+    color: #FFCA28;
+    margin-top: 5px;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .testimonios-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonios-section {
+        padding: 60px 0;
+    }
+    
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonios-section {
+        padding: 40px 0;
+    }
+    
+    .testimonio-card {
+        padding: 20px;
+    }
+    
+    .testimonio-content {
+        font-size: 1.5rem;
+    }
+} 
