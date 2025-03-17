@@ -3,12 +3,36 @@
  * Estilos para la sección de libros y tarjetas de libros
  */
 
-/* Contenedor de sección de libros - Aumentando opacidad */
+/* Contenedor de sección de libros - Con nuevo degradado profesional */
 .book-showcase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 5rem;
   margin: 5rem 0;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 153, 204, 0.7) 100%);
+  border-radius: 2rem;
+  padding: 4rem;
+  position: relative;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Borde degradado para el contenedor de libros */
+.book-showcase::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2.2rem;
+  background: linear-gradient(90deg, #0099cc, #1a1a1a, #0099cc);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
 }
 
 /* Añadiendo fondo sólido para la sección de libros */

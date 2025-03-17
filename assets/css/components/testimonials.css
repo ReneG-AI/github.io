@@ -3,9 +3,9 @@
  * Estilos para la sección de testimonios
  */
 
-/* Contenedor principal de reseñas - Igualado al estilo de Libros Increíbles */
+/* Contenedor principal de reseñas - Con nuevo degradado profesional */
 .testimonios-container {
-  background-color: rgba(18, 18, 18, 0.8);
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 153, 204, 0.7) 100%);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
@@ -13,9 +13,11 @@
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
   overflow: hidden;
   z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-/* Borde degradado para el contenedor - Igualado a los libros */
+/* Borde degradado para el contenedor - Nuevo esquema de colores */
 .testimonios-container::before {
   content: '';
   position: absolute;
@@ -24,7 +26,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 2.2rem;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background: linear-gradient(90deg, #0099cc, #1a1a1a, #0099cc);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
