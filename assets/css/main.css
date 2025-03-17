@@ -1317,7 +1317,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Estilos para el contenedor de testimonios - Igualando con el de libros */
 .testimonios-container,
 .book-showcase {
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 153, 204, 0.7) 100%);
+  background: transparent;
   border-radius: 2rem;
   padding: 4rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
@@ -1325,8 +1325,6 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
   position: relative;
   margin: 2rem auto;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 
 /* Borde degradado compartido para ambos contenedores */

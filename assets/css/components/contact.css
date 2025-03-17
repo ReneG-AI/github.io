@@ -27,11 +27,32 @@
   gap: 4rem;
   margin: 0 auto;
   max-width: 1200px;
+  position: relative;
+  padding: 4rem;
+  border-radius: 2rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Borde degradado para el contenedor de contacto */
+.contact-grid::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2.2rem;
+  background: linear-gradient(90deg, #0099cc, #1a1a1a, #0099cc);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
 }
 
 /* Contenedor del formulario - Ahora a la izquierda */
 .contacto-form-container {
-  background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(0, 153, 204, 0.7) 100%);
+  background: rgba(26, 26, 26, 0.5);
   padding: 3.5rem;
   border-radius: 1.5rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
