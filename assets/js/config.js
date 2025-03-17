@@ -1,5 +1,8 @@
 // Configuración de rutas para GitHub Pages
 const config = {
+    // Flag para evitar inicializaciones múltiples
+    initialized: false,
+    
     // Detecta si estamos en GitHub Pages y obtiene el nombre del repositorio automáticamente
     baseUrl: function() {
         // Si estamos en GitHub Pages
@@ -32,25 +35,19 @@ const config = {
     
     // Función para resolver rutas de recursos
     getAssetPath: function(path) {
-        // Log para depuración
-        console.log('Procesando ruta:', path);
-        
         // Si la ruta ya es una URL completa, devuélvela como está
         if (path.match(/^(https?:)?\/\//)) {
-            console.log('URL completa detectada, se mantiene igual:', path);
             return path;
         }
         
         // Si la ruta ya comienza con el baseUrl, devuélvela como está
         if (this.baseUrl && path.startsWith(this.baseUrl)) {
-            console.log('Ruta ya tiene el prefijo correcto:', path);
             return path;
         }
         
         // Si la ruta comienza con una barra, quítala para evitar doble barra
         if (path.startsWith('/')) {
             path = path.substring(1);
-            console.log('Barra inicial removida:', path);
         }
         
         // Devuelve la ruta correcta con el prefijo baseUrl o la ruta original si no hay baseUrl
@@ -61,26 +58,33 @@ const config = {
     
     // Inicializa y corrige rutas de imágenes
     init: function() {
-        console.log('Inicializando config.js, baseUrl:', this.baseUrl);
+        // Evitar inicializaciones múltiples
+        if (this.initialized) {
+            return;
+        }
         
-        // Corregir rutas de imágenes inmediatamente para elementos que ya existen
-        this.fixAllImages();
+        console.log('Inicializando config.js, baseUrl:', this.baseUrl);
+        this.initialized = true;
+        
+        // Agregar una clase al body para usar en CSS
+        document.body.classList.add('github-pages-config');
         
         // Corregir rutas de imágenes después de que se cargue el DOM
-        document.addEventListener('DOMContentLoaded', () => {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.fixAllImages();
+                this.fixInlineBackgrounds();
+            });
+        } else {
+            // Si el DOM ya está cargado
             this.fixAllImages();
-            
-            // También corregir los fondos de CSS en línea
             this.fixInlineBackgrounds();
-        });
+        }
         
-        // También arreglar imágenes cuando la página esté completamente cargada
+        // Asegurar visibilidad cuando todo esté cargado
         window.addEventListener('load', () => {
-            this.fixAllImages();
-            this.fixInlineBackgrounds();
-            
-            // Asegurar visibilidad de imágenes
             this.ensureImagesVisible();
+            document.body.classList.add('images-loaded');
         });
     },
     
@@ -94,19 +98,31 @@ const config = {
             img.style.visibility = 'visible';
             img.style.opacity = '1';
             
-            // Verificar si la imagen se ha cargado correctamente
-            if (img.complete) {
-                console.log(`Imagen ya cargada: ${img.src}`);
-            } else {
-                img.onload = function() {
-                    console.log(`Imagen cargada con éxito: ${img.src}`);
-                };
+            // Solo configurar error handler para imágenes que aún no se han cargado
+            // y que no hayan excedido los intentos de carga
+            if (!img.complete && !img.dataset.retryAttempts) {
+                img.dataset.retryAttempts = "0";
+                
                 img.onerror = function() {
-                    console.error(`Error al cargar la imagen: ${img.src}`);
-                    // Intentar nuevamente con la URL original en caso de error
-                    if (img.dataset.originalSrc && img.src !== img.dataset.originalSrc) {
-                        console.log(`Intentando con URL original: ${img.dataset.originalSrc}`);
-                        img.src = img.dataset.originalSrc;
+                    const attempts = parseInt(img.dataset.retryAttempts || "0");
+                    
+                    // Limitar a máximo 2 intentos
+                    if (attempts < 2) {
+                        console.log(`Reintentando cargar imagen (intento ${attempts + 1}): ${img.src}`);
+                        img.dataset.retryAttempts = (attempts + 1).toString();
+                        
+                        // Intentar cargar con ruta relativa
+                        if (img.dataset.originalSrc) {
+                            console.log(`Reintentando con ruta relativa: ${img.dataset.originalSrc}`);
+                            
+                            // Generamos un timestamp para evitar caché
+                            const timestamp = new Date().getTime();
+                            img.src = img.dataset.originalSrc + '?t=' + timestamp;
+                        }
+                    } else {
+                        // Después de los intentos máximos, dejamos de intentar
+                        console.error(`No se pudo cargar la imagen después de múltiples intentos: ${img.src}`);
+                        img.onerror = null; // Eliminar el manejador para evitar más intentos
                     }
                 };
             }
@@ -118,9 +134,9 @@ const config = {
         console.log('Corrigiendo fondos en línea...');
         
         // Buscar todos los elementos con background-image en línea
-        document.querySelectorAll('[style*="background-image"]').forEach(el => {
+        document.querySelectorAll('[style*="background-image"]:not([data-processed-bg="true"])').forEach(el => {
             const style = el.getAttribute('style');
-            if (style && !el.dataset.processedBg) {
+            if (style) {
                 el.dataset.processedBg = 'true';
                 
                 // Extraer URLs de background-image
@@ -132,7 +148,6 @@ const config = {
                     // Reemplazar la URL en el estilo
                     const newStyle = style.replace(originalUrl, newUrl);
                     el.setAttribute('style', newStyle);
-                    console.log(`Fondo corregido: ${originalUrl} -> ${newUrl}`);
                 }
             }
         });
@@ -149,7 +164,6 @@ const config = {
         // Procesar cada imagen
         images.forEach(img => {
             const originalSrc = img.getAttribute('src');
-            console.log('Imagen encontrada:', originalSrc);
             
             // Solo modificar rutas relativas
             if (originalSrc && !originalSrc.match(/^(https?:)?\/\//)) {
@@ -161,7 +175,6 @@ const config = {
                 
                 // Actualizar el atributo src
                 img.src = newSrc;
-                console.log(`Imagen corregida: ${originalSrc} -> ${newSrc}`);
                 
                 // Marcar como procesada
                 img.dataset.processed = "true";

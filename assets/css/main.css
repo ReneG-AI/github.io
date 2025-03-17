@@ -962,4 +962,33 @@ h1, h2, h3, h4, h5, h6 {
 
 [data-aos].aos-animate {
   opacity: 1;
+}
+
+/* Arreglo de visibilidad para imágenes */
+.github-pages-config img {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-width: 100%;
+}
+
+/* Estilos específicos para elementos claves */
+.logo img {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: 80px;
+}
+
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-image: url('../images/Hero_Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 } 
