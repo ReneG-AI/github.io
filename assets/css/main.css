@@ -692,7 +692,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   text-align: center;
   position: relative;
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
 }
 
 .section-title::after {
@@ -701,10 +701,10 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 8rem;
-  height: 0.3rem;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  border-radius: 0.5rem;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
 }
 
 .section-subtitle {
@@ -771,16 +771,28 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title {
   font-size: 5rem;
   margin-bottom: 1.5rem;
-  color: #fff;
-  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   line-height: 1.2;
+  position: relative;
+  padding-bottom: 1.5rem;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: shimmer 8s linear infinite;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   text-align: left;
+}
+
+.hero-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
 }
 
 .hero-subtitle {
@@ -1103,21 +1115,21 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
+  width: 5rem;
+  height: 5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   background-size: 200% 200%;
   border-radius: 50%;
   color: var(--white);
-  font-size: 1.3rem;
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
-  animation: float 2s ease-in-out infinite, gradientMove 8s linear infinite;
+  font-size: 1.8rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  animation: gradientMove 8s linear infinite, float 2s ease-in-out infinite;
   transition: all 0.3s ease;
 }
 
 .scroll-circle:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
 }
 
 @keyframes float {
@@ -1202,4 +1214,27 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
   display: block;
   justify-content: center;
+}
+
+/* Restaurar línea decorativa para "Libros Increíbles" */
+#libros .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
+}
+
+/* Centrar título "Reseñas" */
+#testimonios .section-title {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 } 
