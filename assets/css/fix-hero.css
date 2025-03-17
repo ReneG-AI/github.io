@@ -18,6 +18,7 @@
   z-index: -1 !important;
   opacity: 1 !important;
   visibility: visible !important;
+  display: block !important;
 }
 
 /* Asegurar que no haya elemento after */
@@ -69,6 +70,7 @@ a img,
   transform: translateZ(0) !important; /* Hack para forzar aceleración hardware */
   backface-visibility: visible !important;
   -webkit-backface-visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 /* Forzar propiedades específicas para logo */
@@ -115,6 +117,13 @@ body, html {
   min-height: 100vh !important;
   height: auto !important;
   background-color: transparent !important;
+  position: relative !important;
+}
+
+/* Forzar visibilidad del body y evitar cualquier tipo de overflow escondido */
+body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 
 /* Forzar la carga del preloader */
@@ -122,4 +131,23 @@ body, html {
   display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
+}
+
+/* Reglas adicionales para forzar visibilidad de imágenes */
+[src*="images"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+
+/* Arreglo específico para imágenes del book showcase */
+.book-images img {
+  min-height: 300px !important;
+  object-fit: cover !important;
+  width: 100% !important;
+}
+
+/* Eliminar cualquier limitación de z-index */
+* {
+  z-index: auto;
 } 
