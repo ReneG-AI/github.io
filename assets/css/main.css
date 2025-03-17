@@ -1193,10 +1193,13 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
+/* Centrar título "Libros Increíbles" correctamente */
 #libros .section-title,
 #libros .section-subtitle {
   text-align: center;
-  max-width: 800px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  display: block;
+  justify-content: center;
 } 
