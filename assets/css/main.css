@@ -439,14 +439,14 @@ section {
   }
 }
 
-/* Back to top button */
+/* Botón Volver Arriba mejorado */
 #back-to-top {
   position: fixed;
   bottom: 3rem;
   right: 3rem;
-  width: 5rem;
-  height: 5rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
   background-size: 200% 200%;
   border-radius: 50%;
   display: flex;
@@ -459,8 +459,10 @@ section {
   opacity: 0;
   visibility: hidden;
   z-index: 999;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
   animation: gradientMove 8s linear infinite;
+  will-change: transform;
+  border: none;
 }
 
 #back-to-top.visible {
@@ -469,38 +471,22 @@ section {
 }
 
 #back-to-top:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0.8rem 2rem rgba(255, 94, 219, 0.4);
 }
 
 #back-to-top i {
   animation: bounce 2s ease-in-out infinite;
 }
 
-/* Media Queries */
+/* Media queries para responsividad del botón volver arriba */
 @media screen and (max-width: 768px) {
-  html {
-    font-size: 58%;
-  }
-
   #back-to-top {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 5rem;
+    height: 5rem;
     bottom: 2rem;
     right: 2rem;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  html {
-    font-size: 55%;
-  }
-  
-  #back-to-top {
-    width: 4rem;
-    height: 4rem;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -1303,4 +1289,50 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 58%;
+  }
+
+  #back-to-top {
+    width: 5rem;
+    height: 5rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 55%;
+  }
+  
+  #back-to-top {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.6rem;
+  }
+  
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .flip-button {
+    bottom: -15px;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
 } 
