@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test de Imágenes</title>
+  <style>
+    body { background: #121212; color: white; font-family: Arial, sans-serif; padding: 20px; }
+    img { display: block; max-width: 300px; margin: 20px 0; border: 2px solid white; }
+    h2 { color: #8C52FF; }
+  </style>
+</head>
+<body>
+  <h1>Prueba de Imágenes</h1>
+  
+  <h2>Logo</h2>
+  <img src="./assets/images/Logo.png" alt="Logo">
+  
+  <h2>Imagen de Fondo Hero</h2>
+  <img src="./assets/images/Hero_Background.png" alt="Hero Background">
+  
+  <h2>Portadas de Libros</h2>
+  <img src="./assets/images/Portada Dragones Multi.png" alt="Portada Dragones">
+  <img src="./assets/images/Contraportada Dragones Multi.png" alt="Contraportada Dragones">
+  <img src="./assets/images/Portada Animales.png" alt="Portada Animales">
+  <img src="./assets/images/Contraportada Animales.png" alt="Contraportada Animales">
+  <img src="./assets/images/Portada Mandalas Animales.png" alt="Portada Mandalas">
+  <img src="./assets/images/Contraportada Mandalas Animales.png" alt="Contraportada Mandalas">
+  
+  <h2>Favicon e Íconos</h2>
+  <img src="./assets/images/favicon.ico" alt="Favicon">
+  <img src="./assets/images/apple-touch-icon.png" alt="Apple Touch Icon">
+  <img src="./assets/images/og-image.png" alt="OG Image">
+  
+  <script>
+    // Script para verificar carga de imágenes
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      
+      images.forEach(function(img) {
+        img.onerror = function() {
+          this.style.border = '2px solid red';
+          this.style.padding = '10px';
+          this.src = '';
+          this.alt = 'Error al cargar esta imagen: ' + this.src;
+        };
+        
+        img.onload = function() {
+          this.style.border = '2px solid green';
+        };
+      });
+    });
+  </script>
+</body>
+</html> 
