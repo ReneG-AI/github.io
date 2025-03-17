@@ -6,6 +6,9 @@ const config = {
     // Nivel de verbosidad para los logs (0: solo errores, 1: importante, 2: todo)
     logLevel: 0,
     
+    // Límite máximo de intentos de recarga de imágenes
+    maxRetryAttempts: 1,
+    
     // Función de log que respeta el nivel de verbosidad
     log: function(message, level = 1) {
         if (this.logLevel >= level) {
@@ -63,7 +66,8 @@ const config = {
         
         // Mapa de correcciones para archivos con problemas de capitalización
         const caseSensitiveFiles = {
-            'assets/images/autor.jpg': 'assets/images/Autor.jpg',
+            'assets/images/autor.jpg': 'assets/images/Autor.png',
+            'assets/images/autor.png': 'assets/images/Autor.png',
             'assets/images/logo.png': 'assets/images/Logo.png',
             'assets/images/hero_background.png': 'assets/images/Hero_Background.png'
         };
@@ -258,31 +262,22 @@ const config = {
                         try {
                             const attempts = parseInt(img.dataset.retryAttempts || "0");
                             
-                            // Limitar a máximo 2 intentos para evitar bucles infinitos
-                            if (attempts < 2) {
+                            // Limitar intentos según la configuración (por defecto 1 intento)
+                            if (attempts < config.maxRetryAttempts) {
                                 config.log(`Reintentando cargar imagen (intento ${attempts + 1}): ${img.src}`, 2);
                                 img.dataset.retryAttempts = (attempts + 1).toString();
                                 
                                 // Usar un temporizador para evitar recursión inmediata
                                 setTimeout(() => {
-                                    // Estrategias alternativas de carga
-                                    if (attempts === 0) {
-                                        // Primer intento: usar la función corregirRutaImagen
-                                        const origSrc = img.dataset.originalSrc || img.src;
-                                        const correctedPath = config.corregirRutaImagen(origSrc);
-                                        config.log(`Intento 1: usando ruta corregida ${correctedPath}`, 2);
-                                        img.src = correctedPath;
-                                    } else if (attempts === 1) {
-                                        // Último intento: usar URL de respaldo si existe
-                                        if (img.dataset.fallback) {
-                                            config.log(`Intento final: usando respaldo ${img.dataset.fallback}`, 2);
-                                            img.src = img.dataset.fallback;
-                                        }
-                                    }
-                                }, 100 * attempts); // Incrementar el retraso con cada intento
+                                    // Intentamos con la ruta corregida
+                                    const origSrc = img.dataset.originalSrc || img.src;
+                                    const correctedPath = config.corregirRutaImagen(origSrc);
+                                    config.log(`Intento 1: usando ruta corregida ${correctedPath}`, 2);
+                                    img.src = correctedPath;
+                                }, 200); // Retraso para evitar sobrecarga
                             } else {
                                 // Después de los intentos máximos, dejamos de intentar
-                                config.error(`No se pudo cargar la imagen después de múltiples intentos: ${img.src}`);
+                                config.error(`No se pudo cargar la imagen después de ${config.maxRetryAttempts} intentos: ${img.src}`);
                                 img.onerror = null; // Eliminar el manejador para evitar más intentos
                                 
                                 // Intentar cargar una imagen de respaldo si existe
@@ -382,9 +377,9 @@ const config = {
                         } else if (originalSrc.toLowerCase().includes('logo.png')) {
                             this.log('Configurando respaldo para logo', 2);
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Logo.png';
-                        } else if (originalSrc.toLowerCase().includes('autor.jpg')) {
+                        } else if (originalSrc.toLowerCase().includes('autor.jpg') || originalSrc.toLowerCase().includes('autor.png')) {
                             this.log('Configurando respaldo para imagen del autor', 2);
-                            img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Autor.jpg';
+                            img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Autor.png';
                         }
                         
                         // Verificar si la imagen carga correctamente
