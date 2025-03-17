@@ -87,88 +87,46 @@
   margin-top: 3.5rem;
 }
 
-/* Testimonio individual */
-.testimonio {
-  background: rgba(25, 25, 25, 0.7);
-  padding: 3rem;
+/* Tarjeta de testimonio mejorada con efecto flotante y glassmorphism */
+.testimonial {
+  position: relative;
+  background-color: rgba(25, 25, 25, 0.7);
   border-radius: 1.5rem;
+  padding: 3rem;
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  
-  /* Efecto de página de libro */
-  transform-style: preserve-3d;
-  transform: perspective(1000px) rotateY(0deg);
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
-  backface-visibility: hidden;
 }
 
-/* Borde degradado para el testimonio */
-.testimonio::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 1.7rem;
-  background: linear-gradient(90deg, #1a1a1a, #0099cc, #1a1a1a);
-  background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
-  z-index: -1;
+.testimonial:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 153, 204, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Efecto de líneas de página para los testimonios */
-.testimonio::after {
-  content: '';
+/* Efecto de brillo */
+.testimonial-glow {
   position: absolute;
-  left: 1.5rem;
-  right: 1.5rem;
-  top: 0;
-  bottom: 0;
-  z-index: -1;
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 2.8rem,
-    rgba(255, 255, 255, 0.03) 2.8rem,
-    rgba(255, 255, 255, 0.03) 2.9rem
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 70%
   );
-  background-position: 0 0.4rem;
+  pointer-events: none;
 }
 
-/* Efecto de doblada en la esquina */
-.testimonio-corner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 3rem;
-  height: 3rem;
-  background: linear-gradient(135deg, transparent 50%, rgba(0, 153, 204, 0.2) 50%);
-  border-radius: 0 0 0 0.8rem;
-  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 2;
-}
-
-/* Efectos de hover para los testimonios */
-.testimonio:hover {
-  transform: perspective(1000px) rotateY(3deg);
-  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4), 
-              -10px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Efectos alternados para parecer páginas opuestas */
-.testimonio:nth-child(even):hover {
-  transform: perspective(1000px) rotateY(-3deg);
-  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.4),
-              10px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilos para las citas */
-.testimonio-texto {
+/* Texto del testimonio */
+.testimonial p {
   font-size: 1.6rem;
   line-height: 1.7;
   color: white;
@@ -180,7 +138,7 @@
 }
 
 /* Comillas para el testimonio */
-.testimonio-texto::before {
+.testimonial p::before {
   content: "\201C"; /* Comilla de apertura */
   font-size: 5rem;
   font-family: Georgia, serif;
