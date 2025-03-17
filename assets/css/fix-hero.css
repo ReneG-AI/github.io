@@ -54,12 +54,38 @@
   z-index: 20 !important; /* Mayor z-index para asegurar visibilidad */
 }
 
-/* Reglas específicas para las imágenes */
-img {
+/* Reglas específicas para las imágenes - Fortalecer los estilos para asegurar visibilidad */
+img, 
+a img,
+.logo img,
+.book-cover, 
+.book-back, 
+.footer-logo img {
   display: inline-block !important;
   visibility: visible !important;
   opacity: 1 !important;
   max-width: 100% !important;
+  object-fit: contain !important;
+  transform: translateZ(0) !important; /* Hack para forzar aceleración hardware */
+  backface-visibility: visible !important;
+  -webkit-backface-visibility: visible !important;
+}
+
+/* Forzar propiedades específicas para logo */
+.logo img {
+  max-height: 12rem !important;
+  height: auto !important;
+  width: auto !important;
+}
+
+/* Forzar propiedades específicas para portadas */
+.book-cover,
+.book-back {
+  max-height: none !important;
+  height: auto !important;
+  min-height: 150px !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Forzar que no haya overlays o elementos que cubran el hero */
@@ -89,4 +115,11 @@ body, html {
   min-height: 100vh !important;
   height: auto !important;
   background-color: transparent !important;
+}
+
+/* Forzar la carga del preloader */
+.preloader {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 } 
