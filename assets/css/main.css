@@ -48,10 +48,51 @@ body {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  line-height: 1.5;
   color: var(--text-color);
-  background-color: var(--body-bg);
+  background-color: var(--bg-color);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+}
+
+/* Fix para asegurar visibilidad de imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Clase aplicada después de que las imágenes se han cargado */
+body.images-loaded img {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Logo específicamente */
+.logo img {
+  display: block;
+  max-height: 50px;
+  width: auto;
+}
+
+/* Imágenes de libros */
+.book-cover, .book-back {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Imagen del footer */
+.footer-logo img {
+  display: block;
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto 15px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -108,12 +149,6 @@ a {
 
 a:hover {
   color: var(--primary-color-dark);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Utilitarios */

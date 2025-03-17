@@ -7,7 +7,8 @@ const config = {
             // Solución específica para el repositorio reneg-ai/github.io
             if (location.hostname === 'reneg-ai.github.io') {
                 console.log('Detectado dominio reneg-ai.github.io');
-                return '/github.io';
+                // Corrección: usar string vacío si estamos en la raíz del repositorio
+                return '';
             }
             
             // Para otros casos, obtiene el pathname completo
@@ -52,7 +53,7 @@ const config = {
             console.log('Barra inicial removida:', path);
         }
         
-        // Devuelve la ruta correcta con el prefijo baseUrl
+        // Devuelve la ruta correcta con el prefijo baseUrl o la ruta original si no hay baseUrl
         const finalPath = this.baseUrl ? `${this.baseUrl}/${path}` : path;
         console.log('Ruta final:', finalPath);
         return finalPath;
@@ -62,14 +63,78 @@ const config = {
     init: function() {
         console.log('Inicializando config.js, baseUrl:', this.baseUrl);
         
+        // Corregir rutas de imágenes inmediatamente para elementos que ya existen
+        this.fixAllImages();
+        
         // Corregir rutas de imágenes después de que se cargue el DOM
         document.addEventListener('DOMContentLoaded', () => {
             this.fixAllImages();
+            
+            // También corregir los fondos de CSS en línea
+            this.fixInlineBackgrounds();
         });
         
         // También arreglar imágenes cuando la página esté completamente cargada
         window.addEventListener('load', () => {
             this.fixAllImages();
+            this.fixInlineBackgrounds();
+            
+            // Asegurar visibilidad de imágenes
+            this.ensureImagesVisible();
+        });
+    },
+    
+    // Asegurar que las imágenes sean visibles
+    ensureImagesVisible: function() {
+        console.log('Asegurando visibilidad de imágenes...');
+        
+        document.querySelectorAll('img').forEach(img => {
+            // Asegurar que la imagen sea visible
+            img.style.display = 'inline-block';
+            img.style.visibility = 'visible';
+            img.style.opacity = '1';
+            
+            // Verificar si la imagen se ha cargado correctamente
+            if (img.complete) {
+                console.log(`Imagen ya cargada: ${img.src}`);
+            } else {
+                img.onload = function() {
+                    console.log(`Imagen cargada con éxito: ${img.src}`);
+                };
+                img.onerror = function() {
+                    console.error(`Error al cargar la imagen: ${img.src}`);
+                    // Intentar nuevamente con la URL original en caso de error
+                    if (img.dataset.originalSrc && img.src !== img.dataset.originalSrc) {
+                        console.log(`Intentando con URL original: ${img.dataset.originalSrc}`);
+                        img.src = img.dataset.originalSrc;
+                    }
+                };
+            }
+        });
+    },
+    
+    // Corregir fondos de CSS en línea
+    fixInlineBackgrounds: function() {
+        console.log('Corrigiendo fondos en línea...');
+        
+        // Buscar todos los elementos con background-image en línea
+        document.querySelectorAll('[style*="background-image"]').forEach(el => {
+            const style = el.getAttribute('style');
+            if (style && !el.dataset.processedBg) {
+                el.dataset.processedBg = 'true';
+                
+                // Extraer URLs de background-image
+                const urlMatch = style.match(/url\(['"]?([^'")]+)['"]?\)/);
+                if (urlMatch && urlMatch[1] && !urlMatch[1].match(/^(https?:)?\/\//)) {
+                    const originalUrl = urlMatch[1];
+                    const newUrl = this.getAssetPath(originalUrl);
+                    
+                    // Reemplazar la URL en el estilo
+                    const newStyle = style.replace(originalUrl, newUrl);
+                    el.setAttribute('style', newStyle);
+                    console.log(`Fondo corregido: ${originalUrl} -> ${newUrl}`);
+                }
+            }
         });
     },
     
