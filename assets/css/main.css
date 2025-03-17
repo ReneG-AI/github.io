@@ -1046,12 +1046,15 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white) !important;
   border: none;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  padding: 1.2rem 2.5rem;
+  padding: 1.4rem 3rem;
   border-radius: 0.8rem;
   font-weight: 600;
+  font-size: 1.8rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  min-width: 200px;
   animation: gradientMove 8s infinite;
 }
 
@@ -1074,15 +1077,15 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
   background-size: 200% 200%;
   border-radius: 50%;
   color: var(--white);
-  font-size: 1.8rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  animation: float 3s ease-in-out infinite, gradientMove 8s linear infinite;
+  font-size: 1.3rem;
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+  animation: float 2s ease-in-out infinite, gradientMove 8s linear infinite;
   transition: all 0.3s ease;
 }
 
@@ -1096,7 +1099,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   100% {
     transform: translateY(0);
@@ -1180,4 +1183,17 @@ h1, h2, h3, h4, h5, h6 {
     height: 4rem;
     font-size: 1.5rem;
   }
+}
+
+/* Remove colored line for Libros Increíbles section */
+#libros .section-title::after {
+  display: none;
+}
+
+#libros .section-title,
+#libros .section-subtitle {
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 } 

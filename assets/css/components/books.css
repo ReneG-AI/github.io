@@ -51,31 +51,22 @@
 /* Contenedor de imágenes - Estructura base */
 .book-images {
   position: relative;
-  width: 100%;
-  height: 42rem;
-  perspective: 1200px;
   margin-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
+  transition: all 0.3s ease;
 }
 
 /* Imágenes de portada y contraportada - Corrección profunda */
 .book-cover,
 .book-back {
-  position: absolute;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 210px; /* Reduced by 30% from 300px */
+  margin: 0 auto;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  object-fit: contain;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: scale(1.5);
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
 /* Portada siempre visible al frente por defecto - 300% más grande */
@@ -91,22 +82,23 @@
 
 /* Efecto flip - Contenedor ajustado */
 .book-flipper {
-  width: 80%;
-  height: 90%;
   position: relative;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+  width: 70%; /* Reduced by 30% from 100% */
   margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  cursor: pointer;
 }
 
 .book-flipper.flipped {
   transform: rotateY(180deg);
 }
 
-/* Elimina cualquier efecto hover */
-.book-flipper:hover .book-cover,
+/* Magnifying effect on hover */
+.book-flipper:hover .book-cover, 
 .book-flipper:hover .book-back {
-  transform: none;
+  transform: scale(1.2); /* 20% zoom effect */
+  z-index: 10;
 }
 
 /* HACK para asegurar que la contraportada esté oculta en navegadores problemáticos */
@@ -120,27 +112,26 @@
 
 /* Botón para voltear el libro */
 .flip-button {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background: linear-gradient(135deg, #8C52FF, #FF5EDB);
   color: white;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
+  padding: 0.8rem 1.6rem; /* Reduced by 20% */
+  border-radius: 5rem;
   cursor: pointer;
-  font-size: 1.6rem;
-  z-index: 2;
+  font-size: 1.2rem; /* Reduced by 20% */
+  margin-top: 1.5rem; /* Increased to move button down */
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  margin: 1.5rem auto 0;
 }
 
-.flip-button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-  transform: translateX(-50%) translateY(-3px);
+.flip-button i {
+  margin-right: 0.5rem;
+  font-size: 1rem; /* Reduced by 20% */
 }
 
 /* Contenido de información del libro */
@@ -282,47 +273,54 @@
 /* Estilo uniforme para todos los botones basado en el de Amazon */
 .book-actions {
   display: flex;
-  gap: 1.5rem;
-  margin-top: auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
 }
 
-.amazon-btn,
-.interior-btn,
-.btn-primary,
-.btn-accent,
-.btn-secondary,
-.btn-enviar {
+/* Estilo para botones de Amazon */
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #FF9900, #FFC107);
-  color: #000 !important;
-  font-size: 1.6rem;
-  font-weight: 600;
-  padding: 1.2rem 2rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+  gap: 0.8rem;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
 }
 
-.amazon-btn:hover,
-.interior-btn:hover,
-.btn-primary:hover,
-.btn-accent:hover,
-.btn-secondary:hover,
-.btn-enviar:hover {
-  background: linear-gradient(135deg, #FFC107, #FF9900);
+.amazon-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); /* More subtle shadow */
+  filter: brightness(1.05); /* Subtle brightness increase instead of glow */
 }
 
-.amazon-btn i,
-.interior-btn i {
-  margin-right: 1rem;
-  font-size: 1.6rem;
+/* Estilo para botones de Ver Interior */
+.interior-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.interior-btn:hover {
+  background: rgba(255, 255, 255, 0.15); /* Subtle background change */
+  transform: translateY(-3px);
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1); /* More subtle shadow */
 }
 
 /* ELIMINAR COMPLETAMENTE cualquier clase antigua de ribbons y badge-corner */

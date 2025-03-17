@@ -30,19 +30,21 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
+  padding-left: 1rem;
 }
 
 /* Logo */
 .logo {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-decoration: none;
   color: var(--white);
   gap: 1rem;
   transition: all 0.3s ease;
   position: relative;
   z-index: 5;
+  margin-right: auto;
 }
 
 .logo:hover {
@@ -82,6 +84,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-list {
@@ -345,4 +348,17 @@
   background: linear-gradient(135deg, #FFC107, #FF9900);
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+}
+
+/* Add colored line across entire header */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
 } 
