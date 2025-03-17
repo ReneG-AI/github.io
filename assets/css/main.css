@@ -1368,4 +1368,128 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.7rem 1.4rem;
     font-size: 1.1rem;
   }
+}
+
+/* Centrar título "Libros Increíbles" correctamente */
+#libros .section-title,
+#libros .section-subtitle,
+#testimonios .section-title,
+#testimonios .section-subtitle {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  justify-content: center;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Restaurar línea decorativa para "Libros Increíbles" y "Reseñas" */
+#libros .section-title::after,
+#testimonios .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
+}
+
+/* Estilo unificado para ambos subtítulos */
+#libros .section-subtitle,
+#testimonios .section-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 3rem;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilos compartidos para ambas secciones principales */
+#libros .section,
+#testimonios .section {
+  padding: 8rem 0;
+}
+
+/* Estilos para el contenedor de testimonios - Igualando con el de libros */
+.testimonios-container,
+.book-showcase {
+  background-color: rgba(18, 18, 18, 0.8);
+  border-radius: 2rem;
+  padding: 4rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+  margin: 2rem auto;
+}
+
+/* Borde degradado compartido para ambos contenedores */
+.testimonios-container::before,
+.book-showcase::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2.2rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 58%;
+  }
+
+  #back-to-top {
+    width: 5rem;
+    height: 5rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.5rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 55%;
+  }
+  
+  #back-to-top {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.6rem;
+  }
+  
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .flip-button {
+    bottom: -15px;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
 } 
