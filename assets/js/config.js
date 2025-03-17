@@ -3,45 +3,57 @@ const config = {
     // Flag para evitar inicializaciones múltiples
     initialized: false,
     
+    // Nivel de verbosidad para los logs (0: solo errores, 1: importante, 2: todo)
+    logLevel: 0,
+    
+    // Función de log que respeta el nivel de verbosidad
+    log: function(message, level = 1) {
+        if (this.logLevel >= level) {
+            console.log(message);
+        }
+    },
+    
+    // Función de log para errores (siempre se muestra)
+    error: function(message) {
+        console.error(message);
+    },
+    
     // Detecta si estamos en GitHub Pages y obtiene el nombre del repositorio automáticamente
     baseUrl: function() {
         // Si estamos en GitHub Pages
         if (location.hostname.includes('github.io')) {
-            console.log('Detectado ambiente GitHub Pages en: ' + location.hostname);
+            this.log('Detectado ambiente GitHub Pages en: ' + location.hostname, 1);
             
             // Solución específica para el repositorio reneg-ai/github.io
             if (location.hostname === 'reneg-ai.github.io') {
-                console.log('Repositorio principal detectado: reneg-ai.github.io');
+                this.log('Repositorio principal detectado: reneg-ai.github.io', 1);
                 
-                // Debug: mostrar la ruta completa para diagnóstico
-                console.log('Ruta completa: ' + location.pathname);
-                
-                // ✅ CORRECCIÓN: Para reneg-ai.github.io, siempre usar string vacío
+                // Para reneg-ai.github.io, siempre usar string vacío
                 // para evitar la duplicación del prefijo '/github.io'
                 return '';
             }
             
             // Para otros casos, obtiene el pathname completo
             const pathSegments = location.pathname.split('/').filter(segment => segment);
-            console.log('Segmentos de ruta encontrados:', pathSegments);
+            this.log('Segmentos de ruta encontrados: ' + pathSegments.join('/'), 2);
             
             // Si hay al menos un segmento en la ruta, ese es nuestro repositorio
             if (pathSegments.length > 0) {
-                console.log('Repositorio detectado: ' + pathSegments[0]);
+                this.log('Repositorio detectado: ' + pathSegments[0], 1);
                 return '/' + pathSegments[0];
             }
             
             // Si no hay segmentos, podría ser el repositorio principal username.github.io
-            console.log('Repositorio principal sin segmentos detectado');
+            this.log('Repositorio principal sin segmentos detectado', 2);
             return '';
         }
         
         // En desarrollo local, no necesitamos prefijo
-        console.log('Desarrollo local detectado en: ' + location.hostname);
+        this.log('Desarrollo local detectado en: ' + location.hostname, 2);
         return '';
     }(),
     
-    // ✅ NUEVA FUNCIÓN: Corregir rutas para imágenes basada en origen absoluto
+    // Corregir rutas para imágenes basada en origen absoluto
     corregirRutaImagen: function(src) {
         if (!src) return '';
         if (src.startsWith('http')) return src;
@@ -59,13 +71,13 @@ const config = {
         // Corregir nombre de archivo si es necesario
         for (const [incorrectPath, correctPath] of Object.entries(caseSensitiveFiles)) {
             if (lowerSrc.includes(incorrectPath.toLowerCase())) {
-                console.log(`Corrigiendo capitalización: ${src} -> ${src.replace(new RegExp(incorrectPath, 'i'), correctPath)}`);
+                this.log(`Corrigiendo capitalización: ${src} -> ${src.replace(new RegExp(incorrectPath, 'i'), correctPath)}`, 2);
                 src = src.replace(new RegExp(incorrectPath, 'i'), correctPath);
                 break;
             }
         }
         
-        // ✅ CORRECCIÓN: Usar origin (protocolo + hostname) como base para rutas absolutas
+        // Usar origin (protocolo + hostname) como base para rutas absolutas
         const baseUrl = window.location.origin;
         return `${baseUrl}/${src.replace(/^\/+/, '')}`;
     },
@@ -74,7 +86,7 @@ const config = {
     getAssetPath: function(path) {
         // Verificar que el path sea válido
         if (!path) {
-            console.warn('Se recibió un path vacío o nulo');
+            this.error('Se recibió un path vacío o nulo');
             return '';
         }
         
@@ -93,11 +105,11 @@ const config = {
             path = path.substring(1);
         }
         
-        // ✅ CORRECCIÓN: Asegurarnos de no duplicar '/github.io' en las rutas
+        // Asegurarnos de no duplicar '/github.io' en las rutas
         const finalPath = this.baseUrl ? `${this.baseUrl}/${path}` : path;
-        console.log('Ruta transformada: ' + path + ' -> ' + finalPath);
+        this.log('Ruta transformada: ' + path + ' -> ' + finalPath, 2);
         
-        // ✅ CORRECCIÓN: Si estamos en reneg-ai.github.io, asegurarnos de eliminar prefijos duplicados
+        // Si estamos en reneg-ai.github.io, asegurarnos de eliminar prefijos duplicados
         if (location.hostname === 'reneg-ai.github.io') {
             return finalPath.replace('/github.io/', '/');
         }
@@ -105,16 +117,16 @@ const config = {
         return finalPath;
     },
     
-    // ✅ NUEVA FUNCIÓN: Verificar y corregir el fondo del héroe
+    // Verificar y corregir el fondo del héroe
     verificarFondoHeroe: function() {
-        console.log('Verificando fondo del héroe...');
+        this.log('Verificando fondo del héroe...', 2);
         
         // Buscar elementos que podrían ser el fondo del héroe
         const heroBackground = document.querySelector('.hero-background');
         const heroBackgroundImg = document.querySelector('.hero-bg-img');
         
         if (heroBackground) {
-            // ✅ CORRECCIÓN: Establecer el fondo directamente usando CSS si existe el elemento
+            // Establecer el fondo directamente usando CSS si existe el elemento
             heroBackground.style.display = 'block';
             heroBackground.style.visibility = 'visible';
             heroBackground.style.opacity = '1';
@@ -134,14 +146,14 @@ const config = {
                     fetch(originalSrc)
                         .then(response => {
                             if (!response.ok) {
-                                console.log(`Imagen del héroe no encontrada, usando respaldo: ${fallbackSrc}`);
+                                this.log(`Imagen del héroe no encontrada, usando respaldo: ${fallbackSrc}`, 1);
                                 if (fallbackSrc) {
                                     heroBackgroundImg.src = fallbackSrc;
                                 }
                             }
                         })
                         .catch(() => {
-                            console.log(`Error cargando imagen del héroe, usando respaldo: ${fallbackSrc}`);
+                            this.log(`Error cargando imagen del héroe, usando respaldo: ${fallbackSrc}`, 1);
                             if (fallbackSrc) {
                                 heroBackgroundImg.src = fallbackSrc;
                             }
@@ -149,7 +161,7 @@ const config = {
                 }
             } else {
                 // Si no hay imagen, intentar establecer el fondo como estilo
-                console.log('Configurando fondo del héroe como background-image...');
+                this.log('Configurando fondo del héroe como background-image...', 2);
                 heroBackground.style.backgroundImage = 'url(assets/images/Hero_Background.png)';
             }
         }
@@ -162,16 +174,16 @@ const config = {
             return;
         }
         
-        console.log('Inicializando config.js, baseUrl:', this.baseUrl);
+        this.log('Inicializando config.js, baseUrl: ' + this.baseUrl, 1);
         this.initialized = true;
         
-        // ✅ CORRECCIÓN: Envolver toda la inicialización en DOMContentLoaded para resolver
+        // Envolver toda la inicialización en DOMContentLoaded para resolver
         // el problema de document.body no disponible
         const self = this;
         
         document.addEventListener('DOMContentLoaded', function() {
             try {
-                console.log('DOM completamente cargado, inicializando configuración...');
+                self.log('DOM completamente cargado, inicializando configuración...', 1);
                 
                 // Ahora document.body siempre estará disponible
                 document.body.classList.add('github-pages-config');
@@ -180,39 +192,43 @@ const config = {
                 // Ejecutar todas las correcciones
                 self.fixAllImages();
                 self.fixInlineBackgrounds();
-                self.debugImagePaths();
                 self.verificarFondoHeroe();
                 
                 // Asegurar que las imágenes sean visibles
                 self.ensureImagesVisible();
                 document.body.classList.add('images-loaded');
                 
-                console.log('Inicialización completada con éxito.');
+                // Solo mostrar diagnóstico en modo desarrollo o con alto nivel de verbosidad
+                if (self.logLevel > 1 && !location.hostname.includes('github.io')) {
+                    self.debugImagePaths();
+                }
+                
+                self.log('Inicialización completada con éxito.', 1);
             } catch (error) {
-                console.error('Error en la inicialización de config.js:', error);
+                self.error('Error en la inicialización de config.js: ' + error);
             }
         });
     },
     
     // Función para depurar rutas de imágenes
     debugImagePaths: function() {
-        console.log('=== DIAGNÓSTICO DE RUTAS DE IMÁGENES ===');
+        this.log('=== DIAGNÓSTICO DE RUTAS DE IMÁGENES ===', 2);
         
         document.querySelectorAll('img').forEach((img, index) => {
-            console.log(`Imagen #${index + 1}:`);
-            console.log(`- src actual: ${img.src}`);
-            console.log(`- src original: ${img.dataset.originalSrc || 'N/A'}`);
-            console.log(`- completa: ${img.complete ? 'Sí' : 'No'}`);
-            console.log(`- naturalWidth: ${img.naturalWidth}`);
-            console.log(`- visible: ${window.getComputedStyle(img).display !== 'none' ? 'Sí' : 'No'}`);
+            this.log(`Imagen #${index + 1}:`, 2);
+            this.log(`- src actual: ${img.src}`, 2);
+            this.log(`- src original: ${img.dataset.originalSrc || 'N/A'}`, 2);
+            this.log(`- completa: ${img.complete ? 'Sí' : 'No'}`, 2);
+            this.log(`- naturalWidth: ${img.naturalWidth}`, 2);
+            this.log(`- visible: ${window.getComputedStyle(img).display !== 'none' ? 'Sí' : 'No'}`, 2);
         });
         
-        console.log('=== FIN DIAGNÓSTICO ===');
+        this.log('=== FIN DIAGNÓSTICO ===', 2);
     },
     
     // Asegurar que las imágenes sean visibles
     ensureImagesVisible: function() {
-        console.log('Asegurando visibilidad de imágenes...');
+        this.log('Asegurando visibilidad de imágenes...', 2);
         
         document.querySelectorAll('img').forEach(img => {
             try {
@@ -244,7 +260,7 @@ const config = {
                             
                             // Limitar a máximo 2 intentos para evitar bucles infinitos
                             if (attempts < 2) {
-                                console.log(`Reintentando cargar imagen (intento ${attempts + 1}): ${img.src}`);
+                                config.log(`Reintentando cargar imagen (intento ${attempts + 1}): ${img.src}`, 2);
                                 img.dataset.retryAttempts = (attempts + 1).toString();
                                 
                                 // Usar un temporizador para evitar recursión inmediata
@@ -254,29 +270,29 @@ const config = {
                                         // Primer intento: usar la función corregirRutaImagen
                                         const origSrc = img.dataset.originalSrc || img.src;
                                         const correctedPath = config.corregirRutaImagen(origSrc);
-                                        console.log(`Intento 1: usando ruta corregida ${correctedPath}`);
+                                        config.log(`Intento 1: usando ruta corregida ${correctedPath}`, 2);
                                         img.src = correctedPath;
                                     } else if (attempts === 1) {
                                         // Último intento: usar URL de respaldo si existe
                                         if (img.dataset.fallback) {
-                                            console.log(`Intento final: usando respaldo ${img.dataset.fallback}`);
+                                            config.log(`Intento final: usando respaldo ${img.dataset.fallback}`, 2);
                                             img.src = img.dataset.fallback;
                                         }
                                     }
                                 }, 100 * attempts); // Incrementar el retraso con cada intento
                             } else {
                                 // Después de los intentos máximos, dejamos de intentar
-                                console.error(`No se pudo cargar la imagen después de múltiples intentos: ${img.src}`);
+                                config.error(`No se pudo cargar la imagen después de múltiples intentos: ${img.src}`);
                                 img.onerror = null; // Eliminar el manejador para evitar más intentos
                                 
                                 // Intentar cargar una imagen de respaldo si existe
                                 if (img.dataset.fallback && !img.src.includes(img.dataset.fallback)) {
-                                    console.log(`Cargando imagen de respaldo final: ${img.dataset.fallback}`);
+                                    config.log(`Cargando imagen de respaldo final: ${img.dataset.fallback}`, 1);
                                     img.src = img.dataset.fallback;
                                 }
                             }
                         } catch (error) {
-                            console.error('Error en el manejo de error de imagen:', error);
+                            config.error('Error en el manejo de error de imagen: ' + error);
                             img.onerror = null; // Prevenir futuros errores
                         }
                         
@@ -285,14 +301,14 @@ const config = {
                     };
                 }
             } catch (error) {
-                console.error('Error al procesar imagen:', error);
+                this.error('Error al procesar imagen: ' + error);
             }
         });
     },
     
     // Corregir fondos de CSS en línea
     fixInlineBackgrounds: function() {
-        console.log('Corrigiendo fondos en línea...');
+        this.log('Corrigiendo fondos en línea...', 2);
         
         try {
             // Buscar todos los elementos con background-image en línea
@@ -306,7 +322,7 @@ const config = {
                         const urlMatch = style.match(/url\(['"]?([^'")]+)['"]?\)/);
                         if (urlMatch && urlMatch[1] && !urlMatch[1].match(/^(https?:)?\/\//)) {
                             const originalUrl = urlMatch[1];
-                            // ✅ CORRECCIÓN: Usar corregirRutaImagen para fondos
+                            // Usar corregirRutaImagen para fondos
                             const newUrl = this.corregirRutaImagen(originalUrl);
                             
                             // Guardar URL original para diagnóstico
@@ -315,26 +331,26 @@ const config = {
                             // Reemplazar la URL en el estilo
                             const newStyle = style.replace(originalUrl, newUrl);
                             el.setAttribute('style', newStyle);
-                            console.log(`Fondo corregido: ${originalUrl} -> ${newUrl}`);
+                            this.log(`Fondo corregido: ${originalUrl} -> ${newUrl}`, 2);
                         }
                     }
                 } catch (error) {
-                    console.error('Error al procesar background-image:', error);
+                    this.error('Error al procesar background-image: ' + error);
                 }
             });
         } catch (error) {
-            console.error('Error en fixInlineBackgrounds:', error);
+            this.error('Error en fixInlineBackgrounds: ' + error);
         }
     },
     
     // Corrige todas las rutas de imágenes en la página
     fixAllImages: function() {
-        console.log('Corrigiendo rutas de imágenes...');
+        this.log('Corrigiendo rutas de imágenes...', 2);
         
         try {
             // Seleccionar todas las imágenes que no han sido procesadas
             const images = document.querySelectorAll('img:not([data-processed="true"])');
-            console.log(`Encontradas ${images.length} imágenes para procesar`);
+            this.log(`Encontradas ${images.length} imágenes para procesar`, 2);
             
             // Procesar cada imagen
             images.forEach((img, index) => {
@@ -342,64 +358,70 @@ const config = {
                     const originalSrc = img.getAttribute('src');
                     
                     // Algunos logs de diagnóstico
-                    console.log(`Procesando imagen #${index + 1}: ${originalSrc}`);
+                    this.log(`Procesando imagen #${index + 1}: ${originalSrc}`, 2);
                     
                     // Solo modificar rutas relativas
                     if (originalSrc && !originalSrc.match(/^(https?:)?\/\//)) {
                         // Guardar la ruta original para referencia
                         img.dataset.originalSrc = originalSrc;
                         
-                        // ✅ CORRECCIÓN: Aplicar la nueva función corregirRutaImagen
+                        // Aplicar la función corregirRutaImagen
                         const newSrc = this.corregirRutaImagen(originalSrc);
                         
                         // Actualizar el atributo src
                         img.src = newSrc;
-                        console.log(`Ruta de imagen corregida: ${originalSrc} -> ${newSrc}`);
+                        this.log(`Ruta de imagen corregida: ${originalSrc} -> ${newSrc}`, 2);
                         
                         // Marcar como procesada
                         img.dataset.processed = "true";
                         
                         // Configurar una imagen de respaldo para casos extremos
                         if (originalSrc.toLowerCase().includes('hero_background.png')) {
-                            console.log('Configurando respaldo para imagen de héroe');
+                            this.log('Configurando respaldo para imagen de héroe', 2);
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Hero_Background.png';
                         } else if (originalSrc.toLowerCase().includes('logo.png')) {
-                            console.log('Configurando respaldo para logo');
+                            this.log('Configurando respaldo para logo', 2);
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Logo.png';
                         } else if (originalSrc.toLowerCase().includes('autor.jpg')) {
-                            console.log('Configurando respaldo para imagen del autor');
+                            this.log('Configurando respaldo para imagen del autor', 2);
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Autor.jpg';
                         }
                         
                         // Verificar si la imagen carga correctamente
                         img.addEventListener('error', () => {
                             if (img.dataset.fallback && !img.src.includes('githubusercontent.com')) {
-                                console.log(`Error cargando imagen, usando respaldo: ${img.dataset.fallback}`);
+                                this.log(`Error cargando imagen, usando respaldo: ${img.dataset.fallback}`, 1);
                                 img.src = img.dataset.fallback;
                             }
                         });
                     }
                 } catch (error) {
-                    console.error(`Error al procesar imagen #${index + 1}:`, error);
+                    this.error(`Error al procesar imagen #${index + 1}: ${error}`);
                 }
             });
             
-            console.log('Corrección de imágenes completada');
+            this.log('Corrección de imágenes completada', 1);
         } catch (error) {
-            console.error('Error en fixAllImages:', error);
+            this.error('Error en fixAllImages: ' + error);
         }
     }
 };
 
-// ✅ CORRECCIÓN: Inicializar la configuración de forma más segura
+// Inicializar la configuración de forma más segura
 try {
+    // Si se está ejecutando en GitHub Pages, establecer el nivel de log más bajo
+    if (location.hostname.includes('github.io')) {
+        config.logLevel = 0; // Solo errores en producción
+    } else {
+        config.logLevel = 1; // Logs importantes en desarrollo
+    }
+
     // Inicialización inmediata, pero todo el trabajo real 
     // se realizará cuando se cargue el DOM
     config.init();
     
     // Respaldo adicional: si por alguna razón el script se carga tarde
     if (document.readyState === "complete" || document.readyState === "interactive") {
-        console.log("Documento ya cargado, iniciando verificación de fondo del héroe...");
         setTimeout(function() {
             config.verificarFondoHeroe();
         }, 500);
