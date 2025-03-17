@@ -3,19 +3,21 @@
  * Estilos para la sección de libros y tarjetas de libros
  */
 
-/* Contenedor de sección de libros - Con diseño minimalista */
+/* Contenedor de sección de libros - Con diseño elegante y moderno */
 .book-showcase {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 5rem;
   margin: 5rem 0;
-  background: transparent;
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
   z-index: 1;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 /* Borde degradado para el contenedor de libros */
@@ -35,7 +37,7 @@
 
 /* Añadiendo fondo sólido para la sección de libros */
 #libros.section {
-  background-color: rgba(18, 18, 18, 0.97); /* Aumentando opacidad casi al máximo */
+  background-color: rgba(18, 18, 18, 0.97);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
@@ -52,22 +54,26 @@
   font-size: 4rem;
 }
 
-/* Tarjeta de libro */
+/* Book items con estilo mejorado */
 .book-item {
-  background-color: rgba(26, 26, 26, 0.95); /* Aumentando a casi opacidad máxima */
-  border-radius: 2rem;
+  background: rgba(25, 25, 25, 0.7);
+  border-radius: 1.5rem;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .book-item:hover {
-  transform: translateY(-1rem);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  transform: translateY(-0.8rem);
+  box-shadow: 0 1.5rem 3rem rgba(0, 153, 204, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Contenedor de imágenes - Estructura base */

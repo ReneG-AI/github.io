@@ -3,16 +3,18 @@
  * Estilos para la sección de testimonios
  */
 
-/* Contenedor principal de reseñas - Con diseño minimalista */
+/* Contenedor principal de reseñas - Con diseño elegante y moderno */
 .testimonios-container {
-  background: transparent;
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
   border-radius: 2rem;
   padding: 4rem;
   position: relative;
   margin: 2rem auto;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
   z-index: 1;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 /* Borde degradado para el contenedor - Nuevo esquema de colores */
@@ -88,12 +90,12 @@
 /* Tarjeta de testimonio mejorada con efecto flotante y glassmorphism */
 .testimonial {
   position: relative;
-  background-color: rgba(26, 26, 26, 0.8);
+  background-color: rgba(25, 25, 25, 0.7);
   border-radius: 1.5rem;
   padding: 3rem;
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -104,7 +106,7 @@
 
 .testimonial:hover {
   transform: translateY(-0.8rem);
-  box-shadow: 0 1.5rem 3.5rem rgba(0, 153, 204, 0.3);
+  box-shadow: 0 1.5rem 3.5rem rgba(0, 153, 204, 0.2);
   border-color: rgba(255, 255, 255, 0.15);
 }
 
