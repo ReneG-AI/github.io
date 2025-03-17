@@ -10,8 +10,8 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  padding-left: 5%;
-  z-index: 1;
+  padding-left: 10%;
+  z-index: 10;
   text-align: left;
 }
 
@@ -22,8 +22,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: #121212; /* Mantener color de fondo como fallback */
-  background-image: url('../../images/Hero_Background.svg'); /* Actualizado a la nueva imagen SVG */
+  background-image: url('../../images/Hero_Background.png'); /* Actualizado a PNG */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -87,19 +86,17 @@
 
 /* Contenido del hero */
 .hero-content {
-  max-width: 65%;
+  max-width: 600px;
   position: relative;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 4rem;
-  border-radius: 2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3), 
-              0 0 0 2px rgba(255, 255, 255, 0.05),
-              0 0 60px rgba(138, 43, 226, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 3rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 2rem;
-  z-index: 2;
+  z-index: 20;
   text-align: left;
   overflow: hidden;
 }

@@ -11,7 +11,7 @@
   width: 100% !important;
   height: 100vh !important;
   background-color: #121212 !important; /* Mantener color de fondo como fallback */
-  background-image: url('../images/Hero_Background.svg') !important; /* Actualizado a la nueva imagen SVG */
+  background-image: url('../images/Hero_Background.png') !important; /* Actualizado al nombre correcto en formato PNG */
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
@@ -67,7 +67,7 @@ a img,
   opacity: 1 !important;
   max-width: 100% !important;
   object-fit: contain !important;
-  transform: none !important; /* Eliminamos transformaciones que puedan ocultar imágenes */
+  transform: translateZ(0) !important; /* Restaurar hack para forzar aceleración hardware */
   backface-visibility: visible !important;
   -webkit-backface-visibility: visible !important;
   pointer-events: auto !important;
