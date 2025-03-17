@@ -73,9 +73,12 @@ body.images-loaded img {
 
 /* Logo específicamente */
 .logo img {
-  display: block;
-  max-height: 50px;
+  display: block !important;
+  max-height: 60px;
   width: auto;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
 }
 
 /* Imágenes de libros */
@@ -89,10 +92,13 @@ body.images-loaded img {
 
 /* Imagen del footer */
 .footer-logo img {
-  display: block;
+  display: block !important;
   max-width: 100px;
   height: auto;
   margin: 0 auto 15px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

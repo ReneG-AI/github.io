@@ -28,6 +28,9 @@
 .footer-logo img {
     width: 100px;
     margin-bottom: 15px;
+    filter: brightness(1.05) drop-shadow(0 0.3rem 0.5rem rgba(0, 0, 0, 0.3));
+    object-fit: contain;
+    background: transparent;
 }
 
 .footer-logo h3 {
