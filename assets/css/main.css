@@ -998,4 +998,186 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Gradient text animation - mismo estilo que René Garcia Educa */
+.gradient-text {
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Testimonial badge */
+.testimonial-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.2rem 2rem;
+  margin: 2rem 0;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-icon {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-right: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.testimonial-text {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% 100%;
+  color: var(--white) !important;
+  border: none;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  padding: 1.2rem 2.5rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: gradientMove 8s infinite;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  background-position: right center;
+}
+
+/* Animated scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.scroll-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% 200%;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.8rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+  animation: float 3s ease-in-out infinite, gradientMove 8s linear infinite;
+  transition: all 0.3s ease;
+}
+
+.scroll-circle:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.5);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Elegant animated borders for containers */
+.container, .section, .hero-content, .book-item, .testimonial-item, 
+.contact-form, .footer-section, .footer-logo {
+  position: relative;
+}
+
+.container::before, .section::before, .hero-content::before, .book-item::before, 
+.testimonial-item::before, .contact-form::before, .footer-section::before, 
+.footer-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .testimonial-badge {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .testimonial-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-text {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  
+  .scroll-circle {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.5rem;
+  }
 } 
