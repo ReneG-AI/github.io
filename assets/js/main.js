@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
     initBookFlip();
     initInteriorModal();
-    initBackToTop();
+    setupBackToTop();
     initCharacterCounter();
     
     // Inicializar AOS con un retraso para mejor rendimiento
@@ -105,27 +105,24 @@ function initHeaderScroll() {
     }
 }
 
-// Botón volver arriba
-function initBackToTop() {
-    const backToTop = document.getElementById('back-to-top');
+// Back to top button
+function setupBackToTop() {
+    const backToTopButton = document.getElementById('back-to-top');
     
-    if (backToTop) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+    if (!backToTopButton) return;
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+    
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // Inicializar funciones para el efecto de flip de libros
