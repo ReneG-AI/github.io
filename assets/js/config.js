@@ -46,6 +46,25 @@ const config = {
         if (!src) return '';
         if (src.startsWith('http')) return src;
         
+        // Verificar si hay problemas de mayúsculas/minúsculas en archivos conocidos
+        const lowerSrc = src.toLowerCase();
+        
+        // Mapa de correcciones para archivos con problemas de capitalización
+        const caseSensitiveFiles = {
+            'assets/images/autor.jpg': 'assets/images/Autor.jpg',
+            'assets/images/logo.png': 'assets/images/Logo.png',
+            'assets/images/hero_background.png': 'assets/images/Hero_Background.png'
+        };
+        
+        // Corregir nombre de archivo si es necesario
+        for (const [incorrectPath, correctPath] of Object.entries(caseSensitiveFiles)) {
+            if (lowerSrc.includes(incorrectPath.toLowerCase())) {
+                console.log(`Corrigiendo capitalización: ${src} -> ${src.replace(new RegExp(incorrectPath, 'i'), correctPath)}`);
+                src = src.replace(new RegExp(incorrectPath, 'i'), correctPath);
+                break;
+            }
+        }
+        
         // ✅ CORRECCIÓN: Usar origin (protocolo + hostname) como base para rutas absolutas
         const baseUrl = window.location.origin;
         return `${baseUrl}/${src.replace(/^\/+/, '')}`;
@@ -212,59 +231,57 @@ const config = {
                         img.dataset.originalSrc = img.src;
                     }
                     
-                    img.onerror = function() {
+                    // Reemplazar el manejador de errores existente para evitar acumulación
+                    img.onerror = null;
+                    
+                    // Configurar un nuevo manejador de errores con control de desbordamiento
+                    img.onerror = function(e) {
+                        // Prevenir la propagación del evento para evitar bucles
+                        e.stopPropagation();
+                        
                         try {
                             const attempts = parseInt(img.dataset.retryAttempts || "0");
                             
-                            // Limitar a máximo 3 intentos
-                            if (attempts < 3) {
+                            // Limitar a máximo 2 intentos para evitar bucles infinitos
+                            if (attempts < 2) {
                                 console.log(`Reintentando cargar imagen (intento ${attempts + 1}): ${img.src}`);
                                 img.dataset.retryAttempts = (attempts + 1).toString();
                                 
-                                // Estrategias alternativas de carga
-                                if (attempts === 0) {
-                                    // ✅ CORRECCIÓN: Primer intento: usar la función corregirRutaImagen
-                                    const origSrc = img.dataset.originalSrc || img.src;
-                                    const correctedPath = config.corregirRutaImagen(origSrc);
-                                    console.log(`Intento 1: usando ruta corregida ${correctedPath}`);
-                                    img.src = correctedPath;
-                                } else if (attempts === 1) {
-                                    // Segundo intento: usar ruta relativa sin baseUrl
-                                    const origSrc = img.dataset.originalSrc;
-                                    if (origSrc) {
-                                        // Quitar cualquier '/'/ruta absoluta del inicio
-                                        const relPath = origSrc.replace(/^\/+/, '');
-                                        console.log(`Intento 2: usando ruta relativa ${relPath}`);
-                                        img.src = relPath;
-                                    }
-                                } else if (attempts === 2) {
-                                    // Tercer intento: usar URL de respaldo si existe o ruta con timestamp
-                                    if (img.dataset.fallback) {
-                                        console.log(`Intento 3: usando respaldo ${img.dataset.fallback}`);
-                                        img.src = img.dataset.fallback;
-                                    } else {
-                                        const timestamp = new Date().getTime();
-                                        const origSrc = img.dataset.originalSrc;
-                                        if (origSrc) {
-                                            console.log(`Intento 3: usando ruta con timestamp ${origSrc}?t=${timestamp}`);
-                                            img.src = origSrc + '?t=' + timestamp;
+                                // Usar un temporizador para evitar recursión inmediata
+                                setTimeout(() => {
+                                    // Estrategias alternativas de carga
+                                    if (attempts === 0) {
+                                        // Primer intento: usar la función corregirRutaImagen
+                                        const origSrc = img.dataset.originalSrc || img.src;
+                                        const correctedPath = config.corregirRutaImagen(origSrc);
+                                        console.log(`Intento 1: usando ruta corregida ${correctedPath}`);
+                                        img.src = correctedPath;
+                                    } else if (attempts === 1) {
+                                        // Último intento: usar URL de respaldo si existe
+                                        if (img.dataset.fallback) {
+                                            console.log(`Intento final: usando respaldo ${img.dataset.fallback}`);
+                                            img.src = img.dataset.fallback;
                                         }
                                     }
-                                }
+                                }, 100 * attempts); // Incrementar el retraso con cada intento
                             } else {
                                 // Después de los intentos máximos, dejamos de intentar
                                 console.error(`No se pudo cargar la imagen después de múltiples intentos: ${img.src}`);
                                 img.onerror = null; // Eliminar el manejador para evitar más intentos
                                 
                                 // Intentar cargar una imagen de respaldo si existe
-                                if (img.dataset.fallback) {
-                                    console.log(`Cargando imagen de respaldo: ${img.dataset.fallback}`);
+                                if (img.dataset.fallback && !img.src.includes(img.dataset.fallback)) {
+                                    console.log(`Cargando imagen de respaldo final: ${img.dataset.fallback}`);
                                     img.src = img.dataset.fallback;
                                 }
                             }
                         } catch (error) {
                             console.error('Error en el manejo de error de imagen:', error);
+                            img.onerror = null; // Prevenir futuros errores
                         }
+                        
+                        // Evitar propagación al manejador predeterminado
+                        return true;
                     };
                 }
             } catch (error) {
@@ -343,13 +360,24 @@ const config = {
                         img.dataset.processed = "true";
                         
                         // Configurar una imagen de respaldo para casos extremos
-                        if (originalSrc.includes('Hero_Background.png')) {
+                        if (originalSrc.toLowerCase().includes('hero_background.png')) {
                             console.log('Configurando respaldo para imagen de héroe');
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Hero_Background.png';
-                        } else if (originalSrc.includes('Logo.png')) {
+                        } else if (originalSrc.toLowerCase().includes('logo.png')) {
                             console.log('Configurando respaldo para logo');
                             img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Logo.png';
+                        } else if (originalSrc.toLowerCase().includes('autor.jpg')) {
+                            console.log('Configurando respaldo para imagen del autor');
+                            img.dataset.fallback = 'https://raw.githubusercontent.com/ReneG-AI/github.io/main/assets/images/Autor.jpg';
                         }
+                        
+                        // Verificar si la imagen carga correctamente
+                        img.addEventListener('error', () => {
+                            if (img.dataset.fallback && !img.src.includes('githubusercontent.com')) {
+                                console.log(`Error cargando imagen, usando respaldo: ${img.dataset.fallback}`);
+                                img.src = img.dataset.fallback;
+                            }
+                        });
                     }
                 } catch (error) {
                     console.error(`Error al procesar imagen #${index + 1}:`, error);
