@@ -107,8 +107,8 @@ function initSmoothScroll() {
             if (targetElement) {
                 const offsetTop = targetElement.offsetTop - 80;
                 
-                // Usar scrollTo con una duración personalizada para un scroll más lento y fluido
-                const duration = 1500; // Duración en milisegundos (1.5 segundos)
+                // Usar una duración más corta para una respuesta más rápida
+                const duration = 800; // Reducido de 1500ms a 800ms
                 const startPosition = window.pageYOffset;
                 const distance = offsetTop - startPosition;
                 let startTime = null;
@@ -118,8 +118,8 @@ function initSmoothScroll() {
                     const timeElapsed = currentTime - startTime;
                     const progress = Math.min(timeElapsed / duration, 1);
                     
-                    // Función de suavizado (easing) para hacer el movimiento más natural
-                    const ease = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; // Cubic easing
+                    // Función de suavizado más fluida
+                    const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Cuadrática
                     
                     window.scrollTo(0, startPosition + distance * ease(progress));
                     
@@ -128,6 +128,7 @@ function initSmoothScroll() {
                     }
                 }
                 
+                // Iniciar inmediatamente
                 requestAnimationFrame(animation);
             }
         });
@@ -167,8 +168,8 @@ function setupBackToTop() {
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Usar la misma animación personalizada para un scroll más lento y fluido
-        const duration = 1500; // Duración en milisegundos (1.5 segundos)
+        // Usar la misma duración más corta que en initSmoothScroll
+        const duration = 800; // Reducido de 1500ms a 800ms
         const startPosition = window.pageYOffset;
         const distance = -startPosition; // Distancia hasta el top (0)
         let startTime = null;
@@ -179,7 +180,7 @@ function setupBackToTop() {
             const progress = Math.min(timeElapsed / duration, 1);
             
             // Misma función de suavizado que en initSmoothScroll
-            const ease = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; // Cubic easing
+            const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Cuadrática
             
             window.scrollTo(0, startPosition + distance * ease(progress));
             
@@ -188,6 +189,7 @@ function setupBackToTop() {
             }
         }
         
+        // Iniciar inmediatamente
         requestAnimationFrame(animation);
     });
 }
