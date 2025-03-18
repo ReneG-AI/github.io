@@ -34,6 +34,24 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         document.body.classList.add('loaded');
     }, 300);
+
+    // JavaScript para funcionalidad "Leer más..." en testimonios
+    const readMoreToggles = document.querySelectorAll('.read-more-toggle');
+    
+    readMoreToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const testimonialText = this.parentElement;
+            
+            if (testimonialText.classList.contains('expanded')) {
+                testimonialText.classList.remove('expanded');
+                this.textContent = 'Leer más...';
+            } else {
+                testimonialText.classList.add('expanded');
+                this.textContent = 'Leer menos';
+            }
+        });
+    });
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento
