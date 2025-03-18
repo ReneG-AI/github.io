@@ -54,7 +54,7 @@
 }
 
 .logo img {
-  height: 33rem;
+  height: 65rem;
   transition: all 0.3s ease;
   filter: brightness(1.05) drop-shadow(0 0.3rem 0.5rem rgba(0, 0, 0, 0.3));
   max-width: 100%;
@@ -66,7 +66,7 @@
 }
 
 .header.scrolled .logo img {
-  height: 27rem;
+  height: 45rem;
   margin-top: 2rem;
 }
 
@@ -330,13 +330,11 @@
   }
   
   .logo img {
-    height: 24rem;
-    margin-top: 1.8rem;
+    height: 50rem;
   }
   
   .header.scrolled .logo img {
-    height: 20rem;
-    margin-top: 1.4rem;
+    height: 35rem;
   }
   
   .logo-text {
@@ -355,13 +353,11 @@
   }
   
   .logo img {
-    height: 20rem;
-    margin-top: 1.6rem;
+    height: 45rem;
   }
   
   .header.scrolled .logo img {
-    height: 18rem;
-    margin-top: 1.2rem;
+    height: 30rem;
   }
   
   .nav-link {

@@ -15,7 +15,7 @@ img {
 header img, .logo img {
   visibility: visible !important;
   opacity: 1 !important;
-  max-height: 50px;
+  max-height: none !important; /* Eliminado el límite de altura para permitir que crezca */
 }
 
 /* Fix para el fondo del hero */
@@ -36,10 +36,11 @@ header img, .logo img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+  width: 50% !important;
+  height: auto !important;
+  object-fit: contain !important;
   object-position: center !important;
+  margin: 0 auto;
 }
 
 /* Solución alternativa para el fondo usando background-image */
@@ -52,7 +53,7 @@ body::before {
   height: 100%;
   z-index: -2;
   background-image: url('../images/Hero_Background.png');
-  background-size: cover;
+  background-size: 50%;
   background-position: center;
   opacity: 0.9;
 }
@@ -72,7 +73,7 @@ body::before {
   width: 100% !important;
   height: 100vh !important;
   background-image: url('../images/Hero_Background.png') !important;
-  background-size: cover !important;
+  background-size: 50% !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
   z-index: -1 !important;
