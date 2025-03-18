@@ -883,7 +883,7 @@
   margin-top: auto;
 }
 
-/* Nuevo separador con lápiz de color animado */
+/* Nuevo separador con animación de mascotas */
 .libro-separador {
   grid-area: separador;
   width: 100%;
@@ -891,229 +891,21 @@
   position: relative;
   margin: 2rem 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
 }
 
-/* Animación del lápiz de color */
-.puppy-animation {
-  width: 100%;
-  height: 10rem;
-  position: relative;
-}
-
-/* Contenedor del lápiz */
-.puppy-container {
-  position: absolute;
-  width: 15rem;
-  height: 8rem;
-  animation: pencil-draw 10s linear infinite;
-  left: -15rem;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-
-/* Cuerpo del lápiz */
-.puppy-body {
-  position: absolute;
-  width: 10rem;
-  height: 1.8rem;
-  background: linear-gradient(180deg, #FFD700, #FFA500, #FF4500);
-  border-radius: 0.2rem;
-  top: 3rem;
-  left: 2rem;
-  transform-origin: center;
-  animation: pencil-bounce 0.5s infinite alternate;
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
-}
-
-/* Punta del lápiz */
-.puppy-head {
-  position: absolute;
-  width: 3rem;
-  height: 1.8rem;
-  background: linear-gradient(90deg, #333, #666);
-  clip-path: polygon(100% 0, 100% 100%, 0 50%);
-  top: 3rem;
-  left: 12rem;
-  z-index: 2;
-  animation: pencil-point 0.5s infinite alternate;
-}
-
-/* Borrador del lápiz */
-.puppy-ear {
-  position: absolute;
-  width: 1.5rem;
-  height: 1.8rem;
-  background: #FF6B81;
-  border-radius: 0.2rem;
-  z-index: 1;
-  top: 3rem;
-  left: 0.5rem;
-}
-
-/* Detalles del lápiz (texto, líneas) */
-.puppy-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-}
-
-/* Ojitos kawaii para el lápiz */
-.puppy-eye {
-  position: absolute;
-  width: 0.6rem;
-  height: 0.6rem;
-  background-color: #222;
-  border-radius: 50%;
-  top: 2.5rem;
-  animation: blink 4s infinite;
-}
-
-.puppy-eye.left {
-  left: 5rem;
-}
-
-.puppy-eye.right {
-  left: 7rem;
-}
-
-/* Sonrisa kawaii para el lápiz */
-.puppy-mouth {
-  position: absolute;
-  width: 1.5rem;
-  height: 0.5rem;
-  border-bottom: 0.2rem solid #222;
-  border-radius: 0 0 40% 40%;
-  top: 3.5rem;
-  left: 6rem;
-  transform: translateX(-50%);
-}
-
-/* Las virutas que deja el lápiz */
-.puppy-trail {
-  position: absolute;
-  width: 100%;
-  height: 1.5rem;
-  top: 50%;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="20" viewBox="0 0 200 20"><path d="M0,10 Q5,5 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10 T110,10 T120,10 T130,10 T140,10 T150,10 T160,10 T170,10 T180,10 T190,10 T200,10" fill="none" stroke="url(%23grad)" stroke-width="2"/><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(255,94,219);stop-opacity:0.5" /><stop offset="50%" style="stop-color:rgb(140,82,255);stop-opacity:0.5" /><stop offset="100%" style="stop-color:rgb(0,212,255);stop-opacity:0.5" /></linearGradient></defs></svg>') repeat-x;
-  background-size: 200px 20px;
-  opacity: 0;
-  transform-origin: left;
-  animation: trail-appear 10s linear infinite;
-  filter: blur(1px);
-}
-
-/* Brillo del lápiz */
-.puppy-tail {
-  position: absolute;
-  width: 1rem;
-  height: 0.3rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 0.2rem;
-  top: 3.2rem;
-  left: 6rem;
-  transform: rotate(-30deg);
-  animation: pencil-shine 1.5s infinite alternate;
-}
-
-/* Detalles decorativos */
-.puppy-legs {
-  display: none; /* No usamos las piernas en el nuevo diseño */
-}
-
-/* Animaciones para el lápiz */
-@keyframes pencil-draw {
-  0% {
-    left: -15rem;
-  }
-  100% {
-    left: calc(100% + 15rem);
-  }
-}
-
-@keyframes pencil-bounce {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-0.2rem) rotate(1deg);
-  }
-}
-
-@keyframes pencil-point {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-0.2rem);
-  }
-}
-
-@keyframes blink {
-  0%, 96%, 98% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-  97%, 99% {
-    transform: scaleY(0.1);
-    opacity: 0.5;
-  }
-}
-
-@keyframes pencil-shine {
-  0% {
-    opacity: 0.2;
-    transform: rotate(-30deg) scale(1);
-  }
-  100% {
-    opacity: 0.8;
-    transform: rotate(-30deg) scale(1.2);
-  }
-}
-
-@keyframes trail-appear {
-  0% {
-    opacity: 0;
-    background-position: 0 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  90% {
-    opacity: 0.8;
-  }
-  100% {
-    opacity: 0;
-    background-position: 200px 0;
-  }
-}
-
-/* Estilos responsivos para el lápiz */
+/* Estilos responsivos para el separador */
 @media (max-width: 768px) {
   .libro-separador {
     height: 8rem;
-  }
-  
-  .puppy-animation {
-    height: 8rem;
-  }
-  
-  .puppy-container {
-    transform: translateY(-50%) scale(0.8);
   }
 }
 
 @media (max-width: 576px) {
   .libro-separador {
     height: 6rem;
-  }
-  
-  .puppy-animation {
-    height: 6rem;
-  }
-  
-  .puppy-container {
-    transform: translateY(-50%) scale(0.6);
   }
 } 
