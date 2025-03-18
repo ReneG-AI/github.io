@@ -10,7 +10,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding-left: 0;
   z-index: 1;
 }
@@ -34,7 +34,7 @@
 /* Contenido del hero */
 .hero-content {
   max-width: 580px;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 3.2rem;
   border-radius: 1.2rem;
   backdrop-filter: blur(15px);
@@ -46,7 +46,7 @@
   transform: translateY(0);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   text-align: center;
-  margin-left: auto;
+  margin-left: 5%;
   margin-right: auto;
 }
 
@@ -102,6 +102,12 @@
   .hero-content {
     max-width: 540px;
     padding: 2.8rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hero-section {
+    justify-content: center;
   }
 }
 
