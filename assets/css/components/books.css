@@ -259,6 +259,7 @@
   align-items: flex-start;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
 }
 
 .book-detail {
@@ -267,6 +268,7 @@
   font-size: 1.4rem;
   color: var(--white);
   line-height: 1.6;
+  width: 100%;
 }
 
 .book-detail i {
@@ -276,6 +278,7 @@
   min-width: 2.4rem;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 /* Ajustes para el título y subtítulos */
@@ -533,14 +536,15 @@
   }
   
   .book-actions {
-    gap: 0.8rem;
+    gap: 1.2rem;
     flex-direction: column;
   }
   
   .amazon-btn, .interior-btn {
     width: 100%;
-    justify-content: center;
-    padding: 0.8rem;
+    height: 4.5rem;
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
   }
   
   .book-flipper {
@@ -750,7 +754,7 @@
   }
 }
 
-/* Botones y enlaces */
+/* Botones y enlaces - mejorados para total consistencia */
 .book-actions {
   display: flex;
   flex-wrap: wrap;
@@ -763,7 +767,7 @@
   flex: 1;
   min-width: 15rem;
   height: 4.5rem;
-  padding: 0 1.5rem;
+  padding: 0 1.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -771,23 +775,19 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
 }
 
 /* Estilo para botones de Amazon */
 .amazon-btn {
   background: linear-gradient(135deg, #FF9900, #FFC107);
   color: #000 !important;
-  border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
-  text-decoration: none;
   border: 1px solid #e6920f;
+  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
+  gap: 0.8rem;
 }
 
 .amazon-btn:hover {
@@ -800,20 +800,12 @@
 .interior-btn {
   background: linear-gradient(135deg, #2d3142, #1a1a1a);
   color: white !important;
-  border-radius: 0.5rem;
-  padding: 1rem 2rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  text-decoration: none;
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  gap: 0.8rem;
 }
 
 .interior-btn:hover {
