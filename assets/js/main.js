@@ -309,7 +309,7 @@ function initLineaAnimada() {
                     // Forzar un reflow
                     void linea.offsetWidth;
                     // Restaurar la animación
-                    linea.style.animation = 'dibujar-linea 2.5s ease-in-out forwards, brillo-linea 2s infinite alternate 2.5s';
+                    linea.style.animation = 'dibujar-linea 4.5s ease-in-out forwards, brillo-linea 3s infinite alternate 4.5s';
                 }
                 // Dejar de observar después de activar la animación
                 observer.unobserve(entry.target);
@@ -317,9 +317,11 @@ function initLineaAnimada() {
         });
     }, { threshold: 0.2 }); // 20% del elemento debe ser visible
 
-    // Observar el contenedor de la línea animada
-    const lineaContainer = document.querySelector('.linea-animada-container');
-    if (lineaContainer) {
-        observer.observe(lineaContainer.parentElement);
+    // Observar todos los contenedores de líneas animadas
+    const lineaContainers = document.querySelectorAll('.linea-animada-container');
+    if (lineaContainers.length > 0) {
+        lineaContainers.forEach(container => {
+            observer.observe(container.parentElement);
+        });
     }
 } 

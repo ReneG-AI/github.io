@@ -84,7 +84,7 @@
   position: relative;
   z-index: 1;
   padding: 1.5rem;
-  border-radius: 1.5rem;
+  border-radius: 1.5rem 1.5rem 0 0; /* Quitar bordes redondeados abajo */
   transition: transform 0.3s ease;
   max-width: 1200px;
   margin-left: auto;
@@ -97,6 +97,7 @@
     "pages pages";
   padding-bottom: 3rem;
   border: 1px solid rgba(108, 76, 230, 0.3);
+  border-bottom: none; /* Quitar borde inferior */
 }
 
 /* Borde degradado para el contenedor de contacto */
@@ -1096,18 +1097,34 @@
   width: 100%;
   height: 6rem;
   position: relative;
-  margin-top: 3rem;
+  margin-top: 0;
   margin-bottom: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
+  background: rgba(18, 18, 25, 0.8); /* Mismo fondo que el contenedor */
+  border-right: 1px solid rgba(108, 76, 230, 0.3);
+  border-left: 1px solid rgba(108, 76, 230, 0.3);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .separador-footer .linea-animada-container {
   width: 80%;
   max-width: 900px;
+}
+
+/* Asegurar que las líneas tengan la animación correcta */
+.linea-animada {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: translateX(-100%);
+  animation: dibujar-linea 4.5s ease-in-out forwards, brillo-linea 3s infinite alternate 4.5s !important;
 }
 
 /* Media queries para el separador del footer */
