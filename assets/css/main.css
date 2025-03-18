@@ -444,8 +444,8 @@ section {
   position: fixed;
   bottom: 3rem;
   right: 3rem;
-  width: 6rem;
-  height: 6rem;
+  width: 5.4rem;
+  height: 5.4rem;
   background: linear-gradient(135deg, #FF5EDB, #8C52FF);
   background-size: 100% 100%;
   border-radius: 50%;
@@ -453,7 +453,7 @@ section {
   justify-content: center;
   align-items: center;
   color: var(--white);
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   opacity: 0;
@@ -475,8 +475,8 @@ section {
 /* Media queries para responsividad del botón volver arriba */
 @media screen and (max-width: 768px) {
   #back-to-top {
-    width: 5rem;
-    height: 5rem;
+    width: 4.5rem;
+    height: 4.5rem;
     bottom: 2rem;
     right: 2rem;
     font-size: 1.8rem;
