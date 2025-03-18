@@ -299,10 +299,10 @@
 
 /* Contenedor Acerca del Autor */
 .autor-container {
-  background: rgba(15, 15, 20, 0.85);
+  background: rgba(15, 15, 20, 0.95); /* Fondo oscuro */
   padding: 3.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
+  box-shadow: none; /* Eliminada la sombra */
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -315,6 +315,7 @@
   transform: perspective(1000px) rotateY(-2deg);
   transform-origin: left center;
   transition: transform 0.5s ease;
+  overflow: hidden; /* Para contener las líneas animadas */
 }
 
 /* Borde degradado para el contenedor del autor */
@@ -326,10 +327,129 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #1a1a1a, #2d3142, #1a1a1a);
+  background: linear-gradient(90deg, #6852e2, #00d4ff, #6852e2);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
+  opacity: 0.8;
+  filter: blur(1px); /* Efecto difuminado para parecer neón */
+}
+
+/* Líneas de neón diagonales en las esquinas */
+.autor-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
+    linear-gradient(45deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
+    linear-gradient(-45deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
+    linear-gradient(-135deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%);
+  border-radius: 1.5rem;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Líneas decorativas de neón en el fondo */
+.autor-container .neon-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* Línea horizontal superior */
+.autor-container .neon-lines::before {
+  content: '';
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  right: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #6852e2, #00d4ff, #6852e2, transparent);
+  box-shadow: 0 0 10px 1px rgba(140, 82, 255, 0.7);
+  animation: neonPulse 3s infinite alternate, moveHorizontal 15s linear infinite;
+}
+
+/* Línea horizontal inferior */
+.autor-container .neon-lines::after {
+  content: '';
+  position: absolute;
+  bottom: 2rem;
+  left: 3rem;
+  right: 3rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d4ff, #6852e2, #00d4ff, transparent);
+  box-shadow: 0 0 10px 1px rgba(0, 212, 255, 0.7);
+  animation: neonPulse 4s infinite alternate-reverse, moveHorizontal 18s linear infinite reverse;
+}
+
+/* Línea vertical izquierda */
+.autor-container .neon-vertical-left {
+  position: absolute;
+  top: 3rem;
+  bottom: 3rem;
+  left: 2rem;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, #6852e2, #00d4ff, #6852e2, transparent);
+  box-shadow: 0 0 10px 1px rgba(140, 82, 255, 0.7);
+  animation: neonPulse 3.5s infinite alternate, moveVertical 20s linear infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Línea vertical derecha */
+.autor-container .neon-vertical-right {
+  position: absolute;
+  top: 3rem;
+  bottom: 3rem;
+  right: 2rem;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, #00d4ff, #6852e2, #00d4ff, transparent);
+  box-shadow: 0 0 10px 1px rgba(0, 212, 255, 0.7);
+  animation: neonPulse 4.5s infinite alternate-reverse, moveVertical 22s linear infinite reverse;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Animación de pulso para efecto neón */
+@keyframes neonPulse {
+  0% {
+    opacity: 0.6;
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+}
+
+/* Animación de movimiento horizontal */
+@keyframes moveHorizontal {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 300% 0;
+  }
+}
+
+/* Animación de movimiento vertical */
+@keyframes moveVertical {
+  0% {
+    background-position: 0 -200%;
+  }
+  100% {
+    background-position: 0 300%;
+  }
 }
 
 /* Título del autor - Ajustado */
@@ -337,12 +457,13 @@
   font-size: 2.4rem;
   margin-bottom: 1.5rem; /* Reducido para compactar */
   text-align: center;
-  background: linear-gradient(90deg, #2d3142, #8C52FF);
+  background: linear-gradient(90deg, #6852e2, #00d4ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   position: relative;
   padding-bottom: 1rem; /* Reducido */
+  z-index: 2;
 }
 
 .autor-title::after {
@@ -353,8 +474,9 @@
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, #2d3142, #8C52FF);
+  background: linear-gradient(90deg, #6852e2, #00d4ff);
   border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.7);
 }
 
 /* Contenido del autor */
