@@ -144,4 +144,56 @@ body, html {
   min-height: 100vh !important;
   height: auto !important;
   background-color: transparent !important;
+}
+
+/* 
+ * FIX HERO 
+ * Correcciones específicas para el hero section
+ */
+
+/* Asegurar que el hero esté centrado en dispositivos móviles */
+@media screen and (max-width: 992px) {
+  .hero-section {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .hero-content {
+    margin: 0 auto !important;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    float: none !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .hero-content {
+    max-width: 90% !important;
+    margin: 0 auto !important;
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    float: none !important;
+    box-sizing: border-box !important;
+  }
 } 
