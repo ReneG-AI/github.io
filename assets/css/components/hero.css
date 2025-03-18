@@ -1,6 +1,6 @@
 /* 
  * HERO
- * Estilos para el banner principal simplificado
+ * Estilos para el banner principal refinado
  */
 
 /* Hero con fondo fijo */
@@ -10,48 +10,52 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  padding-left: 10%;
+  padding-left: 8%;
   z-index: 1;
 }
 
-/* Fondo del hero - simplificado al máximo */
+/* Fondo del hero - refinado */
 .hero-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('../../images/Hero_Background.png');
+  background-image: url('../../images/Hero_Background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
-}
-
-/* Eliminamos completamente este elemento */
-.hero-background::after {
-  display: none;
+  filter: brightness(0.9) contrast(1.05);
 }
 
 /* Contenido del hero */
 .hero-content {
-  max-width: 600px;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 3rem;
-  border-radius: 1.5rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 580px;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 2rem;
   z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.hero-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.4);
+  border-color: rgba(140, 82, 255, 0.15);
 }
 
 .hero-title {
-  font-size: 5rem;
+  font-size: 4.6rem;
   margin-bottom: 1.5rem;
   color: #fff;
-  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
   line-height: 1.2;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
@@ -59,13 +63,15 @@
   background-clip: text;
   color: transparent;
   animation: shimmer 8s linear infinite;
+  letter-spacing: -0.02em;
 }
 
 .hero-subtitle {
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 2.2rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 400;
+  line-height: 1.5;
 }
 
 /* Botones del hero */
@@ -77,9 +83,76 @@
 
 /* Secciones */
 .section {
-  padding: 8rem 0;
+  padding: 7rem 0;
   position: relative;
   background-color: var(--body-bg);
+}
+
+/* Media queries para la sección hero */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 4.2rem;
+  }
+  
+  .hero-content {
+    max-width: 540px;
+    padding: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-left: 0;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 2.5rem;
+  }
+  
+  .hero-title {
+    font-size: 3.6rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.7rem;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content {
+    padding: 2.2rem;
+    max-width: 95%;
+  }
+  
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
 }
 
 @keyframes shimmer {
