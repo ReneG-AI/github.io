@@ -1,5 +1,8 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Detectar soporte WebP y aplicar clase al HTML
+    detectWebpSupport();
+    
     // Inicializar funcionalidades
     initPreloader();
     initMobileMenu();
@@ -31,6 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('loaded');
     }, 300);
 });
+
+// Función para detectar soporte de WebP y aplicar clase al documento
+function detectWebpSupport() {
+    var canvas = document.createElement('canvas');
+    if (canvas.getContext && canvas.getContext('2d')) {
+        // Si soporta WebP
+        if (canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0) {
+            document.documentElement.classList.add('webp-support');
+            console.log("Soporte WebP detectado");
+        } else {
+            document.documentElement.classList.add('no-webp-support');
+            console.log("Sin soporte WebP, usando PNG");
+        }
+    } else {
+        // Navegador antiguo sin canvas
+        document.documentElement.classList.add('no-webp-support');
+        console.log("Navegador antiguo, usando PNG");
+    }
+}
 
 // Preloader
 function initPreloader() {

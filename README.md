@@ -36,9 +36,10 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 ## Características Principales
 
 ### Optimización de Imágenes WebP
-- Todas las imágenes han sido convertidas a formato WebP para mejorar la velocidad de carga
-- Soporte de fallback para navegadores antiguos que no soportan WebP
+- Todas las imágenes están disponibles en formatos WebP y PNG para máxima compatibilidad
+- Sistema inteligente de detección que usa WebP en navegadores modernos y PNG como fallback
 - Precargas estratégicas para mejorar la experiencia de usuario
+- Transición automática entre formatos sin intervención del usuario
 
 ### Rendimiento Optimizado
 - Carga diferida inteligente de recursos
@@ -49,7 +50,7 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 ### Diseño Responsivo
 - Adaptación completa a todos los dispositivos
 - Optimizaciones específicas para móviles, tablets y pantallas grandes
-- Menú hamburguesa en versiones móviles
+- Menú hamburguesa en versions móviles
 - Media queries estratégicamente implementadas
 
 ### Efecto Flip de Libros
@@ -81,15 +82,16 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 
 Para mejorar drásticamente el rendimiento de carga, especialmente en las portadas y contraportadas de los libros, se han implementado las siguientes optimizaciones:
 
-1. **Conversión a WebP**
-   - Todas las imágenes están en formato WebP, reduciendo el tamaño hasta un 30-80% vs PNG/JPG
-   - Detección automática de soporte WebP con fallback a PNG
-   - Configuración de caché optimizada para imágenes WebP
+1. **Formato Dual WebP/PNG**
+   - Todas las imágenes están disponibles en WebP para navegadores modernos (30-80% más pequeñas)
+   - Versiones PNG como respaldo para navegadores antiguos
+   - Detección automática de soporte y cambio transparente entre formatos
+   - Scripts inteligentes que intentan formato alternativo si el principal falla
 
 2. **Precarga Estratégica**
    - Precarga selectiva solo de imágenes críticas visibles en pantalla
    - Limitación inteligente a 3 imágenes simultáneas para evitar sobrecarga
-   - Verificación de soporte WebP antes de precargar
+   - Sistema de prioridad que carga primero WebP, luego PNG si es necesario
 
 3. **Sprites CSS para Libros**
    - Técnica avanzada que combina portada y contraportada en una sola imagen
