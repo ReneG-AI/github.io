@@ -312,13 +312,13 @@
 .autor-container {
   grid-area: autor;
   position: relative;
-  background: rgba(10, 10, 15, 0.8); /* Fondo más oscuro/negro */
+  background: rgba(5, 5, 8, 0.95); /* Fondo más oscuro casi negro */
   border-radius: 1.5rem;
   padding: 3.5rem;
   box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
   transform: translateY(0);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(50, 50, 50, 0.3); /* Borde gris oscuro */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   margin-top: 0;
@@ -334,7 +334,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
+  background: linear-gradient(90deg, #0a0a0a, #1a1a1a, #0a0a0a); /* Cambiado a negro/gris más oscuro */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -571,7 +571,7 @@
 @media (min-width: 993px) {
   .autor-container:hover {
     transform: perspective(1000px) rotateY(-4deg);
-    background: rgba(5, 5, 8, 0.9); /* Fondo más oscuro al hacer hover */
+    background: rgba(2, 2, 5, 0.98); /* Fondo aún más oscuro al hacer hover */
   }
 }
 
