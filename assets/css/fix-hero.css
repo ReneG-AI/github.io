@@ -15,7 +15,7 @@ img {
 header img, .logo img {
   visibility: visible !important;
   opacity: 1 !important;
-  max-height: 65px !important; /* Limitamos la altura máxima para mantener proporciones */
+  max-height: 91px !important; /* Aumentado un 40% (65px * 1.4 = 91px) */
   object-fit: contain !important;
   width: auto !important;
 }
