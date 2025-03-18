@@ -416,9 +416,14 @@
   }
   
   .flip-button {
-    bottom: auto; /* Eliminar posición bottom */
-    top: 5rem; /* Posicionar en la parte superior de la imagen */
-    z-index: 30; /* Aumentar z-index para que esté por encima de todo */
+    position: absolute;
+    bottom: -22px; /* Volver a posicionarlo abajo como estaba antes */
+    top: auto; /* Eliminar posición top */
+    padding: 0.6rem 1.2rem; /* Reducir tamaño */
+    font-size: 1.1rem; /* Reducir tamaño de fuente */
+    z-index: 10; /* Mantener por encima pero no excesivamente alto */
+    background-color: rgba(140, 82, 255, 0.85); /* Añadir un poco de transparencia */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25); /* Sombra sutil */
   }
 }
 
@@ -479,11 +484,11 @@
   }
   
   .flip-button {
-    bottom: auto; /* Eliminar posición bottom */
-    top: 4rem; /* Posicionar en la parte superior de la imagen */
-    padding: 0.7rem 1.4rem; /* Mantener tamaño */
-    font-size: 1.2rem;
-    z-index: 30; /* Asegurar que esté por encima de todo */
+    bottom: -20px; /* Ajustado para estar justo debajo de la imagen */
+    top: auto; /* Eliminar posición top */
+    padding: 0.5rem 1rem; /* Más pequeño */
+    font-size: 1.1rem;
+    z-index: 20;
   }
   
   .book-detail i,
@@ -597,10 +602,10 @@
   }
   
   .flip-button {
-    bottom: auto; /* Eliminar posición bottom */
-    top: 3.5rem; /* Posicionar en la parte superior de la imagen */
-    padding: 0.6rem 1.2rem; /* Ligeramente más grande */
-    font-size: 1.1rem;
+    bottom: -18px; /* Ajustado para estar justo debajo de la imagen */
+    top: auto; /* Eliminar posición top */
+    padding: 0.5rem 1rem; /* Más pequeño */
+    font-size: 1rem;
   }
   
   #libros .book-ribbon {
@@ -683,10 +688,10 @@
   }
   
   .flip-button {
-    bottom: auto; /* Eliminar posición bottom */
-    top: 3rem; /* Posicionar en la parte superior de la imagen */
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    bottom: -16px; /* Ajustado para estar justo debajo de la imagen */
+    top: auto; /* Eliminar posición top */
+    padding: 0.4rem 0.8rem; /* Aún más pequeño */
+    font-size: 0.9rem;
   }
   
   .book-header {
