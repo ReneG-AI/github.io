@@ -248,12 +248,13 @@
   line-height: 1.6;
 }
 
-/* Detalles del libro */
+/* Detalles del libro ajustado para mejor alineación */
 .book-details {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  margin-bottom: 2.2rem;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  align-items: flex-start;
 }
 
 .book-detail {
@@ -261,41 +262,48 @@
   align-items: center;
   font-size: 1.4rem;
   color: var(--white);
+  line-height: 1.6;
 }
 
 .book-detail i {
   margin-right: 1.2rem;
   color: var(--primary-color-light);
   font-size: 1.6rem;
-  min-width: 1.6rem;
+  min-width: 2.2rem;
+  display: flex;
+  justify-content: center;
 }
 
-/* Características del libro */
+/* Ajustes para el título y subtítulos */
 .feature-title {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
   color: var(--white);
   text-align: left;
+  font-weight: 600;
 }
 
+/* Mejoras en la lista de características */
 .features-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .feature-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   font-size: 1.4rem;
   color: var(--white);
+  line-height: 1.5;
 }
 
 .feature-item i {
-  margin-right: 1.2rem;
+  margin-right: 1rem;
   color: var(--accent-color);
   font-size: 1.4rem;
-  min-width: 1.4rem;
+  min-width: 1.8rem;
+  padding-top: 0.2rem;
 }
 
 /* Ribbons más elegantes */
@@ -727,9 +735,20 @@
 .book-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
   justify-content: center;
+}
+
+.amazon-btn, .interior-btn {
+  flex: 1;
+  min-width: 15rem;
+  height: 4.2rem;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 /* Estilo para botones de Amazon */
