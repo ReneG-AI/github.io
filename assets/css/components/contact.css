@@ -52,7 +52,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 2.2rem;
-  background: linear-gradient(90deg, #0099cc, #1a1a1a, #0099cc);
+  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -102,7 +102,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #0099cc, #1a1a1a, #0099cc);
+  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -170,7 +170,7 @@
 /* Botón de enviar */
 .btn-enviar {
   width: 100%;
-  background: linear-gradient(135deg, #0099cc, #1a1a1a);
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
   color: var(--white);
   padding: 1.2rem;
   font-size: 1.6rem;
@@ -188,7 +188,7 @@
 .btn-enviar:hover {
   transform: translateY(-3px);
   box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #0099cc, #0077a3);
+  background: linear-gradient(135deg, #2d3142, #1e2130);
 }
 
 .btn-enviar:before {
@@ -240,7 +240,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #1a1a1a, #0099cc, #1a1a1a);
+  background: linear-gradient(90deg, #1a1a1a, #2d3142, #1a1a1a);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -251,7 +251,7 @@
   font-size: 2.4rem;
   margin-bottom: 2rem;
   text-align: center;
-  background: linear-gradient(90deg, #0099cc, #8C52FF);
+  background: linear-gradient(90deg, #2d3142, #8C52FF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -267,7 +267,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, #0099cc, #8C52FF);
+  background: linear-gradient(90deg, #2d3142, #8C52FF);
   border-radius: 2px;
 }
 
@@ -323,7 +323,7 @@
   display: inline-flex;
   align-items: center;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #0099cc, #1a1a1a);
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
   color: white;
   border-radius: 0.8rem;
   font-size: 1.5rem;
@@ -339,7 +339,7 @@
 .btn-leer-mas:hover {
   transform: translateY(-3px);
   box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #0099cc, #0077a3);
+  background: linear-gradient(135deg, #2d3142, #1e2130);
   color: white;
 }
 
@@ -405,7 +405,7 @@
   transform: translateY(-5px);
   box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
   color: var(--white);
-  background: linear-gradient(135deg, #0099cc, #1a1a1a);
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
 }
 
 .social-link:before {
@@ -518,9 +518,9 @@
 .contact-grid:hover::after {
   background: linear-gradient(to right, 
     rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 153, 204, 0.3) 50%,
+    rgba(45, 49, 66, 0.3) 50%,
     rgba(0, 0, 0, 0.2) 100%);
-  box-shadow: 0 0 12px rgba(0, 153, 204, 0.5);
+  box-shadow: 0 0 12px rgba(45, 49, 66, 0.5);
   transition: all 0.3s ease;
 }
 
