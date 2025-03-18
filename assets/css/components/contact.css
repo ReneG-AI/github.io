@@ -299,11 +299,11 @@
 
 /* Contenedor Acerca del Autor */
 .autor-container {
-  background: rgba(15, 15, 20, 0.95); /* Fondo oscuro */
+  background: rgba(12, 12, 18, 0.95); /* Fondo más oscuro */
   padding: 3.5rem;
   border-radius: 1.5rem;
-  box-shadow: none; /* Eliminada la sombra */
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  border: 1px solid rgba(50, 50, 50, 0.3); /* Borde más sutil */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: relative;
@@ -311,158 +311,46 @@
   display: flex;
   flex-direction: column;
   
-  /* Efecto de página derecha del libro */
+  /* Efecto de página derecha del libro solo en desktop */
   transform: perspective(1000px) rotateY(-2deg);
   transform-origin: left center;
   transition: transform 0.5s ease;
-  overflow: hidden; /* Para contener las líneas animadas */
+  overflow: hidden;
 }
 
-/* Borde degradado para el contenedor del autor */
+/* Borde simple para el contenedor del autor */
 .autor-container::before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #6852e2, #00d4ff, #6852e2);
-  background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
+  background: rgba(30, 30, 35, 0.6); /* Color oscuro simple */
   z-index: -1;
-  opacity: 0.8;
-  filter: blur(1px); /* Efecto difuminado para parecer neón */
 }
 
-/* Líneas de neón diagonales en las esquinas */
+/* Eliminar líneas de neón diagonales en las esquinas */
 .autor-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(135deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
-    linear-gradient(45deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
-    linear-gradient(-45deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%),
-    linear-gradient(-135deg, transparent 49.5%, rgba(140, 82, 255, 0.15) 49.8%, rgba(0, 212, 255, 0.15) 50.2%, transparent 50.5%);
-  border-radius: 1.5rem;
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
-/* Líneas decorativas de neón en el fondo */
-.autor-container .neon-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  overflow: hidden;
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-/* Línea horizontal superior */
-.autor-container .neon-lines::before {
-  content: '';
-  position: absolute;
-  top: 2rem;
-  left: 3rem;
-  right: 3rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #6852e2, #00d4ff, #6852e2, transparent);
-  box-shadow: 0 0 10px 1px rgba(140, 82, 255, 0.7);
-  animation: neonPulse 3s infinite alternate, moveHorizontal 15s linear infinite;
-}
-
-/* Línea horizontal inferior */
-.autor-container .neon-lines::after {
-  content: '';
-  position: absolute;
-  bottom: 2rem;
-  left: 3rem;
-  right: 3rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #00d4ff, #6852e2, #00d4ff, transparent);
-  box-shadow: 0 0 10px 1px rgba(0, 212, 255, 0.7);
-  animation: neonPulse 4s infinite alternate-reverse, moveHorizontal 18s linear infinite reverse;
-}
-
-/* Línea vertical izquierda */
-.autor-container .neon-vertical-left {
-  position: absolute;
-  top: 3rem;
-  bottom: 3rem;
-  left: 2rem;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, #6852e2, #00d4ff, #6852e2, transparent);
-  box-shadow: 0 0 10px 1px rgba(140, 82, 255, 0.7);
-  animation: neonPulse 3.5s infinite alternate, moveVertical 20s linear infinite;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Línea vertical derecha */
+/* Eliminar líneas decorativas de neón */
+.autor-container .neon-lines,
+.autor-container .neon-vertical-left,
 .autor-container .neon-vertical-right {
-  position: absolute;
-  top: 3rem;
-  bottom: 3rem;
-  right: 2rem;
-  width: 1px;
-  background: linear-gradient(180deg, transparent, #00d4ff, #6852e2, #00d4ff, transparent);
-  box-shadow: 0 0 10px 1px rgba(0, 212, 255, 0.7);
-  animation: neonPulse 4.5s infinite alternate-reverse, moveVertical 22s linear infinite reverse;
-  z-index: -1;
-  pointer-events: none;
+  display: none;
 }
 
-/* Animación de pulso para efecto neón */
-@keyframes neonPulse {
-  0% {
-    opacity: 0.6;
-    filter: blur(1px);
-  }
-  100% {
-    opacity: 1;
-    filter: blur(2px);
-  }
-}
-
-/* Animación de movimiento horizontal */
-@keyframes moveHorizontal {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 300% 0;
-  }
-}
-
-/* Animación de movimiento vertical */
-@keyframes moveVertical {
-  0% {
-    background-position: 0 -200%;
-  }
-  100% {
-    background-position: 0 300%;
-  }
-}
-
-/* Título del autor - Ajustado */
+/* Título del autor - Estilo más sobrio */
 .autor-title {
   font-size: 2.4rem;
-  margin-bottom: 1.5rem; /* Reducido para compactar */
+  margin-bottom: 1.5rem;
   text-align: center;
-  background: linear-gradient(90deg, #6852e2, #00d4ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffffff; /* Color blanco plano */
   position: relative;
-  padding-bottom: 1rem; /* Reducido */
+  padding-bottom: 1rem;
   z-index: 2;
 }
 
@@ -474,9 +362,9 @@
   transform: translateX(-50%);
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, #6852e2, #00d4ff);
+  background: #ffffff; /* Línea blanca simple */
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(0, 212, 255, 0.7);
+  box-shadow: none;
 }
 
 /* Contenido del autor */
@@ -486,18 +374,18 @@
   margin-bottom: 2.5rem;
 }
 
-/* Avatar del autor - Cambiado de circular a rectangular */
+/* Avatar del autor - Sin brillo */
 .autor-avatar {
   flex-shrink: 0;
   width: 16rem; 
-  height: 20rem; /* Proporción rectangular para fotos de autor */
+  height: 20rem;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(50, 50, 50, 0.8); /* Borde más oscuro */
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
-  margin: 0 auto 1.5rem auto; /* Centrado cuando está en columna */
-  border-radius: 0.8rem; /* Bordes ligeramente redondeados en lugar de circular */
+  margin: 0 auto 1.5rem auto;
+  border-radius: 0.8rem;
 }
 
 .autor-avatar img {
@@ -520,20 +408,9 @@
   transform: scale(1.05);
 }
 
-/* Efecto de brillo sutil en el borde del avatar */
+/* Eliminado el efecto de brillo en el borde del avatar */
 .autor-avatar::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(90deg, #1a1a1a, rgba(140, 82, 255, 0.3), #1a1a1a);
-  background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
-  z-index: -1;
-  border-radius: 1rem;
-  opacity: 0.7;
+  display: none;
 }
 
 /* Información del autor */
@@ -550,57 +427,66 @@
   margin-bottom: 2rem;
 }
 
-/* Botón de Leer más */
+/* Botón de Leer más - Estilo más sobrio */
 .btn-leer-mas {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, #2d3142, #1a1a1a);
+  background: rgba(30, 30, 35, 0.8); /* Fondo oscuro */
   color: white;
   border-radius: 0.8rem;
   font-size: 1.5rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(70, 70, 70, 0.5);
   position: relative;
   overflow: hidden;
 }
 
 .btn-leer-mas:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.3);
-  background: linear-gradient(135deg, #2d3142, #1e2130);
+  box-shadow: none;
+  background: rgba(40, 40, 45, 0.9);
   color: white;
 }
 
+/* Eliminar efectos brillantes del botón */
 .btn-leer-mas:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: 0.5s;
+  display: none;
 }
 
-.btn-leer-mas:hover:before {
-  left: 100%;
+/* Links sociales - Estilo más sobrio */
+.social-link {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 25, 30, 0.8);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(70, 70, 70, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: relative;
+  overflow: hidden;
 }
 
-.btn-leer-mas::after {
-  content: '\f061'; /* Icono de flecha hacia la derecha (FontAwesome) */
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  margin-left: 0.8rem;
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: none;
+  color: var(--white);
+  background: rgba(35, 35, 40, 0.9);
+}
+
+/* Eliminar efectos brillantes de los enlaces sociales */
+.social-link:before {
+  display: none;
 }
 
 /* Contenedor de links sociales */
@@ -616,56 +502,17 @@
   gap: 2rem;
 }
 
-.social-link {
-  width: 5rem;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(20, 20, 25, 0.8);
-  color: var(--white);
-  border-radius: 50%;
-  font-size: 2rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  position: relative;
-  overflow: hidden;
-}
-
-.social-link:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
-  color: var(--white);
-  background: linear-gradient(135deg, #2d3142, #1a1a1a);
-}
-
-.social-link:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  transition: 0.5s;
-}
-
-.social-link:hover:before {
-  left: 100%;
-}
-
-/* Media queries - Ajustados para mantener coherencia */
+/* Media queries - Adaptar para móviles quitando efecto libro */
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 4rem;
+  }
+  
+  .autor-container {
+    /* Eliminar efecto libro en móvil */
+    transform: none;
+    transform-origin: center;
   }
   
   .autor-content {
@@ -682,16 +529,36 @@
     align-self: center;
   }
   
-  .contacto-form-container::after {
-    font-size: 2.6rem;
-  }
-  
   .autor-avatar {
     width: 16rem;
     height: 20rem;
   }
 }
 
+/* Efectos de hover para la "página" */
+.contacto-form-container:hover {
+  transform: perspective(1000px) rotateY(4deg);
+}
+
+/* Eliminar efecto de rotación en móvil */
+@media (max-width: 992px) {
+  .contacto-form-container:hover {
+    transform: none;
+  }
+  
+  .autor-container:hover {
+    transform: none;
+  }
+}
+
+/* Solo desktop tiene efecto libro al hacer hover */
+@media (min-width: 993px) {
+  .autor-container:hover {
+    transform: perspective(1000px) rotateY(-4deg);
+  }
+}
+
+/* Media queries - Ajustados para mantener coherencia */
 @media (max-width: 768px) {
   .contacto-form-container,
   .autor-container {
