@@ -352,16 +352,21 @@
   display: none;
 }
 
-/* Autor title hereda estilos de la clase común de títulos */
+/* Autor title con el mismo gradiente que otros títulos */
 .autor-title {
   font-size: 2.4rem;
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #ffffff;
   position: relative;
   padding-bottom: 1.2rem;
   z-index: 2;
   font-weight: 700;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
 }
 
 .autor-title::after {
@@ -510,6 +515,22 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
+}
+
+/* Estilos para el título "Sígueme en redes" */
+.social-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
 }
 
 /* Media queries unificadas - Ajustar para diferentes tamaños de pantalla */
@@ -758,16 +779,21 @@
   z-index: -1;
 }
 
-/* Títulos de las páginas adicionales */
+/* Títulos de las páginas adicionales con el mismo gradiente */
 .libro-page-title {
   font-size: 2.4rem;
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #ffffff;
   position: relative;
   padding-bottom: 1.2rem;
   z-index: 2;
   font-weight: 700;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
 }
 
 .libro-page-title::after {
@@ -778,7 +804,7 @@
   transform: translateX(-50%);
   width: 8rem;
   height: 3px;
-  background: linear-gradient(90deg, #333, #444); /* Cambiado a tonos gris */
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
@@ -802,10 +828,11 @@
 }
 
 .libro-icon i {
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
 }
 
 /* Efectos hover mejorados */
@@ -860,10 +887,12 @@
   display: block;
   text-align: right;
   font-weight: 600;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
   margin-top: auto;
 }
 
