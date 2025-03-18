@@ -684,9 +684,10 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
-  height: 2px;
+  height: 3px;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .section-subtitle {
