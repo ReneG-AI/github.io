@@ -3,12 +3,18 @@
  * Estilos para la sección de contacto y formulario
  */
 
+/* Ajuste de la sección para mejor integración con libros */
+#contacto.section {
+  padding-top: 2rem; /* Reducido de 8rem (valor por defecto) */
+}
+
 /* Contenedor de la sección de contacto */
 .contact-section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem; /* Reducido de 4rem para hacer más compacto */
   position: relative;
   z-index: 1;
+  display: none; /* Ocultamos el encabezado externo */
 }
 
 .contact-section-title {
@@ -76,10 +82,13 @@
   gap: 4rem;
   position: relative;
   z-index: 1;
-  margin-top: -1rem; /* Mover hacia arriba */
+  margin-top: 0; /* Cambiado de -1rem para evitar espacios negativos */
   padding: 1rem;
   border-radius: 1.5rem;
   transition: transform 0.3s ease;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Borde degradado para el contenedor de contacto */
@@ -126,7 +135,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: -1rem; /* Mover hacia arriba */
+  margin-top: 0; /* Cambiado de -1rem */
   z-index: 2;
 }
 
@@ -145,11 +154,31 @@
   z-index: -1;
 }
 
-/* Formulario */
+/* Título interno para el formulario */
+.contacto-form-container::after {
+  content: '¡Contáctame!';
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-text 8s linear infinite;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+/* Formulario - Ajustado con margen superior para el título */
 .contacto-form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-top: 5rem; /* Espacio para el título */
 }
 
 /* Grupo de formulario */
@@ -298,17 +327,17 @@
   z-index: -1;
 }
 
-/* Título del autor */
+/* Título del autor - Ajustado */
 .autor-title {
   font-size: 2.4rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Reducido para compactar */
   text-align: center;
   background: linear-gradient(90deg, #2d3142, #8C52FF);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   position: relative;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1rem; /* Reducido */
 }
 
 .autor-title::after {
@@ -330,24 +359,25 @@
   margin-bottom: 2.5rem;
 }
 
-/* Avatar del autor */
+/* Avatar del autor - Aumentado */
 .autor-avatar {
   flex-shrink: 0;
-  width: 12rem;
-  height: 12rem;
+  width: 14rem; /* Aumentado de 12rem */
+  height: 14rem; /* Aumentado de 12rem */
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 1;
+  margin: 0 auto 1.5rem auto; /* Centrado cuando está en columna */
 }
 
 .autor-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 10%;
   display: block;
   visibility: visible !important;
   opacity: 1 !important;
@@ -356,7 +386,7 @@
   transform: scale(1.15);
   min-width: 100%;
   min-height: 100%;
-  object-position: center 10%;
+  border-radius: 50%; /* Asegurar forma circular */
 }
 
 /* Información del autor */
@@ -484,7 +514,7 @@
   left: 100%;
 }
 
-/* Responsive */
+/* Media queries - Ajustados para mantener coherencia */
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
@@ -504,12 +534,30 @@
   .btn-leer-mas {
     align-self: center;
   }
+  
+  .contacto-form-container::after {
+    font-size: 2.6rem;
+  }
+  
+  .autor-avatar {
+    width: 13rem; /* Ligeramente reducido en tablets */
+    height: 13rem;
+  }
 }
 
 @media (max-width: 768px) {
   .contacto-form-container,
   .autor-container {
     padding: 2.5rem;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2.4rem;
+    top: 1.2rem;
+  }
+  
+  .contacto-form {
+    margin-top: 4.5rem;
   }
   
   .social-link {
@@ -519,8 +567,8 @@
   }
   
   .autor-avatar {
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
+    height: 12rem;
   }
 }
 
@@ -528,6 +576,15 @@
   .contacto-form-container,
   .autor-container {
     padding: 2rem;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2.2rem;
+    top: 1rem;
+  }
+  
+  .contacto-form {
+    margin-top: 4rem;
   }
   
   .form-group label {
@@ -551,8 +608,8 @@
   }
   
   .autor-avatar {
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
   }
   
   .autor-title {
