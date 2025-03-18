@@ -57,8 +57,10 @@ a.book-btn,
 
 /* Estilo para el botón de volver arriba en modo oscuro */
 #back-to-top {
-  background-color: var(--dark-btn-bg, #2a2a2a) !important;
-  color: var(--dark-btn-text, #ffffff) !important;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
+  background-size: 100% 100%;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
+  color: white;
 }
 
 /* Ajustes finales para asegurar consistencia en el modo oscuro */

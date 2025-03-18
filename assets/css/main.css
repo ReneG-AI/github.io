@@ -447,7 +447,7 @@ section {
   width: 6rem;
   height: 6rem;
   background: linear-gradient(135deg, #FF5EDB, #8C52FF);
-  background-size: 200% 200%;
+  background-size: 100% 100%;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -455,13 +455,11 @@ section {
   color: var(--white);
   font-size: 2rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
   opacity: 0;
   visibility: hidden;
   z-index: 999;
   box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
-  animation: gradientMove 8s linear infinite;
-  will-change: transform;
   border: none;
 }
 
@@ -471,12 +469,11 @@ section {
 }
 
 #back-to-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 0.8rem 2rem rgba(255, 94, 219, 0.4);
+  opacity: 0.9;
 }
 
 #back-to-top i {
-  animation: bounce 2s ease-in-out infinite;
+  /* Sin animación */
 }
 
 /* Media queries para responsividad del botón volver arriba */
@@ -1369,7 +1366,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media screen and (max-width: 576px) {
   html {
-    font-size: 55%;
+    font-size: 50%;
   }
   
   #back-to-top {
@@ -1472,7 +1469,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Media queries para responsividad */
 @media screen and (max-width: 768px) {
   html {
-    font-size: 58%;
+    font-size: 55%;
   }
 
   #back-to-top {
@@ -1493,7 +1490,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media screen and (max-width: 576px) {
   html {
-    font-size: 55%;
+    font-size: 50%;
   }
   
   #back-to-top {
