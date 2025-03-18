@@ -306,13 +306,16 @@
   display: none; /* Ocultar el efecto de brillo */
 }
 
-/* Contenedor para las páginas adicionales */
+/* Contenedor para las páginas adicionales - extendido para llegar al footer */
 .libro-pages-container {
   grid-area: pages;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
 }
 
 /* Definición de áreas específicas para las páginas */
@@ -798,10 +801,10 @@
 
 /* Estilos para las páginas adicionales del libro */
 .libro-page {
-  background: rgba(25, 25, 30, 0.8); /* Igualado al fondo de contacto-form-container y autor-container */
-  padding: 3.5rem;
+  background: rgba(25, 25, 30, 0.8);
+  padding: 2.5rem;
   border-radius: 1.5rem;
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4); /* Igualada la sombra */
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -809,13 +812,29 @@
   z-index: 1;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   overflow: hidden;
+  height: 100%;
 }
 
 .libro-page-inner {
-  padding: 3.5rem;
+  padding: 2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* Contenido de las páginas adicionales */
+.libro-page-content {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--white);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.libro-page-content p {
+  margin-bottom: 1.5rem;
 }
 
 /* Efecto de esquina de página */
@@ -880,16 +899,6 @@
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Contenido de las páginas adicionales */
-.libro-page-content {
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: var(--white);
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
 }
 
 .libro-icon {
@@ -971,16 +980,20 @@
 
 /* Nuevo separador con línea animada */
 .libro-separador {
-  grid-area: separador;
   width: 100%;
-  height: 8rem;
+  height: 4rem;
   position: relative;
-  margin: 1rem 0;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
 }
 
 /* Contenedor y estilo de la línea animada */
@@ -1092,25 +1105,24 @@
 /* Separador para usar antes del footer - Estandarizado */
 .separador-footer {
   width: 100%;
-  max-width: 1200px;
-  height: 6rem;
+  height: 4rem;
   position: relative;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 0 0 1.8rem 1.8rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: transparent;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
 }
 
 .separador-footer .linea-animada-container {
-  width: 80%;
-  max-width: 900px;
+  width: 90%;
+  max-width: 1100px;
 }
 
 /* Asegurar que las líneas tengan la animación correcta */
