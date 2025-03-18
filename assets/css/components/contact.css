@@ -169,17 +169,17 @@
   margin-bottom: 2rem;
 }
 
-/* Añadir línea debajo del título "¡Contáctame!" */
-.contacto-form-container::before {
+/* Línea debajo del título "¡Contáctame!" con un nuevo elemento */
+.contacto-title-line {
   content: '';
   position: absolute;
-  top: 5.2rem;
+  top: 6rem;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  z-index: 2;
+  z-index: 5;
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
@@ -392,9 +392,12 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important;
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  opacity: 1 !important;
+  display: block !important;
+  z-index: 5;
 }
 
 /* Contenido del autor */
