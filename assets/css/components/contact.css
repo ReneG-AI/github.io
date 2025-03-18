@@ -248,7 +248,7 @@
   transform: translateY(-3px);
 }
 
-/* Botón de enviar */
+/* Botón de enviar - Cambiado a degradado violeta/azul para mejor integración con la paleta */
 .btn-enviar {
   background: linear-gradient(135deg, #8C52FF, #6B4CE6);
   color: white;
@@ -398,11 +398,11 @@
   margin-bottom: 3rem;
 }
 
-/* Avatar del autor - Sin brillo */
+/* Avatar del autor - Aumentado de tamaño */
 .autor-avatar {
   flex-shrink: 0;
-  width: 27rem; /* 50% más grande que el tamaño original de 18rem */
-  height: 27rem; /* Ahora es cuadrado para asegurar un círculo perfecto */
+  width: 30rem; /* Aumentado de 27rem a 30rem */
+  height: 30rem; /* Aumentado para mantener proporción */
   overflow: hidden;
   border: 2px solid rgba(50, 50, 50, 0.8);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2);
@@ -429,7 +429,7 @@
 }
 
 .autor-avatar:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08); /* Aumentado el efecto de zoom al hover */
 }
 
 /* Eliminado el efecto de brillo en el borde del avatar */
@@ -482,16 +482,29 @@
   display: none;
 }
 
-/* Links sociales - Estilo más sobrio */
+/* Links sociales - Con nombres añadidos */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* Contenedor de links sociales */
+.social-links-container {
+  margin-top: auto;
+  text-align: center;
+}
+
 .social-link {
   width: 6rem;
   height: 6rem;
   display: flex;
+  flex-direction: column; /* Cambiado de row a column para acomodar el texto */
   align-items: center;
   justify-content: center;
   background: rgba(25, 25, 30, 0.8);
   color: var(--white);
-  border-radius: 50%;
+  border-radius: 1rem; /* Cambiado a menos curvado para acomodar texto */
   font-size: 2.4rem;
   transition: all 0.3s ease;
   border: 1px solid rgba(70, 70, 70, 0.5);
@@ -499,12 +512,28 @@
   -webkit-backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
+  padding: 1rem 0.5rem; /* Añadido padding para el texto */
+}
+
+.social-link i {
+  margin-bottom: 0.5rem; /* Espacio entre icono y texto */
+}
+
+.social-link span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
 }
 
 .social-link:hover {
   transform: translateY(-5px);
   box-shadow: none;
   background: rgba(35, 35, 40, 0.9);
+}
+
+.social-link:hover span {
+  opacity: 1;
 }
 
 /* Colores originales para los iconos de redes sociales */
@@ -523,23 +552,10 @@
   color: #FF9900;
 }
 
-/* Contenedor de links sociales */
-.social-links-container {
-  margin-top: auto;
-  text-align: center;
-}
-
-/* Links sociales */
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-}
-
-/* Estilos para el título "Sígueme en redes" */
+/* Estilos para el título "Sígueme en redes" - Mejorada la alineación */
 .social-title {
   font-size: 2.2rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem; /* Reducido de 1.8rem a 1.2rem para acercar a los iconos */
   text-align: center;
   position: relative;
   padding-bottom: 1rem;
@@ -637,9 +653,14 @@
   }
   
   .social-link {
-    width: 5rem;
-    height: 5rem;
-    font-size: 2.2rem;
+    width: 5.5rem;
+    height: 7rem; /* Aumentado para acomodar el texto */
+    font-size: 2rem;
+    padding: 0.8rem 0.4rem;
+  }
+  
+  .social-link span {
+    font-size: 1.1rem;
   }
   
   .social-title {
@@ -768,9 +789,14 @@
   }
   
   .social-link {
-    width: 4.5rem;
-    height: 4.5rem;
-    font-size: 2rem;
+    width: 5rem;
+    height: 6.5rem;
+    font-size: 1.8rem;
+    padding: 0.7rem 0.3rem;
+  }
+  
+  .social-link span {
+    font-size: 1rem;
   }
   
   .libro-page-inner {
@@ -1543,4 +1569,48 @@
     padding: 1.1rem;
     font-size: 1.4rem;
   }
+}
+
+/* Alternativa: Tooltip para redes sociales (solo visible en hover) */
+.social-link-tooltip {
+  position: relative;
+}
+
+.social-link-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.social-link-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0.5rem;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.social-link-tooltip:hover::after,
+.social-link-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
 } 
