@@ -757,22 +757,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hero content con borde degradado */
 .hero-content {
-  max-width: 650px; /* Aumentado ligeramente */
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 3.5rem;
-  border-radius: 1.5rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 580px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 2rem;
   z-index: 2;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 5rem;
-  position: relative;
+  transform: translateY(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Borde degradado para el hero */
@@ -856,7 +855,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* Badge de testimonial mejorado */
+/* Badge de testimonial mejorado - Centrado */
 .testimonial-badge {
   display: flex;
   flex-direction: column;
@@ -869,11 +868,13 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.25);
-  align-self: center;
-  width: 90%;
+  width: 80%;
+  max-width: 400px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonial-badge::before {
@@ -938,57 +939,24 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Estilo para botones con gradiente */
+/* Estilo para botones con gradiente - Color Amazon */
 .btn-gradient {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  color: var(--white);
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000;
   font-weight: var(--font-weight-semibold);
   transition: all 0.3s ease;
   border: none;
-}
-
-.btn-gradient::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
-  z-index: -1;
-  display: none; /* Ocultar el efecto de brillo */
-}
-
-.btn-gradient:hover::before {
-  left: 100%;
-  display: none; /* Ocultar el efecto de brillo */
-}
-
-.btn-gradient::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-  z-index: -2;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 0.4rem 1rem rgba(255, 153, 0, 0.4);
 }
 
 .btn-gradient:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 0.6rem 1.5rem rgba(255, 153, 0, 0.5);
 }
 
 /* Mantenlo para AOS */
@@ -1093,8 +1061,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white);
   font-size: 1.8rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
-  /* Eliminamos la animación del círculo */
-  /* animation: gradientMove 8s linear infinite; */
   transition: all 0.3s ease;
 }
 
@@ -1424,4 +1390,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0.7rem 1.4rem;
     font-size: 1.1rem;
   }
+}
+
+/* Botones del hero - Centrados */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
 } 
