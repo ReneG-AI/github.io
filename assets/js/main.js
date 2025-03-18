@@ -240,7 +240,6 @@ function initBookFlip() {
 function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
     const interiorBtns = document.querySelectorAll('.interior-btn');
-    const closeBtn = document.getElementById('modalClose');
     const closeBtnX = document.getElementById('modalCloseX');
     
     if (modal && interiorBtns.length) {
@@ -250,13 +249,6 @@ function initInteriorModal() {
                 modal.classList.add('active');
             });
         });
-        
-        // Cerrar con el botón principal
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                modal.classList.remove('active');
-            });
-        }
         
         // Cerrar con el botón X
         if (closeBtnX) {
