@@ -189,7 +189,7 @@
 
 /* Contenido de información del libro - espaciado mejorado */
 .book-content {
-  padding: 2.2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -242,19 +242,23 @@
 /* Descripción del libro */
 .book-description {
   font-size: 1.5rem;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2.5rem;
   color: var(--white);
   opacity: 0.95;
   line-height: 1.6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
 }
 
 /* Detalles del libro ajustado para mejor alineación */
 .book-details {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+  gap: 1.2rem;
+  margin-bottom: 2.8rem;
   align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .book-detail {
@@ -269,25 +273,39 @@
   margin-right: 1.2rem;
   color: var(--primary-color-light);
   font-size: 1.6rem;
-  min-width: 2.2rem;
+  min-width: 2.4rem;
   display: flex;
   justify-content: center;
 }
 
 /* Ajustes para el título y subtítulos */
 .feature-title {
-  font-size: 1.7rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.9rem;
+  margin-bottom: 1.8rem;
   color: var(--white);
   text-align: left;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.feature-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 1px;
 }
 
 /* Mejoras en la lista de características */
 .features-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .feature-item {
@@ -295,15 +313,16 @@
   align-items: flex-start;
   font-size: 1.4rem;
   color: var(--white);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .feature-item i {
   margin-right: 1rem;
   color: var(--accent-color);
   font-size: 1.4rem;
-  min-width: 1.8rem;
+  min-width: 2rem;
   padding-top: 0.2rem;
+  text-align: center;
 }
 
 /* Ribbons más elegantes */
@@ -594,8 +613,8 @@
   }
   
   .feature-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.6rem;
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
     text-align: center;
   }
   
@@ -743,12 +762,15 @@
 .amazon-btn, .interior-btn {
   flex: 1;
   min-width: 15rem;
-  height: 4.2rem;
+  height: 4.5rem;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Estilo para botones de Amazon */
