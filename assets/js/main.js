@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
+    preloadBookImages(); // Precargar imágenes de libros
     initBookFlip();
     initInteriorModal();
     setupBackToTop();
@@ -125,6 +126,25 @@ function setupBackToTop() {
     });
 }
 
+// Función para precargar todas las imágenes de portadas y contraportadas
+function preloadBookImages() {
+    // Obtener todas las imágenes de portada y contraportada
+    const bookCovers = document.querySelectorAll('.book-cover');
+    const bookBacks = document.querySelectorAll('.book-back');
+    
+    // Precargar cada imagen de portada
+    bookCovers.forEach(cover => {
+        const img = new Image();
+        img.src = cover.src;
+    });
+    
+    // Precargar cada imagen de contraportada
+    bookBacks.forEach(back => {
+        const img = new Image();
+        img.src = back.src;
+    });
+}
+
 // Inicializar funciones para el efecto de flip de libros
 function initBookFlip() {
     // Seleccionar todos los flippers de libros
@@ -152,10 +172,28 @@ function initBookFlip() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation(); // Evitar que el clic se propague al flipper
-            const flipper = this.closest('.book-images').querySelector('.book-flipper');
+            
+            // Buscar si es un libro sprite o normal
+            const bookImages = this.closest('.book-images');
+            const flipper = bookImages.querySelector('.book-flipper');
+            const spriteContainer = bookImages.querySelector('.book-sprite-container');
+            
+            // Si es un libro estándar
             if (flipper) {
                 flipper.classList.toggle('flipped');
             }
+            // Si es un libro con sprite
+            else if (spriteContainer) {
+                spriteContainer.classList.toggle('flipped');
+            }
+        });
+    });
+    
+    // Inicializar los libros basados en sprite
+    const spriteContainers = document.querySelectorAll('.book-sprite-container');
+    spriteContainers.forEach(container => {
+        container.addEventListener('click', function() {
+            this.classList.toggle('flipped');
         });
     });
 }

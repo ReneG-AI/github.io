@@ -211,3 +211,55 @@ Para más información sobre este proyecto, contactar a René García a través 
 - **Consistencia Visual**: Todos los botones del sitio (Ver en Amazon, Ver Interior, etc.) ahora tienen el mismo estilo visual basado en el botón de Amazon en el header.
 - **Estilo Actualizado**: Botones con gradiente amarillo-dorado, texto negro, esquinas ligeramente redondeadas y efecto hover mejorado.
 - **Mejor Interacción**: Animaciones suaves al pasar el cursor, manteniendo una experiencia de usuario coherente.
+
+## Optimización de Imágenes
+
+### Técnicas de Optimización Implementadas
+
+Para mejorar el rendimiento de carga de las imágenes, especialmente en las portadas y contraportadas de los libros, se han implementado las siguientes optimizaciones:
+
+1. **Precarga de Imágenes**
+   - Se utiliza `<link rel="preload">` para las imágenes críticas
+   - Se precargan todas las portadas y contraportadas mediante JavaScript
+
+2. **Optimización CSS**
+   - Uso de `will-change` para mejorar rendimiento de animaciones
+   - Transiciones optimizadas con `cubic-bezier`
+   - Uso de `opacity` en lugar de `display: none` para mejorar rendimiento
+
+3. **CSS Sprites para Libros**
+   - Se implementa una técnica de sprites para combinar portada y contraportada en una sola imagen
+   - Reduce las solicitudes HTTP y mejora el rendimiento de cambio
+
+4. **Caché del Navegador**
+   - Configuración de `Cache-Control` para almacenar imágenes durante 1 año
+   - Configuración de `ETag` para validación eficiente
+
+### Creación de Sprites para Libros
+
+Para crear un sprite de libro (combinar portada y contraportada en una sola imagen):
+
+1. Usar un editor de imágenes como Photoshop, GIMP o herramientas online
+2. Colocar la portada en la mitad superior
+3. Colocar la contraportada en la mitad inferior
+4. Guardar como PNG o WebP para mejor calidad/compresión
+5. Nombre recomendado: `sprite-book1.png`, `sprite-book2.png`, etc.
+
+Ejemplo de implementación HTML:
+
+```html
+<div class="book-images">
+  <div class="book-sprite-container">
+    <div class="book-sprite"></div>
+  </div>
+  <button class="flip-button">
+    <i class="fas fa-sync-alt"></i> Girar
+  </button>
+</div>
+```
+
+### Herramientas Recomendadas para Optimización
+
+- [ImageOptim](https://imageoptim.com/) - Compresión de imágenes sin pérdida
+- [Squoosh](https://squoosh.app/) - Compresión avanzada y conversión a WebP
+- [Sprite Generator](https://www.toptal.com/developers/css/sprite-generator/) - Creación automática de sprites

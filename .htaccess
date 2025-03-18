@@ -1,0 +1,37 @@
+# Cache Control for Images
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Cache all images for 1 year
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+  
+  # Cache CSS and JavaScript files for 1 month
+  <FilesMatch "\.(css|js)$">
+    ExpiresDefault "access plus 1 month"
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# Compression for faster loading
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
+  
+  # Add compression for image formats that support it
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Enable CORS for font files
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# Disable ETags
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None 
