@@ -33,11 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         document.body.classList.add('loaded');
     }, 300);
-
-    // Cargar el script de animación de mascotas
-    const script = document.createElement('script');
-    script.src = 'assets/js/animations/pet-chase.js';
-    document.body.appendChild(script);
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento

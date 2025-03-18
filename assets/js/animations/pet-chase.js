@@ -1,7 +1,14 @@
 // Esta función crea e inicializa la animación SVG del lápiz
 function initPencilDrawingAnimation() {
+  console.log('Iniciando animación de lápiz');
   const container = document.getElementById('animation-container');
-  if (!container) return;
+  
+  if (!container) {
+    console.error('No se encontró el contenedor de animación (animation-container)');
+    return;
+  }
+  
+  console.log('Contenedor encontrado:', container);
   
   // Limpiar el contenedor
   container.innerHTML = '';
@@ -116,6 +123,7 @@ function initPencilDrawingAnimation() {
   
   // Añadir el SVG al contenedor
   container.appendChild(svg);
+  console.log('SVG añadido al contenedor');
   
   // Iniciar la animación
   animatePencilDrawing();
@@ -229,4 +237,10 @@ function animatePencilDrawing() {
 document.addEventListener('DOMContentLoaded', initPencilDrawingAnimation);
 
 // Manejar el redimensionamiento de la ventana
-window.addEventListener('resize', initPencilDrawingAnimation); 
+window.addEventListener('resize', initPencilDrawingAnimation);
+
+// Ejecutar también al cargar el script (puede que DOMContentLoaded ya haya ocurrido)
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  console.log('Ejecutando animación directamente porque el DOM ya está cargado');
+  setTimeout(initPencilDrawingAnimation, 100);
+} 
