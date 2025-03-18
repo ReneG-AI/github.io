@@ -3,18 +3,18 @@
  * Estilos para la sección de contacto y formulario
  */
 
-/* Ajuste de la sección para mejor integración con libros */
+/* Ajuste de la sección para mejor integración */
 #contacto.section {
-  padding-top: 2rem; /* Reducido de 8rem (valor por defecto) */
+  padding-top: 4rem;
 }
 
 /* Contenedor de la sección de contacto */
 .contact-section-header {
   text-align: center;
-  margin-bottom: 2rem; /* Reducido de 4rem para hacer más compacto */
+  margin-bottom: 2rem;
   position: relative;
   z-index: 1;
-  display: none; /* Ocultamos el encabezado externo */
+  display: block; /* Mostramos el encabezado */
 }
 
 .contact-section-title {
@@ -22,17 +22,17 @@
   display: inline-block;
   padding: 1rem 3rem;
   border-radius: 1.5rem;
-  background: rgba(18, 18, 25, 0.85); /* Fondo más oscuro */
+  background: rgba(18, 18, 25, 0.85);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(108, 76, 230, 0.3); /* Borde púrpura tenue */
+  border: 1px solid rgba(108, 76, 230, 0.3);
   transform: translateY(0);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(140, 82, 255, 0.3); /* Sombra de texto digital */
+  text-shadow: 0 0 10px rgba(140, 82, 255, 0.3);
   letter-spacing: 0.5px;
 }
 
@@ -72,33 +72,30 @@
 }
 
 .contact-section-subtitle {
-  display: none; /* Ocultar subtítulo según petición */
+  display: none;
 }
 
-/* Grid de contacto - Ajustado para mejor espaciado */
+/* Grid de contacto - Rediseñado sin efecto libro */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   position: relative;
   z-index: 1;
-  margin-top: 0;
   padding: 2rem;
   border-radius: 1.5rem;
   transition: transform 0.3s ease;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(to right, 
-    rgba(10, 10, 15, 0.9) 0%, 
-    rgba(18, 18, 25, 0.8) 50%, 
-    rgba(10, 10, 15, 0.9) 100%);
+  background: rgba(18, 18, 25, 0.8);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
   grid-template-areas: 
     "form autor"
     "separador separador"
     "pages pages";
   padding-bottom: 4rem;
+  border: 1px solid rgba(108, 76, 230, 0.3);
 }
 
 /* Borde degradado para el contenedor de contacto */
@@ -116,21 +113,9 @@
   z-index: -1;
 }
 
-/* Pliegue central del libro para el contenedor de contacto */
+/* Eliminar pliegue central del libro */
 .contact-grid::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: linear-gradient(to right, 
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(0, 0, 0, 0.2) 100%);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  transform: translateX(-50%);
-  z-index: 2;
+  display: none;
 }
 
 /* Contenedor del formulario de contacto - Mejorado */
@@ -146,7 +131,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-top: 0; /* Cambiado de -1rem */
+  margin-top: 0;
   z-index: 2;
 }
 
@@ -707,26 +692,11 @@
 
 /* Efecto de hover para el contenedor de contacto */
 .contact-grid:hover {
-  transform: translateY(-5px);
+  transform: none;
 }
 
-/* Animación de resplandor en el pliegue central al hacer hover */
 .contact-grid:hover::after {
-  background: linear-gradient(to right, 
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(45, 49, 66, 0.3) 50%,
-    rgba(0, 0, 0, 0.2) 100%);
-  box-shadow: 0 0 12px rgba(45, 49, 66, 0.5);
-  transition: all 0.3s ease;
-}
-
-/* Efectos de hover para las "páginas" */
-.contacto-form-container:hover {
-  transform: perspective(1000px) rotateY(4deg);
-}
-
-.autor-container:hover {
-  transform: perspective(1000px) rotateY(-4deg);
+  opacity: 0;
 }
 
 /* Estilos para las páginas adicionales del libro */
@@ -834,22 +804,21 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Ubicación de cada página */
+/* Ubicación de cada página - sin efecto de libro abierto */
 .libro-page-1 {
-  transform: perspective(1000px) rotateY(-2deg);
-  transform-origin: right center;
+  transform: none;
+  transition: transform 0.3s ease;
 }
 
 .libro-page-2 {
-  transform: perspective(1000px) rotateY(2deg);
-  transform-origin: left center;
+  transform: none;
+  transition: transform 0.3s ease;
 }
 
-.libro-page-3 {
-  grid-area: page3;
-  margin: 2rem auto 0;
-  width: 90%;
-  min-height: 350px;
+/* Efectos hover mejorados */
+.libro-page-1:hover,
+.libro-page-2:hover {
+  transform: translateY(-0.5rem);
 }
 
 /* Grid para testimonios */
@@ -905,370 +874,220 @@
   margin-top: auto;
 }
 
-/* Efectos hover para las páginas */
-.libro-page-1:hover {
-  transform: perspective(1000px) rotateY(-4deg);
-  box-shadow: -1rem 1.2rem 3.5rem rgba(0, 0, 0, 0.5);
-}
-
-.libro-page-2:hover {
-  transform: perspective(1000px) rotateY(4deg);
-  box-shadow: 1rem 1.2rem 3.5rem rgba(0, 0, 0, 0.5);
-}
-
-.libro-page-3:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
-}
-
-/* Separador animado entre secciones */
+/* Nuevo separador con lápiz de color animado */
 .libro-separador {
   grid-area: separador;
-  height: 12rem;
+  width: 100%;
+  height: 10rem;
   position: relative;
   margin: 2rem 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Animación del perrito kawaii mejorada */
+/* Animación del lápiz de color */
 .puppy-animation {
   width: 100%;
-  height: 8rem;
+  height: 10rem;
   position: relative;
 }
 
+/* Contenedor del lápiz */
 .puppy-container {
   position: absolute;
-  width: 10rem;
+  width: 15rem;
   height: 8rem;
-  animation: puppy-run 10s linear infinite;
-  left: -10rem;
+  animation: pencil-draw 10s linear infinite;
+  left: -15rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
 }
 
+/* Cuerpo del lápiz */
 .puppy-body {
   position: absolute;
-  width: 6rem;
-  height: 3rem;
-  background-color: #f6b092;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  top: 2.5rem;
+  width: 10rem;
+  height: 1.8rem;
+  background: linear-gradient(180deg, #FFD700, #FFA500, #FF4500);
+  border-radius: 0.2rem;
+  top: 3rem;
   left: 2rem;
   transform-origin: center;
-  animation: body-bounce 0.5s infinite alternate;
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  animation: pencil-bounce 0.5s infinite alternate;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.3);
 }
 
+/* Punta del lápiz */
 .puppy-head {
   position: absolute;
-  width: 5rem;
-  height: 4.5rem;
-  background-color: #f6b092;
-  border-radius: 50%;
-  top: 0.5rem;
-  left: 4rem;
+  width: 3rem;
+  height: 1.8rem;
+  background: linear-gradient(90deg, #333, #666);
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+  top: 3rem;
+  left: 12rem;
   z-index: 2;
-  animation: head-bounce 0.5s infinite alternate;
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+  animation: pencil-point 0.5s infinite alternate;
 }
 
+/* Borrador del lápiz */
 .puppy-ear {
   position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #e57063;
-  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  width: 1.5rem;
+  height: 1.8rem;
+  background: #FF6B81;
+  border-radius: 0.2rem;
   z-index: 1;
+  top: 3rem;
+  left: 0.5rem;
 }
 
-.puppy-ear.left {
-  transform: rotate(-30deg);
-  top: -1rem;
-  left: 0.2rem;
-  animation: ear-left 0.6s infinite alternate;
-}
-
-.puppy-ear.right {
-  transform: rotate(30deg);
-  top: -1rem;
-  right: 0.2rem;
-  animation: ear-right 0.6s infinite alternate;
-}
-
+/* Detalles del lápiz (texto, líneas) */
 .puppy-face {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 3;
 }
 
+/* Ojitos kawaii para el lápiz */
 .puppy-eye {
   position: absolute;
-  width: 0.8rem;
-  height: 1rem;
+  width: 0.6rem;
+  height: 0.6rem;
   background-color: #222;
   border-radius: 50%;
-  top: 1.5rem;
+  top: 2.5rem;
   animation: blink 4s infinite;
 }
 
 .puppy-eye.left {
-  left: 1.2rem;
+  left: 5rem;
 }
 
 .puppy-eye.right {
-  right: 1.2rem;
+  left: 7rem;
 }
 
-.puppy-nose {
-  position: absolute;
-  width: 1rem;
-  height: 0.8rem;
-  background-color: #222;
-  border-radius: 40% 40% 60% 60%;
-  top: 2.3rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
+/* Sonrisa kawaii para el lápiz */
 .puppy-mouth {
   position: absolute;
   width: 1.5rem;
   height: 0.5rem;
   border-bottom: 0.2rem solid #222;
   border-radius: 0 0 40% 40%;
-  top: 3rem;
-  left: 50%;
+  top: 3.5rem;
+  left: 6rem;
   transform: translateX(-50%);
 }
 
-.puppy-tail {
-  position: absolute;
-  width: 2.5rem;
-  height: 1rem;
-  background-color: #e57063;
-  border-radius: 0 50% 50% 0;
-  top: 2.3rem;
-  left: 0.5rem;
-  transform-origin: left center;
-  animation: tail-wag 0.3s infinite alternate;
-}
-
-.puppy-legs {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.leg {
-  position: absolute;
-  width: 1.2rem;
-  height: 2rem;
-  background-color: #e57063;
-  border-radius: 0.6rem;
-}
-
-.leg.front.left {
-  top: 4rem;
-  left: 2.5rem;
-  animation: front-left-leg 0.5s infinite alternate;
-}
-
-.leg.front.right {
-  top: 4rem;
-  left: 4.5rem;
-  animation: front-right-leg 0.5s infinite alternate;
-}
-
-.leg.back.left {
-  top: 4rem;
-  left: 6.5rem;
-  animation: back-left-leg 0.5s infinite alternate;
-}
-
-.leg.back.right {
-  top: 4rem;
-  left: 8.5rem;
-  animation: back-right-leg 0.5s infinite alternate;
-}
-
+/* Las virutas que deja el lápiz */
 .puppy-trail {
   position: absolute;
   width: 100%;
-  height: 0.4rem;
+  height: 1.5rem;
   top: 50%;
-  background: linear-gradient(90deg, 
-    rgba(255, 94, 219, 0.3), 
-    rgba(140, 82, 255, 0.3), 
-    rgba(0, 212, 255, 0.3));
-  opacity: 0.5;
-  transform: scaleX(0);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="20" viewBox="0 0 200 20"><path d="M0,10 Q5,5 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10 T110,10 T120,10 T130,10 T140,10 T150,10 T160,10 T170,10 T180,10 T190,10 T200,10" fill="none" stroke="url(%23grad)" stroke-width="2"/><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(255,94,219);stop-opacity:0.5" /><stop offset="50%" style="stop-color:rgb(140,82,255);stop-opacity:0.5" /><stop offset="100%" style="stop-color:rgb(0,212,255);stop-opacity:0.5" /></linearGradient></defs></svg>') repeat-x;
+  background-size: 200px 20px;
+  opacity: 0;
   transform-origin: left;
   animation: trail-appear 10s linear infinite;
-  border-radius: 0.2rem;
-  filter: blur(2px);
+  filter: blur(1px);
 }
 
-/* Animaciones para el perrito kawaii */
-@keyframes puppy-run {
+/* Brillo del lápiz */
+.puppy-tail {
+  position: absolute;
+  width: 1rem;
+  height: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 0.2rem;
+  top: 3.2rem;
+  left: 6rem;
+  transform: rotate(-30deg);
+  animation: pencil-shine 1.5s infinite alternate;
+}
+
+/* Detalles decorativos */
+.puppy-legs {
+  display: none; /* No usamos las piernas en el nuevo diseño */
+}
+
+/* Animaciones para el lápiz */
+@keyframes pencil-draw {
   0% {
-    left: -10rem;
+    left: -15rem;
   }
   100% {
-    left: calc(100% + 10rem);
+    left: calc(100% + 15rem);
   }
 }
 
-@keyframes body-bounce {
+@keyframes pencil-bounce {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-0.2rem) rotate(1deg);
+  }
+}
+
+@keyframes pencil-point {
   0% {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-0.5rem);
-  }
-}
-
-@keyframes head-bounce {
-  0% {
-    transform: translateY(0) rotate(0);
-  }
-  100% {
-    transform: translateY(-0.3rem) rotate(3deg);
-  }
-}
-
-@keyframes ear-left {
-  0% {
-    transform: rotate(-30deg);
-  }
-  100% {
-    transform: rotate(-20deg);
-  }
-}
-
-@keyframes ear-right {
-  0% {
-    transform: rotate(30deg);
-  }
-  100% {
-    transform: rotate(20deg);
+    transform: translateY(-0.2rem);
   }
 }
 
 @keyframes blink {
   0%, 96%, 98% {
     transform: scaleY(1);
+    opacity: 1;
   }
   97%, 99% {
     transform: scaleY(0.1);
+    opacity: 0.5;
   }
 }
 
-@keyframes tail-wag {
+@keyframes pencil-shine {
   0% {
-    transform: rotate(-20deg);
+    opacity: 0.2;
+    transform: rotate(-30deg) scale(1);
   }
   100% {
-    transform: rotate(20deg);
-  }
-}
-
-@keyframes front-left-leg {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.8rem);
-  }
-}
-
-@keyframes front-right-leg {
-  0%, 100% {
-    transform: translateY(-0.8rem);
-  }
-  50% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes back-left-leg {
-  0%, 100% {
-    transform: translateY(-0.6rem);
-  }
-  50% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes back-right-leg {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-0.6rem);
+    opacity: 0.8;
+    transform: rotate(-30deg) scale(1.2);
   }
 }
 
 @keyframes trail-appear {
   0% {
-    transform: scaleX(0);
     opacity: 0;
+    background-position: 0 0;
   }
-  5% {
-    transform: scaleX(0.1);
+  10% {
     opacity: 0.8;
   }
   90% {
-    opacity: 0.6;
+    opacity: 0.8;
   }
   100% {
-    transform: scaleX(1);
     opacity: 0;
+    background-position: 200px 0;
   }
 }
 
-/* Contenedor para las páginas adicionales */
-.libro-pages-container {
-  grid-area: pages;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-top: 1rem;
-}
-
-/* Media queries para adaptación responsiva */
-@media (max-width: 992px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas: 
-      "form"
-      "autor"
-      "separador"
-      "pages";
-    gap: 3rem;
-  }
-  
-  .libro-pages-container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .libro-page {
-    transform: none !important;
-    width: 100%;
-  }
-  
+/* Estilos responsivos para el lápiz */
+@media (max-width: 768px) {
   .libro-separador {
-    height: 10rem;
+    height: 8rem;
   }
   
   .puppy-animation {
-    height: 6rem;
+    height: 8rem;
   }
   
   .puppy-container {
@@ -1276,72 +1095,13 @@
   }
 }
 
-@media (max-width: 768px) {
-  .contacto-form-container,
-  .autor-container,
-  .libro-page-inner {
-    padding: 2.5rem;
-  }
-  
-  .libro-page-title {
-    font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .libro-page-content,
-  .autor-texto {
-    font-size: 1.5rem;
-    line-height: 1.6;
-  }
-  
-  .libro-icon {
-    font-size: 2.5rem;
-    padding-top: 1.5rem;
-  }
-  
-  .libro-separador {
-    height: 8rem;
-  }
-  
-  .puppy-container {
-    transform: translateY(-50%) scale(0.7);
-  }
-}
-
 @media (max-width: 576px) {
-  .contacto-form-container,
-  .autor-container,
-  .libro-page-inner {
-    padding: 2rem;
-  }
-  
-  .libro-page-title {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-    padding-bottom: 1rem;
-  }
-  
-  .libro-page-title::after {
-    width: 6rem;
-  }
-  
-  .libro-page-content,
-  .autor-texto {
-    font-size: 1.4rem;
-    line-height: 1.5;
-  }
-  
-  .libro-icon {
-    font-size: 2.2rem;
-    padding-top: 1.2rem;
-  }
-  
   .libro-separador {
-    height: 7rem;
+    height: 6rem;
   }
   
-  .quote-icon {
-    font-size: 1.6rem;
+  .puppy-animation {
+    height: 6rem;
   }
   
   .puppy-container {
