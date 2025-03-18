@@ -472,10 +472,6 @@ section {
   opacity: 0.9;
 }
 
-#back-to-top i {
-  /* Sin animación */
-}
-
 /* Media queries para responsividad del botón volver arriba */
 @media screen and (max-width: 768px) {
   #back-to-top {
