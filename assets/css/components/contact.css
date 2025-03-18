@@ -169,6 +169,21 @@
   margin-bottom: 2rem;
 }
 
+/* Añadir línea debajo del título "¡Contáctame!" */
+.contacto-form-container::before {
+  content: '';
+  position: absolute;
+  top: 5.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  z-index: 2;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
 /* Formulario - Ajustado con margen superior para el título */
 .contacto-form {
   display: flex;
@@ -495,13 +510,23 @@
 .social-link:hover {
   transform: translateY(-5px);
   box-shadow: none;
-  color: var(--white);
   background: rgba(35, 35, 40, 0.9);
 }
 
-/* Eliminar efectos brillantes de los enlaces sociales */
-.social-link:before {
-  display: none;
+/* Colores originales para los iconos de redes sociales */
+.social-link .fa-instagram {
+  background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.social-link .fa-linkedin-in {
+  color: #0A66C2;
+}
+
+.social-link .fa-amazon {
+  color: #FF9900;
 }
 
 /* Contenedor de links sociales */
@@ -531,6 +556,20 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-text 8s linear infinite;
+}
+
+/* Añadir línea debajo del título "Sígueme en redes" */
+.social-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Media queries unificadas - Ajustar para diferentes tamaños de pantalla */
