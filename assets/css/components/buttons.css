@@ -5,59 +5,45 @@
 
 /* Estilos generales de botón */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   padding: 1.2rem 2.4rem;
-  border-radius: 0.8rem;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
   line-height: 1;
+  color: var(--text-color);
   text-align: center;
   text-decoration: none;
-  color: var(--white);
-  background-color: var(--primary-color);
-  border: none;
+  vertical-align: middle;
   cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background-color: transparent;
   transition: all 0.3s ease;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
-  gap: 1rem;
-  letter-spacing: 0.02em;
   position: relative;
   overflow: hidden;
-  z-index: 1;
-  white-space: nowrap;
 }
 
-.btn:hover, 
-.btn:focus {
+.btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.25);
-  color: var(--white);
-  filter: brightness(110%);
 }
 
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.2);
-}
-
-/* Añadir efecto de brillante al hacer hover */
 .btn::after {
   content: '';
   position: absolute;
-  top: -50%;
+  top: 0;
   left: -100%;
-  width: 70%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(30deg);
-  transition: all 0.6s cubic-bezier(.19, 1, .22, 1);
-  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: none; /* Desactivar efecto de brillo */
 }
 
 .btn:hover::after {
-  left: 120%;
+  left: 100%;
+  display: none; /* Desactivar efecto de brillo */
 }
 
 /* Botón primario */
@@ -94,77 +80,56 @@
 }
 
 /* Botón de Amazon mejorado */
-.amazon-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #FF9900, #FFC107);
-  color: #000 !important;
-  font-size: 1.6rem;
-  font-weight: 600;
-  padding: 1.2rem 2rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  box-shadow: none;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-}
-
-.amazon-btn:hover {
-  background: linear-gradient(135deg, #FFC107, #FF9900);
-  transform: translateY(-3px);
-  box-shadow: none;
-}
-
-.amazon-btn i {
-  margin-right: 1rem;
-  font-size: 1.6rem;
-}
-
-/* Botón de Ver Interior */
+.amazon-btn,
 .interior-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1.2rem 2.4rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: white !important;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border-radius: 0.6rem;
-  text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--white);
+  background: var(--dark-bg);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
   transition: all 0.3s ease;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   box-shadow: none;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
 }
 
+.amazon-btn i,
+.interior-btn i {
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.amazon-btn:hover,
 .interior-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
   transform: translateY(-3px);
   box-shadow: none;
+  background: var(--dark-bg-darker);
 }
 
-/* Añadir efecto de brillo al hacer hover */
-.amazon-btn::after, 
+.amazon-btn::after,
 .interior-btn::after {
   content: '';
   position: absolute;
-  top: -50%;
+  top: 0;
   left: -100%;
-  width: 70%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: rotate(30deg);
-  transition: all 0.6s cubic-bezier(.19, 1, .22, 1);
-  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: none; /* Desactivar efecto de brillo */
 }
 
 .amazon-btn:hover::after,
 .interior-btn:hover::after {
-  left: 120%;
+  left: 100%;
+  display: none; /* Desactivar efecto de brillo */
 }
 
 /* Botón outline */
@@ -237,30 +202,36 @@
 /* Botón con efecto resplandor */
 .btn-glow {
   position: relative;
+  z-index: 1;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
   overflow: hidden;
+}
+
+.btn-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
 }
 
 .btn-glow::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  transform: scale(0.5);
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+  background-size: 200% 200%;
   z-index: -1;
+  border-radius: calc(var(--border-radius) + 2px);
+  animation: none; /* Desactivar animación */
+  display: none; /* Ocultar efecto brillante */
 }
 
 .btn-glow:hover::before {
-  opacity: 0.15;
-  transform: scale(1);
+  animation: none; /* Desactivar animación */
+  display: none; /* Ocultar efecto brillante */
 }
 
 /* Botón con efecto ripple */

@@ -55,11 +55,12 @@
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.5s;
+  display: none; /* Ocultar el efecto de brillo */
 }
 
 .contact-section-title:hover::before {
-  opacity: 1;
-  animation: rotate-gradient 2s linear infinite;
+  opacity: 0; /* No mostrar al pasar el ratón */
+  animation: none; /* Eliminar animación */
 }
 
 @keyframes rotate-gradient {
@@ -297,10 +298,12 @@
     transparent
   );
   transition: 0.5s;
+  display: none; /* Ocultar el efecto de brillo */
 }
 
 .btn-enviar:hover:before {
   left: 100%;
+  display: none; /* Ocultar el efecto de brillo */
 }
 
 /* Contenedor para las páginas adicionales */
@@ -1008,7 +1011,7 @@
 
 @keyframes brillo-linea {
   0% { opacity: 0.8; box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
-  100% { opacity: 1; box-shadow: 0 0 15px rgba(140, 82, 255, 0.8); }
+  100% { opacity: 1; box-shadow: 0 0 10px rgba(140, 82, 255, 0.5); } /* Reducido el brillo */
 }
 
 /* Estilos responsivos para el separador */

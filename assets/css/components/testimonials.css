@@ -186,6 +186,7 @@
 
 /* Efecto de brillo */
 .testimonial-glow {
+  display: none; /* Ocultar el efecto de brillo */
   position: absolute;
   top: -50%;
   left: -50%;

@@ -937,28 +937,16 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Botón de Amazon mejorado */
+/* Estilo para botones con gradiente */
 .btn-gradient {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(45deg, #ff9900, #ffcc00, #ff9900);
-  background-size: 200% auto;
-  color: #000 !important;
-  font-size: 1.8rem;
-  font-weight: bold;
-  padding: 1.4rem 3rem;
-  border-radius: 50px;
-  box-shadow: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease-in-out;
   position: relative;
   overflow: hidden;
-  white-space: nowrap;
-  min-width: 220px;
-  border: none;
   z-index: 1;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: var(--white);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-gradient::before {
@@ -968,67 +956,38 @@ h1, h2, h3, h4, h5, h6 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: all 0.6s ease;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
   z-index: -1;
+  display: none; /* Ocultar el efecto de brillo */
 }
 
 .btn-gradient:hover::before {
   left: 100%;
+  display: none; /* Ocultar el efecto de brillo */
 }
 
 .btn-gradient::after {
-  content: "";
-  font-family: "Font Awesome 5 Brands";
-  content: "\f270"; /* Código icono Amazon */
-  margin-left: 15px;
-  font-size: 2.2rem;
-  animation: bounce 1s infinite;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .btn-gradient:hover {
-  transform: scale(1.05) translateY(-3px);
-  background-position: right center;
-  box-shadow: 0px 10px 30px rgba(255, 153, 0, 0.7);
-}
-
-/* Media queries para responsive */
-@media (max-width: 768px) {
-  .hero-content {
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 2.5rem;
-  }
-  
-  .hero-title {
-    font-size: 3.6rem;
-    text-align: center;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.6rem;
-    text-align: center;
-  }
-  
-  .hero-benefits {
-    width: 100%;
-  }
-  
-  .benefit-item {
-    padding: 0.6rem 0.8rem;
-  }
-  
-  .testimonial-badge {
-    width: 100%;
-    padding: 1.2rem 1.5rem;
-  }
-  
-  .btn-gradient {
-    font-size: 1.6rem;
-    padding: 1.2rem 2.5rem;
-    width: 100%;
-  }
+  transform: translateY(-3px);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.3);
 }
 
 /* Mantenlo para AOS */
@@ -1110,49 +1069,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.02em;
-}
-
-/* Gradient button */
-.btn-gradient {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(45deg, #ff9900, #ffcc00, #ff9900);
-  background-size: 200% auto;
-  color: #000 !important;
-  font-size: 1.8rem;
-  font-weight: bold;
-  padding: 1.2rem 2.8rem;
-  border-radius: 50px;
-  box-shadow: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  min-width: 200px;
-  border: none;
-}
-
-.btn-gradient::after {
-  content: "";
-  font-family: "Font Awesome 5 Brands";
-  content: "\f270"; /* Código icono Amazon */
-  margin-left: 15px;
-  font-size: 2rem;
-  animation: bounce 1s infinite;
-}
-
-.btn-gradient:hover {
-  transform: scale(1.05) translateY(-3px);
-  background-position: right center;
-  box-shadow: 0px 8px 25px rgba(255, 153, 0, 0.6);
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
 }
 
 /* Scroll indicator con círculo estático y flecha animada */
