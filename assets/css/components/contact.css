@@ -353,9 +353,10 @@
   opacity: 1 !important;
   position: relative;
   z-index: 2;
-  transform: scale(1.1);
+  transform: scale(1.15);
   min-width: 100%;
   min-height: 100%;
+  object-position: center 10%;
 }
 
 /* Información del autor */
