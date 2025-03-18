@@ -94,6 +94,11 @@
     rgba(18, 18, 25, 0.8) 50%, 
     rgba(10, 10, 15, 0.9) 100%);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5);
+  grid-template-areas: 
+    "form autor"
+    "page1 page2"
+    "page3 page3";
+  padding-bottom: 4rem;
 }
 
 /* Borde degradado para el contenedor de contacto */
@@ -130,6 +135,7 @@
 
 /* Contenedor del formulario de contacto - Mejorado */
 .contacto-form-container {
+  grid-area: form;
   position: relative;
   background: rgba(25, 25, 30, 0.8);
   border-radius: 1.5rem;
@@ -299,6 +305,7 @@
 
 /* Contenedor Acerca del Autor */
 .autor-container {
+  grid-area: autor;
   background: rgba(25, 25, 30, 0.8); /* Igualado al fondo de contacto-form-container */
   padding: 3.5rem;
   border-radius: 1.5rem;
@@ -508,7 +515,22 @@
 @media (max-width: 992px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "page1"
+      "page2"
+      "page3";
+    gap: 3rem;
+  }
+  
+  .libro-page {
+    transform: none !important;
+    margin-top: 0;
+  }
+  
+  .libro-page-3 {
+    max-width: 100%;
   }
   
   .autor-container {
@@ -659,4 +681,142 @@
 
 .autor-container:hover {
   transform: perspective(1000px) rotateY(-4deg);
+}
+
+/* Estilos para las páginas adicionales del libro */
+.libro-page {
+  background: rgba(25, 25, 30, 0.8); /* Igualado al fondo de contacto-form-container y autor-container */
+  padding: 3.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4); /* Igualada la sombra */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  margin-top: 3rem;
+  transition: transform 0.5s ease;
+}
+
+/* Borde degradado para las páginas adicionales */
+.libro-page::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.7rem;
+  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
+/* Títulos de las páginas adicionales */
+.libro-page-title {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 1rem;
+  z-index: 2;
+}
+
+.libro-page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Contenido de las páginas adicionales */
+.libro-page-content {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: var(--white);
+  flex-grow: 1;
+}
+
+/* Ubicación de cada página */
+.libro-page-1 {
+  grid-area: page1;
+  transform: perspective(1000px) rotateY(-2deg);
+  transform-origin: right center;
+}
+
+.libro-page-2 {
+  grid-area: page2;
+  transform: perspective(1000px) rotateY(2deg);
+  transform-origin: left center;
+}
+
+.libro-page-3 {
+  grid-area: page3;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Estilos para testimonios en la tercera página */
+.libro-testimonio {
+  background: rgba(20, 20, 25, 0.7);
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.libro-testimonio p {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.libro-testimonio-autor {
+  display: block;
+  text-align: right;
+  font-weight: 600;
+  color: #8C52FF;
+}
+
+/* Efectos hover para las páginas */
+.libro-page-1:hover,
+.libro-page-2:hover {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.libro-page-3:hover {
+  transform: translateY(-5px);
+}
+
+/* Media queries para adaptación responsiva */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "page1"
+      "page2"
+      "page3";
+    gap: 3rem;
+  }
+  
+  .libro-page {
+    transform: none !important;
+    margin-top: 0;
+  }
+  
+  .libro-page-3 {
+    max-width: 100%;
+  }
 } 
