@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initInteriorModal();
     setupBackToTop();
     initCharacterCounter();
+    initLineaAnimada(); // Iniciamos la animación de la línea
     
     // Inicializar AOS con un retraso para mejor rendimiento
     setTimeout(function() {
@@ -292,5 +293,33 @@ function initCharacterCounter() {
                 characterCount.style.color = 'var(--gray)';
             }
         }
+    }
+}
+
+// Función para animar la línea cuando sea visible
+function initLineaAnimada() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Si el elemento es visible
+            if (entry.isIntersecting) {
+                // Reiniciar la animación
+                const linea = entry.target.querySelector('.linea-animada');
+                if (linea) {
+                    linea.style.animation = 'none';
+                    // Forzar un reflow
+                    void linea.offsetWidth;
+                    // Restaurar la animación
+                    linea.style.animation = 'dibujar-linea 2.5s ease-in-out forwards, brillo-linea 2s infinite alternate 2.5s';
+                }
+                // Dejar de observar después de activar la animación
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 }); // 20% del elemento debe ser visible
+
+    // Observar el contenedor de la línea animada
+    const lineaContainer = document.querySelector('.linea-animada-container');
+    if (lineaContainer) {
+        observer.observe(lineaContainer.parentElement);
     }
 } 
