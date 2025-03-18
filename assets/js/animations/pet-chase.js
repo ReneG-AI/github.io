@@ -1,9 +1,13 @@
-let dogX, catX;
-let dogDirection = 1, catDirection = 1;
-let state = "dogChasing"; // Estado inicial: el perrito persigue al gatito.
-let threshold = 50;       // Distancia umbral para invertir roles.
-let isSwitching = false;  // Evita cambios continuos.
+// Variables para la animación de líneas
+let particles = [];
 let canvasContainer;
+let colorPalette = [
+  [255, 94, 219], // Rosa
+  [140, 82, 255], // Púrpura
+  [0, 212, 255]   // Azul claro
+];
+let trails = [];
+let trailPoints = [];
 
 function setup() {
   // Crear el canvas dentro del contenedor de animación
@@ -11,9 +15,12 @@ function setup() {
   let canvas = createCanvas(canvasContainer.offsetWidth, 120);
   canvas.parent('animation-container');
   
-  // Posiciones iniciales: perrito a la izquierda y gatito a la derecha.
-  dogX = width * 0.3;
-  catX = width * 0.6;
+  // Configuración inicial
+  background(0, 0, 0, 0); // Fondo transparente
+  colorMode(RGB);
+  
+  // Crear puntos iniciales para las líneas
+  createTrailPoints();
   
   // Ocultar el mensaje de placeholder si existe
   let placeholder = document.getElementById('animation-placeholder');
@@ -22,127 +29,176 @@ function setup() {
   }
 }
 
+function createTrailPoints() {
+  // Crear varios puntos a lo largo del canvas para que las líneas se dibujen entre ellos
+  trailPoints = [];
+  const numPoints = 5;
+  const spacing = width / (numPoints - 1);
+  
+  for (let i = 0; i < numPoints; i++) {
+    trailPoints.push({
+      x: i * spacing,
+      y: map(noise(i * 0.5), 0, 1, 20, height - 20),
+      targetY: map(noise(i * 0.5, frameCount * 0.01), 0, 1, 20, height - 20)
+    });
+  }
+  
+  // Crear las líneas que conectarán los puntos
+  trails = [];
+  for (let i = 0; i < colorPalette.length; i++) {
+    trails.push({
+      color: colorPalette[i],
+      progress: 0,
+      maxProgress: 1,
+      thickness: 2 + i * 1.5,
+      offset: i * 5, // Desplazamiento vertical para cada línea
+      speed: 0.005 + (i * 0.002)
+    });
+  }
+}
+
 function draw() {
-  clear(); // Usar clear en lugar de background para mantener transparencia
-  let yPos = height - 70;  // Posición vertical fija para ambos personajes.
+  clear(); // Mantener transparencia
   
-  // Dibuja el gatito y el perrito usando funciones personalizadas.
-  drawCat(catX, yPos, 70);
-  drawPuppy(dogX, yPos, 70);
-  
-  // Actualiza posiciones según el estado.
-  if (state === "dogChasing") {
-    // El perrito (persiguido) se mueve más rápido.
-    dogX += 2 * dogDirection;
-    catX += 1.2 * catDirection;
-  } else if (state === "catChasing") {
-    // El gatito persigue ahora.
-    dogX += 1.2 * dogDirection;
-    catX += 2 * catDirection;
+  // Actualizar la posición de los puntos con un efecto de suavizado
+  for (let i = 0; i < trailPoints.length; i++) {
+    // Cambiar gradualmente el objetivo en Y basado en ruido Perlin
+    const noiseVal = noise(i * 0.5, frameCount * 0.005);
+    trailPoints[i].targetY = map(noiseVal, 0, 1, 20, height - 20);
+    
+    // Mover suavemente hacia el objetivo
+    trailPoints[i].y = lerp(trailPoints[i].y, trailPoints[i].targetY, 0.05);
   }
   
-  // Cuando se acerca la "captura", se invierten los roles.
-  if (!isSwitching && abs(catX - dogX) < threshold) {
-    isSwitching = true;
-    noLoop(); // Pausa momentáneamente la animación.
-    setTimeout(switchState, 500);
+  // Dibujar líneas entre los puntos
+  for (let t = 0; t < trails.length; t++) {
+    const trail = trails[t];
+    
+    // Aumentar progresivamente el dibujo de la línea
+    trail.progress += trail.speed;
+    if (trail.progress >= trail.maxProgress) {
+      trail.progress = trail.maxProgress;
+    }
+    
+    // Dibujar línea con degradado y efecto de brillo
+    drawGradientTrail(trail, trailPoints, t);
+    
+    // Reiniciar la animación después de un tiempo
+    if (trail.progress >= trail.maxProgress && frameCount % 500 === 0) {
+      trail.progress = 0;
+    }
   }
   
-  // Si alguno sale de la pantalla, se reinician las posiciones.
-  if (dogX > width + 70 || dogX < -70 || catX > width + 70 || catX < -70) {
-    resetPositions();
+  // Partículas de brillo que siguen a las líneas
+  updateParticles();
+  
+  // Ocasionalmente añadir nuevas partículas de brillo
+  if (frameCount % 10 === 0) {
+    addParticles();
   }
 }
 
-function switchState() {
-  // Invierte el estado: de "dogChasing" a "catChasing" y viceversa.
-  state = state === "dogChasing" ? "catChasing" : "dogChasing";
-  // Revierte las direcciones para cambiar el sentido de la animación.
-  dogDirection *= -1;
-  catDirection *= -1;
-  isSwitching = false;
-  loop(); // Reanuda la animación.
+function drawGradientTrail(trail, points, index) {
+  const segments = 20;
+  const progress = trail.progress;
+  const c = trail.color;
+  const maxPoints = points.length;
+  const drawUpTo = Math.floor(progress * maxPoints);
+  
+  if (drawUpTo < 2) return;
+  
+  // Dibujar la línea principal
+  noFill();
+  for (let i = 0; i < drawUpTo - 1; i++) {
+    const startPoint = points[i];
+    const endPoint = points[i + 1];
+    const segmentProgress = (progress * maxPoints) - i;
+    const currentSegmentLength = segmentProgress > 1 ? 1 : segmentProgress;
+    
+    if (currentSegmentLength <= 0) continue;
+    
+    // Dibujar segmento con efecto brillante
+    for (let j = 0; j < 3; j++) {
+      const thickness = trail.thickness - j * 0.7;
+      if (thickness <= 0) continue;
+      
+      const alpha = j === 0 ? 255 : 150 - j * 50;
+      stroke(c[0], c[1], c[2], alpha);
+      strokeWeight(thickness);
+      
+      beginShape();
+      const offsetY = trail.offset + sin(frameCount * 0.05 + i * 0.5) * 3;
+      
+      // Crear el efecto de dibujo progresivo
+      for (let t = 0; t <= currentSegmentLength; t += 1/segments) {
+        const subT = constrain(t, 0, 1);
+        const x = lerp(startPoint.x, endPoint.x, subT);
+        const y = lerp(startPoint.y, endPoint.y, subT) + offsetY;
+        
+        // Punto de la curva
+        curveVertex(x, y);
+        
+        // Al inicio y final, añadir puntos de control
+        if (t === 0 || t >= currentSegmentLength - 0.1) {
+          curveVertex(x, y);
+        }
+      }
+      endShape();
+    }
+  }
 }
 
-function resetPositions() {
-  // Reinicia posiciones y direcciones según el estado actual.
-  if (state === "dogChasing") {
-    dogX = width * 0.3;
-    catX = width * 0.6;
-    dogDirection = 1;
-    catDirection = 1;
-  } else {
-    dogX = width * 0.7;
-    catX = width * 0.4;
-    dogDirection = -1;
-    catDirection = -1;
+function addParticles() {
+  // Añadir partículas brillantes a lo largo de la línea
+  for (let i = 0; i < trails.length; i++) {
+    if (trails[i].progress < 0.2) continue;
+    
+    const pointIndex = Math.floor(random(0, trailPoints.length - 1));
+    const nextIndex = pointIndex + 1;
+    
+    if (nextIndex < trailPoints.length) {
+      const t = random(0, 1);
+      const x = lerp(trailPoints[pointIndex].x, trailPoints[nextIndex].x, t);
+      const y = lerp(trailPoints[pointIndex].y, trailPoints[nextIndex].y, t) + trails[i].offset;
+      
+      particles.push({
+        x: x,
+        y: y,
+        size: random(2, 5),
+        color: [...colorPalette[i], 200],
+        speedX: random(-0.5, 0.5),
+        speedY: random(-0.5, 0.5),
+        life: 255
+      });
+    }
+  }
+}
+
+function updateParticles() {
+  // Actualizar y dibujar partículas
+  for (let i = particles.length - 1; i >= 0; i--) {
+    let p = particles[i];
+    
+    // Actualizar propiedades
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.life -= 5;
+    
+    // Dibujar partícula
+    noStroke();
+    fill(p.color[0], p.color[1], p.color[2], p.life);
+    ellipse(p.x, p.y, p.size);
+    
+    // Eliminar partículas muertas
+    if (p.life <= 0) {
+      particles.splice(i, 1);
+    }
   }
 }
 
 function windowResized() {
   if (canvasContainer) {
     resizeCanvas(canvasContainer.offsetWidth, 120);
-    resetPositions();
+    createTrailPoints();
   }
-}
-
-/* Función para dibujar un perrito adorable */
-function drawPuppy(x, y, size) {
-  push();
-  translate(x, y);
-  scale(size / 100);
-  noStroke();
-  // Cabeza: un círculo de tono marrón claro.
-  fill(222, 184, 135);
-  ellipse(50, 50, 80, 80);
-  // Orejas: dos triángulos.
-  fill(222, 184, 135);
-  triangle(20, 30, 35, 0, 50, 30); // oreja izquierda
-  triangle(80, 30, 65, 0, 50, 30); // oreja derecha
-  // Ojos: dos pequeños círculos negros.
-  fill(0);
-  ellipse(35, 45, 8, 8);
-  ellipse(65, 45, 8, 8);
-  // Nariz: un círculo negro.
-  ellipse(50, 60, 6, 6);
-  // Boca: un pequeño arco.
-  noFill();
-  stroke(0);
-  strokeWeight(1);
-  arc(50, 65, 20, 10, 0, PI);
-  pop();
-}
-
-/* Función para dibujar un gatito adorable */
-function drawCat(x, y, size) {
-  push();
-  translate(x, y);
-  scale(size / 100);
-  noStroke();
-  // Cara: un círculo de tono gris claro.
-  fill(200, 200, 200);
-  ellipse(50, 50, 80, 80);
-  // Orejas exteriores: triángulos.
-  fill(200, 200, 200);
-  triangle(20, 30, 35, 0, 50, 30); // oreja izquierda
-  triangle(80, 30, 65, 0, 50, 30); // oreja derecha
-  // Parte interna de las orejas: en rosa claro.
-  fill(255, 182, 193);
-  triangle(25, 30, 35, 10, 45, 30);
-  triangle(55, 30, 65, 10, 75, 30);
-  // Ojos: dos pequeños círculos negros.
-  fill(0);
-  ellipse(35, 45, 8, 8);
-  ellipse(65, 45, 8, 8);
-  // Nariz: un pequeño triángulo en rosa.
-  fill(255, 182, 193);
-  triangle(50, 55, 45, 65, 55, 65);
-  // Bigotes: líneas a ambos lados.
-  stroke(0);
-  strokeWeight(1);
-  line(20, 55, 40, 55); // bigote izquierdo superior
-  line(20, 60, 40, 60); // bigote izquierdo inferior
-  line(60, 55, 80, 55); // bigote derecho superior
-  line(60, 60, 80, 60); // bigote derecho inferior
-  pop();
 } 
