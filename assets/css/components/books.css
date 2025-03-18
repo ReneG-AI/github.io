@@ -394,8 +394,8 @@
   }
   
   .book-flipper {
-    width: 75%;
-    height: 280px;
+    width: 70%;
+    height: 250px;
     margin: 0 auto;
   }
 }
@@ -423,7 +423,7 @@
   }
   
   #libros .book-images {
-    height: 28rem !important;
+    height: 26rem !important;
     margin-bottom: 3.5rem !important;
     display: flex;
     justify-content: center;
@@ -453,7 +453,7 @@
   }
   
   .flip-button {
-    bottom: -20px;
+    bottom: -15px;
     padding: 0.6rem 1.2rem;
     font-size: 1.1rem;
   }
@@ -484,8 +484,8 @@
   }
   
   .book-flipper {
-    width: 80%;
-    height: 280px;
+    width: 68%;
+    height: 240px;
     margin: 0 auto;
   }
   
@@ -517,7 +517,7 @@
   }
   
   #libros .book-images {
-    height: 26rem !important;
+    height: 24rem !important;
     margin-bottom: 3.5rem !important;
     display: flex;
     justify-content: center;
@@ -562,9 +562,9 @@
   }
   
   .flip-button {
-    bottom: -20px;
-    padding: 0.6rem 1.2rem;
-    font-size: 1.1rem;
+    bottom: -12px;
+    padding: 0.5rem 1.1rem;
+    font-size: 1rem;
   }
   
   #libros .book-ribbon {
@@ -595,8 +595,8 @@
   }
   
   .book-flipper {
-    width: 85%;
-    height: 260px;
+    width: 65%;
+    height: 220px;
   }
 }
 
@@ -607,7 +607,7 @@
   }
   
   #libros .book-images {
-    height: 24rem !important;
+    height: 22rem !important;
     margin-bottom: 3.5rem !important;
   }
   
@@ -643,9 +643,9 @@
   }
   
   .flip-button {
-    bottom: -18px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    bottom: -10px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
   }
   
   .book-header {
@@ -664,8 +664,8 @@
   }
   
   .book-flipper {
-    width: 90%;
-    height: 240px;
+    width: 60%;
+    height: 190px;
   }
 }
 
