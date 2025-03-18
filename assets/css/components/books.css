@@ -526,4 +526,164 @@
   .book-images {
     margin-bottom: 2.2rem;
   }
+}
+
+/* Botones y enlaces */
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Estilo para botones de Amazon */
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.amazon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para botones de Ver Interior */
+.interior-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.interior-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Colores personalizados para cada tipo de ribbon */
+#libros .book-ribbon[data-type="destacado"] {
+  background: linear-gradient(135deg, #6852e2, #ba43fc) !important;
+}
+
+#libros .book-ribbon[data-type="nuevo"] {
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5) !important;
+}
+
+#libros .book-ribbon[data-type="bestseller"] {
+  background: linear-gradient(135deg, #f5576c, #f093fb) !important;
+}
+
+/* Iconos para ribbons */
+#libros .book-ribbon::before {
+  font-family: 'Font Awesome 5 Free' !important;
+  margin-right: 6px !important;
+  font-size: 1.2rem !important;
+}
+
+#libros .book-ribbon[data-type="destacado"]::before {
+  content: "\f005" !important; /* Estrella */
+}
+
+#libros .book-ribbon[data-type="nuevo"]::before {
+  content: "\f067" !important; /* Signo más */
+}
+
+#libros .book-ribbon[data-type="bestseller"]::before {
+  content: "\f091" !important; /* Trofeo */
+}
+
+/* Modal de Ver Interior */
+.interior-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.interior-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(25, 25, 35, 0.9), rgba(35, 35, 50, 0.9));
+  border-radius: 1rem;
+  padding: 3rem;
+  max-width: 90%;
+  width: 400px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(140, 82, 255, 0.2);
+  animation: modal-appear 0.3s ease;
+  transform: translateY(0);
+}
+
+@keyframes modal-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-message {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
 } 

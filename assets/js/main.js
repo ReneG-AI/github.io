@@ -240,35 +240,19 @@ function initBookFlip() {
 function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
     const interiorBtns = document.querySelectorAll('.interior-btn');
-    const closeModal = document.querySelector('.close-modal');
-    const modalBtn = document.querySelector('.modal-btn');
+    const closeBtn = document.getElementById('modalClose');
     
     if (modal && interiorBtns.length) {
         interiorBtns.forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                modal.style.display = 'flex';
-                setTimeout(() => {
-                    modal.classList.add('active');
-                }, 10);
+                modal.classList.add('active');
             });
         });
         
-        if (closeModal) {
-            closeModal.addEventListener('click', function() {
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
                 modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            });
-        }
-        
-        if (modalBtn) {
-            modalBtn.addEventListener('click', function() {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
             });
         }
         
@@ -276,9 +260,6 @@ function initInteriorModal() {
         window.addEventListener('click', function(e) {
             if (e.target === modal) {
                 modal.classList.remove('active');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
             }
         });
     }
