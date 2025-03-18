@@ -34,7 +34,7 @@
 /* Contenido del hero */
 .hero-content {
   max-width: 580px;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.92);
   padding: 3.2rem;
   border-radius: 1.2rem;
   backdrop-filter: blur(15px);
@@ -82,11 +82,132 @@
   line-height: 1.5;
 }
 
-/* Botones del hero */
+/* Mejoras en los beneficios */
+.hero-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(30, 30, 40, 0.85);
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-item:hover {
+  transform: translateX(5px);
+  background-color: rgba(45, 45, 60, 0.95);
+  border-left-color: var(--accent-color);
+}
+
+.benefit-item i {
+  font-size: 1.8rem;
+  color: var(--primary-color-light);
+  margin-right: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover i {
+  transform: scale(1.2);
+  color: var(--accent-color);
+}
+
+.benefit-item span {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+/* Mejoras en el testimonio */
+.testimonial-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(40, 40, 50, 0.85), rgba(25, 25, 35, 0.9));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 215, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+  pointer-events: none;
+}
+
+.testimonial-icon {
+  font-size: 2.2rem;
+  color: rgba(255, 215, 0, 0.9);
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.testimonial-text {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.rating {
+  display: flex;
+}
+
+.rating i {
+  color: rgba(255, 215, 0, 0.9);
+  font-size: 1.4rem;
+  margin-right: 0.3rem;
+}
+
+/* Botones mejorados del hero */
 .hero-buttons {
   display: flex;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+/* Botón Amazon mejorado */
+.amazon-hero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  background: linear-gradient(135deg, #ff9900, #ffb700);
+  color: #000 !important;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border: 1px solid rgba(255, 153, 0, 0.5);
+}
+
+.amazon-hero-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ffb700, #ff9900);
+  box-shadow: 0 6px 15px rgba(255, 153, 0, 0.4);
+}
+
+.amazon-hero-btn i {
+  font-size: 1.8rem;
 }
 
 /* Secciones */
@@ -145,6 +266,8 @@
   
   .testimonial-badge {
     margin: 0 auto;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -218,6 +341,11 @@
   .hero-subtitle {
     font-size: 1.6rem;
     margin-bottom: 2rem;
+  }
+  
+  .amazon-hero-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
   }
 }
 
