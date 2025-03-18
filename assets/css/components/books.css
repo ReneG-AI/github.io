@@ -209,6 +209,13 @@
   letter-spacing: 0.02em;
 }
 
+/* Contenedor para el badge */
+.book-header {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
 /* Título del libro refinado */
 .book-content h3 {
   font-size: 2.4rem;
@@ -413,10 +420,17 @@
   
   #libros .book-images {
     height: 28rem !important;
+    margin-bottom: 4rem !important;
   }
   
   .book-content {
     padding: 2rem;
+    margin-top: 1.5rem;
+  }
+  
+  .book-header {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
   }
   
   .book-content h3 {
@@ -431,16 +445,6 @@
   .flip-button {
     bottom: -23px;
     padding: 0.65rem 1.2rem;
-  }
-  
-  .book-images {
-    margin-bottom: 2.4rem;
-  }
-  
-  .book-detail i,
-  .feature-item i {
-    margin-right: 1rem;
-    font-size: 1.4rem;
   }
 }
 
@@ -465,15 +469,18 @@
   
   #libros .book-images {
     height: 26rem !important;
+    margin-bottom: 5rem !important;
   }
   
   .book-content {
     padding: 1.8rem;
+    margin-top: 2rem;
   }
   
   .book-content h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    text-align: center !important;
   }
   
   .book-description {
@@ -510,8 +517,15 @@
     padding: 5px 10px !important;
   }
   
-  .book-images {
-    margin-bottom: 2.3rem;
+  .book-header {
+    margin-top: 3.5rem;
+    text-align: center;
+    margin-bottom: 1.8rem;
+  }
+  
+  .book-badge {
+    font-size: 1.4rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
@@ -522,10 +536,12 @@
   
   #libros .book-images {
     height: 24rem !important;
+    margin-bottom: 5.5rem !important;
   }
   
   .book-content {
     padding: 1.5rem;
+    margin-top: 2.5rem;
   }
   
   .features-list {
@@ -557,8 +573,14 @@
     font-size: 1rem;
   }
   
-  .book-images {
-    margin-bottom: 2.2rem;
+  .book-header {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .book-badge {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.7rem;
   }
 }
 
