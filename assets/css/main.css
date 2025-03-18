@@ -310,13 +310,16 @@ a:hover {
 
 @media screen and (max-width: 992px) {
   .hero-section {
-    justify-content: center;
-    padding-left: 0;
+    justify-content: center !important;
+    padding-left: 0 !important;
+    align-items: center !important;
   }
   
   .hero-content {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    left: 0 !important;
   }
 }
 
@@ -351,15 +354,18 @@ a:hover {
   }
   
   .hero-section {
-    justify-content: center;
-    padding-left: 0;
+    justify-content: center !important;
+    padding-left: 0 !important;
+    align-items: center !important;
   }
   
   .hero-content {
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     padding: 2.5rem;
+    transform: none !important;
+    left: 0 !important;
   }
 }
 
