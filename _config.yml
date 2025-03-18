@@ -1,0 +1,48 @@
+# Configuración básica para GitHub Pages
+title: René García Educa - Libros para aprender idiomas mientras coloreas
+description: Libros diseñados para mejorar la creatividad, aprender 5 idiomas y reducir el estrés mientras pintas.
+baseurl: "/github.io"
+url: "https://reneg-ai.github.io"
+
+# Configuración de compilación
+markdown: kramdown
+highlighter: rouge
+
+# Configuración de entrega de contenido
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: [html, head, body]
+
+# Configuraciones de caché y rendimiento
+defaults:
+  -
+    scope:
+      path: "assets/images"
+    values:
+      image: true
+      cache_control: "public, max-age=31536000"
+      image_process:
+        webp: true
+
+# Optimización de imágenes
+webp:
+  enabled: true
+  quality: 75
+  preset: default
+  lossless: false
+
+# Excluir archivos innecesarios de la compilación
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/ 

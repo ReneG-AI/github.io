@@ -16,22 +16,25 @@
   display: inline-block;
   padding: 1rem 3rem;
   border-radius: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(18, 18, 25, 0.85); /* Fondo más oscuro */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(108, 76, 230, 0.3); /* Borde púrpura tenue */
   transform: translateY(0);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(140, 82, 255, 0.3); /* Sombra de texto digital */
+  letter-spacing: 0.5px;
 }
 
 .contact-section-title:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(25, 25, 35, 0.9);
+  border-color: rgba(140, 82, 255, 0.4);
 }
 
 /* Efecto brillante en hover */
@@ -42,7 +45,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(140, 82, 255, 0.1) 0%, rgba(140, 82, 255, 0) 70%);
   transform: rotate(45deg);
   opacity: 0;
   transition: opacity 0.5s;
@@ -63,33 +66,20 @@
 }
 
 .contact-section-subtitle {
-  color: white !important;
-  opacity: 0.9 !important;
-  max-width: 600px;
-  margin: 1.5rem auto 0;
+  display: none; /* Ocultar subtítulo según petición */
 }
 
-/* Grid layout para la sección de contacto */
+/* Grid de contacto - Ajustado para mejor espaciado */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  margin: 0 auto;
-  max-width: 1200px;
   position: relative;
-  padding: 4rem;
-  border-radius: 2rem;
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
-  overflow: hidden;
   z-index: 1;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  
-  /* Efecto de libro abierto */
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  transition: all 0.3s ease;
+  margin-top: -1rem; /* Mover hacia arriba */
+  padding: 1rem;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
 }
 
 /* Borde degradado para el contenedor de contacto */
@@ -124,22 +114,20 @@
   z-index: 2;
 }
 
-/* Contenedor del formulario - Ahora a la izquierda */
+/* Contenedor del formulario de contacto - Mejorado */
 .contacto-form-container {
-  background: rgba(25, 25, 25, 0.7);
-  padding: 3.5rem;
+  position: relative;
+  background: rgba(25, 25, 30, 0.8);
   border-radius: 1.5rem;
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3.5rem;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 1;
-  
-  /* Efecto de página izquierda del libro */
-  transform: perspective(1000px) rotateY(2deg);
-  transform-origin: right center;
-  transition: transform 0.5s ease;
+  margin-top: -1rem; /* Mover hacia arriba */
+  z-index: 2;
 }
 
 /* Borde degradado para el formulario */
@@ -166,28 +154,43 @@
 
 /* Grupo de formulario */
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
-/* Label del formulario */
+/* Etiquetas de formulario con estilo moderno y elegante */
 .form-group label {
-  font-size: 1.6rem;
-  font-weight: var(--font-weight-medium);
-  color: var(--white);
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-text 8s linear infinite;
+  margin-left: 0.5rem;
 }
 
-/* Inputs de texto */
+@keyframes gradient-text {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Campos de formulario */
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1.2rem;
-  border-radius: 0.8rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(12, 12, 18, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: rgba(0, 0, 0, 0.3);
-  color: var(--white);
-  font-size: 1.6rem;
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 1.5rem;
   transition: all 0.3s ease;
 }
 

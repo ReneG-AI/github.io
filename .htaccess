@@ -1,37 +1,52 @@
-# Cache Control for Images
+# Cache Control para mejorar rendimiento y reducir solicitudes
 <IfModule mod_expires.c>
   ExpiresActive On
   
-  # Cache all images for 1 year
+  # Cache todas las imágenes durante 1 año
   <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
     ExpiresDefault "access plus 1 year"
     Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
   
-  # Cache CSS and JavaScript files for 1 month
+  # Cache CSS y JavaScript por 1 mes
   <FilesMatch "\.(css|js)$">
     ExpiresDefault "access plus 1 month"
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 </IfModule>
 
-# Compression for faster loading
+# Compresión para carga más rápida
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json
   
-  # Add compression for image formats that support it
+  # Compresión para formatos de imagen que lo soportan
   AddOutputFilterByType DEFLATE image/svg+xml
+  # WebP ya está comprimido, no necesita deflate
 </IfModule>
 
-# Enable CORS for font files
+# CORS para archivos de fuentes
 <IfModule mod_headers.c>
   <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css)$">
     Header set Access-Control-Allow-Origin "*"
   </FilesMatch>
 </IfModule>
 
-# Disable ETags
+# Deshabilitar ETags
 <IfModule mod_headers.c>
   Header unset ETag
 </IfModule>
-FileETag None 
+FileETag None
+
+# Control de tasa de solicitudes - Limitar solicitudes por IP
+# Esto no funciona en GitHub Pages pero puede funcionar en otros hosts
+<IfModule mod_ratelimit.c>
+  # Limitar la tasa de transferencia a 512KB/s por cliente
+  SetOutputFilter RATE_LIMIT
+  SetEnv rate-limit 512
+</IfModule>
+
+# Optimización para GitHub Pages
+# Indicar a los navegadores que guarden contenido en caché
+<FilesMatch "\.(html|htm)$">
+  Header set Cache-Control "public, max-age=3600"
+</FilesMatch> 

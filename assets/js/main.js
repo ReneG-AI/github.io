@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
-    preloadBookImages(); // Precargar imágenes de libros
+    // Precargar más tarde, cuando el resto de la página esté lista
+    setTimeout(function() {
+        preloadBookImages();
+    }, 2000);
     initBookFlip();
     initInteriorModal();
     setupBackToTop();
@@ -21,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 mirror: false
             });
         }
-    }, 100);
+    }, 1000);
     
     // Mostrar la página después de cargar
     setTimeout(function() {
@@ -128,20 +131,33 @@ function setupBackToTop() {
 
 // Función para precargar todas las imágenes de portadas y contraportadas
 function preloadBookImages() {
-    // Obtener todas las imágenes de portada y contraportada
-    const bookCovers = document.querySelectorAll('.book-cover');
-    const bookBacks = document.querySelectorAll('.book-back');
+    // Control para evitar múltiples precargas
+    if (window.imagesPreloaded) return;
+    window.imagesPreloaded = true;
     
-    // Precargar cada imagen de portada
-    bookCovers.forEach(cover => {
-        const img = new Image();
-        img.src = cover.src;
+    console.log("Precargando imágenes WebP de libros...");
+    
+    // Obtener todas las imágenes de portada y contraportada que estén en la vista
+    const visibleCovers = Array.from(document.querySelectorAll('.book-cover, .book-back')).filter(img => {
+        const rect = img.getBoundingClientRect();
+        return (
+            rect.top >= -img.height &&
+            rect.left >= -img.width &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) + img.height &&
+            rect.left <= (window.innerWidth || document.documentElement.clientWidth) + img.width
+        );
     });
     
-    // Precargar cada imagen de contraportada
-    bookBacks.forEach(back => {
-        const img = new Image();
-        img.src = back.src;
+    // Limitar a máximo 3 imágenes para evitar sobrecarga
+    const imagesToPreload = visibleCovers.slice(0, 3);
+    
+    // Precargar solo las imágenes visibles
+    imagesToPreload.forEach(img => {
+        if (img.src && !img.complete) {
+            const preloadImg = new Image();
+            preloadImg.src = img.src;
+            console.log("Precargando:", img.src);
+        }
     });
 }
 
