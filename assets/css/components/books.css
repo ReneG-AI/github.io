@@ -101,6 +101,49 @@
   will-change: transform;
 }
 
+/* Portada siempre visible al frente por defecto */
+.book-cover {
+  z-index: 2;
+  transform: rotateY(0deg) scale(0.91);
+  -webkit-transform: rotateY(0deg) scale(0.91);
+  transform-origin: center center;
+}
+
+/* Contraportada siempre oculta por detrás por defecto */
+.book-back {
+  transform: rotateY(180deg) scale(0.91);
+  -webkit-transform: rotateY(180deg) scale(0.91);
+  z-index: 1;
+  transform-origin: center center;
+}
+
+/* Efecto flip - Contenedor ajustado */
+.book-flipper {
+  position: relative;
+  width: 70%;
+  height: 300px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  will-change: transform;
+}
+
+.book-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Cambio: usar opacity en lugar de display para mejorar rendimiento */
+.book-flipper:not(.flipped) .book-back {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book-flipper.flipped .book-cover {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Botón para voltear el libro - refinado */
 .flip-button {
   background: linear-gradient(135deg, #8C52FF, #FF5EDB);
@@ -118,7 +161,7 @@
   box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.25);
   margin: 0 auto;
   position: absolute;
-  bottom: -28px;
+  bottom: -25px; /* Ajustado para mejor posición sin romper la funcionalidad */
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
@@ -134,10 +177,10 @@
   font-size: 1.1rem;
 }
 
-/* Contenedor de imágenes - Estructura base con margen inferior aumentado */
+/* Contenedor de imágenes - Estructura base con margen inferior ajustado */
 .book-images {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem; /* Ajustado para el botón */
   transition: all 0.3s ease;
   height: 30rem;
 }
@@ -318,12 +361,12 @@
   }
   
   .flip-button {
-    bottom: -26px;
+    bottom: -24px;
     padding: 0.7rem 1.3rem;
   }
   
   .book-images {
-    margin-bottom: 2.8rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -366,12 +409,12 @@
   }
   
   .flip-button {
-    bottom: -25px;
+    bottom: -23px;
     padding: 0.65rem 1.2rem;
   }
   
   .book-images {
-    margin-bottom: 2.6rem;
+    margin-bottom: 2.4rem;
   }
 }
 
@@ -425,7 +468,7 @@
   }
   
   .flip-button {
-    bottom: -24px;
+    bottom: -22px;
     padding: 0.6rem 1.2rem;
     font-size: 1.1rem;
   }
@@ -436,7 +479,7 @@
   }
   
   .book-images {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.3rem;
   }
 }
 
@@ -475,12 +518,12 @@
   }
   
   .flip-button {
-    bottom: -22px;
+    bottom: -20px;
     padding: 0.55rem 1.1rem;
     font-size: 1rem;
   }
   
   .book-images {
-    margin-bottom: 2.3rem;
+    margin-bottom: 2.2rem;
   }
 } 
