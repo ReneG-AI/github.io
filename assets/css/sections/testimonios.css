@@ -87,10 +87,11 @@
     z-index: 0;
 }
 
+/* Estrellas ahora en la parte inferior */
 .testimonial-stars {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
 }
 
@@ -101,17 +102,20 @@
     filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
 }
 
+/* Badge de Amazon ahora en la parte superior */
 .amazon-badge {
     background: linear-gradient(135deg, #ff9900, #ffb700);
     color: #000;
     font-size: 1.2rem;
-    padding: 4px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
-    margin-left: 10px;
+    margin-bottom: 16px;
     font-weight: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 5px;
+    align-self: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .amazon-badge i {
@@ -125,7 +129,7 @@
     align-items: center;
     margin-top: auto;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 15px;
+    padding-top: 12px;
 }
 
 .testimonial-author-info {
