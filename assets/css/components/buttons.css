@@ -80,7 +80,37 @@
 }
 
 /* Botón de Amazon mejorado */
-.amazon-btn,
+.amazon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  color: #000 !important;
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  border: 1px solid #e6920f;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.amazon-btn i {
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.amazon-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
+}
+
+/* Botón Ver interior con degradado elegante */
 .interior-btn {
   display: inline-flex;
   align-items: center;
@@ -88,48 +118,29 @@
   padding: 1rem 2rem;
   font-size: 1.4rem;
   font-weight: var(--font-weight-semibold);
-  color: var(--white);
-  background: var(--dark-bg);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius);
+  color: var(--white) !important;
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
   transition: all 0.3s ease;
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
-.amazon-btn i,
 .interior-btn i {
   margin-right: 0.8rem;
   font-size: 1.6rem;
+  color: #bbb;
 }
 
-.amazon-btn:hover,
 .interior-btn:hover {
   transform: translateY(-3px);
-  box-shadow: none;
-  background: var(--dark-bg-darker);
-}
-
-.amazon-btn::after,
-.interior-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: all 0.3s ease;
-  z-index: 1;
-  display: none; /* Desactivar efecto de brillo */
-}
-
-.amazon-btn:hover::after,
-.interior-btn:hover::after {
-  left: 100%;
-  display: none; /* Desactivar efecto de brillo */
+  background: linear-gradient(135deg, #3d4152, #2a2a2a);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Botón outline */

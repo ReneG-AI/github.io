@@ -582,18 +582,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  box-shadow: none;
+  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
   text-decoration: none;
+  border: 1px solid #e6920f;
 }
 
 .amazon-btn:hover {
   transform: translateY(-3px);
-  box-shadow: none;
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
 }
 
 /* Estilo para botones de Ver Interior */
 .interior-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
   color: white !important;
   border-radius: 0.5rem;
   padding: 1rem 2rem;
@@ -603,17 +605,18 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .interior-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, #3d4152, #2a2a2a);
   transform: translateY(-3px);
-  box-shadow: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Colores personalizados para cada tipo de ribbon */
