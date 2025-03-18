@@ -189,25 +189,27 @@
   justify-content: center;
   gap: 0.8rem;
   padding: 1.2rem 2.4rem;
-  background: linear-gradient(135deg, #ff9900, #ffb700);
+  background: linear-gradient(135deg, #FF9900, #FFB700);
   color: #000 !important;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 0.8rem;
   box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
   transition: all 0.3s ease;
   text-decoration: none;
   font-size: 1.6rem;
   border: 1px solid rgba(255, 153, 0, 0.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .amazon-hero-btn:hover {
   transform: translateY(-3px);
-  background: linear-gradient(135deg, #ffb700, #ff9900);
+  background: linear-gradient(135deg, #FFB700, #FF9900);
   box-shadow: 0 6px 15px rgba(255, 153, 0, 0.4);
 }
 
 .amazon-hero-btn i {
   font-size: 1.8rem;
+  color: #000;
 }
 
 /* Secciones */
@@ -346,6 +348,9 @@
   .amazon-hero-btn {
     width: 100%;
     padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #FF9900, #FFA700);
+    font-weight: 800;
+    letter-spacing: 0.02em;
   }
 }
 
