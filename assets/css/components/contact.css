@@ -1091,9 +1091,10 @@
 /* Separador para usar antes del footer */
 .separador-footer {
   width: 100%;
-  height: 8rem;
+  height: 6rem;
   position: relative;
-  margin: 2rem 0;
+  margin-top: 3rem;
+  margin-bottom: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1125,4 +1126,13 @@
   .separador-footer .linea-animada-container {
     width: 95%;
   }
+}
+
+.contact-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  margin-bottom: 0;
+  padding-bottom: 0;
 } 
