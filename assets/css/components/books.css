@@ -238,7 +238,7 @@
 /* Título del libro - Con degradado exactamente igual al título principal */
 .book-content h3 {
   font-size: 2.6rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
   text-align: left !important; /* Forzando alineación izquierda */
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
   background-size: 300% 100% !important;
@@ -691,28 +691,14 @@
   font-size: 2rem !important; /* Tamaño aumentado para mejor legibilidad */
 }
 
+/* Ocultar el cuadro de idiomas que es redundante */
 .book-languages {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
+  display: none;
 }
 
+/* Ocultar los spans dentro del cuadro de idiomas */
 .book-languages span {
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 0.15rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
-  text-transform: uppercase;
-}
-
-/* Eliminar estilos innecesarios para banderas */
-.book-languages span {
-  display: inline-block;
+  display: none;
 }
 
 /* Asegurar que las imágenes de contraportada mantengan su escala */
