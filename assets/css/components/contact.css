@@ -107,7 +107,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 2.2rem;
-  background: linear-gradient(90deg, #1a1a1a, #2d3142, #1a1a1a);
+  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -144,7 +144,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
+  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -288,29 +288,44 @@
   left: 100%;
 }
 
-/* Contenedor Acerca del Autor */
-.autor-container {
-  grid-area: autor;
-  background: rgba(25, 25, 30, 0.8); /* Igualado al fondo de contacto-form-container */
-  padding: 3.5rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4); /* Igualada la sombra */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Igualado el borde */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  
-  /* Efecto de página derecha del libro solo en desktop */
-  transform: perspective(1000px) rotateY(-2deg);
-  transform-origin: left center;
-  transition: transform 0.5s ease;
-  overflow: hidden;
+/* Contenedor para las páginas adicionales */
+.libro-pages-container {
+  grid-area: pages;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 2rem;
 }
 
-/* Borde degradado para el contenedor del autor - igualado al de contacto */
+/* Definición de áreas específicas para las páginas */
+.libro-page-1 {
+  grid-column: 1; /* Proyectos Futuros a la izquierda */
+  transition: transform 0.3s ease;
+}
+
+.libro-page-2 {
+  grid-column: 2; /* Colaboraciones a la derecha */
+  transition: transform 0.3s ease;
+}
+
+/* Autor container con fondo negro en lugar de degradado */
+.autor-container {
+  grid-area: autor;
+  position: relative;
+  background: rgba(10, 10, 15, 0.8); /* Fondo más oscuro/negro */
+  border-radius: 1.5rem;
+  padding: 3.5rem;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  margin-top: 0;
+  z-index: 2;
+}
+
+/* Borde para el autor container - cambiado a negro/gris oscuro */
 .autor-container::before {
   content: '';
   position: absolute;
@@ -319,7 +334,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142); /* Igualado al degradado de contacto */
+  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -513,9 +528,14 @@
     gap: 3rem;
   }
   
-  .libro-page {
-    transform: none !important;
-    width: 100%;
+  .libro-page-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .libro-page-2 {
+    grid-column: 1;
+    grid-row: 2;
   }
   
   .libro-separador {
@@ -728,7 +748,7 @@
   right: 0;
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, transparent 50%, rgba(45, 49, 66, 0.8) 50%);
+  background: linear-gradient(135deg, transparent 50%, rgba(34, 34, 34, 0.8) 50%); /* Cambiado a gris oscuro */
   border-bottom-left-radius: 0.8rem;
   transition: all 0.3s ease;
   z-index: 2;
@@ -737,7 +757,7 @@
 .libro-page:hover .page-corner {
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(135deg, transparent 50%, rgba(140, 82, 255, 0.5) 50%);
+  background: linear-gradient(135deg, transparent 50%, rgba(51, 51, 51, 0.5) 50%); /* Cambiado a gris */
 }
 
 /* Borde degradado para las páginas */
@@ -749,7 +769,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
+  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -774,9 +794,9 @@
   transform: translateX(-50%);
   width: 8rem;
   height: 3px;
-  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
+  background: linear-gradient(90deg, #333, #444); /* Cambiado a tonos gris */
   border-radius: 3px;
-  box-shadow: 0 0 8px rgba(140, 82, 255, 0.5);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Contenido de las páginas adicionales */
@@ -802,17 +822,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Ubicación de cada página - sin efecto de libro abierto */
-.libro-page-1 {
-  transform: none;
-  transition: transform 0.3s ease;
-}
-
-.libro-page-2 {
-  transform: none;
-  transition: transform 0.3s ease;
 }
 
 /* Efectos hover mejorados */
