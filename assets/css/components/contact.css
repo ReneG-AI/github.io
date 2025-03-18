@@ -637,6 +637,7 @@
     width: 24rem; /* 50% más grande que 16rem */
     height: 24rem; /* Cuadrado para mantener el círculo */
     margin: 0 auto 2.5rem;
+    border-radius: 50%; /* Asegurar que sea circular */
   }
   
   .autor-texto {
@@ -768,6 +769,7 @@
     width: 22.5rem; /* 50% más grande que 15rem */
     height: 22.5rem; /* Cuadrado para mantener el círculo */
     margin: 0 auto 3rem;
+    border-radius: 50%; /* Asegurar que sea circular */
   }
   
   .autor-texto {
@@ -887,6 +889,8 @@
     width: 21rem; /* 50% más grande que 14rem */
     height: 21rem; /* Cuadrado para mantener el círculo */
     margin: 0 auto 2.5rem;
+    border-radius: 50%; /* Asegurar que sea circular */
+    padding: 0; /* Eliminar cualquier padding que pueda afectar el círculo */
   }
   
   .autor-texto {
@@ -970,6 +974,8 @@
     width: 19.5rem; /* 50% más grande que 13rem */
     height: 19.5rem; /* Cuadrado para mantener el círculo */
     margin: 0 auto 2rem;
+    border-radius: 50%; /* Asegurar que sea circular */
+    padding: 0; /* Eliminar cualquier padding que pueda afectar el círculo */
   }
   
   .autor-texto {
