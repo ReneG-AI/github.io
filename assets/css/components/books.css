@@ -416,7 +416,9 @@
   }
   
   .flip-button {
-    bottom: -28px; /* Movido más abajo, cerca del final de la imagen */
+    bottom: auto; /* Eliminar posición bottom */
+    top: 5rem; /* Posicionar en la parte superior de la imagen */
+    z-index: 30; /* Aumentar z-index para que esté por encima de todo */
   }
 }
 
@@ -445,7 +447,7 @@
   
   #libros .book-images {
     height: 25rem !important; /* Reducido ligeramente */
-    margin-bottom: 4.5rem !important; /* Más espacio para el botón flip */
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
     padding-top: 4.5rem; /* Aumentado el espacio arriba para el ribbon */
     display: flex;
     justify-content: center;
@@ -458,10 +460,10 @@
   }
   
   .book-header {
-    margin-top: 0; /* Eliminado el margen superior */
+    margin-top: 4.5rem; /* Ahora positivo para colocarlo debajo de la imagen */
     margin-bottom: 1.5rem;
     position: relative;
-    top: -1.5rem; /* Movido hacia arriba para centrarlo entre la imagen y el título */
+    top: auto; /* Eliminar top negativo */
     text-align: center;
   }
   
@@ -477,9 +479,11 @@
   }
   
   .flip-button {
-    bottom: -22px; /* Movido más abajo, cerca del final de la imagen */
-    padding: 0.7rem 1.4rem; /* Ligeramente más grande */
+    bottom: auto; /* Eliminar posición bottom */
+    top: 4rem; /* Posicionar en la parte superior de la imagen */
+    padding: 0.7rem 1.4rem; /* Mantener tamaño */
     font-size: 1.2rem;
+    z-index: 30; /* Asegurar que esté por encima de todo */
   }
   
   .book-detail i,
@@ -551,7 +555,7 @@
   
   #libros .book-images {
     height: 23rem !important; /* Reducido para mejor proporción */
-    margin-bottom: 4.5rem !important;
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
     padding-top: 5rem; /* Aumentado para evitar que el ribbon se solape */
   }
   
@@ -593,7 +597,8 @@
   }
   
   .flip-button {
-    bottom: -25px; /* Ajustado para alinear con el final de la imagen */
+    bottom: auto; /* Eliminar posición bottom */
+    top: 3.5rem; /* Posicionar en la parte superior de la imagen */
     padding: 0.6rem 1.2rem; /* Ligeramente más grande */
     font-size: 1.1rem;
   }
@@ -606,9 +611,10 @@
   }
   
   .book-header {
-    margin-top: -2rem; /* Ajustado para centrarlo mejor entre la imagen y el título */
+    margin-top: 4rem; /* Positivo para colocarlo debajo de la imagen */
     margin-bottom: 1.2rem;
     text-align: center;
+    top: auto; /* Eliminar top negativo */
   }
   
   .book-badge {
@@ -641,7 +647,7 @@
   
   #libros .book-images {
     height: 20rem !important; /* Reducido para mejor proporción */
-    margin-bottom: 4rem !important;
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
     padding-top: 5.5rem; /* Más espacio para el ribbon */
   }
   
@@ -677,14 +683,16 @@
   }
   
   .flip-button {
-    bottom: -24px; /* Ajustado para alinear con el final de la imagen */
+    bottom: auto; /* Eliminar posición bottom */
+    top: 3rem; /* Posicionar en la parte superior de la imagen */
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
   
   .book-header {
-    margin-top: -2.5rem; /* Ajustado para centrarlo mejor entre la imagen y el título */
+    margin-top: 3.5rem; /* Positivo para colocarlo debajo de la imagen */
     margin-bottom: 1rem;
+    top: auto; /* Eliminar top negativo */
   }
   
   .book-badge {
