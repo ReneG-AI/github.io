@@ -1,204 +1,232 @@
-// Variables para la animación de líneas
-let particles = [];
-let canvasContainer;
-let colorPalette = [
-  [255, 94, 219], // Rosa
-  [140, 82, 255], // Púrpura
-  [0, 212, 255]   // Azul claro
-];
-let trails = [];
-let trailPoints = [];
-
-function setup() {
-  // Crear el canvas dentro del contenedor de animación
-  canvasContainer = document.getElementById('animation-container');
-  let canvas = createCanvas(canvasContainer.offsetWidth, 120);
-  canvas.parent('animation-container');
+// Esta función crea e inicializa la animación SVG del lápiz
+function initPencilDrawingAnimation() {
+  const container = document.getElementById('animation-container');
+  if (!container) return;
   
-  // Configuración inicial
-  background(0, 0, 0, 0); // Fondo transparente
-  colorMode(RGB);
+  // Limpiar el contenedor
+  container.innerHTML = '';
   
-  // Crear puntos iniciales para las líneas
-  createTrailPoints();
+  // Crear el SVG
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("width", "100%");
+  svg.setAttribute("height", "100%");
+  svg.setAttribute("viewBox", "0 0 600 120");
+  svg.style.overflow = "visible";
   
-  // Ocultar el mensaje de placeholder si existe
-  let placeholder = document.getElementById('animation-placeholder');
-  if (placeholder) {
-    placeholder.style.display = 'none';
-  }
+  // Definir los gradientes para las líneas
+  const defs = document.createElementNS(svgNS, "defs");
+  
+  // Gradiente principal - usando los mismos colores que los títulos
+  const linearGradient = document.createElementNS(svgNS, "linearGradient");
+  linearGradient.setAttribute("id", "lineGradient");
+  linearGradient.setAttribute("x1", "0%");
+  linearGradient.setAttribute("y1", "0%");
+  linearGradient.setAttribute("x2", "100%");
+  linearGradient.setAttribute("y2", "0%");
+  
+  const stop1 = document.createElementNS(svgNS, "stop");
+  stop1.setAttribute("offset", "0%");
+  stop1.setAttribute("stop-color", "#FF5EDB"); // Rosa
+  
+  const stop2 = document.createElementNS(svgNS, "stop");
+  stop2.setAttribute("offset", "50%");
+  stop2.setAttribute("stop-color", "#8C52FF"); // Púrpura
+  
+  const stop3 = document.createElementNS(svgNS, "stop");
+  stop3.setAttribute("offset", "100%");
+  stop3.setAttribute("stop-color", "#00D4FF"); // Azul claro
+  
+  linearGradient.appendChild(stop1);
+  linearGradient.appendChild(stop2);
+  linearGradient.appendChild(stop3);
+  
+  // Gradiente secundario para el lápiz
+  const pencilGradient = document.createElementNS(svgNS, "linearGradient");
+  pencilGradient.setAttribute("id", "pencilGradient");
+  pencilGradient.setAttribute("x1", "0%");
+  pencilGradient.setAttribute("y1", "0%");
+  pencilGradient.setAttribute("x2", "100%");
+  pencilGradient.setAttribute("y2", "0%");
+  
+  const pStop1 = document.createElementNS(svgNS, "stop");
+  pStop1.setAttribute("offset", "0%");
+  pStop1.setAttribute("stop-color", "#8C52FF"); // Púrpura
+  
+  const pStop2 = document.createElementNS(svgNS, "stop");
+  pStop2.setAttribute("offset", "100%");
+  pStop2.setAttribute("stop-color", "#FF5EDB"); // Rosa
+  
+  pencilGradient.appendChild(pStop1);
+  pencilGradient.appendChild(pStop2);
+  
+  defs.appendChild(linearGradient);
+  defs.appendChild(pencilGradient);
+  svg.appendChild(defs);
+  
+  // Crear las líneas onduladas
+  const line1 = createWavyLine(svgNS, 50, 30, 500, 30, 20, "line1");
+  const line2 = createWavyLine(svgNS, 50, 60, 500, 60, 15, "line2");
+  const line3 = createWavyLine(svgNS, 50, 90, 500, 90, 10, "line3");
+  
+  // Añadir las líneas al SVG
+  svg.appendChild(line1);
+  svg.appendChild(line2);
+  svg.appendChild(line3);
+  
+  // Crear el grupo para el lápiz
+  const pencilGroup = document.createElementNS(svgNS, "g");
+  pencilGroup.setAttribute("id", "pencil");
+  pencilGroup.setAttribute("transform", "translate(40, 30) rotate(0) scale(0.5)");
+  
+  // Dibujar un lápiz realista
+  const pencilBody = document.createElementNS(svgNS, "path");
+  pencilBody.setAttribute("d", "M0,0 L80,0 L90,10 L80,20 L0,20 Z");
+  pencilBody.setAttribute("fill", "#FFD700"); // Color dorado para el cuerpo del lápiz
+  pencilBody.setAttribute("stroke", "#8B4513");
+  pencilBody.setAttribute("stroke-width", "1");
+  
+  const pencilTip = document.createElementNS(svgNS, "path");
+  pencilTip.setAttribute("d", "M-10,10 L0,0 L0,20 Z");
+  pencilTip.setAttribute("fill", "#4B2F2F"); // Color del grafito
+  pencilTip.setAttribute("stroke", "#000");
+  pencilTip.setAttribute("stroke-width", "0.5");
+  
+  const pencilStripe = document.createElementNS(svgNS, "rect");
+  pencilStripe.setAttribute("x", "20");
+  pencilStripe.setAttribute("y", "0");
+  pencilStripe.setAttribute("width", "10");
+  pencilStripe.setAttribute("height", "20");
+  pencilStripe.setAttribute("fill", "url(#pencilGradient)");
+  
+  const pencilEraser = document.createElementNS(svgNS, "path");
+  pencilEraser.setAttribute("d", "M80,0 L90,0 L90,20 L80,20 Z");
+  pencilEraser.setAttribute("fill", "#FF5252"); // Color de la goma
+  pencilEraser.setAttribute("stroke", "#8B4513");
+  pencilEraser.setAttribute("stroke-width", "1");
+  
+  // Añadir las partes del lápiz al grupo
+  pencilGroup.appendChild(pencilTip);
+  pencilGroup.appendChild(pencilBody);
+  pencilGroup.appendChild(pencilStripe);
+  pencilGroup.appendChild(pencilEraser);
+  
+  // Añadir el lápiz al SVG
+  svg.appendChild(pencilGroup);
+  
+  // Añadir el SVG al contenedor
+  container.appendChild(svg);
+  
+  // Iniciar la animación
+  animatePencilDrawing();
 }
 
-function createTrailPoints() {
-  // Crear varios puntos a lo largo del canvas para que las líneas se dibujen entre ellos
-  trailPoints = [];
-  const numPoints = 5;
-  const spacing = width / (numPoints - 1);
+// Función para crear una línea ondulada
+function createWavyLine(svgNS, x1, y1, x2, y2, waveHeight, id) {
+  const path = document.createElementNS(svgNS, "path");
   
-  for (let i = 0; i < numPoints; i++) {
-    trailPoints.push({
-      x: i * spacing,
-      y: map(noise(i * 0.5), 0, 1, 20, height - 20),
-      targetY: map(noise(i * 0.5, frameCount * 0.01), 0, 1, 20, height - 20)
+  // Crear una línea ondulada
+  let d = `M${x1},${y1} `;
+  const segments = 5;
+  const segmentLength = (x2 - x1) / segments;
+  
+  for (let i = 1; i <= segments; i++) {
+    const cpx1 = x1 + (i - 1) * segmentLength + segmentLength / 4;
+    const cpy1 = y1 + (i % 2 === 0 ? waveHeight : -waveHeight);
+    const cpx2 = x1 + (i - 1) * segmentLength + segmentLength * 3 / 4;
+    const cpy2 = y1 + (i % 2 === 0 ? -waveHeight : waveHeight);
+    const x = x1 + i * segmentLength;
+    const y = y1;
+    
+    d += `C ${cpx1},${cpy1} ${cpx2},${cpy2} ${x},${y} `;
+  }
+  
+  path.setAttribute("d", d);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "url(#lineGradient)");
+  path.setAttribute("stroke-width", "4");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("id", id);
+  
+  // Configurar la animación de dibujo
+  const length = path.getTotalLength();
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
+  
+  return path;
+}
+
+// Función para animar el lápiz dibujando las líneas
+function animatePencilDrawing() {
+  const pencil = document.getElementById('pencil');
+  const line1 = document.getElementById('line1');
+  const line2 = document.getElementById('line2');
+  const line3 = document.getElementById('line3');
+  
+  if (!pencil || !line1 || !line2 || !line3) return;
+  
+  // Resetear la animación
+  const resetAnimation = () => {
+    // Resetear líneas
+    [line1, line2, line3].forEach(line => {
+      const length = line.getTotalLength();
+      line.style.strokeDashoffset = length;
+      line.style.opacity = 0;
     });
-  }
-  
-  // Crear las líneas que conectarán los puntos
-  trails = [];
-  for (let i = 0; i < colorPalette.length; i++) {
-    trails.push({
-      color: colorPalette[i],
-      progress: 0,
-      maxProgress: 1,
-      thickness: 2 + i * 1.5,
-      offset: i * 5, // Desplazamiento vertical para cada línea
-      speed: 0.005 + (i * 0.002)
-    });
-  }
-}
-
-function draw() {
-  clear(); // Mantener transparencia
-  
-  // Actualizar la posición de los puntos con un efecto de suavizado
-  for (let i = 0; i < trailPoints.length; i++) {
-    // Cambiar gradualmente el objetivo en Y basado en ruido Perlin
-    const noiseVal = noise(i * 0.5, frameCount * 0.005);
-    trailPoints[i].targetY = map(noiseVal, 0, 1, 20, height - 20);
     
-    // Mover suavemente hacia el objetivo
-    trailPoints[i].y = lerp(trailPoints[i].y, trailPoints[i].targetY, 0.05);
-  }
+    // Posicionar el lápiz en el inicio
+    pencil.setAttribute("transform", "translate(40, 30) rotate(0) scale(0.5)");
+  };
   
-  // Dibujar líneas entre los puntos
-  for (let t = 0; t < trails.length; t++) {
-    const trail = trails[t];
+  // Mover el lápiz a lo largo de la línea mientras dibuja
+  const animateLine = (line, y, duration, delay, callback) => {
+    const length = line.getTotalLength();
     
-    // Aumentar progresivamente el dibujo de la línea
-    trail.progress += trail.speed;
-    if (trail.progress >= trail.maxProgress) {
-      trail.progress = trail.maxProgress;
-    }
-    
-    // Dibujar línea con degradado y efecto de brillo
-    drawGradientTrail(trail, trailPoints, t);
-    
-    // Reiniciar la animación después de un tiempo
-    if (trail.progress >= trail.maxProgress && frameCount % 500 === 0) {
-      trail.progress = 0;
-    }
-  }
-  
-  // Partículas de brillo que siguen a las líneas
-  updateParticles();
-  
-  // Ocasionalmente añadir nuevas partículas de brillo
-  if (frameCount % 10 === 0) {
-    addParticles();
-  }
-}
-
-function drawGradientTrail(trail, points, index) {
-  const segments = 20;
-  const progress = trail.progress;
-  const c = trail.color;
-  const maxPoints = points.length;
-  const drawUpTo = Math.floor(progress * maxPoints);
-  
-  if (drawUpTo < 2) return;
-  
-  // Dibujar la línea principal
-  noFill();
-  for (let i = 0; i < drawUpTo - 1; i++) {
-    const startPoint = points[i];
-    const endPoint = points[i + 1];
-    const segmentProgress = (progress * maxPoints) - i;
-    const currentSegmentLength = segmentProgress > 1 ? 1 : segmentProgress;
-    
-    if (currentSegmentLength <= 0) continue;
-    
-    // Dibujar segmento con efecto brillante
-    for (let j = 0; j < 3; j++) {
-      const thickness = trail.thickness - j * 0.7;
-      if (thickness <= 0) continue;
+    // Hacer visible la línea
+    setTimeout(() => {
+      line.style.opacity = 1;
       
-      const alpha = j === 0 ? 255 : 150 - j * 50;
-      stroke(c[0], c[1], c[2], alpha);
-      strokeWeight(thickness);
-      
-      beginShape();
-      const offsetY = trail.offset + sin(frameCount * 0.05 + i * 0.5) * 3;
-      
-      // Crear el efecto de dibujo progresivo
-      for (let t = 0; t <= currentSegmentLength; t += 1/segments) {
-        const subT = constrain(t, 0, 1);
-        const x = lerp(startPoint.x, endPoint.x, subT);
-        const y = lerp(startPoint.y, endPoint.y, subT) + offsetY;
-        
-        // Punto de la curva
-        curveVertex(x, y);
-        
-        // Al inicio y final, añadir puntos de control
-        if (t === 0 || t >= currentSegmentLength - 0.1) {
-          curveVertex(x, y);
-        }
-      }
-      endShape();
-    }
-  }
-}
-
-function addParticles() {
-  // Añadir partículas brillantes a lo largo de la línea
-  for (let i = 0; i < trails.length; i++) {
-    if (trails[i].progress < 0.2) continue;
-    
-    const pointIndex = Math.floor(random(0, trailPoints.length - 1));
-    const nextIndex = pointIndex + 1;
-    
-    if (nextIndex < trailPoints.length) {
-      const t = random(0, 1);
-      const x = lerp(trailPoints[pointIndex].x, trailPoints[nextIndex].x, t);
-      const y = lerp(trailPoints[pointIndex].y, trailPoints[nextIndex].y, t) + trails[i].offset;
-      
-      particles.push({
-        x: x,
-        y: y,
-        size: random(2, 5),
-        color: [...colorPalette[i], 200],
-        speedX: random(-0.5, 0.5),
-        speedY: random(-0.5, 0.5),
-        life: 255
+      // Animación de la línea
+      line.animate([
+        { strokeDashoffset: length },
+        { strokeDashoffset: 0 }
+      ], {
+        duration: duration,
+        delay: delay,
+        fill: 'forwards',
+        easing: 'ease-in-out'
       });
-    }
-  }
+      
+      // Animación del lápiz
+      pencil.animate([
+        { transform: `translate(40, ${y}) rotate(0) scale(0.5)` },
+        { transform: `translate(500, ${y}) rotate(0) scale(0.5)` }
+      ], {
+        duration: duration,
+        delay: delay,
+        fill: 'forwards',
+        easing: 'ease-in-out',
+        composite: 'replace'
+      }).onfinish = callback;
+    }, delay);
+  };
+  
+  // Iniciar la animación secuencial
+  resetAnimation();
+  
+  animateLine(line1, 30, 2000, 0, () => {
+    animateLine(line2, 60, 2000, 100, () => {
+      animateLine(line3, 90, 2000, 100, () => {
+        // Reiniciar la animación después de un tiempo
+        setTimeout(resetAnimation, 3000);
+        setTimeout(animatePencilDrawing, 3500);
+      });
+    });
+  });
 }
 
-function updateParticles() {
-  // Actualizar y dibujar partículas
-  for (let i = particles.length - 1; i >= 0; i--) {
-    let p = particles[i];
-    
-    // Actualizar propiedades
-    p.x += p.speedX;
-    p.y += p.speedY;
-    p.life -= 5;
-    
-    // Dibujar partícula
-    noStroke();
-    fill(p.color[0], p.color[1], p.color[2], p.life);
-    ellipse(p.x, p.y, p.size);
-    
-    // Eliminar partículas muertas
-    if (p.life <= 0) {
-      particles.splice(i, 1);
-    }
-  }
-}
+// Inicializar la animación cuando la página esté cargada
+document.addEventListener('DOMContentLoaded', initPencilDrawingAnimation);
 
-function windowResized() {
-  if (canvasContainer) {
-    resizeCanvas(canvasContainer.offsetWidth, 120);
-    createTrailPoints();
-  }
-} 
+// Manejar el redimensionamiento de la ventana
+window.addEventListener('resize', initPencilDrawingAnimation); 
