@@ -1,8 +1,9 @@
 /* Estilos para estructuras de secciones */
 .section {
+    padding: 6rem 0;
     position: relative;
-    padding: 80px 0;
     overflow: hidden;
+    width: 100%;
 }
 
 .section-light {
@@ -109,4 +110,19 @@
     .section-subtitle {
         font-size: 1.4rem;
     }
+}
+
+/* Ajustes para fondos de secciones */
+.section.dark-bg {
+    background-color: rgba(18, 18, 18, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+}
+
+.section.light-bg {
+    background-color: rgba(28, 28, 35, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
 } 
