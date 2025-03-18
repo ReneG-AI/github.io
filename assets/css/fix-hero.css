@@ -15,7 +15,9 @@ img {
 header img, .logo img {
   visibility: visible !important;
   opacity: 1 !important;
-  max-height: none !important; /* Eliminado el límite de altura para permitir que crezca */
+  max-height: 65px !important; /* Limitamos la altura máxima para mantener proporciones */
+  object-fit: contain !important;
+  width: auto !important;
 }
 
 /* Fix para el fondo del hero */
