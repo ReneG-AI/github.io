@@ -241,6 +241,7 @@ function initInteriorModal() {
     const modal = document.getElementById('interiorModal');
     const interiorBtns = document.querySelectorAll('.interior-btn');
     const closeBtn = document.getElementById('modalClose');
+    const closeBtnX = document.getElementById('modalCloseX');
     
     if (modal && interiorBtns.length) {
         interiorBtns.forEach(btn => {
@@ -250,8 +251,16 @@ function initInteriorModal() {
             });
         });
         
+        // Cerrar con el botón principal
         if (closeBtn) {
             closeBtn.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+        }
+        
+        // Cerrar con el botón X
+        if (closeBtnX) {
+            closeBtnX.addEventListener('click', function() {
                 modal.classList.remove('active');
             });
         }
