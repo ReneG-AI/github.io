@@ -176,13 +176,20 @@
   position: absolute;
   top: 6rem;
   left: 50%;
-  transform: translateX(-50%);
   width: 60px;
   height: 3px;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
   z-index: 5;
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  animation: dibujar-linea-contacto 2.5s ease-in-out forwards;
+}
+
+@keyframes dibujar-linea-contacto {
+  0% { transform: translateX(-50%) scaleX(0); }
+  100% { transform: translateX(-50%) scaleX(1); }
 }
 
 /* Formulario - Ajustado con margen superior para el título */
@@ -1105,35 +1112,38 @@
 /* Separador para usar antes del footer - Estandarizado */
 .separador-footer {
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   position: relative;
-  margin: 0;
+  margin: 0 0 1.5rem 0;
   padding: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
   z-index: 2;
 }
 
 .separador-footer .linea-animada-container {
-  width: 90%;
-  max-width: 1100px;
+  width: 100%;
+  max-width: 100%;
 }
 
-/* Asegurar que las líneas tengan la animación correcta */
+/* Asegurar que las líneas tengan la animación correcta - FIX para la animación completa */
 .linea-animada {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  transform: translateX(-100%);
+  transform: scaleX(0); /* Cambiado para mejorar la animación */
+  transform-origin: left;
   animation: dibujar-linea 4.5s ease-in-out forwards, brillo-linea 3s infinite alternate 4.5s !important;
+}
+
+@keyframes dibujar-linea {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
 }
 
 /* Media queries para el separador del footer */
