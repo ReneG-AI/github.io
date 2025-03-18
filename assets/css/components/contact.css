@@ -571,6 +571,7 @@
 @media (min-width: 993px) {
   .autor-container:hover {
     transform: perspective(1000px) rotateY(-4deg);
+    background: rgba(5, 5, 8, 0.9); /* Fondo más oscuro al hacer hover */
   }
 }
 
