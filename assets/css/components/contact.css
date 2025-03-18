@@ -596,18 +596,23 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
     padding: 2.5rem;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "separador"
+      "pages";
   }
   
   .contact-left {
     padding-right: 0;
   }
   
-  .contact-form-container {
-    padding: 2rem;
+  .contacto-form-container {
+    padding: 2.5rem;
   }
   
   .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
   }
   
   #contacto .section-title {
@@ -615,28 +620,81 @@
     margin-bottom: 1.5rem;
   }
   
+  .autor-container {
+    padding: 2.5rem;
+    margin-top: 2rem;
+  }
+  
   .autor-content {
-    padding: 2rem;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   
-  .autor-image {
-    width: 14rem;
-    height: 14rem;
-    margin-bottom: 1.5rem;
+  .autor-avatar {
+    width: 16rem;
+    height: 20rem;
+    margin: 0 auto 2rem;
   }
   
-  .autor-name {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .autor-bio {
+  .autor-texto {
     font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
   
-  .social-container {
-    margin-top: 1.5rem;
+  .btn-leer-mas {
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .social-links {
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .social-link {
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.2rem;
+  }
+  
+  .social-title {
+    font-size: 2.2rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .contacto-form {
+    margin-top: 5.5rem;
+  }
+  
+  .libro-pages-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .libro-page-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .libro-page-2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  .libro-page {
+    height: auto;
+  }
+  
+  .libro-page-inner {
+    padding: 2.5rem;
+  }
+  
+  .libro-separador {
+    height: 4rem;
+    margin: 1rem 0;
   }
 }
 
@@ -655,12 +713,25 @@
     margin: 2rem 0;
   }
   
-  .contact-form-container {
-    padding: 1.8rem;
+  .contacto-form-container {
+    padding: 2rem;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2.4rem;
+    top: 1.2rem;
+  }
+  
+  .contacto-title-line {
+    top: 5rem;
+  }
+  
+  .contacto-form {
+    margin-top: 5rem;
   }
   
   .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
   }
   
   .form-control {
@@ -680,33 +751,60 @@
     margin-bottom: 1.2rem;
   }
   
-  .autor-content {
-    padding: 1.8rem;
-  }
-  
-  .autor-image {
-    width: 13rem;
-    height: 13rem;
-    margin-bottom: 1.2rem;
-  }
-  
-  .autor-name {
-    font-size: 2rem;
-    margin-bottom: 0.4rem;
+  .autor-container {
+    padding: 2rem;
   }
   
   .autor-title {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .autor-avatar {
+    width: 15rem;
+    height: 19rem;
+  }
+  
+  .autor-texto {
     font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .social-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .social-links {
+    gap: 1.8rem;
+  }
+  
+  .social-link {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+  }
+  
+  .libro-page-inner {
+    padding: 2rem;
+  }
+  
+  .libro-page-title {
+    font-size: 2.2rem;
     margin-bottom: 1.2rem;
   }
   
-  .autor-bio {
+  .libro-page-content {
     font-size: 1.5rem;
-    margin-bottom: 1.2rem;
   }
   
-  .social-media-title {
-    margin-bottom: 1rem;
+  .libro-icon {
+    font-size: 2.5rem;
+    padding-top: 1.5rem;
+  }
+  
+  .libro-separador {
+    height: 3.5rem;
   }
 }
 
@@ -725,8 +823,22 @@
     margin: 1.8rem 0;
   }
   
-  .contact-form-container, .autor-content {
-    padding: 1.5rem;
+  .contacto-form-container {
+    padding: 1.8rem;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2.2rem;
+    top: 1rem;
+  }
+  
+  .contacto-title-line {
+    top: 4.8rem;
+    width: 50px;
+  }
+  
+  .contacto-form {
+    margin-top: 4.8rem;
   }
   
   #contacto .section-title {
@@ -735,7 +847,7 @@
   }
   
   .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
   
   .form-label {
@@ -757,42 +869,127 @@
     font-size: 1.5rem;
   }
   
-  .autor-image {
-    width: 12rem;
-    height: 12rem;
-    margin-bottom: 1rem;
-  }
-  
-  .autor-name {
-    font-size: 1.8rem;
+  .autor-container {
+    padding: 1.8rem;
   }
   
   .autor-title {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
   }
   
-  .autor-bio {
+  .autor-avatar {
+    width: 14rem;
+    height: 18rem;
+  }
+  
+  .autor-texto {
     font-size: 1.4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.5;
   }
   
   .social-container {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
   }
   
-  .social-media-title {
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
+  .social-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
   }
   
-  .social-icons {
-    gap: 1rem;
+  .social-links {
+    gap: 1.5rem;
   }
   
-  .social-icon {
+  .social-link {
+    width: 4.2rem;
+    height: 4.2rem;
+    font-size: 1.8rem;
+  }
+  
+  .libro-page-inner {
+    padding: 1.8rem;
+  }
+  
+  .libro-page-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .libro-page-content {
+    font-size: 1.4rem;
+    line-height: 1.5;
+  }
+  
+  .libro-icon {
     font-size: 2.2rem;
+    padding-top: 1.2rem;
+  }
+  
+  .libro-separador {
+    height: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .contacto-form-container {
+    padding: 1.5rem;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2rem;
+    top: 0.8rem;
+  }
+  
+  .contacto-title-line {
+    top: 4.5rem;
+    width: 45px;
+  }
+  
+  .contacto-form {
+    margin-top: 4.5rem;
+  }
+  
+  .autor-container {
+    padding: 1.5rem;
+  }
+  
+  .autor-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .autor-avatar {
+    width: 13rem;
+    height: 17rem;
+  }
+  
+  .autor-texto {
+    font-size: 1.3rem;
+  }
+  
+  .social-link {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.7rem;
+  }
+  
+  .libro-page-inner {
+    padding: 1.5rem;
+  }
+  
+  .libro-page-title {
+    font-size: 1.8rem;
+  }
+  
+  .libro-page-content {
+    font-size: 1.3rem;
+  }
+  
+  .libro-icon {
+    font-size: 2rem;
+    padding-top: 1rem;
   }
 }
 

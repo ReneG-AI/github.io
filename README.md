@@ -21,6 +21,7 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 │   │   ├── sprite-book.css    # Estilos para sprites de libros
 │   │   └── variables.css      # Variables CSS globales
 │   ├── js/
+│   │   ├── animations/        # Scripts para animaciones específicas
 │   │   ├── config.js          # Configuración y variables JavaScript
 │   │   ├── main.js            # JavaScript principal
 │   │   └── carousel.js        # Funcionalidad de carruseles
@@ -30,6 +31,9 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 ├── .htaccess                  # Configuración del servidor
 ├── _config.yml                # Configuración para GitHub Pages
 ├── index.html                 # Página principal del sitio
+├── privacy.html               # Página de política de privacidad
+├── terms.html                 # Página de términos de servicio
+├── legal.html                 # Página de aviso legal
 └── README.md                  # Este archivo de documentación
 ```
 
@@ -47,28 +51,31 @@ Sitio web oficial para "René Garcia Educa", una plataforma dedicada a libros ed
 - Sistema de caché configurado para máxima eficiencia
 - Técnicas de sprites CSS para reducir solicitudes HTTP
 
-### Diseño Responsivo
-- Adaptación completa a todos los dispositivos
-- Optimizaciones específicas para móviles, tablets y pantallas grandes
-- Menú hamburguesa en versions móviles
-- Media queries estratégicamente implementadas
+### Diseño Responsivo Mejorado
+- Adaptación completa a todos los dispositivos (móviles, tablets y escritorio)
+- Optimización específica para cada breakpoint (576px, 768px, 992px, 1200px)
+- Espaciado y proporciones cuidadosamente ajustados en cada resolución
+- Diseño centrado con elementos alineados en móviles y tablets
+- Disposición de columnas adaptable automáticamente
 
-### Efecto Flip de Libros
-- Animación suave y optimizada para mostrar portadas y contraportadas
-- Implementación mejorada con transiciones de alta calidad
-- Alternativas entre display convencional y sprites CSS
+### Efectos y Animaciones
+- Efecto flip de libros con animación suave y optimizada
+- Líneas animadas como separadores entre secciones
+- Gradientes animados en títulos y elementos destacados
+- Transiciones suaves entre estados de hover
 
 ### Secciones Principales
-1. **Hero** - Presentación visual impactante con mensaje principal
-2. **Libros** - Catálogo de libros con efecto flip y detalles
-3. **Testimonios** - Opiniones de clientes con diseño atractivo
-4. **Contacto** - Formulario de contacto con integración a formspree.io
+1. **Hero** - Presentación visual con texto centrado en móviles y alineado a la izquierda en escritorio
+2. **Libros** - Catálogo de libros con efecto flip y contenedores adaptables
+3. **Testimonios** - Opiniones de clientes con diseño atractivo y adaptable
+4. **Contacto** - Formulario optimizado para todos los dispositivos
+5. **Proyectos y Colaboraciones** - Secciones informativas con disposición adaptable
 
 ## Tecnologías Utilizadas
 
 - **HTML5** - Estructura semántica moderna
-- **CSS3** - Estilos avanzados con variables y efectos
-- **JavaScript** - Funcionalidades interactivas
+- **CSS3** - Variables CSS, media queries avanzadas, flexbox y grid
+- **JavaScript** - Funcionalidades interactivas y animaciones
 - **WebP** - Formato de imagen de alta compresión
 - **GitHub Pages** - Hospedaje del sitio
 - **Font Awesome** - Iconografía vectorial
@@ -123,46 +130,47 @@ Para mejorar drásticamente el rendimiento de carga, especialmente en las portad
 
 ## Mejoras y Optimizaciones Recientes
 
-### Cambio a formato WebP
-- **Conversión Completa**: Todas las imágenes ahora usan formato WebP
-- **Reducción de Tamaño**: Reducción promedio del 65% en el tamaño de imágenes
-- **Detección Automática**: Script que detecta soporte de WebP y ofrece fallback
-- **Precarga Optimizada**: Sistema inteligente que limita solicitudes simultáneas
+### Adaptación Móvil Mejorada
+- **Sección Hero:** Texto centrado en móviles/tablets y alineado a la izquierda en escritorio
+- **Sección Libros:** Contenedores con espaciado y proporciones optimizadas
+- **Secciones Contacto/Autor/Proyectos:** Estructura reorganizada para mejor visualización
+- **Disposición General:** Eliminación de espacios excesivos entre elementos
+- **Consistencia:** Uniformidad en márgenes y paddings en todas las secciones
 
-### Mejoras en la Sección de Contacto
-- **Glassmorphism Mejorado**: Fondos más legibles y elegantes
-- **Etiquetas Renovadas**: Diseño con degradado para mayor impacto visual
-- **Estructura Optimizada**: Mejor alineación y espaciado con otras secciones
-- **Experiencia de Usuario**: Formulario más intuitivo y atractivo
+### Optimización de Rendimiento
+- **Reducción de Recursos:** Eliminación de scripts y elementos no utilizados
+- **CSS Optimizado:** Media queries unificados y eficientes en archivos de componentes
+- **Estructura Mejorada:** Organización coherente de archivos CSS y JS
+- **Tamaño Base de Fuente:** Ajuste progresivo según resolución para mejor legibilidad
 
-### Control de Tasa de Solicitudes
-- **Gestión de Error 429**: Implementación para evitar "Too Many Requests"
-- **Configuración de Servidor**: Ajustes en .htaccess para limitar tasa de transferencia
-- **Optimización de GitHub Pages**: Configuración específica en _config.yml
+### Interfaz de Usuario
+- **Experiencia Mejorada:** Elementos más accesibles en todos los dispositivos
+- **Centrado Adaptativo:** Elementos alineados según el contexto de visualización
+- **Tipografía Responsiva:** Tamaños de texto ajustados automáticamente
+- **Proporción de Elementos:** Mantiene relaciones visualmente armónicas en todas las resoluciones
 
-### Rendimiento General
-- **Carga Progresiva**: Mejora en el orden de carga de recursos
-- **CSS Optimizado**: Reducción de duplicidades y conflictos
-- **JavaScript Eficiente**: Código refactorizado para mejor rendimiento
+### Estructura del Proyecto
+- **Organización Mejorada:** Archivos CSS organizados por componentes
+- **Nomenclatura Consistente:** Clases y IDs con nombres descriptivos y coherentes
+- **Comentarios Mejorados:** Documentación interna para facilitar mantenimiento
+- **Archivos Eliminados:** Limpieza de recursos no utilizados o duplicados
 
-## Posibles Mejoras Futuras
+## Rendimiento y Compatibilidad
 
-### Estructura de CSS
-- Consolidar archivos duplicados (components.css vs archivos individuales)
-- Integrar los estilos responsive directamente en cada componente
-- Simplificar la estructura de directorios para mayor coherencia
+### Rendimiento en Dispositivos
+- **Móviles:** Optimizado para pantallas desde 320px hasta 576px
+- **Tablets:** Adaptado para pantallas desde 577px hasta 992px
+- **Portátiles:** Diseño fluido para pantallas desde 993px hasta 1200px
+- **Escritorio:** Experiencia completa para pantallas mayores a 1200px
 
-### Optimización de Imágenes
-- Convertir todos los libros a implementación con sprites
-- Considerar implementar srcset para imágenes responsivas
-- Explorar el uso de lazy-loading nativo en más elementos
+### Compatibilidad con Navegadores
+- **Chrome/Edge/Opera:** Soporte completo (últimas 5 versiones)
+- **Firefox:** Soporte completo (últimas 5 versiones)
+- **Safari:** Soporte completo (últimas 3 versiones)
+- **iOS Safari/Android Chrome:** Optimizado para experiencia móvil
+- **IE:** Soporte básico para IE11 (sin animaciones avanzadas)
 
-### Rendimiento
-- Minimizar archivos CSS y JS para producción
-- Implementar service workers para funcionamiento offline
-- Considerar estrategias de Server-Side Rendering
-
-## Mantenimiento
+## Mantenimiento y Desarrollo Futuro
 
 ### Agregar Nuevos Libros
 Para agregar un nuevo libro al sitio:
@@ -170,24 +178,33 @@ Para agregar un nuevo libro al sitio:
 1. Preparar imágenes en formato WebP (portada y contraportada)
 2. Duplicar el bloque HTML de book-item en index.html
 3. Actualizar las rutas de imágenes, textos y enlaces
-4. Considerar implementar versión sprite para mejor rendimiento
+4. Respetar las clases y estructura para mantener la adaptabilidad
 
-### Herramientas Recomendadas
+### Posibles Mejoras Futuras
+- Implementación de lazy-loading nativo para todas las imágenes
+- Optimización adicional de tiempos de carga con service workers
+- Unificación completa de media queries en un sistema coherente
+- Desarrollo de nuevas animaciones y efectos visuales
+- Implementación de dark mode completo
+
+### Monitoreo de Rendimiento
+- Uso de Google PageSpeed Insights para evaluación continua
+- Verificación en múltiples dispositivos y resoluciones
+- Pruebas de carga y tiempos de respuesta
+- Auditoría periódica de recursos no utilizados
+
+## Herramientas Recomendadas
+
 - **Squoosh** (https://squoosh.app/) - Para convertir y optimizar imágenes a WebP
 - **GIMP/Photoshop** - Para crear sprites combinando portada y contraportada
-- **PageSpeed Insights** - Para verificar el rendimiento del sitio
-
-## Notas Adicionales
-
-### Compatibilidad con Navegadores
-El sitio está optimizado para todos los navegadores modernos con soporte de fallback para:
-- Navegadores sin soporte WebP (usando PNG como alternativa)
-- IE11+ y navegadores modernos (Chrome, Firefox, Safari, Edge)
-
-### Resolución de Problemas
-- Si ocurre el error 429 (Too Many Requests), esperar unos minutos y recargar
-- Si las imágenes no cargan correctamente, el script de corrección intentará solucionar el problema automáticamente
-- Para reportar problemas, utilizar el formulario de contacto en la web
+- **Browser Stack** - Para pruebas en múltiples navegadores y dispositivos
+- **Chrome DevTools** - Para analizar rendimiento y depurar problemas
+- **Visual Studio Code** - Editor recomendado con extensiones para HTML/CSS/JS
 
 ## Contacto
+
 Para más información sobre este proyecto, contactar a René García a través del formulario de contacto en el sitio web o a través de las redes sociales vinculadas.
+
+---
+
+Última actualización: Mayo 2024
