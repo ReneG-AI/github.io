@@ -403,7 +403,20 @@
   }
   
   #libros .book-ribbon {
-    top: 15px !important; /* Ajustado para mejor posición */
+    top: 8px !important; /* Movido más arriba */
+    right: 8px !important; /* Ajustado */
+    font-size: 1.15rem !important; /* Ligeramente más grande */
+    padding: 7px 14px !important; /* Aumentado el padding */
+  }
+  
+  .book-header {
+    margin-top: 0.5rem; /* Reducido margen superior */
+    margin-bottom: 1.5rem; /* Aumentado margen inferior */
+    text-align: center;
+  }
+  
+  .flip-button {
+    bottom: -28px; /* Movido más abajo, cerca del final de la imagen */
   }
 }
 
@@ -433,7 +446,7 @@
   #libros .book-images {
     height: 25rem !important; /* Reducido ligeramente */
     margin-bottom: 4.5rem !important; /* Más espacio para el botón flip */
-    padding-top: 2.5rem; /* Más espacio arriba para el ribbon */
+    padding-top: 4.5rem; /* Aumentado el espacio arriba para el ribbon */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -441,12 +454,14 @@
   
   .book-content {
     padding: 2rem;
-    margin-top: 1rem;
+    margin-top: 0; /* Eliminado el margen superior */
   }
   
   .book-header {
-    margin-top: 1.5rem; /* Reducido para mejorar el espaciado */
+    margin-top: 0; /* Eliminado el margen superior */
     margin-bottom: 1.5rem;
+    position: relative;
+    top: -1.5rem; /* Movido hacia arriba para centrarlo entre la imagen y el título */
     text-align: center;
   }
   
@@ -462,9 +477,9 @@
   }
   
   .flip-button {
-    bottom: -18px;
-    padding: 0.6rem 1.2rem;
-    font-size: 1.1rem;
+    bottom: -22px; /* Movido más abajo, cerca del final de la imagen */
+    padding: 0.7rem 1.4rem; /* Ligeramente más grande */
+    font-size: 1.2rem;
   }
   
   .book-detail i,
@@ -501,11 +516,15 @@
   .book-badge {
     margin: 0 auto;
     text-align: center;
+    font-size: 1.7rem; /* Más grande */
+    padding: 0.6rem 1.2rem; /* Más grande */
   }
   
   #libros .book-ribbon {
-    top: 18px !important; /* Ajustado para mejor posición */
-    right: 18px !important;
+    top: 6px !important; /* Movido más arriba */
+    right: 6px !important;
+    font-size: 1.2rem !important; /* Más grande */
+    padding: 8px 15px !important; /* Más grande */
   }
 }
 
@@ -533,7 +552,7 @@
   #libros .book-images {
     height: 23rem !important; /* Reducido para mejor proporción */
     margin-bottom: 4.5rem !important;
-    padding-top: 3rem; /* Más espacio para evitar que el ribbon se solape */
+    padding-top: 5rem; /* Aumentado para evitar que el ribbon se solape */
   }
   
   .book-content {
@@ -574,27 +593,27 @@
   }
   
   .flip-button {
-    bottom: -15px;
-    padding: 0.5rem 1.1rem;
-    font-size: 1rem;
+    bottom: -25px; /* Ajustado para alinear con el final de la imagen */
+    padding: 0.6rem 1.2rem; /* Ligeramente más grande */
+    font-size: 1.1rem;
   }
   
   #libros .book-ribbon {
-    font-size: 1rem !important;
-    padding: 5px 10px !important;
-    top: 20px !important; /* Ajustado para mejor posición */
-    right: 20px !important;
+    font-size: 1.1rem !important;
+    padding: 7px 14px !important;
+    top: 5px !important; /* Ajustado para estar más arriba */
+    right: 5px !important;
   }
   
   .book-header {
-    margin-top: 1.5rem;
+    margin-top: -2rem; /* Ajustado para centrarlo mejor entre la imagen y el título */
+    margin-bottom: 1.2rem;
     text-align: center;
-    margin-bottom: 1.5rem;
   }
   
   .book-badge {
-    font-size: 1.4rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
   }
   
   .book-details {
@@ -623,7 +642,7 @@
   #libros .book-images {
     height: 20rem !important; /* Reducido para mejor proporción */
     margin-bottom: 4rem !important;
-    padding-top: 3.5rem; /* Más espacio para el ribbon */
+    padding-top: 5.5rem; /* Más espacio para el ribbon */
   }
   
   .book-content {
@@ -658,14 +677,14 @@
   }
   
   .flip-button {
-    bottom: -12px;
-    padding: 0.4rem 0.9rem;
-    font-size: 0.9rem;
+    bottom: -24px; /* Ajustado para alinear con el final de la imagen */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
   }
   
   .book-header {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-top: -2.5rem; /* Ajustado para centrarlo mejor entre la imagen y el título */
+    margin-bottom: 1rem;
   }
   
   .book-badge {
@@ -684,8 +703,10 @@
   }
   
   #libros .book-ribbon {
-    top: 22px !important; /* Ajustado para mejor posición */
-    right: 22px !important;
+    top: 4px !important; /* Ajustado para estar más arriba */
+    right: 4px !important;
+    font-size: 1rem !important;
+    padding: 6px 12px !important;
   }
 }
 
