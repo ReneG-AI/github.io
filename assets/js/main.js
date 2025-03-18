@@ -107,10 +107,28 @@ function initSmoothScroll() {
             if (targetElement) {
                 const offsetTop = targetElement.offsetTop - 80;
                 
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                // Usar scrollTo con una duración personalizada para un scroll más lento y fluido
+                const duration = 1500; // Duración en milisegundos (1.5 segundos)
+                const startPosition = window.pageYOffset;
+                const distance = offsetTop - startPosition;
+                let startTime = null;
+                
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // Función de suavizado (easing) para hacer el movimiento más natural
+                    const ease = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; // Cubic easing
+                    
+                    window.scrollTo(0, startPosition + distance * ease(progress));
+                    
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+                
+                requestAnimationFrame(animation);
             }
         });
     });
@@ -148,7 +166,29 @@ function setupBackToTop() {
     
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Usar la misma animación personalizada para un scroll más lento y fluido
+        const duration = 1500; // Duración en milisegundos (1.5 segundos)
+        const startPosition = window.pageYOffset;
+        const distance = -startPosition; // Distancia hasta el top (0)
+        let startTime = null;
+        
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            
+            // Misma función de suavizado que en initSmoothScroll
+            const ease = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; // Cubic easing
+            
+            window.scrollTo(0, startPosition + distance * ease(progress));
+            
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+        
+        requestAnimationFrame(animation);
     });
 }
 
