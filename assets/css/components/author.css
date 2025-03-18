@@ -1,0 +1,307 @@
+/* 
+ * AUTOR
+ * Estilos para la sección del autor y redes sociales
+ */
+
+/* Contenedor de información del autor */
+.autor-container {
+  background: rgba(25, 25, 35, 0.8);
+  border-radius: 1.6rem;
+  padding: 3.5rem;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Efecto de borde brillante */
+.autor-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.7rem;
+  background: linear-gradient(90deg, rgba(140, 82, 255, 0.8), rgba(255, 94, 219, 0.8));
+  background-size: 400% 100%;
+  animation: gradientMove 8s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
+}
+
+/* Título del autor */
+.autor-title {
+  font-size: 2.8rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  position: relative;
+  padding-bottom: 1.2rem;
+}
+
+/* Línea decorativa bajo el título */
+.autor-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rem;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  border-radius: 3px;
+}
+
+/* Contenido del autor */
+.autor-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .autor-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+/* Avatar del autor */
+.autor-avatar {
+  flex: 0 0 13rem;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(140, 82, 255, 0.5);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.autor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.autor-avatar:hover img {
+  transform: scale(1.08);
+}
+
+/* Información del autor */
+.autor-info {
+  flex: 1;
+}
+
+.autor-texto {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--white);
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.autor-texto::before {
+  content: '\201C';
+  font-size: 5rem;
+  font-family: Georgia, serif;
+  position: absolute;
+  left: 0;
+  top: -1.5rem;
+  color: rgba(255, 94, 219, 0.3);
+  line-height: 1;
+}
+
+/* Botón Leer más */
+.btn-leer-mas {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.8rem;
+  background: linear-gradient(135deg, rgba(140, 82, 255, 0.2), rgba(255, 94, 219, 0.2));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.8rem;
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-leer-mas:hover {
+  background: linear-gradient(135deg, rgba(140, 82, 255, 0.3), rgba(255, 94, 219, 0.3));
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de enlaces sociales */
+.social-links-container {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* Título de redes sociales */
+.social-title {
+  font-size: 2.2rem;
+  margin-bottom: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Enlaces de redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  background: linear-gradient(135deg, rgba(140, 82, 255, 0.15), rgba(255, 94, 219, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #8C52FF, #FF5EDB);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover::before {
+  opacity: 0.8;
+}
+
+.social-link i {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .autor-container {
+    padding: 3rem;
+  }
+  
+  .autor-title {
+    font-size: 2.6rem;
+  }
+  
+  .autor-avatar {
+    width: 12rem;
+    height: 12rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .autor-container {
+    padding: 2.5rem;
+  }
+  
+  .autor-content {
+    text-align: center;
+  }
+  
+  .autor-title {
+    font-size: 2.4rem;
+  }
+  
+  .autor-texto {
+    padding-left: 0;
+    font-size: 1.5rem;
+  }
+  
+  .autor-texto::before {
+    left: 50%;
+    transform: translateX(-50%);
+    top: -3rem;
+  }
+  
+  .social-link {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .autor-container {
+    padding: 2rem;
+  }
+  
+  .autor-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .autor-avatar {
+    width: 10rem;
+    height: 10rem;
+  }
+  
+  .social-link {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* Animación de shimmer para fondos gradientes */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para bordes gradientes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} 
