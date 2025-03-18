@@ -421,15 +421,15 @@
 /* Avatar del autor - Sin brillo */
 .autor-avatar {
   flex-shrink: 0;
-  width: 18rem;
-  height: 22rem;
+  width: 27rem; /* 50% más grande que el tamaño original de 18rem */
+  height: 27rem; /* Ahora es cuadrado para asegurar un círculo perfecto */
   overflow: hidden;
   border: 2px solid rgba(50, 50, 50, 0.8);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1;
   margin: 0 auto 1.5rem auto;
-  border-radius: 0.8rem;
+  border-radius: 50%; /* Siempre circular */
 }
 
 .autor-avatar img {
@@ -444,7 +444,7 @@
   z-index: 2;
   min-width: 100%;
   min-height: 100%;
-  border-radius: 0.8rem; /* Consistente con el contenedor */
+  border-radius: 50%; /* Imagen también circular */
   transition: transform 0.5s ease;
 }
 
@@ -630,12 +630,13 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 3rem;
   }
   
   .autor-avatar {
-    width: 16rem;
-    height: 20rem;
-    margin: 0 auto 2rem;
+    width: 24rem; /* 50% más grande que 16rem */
+    height: 24rem; /* Cuadrado para mantener el círculo */
+    margin: 0 auto 2.5rem;
   }
   
   .autor-texto {
@@ -752,7 +753,10 @@
   }
   
   .autor-container {
-    padding: 2rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .autor-title {
@@ -761,8 +765,9 @@
   }
   
   .autor-avatar {
-    width: 15rem;
-    height: 19rem;
+    width: 22.5rem; /* 50% más grande que 15rem */
+    height: 22.5rem; /* Cuadrado para mantener el círculo */
+    margin: 0 auto 3rem;
   }
   
   .autor-texto {
@@ -870,7 +875,7 @@
   }
   
   .autor-container {
-    padding: 1.8rem;
+    padding: 2.5rem;
   }
   
   .autor-title {
@@ -879,8 +884,9 @@
   }
   
   .autor-avatar {
-    width: 14rem;
-    height: 18rem;
+    width: 21rem; /* 50% más grande que 14rem */
+    height: 21rem; /* Cuadrado para mantener el círculo */
+    margin: 0 auto 2.5rem;
   }
   
   .autor-texto {
@@ -952,7 +958,7 @@
   }
   
   .autor-container {
-    padding: 1.5rem;
+    padding: 2rem;
   }
   
   .autor-title {
@@ -961,8 +967,9 @@
   }
   
   .autor-avatar {
-    width: 13rem;
-    height: 17rem;
+    width: 19.5rem; /* 50% más grande que 13rem */
+    height: 19.5rem; /* Cuadrado para mantener el círculo */
+    margin: 0 auto 2rem;
   }
   
   .autor-texto {
