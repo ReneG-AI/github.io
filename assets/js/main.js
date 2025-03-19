@@ -8,32 +8,28 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
-    // Precargar más tarde, cuando el resto de la página esté lista
-    setTimeout(function() {
-        preloadBookImages();
-    }, 2000);
+    
+    // Precargar imágenes sin retraso
+    preloadBookImages();
+    
     initBookFlip();
     initInteriorModal();
     setupBackToTop();
     initCharacterCounter();
     initLineaAnimada(); // Iniciamos la animación de la línea
     
-    // Inicializar AOS con un retraso para mejor rendimiento
-    setTimeout(function() {
-        if (typeof AOS !== 'undefined') {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true,
-                mirror: false
-            });
-        }
-    }, 1000);
+    // Inicializar AOS con mínimo retraso
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 600, // Reducido para mayor rapidez
+            easing: 'ease-out',
+            once: true,
+            mirror: false
+        });
+    }
     
-    // Mostrar la página después de cargar
-    setTimeout(function() {
-        document.body.classList.add('loaded');
-    }, 300);
+    // Mostrar la página inmediatamente
+    document.body.classList.add('loaded');
 
     // JavaScript para funcionalidad "Leer más..." en testimonios
     const readMoreToggles = document.querySelectorAll('.read-more-toggle');
@@ -93,31 +89,55 @@ function initMobileMenu() {
     const body = document.body;
 
     if (menuToggle && mainNav) {
-        // Initialize menu
+        // Agregar evento click al botón de menú
         menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent document click from immediately closing it
+            e.stopPropagation(); // Prevenir propagación para mejor rendimiento
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
             
-            // Only add no-scroll to body when needed for the new compact menu
+            // Sólo prevenir scroll en dispositivos pequeños donde el menú ocupa más espacio
             if (window.innerWidth <= 576) {
                 body.classList.toggle('no-scroll');
             }
         });
 
-        // Cerrar menú al hacer clic en los enlaces de navegación
+        // Optimizar cierre del menú al hacer clic en los enlaces
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                mainNav.classList.remove('active');
-                body.classList.remove('no-scroll');
+            link.addEventListener('click', function(e) {
+                // Si es un enlace interno, prevenir comportamiento predeterminado
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // Cerrar el menú inmediatamente
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                    
+                    // Hacer scroll hacia el destino
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - 80;
+                        
+                        // Scroll más rápido usando scrollTo con comportamiento nativo
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth' 
+                        });
+                    }
+                } else {
+                    // Para enlaces externos, solo cerrar el menú
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                }
             });
         });
         
-        // Close menu when clicking outside
+        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', function(event) {
-            // Make sure the menu is open first
+            // Verificar que el menú esté abierto primero
             if (mainNav.classList.contains('active')) {
                 const isClickInsideMenu = mainNav.contains(event.target);
                 const isClickOnToggle = menuToggle.contains(event.target);
@@ -130,7 +150,7 @@ function initMobileMenu() {
             }
         });
         
-        // Close on escape key
+        // Cerrar con tecla Escape
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && mainNav.classList.contains('active')) {
                 menuToggle.classList.remove('active');
@@ -155,8 +175,8 @@ function initSmoothScroll() {
             if (targetElement) {
                 const offsetTop = targetElement.offsetTop - 80;
                 
-                // Usar una duración más corta para una respuesta más rápida
-                const duration = 800; // Reducido de 1500ms a 800ms
+                // Reducir la duración para una respuesta más rápida
+                const duration = 400; // Reducido drásticamente para mayor velocidad
                 const startPosition = window.pageYOffset;
                 const distance = offsetTop - startPosition;
                 let startTime = null;
@@ -166,8 +186,8 @@ function initSmoothScroll() {
                     const timeElapsed = currentTime - startTime;
                     const progress = Math.min(timeElapsed / duration, 1);
                     
-                    // Función de suavizado más fluida
-                    const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Cuadrática
+                    // Usar una curva de aceleración más agresiva para inicio rápido
+                    const ease = t => t * (2 - t); // Función de aceleración más rápida
                     
                     window.scrollTo(0, startPosition + distance * ease(progress));
                     
@@ -176,7 +196,7 @@ function initSmoothScroll() {
                     }
                 }
                 
-                // Iniciar inmediatamente
+                // Ejecutar inmediatamente
                 requestAnimationFrame(animation);
             }
         });
@@ -216,8 +236,8 @@ function setupBackToTop() {
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
         
-        // Usar la misma duración más corta que en initSmoothScroll
-        const duration = 800; // Reducido de 1500ms a 800ms
+        // Reducir la duración para una respuesta más rápida
+        const duration = 400; // Reducido drásticamente para mayor velocidad
         const startPosition = window.pageYOffset;
         const distance = -startPosition; // Distancia hasta el top (0)
         let startTime = null;
@@ -227,8 +247,8 @@ function setupBackToTop() {
             const timeElapsed = currentTime - startTime;
             const progress = Math.min(timeElapsed / duration, 1);
             
-            // Misma función de suavizado que en initSmoothScroll
-            const ease = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // Cuadrática
+            // Usar una curva de aceleración más agresiva para inicio rápido
+            const ease = t => t * (2 - t); // Función de aceleración más rápida
             
             window.scrollTo(0, startPosition + distance * ease(progress));
             
@@ -237,7 +257,7 @@ function setupBackToTop() {
             }
         }
         
-        // Iniciar inmediatamente
+        // Ejecutar inmediatamente
         requestAnimationFrame(animation);
     });
 }

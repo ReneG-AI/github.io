@@ -41,7 +41,7 @@
 /* Estilos base generales */
 html {
   font-size: 62.5%; /* 1rem = 10px */
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
 }
 
 body {
@@ -54,6 +54,9 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Fix para asegurar visibilidad de imágenes */
@@ -1421,4 +1424,33 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   width: 100%;
   margin-top: 1rem;
+}
+
+/* Mejoras de rendimiento global */
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  /* Propiedades para mejorar el rendimiento */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimizar todas las transiciones para que sean más rápidas */
+* {
+  transition-duration: 0.2s !important;
+  transition-delay: 0s !important;
+}
+
+/* Aceleración de hardware para animaciones */
+.menu-toggle, 
+.nav-link, 
+.scroll-indicator,
+.btn,
+#back-to-top {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 } 
