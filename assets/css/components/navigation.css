@@ -386,6 +386,10 @@
     background: linear-gradient(135deg, #FF9900, #FFC107);
     color: #000 !important;
     text-shadow: none !important;
+    transform: translateX(-10px);
+    padding-left: 0;
+    width: 90%;
+    align-self: flex-start;
   }
   
   .nav-link.amazon-link .nav-icon {
@@ -427,6 +431,11 @@
   .nav-link {
     font-size: 1.4rem;
     padding: 0.7rem 1rem;
+  }
+  
+  .nav-link.amazon-link {
+    transform: translateX(-15px);
+    width: 85%;
   }
 }
 
@@ -510,6 +519,12 @@
   
   .menu-toggle.active .bar:nth-child(3) {
     transform: rotate(45deg) translate(-0.25rem, -0.35rem);
+  }
+  
+  .nav-link.amazon-link {
+    transform: translateX(-12px);
+    width: 80%;
+    padding: 0.8rem 1rem;
   }
 }
 
