@@ -154,7 +154,6 @@
   padding: 0.7rem;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -192,19 +191,19 @@
   border-color: rgba(140, 82, 255, 0.3);
 }
 
-/* Ajustes para móviles - asegurar que el botón esté visible */
+/* Ajustes para móviles - mantener comportamiento de hover */
 @media (max-width: 768px) {
   .flip-button {
-    opacity: 0.9;
-    bottom: -18px;
     width: 2.8rem;
     height: 2.8rem;
-    background: rgba(25, 25, 35, 0.85);
     font-size: 1.1rem;
     padding: 0.5rem;
+    opacity: 0;
+    bottom: -18px;
   }
   
   .book-images:hover .flip-button {
+    opacity: 1;
     transform: translateX(-50%) scale(1.05);
   }
   
@@ -220,6 +219,7 @@
     font-size: 1rem;
     bottom: -16px;
     padding: 0.5rem;
+    opacity: 0;
   }
 }
 
@@ -230,6 +230,7 @@
     font-size: 0.9rem;
     bottom: -14px;
     padding: 0.4rem;
+    opacity: 0;
   }
 }
 
