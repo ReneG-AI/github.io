@@ -896,9 +896,11 @@
   text-shadow: none !important;
 }
 
-.amazon-btn i {
+.amazon-btn i.fab.fa-amazon {
   color: #000 !important; /* Asegurar que el icono también sea negro */
   text-shadow: none !important;
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
 }
 
 /* Estilo para botones de Ver Interior */
