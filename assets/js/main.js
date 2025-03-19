@@ -75,6 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar animación del separador
     initContactSeparator();
+
+    // Ejecutar después de un breve retraso para asegurar que todo esté cargado
+    setTimeout(fixContactSectionDisplay, 500);
+    
+    // También ejecutar cuando se redimensiona la ventana
+    window.addEventListener('resize', fixContactSectionDisplay);
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento
@@ -508,4 +514,41 @@ function initContactSeparator() {
 window.addEventListener('resize', function() {
     // Reinicializar separador en cambios de tamaño
     initContactSeparator();
-}); 
+});
+
+/**
+ * Función para asegurar la correcta visualización de la sección de contacto
+ * Especialmente útil para igualar las alturas de los contenedores
+ */
+function fixContactSectionDisplay() {
+    // Solo aplicar en dispositivos de escritorio
+    if (window.innerWidth >= 992) {
+        const formContainer = document.querySelector('.contacto-form-container');
+        const autorContainer = document.querySelector('.autor-container');
+        
+        if (formContainer && autorContainer) {
+            // Obtener la altura del contenedor del formulario
+            const formHeight = formContainer.offsetHeight;
+            
+            // Aplicar la misma altura al contenedor del autor
+            autorContainer.style.minHeight = formHeight + 'px';
+            
+            // Asegurar que el contenedor del autor no esté recortado
+            autorContainer.style.paddingTop = '3rem';
+            
+            // Verificar que el título y el avatar sean visibles
+            const autorTitle = autorContainer.querySelector('.autor-title');
+            const autorAvatar = autorContainer.querySelector('.autor-avatar');
+            
+            if (autorTitle) {
+                autorTitle.style.marginTop = '0';
+                autorTitle.style.visibility = 'visible';
+            }
+            
+            if (autorAvatar) {
+                autorAvatar.style.marginTop = '0';
+                autorAvatar.style.visibility = 'visible';
+            }
+        }
+    }
+} 
