@@ -125,10 +125,10 @@
 .contacto-form-container {
   grid-area: form;
   position: relative;
-  background: linear-gradient(135deg, rgba(22, 22, 35, 0.92), rgba(18, 18, 28, 0.88)); /* Fondo más oscuro */
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d); /* Fondo negro/gris más elegante */
   border-radius: 1.5rem;
   padding: 3.5rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4);
   transform: translateY(0);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -146,7 +146,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #1a1a1a, #222, #1a1a1a); /* Cambiado a negro/gris oscuro */
+  background: linear-gradient(90deg, #1a1a1a, #333, #1a1a1a); /* Degradado más sutil */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -156,19 +156,20 @@
 .contacto-form-container::after {
   content: '¡Contáctame!';
   position: absolute;
-  top: 2.2rem; /* Bajado de 1.5rem a 2.2rem */
+  top: 2.5rem; /* Bajado para mejor integración */
   left: 0;
   right: 0;
   text-align: center;
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background: linear-gradient(90deg, #b3b3ff, #8C52FF, #00D4FF); /* Azul suave a violeta */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   animation: gradient-text 8s linear infinite;
   letter-spacing: 0.05em;
   margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra para mayor profundidad */
 }
 
 /* Línea debajo del título "¡Contáctame!" con un nuevo elemento */
@@ -215,20 +216,27 @@
 .form-group textarea {
   width: 100%;
   padding: 1.5rem;
-  background: rgba(18, 18, 25, 0.7); /* Fondo más oscuro */
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #333; /* Fondo gris oscuro para mejor legibilidad */
+  border: 1px solid #555; /* Borde más visible */
   border-radius: 0.8rem;
-  color: var(--white);
+  color: #ddd; /* Texto más claro */
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Área de texto para mensaje con límite de tamaño y carácteres */
 .form-group textarea {
   min-height: 15rem;
   resize: vertical;
+}
+
+/* Placeholder en color más tenue */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+  opacity: 0.8;
 }
 
 /* Estilos para el contador de caracteres */
@@ -255,24 +263,24 @@
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-color-light);
-  background: rgba(25, 25, 35, 0.8);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-color: #8C52FF; /* Color morado que combina con el diseño */
+  background: #3a3a3a; /* Ligeramente más claro en focus */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(140, 82, 255, 0.2);
   transform: translateY(-3px);
 }
 
-/* Botón de enviar - Cambiado a degradado violeta/azul para mejor integración con la paleta */
+/* Botón de enviar - Cambiado a degradado violeta/azul */
 .btn-enviar {
-  background: linear-gradient(135deg, #8C52FF, #6B4CE6);
+  background: linear-gradient(135deg, #6e48aa, #9d50bb); /* Degradado morado/violeta */
   color: white;
   border: none;
   padding: 1.4rem 2.8rem;
   font-size: 1.6rem;
   font-weight: 600;
-  border-radius: 5rem;
+  border-radius: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1.5rem; /* Aumentado de 1rem */
+  margin-top: 1.5rem;
   box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3);
   position: relative;
   overflow: hidden;
@@ -288,14 +296,14 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #6B4CE6, #FF5EDB);
+  background: linear-gradient(135deg, #9d50bb, #d885f7); /* Degradado para efecto hover */
   transition: all 0.4s ease;
   z-index: -1;
 }
 
 .btn-enviar:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(140, 82, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(157, 80, 187, 0.5);
 }
 
 .btn-enviar:hover::before {
@@ -304,7 +312,7 @@
 
 .btn-enviar:active {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(140, 82, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(157, 80, 187, 0.4);
 }
 
 /* Contenedor para las páginas adicionales - extendido para llegar al footer */
@@ -1561,16 +1569,16 @@
 
 /* Botón de envío mejorado */
 .btn-enviar {
-  background: linear-gradient(135deg, #8C52FF, #6B4CE6);
+  background: linear-gradient(135deg, #6e48aa, #9d50bb); /* Degradado morado/violeta */
   color: white;
   border: none;
   padding: 1.4rem 2.8rem;
   font-size: 1.6rem;
   font-weight: 600;
-  border-radius: 5rem;
+  border-radius: 0.8rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1.5rem; /* Aumentado de 1rem */
+  margin-top: 1.5rem;
   box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3);
   position: relative;
   overflow: hidden;
@@ -1586,14 +1594,14 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #6B4CE6, #FF5EDB);
+  background: linear-gradient(135deg, #9d50bb, #d885f7); /* Degradado para efecto hover */
   transition: all 0.4s ease;
   z-index: -1;
 }
 
 .btn-enviar:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(140, 82, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(157, 80, 187, 0.5);
 }
 
 .btn-enviar:hover::before {
@@ -1602,7 +1610,7 @@
 
 .btn-enviar:active {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(140, 82, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(157, 80, 187, 0.4);
 }
 
 /* Media queries */
