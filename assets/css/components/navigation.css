@@ -535,6 +535,12 @@
   background: linear-gradient(135deg, #FFC107, #FF9900);
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+  color: #000 !important;
+}
+
+/* Asegurar que el icono dentro del enlace de Amazon también sea negro */
+.amazon-link i {
+  color: #000 !important;
 }
 
 /* Add colored line across entire header - ELIMINADO */
