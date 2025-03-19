@@ -882,6 +882,11 @@
   transform: translateY(-3px);
   background: linear-gradient(135deg, #FFC107, #FF9900);
   box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
+  color: #000 !important; /* Mantener color negro en hover */
+}
+
+.amazon-btn i {
+  color: #000; /* Asegurar que el icono también sea negro */
 }
 
 /* Estilo para botones de Ver Interior */
