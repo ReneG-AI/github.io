@@ -14,16 +14,33 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  background-color: rgba(18, 18, 24, 0.75);
+  background-color: rgba(15, 15, 20, 0.2);
   box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: visible;
+  overflow: hidden;
+}
+
+/* Borde degradado para el header - Igualado al de libros */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
+  background-size: 300% 100%;
+  animation: gradientBorder 12s linear infinite;
+  z-index: 5;
+  opacity: 0.9;
 }
 
 .header.scrolled {
   height: 6.4rem;
-  background-color: rgba(18, 18, 24, 0.85);
-  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.25);
+  background-color: rgba(15, 15, 20, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
 }
 
 .header .container {

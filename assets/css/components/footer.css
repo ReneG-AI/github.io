@@ -24,6 +24,21 @@ footer {
   font-size: 1.8rem;
 }
 
+/* Borde degradado para el footer - Igualado al de libros */
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
+  background-size: 300% 100%;
+  animation: gradientBorder 12s linear infinite;
+  z-index: 5;
+  opacity: 1;
+}
+
 /* Contenido del footer */
 .footer-content {
   display: flex;
