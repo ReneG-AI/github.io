@@ -438,6 +438,7 @@
   gap: 2.5rem;
   flex: 1;
   justify-content: space-between;
+  text-align: center;
 }
 
 /* Autor avatar mejorado con borde destacado */
@@ -503,6 +504,9 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
 }
 
 .autor-texto {
@@ -510,6 +514,10 @@
   line-height: 1.7;
   color: var(--white);
   margin-bottom: 2.5rem;
+  text-align: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .autor-texto p:first-child {
@@ -539,7 +547,7 @@
 
 /* Botón de Leer más - Mejorado con icono y efecto hover */
 .btn-leer-mas {
-  align-self: flex-start;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   padding: 1.2rem 2.4rem; /* Aumentado de 1rem 2rem */
@@ -554,6 +562,7 @@
   border: 1px solid rgba(140, 82, 255, 0.3); /* Cambiado borde */
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .btn-leer-mas::after {
@@ -1791,5 +1800,19 @@
     transform: scaleX(0); /* Inicialmente invisible */
     opacity: 0;
     transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+}
+
+/* Estilos específicos para pantallas grandes (PC) */
+@media (min-width: 992px) {
+  .autor-avatar {
+    width: 25rem;
+    height: 25rem;
+    margin-bottom: 3rem; /* Mayor margen inferior en PC */
+  }
+  
+  .autor-texto {
+    max-width: 80%;
+    font-size: 1.7rem;
   }
 } 
