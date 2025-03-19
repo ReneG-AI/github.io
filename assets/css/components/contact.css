@@ -126,6 +126,7 @@
   grid-area: form;
   position: relative;
   background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important; /* Fondo negro/gris más elegante con !important */
+  background-color: #1a1a1a !important; /* Color de respaldo en caso de que el degradado no funcione */
   border-radius: 1.5rem;
   padding: 3.5rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
@@ -135,6 +136,12 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
+  color: #ddd !important; /* Asegurar que el texto sea visible */
+}
+
+/* Asegurar que no hay una regla que fuerce el fondo blanco */
+.contacto-form-container * {
+  background-color: transparent;
 }
 
 /* Borde degradado para el formulario */
@@ -150,26 +157,44 @@
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
+  opacity: 1 !important; /* Asegurar que sea visible */
 }
 
 /* Título interno para el formulario - Bajado ligeramente */
 .contacto-form-container::after {
-  content: '¡Contáctame!';
-  position: absolute;
-  top: 2.5rem; /* Bajado para mejor integración */
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 2.8rem;
-  font-weight: 700;
+  content: '¡Contáctame!' !important;
+  position: absolute !important;
+  top: 2.5rem !important; /* Bajado para mejor integración */
+  left: 0 !important;
+  right: 0 !important;
+  text-align: center !important;
+  font-size: 2.8rem !important;
+  font-weight: 700 !important;
   background: linear-gradient(90deg, #b3b3ff, #8C52FF, #00D4FF) !important; /* Azul suave a violeta con !important */
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-text 8s linear infinite;
-  letter-spacing: 0.05em;
-  margin-bottom: 2rem;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  animation: gradient-text 8s linear infinite !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 2rem !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important; /* Sombra para mayor profundidad con !important */
+  opacity: 1 !important; /* Asegurar que sea visible */
+  mix-blend-mode: normal !important; /* Asegurar que no se mezcle con otro fondo */
+  z-index: 5 !important; /* Asegurar que esté por encima de otros elementos */
+  display: block !important;
+}
+
+/* En caso de que el título sea sobrescrito por otra regla, añadir selector alternativo */
+#contacto .contacto-form-container h2.contacto-title,
+#contacto .contacto-form-container .contacto-title {
+  background: linear-gradient(90deg, #b3b3ff, #8C52FF, #00D4FF) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  opacity: 1 !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+  mix-blend-mode: normal !important;
+  z-index: 5 !important;
 }
 
 /* Línea debajo del título "¡Contáctame!" con un nuevo elemento */
@@ -187,6 +212,8 @@
   flex-direction: column;
   gap: 2rem;
   margin-top: 6rem; /* Aumentado de 5.5rem para dar más espacio al título */
+  background: transparent !important;
+  color: #ddd !important;
 }
 
 /* Grupo de formulario */
@@ -216,14 +243,15 @@
 .form-group textarea {
   width: 100%;
   padding: 1.5rem;
-  background: #333 !important;
-  border: 1px solid #555 !important;
+  background: #333 !important; /* Fondo gris oscuro para mejor legibilidad con !important */
+  background-color: #333 !important; /* Color de respaldo */
+  border: 1px solid #555 !important; /* Borde más visible con !important */
   border-radius: 0.8rem;
-  color: #ddd !important;
+  color: #ddd !important; /* Texto más claro con !important */
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Área de texto para mensaje con límite de tamaño y carácteres */
@@ -236,7 +264,7 @@
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: #aaa !important;
-  opacity: 0.8;
+  opacity: 0.8 !important;
 }
 
 /* Estilos para el contador de caracteres */

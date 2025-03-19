@@ -151,4 +151,36 @@ a[href*="amazon.es"] *,
 a[href*="amazon.com"] * {
   color: #000 !important;
   text-shadow: none !important;
+}
+
+/* Estilos forzados para la sección de contacto */
+.contacto-form-container {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+  background-color: #1a1a1a !important;
+  color: #ddd !important;
+}
+
+.contacto-form-container::before {
+  opacity: 1 !important;
+}
+
+.contacto-form-container::after {
+  opacity: 1 !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  mix-blend-mode: normal !important;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #333 !important;
+  background-color: #333 !important;
+  color: #ddd !important;
+  border: 1px solid #555 !important;
+}
+
+.contacto-form {
+  background: transparent !important;
+  color: #ddd !important;
 } 

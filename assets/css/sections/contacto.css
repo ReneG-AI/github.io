@@ -80,10 +80,12 @@
 }
 
 .contacto-form {
-    background-color: var(--white);
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+    background-color: #1a1a1a !important;
     border-radius: 10px;
     padding: 30px;
     box-shadow: var(--shadow-sm);
+    color: #ddd !important;
 }
 
 .social-links-container {
