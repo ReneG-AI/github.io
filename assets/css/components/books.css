@@ -191,29 +191,30 @@
   border-color: rgba(140, 82, 255, 0.3);
 }
 
-/* Ajustes para móviles - reposicionando a esquina inferior derecha */
+/* Ajustes para móviles - reposicionando a la parte inferior central */
 @media (max-width: 768px) {
   .flip-button {
     width: 3rem;
     height: 3rem;
     font-size: 1.1rem;
     padding: 0.5rem;
-    bottom: 10px;
-    right: 10px;
-    left: auto;
-    transform: scale(0.85);
+    bottom: -20px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
     opacity: 0;
     pointer-events: none;
+    z-index: 10;
   }
   
   .book-images:hover .flip-button {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(-50%) scale(1);
     pointer-events: auto;
   }
   
   .flip-button:hover {
-    transform: scale(1.1);
+    transform: translateX(-50%) scale(1.1);
   }
 }
 
@@ -222,8 +223,7 @@
     width: 2.8rem;
     height: 2.8rem;
     font-size: 1rem;
-    bottom: 8px;
-    right: 8px;
+    bottom: -18px;
     padding: 0.5rem;
     opacity: 0;
     pointer-events: none;
@@ -235,8 +235,7 @@
     width: 2.6rem;
     height: 2.6rem;
     font-size: 0.9rem;
-    bottom: 6px;
-    right: 6px;
+    bottom: -16px;
     padding: 0.4rem;
     opacity: 0;
     pointer-events: none;
