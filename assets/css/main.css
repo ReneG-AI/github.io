@@ -745,7 +745,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
   border-radius: 3px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
@@ -1072,6 +1072,36 @@ h1, h2, h3, h4, h5, h6 {
   color: transparent;
   animation: shimmer 8s linear infinite;
   text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+/* Estilo unificado para títulos de secciones con gradiente */
+.gradient-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  border-radius: 3px;
 }
 
 /* Testimonial badge */

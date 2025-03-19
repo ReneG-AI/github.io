@@ -18,29 +18,29 @@
 }
 
 .contact-section-title {
-  color: var(--white);
+  color: transparent;
   display: inline-block;
   padding: 1rem 3rem;
   border-radius: 1.5rem;
-  background: rgba(18, 18, 25, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 8s linear infinite;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(108, 76, 230, 0.3);
   transform: translateY(0);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   font-weight: 700;
-  text-shadow: 0 0 10px rgba(140, 82, 255, 0.3);
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.5px;
+  font-size: 3.6rem;
 }
 
 .contact-section-title:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-  background: rgba(25, 25, 35, 0.9);
-  border-color: rgba(140, 82, 255, 0.4);
 }
 
 /* Efecto brillante en hover */
@@ -125,17 +125,17 @@
 .contacto-form-container {
   grid-area: form;
   position: relative;
-  background: #111 !important; /* Fondo oscuro igual al de "Acerca del Autor" */
-  border-radius: 10px !important;
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%) !important;
+  border-radius: 1.5rem !important;
   padding: 3rem !important;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
   transform: translateY(0);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   overflow: hidden;
-  color: #ddd !important; /* Asegurar que el texto sea visible */
+  color: #ddd !important;
   min-height: 400px;
   height: 100%;
   display: flex;
@@ -169,7 +169,7 @@
   text-align: center !important;
   font-size: 2.8rem !important;
   font-weight: 700 !important;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important; /* Mismo gradiente que autor-title */
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
   background-size: 300% 100% !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
@@ -179,18 +179,20 @@
   margin-bottom: 2rem !important;
   z-index: 5 !important;
   display: block !important;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* En caso de que el título sea sobrescrito por otra regla, añadir selector alternativo */
 #contacto .contacto-form-container h2.contacto-title,
 #contacto .contacto-form-container .contacto-title {
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
   background-size: 300% 100% !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
   animation: shimmer 8s linear infinite !important;
   z-index: 5 !important;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Línea debajo del título "¡Contáctame!" con el mismo estilo que autor-title::after */
