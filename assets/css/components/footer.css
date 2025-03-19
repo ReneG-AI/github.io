@@ -5,7 +5,7 @@
 
 /* Fondo degradado */
 .footer-gradient {
-  height: 0.5rem; /* Reducido a la mitad */
+  height: 0.5rem;
   background: linear-gradient(to bottom, transparent, rgba(15, 15, 20, 0.95));
   margin-bottom: -1px;
   position: relative;
@@ -16,24 +16,24 @@
 footer {
   position: relative;
   background-color: rgba(15, 15, 20, 0.98);
-  padding: 0.6rem 0 0.5rem; /* Reducido a la mitad */
+  padding: 0.6rem 0 0.5rem;
   color: var(--white);
   overflow: hidden;
   border-top: 1px solid rgba(100, 100, 200, 0.1);
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
-  font-size: 1.8rem; /* Mantenemos el mismo tamaño */
+  font-size: 1.8rem;
 }
 
 /* Contenido del footer */
 .footer-content {
   display: flex;
-  flex-direction: row; /* Cambiado a horizontal para ahorrar espacio */
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   position: relative;
   z-index: 10;
-  gap: 0.75rem; /* Reducido a la mitad */
+  gap: 0.75rem;
   text-align: center;
 }
 
@@ -42,7 +42,7 @@ footer {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.25rem 0; /* Reducido a la mitad */
+  padding: 0.25rem 0;
   position: relative;
   flex: 1;
 }
@@ -52,17 +52,17 @@ footer {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem; /* Reducido a la mitad */
+  gap: 0.5rem;
 }
 
 .footer-logo img {
-  width: 3.75rem; /* Mantenemos el mismo tamaño */
+  width: 3.75rem;
   height: auto;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
 .footer-logo h3 {
-  font-size: 1.95rem; /* Mantenemos el mismo tamaño */
+  font-size: 1.95rem;
   background: linear-gradient(90deg, #5E7CE0, #9C52FF, #4F7CFE);
   background-size: 300% 100%;
   -webkit-background-clip: text;
@@ -76,18 +76,13 @@ footer {
   white-space: nowrap;
 }
 
-/* Quitamos línea degradada después del logo */
-.footer-main::after {
-  display: none;
-}
-
 /* SECCIÓN NAVEGACIÓN */
 .footer-bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
-  padding: 0.25rem 0; /* Reducido a la mitad */
+  padding: 0.25rem 0;
   position: relative;
 }
 
@@ -96,49 +91,44 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.75rem; /* Reducido a la mitad */
+  gap: 0.75rem;
   margin: 0;
-  padding: 0.25rem 0; /* Reducido a la mitad */
+  padding: 0.25rem 0;
 }
 
 .footer-nav a {
-  font-size: 1.65rem; /* Mantenemos el mismo tamaño */
+  font-size: 1.65rem;
   color: var(--white);
   opacity: 0.85;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  padding: 0.15rem 0.3rem; /* Reducido a la mitad */
+  padding: 0.15rem 0.3rem;
 }
 
 .footer-nav a:hover {
   opacity: 1;
   color: #9C52FF;
-  transform: translateY(-1px); /* Reducido a la mitad */
-}
-
-/* Quitamos línea degradada después de la navegación */
-.footer-bottom::after {
-  display: none;
+  transform: translateY(-1px);
 }
 
 /* Copyright y enlaces legales */
 .copyright-container {
   width: 100%;
   display: flex;
-  flex-direction: row; /* Cambiado a horizontal */
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.25rem 0; /* Reducido a la mitad */
-  gap: 0.6rem; /* Reducido a la mitad */
-  margin-top: 0.25rem; /* Añadido pequeño margen para separar */
-  border-top: 1px solid rgba(140, 82, 255, 0.1); /* Línea sutil para separar */
+  padding: 0.25rem 0;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+  border-top: 1px solid rgba(140, 82, 255, 0.1);
 }
 
 /* Copyright */
 .copyright {
-  font-size: 1.5rem; /* Mantenemos el mismo tamaño */
+  font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -151,14 +141,14 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 0.5rem; /* Reducido a la mitad */
+  gap: 0.5rem;
   align-items: center;
   flex: 1;
   text-align: right;
 }
 
 .legal-links a {
-  font-size: 1.42rem; /* Mantenemos el mismo tamaño */
+  font-size: 1.42rem;
   color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s ease;
   text-decoration: none;
@@ -167,13 +157,13 @@ footer {
 
 .legal-links a:hover {
   color: #9C52FF;
-  transform: translateY(-1px); /* Reducido a la mitad */
+  transform: translateY(-1px);
 }
 
 .separator {
   color: rgba(200, 200, 255, 0.4);
-  margin: 0 0.2rem; /* Reducido a la mitad */
-  font-size: 1.35rem; /* Mantenemos el mismo tamaño */
+  margin: 0 0.2rem;
+  font-size: 1.35rem;
 }
 
 /* Decoración de fondo */
@@ -182,34 +172,53 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px; /* Mantenemos el mismo tamaño */
+  height: 3px;
   background: linear-gradient(90deg, #5E7CE0, #9C52FF, #4F7CFE);
   opacity: 0.8;
   box-shadow: 0 -1px 5px rgba(100, 100, 200, 0.3);
 }
 
 /* Media queries para responsive */
-@media (max-width: 992px) {
-  .footer {
-    padding: 4rem 0 2rem;
+@media (max-width: 1024px) {
+  /* Centrar los enlaces del footer en móvil y tablet */
+  .legal-links {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center;
+    text-align: center !important;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
   }
   
-  .footer-links {
-    gap: 1.5rem;
+  /* Ocultar los separadores en la vista móvil */
+  .separator {
+    display: none;
   }
   
-  .footer-link {
-    font-size: 1.5rem;
-  }
-  
-  .footer-logo img {
-    max-width: 18rem;
-  }
-  
+  /* Ajustar el copyright para que esté centrado */
   .copyright {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    padding-top: 2rem;
+    text-align: center !important;
+    width: 100%;
+  }
+  
+  /* Reorganizar el contenedor de copyright para móvil */
+  .copyright-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px;
+  }
+
+  /* Ajustar la navegación del footer */
+  .footer-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-nav a {
+    width: 100%;
+    text-align: center;
   }
 }
 

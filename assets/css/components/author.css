@@ -348,4 +348,25 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* Media query para ocultar nombres de redes sociales en móvil y tablet */
+@media screen and (max-width: 1024px) {
+  .social-name {
+    display: none !important; /* Ocultar nombres en dispositivos móviles y tablets */
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Reducir tamaño para un diseño más compacto */
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(25, 25, 35, 0.8);
+  }
+
+  .social-links {
+    gap: 1.5rem; /* Reducir el espacio entre iconos */
+  }
 } 
