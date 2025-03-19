@@ -167,6 +167,12 @@
   opacity: 1;
 }
 
+/* Estilo específico para el elemento que contiene el botón de Amazon */
+.nav-item:nth-child(5) {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
 /* Estilo específico para el enlace de Amazon */
 .nav-link.amazon-link {
   background: linear-gradient(135deg, #FF9900, #FFC13B);
@@ -180,12 +186,14 @@
   font-size: 1.6rem;
   border-radius: 0.8rem;
   text-shadow: none !important;
-  transform: translateY(0);
+  transform: translateY(0) !important; /* Asegurar que no haya desplazamiento vertical */
   transition: all 0.15s ease;
+  margin: auto 0; /* Centrar verticalmente */
+  align-self: center; /* Asegurar que esté centrado en el eje vertical */
 }
 
 .nav-link.amazon-link:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) !important; /* Limitar el desplazamiento hacia arriba */
   box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.35);
   background: linear-gradient(135deg, #FFA31A, #FFD35F);
   color: #000 !important;
@@ -404,7 +412,7 @@
     right: auto;
     left: auto;
     width: 100%;
-    transform: none;
+    transform: none !important;
     padding: 1rem 1.2rem;
     border-radius: 0.6rem;
     box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
@@ -418,6 +426,7 @@
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     height: auto;
+    margin: 15px auto 0 auto; /* Centrado horizontal y margen superior */
   }
   
   .nav-link.amazon-link:hover {
@@ -620,7 +629,7 @@
     right: auto;
     left: auto;
     width: 100%;
-    transform: none;
+    transform: none !important;
     padding: 1rem 1.2rem;
     border-radius: 0.6rem;
     box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
@@ -634,6 +643,7 @@
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     height: auto;
+    margin: 15px auto 0 auto; /* Centrado horizontal y margen superior */
   }
   
   .nav-link.amazon-link:hover {
@@ -687,6 +697,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto 0;
+  align-self: center;
 }
 
 .amazon-link:hover {
