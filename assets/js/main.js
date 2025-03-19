@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Detectar soporte WebP y aplicar clase al HTML
     detectWebpSupport();
     
+    // Guardar el ancho de la ventana para comparaciones de resize
+    window.lastWidth = window.innerWidth;
+    
     // Inicializar funcionalidades
     initPreloader();
     initMobileMenu();
@@ -18,14 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
     initCharacterCounter();
     initLineaAnimada(); // Iniciamos la animación de la línea
     initContactSeparator(); // Iniciar animación del separador de contacto
-    initTestimonialsCarousel(); // Inicializar carrusel de testimonios
+    initTestimonialsCarousel(); // Inicializar carrusel de testimonios optimizado
     
-    // Inicializar AOS con mínimo retraso
+    // Inicializar AOS con configuración optimizada para rendimiento
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 600, // Reducido para mayor rapidez
             easing: 'ease-out',
-            once: true,
+            once: true, // Cambiar a true para que las animaciones se ejecuten solo una vez
+            disable: window.innerWidth < 768 ? 'phone' : false, // Deshabilitar en móviles para mejor rendimiento
             mirror: false
         });
     }
@@ -133,14 +137,17 @@ function detectWebpSupport() {
         if (canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0) {
             document.documentElement.classList.add('webp-support');
             console.log("Soporte WebP detectado");
+            return true;
         } else {
             document.documentElement.classList.add('no-webp-support');
             console.log("Sin soporte WebP, usando PNG");
+            return false;
         }
     } else {
         // Navegador antiguo sin canvas
         document.documentElement.classList.add('no-webp-support');
         console.log("Navegador antiguo, usando PNG");
+        return false;
     }
 }
 
@@ -810,10 +817,11 @@ function initializeRippleEffect() {
     // Implementa la lógica para inicializar el efecto ripple en botones
 }
 
-// Inicializar el carrusel de testimonios
+// Inicializar el carrusel de testimonios - versión optimizada
 function initTestimonialsCarousel() {
     const testimonials = document.querySelectorAll('.testimonial');
     const testimoniosGrid = document.querySelector('.testimonios-grid');
+    const testimoniosContainer = testimoniosGrid ? testimoniosGrid.closest('.testimonios-container') : null;
     const isMobile = window.innerWidth <= 768;
     
     if (!testimoniosGrid || testimonials.length === 0) return;
@@ -825,7 +833,7 @@ function initTestimonialsCarousel() {
         }
     });
     
-    // Crear controles de navegación en dispositivos móviles
+    // Solo inicializar carrusel en dispositivos móviles
     if (isMobile) {
         // Crear contenedor para los botones de navegación
         const navButtons = document.createElement('div');
@@ -857,29 +865,38 @@ function initTestimonialsCarousel() {
         const dotsWrapper = document.createElement('div');
         dotsWrapper.className = 'testimonial-dots';
         
+        // Limitar creación de puntos a un máximo para mejor rendimiento
+        const maxDots = Math.min(testimonials.length, 8);
+        
         // Añadir un punto por cada testimonio
-        testimonials.forEach((_, index) => {
+        for (let i = 0; i < maxDots; i++) {
             const dot = document.createElement('div');
             dot.className = 'testimonial-dot';
-            if (index === 0) {
+            if (i === 0) {
                 dot.classList.add('active');
             }
-            dot.setAttribute('data-index', index);
+            dot.setAttribute('data-index', i);
             dotsWrapper.appendChild(dot);
-        });
+        }
         
         dotsContainer.appendChild(dotsWrapper);
         
         // Insertar el contenedor de puntos después del grid de testimonios
-        const testimoniosContainer = testimoniosGrid.closest('.testimonios-container');
-        testimoniosContainer.appendChild(dotsContainer);
+        if (testimoniosContainer) {
+            testimoniosContainer.appendChild(dotsContainer);
+        }
         
         // Inicializar índice activo
         let activeIndex = 0;
         const totalSlides = testimonials.length;
+        let isAnimating = false;
         
-        // Función para mostrar un testimonio específico
+        // Función para mostrar un testimonio específico - optimizada
         function showTestimonial(index) {
+            // Evitar cambios durante animaciones
+            if (isAnimating) return;
+            isAnimating = true;
+            
             // Validar el índice
             if (index < 0) index = totalSlides - 1;
             if (index >= totalSlides) index = 0;
@@ -892,6 +909,10 @@ function initTestimonialsCarousel() {
                 testimonial.classList.remove('active');
                 if (i === activeIndex) {
                     testimonial.classList.add('active');
+                    // Resetear la animación para mejorar el rendimiento
+                    testimonial.style.animation = 'none';
+                    testimonial.offsetHeight; // Forzar reflow
+                    testimonial.style.animation = 'fadeSlideIn 0.4s forwards ease-out';
                 }
             });
             
@@ -903,90 +924,214 @@ function initTestimonialsCarousel() {
                     dot.classList.add('active');
                 }
             });
+            
+            // Permitir nueva animación después de completarse
+            setTimeout(() => {
+                isAnimating = false;
+            }, 400); // Coincidir con duración de la animación
+        }
+        
+        // Función para verificar si el elemento está visible en el viewport
+        function isInViewport(element) {
+            if (!element) return false;
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
         }
         
         // Evento para ir al testimonio anterior
         prevButton.addEventListener('click', () => {
             showTestimonial(activeIndex - 1);
+            stopAutoplay();
         });
         
         // Evento para ir al siguiente testimonio
         nextButton.addEventListener('click', () => {
             showTestimonial(activeIndex + 1);
+            stopAutoplay();
         });
         
-        // Eventos para los puntos de navegación
-        dotsWrapper.querySelectorAll('.testimonial-dot').forEach((dot) => {
-            dot.addEventListener('click', () => {
+        // Eventos para los puntos de navegación con delegación de eventos
+        dotsWrapper.addEventListener('click', (event) => {
+            const dot = event.target.closest('.testimonial-dot');
+            if (dot) {
                 const index = parseInt(dot.getAttribute('data-index'));
                 showTestimonial(index);
-            });
+                stopAutoplay();
+            }
         });
         
-        // Implementar deslizamiento táctil (swipe)
+        // Implementar deslizamiento táctil (swipe) con debouncing
         let touchStartX = 0;
         let touchEndX = 0;
+        let touchTimeout;
         
         testimoniosGrid.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-        }, false);
+            clearTimeout(touchTimeout);
+        }, { passive: true });
         
         testimoniosGrid.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, false);
+            clearTimeout(touchTimeout);
+            touchTimeout = setTimeout(() => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, 50);
+        }, { passive: true });
         
         function handleSwipe() {
+            // Solo detectar swipes significativos (más de 50px)
             if (touchEndX < touchStartX - 50) {
                 // Deslizado hacia la izquierda (siguiente)
                 showTestimonial(activeIndex + 1);
+                stopAutoplay();
             } else if (touchEndX > touchStartX + 50) {
                 // Deslizado hacia la derecha (anterior)
                 showTestimonial(activeIndex - 1);
+                stopAutoplay();
             }
         }
         
-        // Cambio automático cada 5 segundos
-        let autoplayInterval = setInterval(() => {
-            if (document.hasFocus()) {
-                showTestimonial(activeIndex + 1);
-            }
-        }, 5000);
+        // Autoplay optimizado
+        let autoplayInterval;
+        let autoplayPaused = false;
         
-        // Detener el autoplay al interactuar con los controles
-        const allControls = [prevButton, nextButton, ...dotsWrapper.querySelectorAll('.testimonial-dot')];
-        allControls.forEach(control => {
-            control.addEventListener('click', () => {
-                clearInterval(autoplayInterval);
-                // Reiniciar el autoplay después de 10 segundos de inactividad
-                autoplayInterval = setInterval(() => {
-                    if (document.hasFocus()) {
-                        showTestimonial(activeIndex + 1);
-                    }
-                }, 5000);
-            });
-        });
+        function startAutoplay() {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+            autoplayInterval = setInterval(() => {
+                if (document.hasFocus() && !document.hidden && isInViewport(testimoniosContainer) && !autoplayPaused) {
+                    showTestimonial(activeIndex + 1);
+                }
+            }, 8000); // Aumentado a 8 segundos para reducir frecuencia
+        }
+        
+        function stopAutoplay() {
+            if (autoplayInterval) clearInterval(autoplayInterval);
+            autoplayPaused = true;
+            
+            // Reanudar autoplay después de 15 segundos de inactividad
+            setTimeout(() => {
+                autoplayPaused = false;
+                startAutoplay();
+            }, 15000);
+        }
+        
+        // Iniciar autoplay
+        startAutoplay();
         
         // Pausar autoplay cuando la página no está visible
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
-                clearInterval(autoplayInterval);
+                if (autoplayInterval) clearInterval(autoplayInterval);
             } else {
-                autoplayInterval = setInterval(() => {
-                    showTestimonial(activeIndex + 1);
-                }, 5000);
+                startAutoplay();
             }
         });
         
-        // Evento de redimensión de ventana
-        window.addEventListener('resize', () => {
-            const wasMobile = isMobile;
-            const newIsMobile = window.innerWidth <= 768;
-            
-            // Si cambia entre móvil y escritorio, recargar la página
-            if (wasMobile !== newIsMobile) {
-                location.reload();
-            }
-        });
+        // Evento de scroll para pausar autoplay cuando no está en el viewport
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (!isInViewport(testimoniosContainer)) {
+                    // Si no está visible, pausar autoplay
+                    autoplayPaused = true;
+                } else {
+                    // Si vuelve a ser visible, reanudar
+                    autoplayPaused = false;
+                }
+            }, 200);
+        }, { passive: true });
     }
-} 
+}
+
+// Función principal para arreglar todos los problemas de visualización - optimizada
+function fixAllVisibility() {
+    if (imagesFixed) return; // Evitar ejecuciones múltiples
+    
+    console.log("Aplicando correcciones de visibilidad...");
+    imagesFixed = true;
+    
+    // Detectar soporte WebP
+    const supportsWebp = detectWebpSupport();
+    console.log("Soporte WebP:", supportsWebp);
+    
+    // Detectar dispositivo para aplicar estilos óptimos
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 576;
+    const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    
+    // Aplicar fondo del hero optimizado según dispositivo
+    const heroBackground = document.querySelector('.hero-background');
+    if (heroBackground) {
+        const bgImg = supportsWebp ? 'assets/images/Hero_Background.webp' : 'assets/images/Hero_Background.png';
+        
+        // Estilos base para todos los dispositivos
+        heroBackground.style.backgroundImage = `url('${bgImg}')`;
+        heroBackground.style.backgroundSize = "cover";
+        heroBackground.style.backgroundRepeat = "no-repeat";
+        heroBackground.style.display = "block";
+        heroBackground.style.visibility = "visible";
+        heroBackground.style.opacity = "1";
+        heroBackground.style.position = "fixed";
+        heroBackground.style.top = "0";
+        heroBackground.style.left = "0";
+        heroBackground.style.width = "100%";
+        heroBackground.style.height = "100%";
+        heroBackground.style.zIndex = "0";
+        heroBackground.style.filter = "brightness(0.9) contrast(1.05)";
+        
+        // Fix de rendimiento para todos los dispositivos
+        heroBackground.style.transform = "translate3d(0, 0, 0)";
+        heroBackground.style.willChange = "transform";
+        heroBackground.style.backfaceVisibility = "hidden";
+        
+        // Ajustes específicos según dispositivo
+        if (isIOSDevice) {
+            // Ajustes específicos para iOS
+            heroBackground.style.backgroundAttachment = "scroll";
+            heroBackground.style.minHeight = "-webkit-fill-available";
+            console.log("Aplicando ajustes para iOS");
+        } else if (isMobile) {
+            // Ajustes para móviles en general - usar scroll en lugar de fixed para mejorar rendimiento
+            heroBackground.style.backgroundAttachment = "scroll";
+            heroBackground.style.backgroundPosition = isSmallMobile ? "65% top" : "center top";
+            console.log("Aplicando ajustes para móviles");
+        } else {
+            // Ajustes para escritorio
+            heroBackground.style.backgroundAttachment = "fixed";
+            heroBackground.style.backgroundPosition = "center center";
+            console.log("Aplicando ajustes para escritorio");
+        }
+        
+        console.log(`Fondo del hero aplicado: ${bgImg}`);
+    }
+    
+    // Marcar el cuerpo como cargado
+    document.body.classList.add('images-loaded');
+}
+
+// Volver a aplicar al cambiar el tamaño de la ventana (resize) - optimizado con debounce
+window.addEventListener('resize', function() {
+    // Debounce para evitar múltiples ejecuciones
+    clearTimeout(window.resizeTimeout);
+    window.resizeTimeout = setTimeout(function() {
+        // Solo reajustar cuando sea realmente necesario (cambio significativo de tamaño)
+        const wasSmallScreen = window.lastWidth <= 768;
+        const isSmallScreen = window.innerWidth <= 768;
+        
+        if (wasSmallScreen !== isSmallScreen) {
+            imagesFixed = false;
+            fixAllVisibility();
+            
+            // Refrescar testimonios si existe la función
+            if (typeof initTestimonialsCarousel === 'function') {
+                location.reload(); // Mejor opción si cambia significativamente el layout
+            }
+        }
+        window.lastWidth = window.innerWidth;
+    }, 200);
+}, { passive: true }); 

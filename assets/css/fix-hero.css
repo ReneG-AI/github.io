@@ -1,6 +1,7 @@
 /* 
  * FIX-HERO.CSS
  * Archivo para corregir problemas de visibilidad de imágenes
+ * Versión optimizada para rendimiento móvil
  */
 
 /* Fix para visibilidad de imágenes - añadiendo !important para casos críticos */
@@ -20,7 +21,7 @@ header img, .logo img {
   width: auto !important;
 }
 
-/* Fix para el fondo del hero - COMPLETAMENTE OPTIMIZADO PARA TODOS LOS DISPOSITIVOS */
+/* Fix para el fondo del hero - OPTIMIZADO PARA RENDIMIENTO */
 .hero-background {
   display: block !important;
   visibility: visible !important;
@@ -36,13 +37,13 @@ header img, .logo img {
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
-  background-attachment: fixed !important; /* Fixed en escritorio */
   filter: brightness(0.9) contrast(1.05) !important;
   pointer-events: none !important;
-  -webkit-transform: translate3d(0, 0, 0) !important; /* Fix para Safari */
-  transform: translate3d(0, 0, 0) !important; /* Mejor rendimiento y fix para dispositivos iOS */
-  will-change: transform !important; /* Optimiza rendimiento */
-  backface-visibility: hidden !important; /* Fix para algunos dispositivos */
+  /* Optimizaciones de rendimiento */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  will-change: transform !important;
+  backface-visibility: hidden !important;
 }
 
 /* Ocultar la imagen dentro del hero-background para evitar duplicación */
@@ -102,8 +103,9 @@ body {
 /* Tabletas y dispositivos medianos */
 @media screen and (max-width: 992px) {
   .hero-background {
-    background-attachment: scroll !important; /* Cambiado a scroll para mejor compatibilidad */
-    height: 100vh !important; /* Altura específica para evitar problemas en algunos dispositivos */
+    background-attachment: scroll !important; /* Cambiado a scroll para mejor compatibilidad y rendimiento */
+    height: 100vh !important;
+    will-change: unset !important; /* Eliminar will-change para mejor rendimiento en scroll */
   }
   
   .hero-section {
@@ -124,14 +126,24 @@ body {
     right: auto !important;
     float: none !important;
     box-sizing: border-box !important;
+    /* Simplificar sombra para mejor rendimiento */
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
 /* Dispositivos móviles */
 @media screen and (max-width: 768px) {
   .hero-background {
-    background-attachment: scroll !important; /* Para mejor compatibilidad en móviles */
-    background-position: center top !important; /* Ajuste para mejor visualización */
+    /* Usar propiedades más eficientes para móviles */
+    background-attachment: scroll !important;
+    background-position: center top !important;
+    will-change: unset !important; /* Eliminar para mejor rendimiento */
+    
+    /* Reducir calidad visual para mejor rendimiento */
+    filter: brightness(0.85) !important; /* Simplificar filtro */
+    
+    /* Alternativa para reducir la carga de renderizado */
+    opacity: 0.95 !important;
   }
   
   .hero-section {
@@ -154,13 +166,29 @@ body {
     right: auto !important;
     float: none !important;
     box-sizing: border-box !important;
+    
+    /* Simplificar efectos para mejorar rendimiento */
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
 /* Dispositivos móviles pequeños - ajuste específico para el fondo */
 @media screen and (max-width: 576px) {
   .hero-background {
-    background-position: 65% top !important; /* Ajuste para centrar mejor la imagen en móviles pequeños */
+    background-position: 65% top !important;
+    
+    /* Simplificar aún más para dispositivos de gama baja */
+    filter: brightness(0.8) !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+  }
+  
+  /* Simplificar contenido del hero */
+  .hero-content {
+    padding: 2.5rem !important;
+    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
@@ -170,6 +198,11 @@ body {
     background-attachment: scroll !important;
     height: 100vh !important;
     min-height: -webkit-fill-available !important;
+    
+    /* Desactivar transformaciones para mejor rendimiento */
+    -webkit-transform: none !important;
+    transform: none !important;
+    will-change: auto !important;
   }
   
   .hero-section {
