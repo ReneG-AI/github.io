@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCharacterCounter();
     initLineaAnimada(); // Iniciamos la animación de la línea
     initContactSeparator(); // Iniciar animación del separador de contacto
+    initTestimonialsCarousel(); // Inicializar carrusel de testimonios
     
     // Inicializar AOS con mínimo retraso
     if (typeof AOS !== 'undefined') {
@@ -807,4 +808,185 @@ function updateYear() {
 // Inicializar ripple effect en botones
 function initializeRippleEffect() {
     // Implementa la lógica para inicializar el efecto ripple en botones
+}
+
+// Inicializar el carrusel de testimonios
+function initTestimonialsCarousel() {
+    const testimonials = document.querySelectorAll('.testimonial');
+    const testimoniosGrid = document.querySelector('.testimonios-grid');
+    const isMobile = window.innerWidth <= 768;
+    
+    if (!testimoniosGrid || testimonials.length === 0) return;
+    
+    // Añadir clases para la configuración inicial
+    testimonials.forEach((testimonial, index) => {
+        if (index === 0) {
+            testimonial.classList.add('active');
+        }
+    });
+    
+    // Crear controles de navegación en dispositivos móviles
+    if (isMobile) {
+        // Crear contenedor para los botones de navegación
+        const navButtons = document.createElement('div');
+        navButtons.className = 'testimonial-nav-buttons';
+        
+        // Botón para ir al testimonio anterior
+        const prevButton = document.createElement('button');
+        prevButton.className = 'testimonial-nav-button prev';
+        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevButton.setAttribute('aria-label', 'Testimonio anterior');
+        
+        // Botón para ir al siguiente testimonio
+        const nextButton = document.createElement('button');
+        nextButton.className = 'testimonial-nav-button next';
+        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextButton.setAttribute('aria-label', 'Testimonio siguiente');
+        
+        // Añadir botones al contenedor
+        navButtons.appendChild(prevButton);
+        navButtons.appendChild(nextButton);
+        
+        // Insertar el contenedor de navegación en el grid de testimonios
+        testimoniosGrid.appendChild(navButtons);
+        
+        // Crear contenedor de puntos de navegación
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'testimonial-controls';
+        
+        const dotsWrapper = document.createElement('div');
+        dotsWrapper.className = 'testimonial-dots';
+        
+        // Añadir un punto por cada testimonio
+        testimonials.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'testimonial-dot';
+            if (index === 0) {
+                dot.classList.add('active');
+            }
+            dot.setAttribute('data-index', index);
+            dotsWrapper.appendChild(dot);
+        });
+        
+        dotsContainer.appendChild(dotsWrapper);
+        
+        // Insertar el contenedor de puntos después del grid de testimonios
+        const testimoniosContainer = testimoniosGrid.closest('.testimonios-container');
+        testimoniosContainer.appendChild(dotsContainer);
+        
+        // Inicializar índice activo
+        let activeIndex = 0;
+        const totalSlides = testimonials.length;
+        
+        // Función para mostrar un testimonio específico
+        function showTestimonial(index) {
+            // Validar el índice
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            // Actualizar el índice activo
+            activeIndex = index;
+            
+            // Ocultar todos los testimonios y mostrar solo el activo
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.remove('active');
+                if (i === activeIndex) {
+                    testimonial.classList.add('active');
+                }
+            });
+            
+            // Actualizar los puntos de navegación
+            const dots = dotsWrapper.querySelectorAll('.testimonial-dot');
+            dots.forEach((dot, i) => {
+                dot.classList.remove('active');
+                if (i === activeIndex) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+        
+        // Evento para ir al testimonio anterior
+        prevButton.addEventListener('click', () => {
+            showTestimonial(activeIndex - 1);
+        });
+        
+        // Evento para ir al siguiente testimonio
+        nextButton.addEventListener('click', () => {
+            showTestimonial(activeIndex + 1);
+        });
+        
+        // Eventos para los puntos de navegación
+        dotsWrapper.querySelectorAll('.testimonial-dot').forEach((dot) => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                showTestimonial(index);
+            });
+        });
+        
+        // Implementar deslizamiento táctil (swipe)
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        testimoniosGrid.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        testimoniosGrid.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Deslizado hacia la izquierda (siguiente)
+                showTestimonial(activeIndex + 1);
+            } else if (touchEndX > touchStartX + 50) {
+                // Deslizado hacia la derecha (anterior)
+                showTestimonial(activeIndex - 1);
+            }
+        }
+        
+        // Cambio automático cada 5 segundos
+        let autoplayInterval = setInterval(() => {
+            if (document.hasFocus()) {
+                showTestimonial(activeIndex + 1);
+            }
+        }, 5000);
+        
+        // Detener el autoplay al interactuar con los controles
+        const allControls = [prevButton, nextButton, ...dotsWrapper.querySelectorAll('.testimonial-dot')];
+        allControls.forEach(control => {
+            control.addEventListener('click', () => {
+                clearInterval(autoplayInterval);
+                // Reiniciar el autoplay después de 10 segundos de inactividad
+                autoplayInterval = setInterval(() => {
+                    if (document.hasFocus()) {
+                        showTestimonial(activeIndex + 1);
+                    }
+                }, 5000);
+            });
+        });
+        
+        // Pausar autoplay cuando la página no está visible
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                clearInterval(autoplayInterval);
+            } else {
+                autoplayInterval = setInterval(() => {
+                    showTestimonial(activeIndex + 1);
+                }, 5000);
+            }
+        });
+        
+        // Evento de redimensión de ventana
+        window.addEventListener('resize', () => {
+            const wasMobile = isMobile;
+            const newIsMobile = window.innerWidth <= 768;
+            
+            // Si cambia entre móvil y escritorio, recargar la página
+            if (wasMobile !== newIsMobile) {
+                location.reload();
+            }
+        });
+    }
 } 
