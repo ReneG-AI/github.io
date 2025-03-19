@@ -169,17 +169,20 @@
 /* Estilo específico para el enlace de Amazon */
 .nav-link.amazon {
   background: linear-gradient(135deg, #FF9900, #FFC13B);
-  color: #000;
+  color: #000 !important;
   box-shadow: 0 0.3rem 1rem rgba(255, 153, 0, 0.25);
   padding: 0 1.5rem;
   margin-left: 0.5rem;
   transition: all 0.3s ease;
+  text-shadow: none !important;
 }
 
 .nav-link.amazon:hover {
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.35);
   background: linear-gradient(135deg, #FFA31A, #FFD35F);
+  color: #000 !important;
+  text-shadow: none !important;
 }
 
 .nav-link.amazon::after {
@@ -382,10 +385,12 @@
     justify-content: center;
     background: linear-gradient(135deg, #FF9900, #FFC107);
     color: #000 !important;
+    text-shadow: none !important;
   }
   
   .nav-link.amazon-link .nav-icon {
-    color: #000;
+    color: #000 !important;
+    text-shadow: none !important;
   }
 }
 
@@ -520,28 +525,16 @@
   }
 }
 
-.amazon-link {
+.nav-link.amazon-link {
+  margin-top: 1.5rem;
+  margin-left: 0;
+  justify-content: center;
   background: linear-gradient(135deg, #FF9900, #FFC107);
   color: #000 !important;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1.2rem !important;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
   text-shadow: none !important;
 }
 
-.amazon-link:hover {
-  background: linear-gradient(135deg, #FFC107, #FF9900);
-  transform: translateY(-3px);
-  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
-  color: #000 !important;
-  text-shadow: none !important;
-}
-
-/* Asegurar que el icono dentro del enlace de Amazon también sea negro */
-.amazon-link i {
+.nav-link.amazon-link .nav-icon {
   color: #000 !important;
   text-shadow: none !important;
 }
@@ -618,4 +611,30 @@
     border-radius: 2px;
     background: linear-gradient(90deg, #FF5EDB, #8C52FF);
   }
+}
+
+.amazon-link {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: none !important;
+}
+
+.amazon-link:hover {
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Asegurar que el icono dentro del enlace de Amazon también sea negro */
+.amazon-link i {
+  color: #000 !important;
+  text-shadow: none !important;
 } 

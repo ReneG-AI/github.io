@@ -105,4 +105,25 @@
     font-size: 2.8rem;
     margin-bottom: 1rem;
   }
+}
+
+/* Forzar texto negro en todos los botones de Amazon */
+.amazon-hero-btn, 
+.amazon-btn, 
+.amazon-link, 
+.nav-link.amazon, 
+.nav-link.amazon-link,
+[class*="amazon"] {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.amazon-hero-btn *, 
+.amazon-btn *, 
+.amazon-link *, 
+.nav-link.amazon *, 
+.nav-link.amazon-link *,
+[class*="amazon"] * {
+  color: #000 !important;
+  text-shadow: none !important;
 } 
