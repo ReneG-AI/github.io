@@ -878,29 +878,28 @@
   border-radius: 0.5rem;
 }
 
-/* Estilo para botones de Amazon */
+/* Estilo para botones de Amazon refinados */
 .amazon-btn {
-  background: linear-gradient(135deg, #FF9900, #FFC107);
+  background: linear-gradient(135deg, #FF9900, #FFB700);
   color: #000 !important;
-  border: 1px solid #e6920f;
-  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
+  border: 1px solid rgba(255, 153, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(255, 153, 0, 0.3);
   gap: 0.8rem;
-  text-shadow: none !important; /* Eliminar sombras de texto */
 }
 
 .amazon-btn:hover {
+  background: linear-gradient(135deg, #FFB700, #FF9900);
   transform: translateY(-3px);
-  background: linear-gradient(135deg, #FFC107, #FF9900);
-  box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
-  color: #000 !important; /* Mantener color negro en hover */
+  box-shadow: 0 4px 10px rgba(255, 153, 0, 0.4);
+  color: #000 !important;
   text-shadow: none !important;
 }
 
 .amazon-btn i.fab.fa-amazon {
-  color: #000 !important; /* Asegurar que el icono también sea negro */
+  font-size: 1.6rem;
+  color: #000 !important;
   text-shadow: none !important;
   margin-right: 0.8rem;
-  font-size: 1.6rem;
 }
 
 /* Estilo para botones de Ver Interior */

@@ -350,32 +350,18 @@ function initBookFlip() {
     });
     
     // Botones de girar también activan el efecto
-    flipButtons.forEach((button, index) => {
+    flipButtons.forEach((button) => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation(); // Evitar que el clic se propague al flipper
             
-            // Buscar si es un libro sprite o normal
+            // Encontrar el flipper asociado al botón
             const bookImages = this.closest('.book-images');
             const flipper = bookImages.querySelector('.book-flipper');
-            const spriteContainer = bookImages.querySelector('.book-sprite-container');
             
-            // Si es un libro estándar
             if (flipper) {
                 flipper.classList.toggle('flipped');
             }
-            // Si es un libro con sprite
-            else if (spriteContainer) {
-                spriteContainer.classList.toggle('flipped');
-            }
-        });
-    });
-    
-    // Inicializar los libros basados en sprite
-    const spriteContainers = document.querySelectorAll('.book-sprite-container');
-    spriteContainers.forEach(container => {
-        container.addEventListener('click', function() {
-            this.classList.toggle('flipped');
         });
     });
 }
