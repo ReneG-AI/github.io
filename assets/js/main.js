@@ -93,10 +93,16 @@ function initMobileMenu() {
     const body = document.body;
 
     if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function() {
+        // Initialize menu
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent document click from immediately closing it
             this.classList.toggle('active');
             mainNav.classList.toggle('active');
-            body.classList.toggle('no-scroll');
+            
+            // Only add no-scroll to body when needed for the new compact menu
+            if (window.innerWidth <= 576) {
+                body.classList.toggle('no-scroll');
+            }
         });
 
         // Cerrar menú al hacer clic en los enlaces de navegación
@@ -107,6 +113,30 @@ function initMobileMenu() {
                 mainNav.classList.remove('active');
                 body.classList.remove('no-scroll');
             });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            // Make sure the menu is open first
+            if (mainNav.classList.contains('active')) {
+                const isClickInsideMenu = mainNav.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+                
+                if (!isClickInsideMenu && !isClickOnToggle) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                }
+            }
+        });
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && mainNav.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                body.classList.remove('no-scroll');
+            }
         });
     }
 }
