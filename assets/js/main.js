@@ -48,6 +48,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Auto-resize textarea functionality
+    const textarea = document.getElementById('mensaje');
+    
+    if (textarea) {
+        // Función para ajustar altura automáticamente
+        function autoResize() {
+            // Reset height to auto to get the correct scrollHeight
+            textarea.style.height = 'auto';
+            // Set the height to match the content (but not less than min-height defined in CSS)
+            textarea.style.height = Math.max(textarea.scrollHeight, 240) + 'px';
+        }
+        
+        // Aplicar al cargar y cuando se escriba
+        textarea.addEventListener('input', autoResize);
+        
+        // También actualizar en focus y blur
+        textarea.addEventListener('focus', autoResize);
+        textarea.addEventListener('blur', autoResize);
+        
+        // Inicializar
+        setTimeout(autoResize, 100); // Pequeño retraso para asegurar que el DOM está completamente cargado
+    }
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento

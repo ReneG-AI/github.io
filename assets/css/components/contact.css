@@ -159,7 +159,7 @@
   opacity: 0.5 !important; /* Reducir opacidad para que sea sutil como en el autor-container */
 }
 
-/* Título interno para el formulario - Ajustado al estilo del título del autor */
+/* Título interno para el formulario - Ajustado al estilo de libro-page-title */
 .contacto-form-container::after {
   content: '¡Contáctame!' !important;
   position: absolute !important;
@@ -167,32 +167,37 @@
   left: 0 !important;
   right: 0 !important;
   text-align: center !important;
-  font-size: 2.8rem !important;
+  font-size: 2.4rem !important; /* Ajustado al tamaño de libro-page-title */
   font-weight: 700 !important;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
-  background-size: 300% 100% !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important; /* Mismo gradiente que libro-page-title */
+  background-size: 200% auto !important; /* Mismo tamaño de fondo que libro-page-title */
   -webkit-background-clip: text !important;
   background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent !important;
-  animation: shimmer 8s linear infinite !important;
+  animation: gradient-text 8s linear infinite !important; /* Misma animación que libro-page-title */
   letter-spacing: 0.03em !important;
   margin-bottom: 2rem !important;
+  padding-bottom: 1.2rem !important; /* Añadido para coincidir con libro-page-title */
   z-index: 5 !important;
   display: block !important;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* En caso de que el título sea sobrescrito por otra regla, añadir selector alternativo */
 #contacto .contacto-form-container h2.contacto-title,
 #contacto .contacto-form-container .contacto-title {
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
-  background-size: 300% 100% !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important;
+  background-size: 200% auto !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
   color: transparent !important;
-  animation: shimmer 8s linear infinite !important;
+  animation: gradient-text 8s linear infinite !important;
   z-index: 5 !important;
-  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+  font-size: 2.4rem !important;
+  padding-bottom: 1.2rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 700 !important;
 }
 
 /* Línea debajo del título "¡Contáctame!" con el mismo estilo que autor-title::after */
@@ -263,7 +268,9 @@
 /* Área de texto para mensaje con límite de tamaño y carácteres */
 .form-group textarea {
   min-height: 15rem;
-  resize: vertical;
+  resize: none; /* Deshabilitar la redimensión manual */
+  overflow-y: auto; /* Permitir scroll vertical si es necesario */
+  transition: height 0.2s ease; /* Transición suave para el ajuste automático */
 }
 
 /* Placeholder en color más tenue */
@@ -389,19 +396,22 @@
   display: none;
 }
 
-/* Autor title con el mismo gradiente que otros títulos */
+/* Autor title con el mismo estilo que libro-page-title */
 .autor-title {
-  font-size: 2.8rem;
+  font-size: 2.4rem; /* Ajustado al tamaño de libro-page-title */
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem; /* Mismo margen que libro-page-title */
   position: relative;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  background-size: 300% 100%;
+  padding-bottom: 1.2rem; /* Mismo padding que libro-page-title */
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF); /* Mismo gradiente que libro-page-title */
+  background-size: 200% auto; /* Mismo tamaño de fondo que libro-page-title */
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer 8s linear infinite;
+  animation: gradient-text 8s linear infinite; /* Misma animación que libro-page-title */
   font-weight: 700;
+  z-index: 2; /* Mismo z-index que libro-page-title */
 }
 
 .autor-title::after {
@@ -1531,7 +1541,9 @@
 
 .form-group textarea {
   min-height: 15rem;
-  resize: vertical;
+  resize: none; /* Deshabilitar la redimensión manual */
+  overflow-y: auto; /* Permitir scroll vertical si es necesario */
+  transition: height 0.2s ease; /* Transición suave para el ajuste automático */
 }
 
 .form-group input::placeholder,
