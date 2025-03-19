@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupBackToTop();
     initCharacterCounter();
     initLineaAnimada(); // Iniciamos la animación de la línea
+    initContactSeparator(); // Iniciar animación del separador de contacto
     
     // Inicializar AOS con mínimo retraso
     if (typeof AOS !== 'undefined') {
@@ -71,6 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Inicializar
         setTimeout(autoResize, 100); // Pequeño retraso para asegurar que el DOM está completamente cargado
     }
+
+    // Inicializar animación del separador
+    initContactSeparator();
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento
@@ -457,4 +461,51 @@ function initLineaAnimada() {
             observer.observe(container.parentElement);
         });
     }
-} 
+}
+
+// Función para animar la línea separadora entre Contáctame y Acerca del Autor
+function initContactSeparator() {
+    // Solo aplicar en dispositivos móviles y tablets (max-width: 992px)
+    if (window.innerWidth <= 992) {
+        const contactSeparator = document.querySelector('.contact-about-separator');
+        
+        if (contactSeparator) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Añadir clase para iniciar animación
+                        entry.target.classList.add('animate');
+                        
+                        // Eliminar brillo existente si hay alguno
+                        const existingShine = entry.target.querySelector('.separator-shine');
+                        if (existingShine) {
+                            existingShine.remove();
+                        }
+                        
+                        // Añadir efecto de brillo
+                        const shine = document.createElement('div');
+                        shine.classList.add('separator-shine');
+                        entry.target.appendChild(shine);
+                        
+                        // Animar el brillo después de un retraso
+                        setTimeout(() => {
+                            shine.style.animation = 'separator-shimmer 2s infinite';
+                        }, 800);
+                        
+                        // Dejar de observar el elemento
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            // Comenzar a observar el separador
+            observer.observe(contactSeparator);
+        }
+    }
+}
+
+// Reinicializar en cambios de tamaño de ventana
+window.addEventListener('resize', function() {
+    // Reinicializar separador en cambios de tamaño
+    initContactSeparator();
+}); 

@@ -806,6 +806,37 @@
     height: 4rem;
     margin: 1rem 0;
   }
+  
+  /* Mostrar separador entre Contáctame y Acerca del Autor */
+  .contact-about-separator {
+    display: block;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+    margin: 4rem auto; /* Espaciado superior e inferior */
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Efecto de brillo para el separador */
+  .contact-about-separator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: translateX(-100%);
+    animation: separator-shimmer 3s infinite;
+  }
+  
+  @keyframes separator-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
 }
 
 @media (max-width: 768px) {
@@ -1692,4 +1723,73 @@
   opacity: 1;
   visibility: visible;
   bottom: -4rem;
+}
+
+/* Separador entre Contáctame y Acerca del Autor para móviles y tablets */
+.contact-about-separator {
+  display: none; /* Oculto por defecto en escritorio */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Clase para cuando se anima */
+.contact-about-separator.animate {
+  animation: separator-appear 0.8s ease forwards;
+}
+
+/* Efecto de brillo para el separador */
+.separator-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  opacity: 0;
+}
+
+/* Animaciones para el separador */
+@keyframes separator-appear {
+  0% { 
+    transform: scaleX(0); 
+    opacity: 0;
+  }
+  100% { 
+    transform: scaleX(1); 
+    opacity: 1;
+  }
+}
+
+@keyframes separator-shimmer {
+  0% { 
+    left: -100px; 
+    opacity: 0;
+  }
+  20% { 
+    opacity: 0.6;
+  }
+  100% { 
+    left: 100%; 
+    opacity: 0;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Mostrar separador entre Contáctame y Acerca del Autor */
+  .contact-about-separator {
+    display: block;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+    margin: 4rem auto; /* Espaciado superior e inferior */
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    transform-origin: left;
+    transform: scaleX(0); /* Inicialmente invisible */
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
 } 
