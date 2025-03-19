@@ -81,6 +81,47 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // También ejecutar cuando se redimensiona la ventana
     window.addEventListener('resize', fixContactSectionDisplay);
+
+    // Inicializar AOS con configuración personalizada
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: false
+    });
+    
+    // Iniciar la funcionalidad para los testimonios en móviles
+    initializeTestimonialsMobile();
+    
+    // Inicializar volteo de tarjetas
+    initializeCardFlippers();
+    
+    // Mostrar y ocultar menu de navegación en móviles
+    initializeMobileNav();
+    
+    // Inicializar el slider de la sección de libros
+    initializeBookSlider();
+    
+    // Leer más en testimonios
+    initializeReadMore();
+    
+    // Formulario de contacto
+    initializeContactForm();
+    
+    // Inicializar el modal para "Ver Interior"
+    initializeInteriorModal();
+    
+    // Actualizar año automáticamente en el footer
+    updateYear();
+    
+    // Scroll suave para anclas internas
+    initializeSmoothScroll();
+    
+    // Animación para el botón de volver arriba
+    initializeBackToTop();
+    
+    // Inicializar ripple effect en botones
+    initializeRippleEffect();
 });
 
 // Función para detectar soporte de WebP y aplicar clase al documento
@@ -537,4 +578,233 @@ function fixContactSectionDisplay() {
             }
         }
     }
+}
+
+// Función para manejar los testimonios en vista móvil
+function initializeTestimonialsMobile() {
+    // Solo ejecutar en móviles (ancho < 768px)
+    if (window.innerWidth <= 768) {
+        const testimonials = document.querySelectorAll('.testimonial');
+        const testimoniosGrid = document.querySelector('.testimonios-grid');
+        
+        // Si hay testimonios para mostrar
+        if (testimonials.length > 0) {
+            // Ocultar todos los testimonios excepto el primero
+            testimonials.forEach((testimonial, index) => {
+                if (index > 0) {
+                    testimonial.style.display = 'none';
+                } else {
+                    testimonial.style.display = 'flex';
+                }
+            });
+            
+            // Crear paginación de puntos
+            const paginationContainer = document.createElement('div');
+            paginationContainer.className = 'testimonial-pagination';
+            paginationContainer.style.display = 'flex';
+            paginationContainer.style.justifyContent = 'center';
+            paginationContainer.style.gap = '0.8rem';
+            paginationContainer.style.marginTop = '2rem';
+            
+            let activeIndex = 0;
+            
+            // Crear puntos de navegación y añadirlos al contenedor
+            testimonials.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'testimonial-dot';
+                dot.style.width = '1.2rem';
+                dot.style.height = '1.2rem';
+                dot.style.borderRadius = '50%';
+                dot.style.background = index === 0 ? 'linear-gradient(90deg, #8C52FF, #FF5EDB)' : 'rgba(255, 255, 255, 0.3)';
+                dot.style.cursor = 'pointer';
+                dot.style.transition = 'all 0.3s ease';
+                
+                // Evento al hacer clic en un punto
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                    updateActiveDot(index);
+                });
+                
+                paginationContainer.appendChild(dot);
+            });
+            
+            // Añadir paginación después del grid de testimonios
+            if (testimoniosGrid.parentNode) {
+                testimoniosGrid.parentNode.insertBefore(paginationContainer, testimoniosGrid.nextSibling);
+            }
+            
+            // Función para mostrar un testimonio específico
+            function showTestimonial(index) {
+                testimonials.forEach((testimonial, i) => {
+                    if (i === index) {
+                        testimonial.style.display = 'flex';
+                        // Añadir animación de fade in
+                        testimonial.style.opacity = '0';
+                        testimonial.style.animation = 'fadeIn 0.5s forwards';
+                    } else {
+                        testimonial.style.display = 'none';
+                    }
+                });
+                activeIndex = index;
+            }
+            
+            // Función para actualizar el punto activo
+            function updateActiveDot(index) {
+                const dots = document.querySelectorAll('.testimonial-dot');
+                dots.forEach((dot, i) => {
+                    dot.style.background = i === index 
+                        ? 'linear-gradient(90deg, #8C52FF, #FF5EDB)' 
+                        : 'rgba(255, 255, 255, 0.3)';
+                });
+            }
+            
+            // Añadir navegación con botones
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            prevButton.className = 'testimonial-nav-button prev-button';
+            prevButton.style.position = 'absolute';
+            prevButton.style.left = '0';
+            prevButton.style.top = '50%';
+            prevButton.style.transform = 'translateY(-50%)';
+            prevButton.style.background = 'rgba(0, 0, 0, 0.5)';
+            prevButton.style.border = 'none';
+            prevButton.style.borderRadius = '50%';
+            prevButton.style.width = '4rem';
+            prevButton.style.height = '4rem';
+            prevButton.style.display = 'flex';
+            prevButton.style.alignItems = 'center';
+            prevButton.style.justifyContent = 'center';
+            prevButton.style.color = 'white';
+            prevButton.style.fontSize = '1.6rem';
+            prevButton.style.cursor = 'pointer';
+            prevButton.style.zIndex = '10';
+            
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            nextButton.className = 'testimonial-nav-button next-button';
+            nextButton.style.position = 'absolute';
+            nextButton.style.right = '0';
+            nextButton.style.top = '50%';
+            nextButton.style.transform = 'translateY(-50%)';
+            nextButton.style.background = 'rgba(0, 0, 0, 0.5)';
+            nextButton.style.border = 'none';
+            nextButton.style.borderRadius = '50%';
+            nextButton.style.width = '4rem';
+            nextButton.style.height = '4rem';
+            nextButton.style.display = 'flex';
+            nextButton.style.alignItems = 'center';
+            nextButton.style.justifyContent = 'center';
+            nextButton.style.color = 'white';
+            nextButton.style.fontSize = '1.6rem';
+            nextButton.style.cursor = 'pointer';
+            nextButton.style.zIndex = '10';
+            
+            // Evento para botón anterior
+            prevButton.addEventListener('click', () => {
+                const newIndex = (activeIndex - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(newIndex);
+                updateActiveDot(newIndex);
+            });
+            
+            // Evento para botón siguiente
+            nextButton.addEventListener('click', () => {
+                const newIndex = (activeIndex + 1) % testimonials.length;
+                showTestimonial(newIndex);
+                updateActiveDot(newIndex);
+            });
+            
+            // Añadir botones de navegación al contenedor principal
+            testimoniosGrid.style.position = 'relative';
+            testimoniosGrid.appendChild(prevButton);
+            testimoniosGrid.appendChild(nextButton);
+            
+            // Definir animación CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Implementar deslizamiento táctil (swipe)
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            testimoniosGrid.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            testimoniosGrid.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Deslizado hacia la izquierda (siguiente)
+                    const newIndex = (activeIndex + 1) % testimonials.length;
+                    showTestimonial(newIndex);
+                    updateActiveDot(newIndex);
+                }
+                if (touchEndX > touchStartX) {
+                    // Deslizado hacia la derecha (anterior)
+                    const newIndex = (activeIndex - 1 + testimonials.length) % testimonials.length;
+                    showTestimonial(newIndex);
+                    updateActiveDot(newIndex);
+                }
+            }
+        }
+    }
+}
+
+// Redimensionar ventana
+window.addEventListener('resize', function() {
+    const isSmallScreen = window.innerWidth <= 768;
+    const hasPagination = document.querySelector('.testimonial-pagination');
+    
+    // Si cambia de móvil a escritorio o viceversa
+    if (isSmallScreen && !hasPagination) {
+        // Reiniciar la página para aplicar cambios (mejor experiencia)
+        location.reload();
+    } else if (!isSmallScreen && hasPagination) {
+        // Reiniciar la página para aplicar cambios (mejor experiencia)
+        location.reload();
+    }
+});
+
+// Inicializar volteo de tarjetas
+function initializeCardFlippers() {
+    // Implementa la lógica para inicializar el volteo de tarjetas
+}
+
+// Mostrar y ocultar menu de navegación en móviles
+function initializeMobileNav() {
+    // Implementa la lógica para inicializar el menú móvil
+}
+
+// Inicializar el slider de la sección de libros
+function initializeBookSlider() {
+    // Implementa la lógica para inicializar el slider de libros
+}
+
+// Leer más en testimonios
+function initializeReadMore() {
+    // Implementa la lógica para inicializar la funcionalidad "Leer más..." en testimonios
+}
+
+// Formulario de contacto
+function initializeContactForm() {
+    // Implementa la lógica para inicializar el formulario de contacto
+}
+
+// Actualizar año automáticamente en el footer
+function updateYear() {
+    // Implementa la lógica para actualizar el año automáticamente en el footer
+}
+
+// Inicializar ripple effect en botones
+function initializeRippleEffect() {
+    // Implementa la lógica para inicializar el efecto ripple en botones
 } 

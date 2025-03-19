@@ -5,7 +5,7 @@
 
 /* Contenedor principal de testimonios con borde más pronunciado */
 .testimonios-container {
-  background: linear-gradient(145deg, rgba(30, 35, 46, 0.8), rgba(25, 30, 40, 0.9));
+  background: linear-gradient(145deg, rgba(18, 18, 18, 0.9), rgba(25, 28, 35, 0.95));
   border-radius: 2rem;
   padding: 4.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -27,11 +27,11 @@
   right: -1px;
   bottom: -1px;
   border-radius: 2.1rem;
-  background: linear-gradient(90deg, rgba(45, 49, 66, 0.5), rgba(26, 26, 26, 0.2), rgba(45, 49, 66, 0.5));
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* Contenedor del título con mejor alineación */
@@ -105,7 +105,7 @@
 
 /* Testimonios individuales con aspecto consistente */
 .testimonial {
-  background: rgba(30, 35, 46, 0.7);
+  background: rgba(22, 22, 24, 0.7);
   border-radius: 1.5rem;
   padding: 2rem;
   position: relative;
@@ -137,12 +137,8 @@
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
   z-index: 0;
-  opacity: 0;
+  opacity: 1; /* Mostramos el borde siempre */
   transition: opacity 0.3s ease;
-}
-
-.testimonial:hover::before {
-  opacity: 1;
 }
 
 .testimonial:hover {
@@ -357,42 +353,44 @@
   
   .testimonial {
     min-height: 220px;
-    padding: 2rem;
+    padding: 2.5rem;
     margin-bottom: 2rem;
+    transform: scale(1.05);
   }
   
   .testimonial p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.7;
-    -webkit-line-clamp: 9;
-    line-clamp: 9;
+    -webkit-line-clamp: none; /* Permitir que se vea todo el texto */
+    line-clamp: none;
+    overflow: visible;
   }
   
   .testimonial-stars i {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   .amazon-badge {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 1.1rem;
+    padding: 0.4rem 0.9rem;
     margin-bottom: 1.5rem;
   }
   
   .testimonial-author img {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
   }
   
   .testimonial-author-name {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
   
   .testimonial-author-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .read-more-toggle {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     padding: 0.3rem 0;
   }
   
@@ -401,50 +399,60 @@
   .titulo-degradado-texto {
     font-size: 3rem;
   }
+  
+  /* Añadimos paginación visual con puntos para móvil */
+  .testimonios-grid {
+    position: relative;
+  }
 }
 
 @media (max-width: 576px) {
   .testimonios-container {
-    padding: 2.5rem 1.8rem;
+    padding: 2.5rem 1.5rem;
     border-radius: 1.4rem;
   }
   
   .testimonios-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    width: 100%;
   }
   
   .testimonial {
-    min-height: 220px;
-    padding: 2rem;
-    margin-bottom: 1rem;
+    min-height: auto;
+    padding: 2.5rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+    transform: scale(1);
   }
   
   .testimonial p {
-    font-size: 1.6rem;
-    line-height: 1.7;
-    -webkit-line-clamp: 10;
-    line-clamp: 10;
+    font-size: 1.8rem;
+    line-height: 1.8;
+    -webkit-line-clamp: none;
+    line-clamp: none;
+    overflow: visible;
   }
   
   .amazon-badge {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem;
   }
   
   .testimonial-stars i {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-right: 0.2rem;
   }
   
   .testimonial-author-name {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 0.3rem;
   }
   
   .testimonial-author-title {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .testimonios-title-container .section-title,
