@@ -97,6 +97,7 @@
   overflow: hidden;
   text-decoration: none;
   text-shadow: none !important; /* Eliminar sombras de texto */
+  -webkit-text-fill-color: #000 !important; /* Fuerza color negro en Webkit */
 }
 
 .amazon-btn i {
@@ -104,6 +105,7 @@
   font-size: 1.6rem;
   color: #000 !important; /* Cambiar de #333 a #000 y forzar */
   text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 .amazon-btn:hover {
@@ -112,6 +114,28 @@
   box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
   color: #000 !important; /* Asegurar color negro en hover */
   text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Asegurar color negro en todos los elementos del botón Amazon */
+.amazon-btn *, 
+.amazon-btn span, 
+.amazon-btn strong, 
+.amazon-btn p {
+  color: #000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Alta especificidad para botones Amazon */
+html body .amazon-btn,
+body .hero-section .amazon-btn,
+.section .amazon-btn,
+#hero .amazon-btn,
+html body .amazon-btn * {
+  color: #000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
 }
 
 /* Botón Ver interior con degradado elegante */
