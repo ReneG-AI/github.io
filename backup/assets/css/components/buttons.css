@@ -1,0 +1,606 @@
+/* 
+ * BUTTONS
+ * Estilos para diferentes tipos de botones y acciones
+ */
+
+/* Estilos generales de botón */
+.btn {
+  display: inline-block;
+  padding: 1.2rem 2.4rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--text-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1;
+  display: none; /* Desactivar efecto de brillo */
+}
+
+.btn:hover::after {
+  left: 100%;
+  display: none; /* Desactivar efecto de brillo */
+}
+
+/* Botón primario */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(107, 76, 230, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color));
+  box-shadow: 0 0.8rem 2rem rgba(107, 76, 230, 0.4);
+}
+
+/* Botón secundario */
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(91, 33, 182, 0.3);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--secondary-color-dark), var(--secondary-color));
+  box-shadow: 0 0.8rem 2rem rgba(91, 33, 182, 0.4);
+}
+
+/* Botón acento */
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-color-dark));
+  box-shadow: 0 0.5rem 1.5rem rgba(236, 72, 153, 0.3);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, var(--accent-color-dark), var(--accent-color));
+  box-shadow: 0 0.8rem 2rem rgba(236, 72, 153, 0.4);
+}
+
+/* Botón de Amazon mejorado */
+.amazon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  color: #000 !important;
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  border: 1px solid #e6920f;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  text-shadow: none !important; /* Eliminar sombras de texto */
+  -webkit-text-fill-color: #000 !important; /* Fuerza color negro en Webkit */
+}
+
+.amazon-btn i {
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
+  color: #000 !important; /* Cambiar de #333 a #000 y forzar */
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+.amazon-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
+  color: #000 !important; /* Asegurar color negro en hover */
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Asegurar color negro en todos los elementos del botón Amazon */
+.amazon-btn *, 
+.amazon-btn span, 
+.amazon-btn strong, 
+.amazon-btn p {
+  color: #000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Alta especificidad para botones Amazon */
+html body .amazon-btn,
+body .hero-section .amazon-btn,
+.section .amazon-btn,
+#hero .amazon-btn,
+html body .amazon-btn * {
+  color: #000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Botón Ver interior con degradado elegante */
+.interior-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--white) !important;
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.interior-btn i {
+  margin-right: 0.8rem;
+  font-size: 1.6rem;
+  color: #bbb;
+}
+
+.interior-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #3d4152, #2a2a2a);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Botón outline */
+.btn-outline {
+  background: transparent;
+  color: var(--primary-color-light);
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0.5rem 1.5rem rgba(138, 43, 226, 0.2), 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.3rem;
+  background: var(--gradient-rainbow);
+  background-size: 400% 100%;
+  animation: shimmer 8s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+.btn-outline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.1rem;
+  background: rgba(18, 18, 18, 0.95);
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  color: var(--white);
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2.5rem rgba(138, 43, 226, 0.3), 0 0 15px rgba(138, 43, 226, 0.5);
+  border-color: transparent;
+}
+
+.btn-outline:hover::after {
+  opacity: 0.5;
+  background: var(--gradient-primary);
+}
+
+.btn-outline:active {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(138, 43, 226, 0.2);
+}
+
+/* Botón outline blanco */
+.btn-outline-white {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-outline-white:hover {
+  background: var(--white);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Botón con efecto resplandor */
+.btn-glow {
+  position: relative;
+  z-index: 1;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  overflow: hidden;
+}
+
+.btn-glow:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color), var(--primary-color));
+  background-size: 200% 200%;
+  z-index: -1;
+  border-radius: calc(var(--border-radius) + 2px);
+  animation: none; /* Desactivar animación */
+  display: none; /* Ocultar efecto brillante */
+}
+
+.btn-glow:hover::before {
+  animation: none; /* Desactivar animación */
+  display: none; /* Ocultar efecto brillante */
+}
+
+/* Botón con efecto ripple */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+}
+
+.btn-ripple:active::after {
+  width: 300%;
+  height: 300%;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* Botón con icono */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white);
+  transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+  background: var(--primary-color-dark);
+}
+
+.btn-icon i {
+  font-size: 1.8rem;
+}
+
+/* Botón redondeado */
+.btn-round {
+  border-radius: 5rem;
+  padding-left: 3.5rem;
+  padding-right: 3.5rem;
+}
+
+/* Botón circular */
+.btn-circle {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-circle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.btn-circle:active::after {
+  transform: translate(-50%, -50%) scale(3);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.5s;
+}
+
+/* Tamaños de botón circular */
+.btn-circle-sm {
+  width: 4.5rem;
+  height: 4.5rem;
+  font-size: 1.8rem;
+}
+
+.btn-circle-lg {
+  width: 6.5rem;
+  height: 6.5rem;
+  font-size: 2.4rem;
+}
+
+/* Tamaños de botón */
+.btn-sm {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.4rem;
+  border-radius: 0.6rem;
+}
+
+.btn-lg {
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+}
+
+.btn-xl {
+  padding: 2.2rem 4.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  border-radius: 1.6rem;
+}
+
+/* Botón de ancho completo */
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Botón deshabilitado */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.65;
+  pointer-events: none;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Botón con carga */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-left: -1rem;
+  margin-top: -1rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Grupo de botones */
+.btn-group {
+  display: inline-flex;
+  border-radius: 1.2rem;
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.btn-group .btn {
+  border-radius: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.btn-group .btn:not(:first-child) {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-group .btn:hover {
+  transform: none;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón con badge */
+.btn-badge {
+  position: relative;
+}
+
+.btn-badge .badge {
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--gradient-accent);
+  border-radius: 1.1rem;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.25);
+  animation: pulse 2s infinite;
+}
+
+/* Botón flotante */
+.btn-float {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--white);
+  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0.5rem 2.5rem rgba(138, 43, 226, 0.4), 0 0 20px rgba(138, 43, 226, 0.4);
+  z-index: 90;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-float:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 1rem 3rem rgba(138, 43, 226, 0.6), 0 0 30px rgba(138, 43, 226, 0.6);
+}
+
+/* Efectos de brillo */
+.btn-glow:hover {
+  box-shadow: 0 0.8rem 2.5rem var(--primary-color-30), 0 0 20px var(--primary-color), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+.btn-glow-accent:hover {
+  box-shadow: 0 0.8rem 2.5rem rgba(255, 62, 157, 0.3), 0 0 20px var(--accent-color), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+}
+
+/* Efecto de pulso */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.6);
+  }
+  
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(138, 43, 226, 0);
+  }
+  
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+  }
+}
+
+/* Media queries */
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+  }
+  
+  .btn-lg {
+    padding: 1.4rem 2.8rem;
+    font-size: 1.6rem;
+  }
+  
+  .btn-sm {
+    padding: 0.7rem 1.4rem;
+    font-size: 1.3rem;
+  }
+  
+  .btn-circle {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.8rem;
+  }
+  
+  .btn-float {
+    width: 5.5rem;
+    height: 5.5rem;
+    font-size: 2.2rem;
+    bottom: 2.5rem;
+    right: 2.5rem;
+  }
+  
+  .amazon-btn, 
+  .interior-btn {
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .btn {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.4rem;
+  }
+  
+  .btn-lg {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.5rem;
+  }
+  
+  .btn-xl {
+    padding: 1.6rem 3.2rem;
+    font-size: 1.8rem;
+  }
+  
+  .amazon-btn, 
+  .interior-btn {
+    padding: 0.9rem 1.6rem;
+    font-size: 1.3rem;
+  }
+  
+  .book-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+} 

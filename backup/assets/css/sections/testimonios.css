@@ -1,0 +1,256 @@
+/* Estilos para la sección de testimonios */
+.testimonios-section {
+    background-color: var(--bg-light);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Título de testimonios mejorado */
+.testimonios-title-container {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+#testimonios .section-title {
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 8s linear infinite;
+    font-size: 3.6rem;
+    font-weight: 700;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+#testimonios .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+    border-radius: 3px;
+}
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Mejora para tarjetas de testimonios uniformes */
+.testimonial {
+    background: linear-gradient(135deg, rgba(22, 22, 30, 0.9), rgba(28, 28, 40, 0.85));
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 360px; /* Altura aumentada para evitar textos cortados */
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(140, 82, 255, 0.2);
+}
+
+.testimonial p {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92); /* Mejora de contraste */
+    margin-bottom: 20px;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* Aumentado para mostrar más texto */
+    line-clamp: 7; /* Añadido para compatibilidad futura */
+    -webkit-box-orient: vertical;
+    box-orient: vertical; /* Añadido para compatibilidad futura */
+    font-weight: 400;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p.expanded {
+    -webkit-line-clamp: initial;
+    line-clamp: initial; /* Añadido para compatibilidad futura */
+    max-height: none;
+}
+
+.read-more-toggle {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.read-more-toggle:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+.testimonial p::before {
+    content: '"';
+    font-size: 5rem;
+    color: var(--primary-color);
+    opacity: 0.15;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    line-height: 1;
+    z-index: 0;
+}
+
+/* Estrellas ahora en la parte inferior */
+.testimonial-stars {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.testimonial-stars i {
+    color: #FFCA28;
+    font-size: 1.8rem;
+    margin-right: 3px;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.2));
+}
+
+/* Badge de Amazon ahora en la parte superior */
+.amazon-badge {
+    background: linear-gradient(135deg, #ff9900, #ffb700);
+    color: #000;
+    font-size: 1.2rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    align-self: flex-start;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.amazon-badge i {
+    color: #000;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 12px;
+}
+
+.testimonial-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-author-name {
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.95); /* Mejora de contraste */
+    margin-bottom: 3px;
+}
+
+.testimonial-author-title {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonial-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(140, 82, 255, 0.3), transparent);
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .testimonios-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    .testimonial {
+        height: 380px; /* Ajustado para pantallas medianas */
+    }
+    
+    #testimonios .section-title {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonios-section {
+        padding: 60px 0;
+    }
+    
+    .testimonios-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .testimonial {
+        height: auto; /* En móvil, mejor usar altura automática */
+        min-height: 280px;
+    }
+    
+    .testimonial p {
+        -webkit-line-clamp: 9; /* Aumentado para mostrar más texto en móvil */
+        line-clamp: 9; /* Añadido para compatibilidad futura */
+    }
+    
+    #testimonios .section-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonios-section {
+        padding: 40px 0;
+    }
+    
+    .testimonial {
+        padding: 22px;
+        min-height: 260px;
+    }
+    
+    .testimonial p {
+        font-size: 1.5rem;
+    }
+    
+    #testimonios .section-title {
+        font-size: 2.8rem;
+    }
+} 

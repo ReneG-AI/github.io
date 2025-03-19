@@ -1,0 +1,1486 @@
+/* 
+ * MAIN CSS
+ * Archivo principal que importa todos los componentes 
+ * y establece estilos base
+ */
+
+/* Importar variables y estilos base */
+@import url('variables.css');
+@import url('base.css');
+@import url('darkmode-only.css');
+@import url('fix-hero.css');
+
+/* Importar archivos de layout */
+@import url('layout/grid.css');
+@import url('layout/sections.css');
+@import url('layout/footer.css');
+
+/* Importar archivos de componentes */
+@import url('components/hero.css');
+@import url('components/navigation.css');
+@import url('components/books.css');
+@import url('components/testimonials.css');
+@import url('components/contact.css');
+@import url('components/footer.css');
+@import url('components/forms.css');
+@import url('components/modals.css');
+@import url('components/buttons.css');
+
+/* Importar estilos específicos de página */
+@import url('pages/home.css');
+
+/* Secciones */
+@import url('sections/testimonios.css');
+@import url('sections/contacto.css');
+@import url('sections/footer.css');
+
+/* Componentes adicionales y utilidades */
+@import url('components.css');
+@import url('responsive.css');
+
+/* Estilos base generales */
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth !important;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix para asegurar visibilidad de imágenes */
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Clase aplicada después de que las imágenes se han cargado */
+body.images-loaded img {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Logo específicamente */
+.logo img {
+  display: block !important;
+  max-height: 120px;
+  width: auto;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  margin: 0 auto;
+}
+
+/* Imágenes de libros */
+.book-cover, .book-back {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Imagen del footer */
+.footer-logo img {
+  display: block !important;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto 15px;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-align: center;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: var(--font-size-6xl);
+}
+
+h2 {
+  font-size: var(--font-size-5xl);
+}
+
+h3 {
+  font-size: var(--font-size-4xl);
+}
+
+h4 {
+  font-size: var(--font-size-3xl);
+}
+
+h5 {
+  font-size: var(--font-size-2xl);
+}
+
+h6 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color-dark);
+}
+
+/* Utilitarios */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 2rem; }
+.mt-4 { margin-top: 3rem; }
+.mt-5 { margin-top: 5rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 2rem; }
+.mb-4 { margin-bottom: 3rem; }
+.mb-5 { margin-bottom: 5rem; }
+
+.ml-0 { margin-left: 0; }
+.ml-1 { margin-left: 0.5rem; }
+.ml-2 { margin-left: 1rem; }
+.ml-3 { margin-left: 2rem; }
+.ml-4 { margin-left: 3rem; }
+.ml-5 { margin-left: 5rem; }
+
+.mr-0 { margin-right: 0; }
+.mr-1 { margin-right: 0.5rem; }
+.mr-2 { margin-right: 1rem; }
+.mr-3 { margin-right: 2rem; }
+.mr-4 { margin-right: 3rem; }
+.mr-5 { margin-right: 5rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.5rem; }
+.p-2 { padding: 1rem; }
+.p-3 { padding: 2rem; }
+.p-4 { padding: 3rem; }
+.p-5 { padding: 5rem; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-1 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-2 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-3 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-4 { padding-top: 3rem; padding-bottom: 3rem; }
+.py-5 { padding-top: 5rem; padding-bottom: 5rem; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-1 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-2 { padding-left: 1rem; padding-right: 1rem; }
+.px-3 { padding-left: 2rem; padding-right: 2rem; }
+.px-4 { padding-left: 3rem; padding-right: 3rem; }
+.px-5 { padding-left: 5rem; padding-right: 5rem; }
+
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-extrabold { font-weight: var(--font-weight-extrabold); }
+
+.text-primary { color: var(--primary-color); }
+.text-accent { color: var(--accent-color); }
+.text-light { color: var(--text-color-light); }
+.text-muted { color: var(--text-color-muted); }
+.text-white { color: var(--white); }
+.text-success { color: var(--success-color); }
+.text-error { color: var(--error-color); }
+.text-warning { color: var(--warning-color); }
+.text-info { color: var(--info-color); }
+
+.bg-primary { background-color: var(--primary-color); }
+.bg-accent { background-color: var(--accent-color); }
+.bg-light { background-color: var(--bg-featured); }
+.bg-white { background-color: var(--white); }
+.bg-success { background-color: var(--success-color); }
+.bg-error { background-color: var(--error-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-info { background-color: var(--info-color); }
+
+.rounded { border-radius: 0.8rem; }
+.rounded-lg { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+.overflow-hidden { overflow: hidden; }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed { position: fixed; }
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .hero-section {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  
+  .hero-content {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    transform: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+    box-sizing: border-box;
+    max-width: 540px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 58%;
+  }
+  
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  #back-to-top {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.6rem;
+  }
+  
+  .hero-section {
+    justify-content: center !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  
+  .hero-content {
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 2.5rem;
+    transform: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+    box-sizing: border-box;
+    float: none !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+
+  #back-to-top {
+    width: 4rem;
+    height: 4rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .flip-button {
+    bottom: -15px;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Animación para el gradiente de títulos */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para brillos y subrayados */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
+  50% {
+    background-position: 100% 50%;
+    width: 10rem;
+  }
+  100% {
+    background-position: 0% 50%;
+    width: 5rem;
+  }
+}
+
+/* Ajustar el espaciado del contenido principal para nuevo layout */
+main {
+  padding-top: 0; /* Eliminamos el padding top general ya que ahora se gestiona con .split-layout */
+}
+
+/* Eliminamos los backgrounds de secciones ya que ahora se manejan con .scrollable-section */
+section {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Agregar efectos de brillo a elementos específicos */
+.glow-effect {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0) 70%);
+  z-index: -1;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.95);
+  }
+}
+
+/* Botón Volver Arriba mejorado */
+#back-to-top {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 5.4rem;
+  height: 5.4rem;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
+  background-size: 100% 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
+  border: none;
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  opacity: 0.9;
+}
+
+/* Media queries para responsividad del botón volver arriba */
+@media screen and (max-width: 768px) {
+  #back-to-top {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* Variables globales */
+:root {
+  /* Colores principales */
+  --primary-color: #8C52FF;
+  --primary-color-light: #a175ff;
+  --primary-color-dark: #6B4CE6;
+  --secondary-color: #FF5EDB;
+  --secondary-color-light: #ff7fe3;
+  --secondary-color-dark: #ff3dce;
+  --accent-color: #FFC107;
+  --accent-color-light: #FFD54F;
+  --accent-color-dark: #FF9800;
+  
+  /* Colores adicionales */
+  --neon-green: #00ff90;
+  --mystic-gold: #FFD700;
+  --wizard-teal: #00D4FF;
+  --dragon-orange: #FF851B;
+  --fairy-pink: #FF5192;
+  
+  /* Colores complementarios */
+  --white: #ffffff;
+  --black: #000000;
+  --dark: #121212;
+  --dark-light: #1c1c1c;
+  --dark-lighter: #262626;
+  --gray: #a0a0a0;
+  --gray-light: #e0e0e0;
+  --gray-dark: #707070;
+  
+  /* Fondos */
+  --body-bg: #121212;
+  --card-bg: #1a1a1a;
+  --header-bg: rgba(26, 26, 26, 0.98);
+  
+  /* Sombras */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  
+  /* Fuentes */
+  --font-family: 'Poppins', sans-serif;
+  --font-size-base: 10px;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  
+  /* Espaciados */
+  --section-padding: 6rem 0;
+  --section-padding-sm: 3rem 0;
+  
+  /* Border radius */
+  --border-radius-sm: 0.4rem;
+  --border-radius: 0.8rem;
+  --border-radius-lg: 1.2rem;
+  --border-radius-xl: 2rem;
+  
+  /* Transiciones */
+  --transition: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+  --transition-fast: all 0.2s ease;
+}
+
+/* Normalización y reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--white);
+  background-color: var(--body-bg);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+body.loaded {
+  transition: opacity 0.5s ease;
+}
+
+/* Estilos base de contenedor */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.centered-container {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Enlaces y botones */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-color-light);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 2.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  box-shadow: none;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-accent:hover {
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+/* Tipografía */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.section-title {
+  font-size: 3.6rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  margin-bottom: 4rem;
+  color: white !important;
+  opacity: 0.9 !important;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Hero Section actualizado */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 5%;
+  z-index: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.hero-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: subtle-pulse 6s ease-in-out infinite;
+  filter: brightness(0.9) saturate(1.1);
+}
+
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(0.9) saturate(1.1);
+  }
+  50% {
+    transform: scale(1.03);
+    filter: brightness(1) saturate(1.15);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(0.9) saturate(1.1);
+  }
+}
+
+/* Eliminamos completamente el pseudo-elemento after */
+.hero-background::after {
+  content: none;
+  display: none;
+}
+
+/* Hero content con borde degradado */
+.hero-content {
+  max-width: 580px;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2rem;
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  text-align: center;
+  margin-left: 0;
+  margin-right: auto;
+  position: relative;
+  left: 0;
+  right: auto;
+  box-sizing: border-box;
+}
+
+/* Borde degradado para el hero */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.7rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
+/* Título hero con mejor tipografía */
+.hero-title {
+  font-size: 4.2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  position: relative;
+  padding-bottom: 1.5rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+  text-align: left;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* Subtítulo hero más descriptivo */
+.hero-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Lista de beneficios */
+.hero-benefits {
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(5px);
+}
+
+.benefit-item i {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  width: 2.5rem;
+  text-align: center;
+}
+
+.benefit-item span {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Badge de testimonial mejorado - Centrado */
+.testimonial-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem auto 2.5rem;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.25);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonial-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 94, 219, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonial-icon {
+  color: var(--accent-color);
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  animation: pulse 2s infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-text {
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0.8rem;
+}
+
+/* Estrellas de calificación */
+.rating {
+  display: flex;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+}
+
+.rating i {
+  color: #FFD700;
+  font-size: 1.6rem;
+  animation: star-pulse 1.5s infinite alternate;
+  animation-delay: calc(var(--i, 0) * 0.2s);
+}
+
+.rating i:nth-child(1) { --i: 0; }
+.rating i:nth-child(2) { --i: 1; }
+.rating i:nth-child(3) { --i: 2; }
+.rating i:nth-child(4) { --i: 3; }
+.rating i:nth-child(5) { --i: 4; }
+
+@keyframes star-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Estilo para botones con gradiente - Color Amazon */
+.btn-gradient {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000;
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s ease;
+  border: none;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 0.4rem 1rem rgba(255, 153, 0, 0.4);
+}
+
+.btn-gradient:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 0.6rem 1.5rem rgba(255, 153, 0, 0.5);
+}
+
+/* Mantenlo para AOS */
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+}
+
+/* Arreglo de visibilidad para imágenes */
+.github-pages-config img {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-width: 100%;
+}
+
+/* Estilos específicos para elementos claves */
+.logo img {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: 80px;
+}
+
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-image: url('../images/Hero_Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Gradient text animation - mismo estilo que René Garcia Educa */
+.gradient-text {
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+}
+
+/* Estilo unificado para títulos de secciones con gradiente */
+.gradient-title {
+  font-size: 3.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.gradient-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  border-radius: 3px;
+}
+
+/* Testimonial badge */
+.testimonial-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.2rem 2rem;
+  margin: 2rem auto;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2);
+  align-self: center;
+  width: 85%;
+  text-align: center;
+}
+
+.testimonial-icon {
+  color: var(--accent-color);
+  font-size: 2rem;
+  margin-right: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.testimonial-text {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Scroll indicator con círculo estático y flecha animada */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.scroll-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.4rem;
+  height: 5.4rem;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
+  background-size: 200% 200%;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.8rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
+  transition: all 0.3s ease;
+}
+
+.scroll-circle i {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.scroll-circle:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.8rem 2rem rgba(255, 94, 219, 0.4);
+}
+
+/* Elegant animated borders for containers - Solo para los libros individuales */
+.book-item {
+  position: relative;
+}
+
+.book-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Removiendo bordes animados de otros elementos */
+.container::before, .section::before, .hero-content::before, 
+.testimonial-item::before, .contact-form::before, .footer-section::before, 
+.footer-logo::before {
+  display: none;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .testimonial-badge {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .testimonial-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .testimonial-text {
+    text-align: center;
+    font-size: 1.3rem;
+  }
+  
+  .scroll-circle {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 1.6rem;
+  }
+  
+  /* Mejorar espaciado general en secciones */
+  .section {
+    padding: 5rem 0; /* Aumentar padding vertical general */
+  }
+  
+  .section-title {
+    margin-bottom: 2.5rem; /* Más espacio debajo de los títulos */
+    font-size: 3rem; /* Tamaño de fuente ajustado */
+  }
+  
+  .container {
+    padding: 0 2rem; /* Más padding horizontal en contenedores */
+  }
+  
+  /* Ajustes para grids y contenedores flexibles */
+  .grid, .flex-container {
+    gap: 2.5rem; /* Aumentar separación entre elementos */
+  }
+}
+
+/* Remove colored line for Libros Increíbles section */
+#libros .section-title::after {
+  display: none;
+}
+
+/* Centrar título "Libros Increíbles" correctamente */
+#libros .section-title,
+#libros .section-subtitle {
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  justify-content: center;
+}
+
+/* Restaurar línea decorativa para "Libros Increíbles" */
+#libros .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
+}
+
+/* Centrar título "Reseñas" - Igualado al de "Libros Increíbles" */
+#testimonios .section-title {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Línea decorativa para "Reseñas" - Igualada a la de "Libros Increíbles" */
+#testimonios .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 2px;
+}
+
+/* Estilos compartidos para ambas secciones principales */
+#libros .section,
+#testimonios .section {
+  padding: 8rem 0;
+}
+
+/* Estilos para el contenedor de testimonios - Igualando con el de libros */
+.testimonios-container,
+.book-showcase {
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
+  border-radius: 2rem;
+  padding: 4rem;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+  margin: 2rem auto;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Borde degradado compartido para ambos contenedores */
+.testimonios-container::before,
+.book-showcase::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 2.2rem;
+  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+
+  #back-to-top {
+    width: 5rem;
+    height: 5rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3rem; /* Aumentado para mejor espaciado */
+    text-align: center; /* Asegurar que el texto esté centrado */
+  }
+  
+  /* Asegurar que los títulos del hero se centren correctamente */
+  .hero-title {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-size: 3.2rem; /* Ajustar tamaño para mejor legibilidad */
+  }
+  
+  /* Mejorar espaciado de elementos en el hero */
+  .hero-benefits {
+    margin: 2.5rem auto; /* Centrar y añadir espacio */
+    gap: 1.5rem; /* Más separación entre beneficios */
+  }
+  
+  .benefit-item {
+    padding: 1rem 1.5rem; /* Más padding en los items de beneficios */
+  }
+  
+  /* Mejorar badge de testimonios en hero */
+  .testimonial-badge {
+    margin: 2.5rem auto; /* Centrar y añadir espacio */
+    max-width: 95%; /* Evitar que toque los bordes */
+  }
+  
+  /* Ajustar botones del hero */
+  .hero-buttons {
+    margin-top: 2.5rem; /* Más espacio arriba de los botones */
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+  
+  #back-to-top {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.6rem;
+  }
+  
+  .hero-content {
+    padding: 2.5rem;
+    max-width: 95%; /* Más ancho en móviles pequeños */
+  }
+  
+  /* Ajustar títulos para pantallas pequeñas */
+  .hero-title {
+    font-size: 2.8rem; /* Reducir tamaño para mejor adaptación */
+    line-height: 1.3; /* Mejor espaciado entre líneas */
+  }
+  
+  /* Ajustar elementos de beneficios */
+  .hero-benefits {
+    flex-direction: column; /* Apilar en móviles pequeños */
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+  }
+  
+  .benefit-item {
+    width: 90%; /* Ocupar casi todo el ancho */
+    text-align: center;
+    justify-content: center;
+  }
+  
+  /* Ajustar botones en móviles pequeños */
+  .btn {
+    padding: 1rem 2rem; /* Más padding para mejor área táctil */
+  }
+  
+  /* Ajustar tamaños de letra generales */
+  .section-title {
+    font-size: 2.6rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  /* Ajustar sección de botones */
+  .flip-button {
+    bottom: -15px;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Botones del hero - Centrados */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Mejoras de rendimiento global */
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  /* Propiedades para mejorar el rendimiento */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimizar todas las transiciones para que sean más rápidas */
+* {
+  transition-duration: 0.2s !important;
+  transition-delay: 0s !important;
+}
+
+/* Aceleración de hardware para animaciones */
+.menu-toggle, 
+.nav-link, 
+.scroll-indicator,
+.btn,
+#back-to-top {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+} 

@@ -1,0 +1,1053 @@
+/* 
+ * BOOKS
+ * Estilos para la sección de libros y tarjetas de libros
+ * NOTA: Este contenedor sirve como referencia estándar para todos los demás contenedores de la página
+ */
+
+/* Contenedor de sección de libros - Refinado para aspecto más profesional */
+.book-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 5rem;
+  margin: 5rem 0;
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
+  border-radius: 1.8rem;
+  padding: 4rem;
+  position: relative;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Borde degradado más sutil y elegante */
+.book-showcase::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 1.9rem;
+  background: linear-gradient(90deg, rgba(45, 49, 66, 0.5), rgba(26, 26, 26, 0.2), rgba(45, 49, 66, 0.5));
+  background-size: 300% 100%;
+  animation: gradientBorder 12s linear infinite;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* Fondo más refinado para la sección */
+#libros.section {
+  background-color: rgba(18, 18, 18, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  padding: 6rem 0;
+}
+
+/* Título con tipografía refinada */
+#libros .section-title {
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: shimmer 8s linear infinite;
+  font-size: 3.6rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+/* Book items con estilo mejorado y más profesional */
+.book-item {
+  background: rgba(25, 25, 25, 0.85);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 720px; /* Altura mínima para estandarizar todas las tarjetas */
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.book-item:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.3);
+  border-color: rgba(140, 82, 255, 0.2);
+}
+
+/* Imágenes de portada y contraportada con mejor sombra */
+.book-cover,
+.book-back {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 210px;
+  margin: 0 auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+/* Portada siempre visible al frente por defecto */
+.book-cover {
+  z-index: 2;
+  transform: rotateY(0deg) scale(0.91);
+  -webkit-transform: rotateY(0deg) scale(0.91);
+  transform-origin: center center;
+}
+
+/* Contraportada siempre oculta por detrás por defecto */
+.book-back {
+  transform: rotateY(180deg) scale(0.91);
+  -webkit-transform: rotateY(180deg) scale(0.91);
+  z-index: 1;
+  transform-origin: center center;
+}
+
+/* Efecto flip - Contenedor ajustado */
+.book-flipper {
+  position: relative;
+  width: 70%;
+  height: 300px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  will-change: transform;
+}
+
+.book-flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Cambio: usar opacity en lugar de display para mejorar rendimiento */
+.book-flipper:not(.flipped) .book-back {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book-flipper.flipped .book-cover {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Botón para voltear el libro - refinado */
+.flip-button {
+  background: rgba(25, 25, 35, 0.7);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.85);
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.flip-button i {
+  margin-right: 0;
+  font-size: 1.1rem;
+}
+
+/* Mostrar botón solo al hacer hover en el contenedor de imágenes */
+.book-images:hover .flip-button {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.flip-button:hover {
+  transform: translateX(-50%) scale(1.1);
+  background: rgba(35, 35, 45, 0.85);
+  color: white;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  border-color: rgba(140, 82, 255, 0.3);
+}
+
+/* Ajustes para móviles - reposicionando a la parte inferior central */
+@media (max-width: 768px) {
+  .flip-button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    bottom: -20px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) scale(0.85);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+  
+  .book-images:hover .flip-button {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+  }
+  
+  .flip-button:hover {
+    transform: translateX(-50%) scale(1.1);
+  }
+}
+
+@media (max-width: 576px) {
+  .flip-button {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1rem;
+    bottom: -18px;
+    padding: 0.5rem;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .flip-button {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 0.9rem;
+    bottom: -16px;
+    padding: 0.4rem;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Contenedor de imágenes - Estructura base con margen inferior ajustado */
+.book-images {
+  position: relative;
+  margin-bottom: 2.5rem; /* Ajustado para el botón */
+  transition: all 0.3s ease;
+  height: 30rem;
+  padding-top: 1.5rem; /* Añadir espacio superior para separar del ribbon */
+}
+
+/* Contenido de información del libro - espaciado mejorado */
+.book-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative; /* Para posicionamiento absoluto de los elementos internos */
+}
+
+/* Badge con estilo más profesional */
+.book-badge {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  display: inline-block;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.02em;
+}
+
+/* Contenedor para el badge */
+.book-header {
+  margin-bottom: 1.2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Título del libro refinado */
+.book-content h3 {
+  font-size: 2.4rem;
+  margin-bottom: 2.2rem;
+  text-align: left !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB) !important;
+  background-size: 300% 100% !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  animation: shimmer 8s linear infinite !important;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-shadow: none;
+  display: block;
+  max-width: 100%;
+  position: relative;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+/* Descripción del libro */
+.book-description {
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--white);
+  opacity: 0.95;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+}
+
+/* Detalles del libro ajustado para mejor alineación */
+.book-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.8rem;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+
+.book-detail {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--white);
+  line-height: 1.6;
+  width: 100%;
+}
+
+.book-detail i {
+  margin-right: 1.2rem;
+  color: var(--primary-color-light);
+  font-size: 1.6rem;
+  min-width: 2.4rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Ajustes para el título y subtítulos */
+.feature-title {
+  font-size: 1.9rem;
+  margin-bottom: 1.8rem;
+  color: var(--white);
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.feature-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 1px;
+}
+
+/* Mejoras en la lista de características */
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.4rem;
+  color: var(--white);
+  line-height: 1.6;
+}
+
+.feature-item i {
+  margin-right: 1rem;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  min-width: 2rem;
+  padding-top: 0.2rem;
+  text-align: center;
+}
+
+/* Ribbons más elegantes */
+#libros .book-ribbon {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  color: white !important;
+  padding: 6px 12px !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  transform: none !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  z-index: 20 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: normal !important;
+  text-transform: uppercase !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ajustar altura del contenedor de imágenes */
+#libros .book-images {
+  height: 30rem !important;
+}
+
+/* Sección subtitle más equilibrada */
+.section-subtitle {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 0.95 !important;
+  font-weight: var(--font-weight-normal);
+  font-size: 1.8rem !important;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/* Media queries mejorados para responsive */
+@media (max-width: 1200px) {
+  .book-showcase {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    gap: 3rem;
+    padding: 3.5rem;
+  }
+  
+  #libros .section-title {
+    font-size: 3.4rem;
+  }
+  
+  .book-detail i,
+  .feature-item i {
+    margin-right: 1.1rem;
+  }
+  
+  .book-item {
+    min-height: 700px; /* Ajuste para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 992px) {
+  .book-showcase {
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 3rem;
+    padding: 3rem;
+    margin: 3rem 0;
+  }
+  
+  #libros .section-title {
+    font-size: 3.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.7rem !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  #libros .book-images {
+    height: 26rem !important; /* Reducido para mejor proporción */
+    margin-bottom: 4rem !important; /* Aumentado para dar más espacio al botón */
+    padding-top: 2rem; /* Más espacio en la parte superior */
+  }
+  
+  .book-content {
+    padding: 2rem;
+    margin-top: 0.5rem;
+  }
+  
+  .book-actions {
+    padding-top: 2rem;
+  }
+  
+  .book-detail i,
+  .feature-item i {
+    margin-right: 0.8rem;
+    font-size: 1.4rem;
+  }
+  
+  .book-flipper {
+    width: 70%;
+    height: 230px; /* Ajustado para mejor proporción */
+  }
+  
+  #libros .book-ribbon {
+    top: 8px !important; /* Movido más arriba */
+    right: 8px !important; /* Ajustado */
+    font-size: 1.15rem !important; /* Ligeramente más grande */
+    padding: 7px 14px !important; /* Aumentado el padding */
+  }
+  
+  .book-header {
+    margin-top: 0.5rem; /* Reducido margen superior */
+    margin-bottom: 1.5rem; /* Aumentado margen inferior */
+    text-align: center;
+  }
+  
+  .flip-button {
+    position: absolute;
+    bottom: -18px;
+    top: auto;
+    padding: 0.6rem;
+    font-size: 1.1rem;
+    z-index: 10;
+    opacity: 0;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(25, 25, 35, 0.75);
+  }
+  
+  .book-item {
+    min-height: 680px; /* Ajuste para pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+  #libros.section {
+    padding: 4rem 0;
+  }
+  
+  .book-showcase {
+    grid-template-columns: 1fr;
+    gap: 4rem; /* Aumentado para mejor separación entre libros */
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+  }
+  
+  .book-item {
+    min-height: 650px; /* Ajuste para móviles */
+    max-width: 45rem;
+    margin: 0 auto;
+    padding-top: 1rem; /* Añadir espacio en la parte superior */
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  
+  #libros .book-images {
+    height: 25rem !important; /* Reducido ligeramente */
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
+    padding-top: 4.5rem; /* Aumentado el espacio arriba para el ribbon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .book-content {
+    padding: 2rem;
+    margin-top: 0; /* Eliminado el margen superior */
+  }
+  
+  .book-header {
+    margin-top: 4.5rem; /* Ahora positivo para colocarlo debajo de la imagen */
+    margin-bottom: 1.5rem;
+    position: relative;
+    top: auto; /* Eliminar top negativo */
+    text-align: center;
+  }
+  
+  .book-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center !important;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem !important;
+    padding: 0 1rem;
+  }
+  
+  .flip-button {
+    opacity: 0.9;
+    bottom: -18px;
+    width: 2.8rem;
+    height: 2.8rem;
+    background: rgba(25, 25, 35, 0.85);
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
+  .book-detail i,
+  .feature-item i {
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
+  }
+  
+  .book-details, .book-features {
+    margin-bottom: 1.2rem;
+  }
+  
+  .feature-title {
+    margin-bottom: 0.8rem;
+  }
+  
+  .book-actions {
+    padding-top: 1.8rem;
+    gap: 1.2rem;
+    flex-direction: column;
+  }
+  
+  .amazon-btn, .interior-btn {
+    width: 100%;
+    height: 4.5rem;
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
+  }
+  
+  .book-flipper {
+    width: 65%; /* Reducido para mejor proporción */
+    height: 220px;
+    margin: 0 auto;
+  }
+  
+  .book-badge {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.7rem; /* Más grande */
+    padding: 0.6rem 1.2rem; /* Más grande */
+  }
+  
+  #libros .book-ribbon {
+    top: 6px !important; /* Movido más arriba */
+    right: 6px !important;
+    font-size: 1.2rem !important; /* Más grande */
+    padding: 8px 15px !important; /* Más grande */
+  }
+}
+
+@media (max-width: 576px) {
+  #libros.section {
+    padding: 3.5rem 0;
+  }
+  
+  .book-showcase {
+    padding: 2rem;
+    gap: 4.5rem; /* Aumentado para mejor separación */
+    margin: 2.5rem 0;
+  }
+  
+  #libros .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.2rem;
+  }
+  
+  #libros .book-images {
+    height: 23rem !important; /* Reducido para mejor proporción */
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
+    padding-top: 5rem; /* Aumentado para evitar que el ribbon se solape */
+  }
+  
+  .book-content {
+    padding: 1.8rem;
+    margin-top: 1.5rem;
+  }
+  
+  .book-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    text-align: center !important;
+  }
+  
+  .book-description {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .book-detail {
+    font-size: 1.3rem;
+  }
+  
+  .feature-title {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }
+  
+  .feature-item {
+    font-size: 1.3rem;
+  }
+  
+  .book-detail i,
+  .feature-item i {
+    margin-right: 0.7rem;
+    font-size: 1.3rem;
+  }
+  
+  .flip-button {
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1rem;
+    bottom: -16px;
+    padding: 0.5rem;
+  }
+  
+  #libros .book-ribbon {
+    font-size: 1.1rem !important;
+    padding: 7px 14px !important;
+    top: 5px !important; /* Ajustado para estar más arriba */
+    right: 5px !important;
+  }
+  
+  .book-header {
+    margin-top: 4rem; /* Positivo para colocarlo debajo de la imagen */
+    margin-bottom: 1.2rem;
+    text-align: center;
+    top: auto; /* Eliminar top negativo */
+  }
+  
+  .book-badge {
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .book-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+  }
+  
+  .book-detail {
+    text-align: center;
+  }
+  
+  .book-flipper {
+    width: 62%;
+    height: 200px;
+  }
+  
+  .book-item {
+    min-height: 620px; /* Ajuste para móviles pequeños */
+  }
+  
+  .book-actions {
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .book-showcase {
+    padding: 1.5rem;
+    gap: 4rem;
+  }
+  
+  #libros .book-images {
+    height: 20rem !important; /* Reducido para mejor proporción */
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
+    padding-top: 5.5rem; /* Más espacio para el ribbon */
+  }
+  
+  .book-content {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  
+  .book-detail i, 
+  .feature-icon {
+    font-size: 1.2rem;
+    margin-right: 0.7rem;
+    min-width: 1.2rem;
+  }
+  
+  .book-actions {
+    padding-top: 1.2rem;
+    gap: 0.7rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .amazon-btn,
+  .interior-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.7rem;
+    font-size: 1.3rem;
+  }
+  
+  .flip-button {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 0.9rem;
+    bottom: -14px;
+    padding: 0.4rem;
+  }
+  
+  .book-header {
+    margin-top: 3.5rem; /* Positivo para colocarlo debajo de la imagen */
+    margin-bottom: 1rem;
+    top: auto; /* Eliminar top negativo */
+  }
+  
+  .book-badge {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.7rem;
+  }
+  
+  .book-content h3 {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
+  
+  .book-flipper {
+    width: 58%;
+    height: 180px;
+  }
+  
+  #libros .book-ribbon {
+    top: 4px !important; /* Ajustado para estar más arriba */
+    right: 4px !important;
+    font-size: 1rem !important;
+    padding: 6px 12px !important;
+  }
+  
+  .book-item {
+    min-height: 580px; /* Ajuste para móviles muy pequeños */
+  }
+}
+
+/* Botones y enlaces - mejorados para total consistencia */
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: auto; /* Empuja los botones al fondo del contenedor */
+  padding-top: 2.5rem; /* Espacio consistente desde el último elemento */
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.amazon-btn, .interior-btn {
+  flex: 1;
+  min-width: 15rem;
+  height: 4.5rem;
+  padding: 0 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+/* Estilo para botones de Amazon */
+.amazon-btn {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  border: 1px solid #e6920f;
+  box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
+  gap: 0.8rem;
+  text-shadow: none !important; /* Eliminar sombras de texto */
+}
+
+.amazon-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
+  color: #000 !important; /* Mantener color negro en hover */
+  text-shadow: none !important;
+}
+
+.amazon-btn i {
+  color: #000 !important; /* Asegurar que el icono también sea negro */
+  text-shadow: none !important;
+}
+
+/* Estilo para botones de Ver Interior */
+.interior-btn {
+  background: linear-gradient(135deg, #2d3142, #1a1a1a);
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  gap: 0.8rem;
+}
+
+.interior-btn:hover {
+  background: linear-gradient(135deg, #3d4152, #2a2a2a);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Colores personalizados para cada tipo de ribbon */
+#libros .book-ribbon[data-type="destacado"] {
+  background: linear-gradient(135deg, #6852e2, #ba43fc) !important;
+}
+
+#libros .book-ribbon[data-type="nuevo"] {
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5) !important;
+}
+
+#libros .book-ribbon[data-type="bestseller"] {
+  background: linear-gradient(135deg, #f5576c, #f093fb) !important;
+}
+
+/* Iconos para ribbons */
+#libros .book-ribbon::before {
+  font-family: 'Font Awesome 5 Free' !important;
+  margin-right: 6px !important;
+  font-size: 1.2rem !important;
+}
+
+#libros .book-ribbon[data-type="destacado"]::before {
+  content: "\f005" !important; /* Estrella */
+}
+
+#libros .book-ribbon[data-type="nuevo"]::before {
+  content: "\f067" !important; /* Signo más */
+}
+
+#libros .book-ribbon[data-type="bestseller"]::before {
+  content: "\f091" !important; /* Trofeo */
+}
+
+/* Modal de Ver Interior */
+.interior-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.interior-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(25, 25, 35, 0.9), rgba(35, 35, 50, 0.9));
+  border-radius: 1rem;
+  padding: 3.5rem 2rem 2.5rem;
+  max-width: 90%;
+  width: 350px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(140, 82, 255, 0.2);
+  animation: modal-appear 0.3s ease;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes modal-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-message {
+  font-size: 2.2rem;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botón X para cerrar el modal */
+.modal-close-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.modal-close-x:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive del modal */
+@media screen and (max-width: 576px) {
+  .modal-content {
+    width: 85%;
+    padding: 3rem 1.5rem 2rem;
+  }
+  
+  .modal-message {
+    font-size: 1.8rem;
+  }
+} 

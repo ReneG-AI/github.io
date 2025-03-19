@@ -1,0 +1,412 @@
+/* 
+ * HERO
+ * Estilos para el banner principal refinado
+ */
+
+/* Hero con fondo fijo */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+  z-index: 1;
+}
+
+/* Fondo del hero - refinado */
+.hero-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../images/Hero_Background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  filter: brightness(0.9) contrast(1.05);
+  transform: scale(2);
+}
+
+/* Contenido del hero */
+.hero-content {
+  max-width: 580px;
+  background-color: rgba(0, 0, 0, 0.92);
+  padding: 3.2rem;
+  border-radius: 1.2rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2rem;
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: auto;
+  position: relative;
+  left: 0;
+}
+
+.hero-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.4);
+  border-color: rgba(140, 82, 255, 0.15);
+}
+
+.hero-title {
+  font-size: 4.6rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+  line-height: 1.2;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  margin-bottom: 2.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Mejoras en los beneficios */
+.hero-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(30, 30, 40, 0.85);
+  padding: 1rem 1.5rem;
+  border-radius: 0.8rem;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-item:hover {
+  transform: translateX(5px);
+  background-color: rgba(45, 45, 60, 0.95);
+  border-left-color: var(--accent-color);
+}
+
+.benefit-item i {
+  font-size: 1.8rem;
+  color: var(--primary-color-light);
+  margin-right: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover i {
+  transform: scale(1.2);
+  color: var(--accent-color);
+}
+
+.benefit-item span {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+/* Mejoras en el testimonio */
+.testimonial-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(135deg, rgba(40, 40, 50, 0.85), rgba(25, 25, 35, 0.9));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 215, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+  pointer-events: none;
+}
+
+.testimonial-icon {
+  font-size: 2.2rem;
+  color: rgba(255, 215, 0, 0.9);
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.testimonial-text {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.rating {
+  display: flex;
+}
+
+.rating i {
+  color: rgba(255, 215, 0, 0.9);
+  font-size: 1.4rem;
+  margin-right: 0.3rem;
+}
+
+/* Botones mejorados del hero */
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Botón Amazon mejorado */
+.amazon-hero-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  background: linear-gradient(135deg, #FF9900, #FFB700);
+  color: #000 !important;
+  font-weight: 700;
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 1.6rem;
+  border: 1px solid rgba(255, 153, 0, 0.5);
+  text-shadow: none !important;
+}
+
+.amazon-hero-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #FFB700, #FF9900);
+  box-shadow: 0 6px 15px rgba(255, 153, 0, 0.4);
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.amazon-hero-btn i {
+  font-size: 1.8rem;
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Asegurar que cualquier texto o span dentro del botón también sea negro */
+.amazon-hero-btn span, 
+.amazon-hero-btn a, 
+.amazon-hero-btn *, 
+.amazon-hero-btn strong,
+.amazon-hero-btn p {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Aplicar color negro con alta especificidad para sobreescribir otras reglas */
+body .hero-section .hero-content .hero-buttons .amazon-hero-btn,
+body .hero-section .hero-content .hero-buttons .amazon-hero-btn *,
+html body .amazon-hero-btn,
+html body .amazon-hero-btn * {
+  color: #000 !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* Secciones */
+.section {
+  padding: 7rem 0;
+  position: relative;
+  background-color: var(--body-bg);
+}
+
+/* Media queries para la sección hero */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 4.2rem;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    width: 100%;
+  }
+  
+  .hero-content {
+    max-width: 540px;
+    padding: 2.8rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100%;
+  }
+  
+  .hero-section {
+    justify-content: center !important;
+    padding-left: 0 !important;
+  }
+  
+  .hero-benefits {
+    align-items: center;
+    text-align: center;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .benefit-item {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .testimonial-badge {
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-left: 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 2.5rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .hero-title {
+    font-size: 3.6rem;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    width: 100%;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.7rem;
+    text-align: center !important;
+  }
+  
+  .hero-buttons {
+    justify-content: center !important;
+  }
+  
+  .hero-benefits {
+    align-items: center;
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .benefit-item {
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content {
+    padding: 2.2rem;
+    max-width: 95%;
+  }
+  
+  .hero-title {
+    font-size: 3.2rem;
+    text-align: center !important;
+    width: 100%;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  
+  .amazon-hero-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, #FF9900, #FFA700);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #000 !important;
+  }
+  
+  .amazon-hero-btn i {
+    color: #000;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-content {
+    padding: 2rem;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+    text-align: center !important;
+    width: 100%;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+

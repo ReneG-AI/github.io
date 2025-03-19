@@ -1,0 +1,186 @@
+/* Media queries para responsive */
+@media (max-width: 1200px) {
+  html {
+    font-size: 59%;
+  }
+  
+  .container {
+    max-width: 95%;
+  }
+  
+  .section {
+    padding: 6.5rem 0;
+  }
+  
+  .section-title {
+    font-size: 3.6rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 58%;
+  }
+  
+  .container {
+    max-width: 96%;
+  }
+  
+  .section {
+    padding: 5.5rem 0;
+  }
+  
+  .section-title {
+    font-size: 3.4rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 56%;
+  }
+  
+  .container {
+    max-width: 97%;
+    padding: 0 1.5rem;
+  }
+  
+  .section {
+    padding: 4.5rem 0;
+  }
+  
+  .section-title {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 54%;
+  }
+  
+  .container {
+    max-width: 98%;
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 3.5rem 0;
+  }
+  
+  .section-title {
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: 52%;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Forzar texto negro en todos los botones de Amazon */
+.amazon-hero-btn, 
+.amazon-btn, 
+.amazon-link, 
+.nav-link.amazon, 
+.nav-link.amazon-link,
+[class*="amazon"],
+a[href*="amazon"],
+.btn:has(i.fa-amazon),
+a:has(i.fa-amazon) {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.amazon-hero-btn *, 
+.amazon-btn *, 
+.amazon-link *, 
+.nav-link.amazon *, 
+.nav-link.amazon-link *,
+[class*="amazon"] *,
+a[href*="amazon"] *,
+.btn:has(i.fa-amazon) *,
+a:has(i.fa-amazon) * {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Regla adicional específica para botones "Comprar en Amazon" */
+a:has(> i.fab.fa-amazon),
+a > i.fab.fa-amazon,
+.amazon-hero-btn,
+a[href*="amazon.es"],
+a[href*="amazon.com"] {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+a:has(> i.fab.fa-amazon) *,
+a > i.fab.fa-amazon + *,
+.amazon-hero-btn *,
+a[href*="amazon.es"] *,
+a[href*="amazon.com"] * {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Estilos forzados para la sección de contacto */
+.contacto-form-container {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
+  background-color: #1a1a1a !important;
+  color: #ddd !important;
+}
+
+.contacto-form-container::before {
+  opacity: 1 !important;
+}
+
+.contacto-form-container::after {
+  opacity: 1 !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  mix-blend-mode: normal !important;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #333 !important;
+  background-color: #333 !important;
+  color: #ddd !important;
+  border: 1px solid #555 !important;
+}
+
+.contacto-form {
+  background: transparent !important;
+  color: #ddd !important;
+} 

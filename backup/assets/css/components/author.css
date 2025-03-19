@@ -1,0 +1,370 @@
+/* 
+ * AUTOR
+ * Estilos para la sección del autor y redes sociales
+ */
+
+/* Contenedor principal */
+.autor-container {
+  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  max-width: 500px !important; /* Limitar el ancho máximo */
+  margin: 2rem auto !important; /* Centrar el contenedor */
+}
+
+/* Borde degradado para el contenedor del autor */
+.autor-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.7rem;
+  background: linear-gradient(90deg, #2d3142, #1a1a1a, #2d3142);
+  background-size: 300% 100%;
+  animation: gradientBorder 8s linear infinite;
+  z-index: -1;
+}
+
+/* Título mejorado */
+.autor-title {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  font-weight: 700;
+}
+
+.autor-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  border-radius: 3px;
+}
+
+/* Contenido del autor */
+.autor-content {
+  display: flex;
+  flex-direction: column !important; /* Mantiene la imagen arriba SIEMPRE */
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+/* Avatar del autor - Mejorado con efecto "ojo" */
+.autor-avatar {
+  width: 180px !important; /* Tamaño uniforme */
+  height: 180px !important;
+  position: relative;
+  margin: 0 auto 2rem auto;
+  z-index: 1;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.autor-avatar::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF, #00D4FF);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.8;
+  animation: rotateGradient 10s linear infinite;
+  box-shadow: 0 0 15px rgba(100, 100, 255, 0.8); /* Efecto luminoso */
+}
+
+.autor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid rgba(100, 100, 255, 0.5) !important; /* Borde para efecto "ojo" */
+  transition: transform 0.5s ease;
+}
+
+.autor-avatar:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Información del autor */
+.autor-info {
+  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Estilo del texto */
+.autor-texto {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2.5rem;
+  text-align: center !important;
+}
+
+.autor-texto p {
+  margin-bottom: 1.5rem;
+}
+
+.autor-texto p:last-child {
+  margin-bottom: 0;
+}
+
+/* Botón "Leer más" mejorado */
+.btn-leer-mas {
+  display: inline-block;
+  background: linear-gradient(135deg, #8C52FF, #6B4CE6);
+  color: white;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin: 0 auto; /* Centrar el botón */
+}
+
+.btn-leer-mas::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #6B4CE6, #FF5EDB);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+.btn-leer-mas:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 20px rgba(140, 82, 255, 0.4);
+  color: white;
+}
+
+.btn-leer-mas:hover::before {
+  left: 0;
+}
+
+/* Contenedor de enlaces sociales */
+.social-links-container {
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+/* Título de redes sociales */
+.social-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Enlaces de redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Iconos de redes sociales mejorados */
+.social-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(45, 45, 60, 0.7), rgba(35, 35, 45, 0.7));
+  color: white;
+  font-size: 2.4rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.social-link i {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  border-radius: 50%;
+  transform: scale(0.9);
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.social-link:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.social-link:hover i {
+  transform: scale(1.15);
+}
+
+/* Nombre de la red social */
+.social-name {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: white;
+  opacity: 0;
+  transition: all 0.3s ease;
+  width: max-content;
+}
+
+.social-link:hover .social-name {
+  opacity: 1;
+  bottom: -25px;
+}
+
+/* Media queries para responsividad - manteniendo el efecto "ojo" en todas las resoluciones */
+@media (min-width: 768px) {
+  .autor-avatar {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .autor-avatar {
+    width: 220px !important;
+    height: 220px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .autor-container {
+    padding: 2.5rem 2rem;
+  }
+  
+  .autor-title {
+    font-size: 2.4rem;
+  }
+  
+  .autor-texto {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .autor-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .autor-avatar {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .btn-leer-mas {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* Animación de shimmer para fondos gradientes */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para bordes gradientes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Media query para ocultar nombres de redes sociales en móvil y tablet */
+@media screen and (max-width: 1024px) {
+  .social-name {
+    display: none !important; /* Ocultar nombres en dispositivos móviles y tablets */
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Reducir tamaño para un diseño más compacto */
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(25, 25, 35, 0.8);
+  }
+
+  .social-links {
+    gap: 1.5rem; /* Reducir el espacio entre iconos */
+  }
+} 

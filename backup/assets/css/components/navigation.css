@@ -1,0 +1,721 @@
+/* 
+ * NAVIGATION
+ * Estilos para header, menú de navegación y footer
+ */
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8rem;
+  z-index: 100;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(18, 18, 24, 0.75);
+  box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: visible;
+}
+
+.header.scrolled {
+  height: 6.4rem;
+  background-color: rgba(18, 18, 24, 0.85);
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.25);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 1rem;
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--white);
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 5;
+  margin-right: 1.5rem;
+  transform: translateY(-0.5rem);
+  height: 100%;
+}
+
+.logo:hover {
+  transform: translateY(-0.7rem);
+}
+
+.logo img {
+  height: calc(var(--header-height) * 1.2);
+  transition: all 0.3s ease;
+  filter: brightness(1.05) drop-shadow(0 0.3rem 0.5rem rgba(0, 0, 0, 0.3));
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  max-height: 91px;
+}
+
+.header.scrolled .logo img {
+  height: calc(var(--header-height) * 0.98);
+  max-height: 70px;
+}
+
+.logo-text {
+  font-size: 2.11rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-left: 0;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 10s linear infinite;
+  display: block;
+  line-height: 1.2;
+  transform: translateY(0.5rem);
+  text-align: center;
+  width: 100%;
+}
+
+/* Navegación */
+.main-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.2rem;
+  height: 100%;
+}
+
+.nav-item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  height: 3.8rem;
+  color: var(--text-color-light);
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.15s ease;
+  border-radius: 0.8rem;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Efecto de brillo al hacer hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  transition: all 0.15s ease;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.nav-link:hover::after {
+  width: 80%;
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  font-weight: 700;
+}
+
+.nav-link.active::after {
+  width: 80%;
+  opacity: 1;
+}
+
+/* Estilo específico para el elemento que contiene el botón de Amazon */
+.nav-item:nth-child(5) {
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+}
+
+/* Estilo específico para el enlace de Amazon */
+.nav-link.amazon-link {
+  background: linear-gradient(135deg, #FF9900, #FFC13B);
+  color: #000 !important;
+  box-shadow: 0 0.3rem 1rem rgba(255, 153, 0, 0.25);
+  height: 3.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  font-size: 1.6rem;
+  border-radius: 0.8rem;
+  text-shadow: none !important;
+  transform: translateY(0) !important; /* Asegurar que no haya desplazamiento vertical */
+  transition: all 0.15s ease;
+  margin: auto 0; /* Centrar verticalmente */
+  align-self: center; /* Asegurar que esté centrado en el eje vertical */
+}
+
+.nav-link.amazon-link:hover {
+  transform: translateY(-2px) !important; /* Limitar el desplazamiento hacia arriba */
+  box-shadow: 0 0.5rem 1.5rem rgba(255, 153, 0, 0.35);
+  background: linear-gradient(135deg, #FFA31A, #FFD35F);
+  color: #000 !important;
+}
+
+.nav-link.amazon-link .nav-icon {
+  margin-right: 0.8rem;
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Menú móvil - Tamaño reducido */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 2rem;
+  height: 1.6rem;
+  position: relative;
+  z-index: 1000;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--white);
+  margin: 0.35rem 0;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  border-radius: 3px;
+  transform-origin: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-0.3rem, 0.4rem);
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-0.3rem, -0.4rem);
+}
+
+/* Media queries - Ajustes para dispositivos */
+@media screen and (max-width: 1200px) {
+  .logo img {
+    height: calc(var(--header-height) * 1.12);
+    max-height: 77px;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.91);
+    max-height: 63px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .logo img {
+    height: calc(var(--header-height) * 1.05);
+    max-height: 70px;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.84);
+    max-height: 56px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    height: 7rem;
+  }
+  
+  .header.scrolled {
+    height: 5.6rem;
+  }
+  
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+    margin-left: 15px;
+    background: transparent;
+    border: none;
+    transition: all 0.15s ease;
+  }
+  
+  .menu-toggle:hover {
+    transform: scale(1.05);
+  }
+  
+  .menu-toggle .bar {
+    width: 26px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    display: block;
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40%;
+    max-width: 300px;
+    height: auto;
+    background-color: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 999;
+    transition: all 0.2s ease;
+    padding: 2rem;
+    box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .main-nav.active {
+    display: flex;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .nav-item {
+    width: 100%;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition-delay: 0s !important;
+    margin-bottom: 0;
+    height: auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-item:last-child {
+    border-bottom: none;
+  }
+  
+  .main-nav.active .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .nav-link {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    height: auto;
+    border-radius: 0;
+  }
+  
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(0);
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .nav-icon {
+    display: inline-block;
+    margin-right: 0.8rem;
+    font-size: 1.4rem;
+    color: inherit;
+  }
+  
+  /* Estilo específico para el enlace de Amazon en móvil */
+  .nav-link.amazon-link {
+    margin-top: 15px;
+    margin-left: 0;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF9900, #FFC107);
+    color: #000 !important;
+    text-shadow: none !important;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: 100%;
+    transform: none !important;
+    padding: 1rem 1.2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+    opacity: 1;
+    visibility: visible;
+    border-bottom: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: auto;
+    margin: 15px auto 0 auto; /* Centrado horizontal y margen superior */
+  }
+  
+  .nav-link.amazon-link:hover {
+    background: linear-gradient(135deg, #FFA31A, #FFD35F);
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.3);
+  }
+  
+  .nav-link.amazon-link .nav-icon {
+    color: #000 !important;
+    text-shadow: none !important;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .main-nav:not(.active) .nav-link.amazon-link {
+    visibility: hidden;
+    opacity: 0;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo-text {
+    font-size: 1.44rem;
+    text-align: center;
+  }
+  
+  .logo {
+    transform: translateY(0);
+  }
+  
+  .logo img {
+    height: calc(var(--header-height) * 0.91);
+    max-height: 56px;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.77);
+    max-height: 49px;
+  }
+  
+  .main-nav {
+    width: 40%;
+    max-width: 280px;
+    padding: 1.8rem;
+  }
+  
+  .nav-list {
+    gap: 0;
+  }
+  
+  .nav-link {
+    font-size: 1.4rem;
+    padding: 1rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .header {
+    height: 6rem;
+  }
+  
+  .header.scrolled {
+    height: 5.2rem;
+  }
+  
+  .header .container {
+    padding: 0 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    transform: translateY(0);
+    justify-content: flex-start;
+  }
+  
+  .logo img {
+    height: calc(var(--header-height) * 0.84);
+    max-height: 45px;
+    margin: auto 0;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.7);
+    max-height: 38px;
+  }
+  
+  .logo-text {
+    font-size: 1.28rem;
+    margin-left: 0.5rem;
+    text-align: left;
+  }
+  
+  .main-nav {
+    width: 70%;
+    max-width: 260px;
+  }
+  
+  .nav-list {
+    gap: 0;
+  }
+  
+  .nav-link {
+    font-size: 1.3rem;
+    padding: 1rem 1.2rem;
+  }
+  
+  .menu-toggle {
+    margin-left: auto;
+    width: 1.8rem;
+    height: 1.4rem;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .menu-toggle .bar {
+    height: 0.15rem;
+    margin: 0.25rem 0;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  }
+  
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-0.25rem, 0.35rem);
+  }
+  
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-0.25rem, -0.35rem);
+  }
+  
+  .nav-link.amazon-link {
+    padding: 0.8rem 1.2rem;
+    font-size: 1.3rem;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.nav-link.amazon-link {
+  margin-top: 1.5rem;
+  margin-left: 0;
+  justify-content: center;
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+.nav-link.amazon-link .nav-icon {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Add colored line across entire header - ELIMINADO */
+.header::after {
+  display: none;
+}
+
+.nav-icon {
+  margin-right: 0.8rem;
+  font-size: 1.4rem;
+  color: inherit;
+}
+
+@media screen and (max-width: 992px) {
+  .nav-icon {
+    display: inline-block;
+    margin-right: 0.8rem;
+    font-size: 1.4rem;
+    color: inherit;
+  }
+  
+  .nav-link.amazon-link {
+    margin-top: 15px;
+    margin-left: 0;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF9900, #FFC107);
+    color: #000 !important;
+    text-shadow: none !important;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    width: 100%;
+    transform: none !important;
+    padding: 1rem 1.2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+    font-size: 1.4rem;
+    opacity: 1;
+    visibility: visible;
+    border-bottom: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: auto;
+    margin: 15px auto 0 auto; /* Centrado horizontal y margen superior */
+  }
+  
+  .nav-link.amazon-link:hover {
+    background: linear-gradient(135deg, #FFA31A, #FFD35F);
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.3);
+  }
+  
+  .nav-link.amazon-link .nav-icon {
+    color: #000 !important;
+    text-shadow: none !important;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .main-nav:not(.active) .nav-link.amazon-link {
+    visibility: hidden;
+    opacity: 0;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .menu-toggle {
+    margin-left: auto;
+    width: 1.8rem;
+    height: 1.4rem;
+    position: relative;
+    z-index: 1000;
+  }
+  
+  .menu-toggle .bar {
+    height: 0.15rem;
+    margin: 0.25rem 0;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  }
+}
+
+.amazon-link {
+  background: linear-gradient(135deg, #FF9900, #FFC107);
+  color: #000 !important;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.2rem !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  align-self: center;
+}
+
+.amazon-link:hover {
+  background: linear-gradient(135deg, #FFC107, #FF9900);
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Asegurar que el icono dentro del enlace de Amazon también sea negro */
+.amazon-link i {
+  color: #000 !important;
+  text-shadow: none !important;
+  margin-right: 0.5rem;
+}
+
+html {
+  scroll-behavior: smooth !important;
+} 
