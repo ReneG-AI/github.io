@@ -3,19 +3,19 @@
  * Estilos para la sección de testimonios
  */
 
-/* Contenedor principal de reseñas - Con diseño elegante y moderno */
+/* Contenedor principal de testimonios con borde más pronunciado */
 .testimonios-container {
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
-  border-radius: 1.8rem;
-  padding: 4rem;
+  background: linear-gradient(145deg, rgba(30, 35, 46, 0.8), rgba(25, 30, 40, 0.9));
+  border-radius: 2rem;
+  padding: 4.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5rem;
   position: relative;
-  margin: 5rem 0;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  z-index: 1;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Borde degradado para el contenedor - Igualado al de libros */
@@ -26,7 +26,7 @@
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border-radius: 1.9rem;
+  border-radius: 2.1rem;
   background: linear-gradient(90deg, rgba(45, 49, 66, 0.5), rgba(26, 26, 26, 0.2), rgba(45, 49, 66, 0.5));
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
@@ -37,8 +37,10 @@
 /* Contenedor del título con mejor alineación */
 .testimonios-title-container {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   width: 100%;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
 /* Título de la sección con degradado igual al de Libros Increíbles */
@@ -47,7 +49,7 @@
   margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
   display: inline-block;
-  background: linear-gradient(90deg, #2d3142, #8C52FF);
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -56,6 +58,8 @@
   width: auto;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* Línea decorativa igual a la de Libros Increíbles */
@@ -66,278 +70,268 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #2d3142, #8C52FF);
-  border-radius: 2px;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(140, 82, 255, 0.3);
 }
 
 .testimonios-title-container .section-subtitle {
   font-size: 1.8rem;
   opacity: 0.9;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto 2.5rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
 }
 
-/* Grid de testimonios con espaciado estandarizado */
+/* Grid mejorado para testimonios con alineación consistente */
 .testimonios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
 }
 
-/* Responsive */
+/* Testimonios individuales con aspecto cuadrado y altura consistente */
+.testimonial {
+  background: rgba(30, 35, 46, 0.7);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Efecto de brillo mejorado para destacar */
+.testimonial-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(140, 82, 255, 0.15), transparent 60%);
+  border-radius: 1.5rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Texto del testimonio centrado */
+.testimonial p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  min-height: 120px;
+  text-align: center;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+/* Comillas decorativas */
+.testimonial p::before {
+  content: '\201C'; /* Comilla de apertura */
+  font-size: 4.5rem;
+  font-family: 'Georgia', serif;
+  color: rgba(140, 82, 255, 0.5);
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+  line-height: 1;
+}
+
+/* Estrellas de valoración centradas */
+.testimonial-stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+  color: #FFD700;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  justify-content: center;
+}
+
+.testimonial-stars i {
+  font-size: 1.2rem;
+}
+
+/* Badge de Amazon centrado */
+.amazon-badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FF9900;
+  color: #000;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(255, 153, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  align-self: center;
+}
+
+/* Información del autor centrada */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  width: 100%;
+  justify-content: center;
+}
+
+.testimonial-author img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(140, 82, 255, 0.5);
+}
+
+/* Nombre y título del autor centrados */
+.testimonial-author-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.testimonial-author-title {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.testimonial-author-info {
+  flex: 1;
+  text-align: center;
+}
+
+/* Media queries para el contenedor principal y grid de testimonios */
 @media (max-width: 1200px) {
   .testimonios-grid {
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem;
   }
 }
 
 @media (max-width: 992px) {
   .testimonios-container {
-    padding: 2.5rem;
-    gap: 2.5rem;
+    padding: 4rem;
+    border-radius: 1.8rem;
+    max-width: 900px;
   }
   
-  #testimonios .section-title {
-    font-size: 3.2rem;
-    margin-bottom: 1.5rem;
+  .testimonios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
   
-  .testimonio-item {
+  .testimonial {
     padding: 1.8rem;
   }
   
-  .testimonio-meta {
-    margin-top: 1.5rem;
-  }
-  
-  .testimonio-img {
-    width: 5rem;
-    height: 5rem;
+  .testimonial p {
+    font-size: 1.4rem;
+    min-height: 110px;
   }
 }
 
 @media (max-width: 768px) {
-  #testimonios.section {
-    padding: 4rem 0;
-  }
-  
   .testimonios-container {
-    padding: 2rem;
-    gap: 2rem;
-    margin: 2rem 0;
+    padding: 3.5rem 3rem;
+    border-radius: 1.5rem;
+    max-width: 700px;
   }
   
-  .testimonio-item {
-    padding: 1.5rem;
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
   }
   
-  .testimonio-text {
-    font-size: 1.6rem;
-    line-height: 1.5;
+  .testimonial {
+    padding: 1.7rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  .testimonio-meta {
-    margin-top: 1.2rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  .testimonial p {
+    font-size: 1.35rem;
+    min-height: 100px;
   }
   
-  .testimonio-img {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .testimonio-author {
-    text-align: center;
-  }
-  
-  .testimonio-name {
-    font-size: 1.7rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .testimonio-role {
-    font-size: 1.4rem;
+  .testimonial-author img {
+    width: 40px;
+    height: 40px;
   }
 }
 
 @media (max-width: 576px) {
-  #testimonios.section {
-    padding: 3rem 0;
-  }
-  
   .testimonios-container {
+    padding: 3rem 2rem;
+    border-radius: 1.2rem;
+    max-width: 100%;
+  }
+  
+  .testimonios-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .testimonial {
     padding: 1.5rem;
-    gap: 1.8rem;
+    text-align: center;
+    align-items: center;
+    max-width: 100%;
   }
   
-  #testimonios .section-title {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-  }
-  
-  .testimonio-text {
-    font-size: 1.5rem;
-    line-height: 1.4;
-  }
-  
-  .testimonio-name {
-    font-size: 1.6rem;
-  }
-  
-  .testimonio-role {
+  .testimonial p {
     font-size: 1.3rem;
+    min-height: 90px;
+    text-align: center;
   }
   
-  .testimonio-img {
-    width: 4.5rem;
-    height: 4.5rem;
+  .amazon-badge {
+    margin-left: auto;
+    margin-right: auto;
   }
-}
-
-/* Estilos para cada testimonio individual */
-.testimonial {
-  background: rgba(25, 25, 30, 0.85);
-  border-radius: 1.2rem;
-  padding: 3rem;
-  position: relative;
-  box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.testimonial:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.3);
-  border-color: rgba(140, 82, 255, 0.2);
-}
-
-/* Efecto de brillo */
-.testimonial-glow {
-  display: none; /* Ocultar el efecto de brillo */
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  pointer-events: none;
-}
-
-/* Texto del testimonio */
-.testimonial p {
-  font-size: 1.6rem;
-  line-height: 1.7;
-  color: white;
-  opacity: 0.95;
-  margin-bottom: 2rem;
-  flex-grow: 1;
-  position: relative;
-  padding-left: 2.8rem;
-}
-
-/* Comillas para el testimonio */
-.testimonial p::before {
-  content: "\201C"; /* Comilla de apertura */
-  font-size: 5rem;
-  font-family: Georgia, serif;
-  position: absolute;
-  left: 0;
-  top: -1.5rem;
-  color: rgba(255, 94, 219, 0.3);
-  line-height: 1;
-}
-
-/* Estrellas de valoración mejoradas */
-.testimonial-stars {
-  display: flex;
-  margin-bottom: 1.5rem;
-  gap: 0.3rem;
-  align-items: center;
-}
-
-.testimonial-stars i {
-  color: #FFD700;
-  font-size: 1.8rem;
-  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.3));
-}
-
-/* Etiqueta de Amazon */
-.amazon-badge {
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-  background-color: rgba(255, 164, 28, 0.15);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #FFA41C;
-}
-
-.amazon-badge i {
-  margin-right: 0.5rem;
-  color: #FFA41C;
-  font-size: 1.4rem;
-}
-
-/* Autor del testimonio */
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  margin-top: auto;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Avatar del autor (si se necesita) */
-.testimonial-avatar {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 1.5rem;
-  border: 3px solid rgba(255, 255, 255, 0.1);
-}
-
-.testimonial-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Información del autor */
-.testimonial-author-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.testimonial-author-name {
-  font-size: 1.8rem;
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.testimonial-author-title {
-  font-size: 1.4rem;
-  color: var(--gray-light);
-  opacity: 0.8;
+  
+  .testimonial-stars {
+    justify-content: center;
+  }
+  
+  .testimonial-author {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
 }
