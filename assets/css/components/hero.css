@@ -15,20 +15,16 @@
   z-index: 1;
 }
 
-/* Fondo del hero - optimizado */
+/* Fondo del hero - optimizado (estilos básicos solamente, los !important están en fix-hero.css) */
 .hero-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
+  height: 100%;
+  z-index: 0;
+  overflow: visible;
   filter: brightness(0.9) contrast(1.05);
-  background-image: url('../../images/Hero_Background.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .hero-bg-img {
