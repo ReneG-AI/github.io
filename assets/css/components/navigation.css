@@ -175,6 +175,9 @@
   margin-left: 0.5rem;
   transition: all 0.3s ease;
   text-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link.amazon:hover {
@@ -390,6 +393,16 @@
     padding-left: 0;
     width: 90%;
     align-self: flex-start;
+    position: fixed;
+    top: 6.5rem;
+    left: 20px;
+    width: auto;
+    z-index: 90;
+    transform: none;
+  }
+  
+  .header.scrolled .nav-link.amazon-link {
+    top: 5.5rem;
   }
   
   .nav-link.amazon-link .nav-icon {
@@ -434,8 +447,12 @@
   }
   
   .nav-link.amazon-link {
-    transform: translateX(-15px);
-    width: 85%;
+    top: 6rem;
+    left: 15px;
+  }
+  
+  .header.scrolled .nav-link.amazon-link {
+    top: 5rem;
   }
 }
 
@@ -522,9 +539,14 @@
   }
   
   .nav-link.amazon-link {
-    transform: translateX(-12px);
-    width: 80%;
-    padding: 0.8rem 1rem;
+    top: 5.5rem;
+    left: 12px;
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .header.scrolled .nav-link.amazon-link {
+    top: 4.7rem;
   }
 }
 
