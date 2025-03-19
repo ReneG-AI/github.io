@@ -198,13 +198,15 @@
     height: 2.8rem;
     font-size: 1.1rem;
     padding: 0.5rem;
-    opacity: 0;
     bottom: -18px;
+    opacity: 0;
+    pointer-events: none;
   }
   
   .book-images:hover .flip-button {
     opacity: 1;
     transform: translateX(-50%) scale(1.05);
+    pointer-events: auto;
   }
   
   .flip-button:hover {
@@ -220,6 +222,7 @@
     bottom: -16px;
     padding: 0.5rem;
     opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -231,6 +234,7 @@
     bottom: -14px;
     padding: 0.4rem;
     opacity: 0;
+    pointer-events: none;
   }
 }
 
