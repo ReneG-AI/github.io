@@ -32,6 +32,11 @@ header img, .logo img {
   height: 100vh !important;
   z-index: -1 !important;
   overflow: hidden !important;
+  background-image: url('../images/Hero_Background.webp') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  filter: brightness(0.9) contrast(1.05) !important;
 }
 
 .hero-bg-img {

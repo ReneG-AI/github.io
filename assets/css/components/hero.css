@@ -25,6 +25,10 @@
   z-index: -1;
   overflow: hidden;
   filter: brightness(0.9) contrast(1.05);
+  background-image: url('../../images/Hero_Background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-bg-img {
