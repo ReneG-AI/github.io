@@ -113,7 +113,10 @@
 .amazon-link, 
 .nav-link.amazon, 
 .nav-link.amazon-link,
-[class*="amazon"] {
+[class*="amazon"],
+a[href*="amazon"],
+.btn:has(i.fa-amazon),
+a:has(i.fa-amazon) {
   color: #000 !important;
   text-shadow: none !important;
 }
@@ -123,7 +126,29 @@
 .amazon-link *, 
 .nav-link.amazon *, 
 .nav-link.amazon-link *,
-[class*="amazon"] * {
+[class*="amazon"] *,
+a[href*="amazon"] *,
+.btn:has(i.fa-amazon) *,
+a:has(i.fa-amazon) * {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+/* Regla adicional específica para botones "Comprar en Amazon" */
+a:has(> i.fab.fa-amazon),
+a > i.fab.fa-amazon,
+.amazon-hero-btn,
+a[href*="amazon.es"],
+a[href*="amazon.com"] {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
+a:has(> i.fab.fa-amazon) *,
+a > i.fab.fa-amazon + *,
+.amazon-hero-btn *,
+a[href*="amazon.es"] *,
+a[href*="amazon.com"] * {
   color: #000 !important;
   text-shadow: none !important;
 } 

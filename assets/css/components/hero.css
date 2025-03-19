@@ -215,6 +215,14 @@
   text-shadow: none !important;
 }
 
+/* Asegurar que cualquier texto o span dentro del botón también sea negro */
+.amazon-hero-btn span, 
+.amazon-hero-btn a, 
+.amazon-hero-btn * {
+  color: #000 !important;
+  text-shadow: none !important;
+}
+
 /* Secciones */
 .section {
   padding: 7rem 0;
