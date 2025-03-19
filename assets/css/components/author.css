@@ -15,6 +15,8 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  max-width: 500px !important; /* Limitar el ancho máximo */
+  margin: 2rem auto !important; /* Centrar el contenedor */
 }
 
 /* Borde degradado para el contenedor del autor */
@@ -62,20 +64,22 @@
 /* Contenido del autor */
 .autor-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important; /* Mantiene la imagen arriba SIEMPRE */
   align-items: center;
   gap: 2.5rem;
   text-align: center;
 }
 
-/* Avatar del autor - Mejorado */
+/* Avatar del autor - Mejorado con efecto "ojo" */
 .autor-avatar {
-  width: 180px;
-  height: 180px;
+  width: 180px !important; /* Tamaño uniforme */
+  height: 180px !important;
   position: relative;
   margin: 0 auto 2rem auto;
   z-index: 1;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .autor-avatar::before {
@@ -90,6 +94,7 @@
   z-index: -1;
   opacity: 0.8;
   animation: rotateGradient 10s linear infinite;
+  box-shadow: 0 0 15px rgba(100, 100, 255, 0.8); /* Efecto luminoso */
 }
 
 .autor-avatar img {
@@ -97,7 +102,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid rgba(25, 25, 35, 0.8);
+  border: 8px solid rgba(100, 100, 255, 0.5) !important; /* Borde para efecto "ojo" */
   transition: transform 0.5s ease;
 }
 
@@ -127,6 +132,7 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 2.5rem;
+  text-align: center !important;
 }
 
 .autor-texto p {
@@ -152,6 +158,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  margin: 0 auto; /* Centrar el botón */
 }
 
 .btn-leer-mas::before {
@@ -270,11 +277,18 @@
   bottom: -25px;
 }
 
-/* Media queries para responsividad */
+/* Media queries para responsividad - manteniendo el efecto "ojo" en todas las resoluciones */
 @media (min-width: 768px) {
   .autor-avatar {
-    width: 200px;
-    height: 200px;
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .autor-avatar {
+    width: 220px !important;
+    height: 220px !important;
   }
 }
 
@@ -290,12 +304,6 @@
   .autor-texto {
     font-size: 1.5rem;
   }
-  
-  .social-link {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -304,23 +312,13 @@
   }
   
   .autor-avatar {
-    width: 150px;
-    height: 150px;
+    width: 150px !important;
+    height: 150px !important;
   }
   
   .btn-leer-mas {
     padding: 1rem 2rem;
     font-size: 1.4rem;
-  }
-  
-  .social-links {
-    gap: 1.5rem;
-  }
-  
-  .social-link {
-    width: 45px;
-    height: 45px;
-    font-size: 1.8rem;
   }
 }
 

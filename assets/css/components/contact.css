@@ -251,26 +251,26 @@
 .form-group textarea {
   width: 100%;
   padding: 1.2rem;
-  background: rgba(30, 30, 30, 0.7) !important; /* Fondo oscuro que combine con el contenedor */
-  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Borde sutil */
+  background: rgba(30, 30, 30, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 6px;
-  color: #eee !important; /* Texto claro */
+  color: #eee !important;
   transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: rgba(140, 82, 255, 0.5) !important; /* Borde violeta al enfocar */
-  box-shadow: 0 0 10px rgba(140, 82, 255, 0.1) !important; /* Sombra sutil */
+  border-color: rgba(140, 82, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgba(140, 82, 255, 0.1) !important;
   outline: none;
 }
 
 /* Área de texto para mensaje con límite de tamaño y carácteres */
 .form-group textarea {
   min-height: 15rem;
-  resize: none; /* Deshabilitar la redimensión manual */
-  overflow-y: auto; /* Permitir scroll vertical si es necesario */
-  transition: height 0.2s ease; /* Transición suave para el ajuste automático */
+  resize: none;
+  overflow-y: auto;
+  transition: height 0.2s ease;
 }
 
 /* Placeholder en color más tenue */
@@ -342,12 +342,12 @@
 
 /* Definición de áreas específicas para las páginas */
 .libro-page-1 {
-  grid-column: 1; /* Proyectos Futuros a la izquierda */
+  grid-column: 1;
   transition: transform 0.3s ease;
 }
 
 .libro-page-2 {
-  grid-column: 2; /* Colaboraciones a la derecha */
+  grid-column: 2;
   transition: transform 0.3s ease;
 }
 
@@ -367,6 +367,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-width: 500px !important;
+  margin: 0 auto !important;
 }
 
 /* Borde para el autor container - cambiado a negro/gris oscuro */
@@ -378,7 +380,7 @@
   right: -2px;
   bottom: -2px;
   border-radius: 1.7rem;
-  background: linear-gradient(90deg, #0a0a0a, #1a1a1a, #0a0a0a); /* Cambiado a negro/gris más oscuro */
+  background: linear-gradient(90deg, #0a0a0a, #1a1a1a, #0a0a0a);
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
@@ -398,20 +400,20 @@
 
 /* Autor title con el mismo estilo que libro-page-title */
 .autor-title {
-  font-size: 2.4rem; /* Ajustado al tamaño de libro-page-title */
+  font-size: 2.4rem;
   text-align: center;
-  margin-bottom: 1.5rem; /* Mismo margen que libro-page-title */
+  margin-bottom: 1.5rem;
   position: relative;
-  padding-bottom: 1.2rem; /* Mismo padding que libro-page-title */
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF); /* Mismo gradiente que libro-page-title */
-  background-size: 200% auto; /* Mismo tamaño de fondo que libro-page-title */
+  padding-bottom: 1.2rem;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: gradient-text 8s linear infinite; /* Misma animación que libro-page-title */
+  animation: gradient-text 8s linear infinite;
   font-weight: 700;
-  z-index: 2; /* Mismo z-index que libro-page-title */
+  z-index: 2;
 }
 
 .autor-title::after {
@@ -433,7 +435,7 @@
 /* Contenido del autor */
 .autor-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: column !important;
   align-items: center;
   gap: 2.5rem;
   flex: 1;
@@ -444,15 +446,15 @@
 /* Autor avatar mejorado con borde destacado */
 .autor-avatar {
   flex-shrink: 0;
-  width: 30rem; /* Aumentado de 27rem a 30rem */
-  height: 30rem; /* Aumentado para mantener proporción */
+  width: 180px !important;
+  height: 180px !important;
   overflow: hidden;
-  border: 2px solid rgba(110, 72, 170, 0.5) !important; /* Borde morado sutil */
-  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(140, 82, 255, 0.15) !important;
+  border: 8px solid rgba(100, 100, 255, 0.5) !important;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
   position: relative;
   z-index: 1;
-  margin: 0 auto 1.5rem auto;
-  border-radius: 50% !important; /* Siempre circular con !important */
+  margin: 0 auto 2.5rem auto !important;
+  border-radius: 50% !important;
   transition: all 0.5s ease;
 }
 
@@ -483,7 +485,7 @@
   z-index: 1;
   min-width: 100%;
   min-height: 100%;
-  border-radius: 50%; /* Imagen también circular */
+  border-radius: 50%;
   transition: transform 0.5s ease;
 }
 
@@ -492,7 +494,7 @@
 }
 
 .autor-avatar:hover img {
-  transform: scale(1.08); /* Aumentado el efecto de zoom al hover */
+  transform: scale(1.08);
 }
 
 .autor-avatar:hover::after {
@@ -550,23 +552,23 @@
   align-self: center;
   display: inline-flex;
   align-items: center;
-  padding: 1.2rem 2.4rem; /* Aumentado de 1rem 2rem */
+  padding: 1.2rem 2.4rem;
   background: rgba(30, 30, 35, 0.8); 
   color: white;
   border-radius: 0.8rem;
-  font-size: 1.6rem; /* Aumentado de 1.5rem */
+  font-size: 1.6rem;
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   text-decoration: none;
-  border: 1px solid rgba(140, 82, 255, 0.3); /* Cambiado borde */
+  border: 1px solid rgba(140, 82, 255, 0.3);
   position: relative;
   overflow: hidden;
   margin: 0 auto;
 }
 
 .btn-leer-mas::after {
-  content: '\f061'; /* Código FontAwesome para flecha derecha */
+  content: '\f061';
   font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   margin-left: 0.8rem;
@@ -603,7 +605,7 @@
   width: 6rem;
   height: 6rem;
   display: flex;
-  flex-direction: column; /* Cambiado de row a column para acomodar el texto */
+  flex-direction: column;
   align-items: center !important;
   justify-content: center !important;
   background: rgba(25, 25, 30, 0.8) !important;
@@ -616,7 +618,7 @@
   -webkit-backdrop-filter: blur(5px);
   position: relative;
   overflow: hidden;
-  padding: 1rem 0.5rem; /* Añadido padding para el texto */
+  padding: 1rem 0.5rem;
 }
 
 .social-link::before {
@@ -633,7 +635,7 @@
 }
 
 .social-link i {
-  margin-bottom: 0.5rem; /* Espacio entre icono y texto */
+  margin-bottom: 0.5rem;
   position: relative;
   z-index: 1;
   transition: transform 0.4s ease;
@@ -673,7 +675,7 @@
 /* Estilos para el título "Sígueme en redes" - Mejorada la alineación */
 .social-title {
   font-size: 2.2rem;
-  margin-bottom: 1.2rem; /* Reducido de 1.8rem a 1.2rem para acercar a los iconos */
+  margin-bottom: 1.2rem;
   text-align: center;
   position: relative;
   padding-bottom: 1rem;
@@ -708,8 +710,8 @@
   
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 3rem; /* Aumentado para mejor separación */
-    padding: 3rem; /* Aumentado para mejor espaciado */
+    gap: 3rem;
+    padding: 3rem;
     grid-template-areas: 
       "form"
       "autor"
@@ -724,6 +726,8 @@
   .contacto-form-container, .autor-container {
     padding: 2.5rem !important;
     min-height: 350px;
+    max-width: 500px !important; /* Limitar el ancho máximo */
+    margin: 0 auto !important; /* Centrar el contenedor */
   }
   
   .contacto-form-container::after {
@@ -746,10 +750,12 @@
   }
   
   .autor-avatar {
-    width: 24rem; /* 50% más grande que 16rem */
-    height: 24rem; /* Cuadrado para mantener el círculo */
-    margin: 0 auto 2rem; /* Reducido el margen inferior */
-    border-radius: 50%; /* Asegurar que sea circular */
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto 2.5rem auto !important;
+    border-radius: 50% !important;
+    border: 8px solid rgba(100, 100, 255, 0.5) !important;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
   }
   
   .autor-texto {
@@ -770,7 +776,7 @@
   
   .social-link {
     width: 5.5rem;
-    height: 7rem; /* Aumentado para acomodar el texto */
+    height: 7rem;
     font-size: 2rem;
     padding: 0.8rem 0.4rem;
   }
@@ -870,6 +876,8 @@
   .contacto-form-container, .autor-container {
     padding: 2rem !important;
     min-height: 300px;
+    max-width: 450px !important; /* Limitar el ancho máximo */
+    margin: 0 auto !important; /* Centrar el contenedor */
   }
   
   .contacto-form-container::after {
@@ -909,11 +917,12 @@
   }
   
   .autor-avatar {
-    width: 22.5rem; /* 50% más grande que 15rem */
-    height: 22.5rem; /* Cuadrado para mantener el círculo */
-    margin: 0 auto 2.5rem; /* Reducido el margen inferior */
+    width: 180px !important;
+    height: 180px !important;
+    margin: 0 auto 2.5rem auto !important;
     border-radius: 50% !important;
-    border: 2px solid rgba(110, 72, 170, 0.5) !important;
+    border: 8px solid rgba(100, 100, 255, 0.5) !important;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
   }
   
   .autor-texto {
@@ -986,6 +995,8 @@
   .contacto-form-container, .autor-container {
     padding: 1.5rem !important;
     min-height: 250px;
+    max-width: 400px !important; /* Limitar el ancho máximo */
+    margin: 0 auto !important; /* Centrar el contenedor */
   }
   
   .contacto-form-container::after {
@@ -1032,11 +1043,12 @@
   }
   
   .autor-avatar {
-    width: 21rem; /* 50% más grande que 14rem */
-    height: 21rem; /* Cuadrado para mantener el círculo */
-    margin: 0 auto 2.2rem; /* Reducido el margen inferior */
+    width: 160px !important;
+    height: 160px !important;
+    margin: 0 auto 2.2rem auto !important;
     border-radius: 50% !important;
-    border: 2px solid rgba(110, 72, 170, 0.5) !important;
+    border: 8px solid rgba(100, 100, 255, 0.5) !important;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
     padding: 0; /* Eliminar cualquier padding que pueda afectar el círculo */
   }
   
@@ -1110,10 +1122,12 @@
   }
   
   .autor-avatar {
-    width: 19.5rem; /* 50% más grande que 13rem */
-    height: 19.5rem; /* Cuadrado para mantener el círculo */
-    margin: 0 auto 2rem;
-    border-radius: 50%; /* Asegurar que sea circular */
+    width: 150px !important;
+    height: 150px !important;
+    margin: 0 auto 2rem auto !important;
+    border-radius: 50% !important;
+    border: 8px solid rgba(100, 100, 255, 0.5) !important;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
     padding: 0; /* Eliminar cualquier padding que pueda afectar el círculo */
   }
   
@@ -1805,14 +1819,27 @@
 
 /* Estilos específicos para pantallas grandes (PC) */
 @media (min-width: 992px) {
+  .autor-content {
+    display: flex;
+    flex-direction: column !important; /* Mantener imagen arriba y texto abajo */
+    align-items: center;
+    gap: 2.5rem;
+    flex: 1;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
   .autor-avatar {
-    width: 25rem;
-    height: 25rem;
-    margin-bottom: 3rem; /* Mayor margen inferior en PC */
+    width: 220px !important;
+    height: 220px !important;
+    margin-bottom: 3rem !important; /* Mayor margen inferior en PC */
+    border: 8px solid rgba(100, 100, 255, 0.5) !important;
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 100, 255, 0.8) !important;
   }
   
   .autor-texto {
     max-width: 80%;
     font-size: 1.7rem;
+    text-align: center !important;
   }
 } 
