@@ -7,7 +7,6 @@
 /* Importar variables y estilos base */
 @import url('variables.css');
 @import url('base.css');
-@import url('darkmode-only.css');
 @import url('fix-hero.css');
 @import url('fix-sections.css');
 
