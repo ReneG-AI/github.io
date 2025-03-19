@@ -80,7 +80,7 @@
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 20px;
   position: relative;
   z-index: 1;
   padding: 4rem;
@@ -125,11 +125,10 @@
 .contacto-form-container {
   grid-area: form;
   position: relative;
-  background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important; /* Fondo negro/gris más elegante con !important */
-  background-color: #1a1a1a !important; /* Color de respaldo en caso de que el degradado no funcione */
-  border-radius: 1.5rem;
-  padding: 3.5rem;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
+  background: #111 !important; /* Fondo oscuro igual al de "Acerca del Autor" */
+  border-radius: 10px !important;
+  padding: 3rem !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
   transform: translateY(0);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -137,11 +136,11 @@
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   color: #ddd !important; /* Asegurar que el texto sea visible */
-}
-
-/* Asegurar que no hay una regla que fuerce el fondo blanco */
-.contacto-form-container * {
-  background-color: transparent;
+  min-height: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* Borde degradado para el formulario */
@@ -152,58 +151,58 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  border-radius: 1.7rem;
+  border-radius: 12px;
   background: linear-gradient(90deg, #1a1a1a, #333, #1a1a1a) !important; /* Degradado más sutil con !important */
   background-size: 300% 100%;
   animation: gradientBorder 8s linear infinite;
   z-index: -1;
-  opacity: 1 !important; /* Asegurar que sea visible */
+  opacity: 0.5 !important; /* Reducir opacidad para que sea sutil como en el autor-container */
 }
 
-/* Título interno para el formulario - Bajado ligeramente */
+/* Título interno para el formulario - Ajustado al estilo del título del autor */
 .contacto-form-container::after {
   content: '¡Contáctame!' !important;
   position: absolute !important;
-  top: 2.5rem !important; /* Bajado para mejor integración */
+  top: 2.5rem !important;
   left: 0 !important;
   right: 0 !important;
   text-align: center !important;
   font-size: 2.8rem !important;
   font-weight: 700 !important;
-  background: linear-gradient(90deg, #b3b3ff, #8C52FF, #00D4FF) !important; /* Azul suave a violeta con !important */
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important; /* Mismo gradiente que autor-title */
+  background-size: 300% 100% !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
-  animation: gradient-text 8s linear infinite !important;
-  letter-spacing: 0.05em !important;
+  animation: shimmer 8s linear infinite !important;
+  letter-spacing: 0.03em !important;
   margin-bottom: 2rem !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important; /* Sombra para mayor profundidad con !important */
-  opacity: 1 !important; /* Asegurar que sea visible */
-  mix-blend-mode: normal !important; /* Asegurar que no se mezcle con otro fondo */
-  z-index: 5 !important; /* Asegurar que esté por encima de otros elementos */
+  z-index: 5 !important;
   display: block !important;
 }
 
 /* En caso de que el título sea sobrescrito por otra regla, añadir selector alternativo */
 #contacto .contacto-form-container h2.contacto-title,
 #contacto .contacto-form-container .contacto-title {
-  background: linear-gradient(90deg, #b3b3ff, #8C52FF, #00D4FF) !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important;
+  background-size: 300% 100% !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
   color: transparent !important;
-  opacity: 1 !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
-  mix-blend-mode: normal !important;
+  animation: shimmer 8s linear infinite !important;
   z-index: 5 !important;
 }
 
-/* Línea debajo del título "¡Contáctame!" con un nuevo elemento */
+/* Línea debajo del título "¡Contáctame!" con el mismo estilo que autor-title::after */
 .contacto-title-line {
-  height: 0.3rem;
-  width: 5rem;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  margin-bottom: 2.5rem;
-  border-radius: 0.3rem;
+  height: 3px;
+  width: 80px;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
+  margin: 1rem auto 2.5rem;
+  border-radius: 3px;
+  position: relative;
+  top: 3.5rem;
+  z-index: 6;
 }
 
 /* Formulario - Ajustado con margen superior para el título */
@@ -214,6 +213,8 @@
   margin-top: 6rem; /* Aumentado de 5.5rem para dar más espacio al título */
   background: transparent !important;
   color: #ddd !important;
+  flex: 1;
+  justify-content: space-between;
 }
 
 /* Grupo de formulario */
@@ -238,20 +239,23 @@
   100% { background-position: 0% 50%; }
 }
 
-/* Campos de formulario */
+/* Estilos para los campos del formulario */
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1.5rem;
-  background: #333 !important; /* Fondo gris oscuro para mejor legibilidad con !important */
-  background-color: #333 !important; /* Color de respaldo */
-  border: 1px solid #555 !important; /* Borde más visible con !important */
-  border-radius: 0.8rem;
-  color: #ddd !important; /* Texto más claro con !important */
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
+  padding: 1.2rem;
+  background: rgba(30, 30, 30, 0.7) !important; /* Fondo oscuro que combine con el contenedor */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Borde sutil */
+  border-radius: 6px;
+  color: #eee !important; /* Texto claro */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(140, 82, 255, 0.5) !important; /* Borde violeta al enfocar */
+  box-shadow: 0 0 10px rgba(140, 82, 255, 0.1) !important; /* Sombra sutil */
+  outline: none;
 }
 
 /* Área de texto para mensaje con límite de tamaño y carácteres */
@@ -287,60 +291,32 @@
   font-weight: 500;
 }
 
-/* Focus de los inputs */
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #8C52FF !important;
-  background: #3a3a3a !important;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(140, 82, 255, 0.2) !important;
-  transform: translateY(-3px);
-}
-
-/* Botón de enviar - Cambiado a degradado violeta/azul */
-.btn-enviar {
-  background: linear-gradient(135deg, #6e48aa, #9d50bb) !important; /* Degradado morado/violeta con !important */
+/* Botón enviar con estilo que combine */
+.btn-enviar, .btn-leer-mas {
+  background: linear-gradient(135deg, #8C52FF, #6B4CE6) !important;
   color: white !important;
+  padding: 1.2rem 2.5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  border-radius: 50px !important;
   border: none !important;
-  padding: 1.4rem 2.8rem !important;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border-radius: 0.8rem !important;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.3s ease !important;
-  margin-top: 1.5rem;
   box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3) !important;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  align-self: flex-end;
-  letter-spacing: 0.03em;
+  text-decoration: none !important;
+  display: inline-block !important;
+  text-align: center !important;
+  margin-top: 1rem !important;
 }
 
-.btn-enviar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #9d50bb, #d885f7) !important; /* Degradado para efecto hover con !important */
-  transition: all 0.4s ease;
-  z-index: -1;
+.btn-enviar:hover, .btn-leer-mas:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 7px 20px rgba(140, 82, 255, 0.4) !important;
 }
 
-.btn-enviar:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(157, 80, 187, 0.5) !important;
-}
-
-.btn-enviar:hover::before {
-  left: 0;
-}
-
-.btn-enviar:active {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(157, 80, 187, 0.4) !important;
+/* Eliminar los estilos anteriores del botón leer más que puedan estar en conflicto */
+.btn-leer-mas::before, .btn-leer-mas::after {
+  display: none !important;
 }
 
 /* Contenedor para las páginas adicionales - extendido para llegar al footer */
@@ -369,16 +345,19 @@
 /* Autor container con fondo negro en lugar de degradado */
 .autor-container {
   grid-area: autor;
+  background: #111 !important;
+  border-radius: 10px !important;
+  padding: 3rem !important;
+  margin: 0 !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
   position: relative;
-  background: rgba(20, 20, 25, 0.9); /* Ligeramente más oscuro */
-  border-radius: 1.2rem;
-  padding: 3.2rem; /* Aumentado de 3rem */
-  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
-  transform: translateY(0);
-  transition: all 0.3s ease;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  min-height: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 /* Borde para el autor container - cambiado a negro/gris oscuro */
@@ -410,19 +389,17 @@
 
 /* Autor title con el mismo gradiente que otros títulos */
 .autor-title {
-  font-size: 2.6rem;
-  margin-bottom: 1.8rem;
+  font-size: 2.8rem;
   text-align: center;
+  margin-bottom: 2.5rem;
   position: relative;
-  padding-bottom: 1.2rem;
-  z-index: 2;
-  font-weight: 700;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  background-size: 200% auto;
+  background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-text 8s linear infinite;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+  font-weight: 700;
 }
 
 .autor-title::after {
@@ -444,8 +421,11 @@
 /* Contenido del autor */
 .autor-content {
   display: flex;
-  gap: 3rem; /* Aumentado de 2.5rem */
-  margin-bottom: 3.5rem; /* Aumentado de 3rem */
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  flex: 1;
+  justify-content: space-between;
 }
 
 /* Autor avatar mejorado con borde destacado */
@@ -720,8 +700,19 @@
     padding-right: 0;
   }
   
-  .contacto-form-container {
-    padding: 2.8rem; /* Aumentado para mejor espaciado */
+  .contacto-form-container, .autor-container {
+    padding: 2.5rem !important;
+    min-height: 350px;
+  }
+  
+  .contacto-form-container::after {
+    font-size: 2.6rem !important;
+    top: 2rem !important;
+  }
+  
+  .contacto-title-line {
+    margin-top: 0.5rem;
+    top: 3.3rem;
   }
   
   .form-group {
@@ -731,19 +722,6 @@
   #contacto .section-title {
     font-size: 3.2rem;
     margin-bottom: 1.5rem;
-  }
-  
-  .autor-container {
-    padding: 2.8rem; /* Aumentado para mejor espaciado */
-    margin-top: 1rem; /* Reducido para mejor flujo */
-  }
-  
-  .autor-content {
-    padding: 0;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 2.5rem; /* Reducido para mejor espaciado */
   }
   
   .autor-avatar {
@@ -828,27 +806,38 @@
   }
   
   .contact-grid {
-    gap: 2.5rem;
-    padding: 2.5rem;
-    margin: 2.5rem 0;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "separador"
+      "pages";
+    gap: 30px;
   }
   
-  .contacto-form-container {
-    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
-    padding: 2.5rem !important;
+  .contacto-form-container, .autor-container {
+    padding: 2rem !important;
+    min-height: 300px;
   }
   
   .contacto-form-container::after {
     font-size: 2.4rem !important;
-    top: 1.2rem !important;
+    top: 1.8rem !important;
   }
   
   .contacto-title-line {
-    top: 5rem;
+    top: 3rem;
+    width: 70px;
   }
   
-  .contacto-form {
-    margin-top: 6rem; /* Ajustado para dar espacio al título */
+  .autor-title {
+    font-size: 2.4rem;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-enviar, .btn-leer-mas {
+    padding: 1rem 2rem !important;
+    font-size: 1.4rem !important;
   }
   
   .form-group {
@@ -865,23 +854,6 @@
   
   .btn-submit {
     padding: 1rem 1.5rem;
-  }
-  
-  #contacto .section-title {
-    font-size: 3rem;
-    margin-bottom: 1.2rem;
-  }
-  
-  .autor-container {
-    padding: 3rem 2.5rem; /* Ajustado padding horizontal */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .autor-title {
-    font-size: 2.4rem;
-    margin-bottom: 2rem; /* Aumentado para mejor espaciado */
   }
   
   .autor-avatar {
@@ -959,19 +931,20 @@
     margin: 2rem 0;
   }
   
-  .contacto-form-container {
-    background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
-    padding: 2rem !important;
+  .contacto-form-container, .autor-container {
+    padding: 1.5rem !important;
+    min-height: 250px;
   }
   
   .contacto-form-container::after {
     font-size: 2.2rem !important;
-    top: 1rem !important;
+    top: 1.5rem !important;
   }
   
   .contacto-title-line {
-    top: 4.8rem;
-    width: 50px;
+    top: 2.7rem;
+    width: 60px;
+    height: 2px;
   }
   
   .contacto-form {
@@ -1004,15 +977,6 @@
   .btn-submit {
     padding: 0.9rem 1.4rem;
     font-size: 1.5rem;
-  }
-  
-  .autor-container {
-    padding: 2.5rem 2rem; /* Ajustado para mejor espaciado */
-  }
-  
-  .autor-title {
-    font-size: 2.2rem;
-    margin-bottom: 1.8rem;
   }
   
   .autor-avatar {
@@ -1091,15 +1055,6 @@
   .contacto-form {
     margin-top: 5rem; /* Ajustado para dar espacio al título */
     gap: 1.8rem; /* Ajustado para mejor espaciado entre campos */
-  }
-  
-  .autor-container {
-    padding: 2.2rem 1.8rem; /* Ajustado para mejor espaciado */
-  }
-  
-  .autor-title {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
   }
   
   .autor-avatar {
@@ -1555,24 +1510,21 @@
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 1.5rem;
-  background: #333 !important;
-  border: 1px solid #555 !important;
-  border-radius: 0.8rem;
-  color: #ddd !important;
+  padding: 1.2rem;
+  background: rgba(30, 30, 30, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 6px;
+  color: #eee !important;
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
+  border-color: rgba(140, 82, 255, 0.5) !important;
+  box-shadow: 0 0 10px rgba(140, 82, 255, 0.1) !important;
   outline: none;
-  border-color: #8C52FF !important;
-  background: #3a3a3a !important;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(140, 82, 255, 0.2) !important;
-  transform: translateY(-3px);
 }
 
 .form-group textarea {
