@@ -15,20 +15,23 @@
   z-index: 1;
 }
 
-/* Fondo del hero - refinado */
+/* Fondo del hero - optimizado */
 .hero-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('../../images/Hero_Background.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: -1;
+  overflow: hidden;
   filter: brightness(0.9) contrast(1.05);
-  transform: scale(2);
+}
+
+.hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Contenido del hero */
@@ -196,15 +199,15 @@
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  padding: 0.9rem 1.8rem; /* Reducir el tamaño del botón */
+  padding: 0.9rem 1.8rem;
   background: linear-gradient(135deg, #FF9900, #FFB700);
   color: #000 !important;
   font-weight: 700;
-  border-radius: 0.6rem; /* Esquinas ligeramente redondeadas */
+  border-radius: 0.6rem;
   box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
   transition: all 0.3s ease;
   text-decoration: none;
-  font-size: 1.4rem; /* Hacerlo más compacto */
+  font-size: 1.4rem;
   border: 1px solid rgba(255, 153, 0, 0.5);
   text-shadow: none !important;
 }
@@ -218,7 +221,7 @@
 }
 
 .amazon-hero-btn i.fab.fa-amazon {
-  font-size: 1.6rem; /* Reducir el tamaño del icono */
+  font-size: 1.6rem;
   color: #000 !important;
   text-shadow: none !important;
 }

@@ -25,39 +25,23 @@ header img, .logo img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-  overflow: hidden;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  z-index: -1 !important;
+  overflow: hidden !important;
 }
 
 .hero-bg-img {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
-  width: 50% !important;
-  height: auto !important;
-  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
   object-position: center !important;
-  margin: 0 auto;
-}
-
-/* Solución alternativa para el fondo usando background-image */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
-  background-image: url('../images/Hero_Background.png');
-  background-size: 50%;
-  background-position: center;
-  opacity: 0.9;
 }
 
 /* Fix para imágenes de libro */
@@ -67,31 +51,6 @@ body::before {
   display: block !important;
 }
 
-/* Forzar hero background */
-.hero-background {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100vh !important;
-  background-image: url('../images/Hero_Background.png') !important;
-  background-size: 50% !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  z-index: -1 !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-/* Asegurar que no haya elemento after */
-.hero-background::after,
-.hero-background::before {
-  display: none !important;
-  content: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-
 /* Forzar contenido del hero */
 .hero-section {
   position: relative !important;
@@ -99,14 +58,13 @@ body::before {
   height: 100vh !important;
   display: flex !important;
   align-items: center !important;
-  padding-left: 10% !important;
   z-index: 10 !important; /* Mayor z-index para asegurar visibilidad */
 }
 
 /* Ajuste para contenido del hero - aumentando opacidad */
 .hero-content {
   max-width: 600px !important;
-  background-color: rgba(0, 0, 0, 0.7) !important; /* Aumentamos la opacidad del fondo */
+  background-color: rgba(0, 0, 0, 0.7) !important;
   padding: 3rem !important;
   border-radius: 1.5rem !important;
   backdrop-filter: blur(10px) !important;
@@ -115,23 +73,6 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   margin-bottom: 2rem !important;
   z-index: 20 !important; /* Mayor z-index para asegurar visibilidad */
-}
-
-/* Forzar que no haya overlays o elementos que cubran el hero */
-body::before,
-body::after,
-html::before,
-html::after,
-.preloader::after,
-.preloader::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* Forzar visualización de la imagen de fondo en caso de flash inicial */
-body.loaded .hero-background {
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 /* Estilos específicos para asegurar que la imagen se cargue */
@@ -143,12 +84,10 @@ body.loaded .hero-background {
 body, html {
   min-height: 100vh !important;
   height: auto !important;
-  background-color: transparent !important;
 }
 
 /* 
- * FIX HERO 
- * Correcciones específicas para el hero section
+ * Ajustes responsive
  */
 
 /* Asegurar que el hero esté centrado en dispositivos móviles */
