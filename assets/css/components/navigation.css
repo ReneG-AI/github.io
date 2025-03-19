@@ -529,6 +529,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 0.3rem 0.6rem rgba(255, 153, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: none !important;
 }
 
 .amazon-link:hover {
@@ -536,11 +537,13 @@
   transform: translateY(-3px);
   box-shadow: 0 0.5rem 1rem rgba(255, 153, 0, 0.4);
   color: #000 !important;
+  text-shadow: none !important;
 }
 
 /* Asegurar que el icono dentro del enlace de Amazon también sea negro */
 .amazon-link i {
   color: #000 !important;
+  text-shadow: none !important;
 }
 
 /* Add colored line across entire header - ELIMINADO */

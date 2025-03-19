@@ -96,18 +96,22 @@
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  text-shadow: none !important; /* Eliminar sombras de texto */
 }
 
 .amazon-btn i {
   margin-right: 0.8rem;
   font-size: 1.6rem;
-  color: #333;
+  color: #000 !important; /* Cambiar de #333 a #000 y forzar */
+  text-shadow: none !important;
 }
 
 .amazon-btn:hover {
   transform: translateY(-3px);
   background: linear-gradient(135deg, #FFC107, #FF9900);
   box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
+  color: #000 !important; /* Asegurar color negro en hover */
+  text-shadow: none !important;
 }
 
 /* Botón Ver interior con degradado elegante */

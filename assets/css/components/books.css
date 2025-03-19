@@ -886,6 +886,7 @@
   border: 1px solid #e6920f;
   box-shadow: 0 2px 5px rgba(213, 132, 15, 0.3);
   gap: 0.8rem;
+  text-shadow: none !important; /* Eliminar sombras de texto */
 }
 
 .amazon-btn:hover {
@@ -893,10 +894,12 @@
   background: linear-gradient(135deg, #FFC107, #FF9900);
   box-shadow: 0 4px 8px rgba(213, 132, 15, 0.4);
   color: #000 !important; /* Mantener color negro en hover */
+  text-shadow: none !important;
 }
 
 .amazon-btn i {
-  color: #000; /* Asegurar que el icono también sea negro */
+  color: #000 !important; /* Asegurar que el icono también sea negro */
+  text-shadow: none !important;
 }
 
 /* Estilo para botones de Ver Interior */
