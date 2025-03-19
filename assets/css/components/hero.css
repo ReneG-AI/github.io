@@ -1,6 +1,6 @@
 /* 
  * HERO
- * Estilos para el banner principal simplificado
+ * Estilos para el banner principal refinado
  */
 
 /* Hero con fondo fijo */
@@ -11,27 +11,25 @@
   display: flex;
   align-items: center;
   padding-left: 5%;
+  justify-content: flex-start;
   z-index: 1;
   text-align: left;
 }
 
-/* Fondo del hero - simplificado al máximo */
+/* Fondo del hero - refinado */
 .hero-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url('../../images/Banner.png');
+  background-image: url('../../images/Hero_Background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
-}
-
-/* Eliminamos completamente este elemento */
-.hero-background::after {
-  display: none;
+  filter: brightness(0.9) contrast(1.05);
+  transform: scale(2);
 }
 
 /* Contenido del hero */
@@ -51,12 +49,20 @@
   z-index: 2;
   text-align: left;
   overflow: hidden;
+  transform: translateY(0);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 /* Contenedor moderno y futurista */
 .hero-content-container {
   position: relative;
   z-index: 2;
+}
+
+.hero-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1.2rem 3rem rgba(0, 0, 0, 0.4);
+  border-color: rgba(140, 82, 255, 0.15);
 }
 
 /* Elemento decorativo para efecto futurista */
@@ -90,6 +96,7 @@
 .hero-title {
   font-size: 5.5rem;
   margin-bottom: 1.5rem;
+  color: #fff;
   text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
   line-height: 1.2;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
