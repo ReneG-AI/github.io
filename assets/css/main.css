@@ -1134,37 +1134,13 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
-/* Scroll indicator con círculo estático y flecha animada */
+/* Eliminar estilos del scroll-indicator y scroll-circle */
 .scroll-indicator {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
+  display: none;
 }
 
 .scroll-circle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 5.4rem;
-  height: 5.4rem;
-  background: linear-gradient(135deg, #FF5EDB, #8C52FF);
-  background-size: 200% 200%;
-  border-radius: 50%;
-  color: var(--white);
-  font-size: 1.8rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(255, 94, 219, 0.3);
-  transition: all 0.3s ease;
-}
-
-.scroll-circle i {
-  animation: bounce 3s ease-in-out infinite;
-}
-
-.scroll-circle:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0.8rem 2rem rgba(255, 94, 219, 0.4);
+  display: none;
 }
 
 /* Elegant animated borders for containers - Solo para los libros individuales */
