@@ -39,17 +39,17 @@
   --bg-newsletter: #131313;
   
   /* Colores específicos para testimonios */
-  --testimonial-bg: rgba(10, 10, 14, 0.85);
-  --testimonios-container-bg: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
-  --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05);
-  --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1);
-  --testimonial-border-glow: 0 0 20px rgba(140, 82, 255, 0.35);
-  --testimonial-container-border-glow: 0 0 30px rgba(140, 82, 255, 0.45);
+  --testimonial-bg: #121216;
+  --testimonios-container-bg: #0e0e10;
+  --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --testimonial-border: 1px solid rgba(255, 255, 255, 0.05);
+  --testimonial-container-border: 1px solid rgba(255, 255, 255, 0.05);
   
   /* Colores específicos para contacto */
   --contact-section-bg: #121212;
-  --contact-grid-bg: linear-gradient(135deg, rgba(12, 12, 14, 0.95), rgba(18, 18, 22, 0.98));
-  --contact-form-bg: linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(25, 25, 25, 0.95));
+  --contact-grid-bg: #0e0e10;
+  --contact-form-bg: #121216;
   --contact-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
   --contact-border: 1px solid rgba(255, 255, 255, 0.05);
   

@@ -1311,37 +1311,26 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-/* Estilos para el contenedor de testimonios - Igualando con el de libros */
+/* Estilos para el contenedor de testimonios y libros */
 .testimonios-container,
 .book-showcase {
-  background: linear-gradient(135deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97)) !important;
+  background: #0e0e10 !important;
   border-radius: 2rem;
   padding: 4rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
   overflow: hidden;
   z-index: 1;
   position: relative;
   margin: 2rem auto;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Borde degradado compartido para ambos contenedores */
-.testimonios-container::before,
-.book-showcase::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 2.2rem;
-  background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
-  background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
-  z-index: -1;
-  opacity: 0.5;
+/* Eliminar animaciones de bordes degradados */
+@keyframes gradientBorder {
+  0% { background-position: 0% 0; }
+  100% { background-position: 0% 0; }
 }
 
 /* Media queries para responsividad */
@@ -1493,22 +1482,13 @@ body {
   transform: translateZ(0);
 }
 
-/* Asegurar fondo oscuro para testimonios */
-.testimonios-container {
-  background: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97)) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1) !important;
-}
-
-.testimonial {
-  background: rgba(10, 10, 14, 0.85) !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05) !important;
-}
-
 /* Forzar estilos oscuros para testimoniales */
 .testimonios-container,
 .testimonial {
-  background-color: var(--dark-bg, #0a0a0e) !important;
+  background-color: #0e0e10 !important;
   color: var(--text-color, #fff) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
 .testimonial-text {
@@ -1522,22 +1502,54 @@ body {
 }
 
 .contact-grid {
-  background: linear-gradient(135deg, rgba(12, 12, 14, 0.95), rgba(18, 18, 22, 0.98)) !important;
+  background: #0e0e10 !important;
   box-shadow: var(--shadow-lg) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 .contacto-form-container,
 .autor-container {
-  background: linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(25, 25, 25, 0.95)) !important;
+  background: #121216 !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Eliminación de los efectos de fondo morado */
+/* Eliminación de los efectos de fondo morado y gradientes animados */
 .contact-grid::before,
 .contacto-form-container::before,
-.autor-container::before {
-  opacity: 0.3 !important;
+.autor-container::before,
+.testimonios-container::before,
+.testimonial::before,
+.book-showcase::before {
+  display: none !important;
+}
+
+/* Estilos compartidos para ambas secciones principales */
+#libros .section,
+#testimonios .section {
+  padding: 8rem 0;
+}
+
+/* Sección de testimonios con fondo transparente */
+#testimonios.section {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilos para el contenedor de testimonios y libros */
+.testimonios-container,
+.book-showcase {
+  background: #0e0e10 !important;
+  border-radius: 2rem;
+  padding: 4rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
+  margin: 2rem auto;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
 /* Ruta de importación de componentes CSS */
