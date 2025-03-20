@@ -40,24 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar la página inmediatamente
     document.body.classList.add('loaded');
 
-    // JavaScript para funcionalidad "Leer más..." en testimonios
-    const readMoreToggles = document.querySelectorAll('.read-more-toggle');
-    
-    readMoreToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const testimonialText = this.parentElement;
-            
-            if (testimonialText.classList.contains('expanded')) {
-                testimonialText.classList.remove('expanded');
-                this.textContent = 'Leer más...';
-            } else {
-                testimonialText.classList.add('expanded');
-                this.textContent = 'Leer menos';
-            }
-        });
-    });
-
     // Auto-resize textarea functionality
     const textarea = document.getElementById('mensaje');
     

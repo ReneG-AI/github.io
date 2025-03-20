@@ -170,7 +170,7 @@
   text-align: center;
 }
 
-/* Texto del testimonio */
+/* Texto del testimonio con truncamiento elegante */
 .testimonial-content p {
   color: var(--text-color, #FFFFFF) !important;
   font-size: 1.6rem;
@@ -181,6 +181,10 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   font-weight: 400;
   letter-spacing: 0.01em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 /* Eliminar las comillas */
@@ -367,6 +371,7 @@
   .testimonial-content p {
     font-size: 1.5rem;
     line-height: 1.6;
+    -webkit-line-clamp: 4;
   }
   
   .testimonios-title-container .section-title,
@@ -406,6 +411,7 @@
     font-size: 1.5rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
+    -webkit-line-clamp: 5;
   }
   
   .testimonios-title-container .section-title,
@@ -449,6 +455,7 @@
   
   .testimonial-content p {
     font-size: 1.4rem;
+    -webkit-line-clamp: 6;
   }
   
   .testimonios-title-container .section-title,
