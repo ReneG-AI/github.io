@@ -6,7 +6,10 @@
 /* Ajuste de la sección para mejor integración */
 #contacto.section {
   padding-top: 2rem;
-  background-color: var(--contact-section-bg, #121212) !important;
+  background-color: var(--body-bg) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0;
 }
 
 /* Contenedor de la sección de contacto */
@@ -77,7 +80,7 @@
   display: none;
 }
 
-/* Grid de contacto - Rediseñado para coincidir con el showcase de libros */
+/* Estilos para el contact-grid - Actualizado para ser consistente con testimonials-showcase */
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -85,12 +88,12 @@
   position: relative;
   z-index: 1;
   padding: 4rem;
-  border-radius: 1.8rem;
+  border-radius: 1.5rem;
   transition: transform 0.3s ease;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 5rem auto;
   background: #0e0e10 !important;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
   grid-template-areas: 
     "form autor"
     "separador separador"
@@ -101,205 +104,123 @@
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Eliminar borde degradado para el contenedor de contacto */
-.contact-grid::before {
-  display: none !important;
+/* Fondo de la sección - Actualizado para coincidir con testimonials */
+#contacto.section {
+  background-color: var(--body-bg) !important;
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 0;
 }
 
 /* Contenedor del formulario de contacto - Estandarizado */
-.contacto-form-container {
+.contacto-form-container, .autor-container {
   grid-area: form;
   position: relative;
-  background: #121216 !important;
-  border-radius: 1.5rem !important;
-  padding: 3rem !important;
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
+  background: rgba(26, 26, 30, 0.3) !important;
+  border-radius: 1.2rem !important;
+  padding: 3.5rem !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3) !important;
   transform: translateY(0);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   color: #ddd !important;
-  min-height: 550px;
   height: 100%;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-/* Eliminar borde degradado para el formulario */
-.contacto-form-container::before {
-  display: none !important;
-}
-
-/* Título interno para el formulario - Ajustado al estilo de libro-page-title */
-.contacto-form-container::after {
-  content: '¡Contáctame!' !important;
-  position: absolute !important;
-  top: 2.5rem !important;
-  left: 0 !important;
-  right: 0 !important;
-  text-align: center !important;
-  font-size: 2.4rem !important; /* Ajustado al tamaño de libro-page-title */
-  font-weight: 700 !important;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important; /* Mismo gradiente que libro-page-title */
-  background-size: 200% auto !important; /* Mismo tamaño de fondo que libro-page-title */
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: gradient-text 8s linear infinite !important; /* Misma animación que libro-page-title */
-  letter-spacing: 0.03em !important;
-  margin-bottom: 2rem !important;
-  padding-bottom: 1.2rem !important; /* Añadido para coincidir con libro-page-title */
-  z-index: 5 !important;
-  display: block !important;
-}
-
-/* En caso de que el título sea sobrescrito por otra regla, añadir selector alternativo */
-#contacto .contacto-form-container h2.contacto-title,
-#contacto .contacto-form-container .contacto-title {
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF) !important;
-  background-size: 200% auto !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: gradient-text 8s linear infinite !important;
-  z-index: 5 !important;
-  font-size: 2.4rem !important;
-  padding-bottom: 1.2rem !important;
-  margin-bottom: 1.5rem !important;
-  font-weight: 700 !important;
-}
-
-/* Línea debajo del título "¡Contáctame!" con el mismo estilo que autor-title::after */
-.contacto-title-line {
-  height: 3px;
-  width: 80px;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF);
-  margin: 1rem auto 2.5rem;
-  border-radius: 3px;
-  position: relative;
-  top: 3.5rem;
-  z-index: 6;
-}
-
-/* Formulario - Ajustado con margen superior para el título */
-.contacto-form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 6rem; /* Aumentado de 5.5rem para dar más espacio al título */
-  background: transparent !important;
-  color: #ddd !important;
-  flex: 1;
-  justify-content: space-between;
-}
-
-/* Grupo de formulario */
-.form-group {
-  position: relative;
-}
-
-/* Etiquetas de formulario con estilo moderno y elegante */
-.form-group label {
-  display: block;
-  margin-bottom: 0.8rem;
-  font-size: 1.5rem;
-  color: #f0f0f0 !important;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  letter-spacing: 0.02em;
-}
-
-@keyframes gradient-text {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Estilos para los campos del formulario */
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 1.2rem;
-  background: rgba(30, 30, 30, 0.7) !important;
+.contacto-form-container:hover, .autor-container:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.4) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 6px;
-  color: #eee !important;
-  transition: all 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: rgba(140, 82, 255, 0.5) !important;
-  box-shadow: 0 0 10px rgba(140, 82, 255, 0.1) !important;
-  outline: none;
+/* Área del autor - Alineada con la estructura de testimonio */
+.autor-container {
+  grid-area: autor;
 }
 
-/* Área de texto para mensaje con límite de tamaño y carácteres */
-.form-group textarea {
-  min-height: 15rem;
-  resize: none;
-  overflow-y: auto;
-  transition: height 0.2s ease;
+/* Media queries para ser consistentes con testimonials */
+@media (max-width: 1200px) {
+  .contact-grid {
+    padding: 3.5rem 1.5rem;
+  }
+  
+  .contacto-form-container, .autor-container {
+    padding: 3rem !important;
+  }
 }
 
-/* Placeholder en color más tenue */
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: #aaa !important;
-  opacity: 0.8 !important;
+@media (max-width: 992px) {
+  #contacto.section {
+    padding: 6rem 0;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 1.5rem;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "separador"
+      "pages";
+  }
+  
+  .contacto-form-container, .autor-container {
+    padding: 3rem !important;
+    transform: none !important;
+    transition: all 0.3s ease;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .contacto-form-container:hover, .autor-container:hover {
+    transform: translateY(-5px) !important;
+  }
 }
 
-/* Estilos para el contador de caracteres */
-.character-count {
-  display: block;
-  text-align: right;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.5rem;
-  font-style: italic;
-  transition: color 0.3s ease;
+@media (max-width: 768px) {
+  #contacto.section {
+    padding: 5rem 0;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "form"
+      "autor"
+      "separador"
+      "pages";
+    gap: 4rem;
+    padding: 3rem 1rem;
+  }
+  
+  .contacto-form-container, .autor-container {
+    padding: 3rem !important;
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
-.character-count.limit-near {
-  color: #FFA500;
-}
-
-.character-count.limit-reached {
-  color: #FF5252;
-  font-weight: 500;
-}
-
-/* Botón enviar con estilo que combine */
-.btn-enviar, .btn-leer-mas {
-  background: linear-gradient(135deg, #8C52FF, #6B4CE6) !important;
-  color: white !important;
-  padding: 1.2rem 2.5rem !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  border-radius: 50px !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(140, 82, 255, 0.3) !important;
-  text-decoration: none !important;
-  display: inline-block !important;
-  text-align: center !important;
-  margin-top: 1rem !important;
-}
-
-.btn-enviar:hover, .btn-leer-mas:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 7px 20px rgba(140, 82, 255, 0.4) !important;
-}
-
-/* Eliminar los estilos anteriores del botón leer más que puedan estar en conflicto */
-.btn-leer-mas::before, .btn-leer-mas::after {
-  display: none !important;
+@media (max-width: 576px) {
+  #contacto.section {
+    padding: 4rem 0;
+  }
+  
+  .contact-grid {
+    padding: 2rem 0.8rem;
+    border-radius: 1.2rem !important;
+    gap: 3.5rem;
+  }
+  
+  .contacto-form-container, .autor-container {
+    padding: 2.5rem !important;
+  }
 }
 
 /* Contenedor para las páginas adicionales - extendido para llegar al footer */

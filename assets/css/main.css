@@ -51,7 +51,7 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background-color: var(--body-bg);
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -59,6 +59,9 @@ body {
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  position: relative !important;
+  min-height: 100vh !important;
+  background-image: none !important;
 }
 
 /* Fix para asegurar visibilidad de imágenes */
@@ -577,7 +580,7 @@ section {
   
   /* Fondos */
   --body-bg: #121212;
-  --card-bg: #1a1a1a;
+  --card-bg: rgba(26, 26, 30, 0.3);
   --header-bg: rgba(26, 26, 26, 0.98);
   
   /* Sombras */
@@ -601,7 +604,7 @@ section {
   
   /* Border radius */
   --border-radius-sm: 0.4rem;
-  --border-radius: 0.8rem;
+  --border-radius: 1.5rem;
   --border-radius-lg: 1.2rem;
   --border-radius-xl: 2rem;
   
@@ -609,6 +612,23 @@ section {
   --transition: all 0.3s ease;
   --transition-slow: all 0.5s ease;
   --transition-fast: all 0.2s ease;
+
+  /* Añadir variables CSS globales para mantener consistencia */
+  --card-bg: rgba(26, 26, 30, 0.3);
+  --card-bg-hover: rgba(30, 30, 35, 0.4);
+  --card-border: rgba(255, 255, 255, 0.05);
+  --card-border-hover: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 15px 40px -5px rgba(0, 0, 0, 0.4);
+  --badge-gradient: linear-gradient(90deg, #FF9900, #FFC266);
+  --title-gradient: linear-gradient(135deg, #8C52FF, #FF5EDB);
+  --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-smooth: all 0.3s ease;
+  --backdrop-blur: blur(10px);
+  --section-padding-large: 7rem 0;
+  --section-padding-medium: 6rem 0;
+  --section-padding-small: 5rem 0;
+  --section-padding-xsmall: 4rem 0;
 }
 
 /* Normalización y reset */

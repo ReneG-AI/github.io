@@ -10,54 +10,62 @@
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 5rem;
   margin: 5rem 0;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
-  border-radius: 1.8rem;
+  background: #0e0e10 !important;
+  border-radius: 1.5rem;
   padding: 4rem;
   position: relative;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
   overflow: hidden;
   z-index: 1;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Borde degradado más sutil y elegante */
+/* Borde degradado simplificado para igual al de testimonials */
 .book-showcase::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  right: -1px;
-  bottom: -1px;
-  border-radius: 1.9rem;
-  background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
-  background-size: 300% 100%;
-  animation: gradientBorder 12s linear infinite;
-  z-index: -1;
-  opacity: 0.9;
+  display: none !important;
 }
 
 /* Fondo más refinado para la sección */
 #libros.section {
-  background-color: rgba(18, 18, 18, 0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  background-color: var(--body-bg) !important;
+  position: relative;
+  overflow: hidden;
   padding: 6rem 0;
 }
 
 /* Título con tipografía refinada */
 #libros .section-title {
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
-  background-size: 300% 100%;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #8C52FF, #FF5EDB);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
-  animation: shimmer 8s linear infinite;
-  font-size: 3.6rem;
-  letter-spacing: -0.01em;
-  margin-bottom: 1rem;
+  position: relative;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+}
+
+/* Título decorativo con línea bajo el título (igual a testimonials) */
+#libros .section-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(140, 82, 255, 0.3);
 }
 
 /* Book items con estilo mejorado y más profesional */
@@ -211,150 +219,118 @@
 
 /* Ajustes para móviles */
 @media (max-width: 768px) {
+  #libros.section {
+    padding: 5rem 0;
+  }
+  
   .book-showcase {
-    padding: 1rem;
-    background: #0e0e10 !important;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    grid-template-columns: 1fr;
+    gap: 4rem; /* Aumentado para mejor separación entre libros */
+    padding: 3rem 1rem;
+    margin: 2.5rem 0;
   }
-
+  
   .book-item {
-    padding: 1rem;
-    background: #121216 !important;
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 1.5rem;
+    min-height: 650px; /* Ajuste para móviles */
+    max-width: 45rem;
+    margin: 0 auto;
+    padding-top: 1rem; /* Añadir espacio en la parte superior */
   }
-
-  .book-images {
-    height: auto;
-    min-height: 25rem;
-    padding-top: 4rem;
-    margin-bottom: 1rem;
-  }
-
-  .book-flipper {
-    width: 85%;
-    min-height: 250px;
-  }
-
-  .book-cover,
-  .book-back {
-    max-width: 180px;
-    height: auto;
-    object-fit: contain;
-  }
-
-  .book-back {
-    display: none;
-  }
-
-  .flip-button {
-    display: none;
-  }
-
-  .book-content {
-    padding: 1rem;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-
-  .book-actions {
-    flex-direction: column;
+  
+  .features-list {
+    grid-template-columns: 1fr 1fr;
     gap: 0.8rem;
   }
-
-  .amazon-btn,
-  .interior-btn {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 0.8rem;
-    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1) !important;
+  
+  #libros .book-images {
+    height: 25rem !important; /* Reducido ligeramente */
+    margin-bottom: 0 !important; /* Eliminado margen inferior */
+    padding-top: 4.5rem; /* Aumentado el espacio arriba para el ribbon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-
-  /* Eliminar efectos de hover en móviles */
-  .book-item:hover,
-  .book-item:hover .book-content,
-  .book-item:hover .book-actions,
-  .amazon-btn:hover,
-  .interior-btn:hover {
-    transform: none !important;
-    box-shadow: none !important;
+  
+  .book-content {
+    padding: 2rem;
+    margin-top: 0; /* Eliminado el margen superior */
   }
-
-  /* Eliminar animaciones innecesarias */
-  .book-item,
-  .book-content,
-  .book-actions,
-  .amazon-btn,
-  .interior-btn {
-    transition: none !important;
+  
+  .book-header {
+    margin-top: 4.5rem; /* Ahora positivo para colocarlo debajo de la imagen */
+    margin-bottom: 1.5rem;
+    position: relative;
+    top: auto; /* Eliminar top negativo */
+    text-align: center;
+  }
+  
+  .book-content h3 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center !important;
+  }
+  
+  .section-subtitle {
+    font-size: 1.6rem !important;
+    padding: 0 1rem;
+  }
+  
+  .flip-button {
+    opacity: 0.9;
+    bottom: -18px;
+    width: 2.8rem;
+    height: 2.8rem;
+    background: rgba(25, 25, 35, 0.85);
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
+  .book-detail i,
+  .feature-item i {
+    margin-right: 0.8rem;
+    font-size: 1.3rem;
+  }
+  
+  .book-details, .book-features {
+    margin-bottom: 1.2rem;
+  }
+  
+  .feature-title {
+    margin-bottom: 0.8rem;
+  }
+  
+  .book-actions {
+    padding-top: 1.8rem;
+    gap: 1.2rem;
+    flex-direction: column;
   }
 }
 
-/* Ajustes específicos para móviles pequeños */
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+  #libros.section {
+    padding: 4rem 0;
+  }
+  
   .book-showcase {
-    padding: 0.8rem;
+    padding: 2rem 0.8rem;
+    border-radius: 1.2rem !important;
   }
-
-  .book-item {
-    padding: 0.8rem;
+  
+  #libros .section-title {
+    font-size: 3rem;
   }
-
-  .book-content {
-    padding: 0.8rem;
-  }
-
+  
   .book-title {
+    font-size: 2rem;
+  }
+  
+  .amazon-btn, .interior-btn {
+    padding: 0.8rem 1.5rem;
     font-size: 1.4rem;
   }
-
+  
   .book-description {
-    font-size: 0.9rem;
-  }
-
-  .book-details {
-    font-size: 0.8rem;
-  }
-
-  .features-list {
-    font-size: 0.9rem;
-  }
-
-  .book-images {
-    min-height: 22rem;
-    padding-top: 3.5rem;
-  }
-
-  .book-flipper {
-    width: 90%;
-    min-height: 220px;
-  }
-
-  .book-cover,
-  .book-back {
-    max-width: 160px;
-  }
-}
-
-/* Ajustes para tablets */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .book-images {
-    min-height: 28rem;
-    padding-top: 3rem;
-  }
-
-  .book-flipper {
-    width: 75%;
-    min-height: 280px;
-  }
-
-  .book-cover,
-  .book-back {
-    max-width: 200px;
+    font-size: 1.5rem;
   }
 }
 
@@ -548,11 +524,11 @@
   .book-showcase {
     grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
     gap: 3rem;
-    padding: 3.5rem;
+    padding: 3.5rem 1.5rem;
   }
   
   #libros .section-title {
-    font-size: 3.4rem;
+    font-size: 3.6rem;
   }
   
   .book-detail i,
@@ -569,7 +545,7 @@
   .book-showcase {
     grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
     gap: 3rem;
-    padding: 3rem;
+    padding: 3rem 1.5rem;
     margin: 3rem 0;
   }
   
@@ -641,202 +617,29 @@
 
 @media (max-width: 576px) {
   #libros.section {
-    padding: 3.5rem 0;
+    padding: 4rem 0;
   }
   
   .book-showcase {
-    padding: 2rem;
-    gap: 4.5rem; /* Aumentado para mejor separación */
-    margin: 2.5rem 0;
+    padding: 2rem 0.8rem;
+    border-radius: 1.2rem !important;
   }
   
   #libros .section-title {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
   }
   
-  .section-subtitle {
-    font-size: 1.5rem !important;
-    margin-bottom: 1.2rem;
-  }
-  
-  #libros .book-images {
-    height: 23rem !important; /* Reducido para mejor proporción */
-    margin-bottom: 0 !important; /* Eliminado margen inferior */
-    padding-top: 5rem; /* Aumentado para evitar que el ribbon se solape */
-  }
-  
-  .book-content {
-    padding: 1.8rem;
-    margin-top: 1.5rem;
-  }
-  
-  .book-content h3 {
+  .book-title {
     font-size: 2rem;
-    margin-bottom: 1.2rem;
-    text-align: center !important;
+  }
+  
+  .amazon-btn, .interior-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.4rem;
   }
   
   .book-description {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .book-detail {
-    font-size: 1.3rem;
-  }
-  
-  .feature-title {
-    font-size: 1.7rem;
-    margin-bottom: 1.2rem;
-    text-align: center;
-  }
-  
-  .feature-item {
-    font-size: 1.3rem;
-  }
-  
-  .book-detail i,
-  .feature-item i {
-    margin-right: 0.7rem;
-    font-size: 1.3rem;
-  }
-  
-  .flip-button {
-    width: 2.6rem;
-    height: 2.6rem;
-    font-size: 1rem;
-    bottom: -16px;
-    padding: 0.5rem;
-  }
-  
-  #libros .book-ribbon {
-    font-size: 1.1rem !important;
-    padding: 7px 14px !important;
-    top: 5px !important; /* Ajustado para estar más arriba */
-    right: 5px !important;
-  }
-  
-  .book-header {
-    margin-top: 4rem; /* Positivo para colocarlo debajo de la imagen */
-    margin-bottom: 1.2rem;
-    text-align: center;
-    top: auto; /* Eliminar top negativo */
-  }
-  
-  .book-badge {
-    font-size: 1.6rem;
-    padding: 0.5rem 1rem;
-  }
-  
-  .book-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    align-items: center;
-  }
-  
-  .book-detail {
-    text-align: center;
-  }
-  
-  .book-flipper {
-    width: 62%;
-    height: 200px;
-  }
-  
-  .book-item {
-    min-height: 620px; /* Ajuste para móviles pequeños */
-  }
-  
-  .book-actions {
-    padding-top: 1.5rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .book-showcase {
-    padding: 1.5rem;
-    gap: 4rem;
-  }
-  
-  #libros .book-images {
-    height: 20rem !important; /* Reducido para mejor proporción */
-    margin-bottom: 0 !important; /* Eliminado margen inferior */
-    padding-top: 5.5rem; /* Más espacio para el ribbon */
-  }
-  
-  .book-content {
-    padding: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .features-list {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
-  
-  .book-detail i, 
-  .feature-icon {
-    font-size: 1.2rem;
-    margin-right: 0.7rem;
-    min-width: 1.2rem;
-  }
-  
-  .book-actions {
-    padding-top: 1.2rem;
-    gap: 0.7rem;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .amazon-btn,
-  .interior-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.7rem;
-    font-size: 1.3rem;
-  }
-  
-  .flip-button {
-    width: 2.4rem;
-    height: 2.4rem;
-    font-size: 0.9rem;
-    bottom: -14px;
-    padding: 0.4rem;
-  }
-  
-  .book-header {
-    margin-top: 3.5rem; /* Positivo para colocarlo debajo de la imagen */
-    margin-bottom: 1rem;
-    top: auto; /* Eliminar top negativo */
-  }
-  
-  .book-badge {
-    font-size: 1.3rem;
-    padding: 0.3rem 0.7rem;
-  }
-  
-  .book-content h3 {
-    font-size: 1.8rem;
-    line-height: 1.4;
-  }
-  
-  .book-flipper {
-    width: 58%;
-    height: 180px;
-  }
-  
-  #libros .book-ribbon {
-    top: 4px !important; /* Ajustado para estar más arriba */
-    right: 4px !important;
-    font-size: 1rem !important;
-    padding: 6px 12px !important;
-  }
-  
-  .book-item {
-    min-height: 580px; /* Ajuste para móviles muy pequeños */
+    font-size: 1.5rem;
   }
 }
 
