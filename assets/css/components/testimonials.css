@@ -5,18 +5,19 @@
 
 /* Sección de testimonios con fondo negro sólido */
 #testimonios.section {
-  background-color: #000000 !important;
+  background-color: var(--body-bg) !important;
   position: relative;
   overflow: hidden;
+  padding: 5rem 0;
 }
 
 /* Contenedor principal de testimonios - sin sombras */
 .testimonios-container {
-  background-color: #000000 !important;
+  background-color: var(--body-bg) !important;
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
+  padding: 0 var(--space-md);
   position: relative;
   z-index: 1;
   box-shadow: none !important;
@@ -85,7 +86,7 @@
   overflow: visible;
   margin: 2rem 0;
   position: relative;
-  background-color: #000000 !important;
+  background-color: var(--body-bg) !important;
 }
 
 /* Reglas base para todos los dispositivos - cambiado de grid a flex con wrap */
@@ -93,21 +94,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 4rem;
   width: 100%;
+  padding: 2rem 0;
 }
 
 /* Tarjeta de testimonio individual - sin sombras */
 .testimonial {
-  background-color: #000000 !important;
+  background-color: var(--body-bg) !important;
   padding: 2.5rem;
-  border-radius: var(--border-radius-lg);
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   height: 100%;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none !important;
   transition: var(--transition);
   box-shadow: none !important;
 }
@@ -236,7 +238,7 @@
   width: 100%;
   justify-content: center;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
 }
 
 /* Nombre y título del autor con tamaños mejorados */
@@ -254,7 +256,6 @@
   color: #ffffff;
   background: none !important;
   -webkit-text-fill-color: #ffffff;
-  text-fill-color: #ffffff;
   background-clip: unset;
   -webkit-background-clip: unset;
 }
@@ -381,41 +382,36 @@
 /* Estilos para la vista móvil - forzar columna vertical */
 @media (max-width: 768px) {
   #testimonios.section {
-    padding: 5rem 0;
-    background-color: #000000 !important;
+    padding: 4rem 0;
+    background-color: var(--body-bg) !important;
   }
   
-  /* Contenedor principal de testimonios */
   .testimonios-container {
-    padding: 4rem 2.5rem;
-    border-radius: 1.6rem;
-    margin: 3rem auto;
-    max-width: 90%;
+    padding: 0 2rem;
+    margin: 0 auto;
+    max-width: 100%;
     box-shadow: none !important;
     overflow: visible;
-    background-color: #000000 !important;
+    background-color: var(--body-bg) !important;
     border: none !important;
   }
   
-  /* Rejilla de testimonios - configurado específicamente para columna vertical */
   .testimonios-grid {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
     width: 100%;
-    background-color: #000000 !important;
+    padding: 1rem 0;
+    background-color: var(--body-bg) !important;
   }
   
-  /* Tarjeta de testimonio individual */
   .testimonial {
     width: 100%;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    background-color: #000000 !important;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    background-color: var(--body-bg) !important;
     box-shadow: none !important;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: none !important;
-    transition: none !important;
+    border: none !important;
   }
   
   .testimonial:hover {
@@ -437,6 +433,7 @@
     align-items: center;
     justify-content: center;
     text-shadow: none !important;
+    border-top: none;
   }
   
   .testimonial-author-name {
@@ -445,7 +442,6 @@
     color: #ffffff;
     background: none !important;
     -webkit-text-fill-color: #ffffff;
-    text-fill-color: #ffffff;
     background-clip: unset;
     -webkit-background-clip: unset;
     filter: none !important;
@@ -460,15 +456,14 @@
 
 @media (max-width: 576px) {
   #testimonios.section {
-    padding: 4rem 0 5rem 0;
-    background-color: #000000 !important;
+    padding: 3rem 0 4rem 0;
+    background-color: var(--body-bg) !important;
   }
   
   .testimonios-container {
-    padding: 3rem 1.5rem;
-    border-radius: 1.4rem;
-    margin: 1.5rem auto;
-    background-color: #000000 !important;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    background-color: var(--body-bg) !important;
     box-shadow: none !important;
     border: none !important;
   }
@@ -479,12 +474,8 @@
   }
   
   .testimonios-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    width: 100% !important;
-    background-color: #000000 !important;
+    gap: 3rem;
+    padding: 1rem 0;
   }
   
   .testimonial {
@@ -493,12 +484,12 @@
     max-width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    padding: 1.8rem;
-    margin-bottom: 6rem !important;
+    padding: 1.8rem 0;
+    margin-bottom: 4rem !important;
     box-shadow: none !important;
     min-height: 280px;
-    background-color: #000000 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--body-bg) !important;
+    border: none !important;
   }
   
   .testimonial:last-child {
@@ -526,6 +517,7 @@
   .testimonial-author {
     margin-top: 1.5rem;
     text-shadow: none !important;
+    border-top: none;
   }
   
   .testimonial-author-name {
@@ -533,7 +525,6 @@
     color: #ffffff;
     background: none !important;
     -webkit-text-fill-color: #ffffff;
-    text-fill-color: #ffffff;
     background-clip: unset;
     -webkit-background-clip: unset;
     filter: none !important;
