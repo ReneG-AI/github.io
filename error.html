@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Ups! Estamos coloreando fuera de las líneas - René Garcia Educa</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-color: #8C52FF;
+      --secondary-color: #FF5EDB;
+      --accent-color: #00D4FF;
+      --bg-color: #121212;
+      --card-bg: #1a1a1e;
+      --text-color: #f5f5f5;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .error-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem;
+      background: rgba(26, 26, 30, 0.5);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    
+    .error-container::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: 1.6rem;
+      background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
+      background-size: 300% 100%;
+      animation: gradientBorder 12s linear infinite;
+      z-index: -1;
+      opacity: 0.5;
+    }
+    
+    @keyframes gradientBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .error-illustration {
+      max-width: 300px;
+      margin: 0 auto 2rem;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+    
+    .error-title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient-text 8s linear infinite;
+    }
+    
+    @keyframes gradient-text {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .error-message {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .error-btn {
+      padding: 1rem 2rem;
+      background: rgba(30, 30, 35, 0.8);
+      color: white;
+      border-radius: 0.8rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      border: 1px solid rgba(140, 82, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .error-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(140, 82, 255, 0.25);
+      background: linear-gradient(135deg, rgba(45, 45, 60, 0.9), rgba(35, 35, 45, 0.9));
+    }
+    
+    .error-footer {
+      margin-top: 3rem;
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    .background-decoration {
+      position: absolute;
+      width: 40rem;
+      height: 40rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(140, 82, 255, 0.15), rgba(255, 94, 219, 0.15), transparent 70%);
+      filter: blur(80px);
+      z-index: -2;
+    }
+    
+    .decoration-1 {
+      top: -20rem;
+      right: -15rem;
+    }
+    
+    .decoration-2 {
+      bottom: -15rem;
+      left: -10rem;
+    }
+    
+    @media (max-width: 768px) {
+      .error-title {
+        font-size: 2.5rem;
+      }
+      
+      .error-message {
+        font-size: 1.3rem;
+      }
+      
+      .error-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .error-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Decoraciones de fondo -->
+  <div class="background-decoration decoration-1"></div>
+  <div class="background-decoration decoration-2"></div>
+  
+  <div class="error-container">
+    <img src="assets/images/Error_Drake_3D.png" alt="Dragón Kawaii Confundido" class="error-illustration">
+    
+    <h1 class="error-title">¡Ups! El dragón coloreó fuera de las líneas</h1>
+    
+    <p class="error-message">
+      Parece que nuestro pequeño dragón se emocionó demasiado coloreando y causó un problema técnico. 
+      Nuestro equipo está trabajando con crayones mágicos para arreglarlo lo antes posible.
+    </p>
+    
+    <div class="error-actions">
+      <a href="index.html" class="error-btn">
+        <i class="fas fa-home"></i> Volver al inicio
+      </a>
+      <a href="mailto:renegarciaeduca@gmail.com" class="error-btn">
+        <i class="fas fa-envelope"></i> Contactar soporte
+      </a>
+      <a href="https://www.amazon.es/stores/author/B0CRF7937N/about" target="_blank" class="error-btn">
+        <i class="fab fa-amazon"></i> Visitar Amazon
+      </a>
+    </div>
+  </div>
+  
+  <div class="error-footer">
+    <img src="assets/images/Logo.webp" alt="René Garcia Educa" width="80">
+    <p>© <span id="current-year">2024</span> René Garcia Educa</p>
+  </div>
+  
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html> 
