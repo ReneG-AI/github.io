@@ -122,6 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Inicializar AOS
     initAOS();
+
+    // Inicializar contador de caracteres para el formulario
+    initCharacterCounter();
 });
 
 // Función para limpiar la caché del navegador de manera programática
@@ -499,31 +502,45 @@ function initInteriorModal() {
     }
 }
 
-// Contador de caracteres para el formulario
+// Inicializar contador de caracteres y auto-altura del textarea
 function initCharacterCounter() {
-    const messageTextarea = document.getElementById('mensaje');
-    const characterCount = document.querySelector('.character-count');
+    const textarea = document.getElementById('mensaje');
+    const charCount = document.querySelector('.character-count');
     
-    if (messageTextarea && characterCount) {
-        // Actualizar contador al cargar
-        updateCharacterCount();
+    if (textarea && charCount) {
+        // Actualizar contador al cargar la página
+        updateCharCount();
         
-        // Actualizar contador cuando se escriba en el área de texto
-        messageTextarea.addEventListener('input', updateCharacterCount);
+        // Agregar evento para actualizar el contador y la altura
+        textarea.addEventListener('input', function() {
+            updateCharCount();
+            adjustTextareaHeight();
+        });
         
-        function updateCharacterCount() {
-            const currentLength = messageTextarea.value.length;
-            const maxLength = messageTextarea.getAttribute('maxlength');
-            characterCount.textContent = `${currentLength}/${maxLength} caracteres`;
+        // Función para actualizar el contador de caracteres
+        function updateCharCount() {
+            const maxLength = textarea.getAttribute('maxlength');
+            const currentLength = textarea.value.length;
+            charCount.textContent = `${currentLength}/${maxLength} caracteres`;
             
-            // Cambiar color cuando se acerca al límite
-            if (currentLength >= maxLength * 0.9) {
-                characterCount.style.color = 'var(--warning-color)';
-            } else if (currentLength >= maxLength * 0.8) {
-                characterCount.style.color = 'var(--accent-color)';
+            // Cambiar color según el progreso
+            if (currentLength >= maxLength - 50) {
+                charCount.classList.add('limit-near');
             } else {
-                characterCount.style.color = 'var(--gray)';
+                charCount.classList.remove('limit-near');
             }
+            
+            if (currentLength >= maxLength - 10) {
+                charCount.classList.add('limit-reached');
+            } else {
+                charCount.classList.remove('limit-reached');
+            }
+        }
+        
+        // Función para ajustar la altura del textarea
+        function adjustTextareaHeight() {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
         }
     }
 }
@@ -764,4 +781,33 @@ window.addEventListener('resize', function() {
         }
         window.lastWidth = window.innerWidth;
     }, 200);
-}, { passive: true }); 
+}, { passive: true });
+
+// Función para copiar el correo electrónico
+function copyEmail() {
+  const emailText = document.getElementById('email-copy');
+  const copyBtn = document.querySelector('.copy-btn');
+  
+  // Crear un elemento temporal para copiar el texto
+  const textarea = document.createElement('textarea');
+  textarea.value = emailText.textContent;
+  document.body.appendChild(textarea);
+  
+  // Seleccionar y copiar el texto
+  textarea.select();
+  document.execCommand('copy');
+  
+  // Eliminar el elemento temporal
+  document.body.removeChild(textarea);
+  
+  // Mostrar efecto visual de copiado
+  copyBtn.classList.add('copied');
+  const originalIcon = copyBtn.innerHTML;
+  copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+  
+  // Restaurar el botón después de 2 segundos
+  setTimeout(() => {
+    copyBtn.classList.remove('copied');
+    copyBtn.innerHTML = originalIcon;
+  }, 2000);
+} 

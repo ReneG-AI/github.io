@@ -1733,4 +1733,125 @@
     font-size: 1.7rem;
     text-align: center !important;
   }
+}
+
+/* Título del correo electrónico */
+.contact-email-heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* Badge para el correo electrónico - Estilo similar al badge de Amazon */
+.contact-email-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  margin: 0 auto 3rem;
+  box-shadow: 0 4px 15px -3px rgba(140, 82, 255, 0.4);
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+  max-width: 100%;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+}
+
+.contact-email-badge i {
+  color: white;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+}
+
+#email-copy {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botón para copiar */
+.copy-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+.copy-btn i {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Efecto de copiado */
+.copy-btn.copied {
+  background: #4CAF50;
+  animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .contact-email-badge {
+    font-size: 1.3rem;
+    padding: 0.8rem 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  #email-copy {
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .copy-btn {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-email-heading {
+    font-size: 1.6rem;
+  }
+  
+  .contact-email-badge {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .copy-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 } 
