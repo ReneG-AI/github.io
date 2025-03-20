@@ -3,20 +3,29 @@
  * Estilos para la sección de testimonios - Nueva versión
  */
 
+/* Sección de testimonios con fondo transparente */
+#testimonios.section {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+  padding: 7rem 0;
+}
+
 /* Contenedor principal de testimonios */
 .testimonios-container {
-  background: var(--testimonios-container-bg) !important;
+  background: var(--testimonios-container-bg, linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97))) !important;
   border-radius: 20px;
   padding: 30px;
   margin: 50px auto;
   position: relative;
-  box-shadow: var(--testimonial-container-shadow) !important;
+  box-shadow: var(--testimonial-container-shadow, 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1)) !important;
   isolation: isolate;
   z-index: 1;
   max-width: 1400px;
   will-change: transform, opacity;
   transform: translateZ(0);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
 }
 
 .testimonios-container::before {
@@ -26,13 +35,13 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: var(--gradient-border);
+  background: var(--gradient-border, linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF));
   z-index: -1;
   border-radius: 22px;
   background-size: 300% 100%;
   animation: gradientBorder 3s linear infinite;
   filter: blur(1px);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 /* Borde degradado tipo neón para el contenedor - Igual que en books */
@@ -109,21 +118,22 @@
   place-items: center;
 }
 
-/* Tarjeta de testimonio individual - Nueva versión sin foto */
+/* Tarjeta de testimonio individual */
 .testimonial {
-  background: var(--testimonial-bg) !important;
+  background: var(--testimonial-bg, rgba(10, 10, 14, 0.85)) !important;
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
   position: relative;
   width: 100%;
-  box-shadow: var(--testimonial-shadow) !important;
+  box-shadow: var(--testimonial-shadow, 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05)) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   will-change: transform;
   overflow: hidden;
   min-height: 320px;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
 }
 
 .testimonial::before {
@@ -133,13 +143,13 @@
   left: -1px;
   right: -1px;
   bottom: -1px;
-  background: var(--gradient-border);
+  background: var(--gradient-border, linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF));
   z-index: -1;
   border-radius: 16px;
   background-size: 300% 100%;
   animation: gradientBorder 3s linear infinite;
   filter: blur(0.5px);
-  opacity: 0.7;
+  opacity: 0.4;
   transition: opacity 0.3s ease;
 }
 
@@ -215,26 +225,15 @@
   align-items: center;
 }
 
-/* Texto del testimonio - Centrado y mejor tamaño */
-.testimonial p {
-  color: var(--text-color);
+/* Texto del testimonio */
+.testimonial-text {
+  color: var(--text-color, #FFFFFF) !important;
   font-size: 1.5rem;
   line-height: 1.6;
   margin-bottom: 20px;
   position: relative;
   z-index: 2;
-  text-align: center;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  width: 100%;
-  display: -webkit-box;
-  -webkit-line-clamp: 6;
-  line-clamp: 6;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .testimonial p.expanded {

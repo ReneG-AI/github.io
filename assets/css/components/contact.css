@@ -6,6 +6,7 @@
 /* Ajuste de la sección para mejor integración */
 #contacto.section {
   padding-top: 2rem;
+  background-color: var(--contact-section-bg, #121212) !important;
 }
 
 /* Contenedor de la sección de contacto */
@@ -88,8 +89,8 @@
   transition: transform 0.3s ease;
   max-width: 1200px;
   margin: 5rem auto;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+  background: var(--contact-grid-bg, linear-gradient(135deg, rgba(12, 12, 14, 0.95), rgba(18, 18, 22, 0.98))) !important;
+  box-shadow: var(--contact-shadow, 0 1rem 3rem rgba(0, 0, 0, 0.35)) !important;
   grid-template-areas: 
     "form autor"
     "separador separador"
@@ -97,7 +98,7 @@
   overflow: hidden;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: var(--contact-border, 1px solid rgba(255, 255, 255, 0.05)) !important;
 }
 
 /* Borde degradado para el contenedor de contacto - Igualado al de libros */
@@ -113,7 +114,7 @@
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
   z-index: -1;
-  opacity: 0.9;
+  opacity: 0.3 !important;
 }
 
 /* Eliminar pliegue central del libro */
@@ -125,13 +126,13 @@
 .contacto-form-container {
   grid-area: form;
   position: relative;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%) !important;
+  background: var(--contact-form-bg, linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(25, 25, 25, 0.95))) !important;
   border-radius: 1.5rem !important;
   padding: 3rem !important;
   box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
   transform: translateY(0);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: var(--contact-border, 1px solid rgba(255, 255, 255, 0.05)) !important;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   overflow: hidden;
@@ -151,12 +152,12 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  border-radius: 1.6rem;
+  border-radius: 1.7rem;
   background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
   background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
+  animation: gradientBorder 12s linear infinite;
   z-index: -1;
-  opacity: 0.9;
+  opacity: 0.3 !important;
 }
 
 /* Título interno para el formulario - Ajustado al estilo de libro-page-title */
@@ -355,25 +356,23 @@
 .autor-container {
   grid-area: autor;
   position: relative;
-  background: linear-gradient(135deg, rgba(12, 12, 12, 0.9) 0%, rgba(22, 22, 22, 0.95) 100%) !important;
+  background: var(--contact-form-bg, linear-gradient(135deg, rgba(15, 15, 15, 0.9), rgba(25, 25, 25, 0.95))) !important;
   border-radius: 1.5rem !important;
   padding: 3rem !important;
   box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
   transform: translateY(0);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: var(--contact-border, 1px solid rgba(255, 255, 255, 0.05)) !important;
+  z-index: 1;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  overflow: visible;
+  overflow: hidden;
   color: #ddd !important;
   min-height: 550px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 1;
-  margin-top: 0 !important;
+  flex: 1;
 }
 
 /* Borde para el autor container - cambiado a negro/gris oscuro */
@@ -384,12 +383,12 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  border-radius: 1.6rem;
+  border-radius: 1.7rem;
   background: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
   background-size: 300% 100%;
-  animation: gradientBorder 8s linear infinite;
+  animation: gradientBorder 12s linear infinite;
   z-index: -1;
-  opacity: 0.9;
+  opacity: 0.3 !important;
 }
 
 /* Eliminar líneas de neón diagonales en las esquinas */
