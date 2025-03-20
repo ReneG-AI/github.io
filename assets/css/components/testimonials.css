@@ -425,39 +425,84 @@
   }
 }
 
-/* Estilos para la vista móvil - testimoniales en columna */
+/* Estilos para la vista móvil - testimoniales en carrusel horizontal */
 @media (max-width: 768px) {
   .testimonios-container {
-    padding: 3rem 2.5rem;
+    padding: 3rem 2rem;
     border-radius: 1.6rem;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   }
   
+  .testimonios-slider {
+    position: relative;
+    overflow: hidden;
+    padding: 0 0.5rem;
+  }
+  
   .testimonios-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    display: flex;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem 2rem;
+    margin: 0 -0.5rem;
+  }
+  
+  /* Ocultar scrollbar pero mantener funcionalidad */
+  .testimonios-grid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .testimonios-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
   .testimonial {
+    flex: 0 0 90%;
+    scroll-snap-align: center;
+    min-width: 90%;
     padding: 2.8rem 2.4rem;
-    margin: 0 auto 0;
-    width: 92%;
-    max-width: 500px;
+    margin: 0;
     min-height: auto;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25) !important;
     transform: none !important;
     transition: none !important;
   }
   
-  /* Desactivar efectos hover en móvil */
-  .testimonial:hover {
-    transform: none !important;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25) !important;
+  /* Mostrar controles de navegación en móvil */
+  .testimonial-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
   }
   
-  .testimonial::before {
-    opacity: 0.9;
-    animation-duration: 20s;
+  .testimonial-nav-button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: rgba(140, 82, 255, 0.1);
+    border: 1px solid rgba(140, 82, 255, 0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.6rem;
+    z-index: 10;
+  }
+  
+  .testimonial-dots {
+    display: flex;
+    gap: 0.8rem;
+    margin: 0 1rem;
   }
   
   .testimonial-content p {
@@ -468,24 +513,9 @@
     max-height: none;
   }
   
-  .testimonios-title-container .section-title,
-  #testimonios .section-title,
-  .titulo-degradado-texto {
-    font-size: 2.8rem;
-  }
-  
-  .testimonial-stars {
-    margin: 1rem 0 1.2rem;
-  }
-  
-  .testimonial-stars i {
-    font-size: 1.6rem;
-  }
-  
-  .amazon-badge {
-    font-size: 1.1rem;
-    padding: 0.6rem 1rem;
-    margin: 1rem auto 1.5rem;
+  .testimonial::before {
+    opacity: 0.9;
+    animation-duration: 20s;
   }
   
   .testimonial-author-name {
@@ -499,13 +529,14 @@
 
 @media (max-width: 576px) {
   .testimonios-container {
-    padding: 2.5rem 1.8rem;
+    padding: 2.5rem 1.5rem;
     border-radius: 1.4rem;
   }
   
   .testimonial {
+    flex: 0 0 98%;
+    min-width: 98%;
     padding: 2.5rem 2rem;
-    width: 100%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
   }
   
@@ -515,32 +546,19 @@
     margin-bottom: 1.5rem;
   }
   
-  .testimonial::before {
-    opacity: 0.75;
+  .testimonial-nav-button {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.4rem;
   }
   
-  .testimonios-title-container .section-title,
-  #testimonios .section-title,
-  .titulo-degradado-texto {
-    font-size: 2.6rem;
+  .testimonial-dots {
+    gap: 0.6rem;
   }
   
-  .testimonial-stars i {
-    font-size: 1.5rem;
-  }
-  
-  .amazon-badge {
-    font-size: 1rem;
-    padding: 0.5rem 0.8rem;
-    margin: 0.8rem auto 1.2rem;
-  }
-  
-  .testimonial-author-name {
-    font-size: 1.7rem;
-  }
-  
-  .testimonial-author-title {
-    font-size: 1.2rem;
+  .testimonial-dot {
+    width: 1rem;
+    height: 1rem;
   }
 }
 
