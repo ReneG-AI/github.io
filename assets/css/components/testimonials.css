@@ -469,6 +469,7 @@
     background: linear-gradient(45deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
     background-size: 300% 300%;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     animation: gradientBorder 15s linear infinite;
