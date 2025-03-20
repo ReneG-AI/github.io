@@ -9,6 +9,9 @@ const config = {
     // Límite máximo de intentos de recarga de imágenes
     maxRetryAttempts: 1,
     
+    // Nivel de depuración: 0 = solo errores, 1 = info básica, 2 = verbose
+    debugLevel: 0,
+    
     // Función de log que respeta el nivel de verbosidad
     log: function(message, level = 1) {
         if (this.logLevel >= level) {
@@ -19,6 +22,14 @@ const config = {
     // Función de log para errores (siempre se muestra)
     error: function(message) {
         console.error(message);
+    },
+    
+    // Función log que usamos para depuración
+    log: function(message, level) {
+        if (level === undefined) level = 0;
+        if (this.debugLevel >= level) {
+            console.log(message);
+        }
     },
     
     // Detecta si estamos en GitHub Pages y obtiene el nombre del repositorio automáticamente

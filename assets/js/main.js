@@ -71,13 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // También ejecutar cuando se redimensiona la ventana
     window.addEventListener('resize', fixContactSectionDisplay);
 
-    // Inicializar AOS con configuración personalizada
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: false,
-        mirror: false
-    });
+    // Inicializar AOS con configuración personalizada (si existe)
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: false
+        });
+    }
     
     // Inicializar volteo de tarjetas
     initializeCardFlippers();
