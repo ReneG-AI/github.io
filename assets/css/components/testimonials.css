@@ -419,6 +419,7 @@
     border-radius: 1.6rem;
     margin: 2rem auto;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    overflow: visible;
   }
   
   .testimonios-title-container {
@@ -435,20 +436,23 @@
     position: relative;
     overflow: visible;
     padding: 0;
+    width: 100%;
   }
   
   .testimonios-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: unset;
     gap: 4rem; /* Mayor espaciado entre testimonios */
     padding: 0;
     margin: 0;
+    width: 100%;
   }
   
   .testimonial {
     width: 100%;
     padding: 3rem 2.5rem;
-    margin: 0 auto 1.5rem auto; /* Añadir margen inferior */
+    margin-bottom: 3rem !important;
     min-height: auto;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3) !important;
     border-radius: 1.5rem;
@@ -457,50 +461,62 @@
     border: 1px solid rgba(255, 255, 255, 0.08) !important;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   
-  /* Añadir un pseudo-elemento de borde degradado */
+  /* Simplificar el pseudo-elemento de borde para móvil */
   .testimonial::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 1.4rem;
-    padding: 1px; /* Grosor del borde */
-    background: linear-gradient(45deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
-    background-size: 300% 300%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    animation: gradientBorder 15s linear infinite;
-    opacity: 0.7;
+    border: 1px solid rgba(140, 82, 255, 0.4);
+    background: linear-gradient(45deg, #8C52FF, #FF5EDB, #00D4FF);
+    background-size: 200% 200%;
+    opacity: 0.2;
     z-index: -1;
     display: block !important;
+    animation: gradientBorder 10s linear infinite;
   }
-  
+   
   .testimonial:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-3px) !important;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4) !important;
   }
-  
+   
   .testimonial:hover::before {
-    opacity: 1;
+    opacity: 0.4;
   }
   
   .testimonial-content {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 2rem;
   }
   
   .testimonial-content p {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-bottom: 2rem;
     font-size: 1.6rem;
     line-height: 1.7;
-    margin-bottom: 0;
     -webkit-line-clamp: initial;
     line-clamp: initial;
     max-height: none;
+    opacity: 0.9;
   }
   
   .testimonial-stars {
+    justify-content: center;
+    width: 100%;
+    display: flex;
     margin-bottom: 1.5rem;
   }
   
@@ -512,19 +528,29 @@
   }
   
   .amazon-badge {
+    margin: 0.5rem auto 2rem !important;
+    display: inline-block;
     padding: 0.6rem 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
     background: rgba(255, 255, 255, 0.08);
     border-radius: 4px;
-    display: inline-block;
+    text-align: center;
   }
   
   .testimonial-author {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-top: 1.5rem;
+  }
+  
+  .testimonial-author-info {
+    text-align: center;
+    width: 100%;
   }
   
   .testimonial-author-name {
@@ -532,14 +558,18 @@
     margin-bottom: 0.5rem;
     color: #fff;
     font-weight: 600;
+    text-align: center;
+    width: 100%;
   }
-  
+   
   .testimonial-author-title {
     font-size: 1.4rem;
     opacity: 0.9;
     font-weight: 400;
+    text-align: center;
+    width: 100%;
   }
-  
+   
   /* Efecto resplandor sutil en la parte superior */
   .testimonial::after {
     content: '';
@@ -561,7 +591,7 @@
 
 @media (max-width: 576px) {
   #testimonios.section {
-    padding: 4rem 0;
+    padding: 4rem 0 5rem 0;
   }
   
   .testimonios-container {
@@ -576,19 +606,20 @@
   }
   
   .testimonios-grid {
-    gap: 3.5rem;
+    gap: 3rem;
   }
   
   .testimonial {
     width: 100%;
-    padding: 2.8rem 2.2rem;
-    margin-bottom: 1.2rem;
+    padding: 2.5rem 2rem;
+    margin-bottom: 3rem;
     box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25) !important;
   }
   
   .testimonial-content p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1.6;
+    padding: 0 0.5rem;
   }
   
   .testimonial-stars {
