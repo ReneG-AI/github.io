@@ -746,3 +746,26 @@
     transform: translateY(0);
   }
 }
+
+.section-title .fa-check-circle {
+  color: #26C9FC;
+  font-size: 0.9em;
+  margin-left: 10px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 5px rgba(38, 201, 252, 0.5));
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .section-title .fa-check-circle {
+    font-size: 0.8em;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title .fa-check-circle {
+    font-size: 0.7em;
+    margin-left: 6px;
+  }
+}
