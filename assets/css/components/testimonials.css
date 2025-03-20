@@ -11,6 +11,19 @@
   padding: 7rem 0;
 }
 
+/* Showcase container for testimonials - Similar to books */
+.testimonials-showcase {
+  border-radius: 1.5rem !important;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  max-width: 1500px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
 /* Main testimonials container - VISUALLY REMOVED */
 .testimonios-container {
   display: none !important;
@@ -202,16 +215,33 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Premium design author name */
+/* Premium design author name - enhanced for more elegance */
 .testimonial-author-name {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   margin-bottom: 0.8rem;
   font-weight: 700;
   background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  position: relative;
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
+/* Decorative underline for author name */
+.testimonial-author-name::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 2px;
 }
 
 .testimonial-author-title {
@@ -235,6 +265,10 @@
   .titulo-degradado-texto {
     font-size: 3.6rem;
   }
+  
+  .testimonials-showcase {
+    padding: 3.5rem 1.5rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -251,6 +285,10 @@
   .testimonial:hover {
     transform: translateY(-5px) !important;
     box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4) !important;
+  }
+  
+  .testimonials-showcase {
+    padding: 3rem 1rem;
   }
 }
 
@@ -289,11 +327,11 @@
   }
   
   .testimonial-author-name {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
-  .testimonial-author-title {
-    font-size: 1.4rem;
+  .testimonials-showcase {
+    padding: 2.5rem 0.5rem;
   }
 }
 
@@ -338,10 +376,11 @@
   }
   
   .testimonial-author-name {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
   
-  .testimonial-author-title {
-    font-size: 1.3rem;
+  .testimonials-showcase {
+    padding: 2rem 0.5rem;
+    border-radius: 1.2rem !important;
   }
 }
