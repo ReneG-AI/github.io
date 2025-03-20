@@ -83,6 +83,19 @@
   border-color: rgba(140, 82, 255, 0.2);
 }
 
+/* Contenedor de imágenes - Estructura base con margen inferior ajustado */
+.book-images {
+  position: relative;
+  margin-bottom: 2.5rem;
+  transition: all 0.3s ease;
+  height: auto;
+  min-height: 30rem;
+  padding-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Imágenes de portada y contraportada con mejor sombra */
 .book-cover,
 .book-back {
@@ -101,6 +114,7 @@
   left: 0;
   right: 0;
   will-change: transform;
+  object-fit: contain;
 }
 
 /* Portada siempre visible al frente por defecto */
@@ -123,12 +137,16 @@
 .book-flipper {
   position: relative;
   width: 70%;
-  height: 300px;
+  height: auto;
+  min-height: 300px;
   margin: 0 auto;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
   will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-flipper.flipped {
@@ -210,28 +228,22 @@
   }
 
   .book-images {
-    position: relative;
+    height: auto;
+    min-height: 25rem;
+    padding-top: 4rem;
     margin-bottom: 1rem;
-    border-radius: 0.8rem;
-    overflow: hidden;
-    box-shadow: none !important;
   }
 
   .book-flipper {
-    position: relative;
-    width: 100%;
-    height: auto;
-    perspective: none;
-    transform-style: flat;
+    width: 85%;
+    min-height: 250px;
   }
 
   .book-cover,
   .book-back {
-    width: 100%;
+    max-width: 180px;
     height: auto;
     object-fit: contain;
-    border-radius: 0.8rem;
-    box-shadow: none !important;
   }
 
   .book-back {
@@ -311,15 +323,39 @@
   .features-list {
     font-size: 0.9rem;
   }
+
+  .book-images {
+    min-height: 22rem;
+    padding-top: 3.5rem;
+  }
+
+  .book-flipper {
+    width: 90%;
+    min-height: 220px;
+  }
+
+  .book-cover,
+  .book-back {
+    max-width: 160px;
+  }
 }
 
-/* Contenedor de imágenes - Estructura base con margen inferior ajustado */
-.book-images {
-  position: relative;
-  margin-bottom: 2.5rem; /* Ajustado para el botón */
-  transition: all 0.3s ease;
-  height: 30rem;
-  padding-top: 1.5rem; /* Añadir espacio superior para separar del ribbon */
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .book-images {
+    min-height: 28rem;
+    padding-top: 3rem;
+  }
+
+  .book-flipper {
+    width: 75%;
+    min-height: 280px;
+  }
+
+  .book-cover,
+  .book-back {
+    max-width: 200px;
+  }
 }
 
 /* Contenido de información del libro - espaciado mejorado */
