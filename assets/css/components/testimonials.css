@@ -1,9 +1,9 @@
 /* 
  * TESTIMONIALS
- * Estilos para la sección de testimonios - Versión moderna y minimalista
+ * Styles for the testimonials section - Modern and elegant version
  */
 
-/* Sección de testimonios con fondo totalmente integrado */
+/* Testimonials section with integrated background */
 #testimonios.section {
   background-color: var(--body-bg) !important;
   position: relative;
@@ -11,12 +11,13 @@
   padding: 7rem 0;
 }
 
-/* Contenedor principal de testimonios - ELIMINADO VISUALMENTE */
+/* Main testimonials container - VISUALLY REMOVED */
 .testimonios-container {
   display: none !important;
 }
 
-/* Contenedor del título con efecto elegante */
+/* Title container with elegant effect */
+.testimonials-title-container,
 .testimonios-title-container {
   text-align: center;
   margin-bottom: 6rem;
@@ -24,7 +25,8 @@
   position: relative;
 }
 
-/* Título de la sección con estilo modernizado */
+/* Section title with modern style */
+.testimonials-title-container .section-title,
 .testimonios-title-container .section-title,
 #testimonios .section-title,
 .titulo-degradado-texto {
@@ -40,7 +42,8 @@
   text-shadow: none;
 }
 
-/* Línea decorativa minimalista bajo el título */
+/* Minimalist decorative line under the title */
+.testimonials-title-container .section-title::after,
 .testimonios-title-container .section-title::after,
 #testimonios .section-title::after,
 .titulo-degradado-texto::after {
@@ -57,7 +60,8 @@
   box-shadow: 0 2px 10px rgba(140, 82, 255, 0.3);
 }
 
-/* Contenedor principal de testimonios rediseñado */
+/* Redesigned testimonials main container */
+.testimonials-slider,
 .testimonios-slider {
   overflow: visible;
   margin: 0;
@@ -65,7 +69,8 @@
   background-color: transparent !important;
 }
 
-/* Grid moderno para los testimonios */
+/* Modern grid for testimonials */
+.testimonials-grid,
 .testimonios-grid {
   display: flex;
   flex-wrap: wrap;
@@ -77,13 +82,13 @@
   padding: 0 4rem;
 }
 
-/* Tarjeta de testimonio con diseño moderno y elegante */
+/* Testimonial card with modern and elegant design */
 .testimonial {
   background-color: rgba(26, 26, 30, 0.3) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 3.5rem;
-  border-radius: 1.2rem;
+  border-radius: 1.2rem !important;
   position: relative;
   overflow: hidden;
   height: 100%;
@@ -96,14 +101,14 @@
   flex: 1 1 calc(33.333% - 5rem);
 }
 
-/* Efecto sutil al pasar el cursor */
+/* Subtle hover effect */
 .testimonial:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.4) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Badge de Amazon mejorado */
+/* Enhanced Amazon badge */
 .amazon-badge {
   display: inline-flex;
   align-items: center;
@@ -133,7 +138,7 @@
   font-size: 1.3rem;
 }
 
-/* Contenido del testimonio con mejor legibilidad */
+/* Testimonial content with better readability */
 .testimonial-content {
   z-index: 2;
   position: relative;
@@ -145,7 +150,7 @@
   text-align: center;
 }
 
-/* Texto del testimonio mejorado */
+/* Enhanced testimonial text */
 .testimonial-content p {
   color: rgba(255, 255, 255, 0.95) !important;
   font-size: 1.7rem;
@@ -163,7 +168,7 @@
   -webkit-box-orient: vertical;
 }
 
-/* Estrellas más brillantes */
+/* Brighter stars */
 .testimonial-stars {
   margin-bottom: 1.8rem;
   display: flex;
@@ -183,7 +188,7 @@
   filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
-/* Información del autor con estilo elegante */
+/* Author information with elegant style */
 .testimonial-author {
   display: flex;
   flex-direction: column;
@@ -197,7 +202,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Nombre del autor con diseño premium */
+/* Premium design author name */
 .testimonial-author-name {
   font-size: 2.2rem;
   margin-bottom: 0.8rem;
@@ -216,7 +221,7 @@
   letter-spacing: 0.01em;
 }
 
-/* Media queries - Diseño responsive mejorado */
+/* Media queries - Enhanced responsive design */
 @media (max-width: 1200px) {
   .testimonial {
     flex: 1 1 calc(50% - 5rem);
@@ -224,6 +229,7 @@
     padding: 3rem;
   }
   
+  .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
   #testimonios .section-title,
   .titulo-degradado-texto {
@@ -248,12 +254,13 @@
   }
 }
 
-/* Estilos para la vista móvil - diseño vertical elegante */
+/* Styles for mobile view - elegant vertical design */
 @media (max-width: 768px) {
   #testimonios.section {
     padding: 5rem 0;
   }
   
+  .testimonials-grid,
   .testimonios-grid {
     display: flex;
     flex-direction: column;
@@ -295,15 +302,18 @@
     padding: 4rem 0;
   }
   
+  .testimonials-title-container,
   .testimonios-title-container {
     margin-bottom: 4rem;
   }
   
+  .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
   #testimonios .section-title {
     font-size: 3rem;
   }
   
+  .testimonials-grid,
   .testimonios-grid {
     padding: 0 2rem;
     gap: 3.5rem;
