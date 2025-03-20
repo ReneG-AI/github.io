@@ -1482,4 +1482,13 @@ body {
   will-change: transform;
   backface-visibility: hidden;
   transform: translateZ(0);
+}
+
+/* Asegurar fondo oscuro para testimonios */
+.testimonios-container {
+  background: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97)) !important;
+}
+
+.testimonial {
+  background: rgba(10, 10, 14, 0.85) !important;
 } 
