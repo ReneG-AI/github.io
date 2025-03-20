@@ -16,12 +16,15 @@
 @import url('layout/footer.css');
 
 /* Importar archivos de componentes */
-@import url('components/hero.css');
-@import url('components/navigation.css');
-@import url('components/books.css');
-@import url('components/testimonials.css');
-@import url('components/contact.css');
-@import url('components/footer.css');
+@import url("components/header.css");
+@import url("components/hero.css");
+@import url("components/navigation.css");
+@import url("components/books.css");
+@import url("components/author.css");
+@import url("components/testimonials.css");
+@import url("components/features.css");
+@import url("components/contact.css");
+@import url("components/footer.css");
 @import url('components/forms.css');
 @import url('components/modals.css');
 @import url('components/buttons.css');
@@ -1526,14 +1529,4 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Ruta de importación de componentes CSS */
-@import url("components/header.css");
-@import url("components/hero.css");
-@import url("components/books.css");
-@import url("components/author.css");
-@import url("components/testimonials.css");
-@import url("components/features.css");
-@import url("components/contact.css");
-@import url("components/footer.css"); 
+} 
