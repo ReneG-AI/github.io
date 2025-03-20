@@ -88,22 +88,26 @@
   animation: fadeSlideIn 1.2s ease-out forwards;
 }
 
-/* Carrusel/grid de testimonios */
+/* Carrusel/grid de testimonios - cambiado a flex para mayor compatibilidad */
 .testimonios-slider {
   width: 100%;
   position: relative;
   overflow: visible;
 }
 
+/* Reglas base para todos los dispositivos - cambiado de grid a flex con wrap */
 .testimonios-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 25px;
-  place-items: center;
+  width: 100%;
 }
 
-/* Tarjeta de testimonio individual */
 .testimonial {
+  flex: 1 1 calc(33.333% - 25px);
+  min-width: 300px;
+  max-width: 450px;
   background: #121216 !important;
   border-radius: 15px;
   padding: 30px 25px;
@@ -347,19 +351,15 @@
     padding: 4rem;
   }
   
-  .testimonios-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+  .testimonial {
+    flex: 1 1 calc(50% - 25px);
+    padding: 2.8rem 2.4rem;
   }
   
   .testimonios-title-container .section-title,
   #testimonios .section-title,
   .titulo-degradado-texto {
     font-size: 3.4rem;
-  }
-  
-  .testimonial {
-    padding: 2.8rem 2.4rem;
   }
   
   .testimonial-author-name {
@@ -377,20 +377,11 @@
     margin: 3rem auto;
   }
   
-  .testimonios-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-  }
-  
   .testimonial {
     min-height: auto;
     padding: 3rem 2.5rem;
     transform: none !important;
     transition: all 0.3s ease;
-  }
-  
-  .testimonial:hover {
-    transform: translateY(-5px) !important;
   }
   
   .testimonial-content p {
@@ -406,9 +397,13 @@
   .testimonial-author-title {
     font-size: 1.4rem;
   }
+  
+  .testimonial:hover {
+    transform: translateY(-5px) !important;
+  }
 }
 
-/* Estilos para la vista móvil - testimoniales en columna vertical */
+/* Estilos para la vista móvil - forzar columna vertical */
 @media (max-width: 768px) {
   #testimonios.section {
     padding: 5rem 0;
@@ -424,20 +419,24 @@
     overflow: visible;
   }
   
-  /* Rejilla de testimonios */
+  /* Rejilla de testimonios - configurado específicamente para columna vertical */
   .testimonios-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 6rem; /* Mayor espacio entre testimonios */
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 6rem !important;
     padding: 1rem 0;
     width: 100%;
+    align-items: center !important;
   }
   
   /* Tarjeta de testimonio individual */
   .testimonial {
-    width: 100%;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
     padding: 3rem 2.5rem;
-    margin-bottom: 70px !important; /* Espacio considerable entre testimonios */
+    margin-bottom: 70px !important;
     min-height: 330px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45) !important;
     border-radius: 1.8rem;
@@ -450,6 +449,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+  
+  /* Último testimonio sin margen inferior excesivo */
+  .testimonial:last-child {
+    margin-bottom: 2rem !important;
   }
   
   /* Contenido del testimonio */
@@ -570,11 +574,6 @@
     display: block !important;
     animation: gradientBorder 10s linear infinite;
   }
-  
-  /* Último testimonio sin margen inferior excesivo */
-  .testimonial:last-child {
-    margin-bottom: 2rem !important;
-  }
 }
 
 @media (max-width: 576px) {
@@ -594,11 +593,19 @@
   }
   
   .testimonios-grid {
-    gap: 4rem;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    width: 100% !important;
   }
   
   .testimonial {
-    width: 100%;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     padding: 3rem 2rem;
     margin-bottom: 6rem !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
