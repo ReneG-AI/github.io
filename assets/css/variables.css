@@ -1,22 +1,22 @@
 /* Variables globales */
 :root {
   /* Colores principales - Paleta fantasía infantil */
-  --primary-color: #8A2BE2; /* Púrpura vibrante */
+  --primary-color: #8C52FF; /* Actualizado a un púrpura más brillante para las tarjetas de testimonios */
   --primary-color-dark: #6A0DAD;
   --primary-color-light: #B37EFC;
-  --primary-color-10: rgba(138, 43, 226, 0.1);
-  --primary-color-20: rgba(138, 43, 226, 0.2);
-  --primary-color-30: rgba(138, 43, 226, 0.3);
+  --primary-color-10: rgba(140, 82, 255, 0.1);
+  --primary-color-20: rgba(140, 82, 255, 0.2);
+  --primary-color-30: rgba(140, 82, 255, 0.3);
 
   --secondary-color: #00BFFF; /* Azul cielo brillante */
-  --secondary-color-dark: #2d3142; /* Antes era #0099CC - Ahora azul oscuro elegante */
+  --secondary-color-dark: #2d3142; /* Azul oscuro elegante */
   --secondary-color-light: #70D6FF;
   
-  --accent-color: #FF3E9D; /* Rosa neón */
+  --accent-color: #FF5EDB; /* Actualizado a un rosa más brillante para los detalles de los testimonios */
   --accent-color-dark: #E91E63;
   --accent-color-light: #FF80AB;
-  --accent-color-10: rgba(255, 62, 157, 0.1);
-  --accent-color-20: rgba(255, 62, 157, 0.2);
+  --accent-color-10: rgba(255, 94, 219, 0.1);
+  --accent-color-20: rgba(255, 94, 219, 0.2);
   
   /* Colores fantasía adicionales */
   --fantasy-yellow: #FFD700; /* Amarillo dorado */
@@ -38,6 +38,14 @@
   --bg-categories: #161616;
   --bg-newsletter: #131313;
   
+  /* Colores específicos para testimonios */
+  --testimonial-bg: rgba(10, 10, 14, 0.85);
+  --testimonios-container-bg: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
+  --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05);
+  --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1);
+  --testimonial-border-glow: 0 0 20px rgba(140, 82, 255, 0.35);
+  --testimonial-container-border-glow: 0 0 30px rgba(140, 82, 255, 0.45);
+  
   /* Colores de texto */
   --text-color: #FFFFFF; /* Texto principal siempre blanco */
   --text-color-light: rgba(255, 255, 255, 0.8);
@@ -54,15 +62,18 @@
   --border-color: rgba(255, 255, 255, 0.1);
   
   /* Gradientes */
-  --gradient-primary: linear-gradient(135deg, #8A2BE2, #B37EFC);
-  --gradient-hover: linear-gradient(135deg, #6A0DAD, #8A2BE2);
-  --gradient-accent: linear-gradient(135deg, #FF3E9D, #FF80AB);
+  --gradient-primary: linear-gradient(135deg, #8C52FF, #B37EFC);
+  --gradient-hover: linear-gradient(135deg, #6A0DAD, #8C52FF);
+  --gradient-accent: linear-gradient(135deg, #FF5EDB, #FF80AB);
   --gradient-secondary: linear-gradient(135deg, #00BFFF, #70D6FF);
-  --gradient-rainbow: linear-gradient(to right, #FF3E9D, #FFD700, #00FF7F, #00BFFF, #8A2BE2);
+  --gradient-rainbow: linear-gradient(to right, #FF5EDB, #FFD700, #00FF7F, #00BFFF, #8C52FF);
+  
+  /* Gradiente para bordes de testimonios */
+  --gradient-border: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
   
   /* Colores de elementos específicos */
   --star-color: #FFD700; /* Estrellas doradas */
-  --price-color: #FF3E9D; /* Precios en rosa neón */
+  --price-color: #FF5EDB; /* Precios en rosa neón */
   
   /* Estilos específicos del tema oscuro incorporados a root */
   --dark-text-color: #e0e0e0;
@@ -238,16 +249,22 @@
  */
 
 :root {
-  /* Colores base mágicos */
-  --primary-color: #8A2BE2; /* Violeta mágico */
+  /* Colores base mágicos - Actualizado para reforzar la consistencia */
+  --primary-color: #8C52FF; /* Violeta mágico */
   --primary-color-light: #B37EFC; /* Violeta claro */
   --primary-color-dark: #6A0DAD; /* Violeta oscuro */
   --secondary-color: #00BFFF; /* Azul brillante */
   --secondary-color-light: #66D9FF; /* Azul claro */
   --secondary-color-dark: #0099CC; /* Azul oscuro */
-  --accent-color: #FF3E9D; /* Rosa mágico */
+  --accent-color: #FF5EDB; /* Rosa mágico */
   --accent-color-light: #FF71B8; /* Rosa claro */
   --accent-color-dark: #D10075; /* Rosa oscuro */
+  
+  /* Añadiendo nuevamente las variables específicas de testimonios para reforzar */
+  --testimonial-bg: rgba(10, 10, 14, 0.85);
+  --testimonios-container-bg: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
+  --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05);
+  --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1);
   
   /* Transparencias */
   --primary-color-10: rgba(138, 43, 226, 0.1);

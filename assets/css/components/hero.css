@@ -153,54 +153,57 @@
   font-weight: 500;
 }
 
-/* Mejoras en el testimonio */
+/* Estilos para la insignia/badge de testimonio en el hero */
 .testimonial-badge {
+  background: var(--testimonial-bg, rgba(10, 10, 14, 0.85));
+  border-radius: 12px;
+  padding: 15px;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  max-width: 320px;
+  box-shadow: var(--testimonial-shadow, 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05));
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background: linear-gradient(135deg, rgba(40, 40, 50, 0.85), rgba(25, 25, 35, 0.9));
-  padding: 1.5rem;
-  border-radius: 1rem;
-  margin-bottom: 2.5rem;
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 215, 0, 0.1);
-  position: relative;
+  align-items: center;
+  z-index: 10;
+  transform: translateZ(0);
+  will-change: transform;
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .testimonial-badge::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
-  pointer-events: none;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: var(--gradient-border, linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF));
+  z-index: -1;
+  border-radius: 14px;
+  background-size: 300% 100%;
+  animation: gradientBorder 3s linear infinite;
+  filter: blur(0.5px);
+  opacity: 0.7;
 }
 
 .testimonial-icon {
-  font-size: 2.2rem;
-  color: rgba(255, 215, 0, 0.9);
-  margin-bottom: 0.8rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }
 
 .testimonial-text {
-  font-size: 1.6rem;
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-}
-
-.rating {
-  display: flex;
-}
-
-.rating i {
-  color: rgba(255, 215, 0, 0.9);
-  font-size: 1.4rem;
-  margin-right: 0.3rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color);
 }
 
 /* Botones mejorados del hero */
@@ -411,6 +414,10 @@ html body .amazon-hero-btn * {
   
   .amazon-hero-btn i.fab.fa-amazon {
     font-size: 1.5rem;
+  }
+  
+  .testimonial-badge {
+    display: none; /* Ocultar en móviles para mejor rendimiento */
   }
 }
 

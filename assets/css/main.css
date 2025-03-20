@@ -1493,4 +1493,26 @@ body {
 .testimonial {
   background: rgba(10, 10, 14, 0.85) !important;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05) !important;
-} 
+}
+
+/* Forzar estilos oscuros para testimoniales */
+.testimonios-container,
+.testimonial {
+  background-color: var(--dark-bg, #0a0a0e) !important;
+  color: var(--text-color, #fff) !important;
+}
+
+.testimonial-text {
+  color: var(--text-color, #fff) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Ruta de importación de componentes CSS */
+@import url("components/header.css");
+@import url("components/hero.css");
+@import url("components/books.css");
+@import url("components/author.css");
+@import url("components/testimonials.css");
+@import url("components/features.css");
+@import url("components/contact.css");
+@import url("components/footer.css"); 
