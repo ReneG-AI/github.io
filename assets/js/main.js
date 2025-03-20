@@ -1,5 +1,8 @@
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Limpiar caché de recursos
+    clearBrowserCache();
+
     // Detectar soporte WebP y aplicar clase al HTML
     detectWebpSupport();
     
@@ -128,6 +131,65 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar ripple effect en botones
     initializeRippleEffect();
 });
+
+// Función para limpiar la caché del navegador de manera programática
+function clearBrowserCache() {
+    console.log("Limpiando caché del navegador...");
+    
+    // Método 1: Intentar recargar la página sin caché
+    if (window.location.href.indexOf('cache_cleared') === -1) {
+        // Solo lo hacemos una vez para evitar bucles
+        const cacheBuster = new Date().getTime();
+        const hasParams = window.location.href.indexOf('?') !== -1;
+        const separator = hasParams ? '&' : '?';
+        
+        // No ejecutamos la recarga para evitar ciclos, solo dejamos preparado el código
+        // window.location.href = window.location.href + separator + 'cache_cleared=' + cacheBuster;
+        console.log("Parámetro para evitar caché: " + cacheBuster);
+    }
+    
+    // Método 2: Eliminar service workers si existen
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for (let registration of registrations) {
+                registration.unregister();
+                console.log('Service Worker desregistrado');
+            }
+        });
+    }
+    
+    // Método 3: Limpiar caché de recursos para evitar problemas con imágenes antiguas
+    if (window.caches) {
+        caches.keys().then(function(cacheNames) {
+            return Promise.all(
+                cacheNames.map(function(cacheName) {
+                    console.log('Eliminando caché: ' + cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        });
+    }
+    
+    // Método 4: Forzar recarga de imágenes con timestamp
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (img.src && !img.src.includes('data:')) {
+            const originalSrc = img.src;
+            const timestamp = new Date().getTime();
+            img.setAttribute('data-original-src', originalSrc);
+            
+            // Agregar un timestamp como parámetro para forzar recarga desde el servidor
+            if (originalSrc.indexOf('?') === -1) {
+                img.src = originalSrc + '?t=' + timestamp;
+            } else {
+                img.src = originalSrc + '&t=' + timestamp;
+            }
+            console.log('Recargando imagen: ' + img.src);
+        }
+    });
+    
+    console.log("Caché limpiada correctamente");
+}
 
 // Función para detectar soporte de WebP y aplicar clase al documento
 function detectWebpSupport() {

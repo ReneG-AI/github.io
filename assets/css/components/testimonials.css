@@ -5,14 +5,14 @@
 
 /* Contenedor principal de testimonios */
 .testimonios-container {
-  background: linear-gradient(145deg, rgba(12, 12, 16, 0.98), rgba(18, 18, 24, 0.95));
+  background: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
   border-radius: 2rem;
   padding: 5rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(0, 0, 0, 0.2) inset;
   margin-bottom: 5rem;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.03);
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
@@ -34,8 +34,21 @@
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
   z-index: -1;
-  opacity: 0.9;
-  box-shadow: 0 0 15px rgba(140, 82, 255, 0.3);
+  opacity: 0.85;
+  box-shadow: 0 0 25px rgba(140, 82, 255, 0.35);
+}
+
+/* Efecto de brillo adicional para el contenedor */
+.testimonios-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(140, 82, 255, 0.05), transparent 60%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Contenedor del título */
@@ -115,14 +128,14 @@
 
 /* Tarjeta de testimonio individual - Nueva versión sin foto */
 .testimonial {
-  background: rgba(15, 15, 20, 0.8);
+  background: rgba(10, 10, 14, 0.85);
   border-radius: 1.8rem;
   padding: 4rem 3rem;
   position: relative;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   flex-direction: column;
@@ -148,14 +161,14 @@
   background-size: 300% 100%;
   animation: gradientBorder 12s linear infinite;
   z-index: 0;
-  opacity: 0.9;
-  box-shadow: 0 0 10px rgba(140, 82, 255, 0.2);
+  opacity: 0.8;
+  box-shadow: 0 0 15px rgba(140, 82, 255, 0.25);
 }
 
 .testimonial:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Efecto de brillo */
@@ -165,7 +178,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(140, 82, 255, 0.08), transparent 70%);
+  background: radial-gradient(circle at center, rgba(140, 82, 255, 0.06), transparent 70%);
   border-radius: 1.8rem;
   pointer-events: none;
   z-index: 1;
@@ -174,7 +187,7 @@
 }
 
 .testimonial:hover .testimonial-glow {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 /* Badge de Amazon */
