@@ -22,6 +22,9 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Main testimonials container - VISUALLY REMOVED */
@@ -33,9 +36,10 @@
 .testimonials-title-container,
 .testimonios-title-container {
   text-align: center;
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
   padding: 0;
   position: relative;
+  width: 100%;
 }
 
 /* Section title with modern style */
@@ -46,6 +50,7 @@
   font-size: 4rem;
   font-weight: 800;
   margin-bottom: 2rem;
+  margin-top: 1rem;
   background: linear-gradient(135deg, #8C52FF, #FF5EDB);
   -webkit-background-clip: text;
   background-clip: text;
@@ -80,6 +85,7 @@
   margin: 0;
   position: relative;
   background-color: transparent !important;
+  width: 100%;
 }
 
 /* Modern grid for testimonials */
@@ -288,7 +294,12 @@
   }
   
   .testimonials-showcase {
-    padding: 3rem 1rem;
+    padding: 3rem 1.5rem;
+  }
+  
+  .testimonials-title-container,
+  .testimonios-title-container {
+    margin-bottom: 4rem;
   }
 }
 
@@ -304,7 +315,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4rem;
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
   
   .testimonial {
@@ -331,7 +342,19 @@
   }
   
   .testimonials-showcase {
-    padding: 2.5rem 0.5rem;
+    padding: 3rem 1rem;
+  }
+  
+  .testimonials-title-container,
+  .testimonios-title-container {
+    margin-bottom: 3rem;
+  }
+  
+  .testimonials-title-container .section-title,
+  .testimonios-title-container .section-title,
+  #testimonios .section-title {
+    font-size: 3.2rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -342,18 +365,19 @@
   
   .testimonials-title-container,
   .testimonios-title-container {
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
   }
   
   .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
   #testimonios .section-title {
     font-size: 3rem;
+    margin-top: 0;
   }
   
   .testimonials-grid,
   .testimonios-grid {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     gap: 3.5rem;
   }
   
@@ -380,7 +404,7 @@
   }
   
   .testimonials-showcase {
-    padding: 2rem 0.5rem;
+    padding: 2rem 0.8rem;
     border-radius: 1.2rem !important;
   }
 }
