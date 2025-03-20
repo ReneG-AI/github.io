@@ -113,8 +113,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar ripple effect en botones
     initializeRippleEffect();
 
-    // Inicializar el carrusel de testimonios
-    initTestimonialCarousel();
+    // Detectamos si es un dispositivo móvil
+    const isMobile = window.innerWidth <= 768;
+
+    // Detectamos el tema
+    const isDarkMode = document.body.classList.contains('dark-mode');
+
+    // Inicializar navbar
+    initNavbar();
+
+    // Inicializar AOS
+    initAOS();
 });
 
 // Función para limpiar la caché del navegador de manera programática
@@ -1092,99 +1101,6 @@ function initTestimonialsCarousel() {
             }, 200);
         }, { passive: true });
     }
-}
-
-// Testimonios Carrusel para móviles
-function initTestimonialCarousel() {
-  const grid = document.querySelector('.testimonios-grid');
-  if (!grid) return;
-  
-  const testimonials = grid.querySelectorAll('.testimonial');
-  const prevBtn = document.querySelector('.prev-testimonial');
-  const nextBtn = document.querySelector('.next-testimonial');
-  const dots = document.querySelectorAll('.testimonial-dot');
-  
-  if (!testimonials.length || !prevBtn || !nextBtn) return;
-  
-  let currentIndex = 0;
-  
-  // Función para actualizar la posición del carrusel
-  function updateCarousel(index) {
-    if (index < 0) index = testimonials.length - 1;
-    if (index >= testimonials.length) index = 0;
-    
-    currentIndex = index;
-    
-    // Actualizar dots
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
-    
-    // En dispositivos móviles, usamos scroll para navegar
-    if (window.innerWidth <= 768) {
-      const testimonial = testimonials[index];
-      if (testimonial) {
-        const offset = testimonial.offsetLeft - (grid.offsetWidth - testimonial.offsetWidth) / 2;
-        grid.scrollTo({
-          left: offset,
-          behavior: 'smooth'
-        });
-      }
-    }
-  }
-  
-  // Event listeners para botones
-  prevBtn.addEventListener('click', () => {
-    updateCarousel(currentIndex - 1);
-  });
-  
-  nextBtn.addEventListener('click', () => {
-    updateCarousel(currentIndex + 1);
-  });
-  
-  // Event listeners para dots
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      updateCarousel(index);
-    });
-  });
-  
-  // Detectar cuando el scroll termina para actualizar el indicador activo
-  let scrollTimeout;
-  grid.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      // Calcular qué testimonio está más centrado
-      const center = grid.scrollLeft + grid.offsetWidth / 2;
-      let closestIndex = 0;
-      let closestDistance = Infinity;
-      
-      testimonials.forEach((testimonial, index) => {
-        const testimonialCenter = testimonial.offsetLeft + testimonial.offsetWidth / 2;
-        const distance = Math.abs(center - testimonialCenter);
-        
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = index;
-        }
-      });
-      
-      // Actualizar dots sin hacer scroll
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === closestIndex);
-      });
-      
-      currentIndex = closestIndex;
-    }, 150);
-  });
-  
-  // Iniciar en el primer testimonio
-  updateCarousel(0);
-  
-  // Cuando la ventana cambia de tamaño, resetear la posición
-  window.addEventListener('resize', () => {
-    updateCarousel(currentIndex);
-  });
 }
 
 // Función principal para arreglar todos los problemas de visualización - optimizada

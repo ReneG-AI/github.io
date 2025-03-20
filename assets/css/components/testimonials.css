@@ -92,7 +92,7 @@
 .testimonios-slider {
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .testimonios-grid {
@@ -419,14 +419,9 @@
   .testimonial-author-title {
     font-size: 1.4rem;
   }
-  
-  /* Ocultar controles de navegación en tablet */
-  .testimonial-controls {
-    display: none;
-  }
 }
 
-/* Estilos para la vista móvil - testimoniales en carrusel horizontal */
+/* Estilos para la vista móvil - testimoniales en columna vertical */
 @media (max-width: 768px) {
   .testimonios-container {
     padding: 3rem 2rem;
@@ -436,74 +431,26 @@
   
   .testimonios-slider {
     position: relative;
-    overflow: hidden;
-    padding: 0 0.5rem;
+    overflow: visible;
+    padding: 0;
   }
   
   .testimonios-grid {
-    display: flex;
-    grid-template-columns: unset;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: 1.5rem;
-    padding: 1rem 0.5rem 2rem;
-    margin: 0 -0.5rem;
-  }
-  
-  /* Ocultar scrollbar pero mantener funcionalidad */
-  .testimonios-grid::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .testimonios-grid {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 0;
+    margin: 0;
   }
   
   .testimonial {
-    flex: 0 0 90%;
-    scroll-snap-align: center;
-    min-width: 90%;
+    width: 100%;
     padding: 2.8rem 2.4rem;
-    margin: 0;
+    margin: 0 auto;
     min-height: auto;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25) !important;
     transform: none !important;
     transition: none !important;
-  }
-  
-  /* Mostrar controles de navegación en móvil */
-  .testimonial-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    gap: 1rem;
-  }
-  
-  .testimonial-nav-button {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    background: rgba(140, 82, 255, 0.1);
-    border: 1px solid rgba(140, 82, 255, 0.3);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.6rem;
-    z-index: 10;
-  }
-  
-  .testimonial-dots {
-    display: flex;
-    gap: 0.8rem;
-    margin: 0 1rem;
   }
   
   .testimonial-content p {
@@ -536,8 +483,7 @@
   }
   
   .testimonial {
-    flex: 0 0 98%;
-    min-width: 98%;
+    width: 100%;
     padding: 2.5rem 2rem;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
   }
@@ -546,21 +492,6 @@
     font-size: 1.5rem;
     line-height: 1.5;
     margin-bottom: 1.5rem;
-  }
-  
-  .testimonial-nav-button {
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 1.4rem;
-  }
-  
-  .testimonial-dots {
-    gap: 0.6rem;
-  }
-  
-  .testimonial-dot {
-    width: 1rem;
-    height: 1rem;
   }
 }
 
