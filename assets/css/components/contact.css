@@ -1479,4 +1479,49 @@
     width: 2.5rem;
     height: 2.5rem;
   }
+}
+
+/* Estilos para las secciones de información */
+.info-section {
+  margin-bottom: 2.5rem;
+}
+
+.info-section h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.info-section p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .info-section h3 {
+    font-size: 2rem;
+  }
+  
+  .info-section p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .info-section h3 {
+    font-size: 1.8rem;
+  }
+  
+  .info-section p {
+    font-size: 1.4rem;
+  }
 } 
