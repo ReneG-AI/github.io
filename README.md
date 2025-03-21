@@ -1,157 +1,122 @@
-# 🌟 René Garcia Educa - Página Web Oficial
+# René García Educa - Website
 
-## 📌 Descripción
-Esta es la página oficial de **René Garcia Educa**, una plataforma dedicada a libros educativos multilingües para colorear que combinan el aprendizaje de idiomas con actividades creativas y relajantes. Los libros están disponibles en español, catalán, inglés, francés y alemán, ofreciendo una experiencia educativa única tanto para niños como para adultos.
+This repository contains the source code for René García Educa's website, a platform dedicated to multilingual educational coloring books.
 
-## 🚀 Tecnologías Utilizadas
-- **HTML5** para la estructura semántica de la web
-- **CSS3** con variables, media queries avanzadas, flexbox y grid
-- **JavaScript** para interactividad y efectos dinámicos
-- **WebP/PNG** sistema dual de imágenes para optimización
-- **GitHub Pages** para el alojamiento del sitio
-- **Font Awesome** para iconografía vectorial
-- **Google Fonts** para tipografías personalizadas
-- **AOS Library** para animaciones al hacer scroll
-- **Three.js** para efectos visuales avanzados (carga diferida)
+## Project Overview
 
-## 📂 Estructura de Archivos
+The website showcases educational coloring books in multiple languages (Spanish, Catalan, English, French, and German). It's designed as a static website using modern HTML, CSS, and JavaScript with responsive design principles to work on all devices.
+
+## Project Structure
+
 ```
 /
+├── index.html           # Main homepage
+├── terms.html           # Terms of service page
+├── privacy.html         # Privacy policy page
+├── legal.html           # Legal notice page
+├── error.html           # Custom error page
+├── .htaccess            # Server configuration
 ├── assets/
-│   ├── css/
-│   │   ├── components/        # Estilos de componentes individuales
-│   │   ├── layout/            # Estilos de estructura y layout
-│   │   ├── sections/          # Estilos específicos por sección
-│   │   ├── pages/             # Estilos para páginas adicionales
-│   │   ├── base.css           # Estilos base y reset
-│   │   ├── components.css     # Compilación de componentes
-│   │   ├── darkmode-only.css  # Estilos específicos para modo oscuro
-│   │   ├── fix-hero.css       # Correcciones específicas para el hero
-│   │   ├── main.css           # Archivo CSS principal
-│   │   ├── responsive.css     # Estilos responsivos
-│   │   ├── sprite-book.css    # Estilos para sprites de libros
-│   │   └── variables.css      # Variables CSS globales
-│   ├── js/
-│   │   ├── animations/        # Scripts para animaciones específicas
-│   │   ├── config.js          # Configuración y variables JavaScript
-│   │   ├── main.js            # JavaScript principal
-│   │   └── carousel.js        # Funcionalidad de carruseles
-│   └── images/
-│       ├── *.webp             # Imágenes optimizadas en formato WebP
-│       └── favicon.ico        # Favicon del sitio
-├── .htaccess                  # Configuración del servidor
-├── _config.yml                # Configuración para GitHub Pages
-├── index.html                 # Página principal del sitio
-├── privacy.html               # Página de política de privacidad
-├── terms.html                 # Página de términos de servicio
-├── legal.html                 # Página de aviso legal
-└── README.md                  # Este archivo de documentación
+│   ├── css/             # Stylesheets
+│   │   ├── main.css     # Main CSS file that imports others
+│   │   ├── base.css     # Base styles
+│   │   ├── variables.css # CSS variables and themes
+│   │   ├── fix-hero.css # Fixes for hero section
+│   │   ├── fix-sections.css # Fixes for other sections
+│   │   ├── components/  # Component-specific styles
+│   │   │   ├── hero.css
+│   │   │   ├── navigation.css
+│   │   │   ├── books.css
+│   │   │   ├── author.css
+│   │   │   ├── testimonials.css
+│   │   │   ├── contact.css
+│   │   │   ├── footer.css
+│   │   │   ├── forms.css
+│   │   │   ├── modals.css
+│   │   │   └── buttons.css
+│   │   ├── layout/      # Layout styles
+│   │   ├── sections/    # Section-specific styles
+│   │   └── pages/       # Page-specific styles
+│   ├── js/              # JavaScript files
+│   │   ├── main.js      # Main JavaScript file
+│   │   ├── config.js    # Configuration for paths and GitHub Pages
+│   │   ├── carousel.js  # Book carousel functionality
+│   │   ├── app.js       # Compatibility placeholder
+│   │   ├── particles.min.js # Placeholder for particles effect
+│   │   ├── fixes/       # JS fixes for specific issues
+│   │   │   └── menu-fix.js # Mobile menu fixes
+│   │   ├── animations/  # Animation-related scripts
+│   │   └── utils/       # Utility functions
+│   │       └── copy-email.js # Email copy functionality
+│   └── images/          # Website images
+│       ├── Logo.webp    # Site logo
+│       ├── Hero_Background.webp # Hero section background
+│       ├── Autor.png    # Author image
+│       └── ...          # Book covers and other images
+└── backup/              # Backup directory
 ```
 
-## 📱 Adaptabilidad y Responsividad
-La web ha sido cuidadosamente optimizada para:
+## Key Features
 
-- 🖥️ **PC** (>992px)
-  - Diseño amplio con proporciones equilibradas
-  - Experiencia completa con todas las animaciones y efectos
-  - Distribución espaciosa con aprovechamiento del espacio horizontal
+- **Responsive Design**: Adapts to all screen sizes (mobile, tablet, desktop)
+- **Modern Aesthetics**: Clean, elegant dark mode design with animations
+- **Performance Optimized**: WebP images, optimized asset loading
+- **SEO Optimized**: Meta tags, structured data, and semantic HTML
+- **Cross-Browser Compatible**: Works on all modern browsers
 
-- 📱 **Tablet** (768px-992px)
-  - Ajustes de márgenes y proporciones
-  - Tipografía adaptada para mejor legibilidad
-  - Elementos redimensionados para interacción táctil
+## Technical Details
 
-- 📱 **Móvil** (320px-767px)
-  - Secciones alineadas verticalmente para mejor experiencia táctil
-  - Elementos centrados para facilitar la navegación
-  - Espaciado optimizado para pantallas pequeñas
-  - Menú y navegación adaptados para uso con una sola mano
+### CSS Architecture
 
-## ✨ Características Principales
+The CSS is organized in a modular structure:
+- `variables.css`: Contains theme variables and custom properties
+- `base.css`: Reset and base styles
+- Component-specific CSS files for maintainability
+- Mobile-first responsive approach
 
-### 📸 Optimización de Imágenes
-- **Sistema dual WebP/PNG** para máxima compatibilidad y rendimiento
-- **Precarga estratégica** para mejorar la experiencia de usuario
-- **Sprites CSS** para reducir solicitudes HTTP en imágenes de libros
+### JavaScript Features
 
-### ⚡ Rendimiento Optimizado
-- **Carga diferida** inteligente de recursos
-- **Sistema de caché** configurado para máxima eficiencia
-- **Solicitudes limitadas** para mejor rendimiento en conexiones lentas
+The site uses vanilla JavaScript with these key features:
+- Smooth scrolling navigation
+- Lazy loading of images
+- Book flip effect
+- Form validation and character counting
+- Animations with AOS (Animate On Scroll)
+- Path correction system for GitHub Pages deployment
 
-### 🎨 Efectos y Animaciones
-- **Efecto flip de libros** con animación suave
-- **Líneas animadas** como separadores entre secciones
-- **Gradientes animados** en títulos y elementos destacados
-- **Transiciones suaves** entre estados de hover
+### Fixes and Compatibility
 
-### 📊 Compatibilidad con Navegadores
-- **Chrome/Edge/Opera:** Compatibilidad completa (últimas 5 versiones)
-- **Firefox:** Compatibilidad completa (últimas 5 versiones)
-- **Safari:** Compatibilidad completa (últimas 3 versiones)
-- **iOS/Android:** Optimizado para experiencia móvil
-- **IE11:** Soporte básico (sin animaciones avanzadas)
+Several mechanisms ensure the site works correctly in all environments:
+- Path correction for GitHub Pages in `config.js`
+- Image loading fallbacks
+- Mobile menu fixes
+- Compatibility placeholders for optional features
 
-## 🚀 Instrucciones de Despliegue
+## Browser Support
 
-### 📤 Publicación en GitHub Pages
-1. Asegúrate de tener todos los archivos en el repositorio
-2. Verifica que `base href` en `index.html` apunte correctamente a tu URL de GitHub Pages
-3. En GitHub, ve a Settings > Pages y selecciona la rama principal
-4. El sitio se desplegará automáticamente en la URL proporcionada
+The website is optimized for:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome for Android)
 
-### 🔄 Actualización del Sitio
-1. Clona el repositorio localmente
-2. Realiza los cambios necesarios
-3. Prueba localmente para verificar responsividad y funcionalidad
-4. Haz commit y push de los cambios al repositorio
-5. GitHub Pages actualizará automáticamente el sitio
+## Development
 
-### 📚 Agregar Nuevos Libros
-1. Prepara imágenes en formato WebP y PNG (portada y contraportada)
-2. Añade el HTML necesario en la sección correspondiente de `index.html`
-3. Asegúrate de usar las clases existentes para mantener el estilo y la responsividad
-4. Prueba la visualización en diferentes dispositivos
+To work on this project:
 
-## ✅ Verificación Final Antes de Publicar
+1. Clone the repository
+2. Make changes to HTML, CSS, or JavaScript files
+3. Test locally using a web server (e.g., Live Server VS Code extension)
+4. Commit and push changes to deploy to GitHub Pages
 
-- [ ] Revisar que el **diseño responsivo** funcione correctamente en todas las resoluciones
-- [ ] Comprobar que **los botones y enlaces** dirijan a las URLs correctas
-- [ ] Verificar que **las imágenes estén optimizadas** y se carguen adecuadamente
-- [ ] Asegurar que no haya **errores en consola** ni problemas visuales
-- [ ] Probar la navegación y funcionalidad en **diferentes navegadores**
-- [ ] Verificar la **accesibilidad** para cumplir con estándares básicos
-- [ ] Comprobar que los **formularios** funcionen correctamente
+### Best Practices
 
-## 🛠️ Mantenimiento y Desarrollo Futuro
+- Keep CSS modular by updating the appropriate component files
+- Maintain consistent naming conventions
+- Test on multiple devices and browsers before deployment
+- Use WebP images with fallbacks for older browsers
 
-### 📋 Próximas Mejoras Planeadas
-- Implementación de lazy-loading nativo para todas las imágenes
-- Optimización adicional de tiempos de carga con service workers
-- Unificación completa de media queries en un sistema coherente
-- Desarrollo de nuevas animaciones y efectos visuales
-- Implementación de dark mode completo
+## License
 
-### 📊 Monitoreo de Rendimiento
-- Uso de Google PageSpeed Insights para evaluación continua
-- Verificación en múltiples dispositivos y resoluciones
-- Pruebas de carga y tiempos de respuesta
-- Auditoría periódica de recursos no utilizados
-
-## 👤 Créditos
-- **Diseño y Desarrollo:** René Garcia Educa
-- **Fotografías y diseños:** Derechos reservados por René Garcia Educa
-- **Librerías de terceros:** 
-  - Font Awesome (iconos)
-  - Google Fonts (tipografías)
-  - AOS Library (animaciones de scroll)
-  - Three.js (efectos visuales)
-
-## 📞 Contacto
-Para más información sobre este proyecto, contactar a René García a través del formulario de contacto en el sitio web o a través de las redes sociales vinculadas.
-
----
-
-⚠️ **Recordatorio de copia de seguridad:** Antes de cualquier actualización importante, asegúrate de crear una copia completa del sitio mediante un archivo ZIP o un commit específico en el repositorio de GitHub.
-
-Última actualización: Mayo 2024
+© 2020-2025 René Garcia Educa. All rights reserved.

@@ -120,9 +120,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar navbar
     initNavbar();
 
-    // Inicializar AOS
-    initAOS();
-
     // Inicializar contador de caracteres para el formulario
     initCharacterCounter();
 });
