@@ -24,14 +24,6 @@ const config = {
         console.error(message);
     },
     
-    // Función log que usamos para depuración
-    log: function(message, level) {
-        if (level === undefined) level = 0;
-        if (this.debugLevel >= level) {
-            console.log(message);
-        }
-    },
-    
     // Detecta si estamos en GitHub Pages y obtiene el nombre del repositorio automáticamente
     baseUrl: function() {
         // Si estamos en GitHub Pages

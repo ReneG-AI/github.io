@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     preloadBookImages();
     
     initBookFlip();
-    initInteriorModal();
+    initializeInteriorModal();
     setupBackToTop();
     initCharacterCounter();
     initLineaAnimada(); // Iniciamos la animación de la línea
@@ -94,9 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Formulario de contacto
     initializeContactForm();
-    
-    // Inicializar el modal para "Ver Interior"
-    initializeInteriorModal();
     
     // Actualizar año automáticamente en el footer
     updateYear();

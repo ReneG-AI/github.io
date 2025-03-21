@@ -348,23 +348,27 @@
   .nav-item {
     width: 100%;
     height: auto;
-    text-align: center;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     transition-delay: calc(var(--item-index, 0) * 0.07s);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 1.6rem;
   }
   
-  .nav-item:last-child {
-    border-bottom: none;
+  /* Asegurar que los enlaces sean claramente visibles */
+  .main-nav.active .nav-link {
+    color: white !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    font-size: 1.8rem;
+    padding: 1rem;
+    display: block;
+    text-align: center;
   }
   
-  /* Mostrar elementos cuando el menú está activo */
-  .main-nav.active .nav-item {
-    opacity: 1;
-    transform: translateY(0);
+  /* Destacar el link activo */
+  .main-nav.active .nav-link.active,
+  .main-nav.active .nav-link:hover {
+    color: #FFD35F !important;
+    transform: translateY(-2px);
   }
   
   /* Enlaces de navegación */
