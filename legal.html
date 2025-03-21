@@ -35,6 +35,38 @@
     <link rel="stylesheet" href="assets/css/components/author.css" />
     
     <style>
+      /* Mejorar la opacidad del header para mejor visibilidad */
+      .header {
+        background-color: rgba(12, 12, 14, 0.85) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+        position: fixed !important;
+        width: 100% !important;
+        top: 0 !important;
+        z-index: 1000 !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      /* Header al hacer scroll */
+      body.scroll-active .header {
+        background-color: rgba(10, 10, 12, 0.95) !important;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+      }
+      
+      /* Aumentar el espaciado para el header fijo */
+      main {
+        padding-top: 80px !important;
+      }
+      
+      .header .logo-text, 
+      .header .nav-link {
+        color: rgba(255, 255, 255, 0.95) !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+      }
+      
       /* Estilos específicos para páginas legales */
       .legal-page {
         padding: 8rem 0 5rem;
@@ -157,6 +189,19 @@
     </style>
 
     <meta name="theme-color" content="#6B4CE6">
+    
+    <script>
+      /* Script para detectar el scroll y aplicar clases */
+      document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 100) {
+            document.body.classList.add('scroll-active');
+          } else {
+            document.body.classList.remove('scroll-active');
+          }
+        });
+      });
+    </script>
   </head>
   
   <body style="background-color: #121212 !important; position: relative !important; min-height: 100vh !important; background-image: none !important;">
@@ -164,15 +209,15 @@
       <div class="container">
         <a href="index.html" class="logo">
           <img src="assets/images/Logo.webp" alt="René García Educa - Logo" />
-          <span class="logo-text">René Garcia Educa</span>
+          <span class="logo-text" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">René Garcia Educa</span>
         </a>
         <nav class="main-nav">
           <ul class="nav-list">
-            <li class="nav-item" style="--item-index: 0;"><a href="index.html#inicio" class="nav-link"><i class="fas fa-home nav-icon"></i>Inicio</a></li>
-            <li class="nav-item" style="--item-index: 1;"><a href="index.html#libros" class="nav-link"><i class="fas fa-book nav-icon"></i>Libros</a></li>
-            <li class="nav-item" style="--item-index: 2;"><a href="index.html#testimonios" class="nav-link"><i class="fas fa-comments nav-icon"></i>Opiniones</a></li>
-            <li class="nav-item" style="--item-index: 3;"><a href="index.html#contacto" class="nav-link"><i class="fas fa-envelope nav-icon"></i>Contacto</a></li>
-            <li class="nav-item" style="--item-index: 4;"><a href="https://www.amazon.es/stores/author/B0CRF7937N/allbooks?ingress=0&visitId=09bf3584-54b0-4c53-9a78-ebfa96676f0a&ref_=ap_rdr" target="_blank" class="nav-link amazon-link"><i class="fab fa-amazon nav-icon"></i>Amazon</a></li>
+            <li class="nav-item" style="--item-index: 0;"><a href="index.html#inicio" class="nav-link" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);"><i class="fas fa-home nav-icon"></i>Inicio</a></li>
+            <li class="nav-item" style="--item-index: 1;"><a href="index.html#libros" class="nav-link" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);"><i class="fas fa-book nav-icon"></i>Libros</a></li>
+            <li class="nav-item" style="--item-index: 2;"><a href="index.html#testimonios" class="nav-link" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);"><i class="fas fa-comments nav-icon"></i>Opiniones</a></li>
+            <li class="nav-item" style="--item-index: 3;"><a href="index.html#contacto" class="nav-link" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);"><i class="fas fa-envelope nav-icon"></i>Contacto</a></li>
+            <li class="nav-item" style="--item-index: 4;"><a href="https://www.amazon.es/stores/author/B0CRF7937N/allbooks?ingress=0&visitId=09bf3584-54b0-4c53-9a78-ebfa96676f0a&ref_=ap_rdr" target="_blank" class="nav-link amazon-link" style="color: rgba(255, 255, 255, 0.95); font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);"><i class="fab fa-amazon nav-icon"></i>Amazon</a></li>
           </ul>
         </nav>
         <button class="menu-toggle" aria-label="Toggle Menu">
