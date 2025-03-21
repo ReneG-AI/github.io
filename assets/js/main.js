@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Inicializar funcionalidades
     initPreloader();
-    initMobileMenu();
     initSmoothScroll();
     initHeaderScroll();
     
@@ -221,85 +220,6 @@ function initPreloader() {
     }
 }
 
-// Menú móvil
-function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    const body = document.body;
-
-    if (menuToggle && mainNav) {
-        // Agregar evento click al botón de menú
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevenir propagación para mejor rendimiento
-            this.classList.toggle('active');
-            mainNav.classList.toggle('active');
-            
-            // Sólo prevenir scroll en dispositivos pequeños donde el menú ocupa más espacio
-            if (window.innerWidth <= 576) {
-                body.classList.toggle('no-scroll');
-            }
-        });
-
-        // Optimizar cierre del menú al hacer clic en los enlaces
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Si es un enlace interno, prevenir comportamiento predeterminado
-                if (this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    // Cerrar el menú inmediatamente
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    body.classList.remove('no-scroll');
-                    
-                    // Hacer scroll hacia el destino
-                    if (targetElement) {
-                        const offsetTop = targetElement.offsetTop - 80;
-                        
-                        // Scroll más rápido usando scrollTo con comportamiento nativo
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth' 
-                        });
-                    }
-                } else {
-                    // Para enlaces externos, solo cerrar el menú
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    body.classList.remove('no-scroll');
-                }
-            });
-        });
-        
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            // Verificar que el menú esté abierto primero
-            if (mainNav.classList.contains('active')) {
-                const isClickInsideMenu = mainNav.contains(event.target);
-                const isClickOnToggle = menuToggle.contains(event.target);
-                
-                if (!isClickInsideMenu && !isClickOnToggle) {
-                    menuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    body.classList.remove('no-scroll');
-                }
-            }
-        });
-        
-        // Cerrar con tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && mainNav.classList.contains('active')) {
-                menuToggle.classList.remove('active');
-                mainNav.classList.remove('active');
-                body.classList.remove('no-scroll');
-            }
-        });
-    }
-}
-
 // Desplazamiento suave
 function initSmoothScroll() {
     const scrollLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
@@ -472,34 +392,69 @@ function initBookFlip() {
     });
 }
 
-// Modal para "Ver interior"
-function initInteriorModal() {
-    const modal = document.getElementById('interiorModal');
+// Función para inicializar el modal de "Ver Interior"
+function initializeInteriorModal() {
     const interiorBtns = document.querySelectorAll('.interior-btn');
-    const closeBtnX = document.getElementById('modalCloseX');
+    const interiorModal = document.getElementById('interiorModal');
+    const modalCloseX = document.getElementById('modalCloseX');
     
-    if (modal && interiorBtns.length) {
-        interiorBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                modal.classList.add('active');
-            });
+    if (!interiorModal) {
+        console.warn('Modal de interior no encontrado');
+        return;
+    }
+    
+    // Abrir modal al hacer clic en los botones "Ver Interior"
+    interiorBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            interiorModal.style.display = 'flex';
+            document.body.classList.add('no-scroll');
+            
+            // Animación de entrada
+            setTimeout(() => {
+                interiorModal.classList.add('active');
+            }, 10);
         });
-        
-        // Cerrar con el botón X
-        if (closeBtnX) {
-            closeBtnX.addEventListener('click', function() {
-                modal.classList.remove('active');
-            });
-        }
-        
-        // Cerrar modal haciendo clic fuera
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
+    });
+    
+    // Cerrar modal al hacer clic en la X
+    if (modalCloseX) {
+        modalCloseX.addEventListener('click', function() {
+            interiorModal.classList.remove('active');
+            
+            // Esperar a que termine la animación antes de ocultar
+            setTimeout(() => {
+                interiorModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 300);
         });
     }
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    interiorModal.addEventListener('click', function(e) {
+        if (e.target === interiorModal) {
+            interiorModal.classList.remove('active');
+            
+            // Esperar a que termine la animación antes de ocultar
+            setTimeout(() => {
+                interiorModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 300);
+        }
+    });
+    
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && interiorModal.style.display === 'flex') {
+            interiorModal.classList.remove('active');
+            
+            // Esperar a que termine la animación antes de ocultar
+            setTimeout(() => {
+                interiorModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 300);
+        }
+    });
 }
 
 // Inicializar contador de caracteres y auto-altura del textarea

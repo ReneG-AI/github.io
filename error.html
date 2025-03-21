@@ -195,6 +195,65 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
     }
     
+    /* Previene scroll cuando el menú móvil está activo */
+    body.no-scroll {
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+    
+    /* Estilos para menú móvil */
+    @media screen and (max-width: 992px) {
+      .main-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: rgba(5, 5, 10, 0.98) !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 900 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+      
+      .main-nav.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      .nav-list {
+        flex-direction: column !important;
+        padding: 2rem !important;
+        width: 100% !important;
+        max-width: 400px !important;
+      }
+      
+      .nav-item {
+        opacity: 0 !important;
+        transform: translateY(20px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0.5rem 0 !important;
+      }
+      
+      .main-nav.active .nav-item {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+      
+      .nav-link {
+        padding: 1.2rem !important;
+        font-size: 1.8rem !important;
+        width: 100% !important;
+      }
+    }
+    
     /* Estilos específicos para página de error */
   </style>
   
@@ -270,6 +329,30 @@
   
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Script para manejo del menú móvil
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainNav = document.querySelector('.main-nav');
+      
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function() {
+          this.classList.toggle('active');
+          mainNav.classList.toggle('active');
+          document.body.classList.toggle('no-scroll');
+        });
+        
+        // Cerrar menú al hacer clic en los enlaces
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            menuToggle.classList.remove('active');
+            mainNav.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+          });
+        });
+      }
+    });
   </script>
 </body>
 </html> 
