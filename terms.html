@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Base URL para GitHub Pages -->
-    <base href="https://reneg-ai.github.io/github.io/">
+    <!-- Control de caché - No almacenar en caché -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <!-- Base URL corregida para usar ruta relativa -->
+    <base href="./">
     
     <title>Términos de Servicio | René García Educa</title>
     <meta
@@ -415,12 +420,5 @@
 
     <!-- Mobile Menu Fix Script -->
     <script src="assets/js/fixes/menu-fix.js"></script>
-
-    <!-- ... existing code ... -->
-
-    <script>
-      // Actualizar año del copyright automáticamente
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
   </body>
 </html> 
