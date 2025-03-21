@@ -1,4 +1,6 @@
 // Configuración de rutas para GitHub Pages
+// Comprobación para evitar redeclaración de la variable config
+if (typeof config === 'undefined') {
 const config = {
     // Flag para evitar inicializaciones múltiples
     initialized: false,
@@ -78,7 +80,10 @@ const config = {
         // Corregir nombre de archivo si es necesario
         for (const [incorrectPath, correctPath] of Object.entries(caseSensitiveFiles)) {
             if (lowerSrc.includes(incorrectPath.toLowerCase())) {
-                this.log(`Corrigiendo capitalización: ${src} -> ${src.replace(new RegExp(incorrectPath, 'i'), correctPath)}`, 2);
+                // Usar console.log en lugar de this.log para evitar errores
+                if (this.logLevel >= 2) {
+                    console.log(`Corrigiendo capitalización: ${src} -> ${src.replace(new RegExp(incorrectPath, 'i'), correctPath)}`);
+                }
                 src = src.replace(new RegExp(incorrectPath, 'i'), correctPath);
                 break;
             }
@@ -404,6 +409,7 @@ const config = {
         }
     }
 };
+}
 
 // Inicializar la configuración de forma más segura
 try {

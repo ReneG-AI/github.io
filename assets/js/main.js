@@ -74,10 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
-            easing: 'ease-in-out',
+            easing: 'ease-out-quad',
             once: false,
-            mirror: false
+            mirror: true,
+            anchorPlacement: 'top-bottom',
+            disable: window.innerWidth < 768 ? true : false
         });
+    } else {
+        console.warn("AOS no está disponible. Algunas animaciones no funcionarán.");
     }
     
     // Inicializar volteo de tarjetas
@@ -99,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateYear();
     
     // Scroll suave para anclas internas
-    initializeSmoothScroll();
+    initSmoothScroll();
     
     // Animación para el botón de volver arriba
     initializeBackToTop();
