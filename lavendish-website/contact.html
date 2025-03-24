@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Lavendish Bar in Lleida for reservations, private events, or general inquiries. Find our location, opening hours, and contact details.">
+    <title>Contact | Lavendish Bar - Lleida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pages.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Lavendish<span>Bar</span></a>
+            <nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Contact Hero Section -->
+        <section class="page-hero contact-hero">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch, make reservations, or find our location</p>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="contact-info">
+            <div class="container">
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Visit Us</h3>
+                            <p>123 Main Street<br>Lleida, 25001<br>Spain</p>
+                            <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-text">Get Directions <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Opening Hours</h3>
+                            <ul class="hours-list">
+                                <li>Monday - Thursday: 4pm - 12am</li>
+                                <li>Friday: 4pm - 2am</li>
+                                <li>Saturday: 2pm - 2am</li>
+                                <li>Sunday: 2pm - 10pm</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Call Us</h3>
+                            <p><a href="tel:+34123456789">+34 123 456 789</a></p>
+                            <p class="text-medium">For reservations and inquiries</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info-content">
+                            <h3>Email Us</h3>
+                            <p><a href="mailto:info@lavendishbar.com">info@lavendishbar.com</a></p>
+                            <p><a href="mailto:reservations@lavendishbar.com">reservations@lavendishbar.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section">
+            <div class="map-container" id="map">
+                <!-- Map will be added via JavaScript -->
+                <!-- Fallback for browsers with JavaScript disabled -->
+                <img src="images/map-static.jpg" alt="Map showing Lavendish Bar location" class="static-map" onerror="this.src='https://via.placeholder.com/1200x400/eee/7e57c2?text=Lavendish+Bar+Location+Map'">
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="contact-form-section">
+            <div class="container">
+                <div class="contact-form-wrapper">
+                    <div class="contact-form-header">
+                        <h2>Send Us a Message</h2>
+                        <p>We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.</p>
+                    </div>
+                    
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="reservation">Make a Reservation</option>
+                                <option value="private-event">Private Event Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Type your message here..." rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-group form-checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I agree to the <a href="#privacy-policy">privacy policy</a> and consent to having my data processed</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section bg-light">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do I need to make a reservation?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Reservations are recommended, especially for weekends and special events, but not required. You can make a reservation by calling us at +34 123 456 789 or through our contact form.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there a dress code?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We have a smart casual dress code. While we don't require formal attire, we do ask that guests avoid sportswear, beachwear, and flip-flops in the evening.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I host a private event at Lavendish?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer private event services for birthdays, corporate events, and other special occasions. Our space can accommodate up to 80 guests. Please contact us with your requirements and we'll be happy to discuss options.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Do you have vegetarian or vegan options?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer a variety of vegetarian and vegan tapas. These items are marked on our menu, and our staff is always happy to accommodate dietary restrictions whenever possible.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is there parking available?</h3>
+                            <span class="faq-icon"><i class="fas fa-plus"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>There is a public parking garage located one block from Lavendish Bar. Street parking is also available in the surrounding area, but can be limited during peak hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media -->
+        <section class="social-media-section">
+            <div class="container">
+                <h2 class="section-title">Connect With Us</h2>
+                <p class="text-center mb-l">Follow us on social media for updates, behind-the-scenes content, and exclusive offers</p>
+                
+                <div class="social-media-grid">
+                    <a href="https://facebook.com" class="social-media-card" target="_blank" rel="noopener">
+                        <i class="fab fa-facebook-f"></i>
+                        <h3>Facebook</h3>
+                        <p>@LavendishBarLleida</p>
+                    </a>
+                    
+                    <a href="https://instagram.com" class="social-media-card" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <p>@LavendishBar</p>
+                    </a>
+                    
+                    <a href="https://twitter.com" class="social-media-card" target="_blank" rel="noopener">
+                        <i class="fab fa-twitter"></i>
+                        <h3>Twitter</h3>
+                        <p>@LavendishBar</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Lavendish Bar</h4>
+                    <p>A modern bar in the heart of Lleida offering premium cocktails, wines, beers, and tapas in a relaxed atmosphere.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li>Monday - Thursday: 4pm - 12am</li>
+                        <li>Friday: 4pm - 2am</li>
+                        <li>Saturday: 2pm - 2am</li>
+                        <li>Sunday: 2pm - 10pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, Lleida, Spain</li>
+                        <li><i class="fas fa-phone"></i> +34 123 456 789</li>
+                        <li><i class="fas fa-envelope"></i> info@lavendishbar.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Lavendish Bar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <a href="#" class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Google Maps API (replace YOUR_API_KEY with actual key when deploying) -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html> 
