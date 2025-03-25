@@ -1,157 +1,110 @@
-# 🌟 René Garcia Educa - Página Web Oficial
+# René García Educa - Official Website
 
-## 📌 Descripción
-Esta es la página oficial de **René Garcia Educa**, una plataforma dedicada a libros educativos multilingües para colorear que combinan el aprendizaje de idiomas con actividades creativas y relajantes. Los libros están disponibles en español, catalán, inglés, francés y alemán, ofreciendo una experiencia educativa única tanto para niños como para adultos.
+This repository contains the code for the René García Educa multilingual education platform website, designed to showcase educational resources, books, and contact information.
 
-## 🚀 Tecnologías Utilizadas
-- **HTML5** para la estructura semántica de la web
-- **CSS3** con variables, media queries avanzadas, flexbox y grid
-- **JavaScript** para interactividad y efectos dinámicos
-- **WebP/PNG** sistema dual de imágenes para optimización
-- **GitHub Pages** para el alojamiento del sitio
-- **Font Awesome** para iconografía vectorial
-- **Google Fonts** para tipografías personalizadas
-- **AOS Library** para animaciones al hacer scroll
-- **Three.js** para efectos visuales avanzados (carga diferida)
+## Project Overview
 
-## 📂 Estructura de Archivos
+The website is built with HTML, CSS, and JavaScript, focusing on performance, accessibility, and responsive design. It's structured to be easily deployable on GitHub Pages.
+
+## Features
+
+- Responsive design that works across all devices (mobile, tablet, desktop)
+- Optimized for performance with minimal dependencies
+- Interactive elements including:
+  - Book flipping cards
+  - Animated section transitions
+  - Form validation
+  - Testimonial slider
+  - Contact form
+- Accessibility-focused implementation
+
+## Directory Structure
+
 ```
 /
+├── index.html              # Main HTML file
 ├── assets/
 │   ├── css/
-│   │   ├── components/        # Estilos de componentes individuales
-│   │   ├── layout/            # Estilos de estructura y layout
-│   │   ├── sections/          # Estilos específicos por sección
-│   │   ├── pages/             # Estilos para páginas adicionales
-│   │   ├── base.css           # Estilos base y reset
-│   │   ├── components.css     # Compilación de componentes
-│   │   ├── darkmode-only.css  # Estilos específicos para modo oscuro
-│   │   ├── fix-hero.css       # Correcciones específicas para el hero
-│   │   ├── main.css           # Archivo CSS principal
-│   │   ├── responsive.css     # Estilos responsivos
-│   │   ├── sprite-book.css    # Estilos para sprites de libros
-│   │   └── variables.css      # Variables CSS globales
+│   │   ├── main.css        # Main stylesheet
+│   │   └── responsive.css  # Responsive design rules
 │   ├── js/
-│   │   ├── animations/        # Scripts para animaciones específicas
-│   │   ├── config.js          # Configuración y variables JavaScript
-│   │   ├── main.js            # JavaScript principal
-│   │   └── carousel.js        # Funcionalidad de carruseles
-│   └── images/
-│       ├── *.webp             # Imágenes optimizadas en formato WebP
-│       └── favicon.ico        # Favicon del sitio
-├── .htaccess                  # Configuración del servidor
-├── _config.yml                # Configuración para GitHub Pages
-├── index.html                 # Página principal del sitio
-├── privacy.html               # Página de política de privacidad
-├── terms.html                 # Página de términos de servicio
-├── legal.html                 # Página de aviso legal
-└── README.md                  # Este archivo de documentación
+│   │   └── main.js         # Main JavaScript functionality
+│   └── images/             # Website images and graphics
+├── backup/                 # Legal and policy pages
+│   ├── privacy.html        # Privacy policy
+│   ├── terms.html          # Terms of service
+│   └── legal.html          # Legal notices
+└── README.md               # Project documentation
 ```
 
-## 📱 Adaptabilidad y Responsividad
-La web ha sido cuidadosamente optimizada para:
+## Local Development
 
-- 🖥️ **PC** (>992px)
-  - Diseño amplio con proporciones equilibradas
-  - Experiencia completa con todas las animaciones y efectos
-  - Distribución espaciosa con aprovechamiento del espacio horizontal
+To work on this site locally:
 
-- 📱 **Tablet** (768px-992px)
-  - Ajustes de márgenes y proporciones
-  - Tipografía adaptada para mejor legibilidad
-  - Elementos redimensionados para interacción táctil
+1. Clone the repository:
+   ```
+   git clone https://github.com/ReneG-AI/github.io.git
+   ```
 
-- 📱 **Móvil** (320px-767px)
-  - Secciones alineadas verticalmente para mejor experiencia táctil
-  - Elementos centrados para facilitar la navegación
-  - Espaciado optimizado para pantallas pequeñas
-  - Menú y navegación adaptados para uso con una sola mano
+2. Navigate to the project directory:
+   ```
+   cd github.io
+   ```
 
-## ✨ Características Principales
+3. Open the project in your preferred code editor.
 
-### 📸 Optimización de Imágenes
-- **Sistema dual WebP/PNG** para máxima compatibilidad y rendimiento
-- **Precarga estratégica** para mejorar la experiencia de usuario
-- **Sprites CSS** para reducir solicitudes HTTP en imágenes de libros
+4. For local testing, you can use any of these methods:
+   - Open `index.html` directly in your browser
+   - Use a local server (Python's `http.server`, VS Code's Live Server extension, etc.)
 
-### ⚡ Rendimiento Optimizado
-- **Carga diferida** inteligente de recursos
-- **Sistema de caché** configurado para máxima eficiencia
-- **Solicitudes limitadas** para mejor rendimiento en conexiones lentas
+## Deployment
 
-### 🎨 Efectos y Animaciones
-- **Efecto flip de libros** con animación suave
-- **Líneas animadas** como separadores entre secciones
-- **Gradientes animados** en títulos y elementos destacados
-- **Transiciones suaves** entre estados de hover
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch.
 
-### 📊 Compatibilidad con Navegadores
-- **Chrome/Edge/Opera:** Compatibilidad completa (últimas 5 versiones)
-- **Firefox:** Compatibilidad completa (últimas 5 versiones)
-- **Safari:** Compatibilidad completa (últimas 3 versiones)
-- **iOS/Android:** Optimizado para experiencia móvil
-- **IE11:** Soporte básico (sin animaciones avanzadas)
+To deploy manually:
 
-## 🚀 Instrucciones de Despliegue
+1. Go to the repository Settings
+2. Navigate to Pages
+3. Ensure the source is set to "Deploy from a branch"
+4. Select "main" branch and "/ (root)" folder
+5. Click Save
 
-### 📤 Publicación en GitHub Pages
-1. Asegúrate de tener todos los archivos en el repositorio
-2. Verifica que `base href` en `index.html` apunte correctamente a tu URL de GitHub Pages
-3. En GitHub, ve a Settings > Pages y selecciona la rama principal
-4. El sitio se desplegará automáticamente en la URL proporcionada
+The site will be available at `https://renegarciaeduca.com` or your custom domain if configured.
 
-### 🔄 Actualización del Sitio
-1. Clona el repositorio localmente
-2. Realiza los cambios necesarios
-3. Prueba localmente para verificar responsividad y funcionalidad
-4. Haz commit y push de los cambios al repositorio
-5. GitHub Pages actualizará automáticamente el sitio
+## Making Changes
 
-### 📚 Agregar Nuevos Libros
-1. Prepara imágenes en formato WebP y PNG (portada y contraportada)
-2. Añade el HTML necesario en la sección correspondiente de `index.html`
-3. Asegúrate de usar las clases existentes para mantener el estilo y la responsividad
-4. Prueba la visualización en diferentes dispositivos
+1. Create a new branch for your changes:
+   ```
+   git checkout -b feature/your-feature-name
+   ```
 
-## ✅ Verificación Final Antes de Publicar
+2. Make your changes and test locally
 
-- [ ] Revisar que el **diseño responsivo** funcione correctamente en todas las resoluciones
-- [ ] Comprobar que **los botones y enlaces** dirijan a las URLs correctas
-- [ ] Verificar que **las imágenes estén optimizadas** y se carguen adecuadamente
-- [ ] Asegurar que no haya **errores en consola** ni problemas visuales
-- [ ] Probar la navegación y funcionalidad en **diferentes navegadores**
-- [ ] Verificar la **accesibilidad** para cumplir con estándares básicos
-- [ ] Comprobar que los **formularios** funcionen correctamente
+3. Commit and push your changes:
+   ```
+   git add .
+   git commit -m "Description of changes"
+   git push origin feature/your-feature-name
+   ```
 
-## 🛠️ Mantenimiento y Desarrollo Futuro
+4. Create a pull request to merge your changes into the main branch
 
-### 📋 Próximas Mejoras Planeadas
-- Implementación de lazy-loading nativo para todas las imágenes
-- Optimización adicional de tiempos de carga con service workers
-- Unificación completa de media queries en un sistema coherente
-- Desarrollo de nuevas animaciones y efectos visuales
-- Implementación de dark mode completo
+## Browser Compatibility
 
-### 📊 Monitoreo de Rendimiento
-- Uso de Google PageSpeed Insights para evaluación continua
-- Verificación en múltiples dispositivos y resoluciones
-- Pruebas de carga y tiempos de respuesta
-- Auditoría periódica de recursos no utilizados
+The website is tested and compatible with:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Android Chrome)
 
-## 👤 Créditos
-- **Diseño y Desarrollo:** René Garcia Educa
-- **Fotografías y diseños:** Derechos reservados por René Garcia Educa
-- **Librerías de terceros:** 
-  - Font Awesome (iconos)
-  - Google Fonts (tipografías)
-  - AOS Library (animaciones de scroll)
-  - Three.js (efectos visuales)
+## License
 
-## 📞 Contacto
-Para más información sobre este proyecto, contactar a René García a través del formulario de contacto en el sitio web o a través de las redes sociales vinculadas.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
----
+## Contact
 
-⚠️ **Recordatorio de copia de seguridad:** Antes de cualquier actualización importante, asegúrate de crear una copia completa del sitio mediante un archivo ZIP o un commit específico en el repositorio de GitHub.
+For questions about this project, please contact:
+- Email: contact@renegarcia-educa.com
 
-Última actualización: Mayo 2024
+Last updated: May 2024
