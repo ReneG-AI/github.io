@@ -224,7 +224,7 @@
 }
 
 .nav-link.amazon-link .nav-icon {
-  margin-right: 0.8rem;
+  margin-right: 1.2rem;
   color: #000;
   text-shadow: none;
 }
@@ -397,7 +397,7 @@
   /* Navigation icons */
   .nav-icon {
     font-size: 1.8rem;
-    margin-right: 1rem;
+    margin-right: 1.4rem;
     display: inline-block;
     color: inherit;
   }
