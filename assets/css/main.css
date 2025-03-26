@@ -1767,12 +1767,9 @@ body {
 }
 
 /* Force dark styles for testimonials */
-.testimonials-container,
 .testimonial {
-  background-color: #0e0e10 !important;
   color: var(--text-color, #fff) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2) !important;
 }
 
 .testimonial-text {
