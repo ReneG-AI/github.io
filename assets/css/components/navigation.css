@@ -435,12 +435,33 @@
   .nav-link.amazon-link {
     margin-top: 2rem;
     width: 80%;
+    max-width: 280px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.2rem;
     font-size: 1.8rem;
     border-radius: 5rem;
     gap: 1.2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-link.amazon-link .nav-icon {
+    flex-shrink: 0;
+    margin-right: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-link.amazon-link {
+    font-size: 1.6rem;
+    padding: 1rem;
+    width: 85%;
+    max-width: 250px;
   }
 }
 
