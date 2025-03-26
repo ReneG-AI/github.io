@@ -103,6 +103,22 @@
     .footer-column {
         flex: 0 0 100%;
     }
+    
+    .footer-logo {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .footer-logo img {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-logo .logo-text {
+        font-size: 1.8rem;
+    }
 }
 
 /* Mobile adjustments */
