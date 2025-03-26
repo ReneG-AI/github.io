@@ -229,15 +229,18 @@
   font-size: 2.4rem;
   margin-bottom: 0.8rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #FFFFFF, #E0E0E0);
+  background: linear-gradient(90deg, #8C52FF, #00D4FF, #FFD700);
+  background-size: 200% auto;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   letter-spacing: 0.03em;
   text-transform: capitalize;
   position: relative;
   display: inline-block;
   padding: 0 0.5rem;
+  animation: shimmer 8s linear infinite;
 }
 
 /* Decorative underline for author name */
@@ -249,8 +252,28 @@
   transform: translateX(-50%);
   width: 50%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, #8C52FF, #00D4FF, #FFD700);
   border-radius: 2px;
+}
+
+/* Amazon button container in testimonials section */
+.amazon-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Animation keyframes */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .testimonial-author-title {
