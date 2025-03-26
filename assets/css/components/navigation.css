@@ -517,31 +517,44 @@
   }
   
   .logo img {
-    height: calc(var(--header-height) * 0.7);
-    max-height: 40px;
+    height: calc(var(--header-height) * 0.55);
+    max-height: 32px;
   }
   
   .header.scrolled .logo img {
-    height: calc(var(--header-height) * 0.6);
-    max-height: 40px;
+    height: calc(var(--header-height) * 0.5);
+    max-height: 30px;
   }
 }
 
 @media screen and (max-width: 576px) {
   /* Reducción adicional para dispositivos muy pequeños */
   .logo img {
-    height: calc(var(--header-height) * 0.6);
-    max-height: 34px;
+    height: calc(var(--header-height) * 0.5);
+    max-height: 28px;
   }
   
   .header.scrolled .logo img {
-    height: calc(var(--header-height) * 0.5);
-    max-height: 35px;
+    height: calc(var(--header-height) * 0.45);
+    max-height: 26px;
   }
   
   /* Ajuste específico para el footer en pantallas muy pequeñas */
   .footer-logo .logo-text {
     font-size: 1.6rem;
+  }
+}
+
+/* Añadir media query adicional para dispositivos extremadamente pequeños */
+@media screen and (max-width: 380px) {
+  .logo img {
+    height: calc(var(--header-height) * 0.45);
+    max-height: 26px;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.4);
+    max-height: 24px;
   }
 }
 
