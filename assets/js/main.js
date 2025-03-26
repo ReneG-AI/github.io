@@ -452,11 +452,35 @@ function initializeMobileNav() {
         return;
     }
     console.log(`Found ${navItems.length} navigation items`);
+    
+    // Aseguramos los z-index correctos
+    const header = document.querySelector('header');
+    if (header) header.style.zIndex = '10000';
+    menuToggle.style.zIndex = '20000';
+    mainNav.style.zIndex = '19999';
+    
+    // Comprobamos si el menú ya está inicializado
+    if (menuToggle.hasAttribute('data-menu-initialized')) {
+        console.log('Menu already initialized. Skipping to avoid duplicate listeners.');
+        return;
+    }
+    
+    // Marcamos el menú como inicializado
+    menuToggle.setAttribute('data-menu-initialized', 'true');
+    
     function showMenu() {
         // Add active classes
         menuToggle.classList.add('active');
         mainNav.classList.add('active');
         body.classList.add('no-scroll');
+        
+        // Asegurar que el heroBackground no tape el menú
+        const heroBackground = document.querySelector('.hero-background');
+        if (heroBackground) {
+            heroBackground.style.zIndex = '-1';
+            heroBackground.style.position = 'fixed';
+            heroBackground.style.pointerEvents = 'none';
+        }
         
         // Animate items with staggered delay
         navItems.forEach((item, index) => {
@@ -482,13 +506,8 @@ function initializeMobileNav() {
         if (navList) {
             navList.style.display = 'flex';
         }
-        
-        // Lower z-index of potential conflicting elements
-        const heroBackground = document.querySelector('.hero-background');
-        if (heroBackground) {
-            heroBackground.style.zIndex = '1';
-        }
     }
+    
     function hideMenu() {
         if (isMobile()) {
             navItems.forEach((item, index) => {
@@ -499,10 +518,6 @@ function initializeMobileNav() {
                 menuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
                 body.classList.remove('no-scroll');
-                const heroBackground = document.querySelector('.hero-background');
-                if (heroBackground) {
-                    heroBackground.style.zIndex = '0';
-                }
             }, 300);
         } else {
             menuToggle.classList.remove('active');
@@ -512,12 +527,15 @@ function initializeMobileNav() {
                 item.style.opacity = '';
                 item.style.transform = '';
             });
-            const heroBackground = document.querySelector('.hero-background');
-            if (heroBackground) {
-                heroBackground.style.zIndex = '0';
-            }
+        }
+        
+        // Mantenemos el heroBackground con z-index negativo
+        const heroBackground = document.querySelector('.hero-background');
+        if (heroBackground) {
+            heroBackground.style.zIndex = '-1';
         }
     }
+    
     function ensureCorrectNavDisplay() {
         if (!isMobile()) {
             navItems.forEach(item => {
@@ -531,7 +549,15 @@ function initializeMobileNav() {
             }
         }
     }
-    menuToggle.addEventListener('click', function(e) {
+    
+    // Limpiamos eventos anteriores por si acaso
+    const newMenuToggle = menuToggle.cloneNode(true);
+    menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+    
+    // Volvemos a asignar menuToggle a la nueva referencia
+    const updatedMenuToggle = document.querySelector('.menu-toggle');
+    
+    updatedMenuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
         console.log('Menu toggle clicked');
@@ -541,10 +567,11 @@ function initializeMobileNav() {
             showMenu();
         }
     });
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            if (isMobile()) {
-                if (this.getAttribute('href').startsWith('#')) {
+            if (isMobile() && mainNav.classList.contains('active')) {
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
@@ -557,10 +584,10 @@ function initializeMobileNav() {
                             });
                         }, 400);
                     }
-                } else if (!this.getAttribute('href').startsWith('http')) {
+                } else if (this.getAttribute('href') && !this.getAttribute('href').startsWith('http')) {
                     hideMenu();
                 }
-            } else if (this.getAttribute('href').startsWith('#')) {
+            } else if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
@@ -573,24 +600,29 @@ function initializeMobileNav() {
             }
         });
     });
+    
     document.addEventListener('click', function(e) {
         if (mainNav.classList.contains('active') && 
             !mainNav.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
+            !updatedMenuToggle.contains(e.target)) {
             hideMenu();
         }
     });
+    
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mainNav.classList.contains('active')) {
             hideMenu();
         }
     });
+    
     window.addEventListener('resize', function() {
         if (window.innerWidth > 992 && mainNav.classList.contains('active')) {
             hideMenu();
         }
         ensureCorrectNavDisplay();
     });
+    
+    // Fix para evitar scroll cuando el menú está activo
     document.addEventListener('scroll', function(e) {
         if (isMobile() && mainNav.classList.contains('active')) {
             e.preventDefault();
@@ -598,11 +630,29 @@ function initializeMobileNav() {
             return false;
         }
     }, { passive: false });
+    
     if (menuToggle.classList.contains('active')) {
         showMenu();
     } else {
         ensureCorrectNavDisplay();
     }
+    
+    // Último aseguramiento de Z-index
+    setTimeout(function() {
+        const heroBackground = document.querySelector('.hero-background');
+        const header = document.querySelector('header');
+        
+        if (header) header.style.zIndex = '10000';
+        if (updatedMenuToggle) updatedMenuToggle.style.zIndex = '20000';
+        if (mainNav) mainNav.style.zIndex = '19999';
+        
+        if (heroBackground) {
+            heroBackground.style.zIndex = '-1';
+            heroBackground.style.position = 'fixed';
+            heroBackground.style.pointerEvents = 'none';
+        }
+    }, 500);
+    
     ensureCorrectNavDisplay();
     console.log('Modern mobile menu initialized successfully!');
 }
