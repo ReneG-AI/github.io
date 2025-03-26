@@ -96,17 +96,26 @@
 .hero-title {
   font-size: 4.6rem;
   margin-bottom: 1.5rem;
-  color: #fff;
-  text-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+/* Estilo degradado original para el título */
+.hero-title.gradient-text {
+  color: transparent;
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   animation: shimmer 8s linear infinite;
-  letter-spacing: -0.02em;
-  text-align: left;
+  text-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.25);
+}
+
+/* Nuevo estilo con texto blanco y sombra elegante */
+.hero-title.white-text {
+  color: #FFFFFF;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 30px rgba(140, 82, 255, 0.2);
 }
 
 .hero-subtitle {
