@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get references to menu elements
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.nav-list .nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
     const body = document.body;
     
@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Could not find required menu elements!');
         return;
     }
+    
+    console.log(`Found ${navItems.length} navigation items`);
     
     // Function to show mobile menu with staged animation
     function showMenu() {
@@ -32,8 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Animate items with staggered delay
         navItems.forEach((item, index) => {
             // Reset any existing inline styles
-            item.style.opacity = '';
-            item.style.transform = '';
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
             
             // Force a reflow to ensure transitions work properly
             void item.offsetWidth;
@@ -47,6 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 item.style.transform = 'translateY(0)';
             }, 50 + (index * 70)); // Staggered delay
         });
+        
+        // Ensure the nav list is visible
+        const navList = document.querySelector('.nav-list');
+        if (navList) {
+            navList.style.display = 'flex';
+        }
         
         // Lower z-index of potential conflicting elements
         const heroBackground = document.querySelector('.hero-background');
@@ -81,6 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
     menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
+        
+        console.log('Menu toggle clicked');
         
         if (mainNav.classList.contains('active')) {
             hideMenu();
