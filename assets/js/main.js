@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupBackToTop();
     initCharacterCounter();
     initLineaAnimada();
-    initContactSeparator();
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 600,
@@ -21,7 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
             mirror: false
         });
     }
-    document.body.classList.add('loaded');
+    setTimeout(function() {
+        document.body.classList.add('loaded');
+        fixAllVisibility();
+    }, 300);
     const textarea = document.getElementById('mensaje');
     if (textarea) {
         function autoResize() {
@@ -33,9 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.addEventListener('blur', autoResize);
         setTimeout(autoResize, 100);
     }
-    initContactSeparator();
-    setTimeout(fixContactSectionDisplay, 500);
-    window.addEventListener('resize', fixContactSectionDisplay);
     if (typeof AOS !== 'undefined') {
         AOS.init({
             duration: 800,
@@ -52,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMobileNav();
     initializeBookSlider();
     initializeReadMore();
-    initializeContactForm();
     updateYear();
     initSmoothScroll();
     initializeBackToTop();
@@ -85,6 +83,18 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Applying z-index 9999 to header');
         }
     }, 300);
+    initTestimonialsCarousel();
+    setupSeparatorAnimations();
+    
+    setTimeout(function() {
+        let preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                if (preloader) preloader.style.display = 'none';
+            }, 500);
+        }
+    }, 800);
 });
 
 function clearBrowserCache() {
@@ -384,59 +394,6 @@ function initLineaAnimada() {
     }
 }
 
-function initContactSeparator() {
-    if (window.innerWidth <= 992) {
-        const contactSeparator = document.querySelector('.contact-about-separator');
-        if (contactSeparator) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        const existingShine = entry.target.querySelector('.separator-shine');
-                        if (existingShine) {
-                            existingShine.remove();
-                        }
-                        const shine = document.createElement('div');
-                        shine.classList.add('separator-shine');
-                        entry.target.appendChild(shine);
-                        setTimeout(() => {
-                            shine.style.animation = 'separator-shimmer 2s infinite';
-                        }, 800);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-            observer.observe(contactSeparator);
-        }
-    }
-}
-
-window.addEventListener('resize', function() {
-    initContactSeparator();
-});
-
-function fixContactSectionDisplay() {
-    if (window.innerWidth >= 992) {
-        const formContainer = document.querySelector('.contact-form-container');
-        const autorContainer = document.querySelector('.autor-container');
-        if (formContainer && autorContainer) {
-            const formHeight = formContainer.offsetHeight;
-            autorContainer.style.minHeight = formHeight + 'px';
-            autorContainer.style.paddingTop = '3rem';
-            const autorTitle = autorContainer.querySelector('.autor-title');
-            const autorAvatar = autorContainer.querySelector('.autor-avatar');
-            if (autorTitle) {
-                autorTitle.style.marginTop = '0';
-                autorTitle.style.visibility = 'visible';
-            }
-            if (autorAvatar) {
-                autorAvatar.style.marginTop = '0';
-                autorAvatar.style.visibility = 'visible';
-            }
-        }
-    }
-}
-
 function initializeCardFlippers() {
 }
 
@@ -533,9 +490,6 @@ function initializeBookSlider() {
 }
 
 function initializeReadMore() {
-}
-
-function initializeContactForm() {
 }
 
 function updateYear() {

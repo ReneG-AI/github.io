@@ -1,7 +1,26 @@
 /**
  * Función para copiar un email al portapapeles
- * Soluciona el error 404 en console
+ * y proporcionar retroalimentación visual
  */
+document.addEventListener('DOMContentLoaded', function() {
+  const copyButton = document.getElementById('copy-button');
+  
+  if (copyButton) {
+    copyButton.addEventListener('click', function() {
+      const email = document.getElementById('author-email').textContent;
+      copyEmail(email);
+      
+      // Añadir clase para feedback visual
+      copyButton.classList.add('copied');
+      
+      // Remover la clase después de 3 segundos
+      setTimeout(() => {
+        copyButton.classList.remove('copied');
+      }, 3000);
+    });
+  }
+});
+
 function copyEmail(email) {
   if (!email) {
     email = "renegarciaeduca@gmail.com"; // Email por defecto
@@ -16,19 +35,6 @@ function copyEmail(email) {
   try {
     // Copiar al portapapeles
     document.execCommand("copy");
-    
-    // Mostrar feedback si existe un elemento para ello
-    const feedbackElement = document.getElementById("copy-feedback");
-    if (feedbackElement) {
-      feedbackElement.textContent = "Email copiado correctamente";
-      feedbackElement.classList.add("visible");
-      
-      // Ocultar después de 3 segundos
-      setTimeout(() => {
-        feedbackElement.classList.remove("visible");
-      }, 3000);
-    }
-    
     console.log("Email copiado al portapapeles: " + email);
   } catch (err) {
     console.error("Error al copiar el email:", err);
