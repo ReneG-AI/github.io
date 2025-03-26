@@ -1,6 +1,6 @@
-# René García Educa - Official Website
+# René Garcia Educa - Official Website
 
-This repository contains the code for the René García Educa educational platform website, designed to showcase educational resources, books, and contact information.
+This repository contains the code for the René Garcia Educa educational platform website, designed to showcase educational resources, books, and contact information.
 
 ## Project Overview
 
@@ -175,7 +175,7 @@ The website is tested and compatible with:
 
 ## Contact
 
-For questions about this project, please contact René García through the contact form on the website.
+For questions about this project, please contact René Garcia through the contact form on the website.
 
 ---
 
