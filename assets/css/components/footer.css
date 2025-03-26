@@ -1,9 +1,11 @@
 /* 
  * FOOTER
- * Estilos para el pie de página - Versión compacta con textos grandes
+ * Styles for the footer - Compact version with large text
  */
 
-/* Fondo degradado */
+/* ===== GENERAL FOOTER STYLES ===== */
+
+/* Gradient background */
 .footer-gradient {
   height: 0.5rem;
   background: linear-gradient(to bottom, transparent, rgba(15, 15, 20, 0.95));
@@ -12,7 +14,7 @@
   z-index: 1;
 }
 
-/* Footer general */
+/* Main footer container */
 footer {
   position: relative;
   background-color: rgba(15, 15, 20, 0.98);
@@ -24,7 +26,7 @@ footer {
   font-size: 1.8rem;
 }
 
-/* Borde degradado para el footer - Igualado al de libros */
+/* Gradient border for footer - Matched to books */
 footer::before {
   content: '';
   position: absolute;
@@ -39,7 +41,7 @@ footer::before {
   opacity: 1;
 }
 
-/* Contenido del footer */
+/* Footer content container */
 .footer-content {
   display: flex;
   flex-direction: row;
@@ -52,7 +54,9 @@ footer::before {
   text-align: center;
 }
 
-/* SECCIÓN LOGO - Logo y texto */
+/* ===== LOGO SECTION ===== */
+
+/* Logo and text */
 .footer-main {
   display: flex;
   justify-content: flex-start;
@@ -62,7 +66,7 @@ footer::before {
   flex: 1;
 }
 
-/* Logo y texto descriptivo */
+/* Logo and descriptive text */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -91,7 +95,9 @@ footer::before {
   white-space: nowrap;
 }
 
-/* SECCIÓN NAVEGACIÓN */
+/* ===== NAVIGATION SECTION ===== */
+
+/* Footer bottom section */
 .footer-bottom {
   display: flex;
   flex-direction: column;
@@ -101,7 +107,7 @@ footer::before {
   position: relative;
 }
 
-/* Navegación del footer */
+/* Footer navigation */
 .footer-nav {
   display: flex;
   flex-wrap: wrap;
@@ -128,7 +134,9 @@ footer::before {
   transform: translateY(-1px);
 }
 
-/* Copyright y enlaces legales */
+/* ===== COPYRIGHT AND LEGAL LINKS ===== */
+
+/* Copyright and legal links container */
 .copyright-container {
   width: 100%;
   display: flex;
@@ -141,7 +149,7 @@ footer::before {
   border-top: 1px solid rgba(140, 82, 255, 0.1);
 }
 
-/* Copyright */
+/* Copyright text */
 .copyright {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.8);
@@ -151,7 +159,7 @@ footer::before {
   text-align: left;
 }
 
-/* Enlaces legales */
+/* Legal links */
 .legal-links {
   display: flex;
   flex-wrap: wrap;
@@ -181,7 +189,7 @@ footer::before {
   font-size: 1.35rem;
 }
 
-/* Decoración de fondo */
+/* Background decoration */
 .footer-decoration {
   position: absolute;
   bottom: 0;
@@ -193,9 +201,11 @@ footer::before {
   box-shadow: 0 -1px 5px rgba(100, 100, 200, 0.3);
 }
 
-/* Media queries para responsive */
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Media queries for responsive design */
 @media (max-width: 1024px) {
-  /* Centrar los enlaces del footer en móvil y tablet */
+  /* Center footer links on mobile and tablet */
   .legal-links {
     display: flex;
     flex-direction: column !important;
@@ -207,25 +217,25 @@ footer::before {
     margin-top: 15px;
   }
   
-  /* Ocultar los separadores en la vista móvil */
+  /* Hide separators in mobile view */
   .separator {
     display: none;
   }
   
-  /* Ajustar el copyright para que esté centrado */
+  /* Adjust copyright to be centered */
   .copyright {
     text-align: center !important;
     width: 100%;
   }
   
-  /* Reorganizar el contenedor de copyright para móvil */
+  /* Reorganize copyright container for mobile */
   .copyright-container {
     flex-direction: column !important;
     align-items: center !important;
     gap: 15px;
   }
 
-  /* Ajustar la navegación del footer */
+  /* Adjust footer navigation */
   .footer-nav {
     flex-direction: column;
     gap: 10px;
@@ -245,20 +255,6 @@ footer::before {
   .footer-content {
     flex-direction: column;
     gap: 2rem;
-  }
-  
-  .footer-logo img {
-    max-width: 16rem;
-  }
-  
-  .footer-links {
-    justify-content: center;
-  }
-  
-  .copyright {
-    font-size: 1.4rem;
-    margin-top: 1.8rem;
-    padding-top: 1.8rem;
   }
 }
 

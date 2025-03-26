@@ -1,4 +1,11 @@
-/* Estilos para la estructura del footer */
+/* 
+ * FOOTER LAYOUT
+ * Styles for the footer structure - to be used with components/footer.css
+ */
+
+/* ===== FOOTER STRUCTURE ===== */
+
+/* Base footer container */
 .footer {
     background-color: var(--bg-dark);
     color: var(--text-color-light);
@@ -6,17 +13,20 @@
     position: relative;
 }
 
+/* Multi-column container */
 .footer-container {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
 }
 
+/* Footer columns */
 .footer-column {
     flex: 1;
     min-width: 250px;
 }
 
+/* Column titles */
 .footer-title {
     font-size: 1.8rem;
     font-weight: 600;
@@ -25,6 +35,7 @@
     position: relative;
 }
 
+/* Title decorative underline */
 .footer-title::after {
     content: '';
     position: absolute;
@@ -35,16 +46,19 @@
     background-color: var(--accent-color);
 }
 
+/* Links list container */
 .footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* List items */
 .footer-link-item {
     margin-bottom: 12px;
 }
 
+/* Link styling */
 .footer-link {
     color: var(--text-color-muted);
     text-decoration: none;
@@ -58,12 +72,14 @@
     color: var(--accent-color);
 }
 
+/* Icon within links */
 .footer-link i {
     margin-right: 8px;
     font-size: 1.6rem;
 }
 
-.footer-bottom {
+/* Bottom section with copyright */
+.footer-bottom-alt {
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -72,11 +88,13 @@
     color: var(--text-color-muted);
 }
 
-.footer-bottom a {
+.footer-bottom-alt a {
     color: var(--accent-color);
 }
 
-/* Media queries */
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+
+/* Tablet adjustments */
 @media (max-width: 768px) {
     .footer {
         padding: 40px 0 20px;
@@ -87,6 +105,7 @@
     }
 }
 
+/* Mobile adjustments */
 @media (max-width: 576px) {
     .footer {
         padding: 30px 0 20px;
@@ -100,7 +119,7 @@
         font-size: 1.3rem;
     }
     
-    .footer-bottom {
+    .footer-bottom-alt {
         font-size: 1.2rem;
     }
 } 

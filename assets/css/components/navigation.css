@@ -1,7 +1,9 @@
 /* 
  * NAVIGATION
- * Styles for header, navigation menu and footer
+ * Styles for header and navigation menu only
  */
+
+/* ===== HEADER STYLES ===== */
 
 /* Header */
 .header {
@@ -104,6 +106,8 @@
   text-align: center;
   width: 100%;
 }
+
+/* ===== NAVIGATION STYLES ===== */
 
 /* Main Navigation - Desktop */
 .main-nav {
@@ -224,6 +228,8 @@
   text-shadow: none;
 }
 
+/* ===== MOBILE MENU STYLES ===== */
+
 /* Mobile menu button */
 .menu-toggle {
   display: none;
@@ -267,6 +273,8 @@
 .menu-toggle.active .bar:nth-child(3) {
   transform: rotate(45deg) translate(-0.5rem, -0.6rem);
 }
+
+/* ===== RESPONSIVE STYLES ===== */
 
 /* Media queries - Responsive adjustments */
 @media screen and (max-width: 1200px) {
@@ -426,7 +434,9 @@
   }
 }
 
-/* Clase para evitar scroll cuando el menú está abierto */
+/* ===== UTILITY CLASSES ===== */
+
+/* Class to prevent scrolling when menu is open */
 body.no-scroll {
   overflow: hidden;
   touch-action: none;
@@ -436,12 +446,13 @@ body.no-scroll {
   width: 100%;
 }
 
-/* Hero background debajo de otros elementos */
+/* Ensuring hero background stays behind other elements */
 .hero-background {
   z-index: -1;
   position: fixed;
 }
 
+/* Animation for gradient elements */
 @keyframes shimmer {
   0% {
     background-position: 0% 50%;
