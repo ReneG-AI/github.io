@@ -61,6 +61,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const isDarkMode = document.body.classList.contains('dark-mode');
     initNavbar();
     initCharacterCounter();
+    const heroBackground = document.querySelector('.hero-background');
+    const header = document.querySelector('header');
+    if (heroBackground) {
+        heroBackground.style.zIndex = '1';
+    }
+    if (header) {
+        header.style.zIndex = '1001';
+    }
+    
+    // Añadir un refuerzo con timeout
+    setTimeout(function() {
+        const heroBackground = document.querySelector('.hero-background');
+        const header = document.querySelector('header');
+        if (heroBackground) {
+            heroBackground.style.zIndex = '-1';
+            heroBackground.style.position = 'fixed';
+            heroBackground.style.pointerEvents = 'none';
+            console.log('Aplicando z-index -1 a hero-background');
+        }
+        if (header) {
+            header.style.zIndex = '9999';
+            console.log('Aplicando z-index 9999 a header');
+        }
+    }, 300);
 });
 
 function clearBrowserCache() {
@@ -429,23 +453,37 @@ function initializeMobileNav() {
     }
     console.log(`Found ${navItems.length} navigation items`);
     function showMenu() {
+        // Add active classes
         menuToggle.classList.add('active');
         mainNav.classList.add('active');
         body.classList.add('no-scroll');
+        
+        // Animate items with staggered delay
         navItems.forEach((item, index) => {
+            // Reset any existing inline styles
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
+            
+            // Force a reflow to ensure transitions work properly
             void item.offsetWidth;
+            
+            // Set the item index as a CSS variable for transition delay
             item.style.setProperty('--item-index', index);
+            
+            // Delayed appearance
             setTimeout(() => {
                 item.style.opacity = '1';
                 item.style.transform = 'translateY(0)';
             }, 50 + (index * 70));
         });
+        
+        // Ensure the nav list is visible
         const navList = document.querySelector('.nav-list');
         if (navList) {
             navList.style.display = 'flex';
         }
+        
+        // Lower z-index of potential conflicting elements
         const heroBackground = document.querySelector('.hero-background');
         if (heroBackground) {
             heroBackground.style.zIndex = '1';
@@ -664,14 +702,3 @@ function copyEmail() {
         copyBtn.innerHTML = originalIcon;
     }, 2000);
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const heroBackground = document.querySelector('.hero-background');
-    const header = document.querySelector('header');
-    if (heroBackground) {
-        heroBackground.style.zIndex = '-1';
-    }
-    if (header) {
-        header.style.zIndex = '1001';
-    }
-});
