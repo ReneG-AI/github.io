@@ -448,20 +448,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 0;
   }
   
   .nav-link.amazon-link .nav-icon {
     flex-shrink: 0;
     margin-right: 0.8rem;
+    font-size: 1.8rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .nav-link.amazon-link {
     font-size: 1.6rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem 1rem 1rem;
     width: 85%;
     max-width: 250px;
+  }
+  
+  .nav-link.amazon-link .nav-icon {
+    font-size: 1.6rem;
+    margin-right: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .nav-link.amazon-link {
+    font-size: 1.5rem;
+    padding: 0.9rem 1.2rem 0.9rem 0.8rem;
+    max-width: 220px;
+    width: 90%;
+  }
+  
+  .nav-link.amazon-link .nav-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
   }
 }
 
