@@ -310,10 +310,23 @@
 @media screen and (max-width: 992px) {
   .header {
     height: 7rem;
+    display: flex;
+    align-items: center;
   }
   
   .header.scrolled {
     height: 5.6rem;
+  }
+  
+  .header .container {
+    padding: 0 1rem;
+    height: 100%;
+    align-items: center;
+  }
+  
+  .logo {
+    transform: translateY(0);
+    height: 70%;
   }
   
   /* Show menu button */
@@ -423,7 +436,7 @@
     font-size: 1.44rem;
     text-align: center;
   }
-
+  
   /* Ajuste específico para el footer */
   .footer-logo .logo-text {
     font-size: 1.8rem;
@@ -432,20 +445,35 @@
   
   .logo {
     transform: translateY(0);
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
   }
   
   .logo img {
-    height: calc(var(--header-height) * 0.98);
-    max-height: 65px;
+    height: calc(var(--header-height) * 0.7);
+    max-height: 50px;
+    margin: 0;
   }
   
   .header.scrolled .logo img {
-    height: calc(var(--header-height) * 0.77);
-    max-height: 49px;
+    height: calc(var(--header-height) * 0.6);
+    max-height: 40px;
   }
 }
 
 @media screen and (max-width: 576px) {
+  /* Reducción adicional para dispositivos muy pequeños */
+  .logo img {
+    height: calc(var(--header-height) * 0.6);
+    max-height: 42px;
+  }
+  
+  .header.scrolled .logo img {
+    height: calc(var(--header-height) * 0.5);
+    max-height: 35px;
+  }
+  
   /* Ajuste específico para el footer en pantallas muy pequeñas */
   .footer-logo .logo-text {
     font-size: 1.6rem;
