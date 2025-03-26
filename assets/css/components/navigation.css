@@ -94,7 +94,7 @@
   font-weight: 700;
   letter-spacing: 0.03em;
   margin-left: 0;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -105,6 +105,7 @@
   transform: translateY(0.5rem);
   text-align: center;
   width: 100%;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== NAVIGATION STYLES ===== */
