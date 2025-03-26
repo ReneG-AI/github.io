@@ -102,10 +102,14 @@
   animation: shimmer 10s linear infinite;
   display: block;
   line-height: 1.2;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos específicos solo para el logo-text del header */
+.header .logo-text {
   transform: translateY(0.5rem);
   text-align: center;
   width: 100%;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 /* ===== NAVIGATION STYLES ===== */
@@ -419,6 +423,12 @@
     font-size: 1.44rem;
     text-align: center;
   }
+
+  /* Ajuste específico para el footer */
+  .footer-logo .logo-text {
+    font-size: 1.8rem;
+    text-align: left;
+  }
   
   .logo {
     transform: translateY(0);
@@ -432,6 +442,13 @@
   .header.scrolled .logo img {
     height: calc(var(--header-height) * 0.77);
     max-height: 49px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Ajuste específico para el footer en pantallas muy pequeñas */
+  .footer-logo .logo-text {
+    font-size: 1.6rem;
   }
 }
 
