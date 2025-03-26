@@ -220,6 +220,10 @@
   margin: auto 0;
   align-self: center;
   gap: 1rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .nav-link.amazon-link:hover {
@@ -230,9 +234,10 @@
 }
 
 .nav-link.amazon-link .nav-icon {
-  margin-right: 1.2rem;
+  margin-right: 0.2rem;
   color: #000;
   text-shadow: none;
+  flex-shrink: 0;
 }
 
 /* Navigation icons - base styles */
@@ -438,10 +443,10 @@
     max-width: 280px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.2rem;
+    padding: 1.2rem 1.5rem;
     font-size: 1.8rem;
     border-radius: 5rem;
-    gap: 1.2rem;
+    gap: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -449,40 +454,46 @@
     align-items: center;
     justify-content: center;
     min-width: 0;
+    color: #000 !important;
   }
   
   .nav-link.amazon-link .nav-icon {
     flex-shrink: 0;
-    margin-right: 0.8rem;
+    margin-right: 0.4rem;
     font-size: 1.8rem;
+    color: #000 !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   .nav-link.amazon-link {
     font-size: 1.6rem;
-    padding: 1rem 1.5rem 1rem 1rem;
+    padding: 1rem 1.2rem;
     width: 85%;
-    max-width: 250px;
+    max-width: 240px;
+    color: #000 !important;
   }
   
   .nav-link.amazon-link .nav-icon {
     font-size: 1.6rem;
-    margin-right: 0.6rem;
+    margin-right: 0.3rem;
+    color: #000 !important;
   }
 }
 
 @media screen and (max-width: 380px) {
   .nav-link.amazon-link {
-    font-size: 1.5rem;
-    padding: 0.9rem 1.2rem 0.9rem 0.8rem;
-    max-width: 220px;
+    font-size: 1.4rem;
+    padding: 0.9rem 1rem;
+    max-width: 210px;
     width: 90%;
+    color: #000 !important;
   }
   
   .nav-link.amazon-link .nav-icon {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
+    font-size: 1.4rem;
+    margin-right: 0.2rem;
+    color: #000 !important;
   }
 }
 
