@@ -165,14 +165,17 @@
   flex-direction: column;
   flex-grow: 1;
   z-index: 1;
+  text-align: center;
 }
 
 /* Título de las cards */
 .card-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 2.5rem;
   gap: 1.5rem;
+  text-align: center;
 }
 
 .card-icon {
@@ -222,6 +225,7 @@
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 /* Email container nuevo diseño */
@@ -372,6 +376,9 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
   transition: all 0.3s ease;
   cursor: pointer;
+  text-align: left;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .collaboration-item:hover {
@@ -414,6 +421,10 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
   transition: all 0.3s ease;
   margin-bottom: 1.5rem;
+  text-align: left;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .project-item:hover {
@@ -453,16 +464,16 @@
 }
 
 .stay-tuned {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #ffffff;
   text-align: center;
   margin-top: 2rem;
-  padding: 1.4rem;
+  padding: 1.6rem;
   border-radius: 1rem;
-  background: linear-gradient(to right, rgba(140, 82, 255, 0.35), rgba(0, 212, 255, 0.35), rgba(140, 82, 255, 0.35));
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.3), 
-              inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to right, rgba(140, 82, 255, 0.7), rgba(0, 212, 255, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4), 
+              inset 0 1px 3px rgba(255, 255, 255, 0.4);
   font-weight: 700;
   position: relative;
   overflow: hidden;
@@ -476,7 +487,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(140, 82, 255, 0.8), rgba(0, 212, 255, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9), transparent);
   opacity: 1;
 }
 
@@ -485,23 +496,22 @@
   animation: pulse 2s infinite;
   position: relative;
   z-index: 2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
-    opacity: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   }
   50% {
     transform: scale(1.05);
-    opacity: 1;
     color: #FFD700;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
   }
   100% {
     transform: scale(1);
-    opacity: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
   }
 }
 
