@@ -13,7 +13,7 @@
 
 /* Import layout files - these define structural elements */
 @import url('layout/grid.css');
-@import url('layout/sections.css');
+/* @import url('layout/sections.css'); */
 @import url('layout/footer.css'); /* Footer structure only */
 
 /* Import component files - these define appearance and behavior */
@@ -180,7 +180,7 @@ body, html {
 }
 
 /* Fix for containers */
-.book-showcase, .testimonials-grid {
+.book-showcase/* , .testimonials-grid */ {
   background-color: rgba(25, 25, 25, 0.85) !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -1801,7 +1801,7 @@ body {
 
 /* Remove purple background and animated gradients */
 .contact-grid::before,
-.testimonials-container::before,
+/* .testimonials-container::before, */
 .testimonial::before,
 .book-showcase::before {
   display: none !important;
@@ -1813,15 +1813,15 @@ body {
   padding: 8rem 0;
 }
 
-/* Testimonials section with transparent background */
-#testimonials.section {
+/* Testimonials section with transparent background - Eliminado para evitar duplicación */
+/* #testimonials.section {
   background-color: transparent !important;
   position: relative;
   z-index: 1;
-}
+} */
 
-/* Styles for testimonials and books container */
-.testimonials-container,
+/* Styles for testimonials and books container - Eliminado para evitar duplicación */
+/* .testimonials-container,
 .book-showcase {
   background: #0e0e10 !important;
   border-radius: 2rem;
@@ -1834,4 +1834,4 @@ body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-} 
+} */ 
