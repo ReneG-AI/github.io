@@ -323,11 +323,27 @@
   transform: translateY(0);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  width: 50%;
+  max-width: 200px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.3rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amazon-btn-container .amazon-btn i {
+  font-size: 1.4rem;
+  margin-right: 0.6rem;
 }
 
 .amazon-btn-container .amazon-btn:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  border-radius: 1.2rem;
 }
 
 /* Animation keyframes */
@@ -449,6 +465,17 @@
     font-size: 3.2rem;
     margin-top: 0.5rem;
   }
+  
+  .amazon-btn-container .amazon-btn {
+    width: 60%;
+    max-width: 180px;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.2rem;
+  }
+  
+  .amazon-btn-container .amazon-btn i {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 576px) {
@@ -501,6 +528,18 @@
     padding: 2rem 0.8rem;
     border-radius: 1.2rem !important;
     background: linear-gradient(145deg, #0e0e12, #151520) !important;
+  }
+  
+  .amazon-btn-container .amazon-btn {
+    width: 70%;
+    max-width: 150px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.1rem;
+  }
+  
+  .amazon-btn-container .amazon-btn i {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
   }
 }
 
