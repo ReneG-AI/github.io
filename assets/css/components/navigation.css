@@ -518,8 +518,7 @@
   
   .logo img {
     height: calc(var(--header-height) * 0.7);
-    max-height: 50px;
-    margin: 0;
+    max-height: 40px;
   }
   
   .header.scrolled .logo img {
@@ -532,7 +531,7 @@
   /* Reducción adicional para dispositivos muy pequeños */
   .logo img {
     height: calc(var(--header-height) * 0.6);
-    max-height: 42px;
+    max-height: 34px;
   }
   
   .header.scrolled .logo img {
