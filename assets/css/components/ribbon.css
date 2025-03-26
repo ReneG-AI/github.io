@@ -1,9 +1,11 @@
-.book-ribbon[data-type="featured"] {
+.book-ribbon[data-type="featured"],
+.book-ribbon[data-type="destacado"] {
   background-color: var(--accent-color);
   color: white;
 }
 
-.book-ribbon[data-type="new"] {
+.book-ribbon[data-type="new"],
+.book-ribbon[data-type="nuevo"] {
   background-color: var(--primary-color);
   color: white;
 }

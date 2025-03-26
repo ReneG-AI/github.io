@@ -711,11 +711,13 @@
 }
 
 /* Colores personalizados para cada tipo de ribbon */
-#books .book-ribbon[data-type="destacado"] {
+#books .book-ribbon[data-type="destacado"],
+#books .book-ribbon[data-type="featured"] {
   background: linear-gradient(135deg, #6852e2, #ba43fc) !important;
 }
 
-#books .book-ribbon[data-type="nuevo"] {
+#books .book-ribbon[data-type="nuevo"],
+#books .book-ribbon[data-type="new"] {
   background: linear-gradient(135deg, #00d2ff, #3a7bd5) !important;
 }
 
@@ -730,11 +732,13 @@
   font-size: 1.2rem !important;
 }
 
-#books .book-ribbon[data-type="destacado"]::before {
+#books .book-ribbon[data-type="destacado"]::before,
+#books .book-ribbon[data-type="featured"]::before {
   content: "\f005" !important; /* Estrella */
 }
 
-#books .book-ribbon[data-type="nuevo"]::before {
+#books .book-ribbon[data-type="nuevo"]::before,
+#books .book-ribbon[data-type="new"]::before {
   content: "\f067" !important; /* Signo más */
 }
 
