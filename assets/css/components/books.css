@@ -10,23 +10,34 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 4rem;
   padding: 4rem 3rem 3rem;
-  border-radius: 1.5rem;
-  background: rgba(18, 18, 24, 0.7);
+  border-radius: 1.5rem !important;
+  background: linear-gradient(145deg, #0e0e12, #151520) !important;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
   overflow: visible;
   position: relative;
   z-index: 2;
   max-width: 1300px;
   margin: 0 auto;
   justify-content: center;
+  transition: all 0.4s ease;
 }
 
-/* Borde degradado simplificado para igual al de testimonials */
-.book-showcase::before {
-  display: none !important;
+/* Añadir un efecto de resplandor sutil al contenedor - igual que testimonials */
+#books .book-showcase::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(140, 82, 255, 0.08), transparent 60%),
+              radial-gradient(circle at 70% 80%, rgba(0, 212, 255, 0.08), transparent 60%);
+  z-index: -1;
+  opacity: 0.8;
+  display: block !important;
 }
 
 /* Fondo más refinado para la sección */
@@ -38,33 +49,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--body-bg) !important;
 }
 
-/* Título con tipografía refinada */
+/* Título con tipografía refinada - igual que testimonials */
 #books .section-title {
   text-align: center;
-  margin-bottom: 1rem;
-  font-size: 3.2rem;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #8C52FF, #00D4FF, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
   color: transparent;
-  background-size: 200% auto;
-  animation: gradient-text 8s linear infinite;
+  position: relative;
+  text-shadow: none;
 }
 
 /* Título decorativo con línea bajo el título (igual a testimonials) */
 #books .section-title::after {
   content: '';
   display: block;
-  width: 80px;
-  height: 4px;
-  margin: 1.5rem auto;
-  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-  border-radius: 2px;
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background: linear-gradient(90deg, #8C52FF, #00D4FF, #FFD700);
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(140, 82, 255, 0.3);
 }
 
 /* Book items con estilo mejorado y más profesional */
