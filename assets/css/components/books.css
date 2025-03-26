@@ -7,9 +7,9 @@
 /* Contenedor de sección de books - Refinado para aspecto más profesional */
 #books .book-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 3rem;
-  padding: 3rem 2rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 4rem;
+  padding: 4rem 3rem 3rem;
   border-radius: 1.5rem;
   background: rgba(18, 18, 24, 0.7);
   backdrop-filter: blur(10px);
@@ -19,8 +19,9 @@
   overflow: visible;
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 /* Borde degradado simplificado para igual al de testimonials */
@@ -34,6 +35,9 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Título con tipografía refinada */
@@ -216,13 +220,17 @@
 @media (max-width: 768px) {
   #books.section {
     padding: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .book-showcase {
     grid-template-columns: 1fr;
     gap: 4rem; /* Aumentado para mejor separación entre libros */
-    padding: 3rem 1rem;
-    margin: 2.5rem 0;
+    padding: 3rem 1.5rem;
+    margin: 2.5rem auto;
+    max-width: 450px;
   }
   
   .book-item {
@@ -517,33 +525,26 @@
 }
 
 /* Media queries mejorados para responsive - sin cambiar tamaños en móviles */
-@media (max-width: 1200px) {
+@media (max-width: 1200px) and (min-width: 993px) {
   .book-showcase {
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    grid-template-columns: repeat(2, minmax(340px, 1fr));
     gap: 3rem;
-    padding: 3.5rem 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
   }
   
   #books .section-title {
-    font-size: 3.6rem;
-  }
-  
-  .book-detail i,
-  .feature-item i {
-    margin-right: 1.1rem;
-  }
-  
-  .book-item {
-    min-height: 700px; /* Ajuste para pantallas más pequeñas */
+    font-size: 3.4rem;
   }
 }
 
 @media (max-width: 992px) {
   .book-showcase {
-    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     padding: 3rem 1.5rem;
-    margin: 3rem 0;
+    margin: 3rem auto;
+    max-width: 650px;
   }
   
   #books .section-title {
@@ -885,5 +886,19 @@
   
   .book-header-container .section-subtitle {
     font-size: 1.6rem !important;
+  }
+}
+
+/* Para pantallas grandes, limitar a 3 columnas máximo */
+@media (min-width: 1200px) {
+  #books .book-showcase {
+    grid-template-columns: repeat(3, minmax(300px, 350px));
+    justify-content: center;
+  }
+  
+  .book-item {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 350px;
   }
 } 
