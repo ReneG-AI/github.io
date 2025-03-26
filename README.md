@@ -32,11 +32,9 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 ├── _config.yml             # Jekyll configuration for GitHub Pages
 ├── assets/
 │   ├── css/
-│   │   ├── main.css        # Main stylesheet
+│   │   ├── main.css        # Main stylesheet (includes all fixes)
 │   │   ├── base.css        # Base styles
 │   │   ├── components.css  # General component styles
-│   │   ├── fix-hero.css    # Hero section fixes
-│   │   ├── fix-sections.css # Section fixes
 │   │   ├── style.css       # Additional styles
 │   │   ├── variables.css   # CSS variables
 │   │   │
@@ -82,11 +80,8 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 │       ├── app.js          # Particles background configuration
 │       ├── carousel.js     # Carousel/slider functionality
 │       ├── config.js       # Site configuration
-│       ├── main.js         # Main JavaScript functionality
+│       ├── main.js         # Main JavaScript functionality (includes browser compatibility fixes)
 │       ├── particles.min.js # Particles.js library
-│       │
-│       ├── fixes/          # Browser compatibility fixes
-│       │   └── menu-fix.js
 │       │
 │       └── utils/          # Utility functions
 │           └── copy-email.js
@@ -142,10 +137,9 @@ The CSS is organized into a modular structure:
 
 ### JavaScript Structure
 
-- `main.js` - Contains the primary JavaScript functionality
+- `main.js` - Contains the primary JavaScript functionality (includes all browser compatibility fixes)
 - `config.js` - Site configuration and settings
 - Utility functions are in the `utils/` directory
-- Browser compatibility fixes are in the `fixes/` directory
 
 ### Adding New Pages
 
