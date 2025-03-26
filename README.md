@@ -1,6 +1,6 @@
 # René García Educa - Official Website
 
-This repository contains the code for the René García Educa multilingual education platform website, designed to showcase educational resources, books, and contact information.
+This repository contains the code for the René García Educa educational platform website, designed to showcase educational resources, books, and contact information.
 
 ## Project Overview
 
@@ -23,17 +23,73 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 ```
 /
 ├── index.html              # Main HTML file
+├── error.html              # Error page (handles 404 errors)
+├── legal.html              # Legal notices
+├── privacy.html            # Privacy policy
+├── terms.html              # Terms of service
+├── .gitattributes          # Git attributes configuration
+├── .htaccess               # Apache server configuration
+├── _config.yml             # Jekyll configuration for GitHub Pages
 ├── assets/
 │   ├── css/
 │   │   ├── main.css        # Main stylesheet
-│   │   └── responsive.css  # Responsive design rules
-│   ├── js/
-│   │   └── main.js         # Main JavaScript functionality
-│   └── images/             # Website images and graphics
-├── backup/                 # Legal and policy pages
-│   ├── privacy.html        # Privacy policy
-│   ├── terms.html          # Terms of service
-│   └── legal.html          # Legal notices
+│   │   ├── base.css        # Base styles
+│   │   ├── components.css  # General component styles
+│   │   ├── fix-hero.css    # Hero section fixes
+│   │   ├── fix-sections.css # Section fixes
+│   │   ├── style.css       # Additional styles
+│   │   ├── variables.css   # CSS variables
+│   │   │
+│   │   ├── components/     # Component-specific styles
+│   │   │   ├── author.css
+│   │   │   ├── books.css
+│   │   │   ├── buttons.css
+│   │   │   ├── contact.css
+│   │   │   ├── footer.css
+│   │   │   ├── forms.css
+│   │   │   ├── hero.css
+│   │   │   ├── modals.css
+│   │   │   ├── navigation.css
+│   │   │   └── testimonials.css
+│   │   │
+│   │   ├── layout/         # Layout styles
+│   │   │   ├── footer.css
+│   │   │   ├── grid.css
+│   │   │   └── sections.css
+│   │   │
+│   │   ├── pages/          # Page-specific styles
+│   │   │   └── home.css
+│   │   │
+│   │   └── sections/       # Section-specific styles
+│   │       ├── contacto.css
+│   │       └── footer.css
+│   │
+│   ├── images/             # Website images and graphics
+│   │   ├── .gitkeep
+│   │   ├── apple-touch-icon.png
+│   │   ├── apple-touch-icon.webp
+│   │   ├── Autor.png
+│   │   ├── Autor.webp
+│   │   ├── Contraportada_*.png/webp  # Book back covers
+│   │   ├── Error_Drake_3D.png        # Error page illustration
+│   │   ├── favicon.ico
+│   │   ├── Hero_Background.png/webp
+│   │   ├── Logo.png/webp
+│   │   ├── og-image.png/webp         # Open Graph images
+│   │   └── Portada_*.png/webp        # Book covers
+│   │
+│   └── js/                 # JavaScript files
+│       ├── app.js          # Particles background configuration
+│       ├── carousel.js     # Carousel/slider functionality
+│       ├── config.js       # Site configuration
+│       ├── main.js         # Main JavaScript functionality
+│       ├── particles.min.js # Particles.js library
+│       │
+│       ├── fixes/          # Browser compatibility fixes
+│       │   └── menu-fix.js
+│       │
+│       └── utils/          # Utility functions
+│           └── copy-email.js
 └── README.md               # Project documentation
 ```
 
@@ -71,23 +127,39 @@ To deploy manually:
 
 The site will be available at `https://renegarciaeduca.com` or your custom domain if configured.
 
-## Making Changes
+## Development Guidelines
 
-1. Create a new branch for your changes:
-   ```
-   git checkout -b feature/your-feature-name
-   ```
+### CSS Structure
 
-2. Make your changes and test locally
+The CSS is organized into a modular structure:
+- `main.css` - Imports all other CSS files
+- `variables.css` - Contains CSS custom properties
+- `base.css` - Base styles and resets
+- Component-specific styles are in the `components/` directory
+- Layout structures are in the `layout/` directory
+- Page-specific styles are in the `pages/` directory
+- Section-specific styles are in the `sections/` directory
 
-3. Commit and push your changes:
-   ```
-   git add .
-   git commit -m "Description of changes"
-   git push origin feature/your-feature-name
-   ```
+### JavaScript Structure
 
-4. Create a pull request to merge your changes into the main branch
+- `main.js` - Contains the primary JavaScript functionality
+- `config.js` - Site configuration and settings
+- Utility functions are in the `utils/` directory
+- Browser compatibility fixes are in the `fixes/` directory
+
+### Adding New Pages
+
+When adding a new page:
+1. Create an HTML file in the root directory
+2. Link to the main CSS and JavaScript files
+3. If page-specific styles are needed, create a CSS file in `assets/css/pages/`
+4. Update the navigation in all HTML files to include the new page
+
+### Images
+
+- Place all images in the `assets/images/` directory
+- Use WebP format with PNG fallbacks for better performance
+- Optimize images before adding them to the repository
 
 ## Browser Compatibility
 
@@ -98,13 +170,10 @@ The website is tested and compatible with:
 - Edge (latest)
 - Mobile browsers (iOS Safari, Android Chrome)
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Contact
 
-For questions about this project, please contact:
-- Email: contact@renegarcia-educa.com
+For questions about this project, please contact René García through the contact form on the website.
 
-Last updated: May 2024
+---
+
+Last updated: March 2024
