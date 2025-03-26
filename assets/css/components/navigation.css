@@ -112,6 +112,9 @@
   align-items: center;
   margin-left: auto;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .nav-list {
@@ -131,6 +134,7 @@
   align-items: center;
   position: relative;
   transition: all 0.3s ease;
+  opacity: 1;
 }
 
 .nav-link {
@@ -301,6 +305,7 @@
   /* Mostrar botón de menú */
   .menu-toggle {
     display: block;
+    z-index: 10000;
   }
   
   /* Menú de navegación móvil - Rediseñado completamente */
@@ -344,6 +349,7 @@
     margin: 0 auto;
     gap: 1.6rem;
     padding: 0;
+    display: flex;
   }
   
   /* Elementos de navegación */
@@ -359,6 +365,7 @@
   .main-nav.active .nav-item {
     opacity: 1;
     transform: translateY(0);
+    display: flex;
   }
   
   /* Asegurar que los enlaces sean claramente visibles */
@@ -369,6 +376,7 @@
     padding: 1rem;
     display: block;
     text-align: center;
+    width: 100%;
   }
   
   /* Destacar el link activo */

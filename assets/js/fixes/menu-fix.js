@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navItems = document.querySelectorAll('.nav-list .nav-item');
     const navLinks = document.querySelectorAll('.nav-link');
     const body = document.body;
+    const isMobile = () => window.innerWidth <= 992;
     
     // Check if required elements exist
     if (!menuToggle || !mainNav) {
@@ -65,24 +66,62 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to hide mobile menu
     function hideMenu() {
-        // Animate items out first
-        navItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-        });
-        
-        // Delay removing active class to allow for animation
-        setTimeout(() => {
+        // Only animate items out if on mobile
+        if (isMobile()) {
+            // Animate items out first
+            navItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+            });
+            
+            // Delay removing active class to allow for animation
+            setTimeout(() => {
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                body.classList.remove('no-scroll');
+                
+                // Restore z-index for hero background
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground) {
+                    heroBackground.style.zIndex = '';
+                }
+            }, 300);
+        } else {
+            // On desktop, just remove the classes immediately without changing opacity
             menuToggle.classList.remove('active');
             mainNav.classList.remove('active');
             body.classList.remove('no-scroll');
+            
+            // Ensure navigation items remain visible on desktop
+            navItems.forEach(item => {
+                item.style.opacity = '';
+                item.style.transform = '';
+            });
             
             // Restore z-index for hero background
             const heroBackground = document.querySelector('.hero-background');
             if (heroBackground) {
                 heroBackground.style.zIndex = '';
             }
-        }, 300);
+        }
+    }
+    
+    // Ensure desktop nav is visible on wide screens
+    function ensureCorrectNavDisplay() {
+        if (!isMobile()) {
+            // On desktop, make sure nav items are visible
+            navItems.forEach(item => {
+                item.style.opacity = '';
+                item.style.transform = '';
+            });
+            
+            // Ensure the main nav is not hidden
+            if (!mainNav.classList.contains('active')) {
+                mainNav.style.visibility = 'visible';
+                mainNav.style.opacity = '1';
+                mainNav.style.pointerEvents = 'auto';
+            }
+        }
     }
     
     // Toggle menu on button click
@@ -102,27 +141,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // For internal links
-            if (this.getAttribute('href').startsWith('#')) {
+            // Only hide menu on mobile devices
+            if (isMobile()) {
+                // For internal links
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // Hide menu
+                    hideMenu();
+                    
+                    // Scroll to target after menu animation completes
+                    if (targetElement) {
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }, 400);
+                    }
+                } else if (!this.getAttribute('href').startsWith('http')) {
+                    // For internal page links that don't begin with #
+                    hideMenu();
+                }
+            } else if (this.getAttribute('href').startsWith('#')) {
+                // For desktop, still handle smooth scrolling to anchors
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
-                // Hide menu
-                hideMenu();
-                
-                // Scroll to target after menu animation completes
                 if (targetElement) {
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }, 400);
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
-            } else if (!this.getAttribute('href').startsWith('http')) {
-                // For internal page links that don't begin with #
-                hideMenu();
             }
         });
     });
@@ -149,11 +203,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth > 992 && mainNav.classList.contains('active')) {
             hideMenu();
         }
+        
+        // Ensure desktop nav is visible when resizing
+        ensureCorrectNavDisplay();
     });
     
     // When scrolling while menu is open, prevent background content from scrolling
     document.addEventListener('scroll', function(e) {
-        if (mainNav.classList.contains('active')) {
+        if (isMobile() && mainNav.classList.contains('active')) {
             e.preventDefault();
             e.stopPropagation();
             return false;
@@ -163,7 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize any active state if page loads with menu active
     if (menuToggle.classList.contains('active')) {
         showMenu();
+    } else {
+        ensureCorrectNavDisplay();
     }
+    
+    // Run on initial load to ensure correct display
+    ensureCorrectNavDisplay();
     
     console.log('Modern mobile menu initialized successfully!');
 }); 
