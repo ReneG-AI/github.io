@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             disable: window.innerWidth < 768 ? true : false
         });
     } else {
-        console.warn("AOS no está disponible. Algunas animaciones no funcionarán.");
+        console.warn("AOS not available. Some animations may not work.");
     }
     initializeCardFlippers();
     initializeMobileNav();
@@ -78,28 +78,28 @@ document.addEventListener('DOMContentLoaded', function() {
             heroBackground.style.zIndex = '-1';
             heroBackground.style.position = 'fixed';
             heroBackground.style.pointerEvents = 'none';
-            console.log('Aplicando z-index -1 a hero-background');
+            console.log('Applying z-index -1 to hero-background');
         }
         if (header) {
             header.style.zIndex = '9999';
-            console.log('Aplicando z-index 9999 a header');
+            console.log('Applying z-index 9999 to header');
         }
     }, 300);
 });
 
 function clearBrowserCache() {
-    console.log("Limpiando caché del navegador...");
+    console.log("Clearing browser cache...");
     if (window.location.href.indexOf('cache_cleared') === -1) {
         const cacheBuster = new Date().getTime();
         const hasParams = window.location.href.indexOf('?') !== -1;
         const separator = hasParams ? '&' : '?';
-        console.log("Parámetro para evitar caché: " + cacheBuster);
+        console.log("Parameter to avoid cache: " + cacheBuster);
     }
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(registrations) {
             for (let registration of registrations) {
                 registration.unregister();
-                console.log('Service Worker desregistrado');
+                console.log('Service Worker unregistered');
             }
         });
     }
@@ -107,7 +107,7 @@ function clearBrowserCache() {
         caches.keys().then(function(cacheNames) {
             return Promise.all(
                 cacheNames.map(function(cacheName) {
-                    console.log('Eliminando caché: ' + cacheName);
+                    console.log('Deleting cache: ' + cacheName);
                     return caches.delete(cacheName);
                 })
             );
@@ -124,10 +124,10 @@ function clearBrowserCache() {
             } else {
                 img.src = originalSrc + '&t=' + timestamp;
             }
-            console.log('Recargando imagen: ' + img.src);
+            console.log('Reloading image: ' + img.src);
         }
     });
-    console.log("Caché limpiada correctamente");
+    console.log("Cache cleared successfully");
 }
 
 function detectWebpSupport() {
@@ -135,16 +135,16 @@ function detectWebpSupport() {
     if (canvas.getContext && canvas.getContext('2d')) {
         if (canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0) {
             document.documentElement.classList.add('webp-support');
-            console.log("Soporte WebP detectado");
+            console.log("WebP support detected");
             return true;
         } else {
             document.documentElement.classList.add('no-webp-support');
-            console.log("Sin soporte WebP, usando PNG");
+            console.log("No WebP support, using PNG");
             return false;
         }
     } else {
         document.documentElement.classList.add('no-webp-support');
-        console.log("Navegador antiguo, usando PNG");
+        console.log("Old browser, using PNG");
         return false;
     }
 }
@@ -235,6 +235,7 @@ function setupBackToTop() {
 }
 
 function preloadBookImages() {
+    console.log("Preloading WebP book images...");
     if (window.imagesPreloaded) return;
     window.imagesPreloaded = true;
     console.log("Precargando imágenes WebP de libros...");
@@ -288,7 +289,7 @@ function initializeInteriorModal() {
     const interiorModal = document.getElementById('interiorModal');
     const modalCloseX = document.getElementById('modalCloseX');
     if (!interiorModal) {
-        console.warn('Modal de interior no encontrado');
+        console.warn('Interior modal not found');
         return;
     }
     interiorBtns.forEach(btn => {
@@ -342,7 +343,7 @@ function initCharacterCounter() {
         function updateCharCount() {
             const maxLength = textarea.getAttribute('maxlength');
             const currentLength = textarea.value.length;
-            charCount.textContent = `${currentLength}/${maxLength} caracteres`;
+            charCount.textContent = `${currentLength}/${maxLength} characters`;
             if (currentLength >= maxLength - 50) {
                 charCount.classList.add('limit-near');
             } else {
@@ -440,19 +441,19 @@ function initializeCardFlippers() {
 }
 
 function initializeMobileNav() {
-    console.log('Iniciando configuración del menú móvil');
+    console.log('Starting mobile menu configuration');
     
     const body = document.body;
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
-    // Verificar que existan los elementos necesarios
+    // Verify that necessary elements exist
     if (!menuToggle || !mainNav) {
-        console.error('Error: No se encontraron los elementos del menú móvil');
+        console.error('Error: Mobile menu elements not found');
         return;
     }
     
-    // Asegurar z-index correcto para elementos críticos
+    // Ensure correct z-index for critical elements
     const heroBackground = document.querySelector('.hero-background');
     const header = document.querySelector('header');
     
@@ -466,27 +467,27 @@ function initializeMobileNav() {
         header.style.zIndex = '9999';
     }
     
-    // Función para mostrar el menú
+    // Function to show the menu
     function showMenu() {
         menuToggle.classList.add('active');
         mainNav.classList.add('active');
         body.classList.add('no-scroll');
         
-        // Animar los items con retraso
+        // Animate items with delay
         const navItems = document.querySelectorAll('.nav-list .nav-item');
         navItems.forEach((item, index) => {
             item.style.setProperty('--item-index', index);
         });
     }
     
-    // Función para ocultar el menú
+    // Function to hide the menu
     function hideMenu() {
         menuToggle.classList.remove('active');
         mainNav.classList.remove('active');
         body.classList.remove('no-scroll');
     }
     
-    // Toggle del menú al hacer click en el botón
+    // Toggle menu on button click
     menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -498,18 +499,18 @@ function initializeMobileNav() {
         }
     });
     
-    // Cerrar el menú al hacer click en los enlaces
+    // Hide menu on link click
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            // Solo cerrar si estamos en mobile y el menú está activo
+            // Close if on mobile and menu is active
             if (window.innerWidth <= 992 && mainNav.classList.contains('active')) {
                 hideMenu();
             }
         });
     });
     
-    // Cerrar el menú al hacer click fuera de él
+    // Hide menu on click outside
     document.addEventListener('click', function(e) {
         if (mainNav.classList.contains('active') && 
             !mainNav.contains(e.target) && 
@@ -518,21 +519,14 @@ function initializeMobileNav() {
         }
     });
     
-    // Cerrar el menú al presionar ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-            hideMenu();
-        }
-    });
-    
-    // Asegurarse de que el menú se cierre al redimensionar la ventana a desktop
+    // Ensure menu closes when resizing window to desktop
     window.addEventListener('resize', function() {
         if (window.innerWidth > 992 && mainNav.classList.contains('active')) {
             hideMenu();
         }
     });
     
-    console.log('Menú móvil inicializado correctamente');
+    console.log('Mobile menu initialized successfully');
 }
 
 function initializeBookSlider() {
@@ -552,10 +546,10 @@ function initializeRippleEffect() {
 
 function fixAllVisibility() {
     if (imagesFixed) return;
-    console.log("Aplicando correcciones de visibilidad...");
+    console.log("Applying visibility corrections...");
     imagesFixed = true;
     const supportsWebp = detectWebpSupport();
-    console.log("Soporte WebP:", supportsWebp);
+    console.log("WebP support:", supportsWebp);
     const isMobile = window.innerWidth <= 768;
     const isSmallMobile = window.innerWidth <= 576;
     const isIOSDevice = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
@@ -582,17 +576,17 @@ function fixAllVisibility() {
         if (isIOSDevice) {
             heroBackground.style.backgroundAttachment = "scroll";
             heroBackground.style.minHeight = "-webkit-fill-available";
-            console.log("Aplicando ajustes para iOS");
+            console.log("Applying adjustments for iOS");
         } else if (isMobile) {
             heroBackground.style.backgroundAttachment = "scroll";
             heroBackground.style.backgroundPosition = isSmallMobile ? "65% top" : "center top";
-            console.log("Aplicando ajustes para móviles");
+            console.log("Applying adjustments for mobile");
         } else {
             heroBackground.style.backgroundAttachment = "fixed";
             heroBackground.style.backgroundPosition = "center center";
-            console.log("Aplicando ajustes para escritorio");
+            console.log("Applying adjustments for desktop");
         }
-        console.log(`Fondo del hero aplicado: ${bgImg}`);
+        console.log(`Hero background applied: ${bgImg}`);
     }
     document.body.classList.add('images-loaded');
 }
@@ -631,7 +625,7 @@ function copyEmail() {
     }, 2000);
 }
 
-// Scroll suave para enlaces de navegación
+// Scroll smooth for navigation links
 function smoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -644,12 +638,12 @@ function smoothScroll() {
       const targetElement = document.getElementById(targetId);
       
       if (targetElement) {
-        // Cerrar menú móvil si está abierto
+        // Close mobile menu if open
         if (mobileNav.classList.contains('active')) {
           toggleMobileMenu();
         }
         
-        // Scroll suave a la sección
+        // Smooth scroll to section
         window.scrollTo({
           top: targetElement.offsetTop - 100,
           behavior: 'smooth'
@@ -659,7 +653,7 @@ function smoothScroll() {
   });
 }
 
-// Animación para separadores
+// Animation for separators
 function setupSeparatorAnimations() {
   const separators = [
     ...document.querySelectorAll('.separador'),

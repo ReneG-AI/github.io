@@ -4,7 +4,7 @@
  */
 
 /* Testimonials section with integrated background */
-#testimonios.section {
+#testimonials.section {
   background-color: var(--body-bg) !important;
   position: relative;
   overflow: hidden;
@@ -32,24 +32,23 @@
 }
 
 /* Main testimonials container - VISUALLY REMOVED */
-.testimonios-container {
+.testimonials-container {
   display: none !important;
 }
 
 /* Title container with elegant effect */
-.testimonials-title-container,
-.testimonios-title-container {
-  text-align: center;
+.testimonials-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 5rem;
-  padding: 0;
   position: relative;
-  width: 100%;
 }
 
 /* Section title with modern style */
 .testimonials-title-container .section-title,
 .testimonios-title-container .section-title,
-#testimonios .section-title,
+#testimonials .section-title,
 .titulo-degradado-texto {
   font-size: 4rem;
   font-weight: 800;
@@ -67,7 +66,7 @@
 /* Minimalist decorative line under the title */
 .testimonials-title-container .section-title::after,
 .testimonios-title-container .section-title::after,
-#testimonios .section-title::after,
+#testimonials .section-title::after,
 .titulo-degradado-texto::after {
   content: '';
   display: block;
@@ -95,10 +94,9 @@
 /* Modern grid for testimonials */
 .testimonials-grid,
 .testimonios-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -271,7 +269,7 @@
   
   .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
-  #testimonios .section-title,
+  #testimonials .section-title,
   .titulo-degradado-texto {
     font-size: 3.6rem;
   }
@@ -282,7 +280,7 @@
 }
 
 @media (max-width: 992px) {
-  #testimonios.section {
+  #testimonials.section {
     padding: 6rem 0;
   }
   
@@ -309,7 +307,7 @@
 
 /* Styles for mobile view - elegant vertical design */
 @media (max-width: 768px) {
-  #testimonios.section {
+  #testimonials.section {
     padding: 5rem 0;
   }
   
@@ -356,14 +354,14 @@
   
   .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
-  #testimonios .section-title {
+  #testimonials .section-title {
     font-size: 3.2rem;
     margin-top: 0.5rem;
   }
 }
 
 @media (max-width: 576px) {
-  #testimonios.section {
+  #testimonials.section {
     padding: 4rem 0;
   }
   
@@ -374,7 +372,7 @@
   
   .testimonials-title-container .section-title,
   .testimonios-title-container .section-title,
-  #testimonios .section-title {
+  #testimonials .section-title {
     font-size: 3rem;
     margin-top: 0;
   }
@@ -414,7 +412,7 @@
 }
 
 /* Estilos adicionales de testimonios (integrados desde archivo 'style' de la raíz) */
-.testimonios-container {
+.testimonials-container {
   background: #0e0e10 !important;
   border-radius: 2rem !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -429,8 +427,8 @@
 }
 
 /* Eliminar todos los efectos de borde con gradiente y animaciones */
-.testimonios-container::before,
-.testimonios-container::after,
+.testimonials-container::before,
+.testimonials-container::after,
 .testimonial::before,
 .testimonial::after,
 .testimonial-glow {

@@ -1,7 +1,7 @@
 /* Variables globales */
 :root {
   /* Colores principales - Paleta fantasía infantil */
-  --primary-color: #8C52FF; /* Actualizado a un púrpura más brillante para las tarjetas de testimonios */
+  --primary-color: #8C52FF; /* Updated to a brighter purple for testimonial cards */
   --primary-color-dark: #6A0DAD;
   --primary-color-light: #B37EFC;
   --primary-color-10: rgba(140, 82, 255, 0.1);
@@ -12,7 +12,7 @@
   --secondary-color-dark: #2d3142; /* Azul oscuro elegante */
   --secondary-color-light: #70D6FF;
   
-  --accent-color: #FF5EDB; /* Actualizado a un rosa más brillante para los detalles de los testimonios */
+  --accent-color: #FF5EDB; /* Updated to a brighter pink for testimonial details */
   --accent-color-dark: #E91E63;
   --accent-color-light: #FF80AB;
   --accent-color-10: rgba(255, 94, 219, 0.1);
@@ -38,9 +38,9 @@
   --bg-categories: #161616;
   --bg-newsletter: #131313;
   
-  /* Colores específicos para testimonios */
+  /* Colores específicos para testimonials */
   --testimonial-bg: #121216;
-  --testimonios-container-bg: #0e0e10;
+  --testimonials-container-bg: #0e0e10;
   --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
   --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   --testimonial-border: 1px solid rgba(255, 255, 255, 0.05);
@@ -75,7 +75,7 @@
   --gradient-secondary: linear-gradient(135deg, #00BFFF, #70D6FF);
   --gradient-rainbow: linear-gradient(to right, #FF5EDB, #FFD700, #00FF7F, #00BFFF, #8C52FF);
   
-  /* Gradiente para bordes de testimonios */
+  /* Gradient for testimonial borders */
   --gradient-border: linear-gradient(90deg, #8C52FF, #FF5EDB, #00D4FF, #8C52FF);
   
   /* Colores de elementos específicos */
@@ -267,9 +267,9 @@
   --accent-color-light: #FF71B8; /* Rosa claro */
   --accent-color-dark: #D10075; /* Rosa oscuro */
   
-  /* Añadiendo nuevamente las variables específicas de testimonios para reforzar */
-  --testimonial-bg: rgba(10, 10, 14, 0.85);
-  --testimonios-container-bg: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
+  /* Añadiendo nuevamente las variables específicas de testimonials para reforzar */
+  --testimonial-bg: radial-gradient(circle, rgba(30, 30, 38, 0.8), rgba(16, 16, 22, 0.9));
+  --testimonials-container-bg: linear-gradient(145deg, rgba(8, 8, 12, 0.98), rgba(12, 12, 18, 0.97));
   --testimonial-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(140, 82, 255, 0.08) inset, 0 5px 15px rgba(255, 94, 219, 0.05);
   --testimonial-container-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 80px rgba(140, 82, 255, 0.15) inset, 0 5px 15px rgba(255, 94, 219, 0.1);
   

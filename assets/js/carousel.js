@@ -1,4 +1,4 @@
-// Carrusel de Libros
+// Book Carousel
 document.addEventListener('DOMContentLoaded', function() {
     initBookCarousel();
 });

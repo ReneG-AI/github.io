@@ -170,7 +170,7 @@ body, html {
 /* ===== FIXES PARA SECCIONES ===== */
 
 /* Fix general para secciones */
-#libros, #testimonios {
+#books, #testimonials {
   background-color: transparent !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -180,14 +180,14 @@ body, html {
 }
 
 /* Fix para contenedores */
-.book-showcase, .testimonios-grid {
+.book-showcase, .testimonials-grid {
   background-color: rgba(25, 25, 25, 0.85) !important;
   visibility: visible !important;
   opacity: 1 !important;
   z-index: 2 !important;
 }
 
-/* Fix para elementos de libros */
+/* Fix for book elements */
 .book-item {
   background-color: rgba(25, 25, 25, 0.85) !important;
   visibility: visible !important;
@@ -196,7 +196,7 @@ body, html {
   color: #fff !important;
 }
 
-/* Fix para contenido de libros */
+/* Fix for book content */
 .book-content {
   background-color: rgba(25, 25, 25, 0.85) !important;
   visibility: visible !important;
@@ -204,16 +204,7 @@ body, html {
   color: #fff !important;
 }
 
-/* Fix para testimonials */
-.testimonial {
-  background-color: rgba(25, 25, 25, 0.85) !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  color: #fff !important;
-  z-index: 3 !important;
-}
-
-/* Fix para texto en testimonios */
+/* Fix for testimonial text */
 .testimonial p, .testimonial-author-name, .testimonial-author-title {
   color: #fff !important;
   visibility: visible !important;
@@ -221,12 +212,13 @@ body, html {
 }
 
 /* Fix para títulos de secciones */
-#libros .section-title, #testimonios .section-title {
+#books .section-title, #testimonials .section-title {
   color: #fff !important;
   visibility: visible !important;
   opacity: 1 !important;
-  -webkit-text-fill-color: #fff !important;
-  background: none !important;
+  z-index: 3 !important;
+  margin-bottom: 2.5rem !important;
+  text-align: center !important;
 }
 
 /* Fix para subtítulos */
@@ -237,8 +229,8 @@ body, html {
 }
 
 /* Fix para fondos */
-#libros.section {
-  background-color: #121212 !important;
+#books.section {
+  background-color: transparent !important;
 }
 
 /* Fix para textos */
@@ -1463,7 +1455,7 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 
-/* Elegant animated borders for containers - Solo para los libros individuales */
+/* Elegant animated borders for containers - Only for individual books */
 .book-item {
   position: relative;
 }
@@ -1538,77 +1530,69 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Remove colored line for Libros Increíbles section */
-#libros .section-title::after {
+/* Remove colored line for Amazing Books section */
+#books .section-title::after {
   display: none;
 }
 
-/* Centrar título "Libros Increíbles" correctamente */
-#libros .section-title,
-#libros .section-subtitle {
-  text-align: center;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  justify-content: center;
+/* Center "Amazing Books" title correctly */
+#books .section-title,
+#books .section-subtitle {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 80%;
 }
 
-/* Restaurar línea decorativa para "Libros Increíbles" */
-#libros .section-title::after {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  border-radius: 2px;
+/* Restore decorative line for "Amazing Books" */
+#books .section-title::after {
+  content: '' !important;
+  display: block !important;
+  width: 100px !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF) !important;
+  margin: 1.5rem auto !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
 }
 
-/* Centrar título "Reseñas" - Igualado al de "Libros Increíbles" */
-#testimonios .section-title {
-  text-align: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
+/* Center "Reviews" title - Matching the "Amazing Books" title */
+#testimonials .section-title {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 80%;
 }
 
-/* Línea decorativa para "Reseñas" - Igualada a la de "Libros Increíbles" */
-#testimonios .section-title::after {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF);
-  border-radius: 2px;
+/* Decorative line for "Reviews" - Matching the "Amazing Books" line */
+#testimonials .section-title::after {
+  content: '' !important;
+  display: block !important;
+  width: 100px !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #FF5EDB, #8C52FF) !important;
+  margin: 1.5rem auto !important;
+  border-radius: 4px !important;
+  opacity: 1 !important;
 }
 
 /* Estilos compartidos para ambas secciones principales */
-#libros .section,
-#testimonios .section {
-  padding: 8rem 0;
-}
-
-/* Sección de testimonios con fondo transparente */
-#testimonios.section {
+#books .section,
+#testimonials .section {
+  position: relative !important;
   background-color: transparent !important;
-  position: relative;
-  z-index: 1;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-/* Estilos para el contenedor de testimonios y libros */
-.testimonios-container,
+/* Sección de testimonials con fondo transparente */
+#testimonials.section {
+  background-color: transparent !important;
+  padding-top: 6rem !important;
+}
+
+/* Estilos para el contenedor de testimonials y books */
+.testimonials-container,
 .book-showcase {
   background: #0e0e10 !important;
   border-radius: 2rem;
@@ -1669,7 +1653,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1rem 1.5rem; /* Más padding en los items de beneficios */
   }
   
-  /* Mejorar badge de testimonios en hero */
+  /* Mejorar badge de testimonials en hero */
   .testimonial-badge {
     margin: 2.5rem auto; /* Centrar y añadir espacio */
     max-width: 95%; /* Evitar que toque los bordes */
@@ -1778,8 +1762,8 @@ body {
   transform: translateZ(0);
 }
 
-/* Forzar estilos oscuros para testimoniales */
-.testimonios-container,
+/* Forzar estilos oscuros para testimonials */
+.testimonials-container,
 .testimonial {
   background-color: #0e0e10 !important;
   color: var(--text-color, #fff) !important;
@@ -1816,27 +1800,27 @@ body {
 
 /* Eliminación de los efectos de fondo morado y gradientes animados */
 .contact-grid::before,
-.testimonios-container::before,
+.testimonials-container::before,
 .testimonial::before,
 .book-showcase::before {
   display: none !important;
 }
 
 /* Estilos compartidos para ambas secciones principales */
-#libros .section,
-#testimonios .section {
+#books .section,
+#testimonials .section {
   padding: 8rem 0;
 }
 
-/* Sección de testimonios con fondo transparente */
-#testimonios.section {
+/* Sección de testimonials con fondo transparente */
+#testimonials.section {
   background-color: transparent !important;
   position: relative;
   z-index: 1;
 }
 
-/* Estilos para el contenedor de testimonios y libros */
-.testimonios-container,
+/* Estilos para el contenedor de testimonials y books */
+.testimonials-container,
 .book-showcase {
   background: #0e0e10 !important;
   border-radius: 2rem;

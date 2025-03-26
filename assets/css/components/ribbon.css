@@ -1,0 +1,14 @@
+.book-ribbon[data-type="featured"] {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.book-ribbon[data-type="new"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.book-ribbon[data-type="bestseller"] {
+  background-color: var(--secondary-color);
+  color: white;
+} 

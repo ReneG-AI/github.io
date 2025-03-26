@@ -1,28 +1,26 @@
 /* 
  * BOOKS
- * Estilos para la sección de libros y tarjetas de libros
+ * Styles for the books section and book cards
  * NOTA: Este contenedor sirve como referencia estándar para todos los demás contenedores de la página
  */
 
-/* Contenedor de sección de libros - Refinado para aspecto más profesional */
-.book-showcase {
+/* Contenedor de sección de books - Refinado para aspecto más profesional */
+#books .book-showcase {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  gap: 5rem;
-  margin: 5rem 0;
-  background: #0e0e10 !important;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3rem;
+  padding: 2rem;
   border-radius: 1.5rem;
-  padding: 4rem;
-  position: relative;
-  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
-  overflow: hidden;
-  z-index: 1;
+  background: rgba(18, 18, 24, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  max-width: 1500px;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Borde degradado simplificado para igual al de testimonials */
@@ -31,41 +29,38 @@
 }
 
 /* Fondo más refinado para la sección */
-#libros.section {
-  background-color: var(--body-bg) !important;
+#books.section {
+  padding: 7rem 0;
   position: relative;
   overflow: hidden;
-  padding: 6rem 0;
+  z-index: 1;
 }
 
 /* Título con tipografía refinada */
-#libros .section-title {
-  font-size: 4rem;
-  font-weight: 800;
-  margin-bottom: 2rem;
-  margin-top: 1rem;
-  background: linear-gradient(135deg, #8C52FF, #FF5EDB);
+#books .section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent !important;
-  position: relative;
-  letter-spacing: 0.05em;
-  text-shadow: none;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-size: 200% auto;
+  animation: gradient-text 8s linear infinite;
 }
 
 /* Título decorativo con línea bajo el título (igual a testimonials) */
-#libros .section-title::after {
+#books .section-title::after {
   content: '';
   display: block;
-  position: absolute;
-  bottom: -1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6rem;
-  height: 3px;
-  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
-  border-radius: 3px;
-  box-shadow: 0 2px 10px rgba(140, 82, 255, 0.3);
+  width: 80px;
+  height: 4px;
+  margin: 1.5rem auto;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
 }
 
 /* Book items con estilo mejorado y más profesional */
@@ -219,7 +214,7 @@
 
 /* Ajustes para móviles */
 @media (max-width: 768px) {
-  #libros.section {
+  #books.section {
     padding: 5rem 0;
   }
   
@@ -242,7 +237,7 @@
     gap: 0.8rem;
   }
   
-  #libros .book-images {
+  #books .book-images {
     height: 25rem !important; /* Reducido ligeramente */
     margin-bottom: 0 !important; /* Eliminado margen inferior */
     padding-top: 4.5rem; /* Aumentado el espacio arriba para el ribbon */
@@ -307,7 +302,7 @@
 }
 
 @media (max-width: 576px) {
-  #libros.section {
+  #books.section {
     padding: 4rem 0;
   }
   
@@ -316,7 +311,7 @@
     border-radius: 1.2rem !important;
   }
   
-  #libros .section-title {
+  #books .section-title {
     font-size: 3rem;
   }
   
@@ -477,7 +472,7 @@
 }
 
 /* Ribbons más elegantes */
-#libros .book-ribbon {
+#books .book-ribbon {
   position: absolute !important;
   top: 12px !important;
   right: 12px !important;
@@ -505,7 +500,7 @@
 }
 
 /* Ajustar altura del contenedor de imágenes */
-#libros .book-images {
+#books .book-images {
   height: 30rem !important;
 }
 
@@ -527,7 +522,7 @@
     padding: 3.5rem 1.5rem;
   }
   
-  #libros .section-title {
+  #books .section-title {
     font-size: 3.6rem;
   }
   
@@ -549,7 +544,7 @@
     margin: 3rem 0;
   }
   
-  #libros .section-title {
+  #books .section-title {
     font-size: 3.2rem;
   }
   
@@ -558,7 +553,7 @@
     margin-bottom: 1.5rem;
   }
   
-  #libros .book-images {
+  #books .book-images {
     height: 26rem !important; /* Reducido para mejor proporción */
     margin-bottom: 4rem !important; /* Aumentado para dar más espacio al botón */
     padding-top: 2rem; /* Más espacio en la parte superior */
@@ -584,7 +579,7 @@
     height: 230px; /* Ajustado para mejor proporción */
   }
   
-  #libros .book-ribbon {
+  #books .book-ribbon {
     top: 8px !important; /* Movido más arriba */
     right: 8px !important; /* Ajustado */
     font-size: 1.15rem !important; /* Ligeramente más grande */
@@ -616,7 +611,7 @@
 }
 
 @media (max-width: 576px) {
-  #libros.section {
+  #books.section {
     padding: 4rem 0;
   }
   
@@ -625,7 +620,7 @@
     border-radius: 1.2rem !important;
   }
   
-  #libros .section-title {
+  #books .section-title {
     font-size: 3rem;
   }
   
@@ -716,34 +711,34 @@
 }
 
 /* Colores personalizados para cada tipo de ribbon */
-#libros .book-ribbon[data-type="destacado"] {
+#books .book-ribbon[data-type="destacado"] {
   background: linear-gradient(135deg, #6852e2, #ba43fc) !important;
 }
 
-#libros .book-ribbon[data-type="nuevo"] {
+#books .book-ribbon[data-type="nuevo"] {
   background: linear-gradient(135deg, #00d2ff, #3a7bd5) !important;
 }
 
-#libros .book-ribbon[data-type="bestseller"] {
+#books .book-ribbon[data-type="bestseller"] {
   background: linear-gradient(135deg, #f5576c, #f093fb) !important;
 }
 
 /* Iconos para ribbons */
-#libros .book-ribbon::before {
+#books .book-ribbon::before {
   font-family: 'Font Awesome 5 Free' !important;
   margin-right: 6px !important;
   font-size: 1.2rem !important;
 }
 
-#libros .book-ribbon[data-type="destacado"]::before {
+#books .book-ribbon[data-type="destacado"]::before {
   content: "\f005" !important; /* Estrella */
 }
 
-#libros .book-ribbon[data-type="nuevo"]::before {
+#books .book-ribbon[data-type="nuevo"]::before {
   content: "\f067" !important; /* Signo más */
 }
 
-#libros .book-ribbon[data-type="bestseller"]::before {
+#books .book-ribbon[data-type="bestseller"]::before {
   content: "\f091" !important; /* Trofeo */
 }
 
