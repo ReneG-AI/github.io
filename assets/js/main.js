@@ -440,127 +440,57 @@ function initializeCardFlippers() {
 }
 
 function initializeMobileNav() {
-    console.log('Initializing modern mobile menu...');
+    console.log('Iniciando configuración del menú móvil');
+    
+    const body = document.body;
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    const navItems = document.querySelectorAll('.nav-list .nav-item');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const body = document.body;
-    const isMobile = () => window.innerWidth <= 992;
+    
+    // Verificar que existan los elementos necesarios
     if (!menuToggle || !mainNav) {
-        console.error('Could not find required menu elements!');
+        console.error('Error: No se encontraron los elementos del menú móvil');
         return;
     }
-    console.log(`Found ${navItems.length} navigation items`);
     
-    // Aseguramos los z-index correctos
+    // Asegurar z-index correcto para elementos críticos
+    const heroBackground = document.querySelector('.hero-background');
     const header = document.querySelector('header');
-    if (header) header.style.zIndex = '10000';
-    menuToggle.style.zIndex = '20000';
-    mainNav.style.zIndex = '19999';
     
-    // Comprobamos si el menú ya está inicializado
-    if (menuToggle.hasAttribute('data-menu-initialized')) {
-        console.log('Menu already initialized. Skipping to avoid duplicate listeners.');
-        return;
+    if (heroBackground) {
+        heroBackground.style.zIndex = '-1';
+        heroBackground.style.position = 'fixed';
+        heroBackground.style.pointerEvents = 'none';
     }
     
-    // Marcamos el menú como inicializado
-    menuToggle.setAttribute('data-menu-initialized', 'true');
+    if (header) {
+        header.style.zIndex = '9999';
+    }
     
+    // Función para mostrar el menú
     function showMenu() {
-        // Add active classes
         menuToggle.classList.add('active');
         mainNav.classList.add('active');
         body.classList.add('no-scroll');
         
-        // Asegurar que el heroBackground no tape el menú
-        const heroBackground = document.querySelector('.hero-background');
-        if (heroBackground) {
-            heroBackground.style.zIndex = '-1';
-            heroBackground.style.position = 'fixed';
-            heroBackground.style.pointerEvents = 'none';
-        }
-        
-        // Animate items with staggered delay
+        // Animar los items con retraso
+        const navItems = document.querySelectorAll('.nav-list .nav-item');
         navItems.forEach((item, index) => {
-            // Reset any existing inline styles
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            
-            // Force a reflow to ensure transitions work properly
-            void item.offsetWidth;
-            
-            // Set the item index as a CSS variable for transition delay
             item.style.setProperty('--item-index', index);
-            
-            // Delayed appearance
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, 50 + (index * 70));
         });
-        
-        // Ensure the nav list is visible
-        const navList = document.querySelector('.nav-list');
-        if (navList) {
-            navList.style.display = 'flex';
-        }
     }
     
+    // Función para ocultar el menú
     function hideMenu() {
-        if (isMobile()) {
-            navItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-            });
-            setTimeout(() => {
-                menuToggle.classList.remove('active');
-                mainNav.classList.remove('active');
-                body.classList.remove('no-scroll');
-            }, 300);
-        } else {
-            menuToggle.classList.remove('active');
-            mainNav.classList.remove('active');
-            body.classList.remove('no-scroll');
-            navItems.forEach(item => {
-                item.style.opacity = '';
-                item.style.transform = '';
-            });
-        }
-        
-        // Mantenemos el heroBackground con z-index negativo
-        const heroBackground = document.querySelector('.hero-background');
-        if (heroBackground) {
-            heroBackground.style.zIndex = '-1';
-        }
+        menuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        body.classList.remove('no-scroll');
     }
     
-    function ensureCorrectNavDisplay() {
-        if (!isMobile()) {
-            navItems.forEach(item => {
-                item.style.opacity = '';
-                item.style.transform = '';
-            });
-            if (!mainNav.classList.contains('active')) {
-                mainNav.style.visibility = 'visible';
-                mainNav.style.opacity = '1';
-                mainNav.style.pointerEvents = 'auto';
-            }
-        }
-    }
-    
-    // Limpiamos eventos anteriores por si acaso
-    const newMenuToggle = menuToggle.cloneNode(true);
-    menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
-    
-    // Volvemos a asignar menuToggle a la nueva referencia
-    const updatedMenuToggle = document.querySelector('.menu-toggle');
-    
-    updatedMenuToggle.addEventListener('click', function(e) {
+    // Toggle del menú al hacer click en el botón
+    menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        console.log('Menu toggle clicked');
+        
         if (mainNav.classList.contains('active')) {
             hideMenu();
         } else {
@@ -568,93 +498,41 @@ function initializeMobileNav() {
         }
     });
     
+    // Cerrar el menú al hacer click en los enlaces
+    const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (isMobile() && mainNav.classList.contains('active')) {
-                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    hideMenu();
-                    if (targetElement) {
-                        setTimeout(() => {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                        }, 400);
-                    }
-                } else if (this.getAttribute('href') && !this.getAttribute('href').startsWith('http')) {
-                    hideMenu();
-                }
-            } else if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        link.addEventListener('click', function() {
+            // Solo cerrar si estamos en mobile y el menú está activo
+            if (window.innerWidth <= 992 && mainNav.classList.contains('active')) {
+                hideMenu();
             }
         });
     });
     
+    // Cerrar el menú al hacer click fuera de él
     document.addEventListener('click', function(e) {
         if (mainNav.classList.contains('active') && 
             !mainNav.contains(e.target) && 
-            !updatedMenuToggle.contains(e.target)) {
+            !menuToggle.contains(e.target)) {
             hideMenu();
         }
     });
     
+    // Cerrar el menú al presionar ESC
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && mainNav.classList.contains('active')) {
             hideMenu();
         }
     });
     
+    // Asegurarse de que el menú se cierre al redimensionar la ventana a desktop
     window.addEventListener('resize', function() {
         if (window.innerWidth > 992 && mainNav.classList.contains('active')) {
             hideMenu();
         }
-        ensureCorrectNavDisplay();
     });
     
-    // Fix para evitar scroll cuando el menú está activo
-    document.addEventListener('scroll', function(e) {
-        if (isMobile() && mainNav.classList.contains('active')) {
-            e.preventDefault();
-            e.stopPropagation();
-            return false;
-        }
-    }, { passive: false });
-    
-    if (menuToggle.classList.contains('active')) {
-        showMenu();
-    } else {
-        ensureCorrectNavDisplay();
-    }
-    
-    // Último aseguramiento de Z-index
-    setTimeout(function() {
-        const heroBackground = document.querySelector('.hero-background');
-        const header = document.querySelector('header');
-        
-        if (header) header.style.zIndex = '10000';
-        if (updatedMenuToggle) updatedMenuToggle.style.zIndex = '20000';
-        if (mainNav) mainNav.style.zIndex = '19999';
-        
-        if (heroBackground) {
-            heroBackground.style.zIndex = '-1';
-            heroBackground.style.position = 'fixed';
-            heroBackground.style.pointerEvents = 'none';
-        }
-    }, 500);
-    
-    ensureCorrectNavDisplay();
-    console.log('Modern mobile menu initialized successfully!');
+    console.log('Menú móvil inicializado correctamente');
 }
 
 function initializeBookSlider() {
