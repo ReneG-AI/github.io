@@ -1,6 +1,6 @@
 /* 
  * NAVIGATION
- * Estilos para header, menú de navegación y footer
+ * Styles for header, navigation menu and footer
  */
 
 /* Header */
@@ -20,7 +20,7 @@
   overflow: visible;
 }
 
-/* Borde degradado para el header - Igualado al de libros */
+/* Gradient border for header - Matched to books */
 .header::after {
   content: '';
   position: absolute;
@@ -105,7 +105,7 @@
   width: 100%;
 }
 
-/* Navegación principal - Escritorio */
+/* Main Navigation - Desktop */
 .main-nav {
   height: 100%;
   display: flex;
@@ -162,7 +162,7 @@
   transform: translateY(-2px);
 }
 
-/* Efecto de brillo al hacer hover */
+/* Glow effect on hover */
 .nav-link::after {
   content: '';
   position: absolute;
@@ -192,7 +192,7 @@
   opacity: 1;
 }
 
-/* Estilo específico para el enlace de Amazon */
+/* Specific style for Amazon link */
 .nav-link.amazon-link {
   background: linear-gradient(135deg, #FF9900, #FFC13B);
   color: #000;
@@ -224,7 +224,7 @@
   text-shadow: none;
 }
 
-/* Botón de menú móvil */
+/* Mobile menu button */
 .menu-toggle {
   display: none;
   width: 3rem;
@@ -268,7 +268,7 @@
   transform: rotate(45deg) translate(-0.5rem, -0.6rem);
 }
 
-/* Media queries - Ajustes responsive */
+/* Media queries - Responsive adjustments */
 @media screen and (max-width: 1200px) {
   .logo img {
     height: calc(var(--header-height) * 1.12);
@@ -293,7 +293,7 @@
   }
 }
 
-/* Estilos para tablet y móvil */
+/* Styles for tablet and mobile */
 @media screen and (max-width: 992px) {
   .header {
     height: 7rem;
@@ -303,12 +303,12 @@
     height: 5.6rem;
   }
   
-  /* Mostrar botón de menú */
+  /* Show menu button */
   .menu-toggle {
     display: block;
   }
   
-  /* Menú de navegación móvil */
+  /* Mobile navigation menu */
   .main-nav {
     position: fixed;
     top: 0;
@@ -331,7 +331,7 @@
     padding: 8rem 2rem 4rem;
   }
   
-  /* Estado activo del menú móvil */
+  /* Active state of mobile menu */
   .main-nav.active {
     opacity: 1;
     visibility: visible;
@@ -340,7 +340,7 @@
     display: flex;
   }
   
-  /* Lista de navegación */
+  /* Navigation list */
   .nav-list {
     flex-direction: column;
     width: 100%;
@@ -351,7 +351,7 @@
     display: flex;
   }
   
-  /* Elementos de navegación */
+  /* Navigation items */
   .nav-item {
     width: 100%;
     height: auto;
@@ -367,7 +367,7 @@
     display: flex;
   }
   
-  /* Asegurar que los enlaces sean claramente visibles */
+  /* Ensure links are clearly visible */
   .nav-link {
     color: white;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -378,14 +378,14 @@
     width: 100%;
   }
   
-  /* Destacar el link activo */
+  /* Highlight active link */
   .nav-link.active,
   .nav-link:hover {
     color: #FFD35F;
     transform: translateY(-2px);
   }
   
-  /* Iconos de navegación */
+  /* Navigation icons */
   .nav-icon {
     font-size: 1.8rem;
     margin-right: 1rem;
@@ -393,7 +393,7 @@
     color: inherit;
   }
   
-  /* Estilo específico para Amazon en móvil */
+  /* Specific style for Amazon link on mobile */
   .nav-link.amazon-link {
     margin-top: 2rem;
     width: 80%;

@@ -43,7 +43,7 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 │   │   │   ├── books.css
 │   │   │   ├── buttons.css
 │   │   │   ├── contact.css
-│   │   │   ├── footer.css
+│   │   │   ├── footer.css  # Footer styles (consolidated)
 │   │   │   ├── forms.css
 │   │   │   ├── hero.css
 │   │   │   ├── modals.css
@@ -55,13 +55,8 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 │   │   │   ├── grid.css
 │   │   │   └── sections.css
 │   │   │
-│   │   ├── pages/          # Page-specific styles
-│   │   │   └── home.css
-│   │   │
-│   │   └── sections/       # Section-specific styles
-│   │       ├── about.css
-│   │       ├── books.css
-│   │       └── testimonials.css
+│   │   └── pages/          # Page-specific styles
+│   │       └── home.css
 │   │
 │   ├── images/             # Website images and graphics
 │   │   ├── .gitkeep
@@ -124,6 +119,17 @@ To deploy manually:
 The site will be available at `https://renegarciaeduca.com` or your custom domain if configured.
 
 ## Development Guidelines
+
+### Code Language Conventions
+
+- **Interface Language:** Spanish (Spain)
+  - All visible text, labels, buttons, and content should be in Spanish
+  - Spanish content should use proper spelling, accents, and punctuation
+
+- **Code Language:** English
+  - All code, comments, variable names, function names, and file names should be in English
+  - Documentation in code should be written in English
+  - This helps maintain code readability and follows international development standards
 
 ### CSS Structure
 

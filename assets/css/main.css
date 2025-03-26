@@ -1,43 +1,43 @@
 /* 
  * MAIN CSS
- * Archivo principal que importa todos los componentes 
- * y establece estilos base
+ * Main file that imports all components 
+ * and establishes base styles
  */
 
-/* Importar variables y estilos base */
+/* Import variables and base styles */
 @import url('variables.css');
 @import url('base.css');
-/* Eliminamos imports de fix files y lo incluimos directamente */
+/* We removed fix files imports and included them directly */
 /* @import url('fix-hero.css'); */
 /* @import url('fix-sections.css'); */
 
-/* Importar archivos de layout */
+/* Import layout files */
 @import url('layout/grid.css');
 @import url('layout/sections.css');
 @import url('layout/footer.css');
 
-/* Importar archivos de componentes */
-/* @import url("components/header.css"); */ /* Archivo no encontrado */
+/* Import component files */
+/* @import url("components/header.css"); */ /* File not found */
 @import url("components/hero.css");
 @import url("components/navigation.css");
 @import url("components/books.css");
 @import url("components/author.css");
 @import url("components/testimonials.css");
-/* @import url("components/features.css"); */ /* Archivo no encontrado */
+/* @import url("components/features.css"); */ /* File not found */
 @import url("components/contact.css");
 @import url("components/footer.css");
 @import url('components/forms.css');
 @import url('components/modals.css');
 @import url('components/buttons.css');
 
-/* Importar estilos específicos de página */
+/* Import page-specific styles */
 @import url('pages/home.css');
 
-/* Secciones */
+/* Sections */
 /* @import url('sections/contact.css'); */ /* Moved to components/contact.css */
-@import url('sections/footer.css');
+/* @import url('sections/footer.css'); */ /* Removed due to duplication, already exists in components/footer.css */
 
-/* Componentes adicionales y utilidades */
+/* Additional components and utilities */
 @import url('components.css');
 @import url('responsive.css');
 
@@ -67,12 +67,12 @@ body {
 
 /* 
  * FIXES CONSOLIDADOS
- * Correcciones para elementos que no se muestran correctamente
+ * Corrections for elements that don't display correctly
  */
 
 /* ===== FIXES PARA HERO Y HEADER ===== */
 
-/* Fix para visibilidad de imágenes - añadiendo !important para casos críticos */
+/* Fix for image visibility - adding !important for critical cases */
 img {
   visibility: visible !important;
   opacity: 1 !important;
@@ -81,11 +81,11 @@ img {
   height: auto;
 }
 
-/* Asegurar visibilidad del logo */
+/* Ensure logo visibility */
 header img, .logo img {
   visibility: visible !important;
   opacity: 1 !important;
-  max-height: 91px !important; /* Aumentado un 40% (65px * 1.4 = 91px) */
+  max-height: 91px !important; /* Increased by 40% (65px * 1.4 = 91px) */
   object-fit: contain !important;
   width: auto !important;
   display: block !important;
@@ -93,7 +93,7 @@ header img, .logo img {
   margin: 0 auto;
 }
 
-/* Fix para el fondo del hero - OPTIMIZADO PARA RENDIMIENTO */
+/* Fix for hero background - OPTIMIZED FOR PERFORMANCE */
 .hero-background {
   display: block !important;
   visibility: visible !important;
@@ -104,26 +104,26 @@ header img, .logo img {
   width: 100% !important;
   height: 100% !important;
   z-index: 0 !important;
-  overflow: hidden !important; /* Cambiado a hidden para evitar problemas en algunos dispositivos */
+  overflow: hidden !important; /* Changed to hidden to avoid issues in some devices */
   background-image: url('../images/Hero_Background.webp') !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
   filter: brightness(0.9) contrast(1.05) !important;
   pointer-events: none !important;
-  /* Optimizaciones de rendimiento */
+  /* Performance optimizations */
   -webkit-transform: translate3d(0, 0, 0) !important;
   transform: translate3d(0, 0, 0) !important;
   will-change: transform !important;
   backface-visibility: hidden !important;
 }
 
-/* Ocultar la imagen dentro del hero-background para evitar duplicación */
+/* Hide image inside hero-background to avoid duplication */
 .hero-bg-img {
   display: none !important;
 }
 
-/* Fix para imágenes de libro */
+/* Fix for book images */
 .book-img, .book-cover, .book-back {
   visibility: visible !important;
   opacity: 1 !important;
@@ -134,7 +134,7 @@ header img, .logo img {
   margin: 0 auto;
 }
 
-/* Forzar contenido del hero */
+/* Force hero content */
 .hero-section {
   position: relative !important;
   width: 100% !important;
@@ -144,7 +144,7 @@ header img, .logo img {
   z-index: 1 !important;
 }
 
-/* Ajuste para contenido del hero - aumentando opacidad */
+/* Adjust hero content - increasing opacity */
 .hero-content {
   max-width: 600px !important;
   background-color: rgba(0, 0, 0, 0.7) !important;
@@ -159,17 +159,17 @@ header img, .logo img {
   position: relative !important;
 }
 
-/* Ajuste para body y html en relación al hero */
+/* Adjust body and html in relation to hero */
 body, html {
   min-height: 100vh !important;
   height: auto !important;
-  background-color: #111 !important; /* Fondo oscuro como respaldo */
-  overflow-x: hidden !important; /* Prevenir desplazamiento horizontal */
+  background-color: #111 !important; /* Dark background as fallback */
+  overflow-x: hidden !important; /* Prevent horizontal scrolling */
 }
 
 /* ===== FIXES PARA SECCIONES ===== */
 
-/* Fix general para secciones */
+/* Fix general for sections */
 #books, #testimonials {
   background-color: transparent !important;
   visibility: visible !important;
@@ -179,7 +179,7 @@ body, html {
   color: #fff !important;
 }
 
-/* Fix para contenedores */
+/* Fix for containers */
 .book-showcase, .testimonials-grid {
   background-color: rgba(25, 25, 25, 0.85) !important;
   visibility: visible !important;
@@ -211,7 +211,7 @@ body, html {
   opacity: 1 !important;
 }
 
-/* Fix para títulos de secciones */
+/* Fix for section titles */
 #books .section-title, #testimonials .section-title {
   color: #fff !important;
   visibility: visible !important;
@@ -221,26 +221,26 @@ body, html {
   text-align: center !important;
 }
 
-/* Fix para subtítulos */
+/* Fix for subtitles */
 .section-subtitle {
   color: #fff !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-/* Fix para fondos */
+/* Fix for backgrounds */
 #books.section {
   background-color: transparent !important;
 }
 
-/* Fix para textos */
+/* Fix for texts */
 .book-title, .book-description, .feature-title, .feature-item {
   color: #fff !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
 
-/* Fix para iconos */
+/* Fix for icons */
 .feature-icon, .book-detail i {
   color: #6B4CE6 !important;
   visibility: visible !important;
@@ -251,12 +251,12 @@ body, html {
  * MEDIA QUERIES PARA FIXES
  */
 
-/* Tabletas y dispositivos medianos */
+/* Tablets and medium devices */
 @media screen and (max-width: 992px) {
   .hero-background {
-    background-attachment: scroll !important; /* Cambiado a scroll para mejor compatibilidad y rendimiento */
+    background-attachment: scroll !important; /* Changed to scroll for better compatibility and performance */
     height: 100vh !important;
-    will-change: unset !important; /* Eliminar will-change para mejor rendimiento en scroll */
+    will-change: unset !important; /* Eliminate will-change for better performance in scroll */
   }
   
   .hero-section {
@@ -277,23 +277,23 @@ body, html {
     right: auto !important;
     float: none !important;
     box-sizing: border-box !important;
-    /* Simplificar sombra para mejor rendimiento */
+    /* Simplify shadow for better performance */
     box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
-/* Dispositivos móviles */
+/* Mobile devices */
 @media screen and (max-width: 768px) {
   .hero-background {
-    /* Usar propiedades más eficientes para móviles */
+    /* Use more efficient properties for mobile devices */
     background-attachment: scroll !important;
     background-position: center top !important;
-    will-change: unset !important; /* Eliminar para mejor rendimiento */
+    will-change: unset !important; /* Eliminate for better performance */
     
-    /* Reducir calidad visual para mejor rendimiento */
-    filter: brightness(0.85) !important; /* Simplificar filtro */
+    /* Reduce visual quality for better performance */
+    filter: brightness(0.85) !important; /* Simplify filter */
     
-    /* Alternativa para reducir la carga de renderizado */
+    /* Alternative for reducing rendering load */
     opacity: 0.95 !important;
   }
   
@@ -318,39 +318,39 @@ body, html {
     float: none !important;
     box-sizing: border-box !important;
     
-    /* Simplificar efectos para mejorar rendimiento */
+    /* Simplify effects for better performance */
     backdrop-filter: blur(5px) !important;
     -webkit-backdrop-filter: blur(5px) !important;
     box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
-/* Dispositivos móviles pequeños - ajuste específico para el fondo */
+/* Small mobile devices - specific adjustment for background */
 @media screen and (max-width: 576px) {
   .hero-background {
     background-position: 65% top !important;
     
-    /* Simplificar aún más para dispositivos de gama baja */
+    /* Simplify even more for low-end devices */
     filter: brightness(0.8) !important;
     -webkit-transform: none !important;
     transform: none !important;
   }
   
-  /* Simplificar contenido del hero */
+  /* Simplify hero content */
   .hero-content {
     padding: 2.5rem !important;
     box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.2) !important;
   }
 }
 
-/* Específico para iOS - soluciona problemas de altura en Safari */
+/* Specific for iOS - solves height issues in Safari */
 @supports (-webkit-touch-callout: none) {
   .hero-background {
     background-attachment: scroll !important;
     height: 100vh !important;
     min-height: -webkit-fill-available !important;
     
-    /* Desactivar transformaciones para mejor rendimiento */
+    /* Disable transformations for better performance */
     -webkit-transform: none !important;
     transform: none !important;
     will-change: auto !important;
@@ -362,7 +362,7 @@ body, html {
   }
 }
 
-/* Clase aplicada después de que las imágenes se han cargado */
+/* Class applied after images have loaded */
 body.images-loaded img {
   visibility: visible;
   opacity: 1;
@@ -377,7 +377,7 @@ body.images-loaded img {
   position: relative;
 }
 
-/* Logo específicamente */
+/* Logo specifically */
 .logo img {
   display: block !important;
   max-height: 120px;
@@ -388,7 +388,7 @@ body.images-loaded img {
   margin: 0 auto;
 }
 
-/* Imagen del footer */
+/* Footer image */
 .footer-logo img {
   display: block !important;
   max-width: 200px;
@@ -716,7 +716,7 @@ a:hover {
   }
 }
 
-/* Animación para el gradiente de títulos */
+/* Animation for gradient titles */
 @keyframes shimmer {
   0% {
     background-position: 0% 50%;
@@ -729,7 +729,7 @@ a:hover {
   }
 }
 
-/* Animación para brillos y subrayados */
+/* Animation for glows and underlines */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -745,12 +745,12 @@ a:hover {
   }
 }
 
-/* Ajustar el espaciado del contenido principal para nuevo layout */
+/* Adjust content spacing for new layout */
 main {
-  padding-top: 0; /* Eliminamos el padding top general ya que ahora se gestiona con .split-layout */
+  padding-top: 0; /* Eliminate general top padding as it's now managed with .split-layout */
 }
 
-/* Eliminamos los backgrounds de secciones ya que ahora se manejan con .scrollable-section */
+/* Eliminate section backgrounds as they're now managed with .scrollable-section */
 section {
   background-color: transparent;
   margin: 0;
@@ -760,7 +760,7 @@ section {
   -webkit-backdrop-filter: none;
 }
 
-/* Agregar efectos de brillo a elementos específicos */
+/* Add glow effects to specific elements */
 .glow-effect {
   position: relative;
   z-index: 1;
@@ -793,7 +793,7 @@ section {
   }
 }
 
-/* Botón Volver Arriba mejorado */
+/* Improved Back to Top button */
 #back-to-top {
   position: fixed;
   bottom: 3rem;
@@ -826,7 +826,7 @@ section {
   opacity: 0.9;
 }
 
-/* Media queries para responsividad del botón volver arriba */
+/* Media queries for responsive back to top button */
 @media screen and (max-width: 768px) {
   #back-to-top {
     width: 4.5rem;
@@ -837,9 +837,9 @@ section {
   }
 }
 
-/* Variables globales */
+/* Global variables */
 :root {
-  /* Colores principales */
+  /* Primary colors */
   --primary-color: #8C52FF;
   --primary-color-light: #a175ff;
   --primary-color-dark: #6B4CE6;
@@ -850,14 +850,14 @@ section {
   --accent-color-light: #FFD54F;
   --accent-color-dark: #FF9800;
   
-  /* Colores adicionales */
+  /* Additional colors */
   --neon-green: #00ff90;
   --mystic-gold: #FFD700;
   --wizard-teal: #00D4FF;
   --dragon-orange: #FF851B;
   --fairy-pink: #FF5192;
   
-  /* Colores complementarios */
+  /* Complementary colors */
   --white: #ffffff;
   --black: #000000;
   --dark: #121212;
@@ -867,17 +867,17 @@ section {
   --gray-light: #e0e0e0;
   --gray-dark: #707070;
   
-  /* Fondos */
+  /* Backgrounds */
   --body-bg: #121212;
   --card-bg: rgba(26, 26, 30, 0.3);
   --header-bg: rgba(26, 26, 26, 0.98);
   
-  /* Sombras */
+  /* Shadows */
   --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
   --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
   
-  /* Fuentes */
+  /* Fonts */
   --font-family: 'Poppins', sans-serif;
   --font-size-base: 10px;
   --font-weight-light: 300;
@@ -887,7 +887,7 @@ section {
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   
-  /* Espaciados */
+  /* Spacings */
   --section-padding: 6rem 0;
   --section-padding-sm: 3rem 0;
   
@@ -897,12 +897,12 @@ section {
   --border-radius-lg: 1.2rem;
   --border-radius-xl: 2rem;
   
-  /* Transiciones */
+  /* Transitions */
   --transition: all 0.3s ease;
   --transition-slow: all 0.5s ease;
   --transition-fast: all 0.2s ease;
 
-  /* Añadir variables CSS globales para mantener consistencia */
+  /* Add global CSS variables for consistency */
   --card-bg: rgba(26, 26, 30, 0.3);
   --card-bg-hover: rgba(30, 30, 35, 0.4);
   --card-border: rgba(255, 255, 255, 0.05);
@@ -920,7 +920,7 @@ section {
   --section-padding-xsmall: 4rem 0;
 }
 
-/* Normalización y reset */
+/* Normalization and reset */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -950,7 +950,7 @@ body.loaded {
   transition: opacity 0.5s ease;
 }
 
-/* Estilos base de contenedor */
+/* Base container styles */
 .container {
   width: 100%;
   max-width: 1320px;
@@ -965,7 +965,7 @@ body.loaded {
   padding: 2rem 0;
 }
 
-/* Enlaces y botones */
+/* Links and buttons */
 a {
   color: var(--primary-color);
   text-decoration: none;
@@ -1031,7 +1031,7 @@ a:hover {
   box-shadow: none;
 }
 
-/* Tipografía */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
   line-height: 1.2;
@@ -1073,7 +1073,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
 }
 
-/* Hero Section actualizado */
+/* Hero Section updated */
 .hero-section {
   position: relative;
   width: 100%;
@@ -1121,13 +1121,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Eliminamos completamente el pseudo-elemento after */
+/* Eliminate pseudo-element after completely */
 .hero-background::after {
   content: none;
   display: none;
 }
 
-/* Hero content con borde degradado */
+/* Hero content with gradient border */
 .hero-content {
   max-width: 580px;
   background-color: rgba(0, 0, 0, 0.9);
@@ -1150,7 +1150,7 @@ h1, h2, h3, h4, h5, h6 {
   box-sizing: border-box;
 }
 
-/* Borde degradado para el hero */
+/* Gradient border for hero */
 .hero-content::before {
   content: '';
   position: absolute;
@@ -1165,7 +1165,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: -1;
 }
 
-/* Título hero con mejor tipografía */
+/* Hero title with better typography */
 .hero-title {
   font-size: 4.2rem;
   margin-bottom: 1.5rem;
@@ -1184,7 +1184,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.01em;
 }
 
-/* Subtítulo hero más descriptivo */
+/* Hero subtitle more descriptive */
 .hero-subtitle {
   font-size: 1.8rem;
   margin-bottom: 2rem;
@@ -1194,7 +1194,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: left;
 }
 
-/* Lista de beneficios */
+/* Benefits list */
 .hero-benefits {
   width: 100%;
   margin-bottom: 2rem;
@@ -1231,7 +1231,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-/* Badge de testimonial mejorado - Centrado */
+/* Improved testimonial badge - Centered */
 .testimonial-badge {
   display: flex;
   flex-direction: column;
@@ -1284,7 +1284,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.8rem;
 }
 
-/* Estrellas de calificación */
+/* Star ratings */
 .rating {
   display: flex;
   gap: 0.3rem;
@@ -1315,7 +1315,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Estilo para botones con gradiente - Color Amazon */
+/* Style for gradient buttons - Color Amazon */
 .btn-gradient {
   position: relative;
   overflow: hidden;
@@ -1335,7 +1335,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0.6rem 1.5rem rgba(255, 153, 0, 0.5);
 }
 
-/* Mantenlo para AOS */
+/* Keep for AOS */
 [data-aos] {
   opacity: 0;
   transition-property: opacity, transform;
@@ -1345,7 +1345,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
 }
 
-/* Arreglo de visibilidad para imágenes */
+/* Image visibility arrangement */
 .github-pages-config img {
     display: inline-block !important;
     visibility: visible !important;
@@ -1353,7 +1353,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 100%;
 }
 
-/* Estilos específicos para elementos claves */
+/* Specific styles for key elements */
 .logo img {
     display: inline-block !important;
     visibility: visible !important;
@@ -1374,7 +1374,7 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: no-repeat;
 }
 
-/* Gradient text animation - mismo estilo que René Garcia Educa */
+/* Gradient text animation - same style as René Garcia Educa */
 .gradient-text {
   background: linear-gradient(90deg, #FF5EDB, #8C52FF, #00D4FF, #8C52FF, #FF5EDB);
   background-size: 300% 100%;
@@ -1386,7 +1386,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
-/* Estilo unificado para títulos de secciones con gradiente */
+/* Unified style for gradient titles */
 .gradient-title {
   font-size: 3.6rem;
   font-weight: 700;
@@ -1446,7 +1446,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
-/* Eliminar estilos del scroll-indicator y scroll-circle */
+/* Remove scroll-indicator and scroll-circle styles */
 .scroll-indicator {
   display: none;
 }
@@ -1480,7 +1480,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
-/* Removiendo bordes animados de otros elementos */
+/* Remove animated borders from other elements */
 .container::before, .section::before, .hero-content::before, 
 .testimonial-item::before, .contact-form::before, .footer-section::before, 
 .footer-logo::before {
@@ -1510,23 +1510,23 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.6rem;
   }
   
-  /* Mejorar espaciado general en secciones */
+  /* Improve general spacing in sections */
   .section {
-    padding: 5rem 0; /* Aumentar padding vertical general */
+    padding: 5rem 0; /* Increase general vertical padding */
   }
   
   .section-title {
-    margin-bottom: 2.5rem; /* Más espacio debajo de los títulos */
-    font-size: 3rem; /* Tamaño de fuente ajustado */
+    margin-bottom: 2.5rem; /* More space below titles */
+    font-size: 3rem; /* Adjusted font size */
   }
   
   .container {
-    padding: 0 2rem; /* Más padding horizontal en contenedores */
+    padding: 0 2rem; /* More padding in containers */
   }
   
-  /* Ajustes para grids y contenedores flexibles */
+  /* Adjustments for grids and flexible containers */
   .grid, .flex-container {
-    gap: 2.5rem; /* Aumentar separación entre elementos */
+    gap: 2.5rem; /* Increase separation between elements */
   }
 }
 
@@ -1576,7 +1576,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1 !important;
 }
 
-/* Estilos compartidos para ambas secciones principales */
+/* Shared styles for both main sections */
 #books .section,
 #testimonials .section {
   position: relative !important;
@@ -1585,13 +1585,13 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1 !important;
 }
 
-/* Sección de testimonials con fondo transparente */
+/* Testimonials section with transparent background */
 #testimonials.section {
   background-color: transparent !important;
   padding-top: 6rem !important;
 }
 
-/* Estilos para el contenedor de testimonials y books */
+/* Styles for testimonials and books container */
 .testimonials-container,
 .book-showcase {
   background: #0e0e10 !important;
@@ -1607,13 +1607,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Eliminar animaciones de bordes degradados */
+/* Remove gradient border animations */
 @keyframes gradientBorder {
   0% { background-position: 0% 0; }
   100% { background-position: 0% 0; }
 }
 
-/* Media queries para responsividad */
+/* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
   html {
     font-size: 55%;
@@ -1631,37 +1631,37 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
-    padding: 3rem; /* Aumentado para mejor espaciado */
-    text-align: center; /* Asegurar que el texto esté centrado */
+    padding: 3rem; /* Increased for better spacing */
+    text-align: center; /* Ensure text is centered */
   }
   
-  /* Asegurar que los títulos del hero se centren correctamente */
+  /* Ensure hero titles are centered correctly */
   .hero-title {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    font-size: 3.2rem; /* Ajustar tamaño para mejor legibilidad */
+    font-size: 3.2rem; /* Adjust size for better readability */
   }
   
-  /* Mejorar espaciado de elementos en el hero */
+  /* Improve spacing in hero elements */
   .hero-benefits {
-    margin: 2.5rem auto; /* Centrar y añadir espacio */
-    gap: 1.5rem; /* Más separación entre beneficios */
+    margin: 2.5rem auto; /* Center and add space */
+    gap: 1.5rem; /* More separation between benefits */
   }
   
   .benefit-item {
-    padding: 1rem 1.5rem; /* Más padding en los items de beneficios */
+    padding: 1rem 1.5rem; /* More padding in benefit items */
   }
   
-  /* Mejorar badge de testimonials en hero */
+  /* Improve hero testimonials badge */
   .testimonial-badge {
-    margin: 2.5rem auto; /* Centrar y añadir espacio */
-    max-width: 95%; /* Evitar que toque los bordes */
+    margin: 2.5rem auto; /* Center and add space */
+    max-width: 95%; /* Avoid touching borders */
   }
   
-  /* Ajustar botones del hero */
+  /* Adjust hero buttons */
   .hero-buttons {
-    margin-top: 2.5rem; /* Más espacio arriba de los botones */
+    margin-top: 2.5rem; /* More space above buttons */
   }
 }
 
@@ -1680,35 +1680,35 @@ h1, h2, h3, h4, h5, h6 {
   
   .hero-content {
     padding: 2.5rem;
-    max-width: 95%; /* Más ancho en móviles pequeños */
+    max-width: 95%; /* More width in small mobile devices */
   }
   
-  /* Ajustar títulos para pantallas pequeñas */
+  /* Adjust titles for small screens */
   .hero-title {
-    font-size: 2.8rem; /* Reducir tamaño para mejor adaptación */
-    line-height: 1.3; /* Mejor espaciado entre líneas */
+    font-size: 2.8rem; /* Reduce size for better adaptation */
+    line-height: 1.3; /* Improve spacing between lines */
   }
   
-  /* Ajustar elementos de beneficios */
+  /* Adjust benefit elements */
   .hero-benefits {
-    flex-direction: column; /* Apilar en móviles pequeños */
+    flex-direction: column; /* Stack in small mobile devices */
     align-items: center;
     gap: 1.2rem;
     width: 100%;
   }
   
   .benefit-item {
-    width: 90%; /* Ocupar casi todo el ancho */
+    width: 90%; /* Occupy almost full width */
     text-align: center;
     justify-content: center;
   }
   
-  /* Ajustar botones en móviles pequeños */
+  /* Adjust buttons in small mobile devices */
   .btn {
-    padding: 1rem 2rem; /* Más padding para mejor área táctil */
+    padding: 1rem 2rem; /* More padding for better touch area */
   }
   
-  /* Ajustar tamaños de letra generales */
+  /* Adjust general letter sizes */
   .section-title {
     font-size: 2.6rem;
   }
@@ -1717,7 +1717,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
   }
   
-  /* Ajustar sección de botones */
+  /* Adjust buttons section */
   .flip-button {
     bottom: -15px;
     padding: 0.7rem 1.4rem;
@@ -1725,7 +1725,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Botones del hero - Centrados */
+/* Hero buttons - Centered */
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -1733,25 +1733,25 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1rem;
 }
 
-/* Mejoras de rendimiento global */
+/* Global performance improvements */
 html {
   scroll-behavior: smooth !important;
 }
 
 body {
-  /* Propiedades para mejorar el rendimiento */
+  /* Properties for better performance */
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Optimizar todas las transiciones para que sean más rápidas */
+/* Optimize all transitions to be faster */
 * {
   transition-duration: 0.2s !important;
   transition-delay: 0s !important;
 }
 
-/* Aceleración de hardware para animaciones */
+/* Hardware acceleration for animations */
 .menu-toggle, 
 .nav-link, 
 .scroll-indicator,
@@ -1762,7 +1762,7 @@ body {
   transform: translateZ(0);
 }
 
-/* Forzar estilos oscuros para testimonials */
+/* Force dark styles for testimonials */
 .testimonials-container,
 .testimonial {
   background-color: #0e0e10 !important;
@@ -1776,7 +1776,7 @@ body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Forzar estilos oscuros para sección de contact */
+/* Force dark styles for contact section */
 .contact-section {
   background-color: #121212 !important;
 }
@@ -1798,7 +1798,7 @@ body {
   display: none !important;
 }
 
-/* Eliminación de los efectos de fondo morado y gradientes animados */
+/* Remove purple background and animated gradients */
 .contact-grid::before,
 .testimonials-container::before,
 .testimonial::before,
@@ -1806,20 +1806,20 @@ body {
   display: none !important;
 }
 
-/* Estilos compartidos para ambas secciones principales */
+/* Shared styles for both main sections */
 #books .section,
 #testimonials .section {
   padding: 8rem 0;
 }
 
-/* Sección de testimonials con fondo transparente */
+/* Testimonials section with transparent background */
 #testimonials.section {
   background-color: transparent !important;
   position: relative;
   z-index: 1;
 }
 
-/* Estilos para el contenedor de testimonials y books */
+/* Styles for testimonials and books container */
 .testimonials-container,
 .book-showcase {
   background: #0e0e10 !important;
