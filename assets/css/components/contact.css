@@ -1,10 +1,10 @@
 /* 
  * CONTACT
- * Estilos para la sección de contacto y formulario
+ * Estilos para la sección de contact y formulario
  */
 
 /* Ajuste de la sección para mejor integración */
-#contacto.section {
+#contact.section {
   padding-top: 2rem;
   background-color: var(--body-bg) !important;
   position: relative;
@@ -12,7 +12,7 @@
   padding: 7rem 0;
 }
 
-/* Contenedor de la sección de contacto */
+/* Contenedor de la sección de contact */
 .contact-section-header {
   text-align: center;
   margin-bottom: 1rem;
@@ -104,8 +104,8 @@
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Contenedor del formulario de contacto - Estandarizado */
-.contacto-form-container, .autor-container {
+/* Contenedor del formulario de contact - Estandarizado */
+.contact-form-container, .autor-container {
   grid-area: form;
   position: relative;
   background: rgba(26, 26, 30, 0.3) !important;
@@ -126,7 +126,7 @@
   min-height: 600px; /* Altura mínima para PC */
 }
 
-.contacto-form-container:hover, .autor-container:hover {
+.contact-form-container:hover, .autor-container:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.4) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -485,15 +485,15 @@
     padding: 3.5rem 1.5rem;
   }
   
-  .contacto-form-container, .autor-container {
+  .contact-form-container, .autor-container {
     padding: 3rem !important;
     min-height: 550px; /* Ajustar para pantallas más pequeñas */
   }
 }
 
 @media (max-width: 992px) {
-  #contacto.section {
-    padding: 6rem 0;
+  #contact.section {
+    padding: 5rem 0;
   }
   
   .contact-grid {
@@ -507,7 +507,7 @@
       "pages";
   }
   
-  .contacto-form-container, .autor-container {
+  .contact-form-container, .autor-container {
     padding: 3rem !important;
     transform: none !important;
     transition: all 0.3s ease;
@@ -518,8 +518,8 @@
 }
 
 @media (max-width: 768px) {
-  #contacto.section {
-    padding: 5rem 0;
+  #contact.section {
+    padding: 4rem 0;
   }
   
   .contact-grid {
@@ -533,7 +533,7 @@
     padding: 3rem 1rem;
   }
   
-  .contacto-form-container, .autor-container {
+  .contact-form-container, .autor-container {
     padding: 3rem !important;
     max-width: 100%; /* Usar todo el ancho disponible */
     width: 100%; /* Asegurar ancho completo */
@@ -543,8 +543,8 @@
 }
 
 @media (max-width: 576px) {
-  #contacto.section {
-    padding: 4rem 0;
+  #contact.section {
+    padding: 3rem 0;
   }
   
   .contact-grid {
@@ -554,7 +554,7 @@
     width: 100%;
   }
   
-  .contacto-form-container, .autor-container {
+  .contact-form-container, .autor-container {
     padding: 2.5rem !important;
     width: 100%;
     max-width: 100%; /* Usar todo el ancho disponible */
@@ -564,7 +564,7 @@
 
 /* Estilos móviles específicos */
 @media (max-width: 576px) {
-  .contacto-form-container, .autor-container {
+  .contact-form-container, .autor-container {
     padding: 1.5rem !important;
     min-height: 420px;
     max-width: 100% !important; /* Asegurar ancho completo */
@@ -586,7 +586,7 @@
     font-size: 1.4rem;
   }
   
-  .contacto-form {
+  .contact-form {
     width: 100%;
   }
   
@@ -997,7 +997,7 @@
   position: relative;
 }
 
-.contacto-form-container {
+.contact-form-container {
   background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
   border-radius: 1.5rem;
   padding: 3.5rem;
@@ -1007,7 +1007,7 @@
   border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.contacto-title-line {
+.contact-title-line {
   height: 0.3rem;
   width: 5rem;
   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
@@ -1015,7 +1015,7 @@
   border-radius: 0.3rem;
 }
 
-.contacto-form {
+.contact-form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1138,17 +1138,17 @@
   }
   
   .contact-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
   }
 }
 
 @media (max-width: 768px) {
-  .contacto-form-container {
+  .contact-form-container {
     background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
     padding: 2.5rem !important;
   }
   
-  .contacto-form-container::after {
+  .contact-form-container::after {
     font-size: 2.4rem !important;
     top: 1.2rem !important;
   }
@@ -1183,12 +1183,12 @@
 }
 
 @media (max-width: 576px) {
-  .contacto-form-container {
+  .contact-form-container {
     background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
     padding: 2rem !important;
   }
   
-  .contacto-form-container::after {
+  .contact-form-container::after {
     font-size: 2.2rem !important;
     top: 1rem !important;
   }

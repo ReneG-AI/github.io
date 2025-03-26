@@ -416,7 +416,7 @@ window.addEventListener('resize', function() {
 
 function fixContactSectionDisplay() {
     if (window.innerWidth >= 992) {
-        const formContainer = document.querySelector('.contacto-form-container');
+        const formContainer = document.querySelector('.contact-form-container');
         const autorContainer = document.querySelector('.autor-container');
         if (formContainer && autorContainer) {
             const formHeight = formContainer.offsetHeight;
@@ -629,4 +629,42 @@ function copyEmail() {
         copyBtn.classList.remove('copied');
         copyBtn.innerHTML = originalIcon;
     }, 2000);
+}
+
+// Scroll suave para enlaces de navegación
+function smoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      
+      if (!targetId) return;
+      
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Cerrar menú móvil si está abierto
+        if (mobileNav.classList.contains('active')) {
+          toggleMobileMenu();
+        }
+        
+        // Scroll suave a la sección
+        window.scrollTo({
+          top: targetElement.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Animación para separadores
+function setupSeparatorAnimations() {
+  const separators = [
+    ...document.querySelectorAll('.separador'),
+    ...document.querySelectorAll('.contact-about-separator')
+  ];
+  
+  // ... existing code ...
 }

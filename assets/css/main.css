@@ -34,7 +34,7 @@
 @import url('pages/home.css');
 
 /* Secciones */
-@import url('sections/contacto.css');
+/* @import url('sections/contact.css'); */ /* Moved to components/contact.css */
 @import url('sections/footer.css');
 
 /* Componentes adicionales y utilidades */
@@ -1792,7 +1792,7 @@ body {
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-/* Forzar estilos oscuros para sección de contacto */
+/* Forzar estilos oscuros para sección de contact */
 .contact-section {
   background-color: #121212 !important;
 }
@@ -1803,16 +1803,19 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-.contacto-form-container,
+.contact-form-container,
 .autor-container {
-  background: #121216 !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: rgba(26, 26, 30, 0.3) !important;
+}
+
+.contact-form-container::before,
+.autor-container::before {
+  content: none !important;
+  display: none !important;
 }
 
 /* Eliminación de los efectos de fondo morado y gradientes animados */
 .contact-grid::before,
-.contacto-form-container::before,
-.autor-container::before,
 .testimonios-container::before,
 .testimonial::before,
 .book-showcase::before {

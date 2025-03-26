@@ -153,23 +153,24 @@ a[href*="amazon.com"] * {
   text-shadow: none !important;
 }
 
-/* Estilos forzados para la sección de contacto */
-.contacto-form-container {
+/* Estilos forzados para la sección de contact */
+.contact-form-container {
   background: linear-gradient(135deg, #1a1a1a, #2d2d2d) !important;
-  background-color: #1a1a1a !important;
-  color: #ddd !important;
+  padding: 2.5rem !important;
 }
 
-.contacto-form-container::before {
-  opacity: 1 !important;
+.contact-form-container::before {
+  display: none !important;
 }
 
-.contacto-form-container::after {
-  opacity: 1 !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  mix-blend-mode: normal !important;
+.contact-form-container::after {
+  content: 'Contact' !important;
+  color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.contact-form {
+  padding: 0 !important;
+  background: transparent !important;
 }
 
 .form-group input,
@@ -178,9 +179,4 @@ a[href*="amazon.com"] * {
   background-color: #333 !important;
   color: #ddd !important;
   border: 1px solid #555 !important;
-}
-
-.contacto-form {
-  background: transparent !important;
-  color: #ddd !important;
 } 

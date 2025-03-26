@@ -59,8 +59,9 @@ The website is built with HTML, CSS, and JavaScript, focusing on performance, ac
 │   │   │   └── home.css
 │   │   │
 │   │   └── sections/       # Section-specific styles
-│   │       ├── contacto.css
-│   │       └── footer.css
+│   │       ├── about.css
+│   │       ├── books.css
+│   │       └── testimonials.css
 │   │
 │   ├── images/             # Website images and graphics
 │   │   ├── .gitkeep
@@ -126,14 +127,16 @@ The site will be available at `https://renegarciaeduca.com` or your custom domai
 
 ### CSS Structure
 
-The CSS is organized into a modular structure:
-- `main.css` - Imports all other CSS files
-- `variables.css` - Contains CSS custom properties
-- `base.css` - Base styles and resets
-- Component-specific styles are in the `components/` directory
-- Layout structures are in the `layout/` directory
-- Page-specific styles are in the `pages/` directory
-- Section-specific styles are in the `sections/` directory
+The CSS is organized into several folders:
+
+- `components/`: Contains styles for specific UI components
+  - `hero.css`: Hero section styles
+  - `navigation.css`: Navigation menu styles 
+  - `testimonials.css`: Testimonial section styles
+  - `footer.css`: Footer styles
+  - `forms.css`: Form elements styles
+  - `contact.css`: Contact section styles
+  - `author.css`: Author section styles
 
 ### JavaScript Structure
 
