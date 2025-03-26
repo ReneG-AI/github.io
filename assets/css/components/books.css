@@ -63,9 +63,11 @@
   background: linear-gradient(135deg, #8C52FF, #00D4FF, #FFD700);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important;
   position: relative;
   text-shadow: none;
+  background-size: 200% auto;
+  animation: shimmer 8s linear infinite;
 }
 
 /* Título decorativo con línea bajo el título (igual a testimonials) */

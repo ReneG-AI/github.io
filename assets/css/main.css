@@ -212,14 +212,14 @@ body, html {
 }
 
 /* Fix for section titles */
-#books .section-title /*, #testimonials .section-title*/ {
+/* #books .section-title { - Comentado para no interferir con los estilos específicos de books.css
   color: #fff !important;
   visibility: visible !important;
   opacity: 1 !important;
   z-index: 3 !important;
   margin-bottom: 2.5rem !important;
   text-align: center !important;
-}
+} */
 
 /* Fix for subtitles */
 .section-subtitle {
