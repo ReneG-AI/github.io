@@ -11,10 +11,68 @@
   overflow: hidden;
 }
 
+/* Contact showcase container - similar to books/testimonials */
+.contact-showcase {
+  background: #0e0e10 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, 0.4) !important;
+  padding: 4rem 2rem;
+  border-radius: 1.5rem !important;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  max-width: 1500px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Title container */
 .contact-title-container {
   text-align: center;
   margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Estilo de título igual al de otras secciones */
+.contact-title-container .section-title,
+#contact .section-title,
+.titulo-degradado-texto {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #8C52FF, #FF5EDB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  letter-spacing: 0.05em;
+  text-shadow: none;
+}
+
+/* Línea decorativa bajo el título */
+.contact-title-container .section-title::after,
+#contact .section-title::after,
+.titulo-degradado-texto::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background: linear-gradient(90deg, #8C52FF, #FF5EDB);
+  border-radius: 3px;
+  box-shadow: 0 2px 10px rgba(140, 82, 255, 0.3);
 }
 
 /* Modern contact layout */
@@ -322,6 +380,11 @@
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
+  .contact-showcase {
+    padding: 3.5rem 1.5rem;
+    max-width: 95%;
+  }
+  
   .contact-modern {
     padding: 2.5rem;
   }
@@ -334,11 +397,21 @@
   .author-name {
     font-size: 2rem;
   }
+  
+  .contact-title-container .section-title,
+  #contact .section-title {
+    font-size: 3.4rem;
+  }
 }
 
 @media (max-width: 768px) {
   #contact.section {
     padding: 5rem 0;
+  }
+  
+  .contact-showcase {
+    padding: 3rem 1rem;
+    max-width: 95%;
   }
   
   .contact-modern {
@@ -367,9 +440,18 @@
     width: 120px;
     height: 120px;
   }
+  
+  .contact-title-container .section-title,
+  #contact .section-title {
+    font-size: 3rem;
+  }
 }
 
 @media (max-width: 576px) {
+  .contact-showcase {
+    padding: 2.5rem 1rem;
+  }
+  
   .contact-modern {
     padding: 1.5rem;
   }
@@ -396,6 +478,11 @@
   
   .author-name {
     font-size: 1.8rem;
+  }
+  
+  .contact-title-container .section-title,
+  #contact .section-title {
+    font-size: 2.6rem;
   }
 }
 
