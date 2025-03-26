@@ -212,7 +212,7 @@ body, html {
 }
 
 /* Fix for section titles */
-#books .section-title, #testimonials .section-title {
+#books .section-title /*, #testimonials .section-title*/ {
   color: #fff !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -1557,14 +1557,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Center "Reviews" title - Matching the "Amazing Books" title */
+/* 
 #testimonials .section-title {
   text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
   max-width: 80%;
 }
+*/
 
 /* Decorative line for "Reviews" - Matching the "Amazing Books" line */
+/*
 #testimonials .section-title::after {
   content: '' !important;
   display: block !important;
@@ -1575,6 +1578,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px !important;
   opacity: 1 !important;
 }
+*/
 
 /* Shared styles for both main sections */
 #books .section,
